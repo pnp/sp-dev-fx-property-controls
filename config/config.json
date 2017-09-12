@@ -1,0 +1,17 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "property-controls-test-web-part": {
+      "components": [{
+        "entrypoint": "./lib/webparts/propertyControlsTest/PropertyControlsTestWebPart.js",
+        "manifest": "./src/webparts/propertyControlsTest/PropertyControlsTestWebPart.manifest.json"
+      }]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PropertyControlsTestWebPartStrings": "lib/webparts/propertyControlsTest/loc/{locale}.js",
+    "PropertyControlStrings": "lib/loc/{locale}.js"
+  }
+}

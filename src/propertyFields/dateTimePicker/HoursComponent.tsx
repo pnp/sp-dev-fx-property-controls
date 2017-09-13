@@ -1,6 +1,6 @@
 import * as React from "react";
 import { IHoursComponentProps } from "./IPropertyFieldDateTimePickerHost";
-import { ITimeConvention } from "./IPropertyFieldDateTimePicker";
+import { TimeConvention } from "./IPropertyFieldDateTimePicker";
 import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/components/Dropdown";
 
 /**
@@ -17,7 +17,7 @@ export default class HoursComponent extends React.Component<IHoursComponentProps
     let hours: IDropdownOption[] = [];
     for (let i = 0; i < 24; i++) {
       let digit: string;
-      if (this.props.timeConvention == ITimeConvention.Hours24) {
+      if (this.props.timeConvention == TimeConvention.Hours24) {
         // 24 hours time convention
         if (i < 10) {
           digit = '0' + i;

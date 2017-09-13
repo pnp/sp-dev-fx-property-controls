@@ -7,7 +7,7 @@ import {
 } from '@microsoft/sp-webpart-base';
 import { IPropertyFieldDateTimePickerHostProps } from './IPropertyFieldDateTimePickerHost';
 import PropertyFieldDateTimePickerHost from './PropertyFieldDateTimePickerHost';
-import { IDateTimeFieldValue, IPropertyFieldDateTimePickerPropsInternal, ITimeConvention, IPropertyFieldDateTimePickerProps, IDateConvention } from "./IPropertyFieldDateTimePicker";
+import { IDateTimeFieldValue, IPropertyFieldDateTimePickerPropsInternal, TimeConvention, IPropertyFieldDateTimePickerProps, DateConvention } from "./IPropertyFieldDateTimePicker";
 
 /**
  * @class
@@ -25,15 +25,13 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
   private label: string;
   private initialDate: IDateTimeFieldValue;
   private formatDate: (date: Date) => string;
-  private dateConvention: IDateConvention;
-  private timeConvention: ITimeConvention;
+  private dateConvention: DateConvention;
+  private timeConvention: TimeConvention;
   private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
   private customProperties: any;
   private key: string;
   private onGetErrorMessage: (value: string) => string | Promise<string>;
   private deferredValidationTime: number = 200;
-  private renderWebPart: () => void;
-  private disableReactivePropertyChanges: boolean = false;
 
   /**
    * @function
@@ -52,7 +50,6 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
     this.customProperties = _properties.properties;
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
-    this.renderWebPart = _properties.render;
 
     if (typeof _properties.deferredValidationTime !== "undefined") {
       this.deferredValidationTime = _properties.deferredValidationTime;
@@ -61,17 +58,13 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
     if (typeof _properties.dateConvention !== "undefined") {
       this.dateConvention = _properties.dateConvention;
     } else {
-      this.dateConvention = IDateConvention.DateTime;
+      this.dateConvention = DateConvention.DateTime;
     }
 
     if (typeof _properties.timeConvention !== "undefined") {
       this.timeConvention = _properties.timeConvention;
     } else {
-      this.timeConvention = ITimeConvention.Hours24;
-    }
-
-    if (typeof _properties.disableReactivePropertyChanges !== "undefined" && _properties.disableReactivePropertyChanges != null) {
-      this.disableReactivePropertyChanges = _properties.disableReactivePropertyChanges;
+      this.timeConvention = TimeConvention.Hours24;
     }
   }
 
@@ -95,9 +88,7 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
       properties: this.customProperties,
       key: this.key,
       onGetErrorMessage: this.onGetErrorMessage,
-      deferredValidationTime: this.deferredValidationTime,
-      render: this.renderWebPart,
-      disableReactivePropertyChanges: this.disableReactivePropertyChanges
+      deferredValidationTime: this.deferredValidationTime
     });
     //Calls the REACT content generator
     ReactDom.render(element, elem);
@@ -135,9 +126,7 @@ export function PropertyFieldDateTimePicker(targetProperty: string, properties: 
     onRender: null,
     key: properties.key,
     onGetErrorMessage: properties.onGetErrorMessage,
-    deferredValidationTime: properties.deferredValidationTime,
-    render: properties.render,
-    disableReactivePropertyChanges: properties.disableReactivePropertyChanges
+    deferredValidationTime: properties.deferredValidationTime
   };
   //Calls the PropertyFieldDateTimePicker builder object
   //This object will simulate a PropertyFieldCustom to manage his rendering process

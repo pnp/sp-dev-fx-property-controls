@@ -13,7 +13,7 @@ import { IPropertyControlsTestWebPartProps } from './IPropertyControlsTestWebPar
 import { PropertyFieldPeoplePicker, IPrincipalType } from '../../PropertyFieldPeoplePicker';
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '../../PropertyFieldListPicker';
 import { PropertyFieldTermPicker } from '../../PropertyFieldTermPicker';
-import { PropertyFieldDateTimePicker, IDateConvention, ITimeConvention } from '../../PropertyFieldDateTimePicker';
+import { PropertyFieldDateTimePicker, DateConvention, TimeConvention } from '../../PropertyFieldDateTimePicker';
 
 export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<IPropertyControlsTestWebPartProps> {
 
@@ -118,14 +118,12 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'termSetsPickerFieldId'
                 }),
                 PropertyFieldDateTimePicker('datetime', {
-                  label: 'Select the date',
+                  label: 'Select the date and time',
                   initialDate: this.properties.datetime,
                   // formatDate: this._formatDateIso,
-                  dateConvention: IDateConvention.Date,
-                  timeConvention: ITimeConvention.Hours12,
+                  dateConvention: DateConvention.DateTime,
+                  timeConvention: TimeConvention.Hours12,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
-                  render: this.render.bind(this),
-                  disableReactivePropertyChanges: this.disableReactivePropertyChanges,
                   properties: this.properties,
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,

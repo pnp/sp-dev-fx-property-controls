@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPropertyFieldDateTimePickerPropsInternal, ITimeConvention, IDateConvention, IDateTimeFieldValue } from './IPropertyFieldDateTimePicker';
+import { IPropertyFieldDateTimePickerPropsInternal, TimeConvention, DateConvention, IDateTimeFieldValue } from './IPropertyFieldDateTimePicker';
 import { DatePicker, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
@@ -102,9 +102,9 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
     this._crntDate = this._getDateValue();
 
     // Intiate the time values (only when date and time convention is active)
-    this._crntHours = this.props.dateConvention === IDateConvention.DateTime && this._getDateValue() !== null ? this._getDateValue().getHours() : 0;
-    this._crntMinutes = this.props.dateConvention === IDateConvention.DateTime && this._getDateValue() !== null ? this._getDateValue().getMinutes() : 0;
-    this._crntSeconds = this.props.dateConvention === IDateConvention.DateTime && this._getDateValue() !== null ? this._getDateValue().getSeconds() : 0;
+    this._crntHours = this.props.dateConvention === DateConvention.DateTime && this._getDateValue() !== null ? this._getDateValue().getHours() : 0;
+    this._crntMinutes = this.props.dateConvention === DateConvention.DateTime && this._getDateValue() !== null ? this._getDateValue().getMinutes() : 0;
+    this._crntSeconds = this.props.dateConvention === DateConvention.DateTime && this._getDateValue() !== null ? this._getDateValue().getSeconds() : 0;
 
     // Set the current state
     this.state = {
@@ -289,7 +289,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
 
     // Check if the time element needs to be rendered
     var timeElm: JSX.Element = <tr />;
-    if (this.props.dateConvention === IDateConvention.DateTime) {
+    if (this.props.dateConvention === DateConvention.DateTime) {
       timeElm = (<tr>
         <td className={styles.labelCell}>
           <Label className={styles.fieldLabel}>{strings.DateTimePickerTime}</Label>

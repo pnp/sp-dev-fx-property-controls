@@ -1,5 +1,5 @@
 import { ITimeComponentProps } from './IPropertyFieldDateTimePickerHost';
-import { IPropertyFieldDateTimePickerPropsInternal, ITimeConvention } from './IPropertyFieldDateTimePicker';
+import { IPropertyFieldDateTimePickerPropsInternal, TimeConvention } from './IPropertyFieldDateTimePicker';
 import { IDropdownOption } from "office-ui-fabric-react/lib/components/Dropdown";
 
 /**
@@ -25,5 +25,5 @@ export interface ITimeComponentProps {
 }
 
 export interface IHoursComponentProps extends ITimeComponentProps {
-  timeConvention: ITimeConvention;
+  timeConvention: TimeConvention;
 }

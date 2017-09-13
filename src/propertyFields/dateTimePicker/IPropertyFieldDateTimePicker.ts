@@ -14,7 +14,7 @@ export interface IDateTimeFieldValue {
   * @enum
   * Time convention
   */
-export enum ITimeConvention {
+export enum TimeConvention {
   /**
    * The 12-hour clock is a time convention in which the 24 hours of the day are
    * divided into two periods: a.m. and p.m.
@@ -31,7 +31,7 @@ export enum ITimeConvention {
   * @enum
   * Time convention
   */
-export enum IDateConvention {
+export enum DateConvention {
   DateTime = 0,
   Date = 1
 }
@@ -62,12 +62,12 @@ export interface IPropertyFieldDateTimePickerProps {
    * @var
    * Defines the date convention to use. The default is date and time.
    */
-  dateConvention?: IDateConvention;
+  dateConvention?: DateConvention;
   /**
    * @var
    * Defines the time convention to use. The default value is the 24-hour clock convention.
    */
-  timeConvention?: ITimeConvention;
+  timeConvention?: TimeConvention;
   /**
    * @function
    * Defines a onPropertyChange function to raise when the selected date changed.
@@ -75,18 +75,6 @@ export interface IPropertyFieldDateTimePickerProps {
    * method of the web part object.
    */
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
-  /**
-   * @function
-   * This API is called to render the web part.
-   * Normally this function must be always defined with the 'this.render.bind(this)'
-   * method of the web part object.
-   */
-  render(): void;
-  /**
-   * This property is used to indicate the web part's PropertyPane interaction mode: Reactive or NonReactive.
-   * The default behaviour is Reactive.
-   */
-  disableReactivePropertyChanges?: boolean;
   /**
    * @var
    * Parent Web Part properties
@@ -131,13 +119,11 @@ export interface IPropertyFieldDateTimePickerPropsInternal extends IPropertyPane
   initialDate?: IDateTimeFieldValue;
   targetProperty: string;
   formatDate?: (date: Date) => string;
-  dateConvention?: IDateConvention;
-  timeConvention?: ITimeConvention;
+  dateConvention?: DateConvention;
+  timeConvention?: TimeConvention;
   onRender(elem: HTMLElement): void;
   onDispose(elem: HTMLElement): void;
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
-  render(): void;
-  disableReactivePropertyChanges?: boolean;
   properties: any;
   onGetErrorMessage?: (value: string) => string | Promise<string>;
   deferredValidationTime?: number;

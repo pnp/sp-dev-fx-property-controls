@@ -34,8 +34,6 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private disabled: boolean = false;
   private onGetErrorMessage: (value: ICheckedTerms) => string | Promise<string>;
   private deferredValidationTime: number = 200;
-  private renderWebPart: () => void;
-  private disableReactivePropertyChanges: boolean = false;
 
   /**
    * @function
@@ -54,7 +52,6 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
     this.panelTitle = _properties.panelTitle;
-    this.renderWebPart = _properties.render;
 
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
@@ -70,9 +67,6 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
     }
     if (typeof _properties.excludeSystemGroup !== "undefined") {
       this.excludeSystemGroup = _properties.excludeSystemGroup;
-    }
-    if (typeof _properties.disableReactivePropertyChanges !== "undefined" && _properties.disableReactivePropertyChanges !== null) {
-      this.disableReactivePropertyChanges = _properties.disableReactivePropertyChanges;
     }
   }
 
@@ -98,9 +92,7 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
       key: this.key,
       disabled: this.disabled,
       onGetErrorMessage: this.onGetErrorMessage,
-      deferredValidationTime: this.deferredValidationTime,
-      render: this.renderWebPart,
-      disableReactivePropertyChanges: this.disableReactivePropertyChanges
+      deferredValidationTime: this.deferredValidationTime
     });
 
     // Calls the REACT content generator
@@ -140,9 +132,7 @@ export function PropertyFieldTermPicker(targetProperty: string, properties: IPro
     key: properties.key,
     disabled: properties.disabled,
     onGetErrorMessage: properties.onGetErrorMessage,
-    deferredValidationTime: properties.deferredValidationTime,
-    render: properties.render,
-    disableReactivePropertyChanges: properties.disableReactivePropertyChanges
+    deferredValidationTime: properties.deferredValidationTime
   };
   // Calls the PropertyFieldTermPicker builder object
   // This object will simulate a PropertyFieldCustom to manage his rendering process

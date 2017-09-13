@@ -102,8 +102,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   allowMultipleSelections: true,
                   excludeSystemGroup: false,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
-                  render: this.render.bind(this),
-                  disableReactivePropertyChanges: this.disableReactivePropertyChanges,
                   properties: this.properties,
                   context: this.context,
                   disabled: false,

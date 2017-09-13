@@ -114,18 +114,6 @@ export interface IPropertyFieldTermPickerProps {
    */
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
   /**
-   * @function
-   * This API is called to render the web part.
-   * Normally this function must be always defined with the 'this.render.bind(this)'
-   * method of the web part object.
-   */
-  render(): void;
-  /**
-   * This property is used to indicate the web part's PropertyPane interaction mode: Reactive or NonReactive.
-   * The default behaviour is Reactive.
-   */
-  disableReactivePropertyChanges?: boolean;
-  /**
    * @var
    * Parent Web Part properties
    */
@@ -180,8 +168,6 @@ export interface IPropertyFieldTermPickerPropsInternal extends IPropertyFieldTer
   onRender(elem: HTMLElement): void;
   onDispose(elem: HTMLElement): void;
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
-  render(): void;
-  disableReactivePropertyChanges?: boolean;
   properties: any;
   key: string;
   disabled?: boolean;

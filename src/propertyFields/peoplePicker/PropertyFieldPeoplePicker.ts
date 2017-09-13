@@ -18,6 +18,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
 
   // Custom properties
   private label: string;
+  private disabled: boolean = false;
   private context: IWebPartContext;
   private initialData: IPropertyFieldGroupOrPerson[];
   private allowDuplicate: boolean = true;
@@ -51,6 +52,10 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
     this.onGetErrorMessage = _properties.onGetErrorMessage;
     this.renderWebPart = _properties.render;
 
+    if (typeof _properties.disabled !== "undefined") {
+      this.disabled = _properties.disabled;
+    }
+
     if (typeof _properties.deferredValidationTime !== "undefined") {
       this.deferredValidationTime = _properties.deferredValidationTime;
     }
@@ -68,6 +73,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
     // Construct the JSX properties
     const element: React.ReactElement<IPropertyFieldPeoplePickerHostProps> = React.createElement(PropertyFieldPeoplePickerHost, {
       label: this.label,
+      disabled: this.disabled,
       targetProperty: this.targetProperty,
       initialData: this.initialData,
       allowDuplicate: this.allowDuplicate,
@@ -107,6 +113,7 @@ export function PropertyFieldPeoplePicker(targetProperty: string, properties: IP
   // Create an internal properties object from the given properties
   var newProperties: IPropertyFieldPeoplePickerPropsInternal = {
     label: properties.label,
+    disabled: properties.disabled,
     targetProperty: targetProperty,
     onPropertyChange: properties.onPropertyChange,
     context: properties.context,

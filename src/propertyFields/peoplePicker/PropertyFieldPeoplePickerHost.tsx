@@ -82,6 +82,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
       <div>
         <Label>{this.props.label}</Label>
         <NormalPeoplePicker
+          disabled={this.props.disabled}
           pickerSuggestionsProps={suggestionProps}
           onResolveSuggestions={this.onSearchFieldChanged}
           onChange={this.onItemChanged}

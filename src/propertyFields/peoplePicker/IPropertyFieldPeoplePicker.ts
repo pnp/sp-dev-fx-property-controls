@@ -79,6 +79,11 @@ export interface IPropertyFieldPeoplePickerProps {
   label: string;
   /**
    * @var
+   * Specify if the control needs to be disabled
+   */
+  disabled?: boolean;
+  /**
+   * @var
    * Web Part context
    */
   context: IWebPartContext;
@@ -157,6 +162,7 @@ export interface IPropertyFieldPeoplePickerProps {
  */
 export interface IPropertyFieldPeoplePickerPropsInternal extends IPropertyPaneCustomFieldProps, IPropertyPaneCustomFieldProps {
   label: string;
+  disabled: boolean;
   targetProperty: string;
   context: IWebPartContext;
   initialData?: IPropertyFieldGroupOrPerson[];

@@ -16,11 +16,31 @@ export interface IPropertyFieldListPickerProps {
    * Property field label displayed on top
    */
   label: string;
+  /**
+   * @var
+   * Context of the current web part
+   */
   context: IWebPartContext;
+  /**
+   * @var
+   * Initial selected list set of the control
+   */
   selectedList?: string | string[];
+  /**
+   * BaseTemplate ID of the lists or libaries you want to return.
+   */
   baseTemplate?: number;
+  /**
+   * Specify if you want to include or exclude hidden lists. By default this is true.
+   */
   includeHidden?: boolean;
+  /**
+   * Specify the property on which you want to order the retrieve set of lists.
+   */
   orderBy?: PropertyFieldListPickerOrderBy;
+  /**
+   * Specify if you want to have a single or mult list selector.
+   */
   multiSelect?: boolean;
   /**
    * @function
@@ -29,18 +49,6 @@ export interface IPropertyFieldListPickerProps {
    * method of the web part object.
    */
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
-  /**
-   * @function
-   * This API is called to render the web part.
-   * Normally this function must be always defined with the 'this.render.bind(this)'
-   * method of the web part object.
-   */
-  render(): void;
-  /**
-   * This property is used to indicate the web part's PropertyPane interaction mode: Reactive or NonReactive.
-   * The default behaviour is Reactive.
-   */
-  disableReactivePropertyChanges?: boolean;
   /**
    * @var
    * Parent Web Part properties
@@ -94,8 +102,6 @@ export interface IPropertyFieldListPickerPropsInternal extends IPropertyFieldLis
   orderBy?: PropertyFieldListPickerOrderBy;
   includeHidden?: boolean;
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
-  render(): void;
-  disableReactivePropertyChanges?: boolean;
   properties: any;
   key: string;
   disabled?: boolean;

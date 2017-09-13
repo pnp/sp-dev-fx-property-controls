@@ -64,16 +64,12 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.customProperties = _properties.properties;
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
-    this.renderWebPart = _properties.render;
 
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
     }
     if (typeof _properties.deferredValidationTime !== "undefined") {
       this.deferredValidationTime = _properties.deferredValidationTime;
-    }
-    if (typeof _properties.disableReactivePropertyChanges !== "undefined" && _properties.disableReactivePropertyChanges !== null) {
-      this.disableReactivePropertyChanges = _properties.disableReactivePropertyChanges;
     }
   }
 
@@ -98,9 +94,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
       key: this.key,
       disabled: this.disabled,
       onGetErrorMessage: this.onGetErrorMessage,
-      deferredValidationTime: this.deferredValidationTime,
-      render: this.renderWebPart,
-      disableReactivePropertyChanges: this.disableReactivePropertyChanges
+      deferredValidationTime: this.deferredValidationTime
     };
 
     // Check if the multi or single select component has to get loaded
@@ -155,9 +149,7 @@ export function PropertyFieldListPicker(targetProperty: string, properties: IPro
     key: properties.key,
     disabled: properties.disabled,
     onGetErrorMessage: properties.onGetErrorMessage,
-    deferredValidationTime: properties.deferredValidationTime,
-    render: properties.render,
-    disableReactivePropertyChanges: properties.disableReactivePropertyChanges
+    deferredValidationTime: properties.deferredValidationTime
   };
   //Calls the PropertyFieldListPicker builder object
   //This object will simulate a PropertyFieldCustom to manage his rendering process

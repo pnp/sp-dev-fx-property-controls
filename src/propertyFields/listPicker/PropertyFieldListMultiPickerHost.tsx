@@ -184,7 +184,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
             this.options.map((item: IChoiceGroupOption, index: number) => {
               var uniqueKey = this.props.targetProperty + '-' + item.key;
               return (
-                <div className="ms-ChoiceField" key={this.props.key + '-multiplelistpicker-' + index}>
+                <div style={{ marginBottom: '5px' }} className="ms-ChoiceField" key={this.props.key + '-multiplelistpicker-' + index}>
                   <Checkbox
                     defaultChecked={item.checked}
                     disabled={this.props.disabled}

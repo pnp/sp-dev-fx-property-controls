@@ -59,8 +59,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   principalType: [IPrincipalType.Users, IPrincipalType.SharePoint, IPrincipalType.Security],
                   // principalType: [IPrincipalType.SharePoint],
                   onPropertyChange: this.onPropertyPaneFieldChanged,
-                  render: this.render.bind(this),
-                  disableReactivePropertyChanges: this.disableReactivePropertyChanges,
                   context: this.context,
                   properties: this.properties,
                   onGetErrorMessage: null,

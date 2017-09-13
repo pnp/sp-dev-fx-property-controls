@@ -29,7 +29,6 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
   private onGetErrorMessage: (value: IPropertyFieldGroupOrPerson[]) => string | Promise<string>;
   private deferredValidationTime: number = 200;
   private renderWebPart: () => void;
-  private disableReactivePropertyChanges: boolean = false;
 
   /**
    * @function
@@ -50,7 +49,6 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
     this.customProperties = _properties.properties;
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
-    this.renderWebPart = _properties.render;
 
     if (typeof _properties.disabled !== "undefined") {
       this.disabled = _properties.disabled;
@@ -58,10 +56,6 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
 
     if (typeof _properties.deferredValidationTime !== "undefined") {
       this.deferredValidationTime = _properties.deferredValidationTime;
-    }
-
-    if (typeof _properties.disableReactivePropertyChanges !== "undefined" && _properties.disableReactivePropertyChanges !== null) {
-      this.disableReactivePropertyChanges = _properties.disableReactivePropertyChanges;
     }
   }
 
@@ -86,9 +80,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
       properties: this.customProperties,
       key: this.key,
       onGetErrorMessage: this.onGetErrorMessage,
-      deferredValidationTime: this.deferredValidationTime,
-      render: this.renderWebPart,
-      disableReactivePropertyChanges: this.disableReactivePropertyChanges
+      deferredValidationTime: this.deferredValidationTime
     });
 
     // Calls the REACT content generator
@@ -125,9 +117,7 @@ export function PropertyFieldPeoplePicker(targetProperty: string, properties: IP
     onRender: null,
     key: properties.key,
     onGetErrorMessage: properties.onGetErrorMessage,
-    deferredValidationTime: properties.deferredValidationTime,
-    render: properties.render,
-    disableReactivePropertyChanges: properties.disableReactivePropertyChanges
+    deferredValidationTime: properties.deferredValidationTime
   };
   // Calls the PropertyFieldPeoplePicker builder object
   // This object will simulate a PropertyFieldCustom to manage his rendering process

@@ -28,7 +28,6 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
   private key: string;
   private onGetErrorMessage: (value: IPropertyFieldGroupOrPerson[]) => string | Promise<string>;
   private deferredValidationTime: number = 200;
-  private renderWebPart: () => void;
 
   /**
    * @function

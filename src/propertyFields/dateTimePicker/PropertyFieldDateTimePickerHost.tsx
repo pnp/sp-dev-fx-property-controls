@@ -300,6 +300,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
               <tr>
                 <td>
                   <HoursComponent
+                    disabled={this.props.disabled}
                     timeConvention={this.props.timeConvention}
                     value={this.state.hours}
                     onChange={this._dropdownHoursChanged} />
@@ -307,12 +308,14 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
                 <td className={styles.seperator}><Label>:</Label></td>
                 <td>
                   <MinutesComponent
+                    disabled={this.props.disabled}
                     value={this.state.minutes}
                     onChange={this._dropdownMinutesChanged} />
                 </td>
                 <td className={styles.seperator}><Label>:</Label></td>
                 <td>
                   <SecondsComponent
+                    disabled={this.props.disabled}
                     value={this.state.seconds}
                     onChange={this._dropdownSecondsChanged} />
                 </td>
@@ -334,7 +337,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
                 <Label className={styles.fieldLabel}>{strings.DateTimePickerDate}</Label>
               </td>
               <td>
-                <DatePicker value={this.state.day} strings={dateStrings}
+                <DatePicker disabled={this.props.disabled} value={this.state.day} strings={dateStrings}
                   isMonthPickerVisible={true} onSelectDate={this._onSelectDate} allowTextInput={false} />
               </td>
             </tr>

@@ -49,6 +49,11 @@ export interface IPropertyFieldDateTimePickerProps {
   label: string;
   /**
    * @var
+   * Specify if the control needs to be disabled
+   */
+  disabled?: boolean;
+  /**
+   * @var
    * Initial date of the control
    */
   initialDate?: IDateTimeFieldValue;
@@ -116,6 +121,7 @@ export interface IPropertyFieldDateTimePickerProps {
  */
 export interface IPropertyFieldDateTimePickerPropsInternal extends IPropertyPaneCustomFieldProps {
   label: string;
+  disabled: boolean;
   initialDate?: IDateTimeFieldValue;
   targetProperty: string;
   formatDate?: (date: Date) => string;

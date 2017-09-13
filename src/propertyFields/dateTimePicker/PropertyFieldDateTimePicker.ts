@@ -23,6 +23,7 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
 
   //Custom properties
   private label: string;
+  private disabled: boolean = false;
   private initialDate: IDateTimeFieldValue;
   private formatDate: (date: Date) => string;
   private dateConvention: DateConvention;
@@ -51,6 +52,10 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
 
+    if (typeof _properties.disabled !== "undefined") {
+      this.disabled = _properties.disabled;
+    }
+
     if (typeof _properties.deferredValidationTime !== "undefined") {
       this.deferredValidationTime = _properties.deferredValidationTime;
     }
@@ -76,6 +81,7 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
     //Construct the JSX properties
     const element: React.ReactElement<IPropertyFieldDateTimePickerHostProps> = React.createElement(PropertyFieldDateTimePickerHost, {
       label: this.label,
+      disabled: this.disabled,
       initialDate: this.initialDate,
       targetProperty: this.targetProperty,
       formatDate: this.formatDate,
@@ -115,6 +121,7 @@ export function PropertyFieldDateTimePicker(targetProperty: string, properties: 
   //Create an internal properties object from the given properties
   var newProperties: IPropertyFieldDateTimePickerPropsInternal = {
     label: properties.label,
+    disabled: properties.disabled,
     targetProperty: targetProperty,
     initialDate: properties.initialDate,
     dateConvention: properties.dateConvention,

@@ -20,6 +20,7 @@ export interface IPropertyFieldDateTimePickerHostState {
 }
 
 export interface ITimeComponentProps {
+  disabled?: boolean;
   value: number;
   onChange: (value?: IDropdownOption) => void;
 }

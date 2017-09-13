@@ -29,6 +29,7 @@ export default class SecondsComponent extends React.Component<ITimeComponentProp
 
     return (
       <Dropdown
+        disabled={this.props.disabled}
         label=""
         options={seconds}
         onChanged={this.props.onChange} />

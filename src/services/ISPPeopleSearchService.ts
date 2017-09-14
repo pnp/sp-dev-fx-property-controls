@@ -1,4 +1,4 @@
-import { IPrincipalType } from "../PropertyFieldPeoplePicker";
+import { PrincipalType } from "../PropertyFieldPeoplePicker";
 import { IPropertyFieldGroupOrPerson } from './../propertyFields/peoplePicker/IPropertyFieldPeoplePicker';
 
 /**
@@ -11,5 +11,5 @@ export interface ISPPeopleSearchService {
    * @function
    * Search People from a query
    */
-  searchPeople(query: string, principleType: IPrincipalType[]): Promise<Array<IPropertyFieldGroupOrPerson>>;
+  searchPeople(query: string, principleType: PrincipalType[]): Promise<Array<IPropertyFieldGroupOrPerson>>;
 }

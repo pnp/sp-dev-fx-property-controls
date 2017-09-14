@@ -10,7 +10,7 @@ import * as strings from 'PropertyControlsTestWebPartStrings';
 import PropertyControlsTest from './components/PropertyControlsTest';
 import { IPropertyControlsTestProps } from './components/IPropertyControlsTestProps';
 import { IPropertyControlsTestWebPartProps } from './IPropertyControlsTestWebPartProps';
-import { PropertyFieldPeoplePicker, IPrincipalType } from '../../PropertyFieldPeoplePicker';
+import { PropertyFieldPeoplePicker, PrincipalType } from '../../PropertyFieldPeoplePicker';
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '../../PropertyFieldListPicker';
 import { PropertyFieldTermPicker } from '../../PropertyFieldTermPicker';
 import { PropertyFieldDateTimePicker, DateConvention, TimeConvention } from '../../PropertyFieldDateTimePicker';
@@ -56,7 +56,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: 'PropertyFieldPeoplePicker',
                   initialData: this.properties.people,
                   allowDuplicate: true,
-                  principalType: [IPrincipalType.Users, IPrincipalType.SharePoint, IPrincipalType.Security],
+                  principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
                   // principalType: [IPrincipalType.SharePoint],
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   context: this.context,

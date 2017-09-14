@@ -1,6 +1,5 @@
 import { IPropertyFieldGroupOrPerson, IPropertyFieldPeoplePickerPropsInternal } from "./IPropertyFieldPeoplePicker";
 import { IPersonaProps } from "office-ui-fabric-react/lib/components/Persona";
-import { IPrincipalType } from "./IPropertyFieldPeoplePicker";
 
 /**
  * @interface

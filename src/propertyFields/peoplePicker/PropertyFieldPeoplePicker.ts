@@ -7,7 +7,7 @@ import {
 import PropertyFieldPeoplePickerHost from './PropertyFieldPeoplePickerHost';
 import { IPropertyFieldPeoplePickerHostProps } from './IPropertyFieldPeoplePickerHost';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
-import { IPropertyFieldGroupOrPerson, IPropertyFieldPeoplePickerProps, IPropertyFieldPeoplePickerPropsInternal, IPrincipalType } from './IPropertyFieldPeoplePicker';
+import { IPropertyFieldGroupOrPerson, IPropertyFieldPeoplePickerProps, IPropertyFieldPeoplePickerPropsInternal, PrincipalType } from './IPropertyFieldPeoplePicker';
 
 class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFieldPeoplePickerPropsInternal> {
 
@@ -22,7 +22,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
   private context: IWebPartContext;
   private initialData: IPropertyFieldGroupOrPerson[];
   private allowDuplicate: boolean = true;
-  private principalType: IPrincipalType[] = [];
+  private principalType: PrincipalType[] = [];
   private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
   private customProperties: any;
   private key: string;

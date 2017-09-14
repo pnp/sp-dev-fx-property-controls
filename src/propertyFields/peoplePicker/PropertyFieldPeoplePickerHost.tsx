@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPropertyFieldGroupOrPerson, IPrincipalType } from './IPropertyFieldPeoplePicker';
+import { IPropertyFieldGroupOrPerson, PrincipalType } from './IPropertyFieldPeoplePicker';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { SPHttpClient, ISPHttpClientOptions, SPHttpClientResponse } from "@microsoft/sp-http";
 import { EnvironmentType, Environment } from '@microsoft/sp-core-library';
@@ -63,8 +63,8 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
     };
     // Check which text have to be shown
     if (this.props.principalType && this.props.principalType.length > 0) {
-      let userType = this.props.principalType.indexOf(IPrincipalType.Users) !== -1;
-      let groupType = this.props.principalType.indexOf(IPrincipalType.SharePoint) !== -1 || this.props.principalType.indexOf(IPrincipalType.Security) !== -1;
+      let userType = this.props.principalType.indexOf(PrincipalType.Users) !== -1;
+      let groupType = this.props.principalType.indexOf(PrincipalType.SharePoint) !== -1 || this.props.principalType.indexOf(PrincipalType.Security) !== -1;
 
       // Check if both user and group are present
       if (userType && groupType) {

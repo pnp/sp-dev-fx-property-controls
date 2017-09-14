@@ -3,7 +3,7 @@ import { IWebPartContext, IPropertyPaneCustomFieldProps } from '@microsoft/sp-we
 // PrincipalType controls the type of entities that are returned in the results.
 // Choices are All - 15, Distribution List - 2 , Security Groups - 4, SharePoint Groups - 8, User - 1.
 // These values can be combined (example: 13 is security + SP groups + users)
-export enum IPrincipalType {
+export enum PrincipalType {
   /**
    * Users
    */
@@ -101,7 +101,7 @@ export interface IPropertyFieldPeoplePickerProps {
    * @var
    * Define which type of data you want to retrieve: User, SharePoint groups, Security groups
    */
-  principalType?: IPrincipalType[];
+  principalType?: PrincipalType[];
   /**
    * @function
    * Defines a onPropertyChange function to raise when the selected value changed.
@@ -155,7 +155,7 @@ export interface IPropertyFieldPeoplePickerPropsInternal extends IPropertyPaneCu
   context: IWebPartContext;
   initialData?: IPropertyFieldGroupOrPerson[];
   allowDuplicate?: boolean;
-  principalType?: IPrincipalType[];
+  principalType?: PrincipalType[];
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
   properties: any;
   onGetErrorMessage?: (value: IPropertyFieldGroupOrPerson[]) => string | Promise<string>;

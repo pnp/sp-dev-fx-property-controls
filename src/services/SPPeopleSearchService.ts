@@ -1,7 +1,7 @@
 import { ISPHttpClientOptions, SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
-import { IPrincipalType, IPropertyFieldGroupOrPerson } from "./../propertyFields/peoplePicker/IPropertyFieldPeoplePicker";
+import { PrincipalType, IPropertyFieldGroupOrPerson } from "./../propertyFields/peoplePicker/IPropertyFieldPeoplePicker";
 import { ISPPeopleSearchService } from "./ISPPeopleSearchService";
 import SPPeoplePickerMockHttpClient from './SPPeopleSearchMockService';
 
@@ -24,7 +24,7 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
    * @function
    * Search people from the SharePoint People database
    */
-  public searchPeople(query: string, principalType: IPrincipalType[]): Promise<Array<IPropertyFieldGroupOrPerson>> {
+  public searchPeople(query: string, principalType: PrincipalType[]): Promise<Array<IPropertyFieldGroupOrPerson>> {
     if (Environment.type === EnvironmentType.Local) {
       // If the running environment is local, load the data from the mock
       return this.searchPeopleFromMock(query);

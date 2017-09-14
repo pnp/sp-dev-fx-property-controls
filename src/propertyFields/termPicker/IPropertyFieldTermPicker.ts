@@ -98,11 +98,6 @@ export interface IPropertyFieldTermPickerProps {
   excludeSystemGroup?: boolean;
   /**
    * @var
-   * Indicates if the offline term stores must be exclude. Default is false.
-   */
-  excludeOfflineTermStores?: boolean;
-  /**
-   * @var
    * WebPart's context
    */
   context: IWebPartContext;
@@ -163,7 +158,6 @@ export interface IPropertyFieldTermPickerPropsInternal extends IPropertyFieldTer
   allowMultipleSelections?: boolean;
   initialValues?: ICheckedTerms;
   excludeSystemGroup?: boolean;
-  excludeOfflineTermStores?: boolean;
   context: IWebPartContext;
   onRender(elem: HTMLElement): void;
   onDispose(elem: HTMLElement): void;

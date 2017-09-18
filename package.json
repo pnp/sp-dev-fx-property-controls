@@ -1,7 +1,7 @@
 {
-  "name": "sp-dev-fx-property-controls",
-  "version": "0.0.1",
-  "private": true,
+  "name": "@pnp/spfx-property-controls",
+  "description": "Reusable property pane controls for SharePoint Framework solutions",
+  "version": "v1.0.0-beta.0",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -29,5 +29,21 @@
     "gulp": "~3.9.1",
     "@types/chai": ">=3.4.34 <3.6.0",
     "@types/mocha": ">=2.2.33 <2.6.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:SharePoint/sp-dev-fx-property-controls"
+  },
+  "license": "MIT",
+  "keywords": [
+    "sharepoint",
+    "office365",
+    "tools",
+    "spfx",
+    "sharepoint framework"
+  ],
+  "bugs": {
+    "url": "https://github.com/SharePoint/sp-dev-fx-property-controls/issues"
+  },
+  "homepage": "https://github.com/SharePoint/sp-dev-fx-property-controls"
 }

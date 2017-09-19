@@ -48,12 +48,12 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   */
   private loadLists(): void {
     // Builds the SharePoint List service
-    var listService: SPListPickerService = new SPListPickerService(this.props, this.props.context);
+    const listService: SPListPickerService = new SPListPickerService(this.props, this.props.context);
     // Gets the libs
     listService.getLibs().then((response: ISPLists) => {
       response.value.map((list: ISPList) => {
-        var isSelected: boolean = false;
-        var indexInExisting: number = -1;
+        let isSelected: boolean = false;
+        let indexInExisting: number = -1;
         // Defines if the current list must be selected by default
         if (this.props.selectedLists) {
           indexInExisting = this.props.selectedLists.indexOf(list.Id);
@@ -112,7 +112,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
       return;
     }
 
-    var result: string | PromiseLike<string> = this.props.onGetErrorMessage(value || []);
+    const result: string | PromiseLike<string> = this.props.onGetErrorMessage(value || []);
     if (typeof result !== "undefined") {
       if (typeof result === 'string') {
         if (result === '') {
@@ -172,7 +172,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
         </div>
       );
     } else {
-      var styleOfLabel: any = {
+      const styleOfLabel: any = {
         color: this.props.disabled === true ? '#A6A6A6' : 'auto'
       };
 
@@ -182,7 +182,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
           <Label>{this.props.label}</Label>
           {
             this.options.map((item: IChoiceGroupOption, index: number) => {
-              var uniqueKey = this.props.targetProperty + '-' + item.key;
+              const uniqueKey = this.props.targetProperty + '-' + item.key;
               return (
                 <div style={{ marginBottom: '5px' }} className="ms-ChoiceField" key={this.props.key + '-multiplelistpicker-' + index}>
                   <Checkbox

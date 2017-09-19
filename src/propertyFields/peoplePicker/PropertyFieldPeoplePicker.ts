@@ -102,7 +102,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
 export function PropertyFieldPeoplePicker(targetProperty: string, properties: IPropertyFieldPeoplePickerProps): IPropertyPaneField<IPropertyFieldPeoplePickerPropsInternal> {
 
   // Create an internal properties object from the given properties
-  var newProperties: IPropertyFieldPeoplePickerPropsInternal = {
+  const newProperties: IPropertyFieldPeoplePickerPropsInternal = {
     label: properties.label,
     disabled: properties.disabled,
     targetProperty: targetProperty,

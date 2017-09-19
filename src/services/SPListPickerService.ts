@@ -35,7 +35,7 @@ export default class SPListPickerService {
     }
     else {
       // If the running environment is SharePoint, request the lists REST service
-      var queryUrl: string = `${this.context.pageContext.web.absoluteUrl}/_api/lists?$select=Title,id,BaseTemplate`;
+      let queryUrl: string = `${this.context.pageContext.web.absoluteUrl}/_api/lists?$select=Title,id,BaseTemplate`;
       // Check if the orderBy property is provided
       if (this.props.orderBy !== null) {
         queryUrl += "&$orderby=";

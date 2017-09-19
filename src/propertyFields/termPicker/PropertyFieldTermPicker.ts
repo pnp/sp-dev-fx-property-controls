@@ -117,7 +117,7 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
  */
 export function PropertyFieldTermPicker(targetProperty: string, properties: IPropertyFieldTermPickerProps): IPropertyPaneField<IPropertyFieldTermPickerPropsInternal> {
   // Create an internal properties object from the given properties
-  var newProperties: IPropertyFieldTermPickerPropsInternal = {
+  const newProperties: IPropertyFieldTermPickerPropsInternal = {
     label: properties.label,
     targetProperty: targetProperty,
     panelTitle: properties.panelTitle,

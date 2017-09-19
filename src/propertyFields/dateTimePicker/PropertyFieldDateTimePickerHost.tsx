@@ -229,7 +229,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
     }
     this._latestValidateValue = dateVal.displayValue;
 
-    var result: string | PromiseLike<string> = this.props.onGetErrorMessage(dateVal.displayValue || '');
+    const result: string | PromiseLike<string> = this.props.onGetErrorMessage(dateVal.displayValue || '');
     if (typeof result !== 'undefined') {
       if (typeof result === 'string') {
         if (result === '') {
@@ -285,10 +285,10 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
    */
   public render(): JSX.Element {
     // Defines the DatePicker control labels
-    var dateStrings: DatePickerStrings = new DatePickerStrings();
+    const dateStrings: DatePickerStrings = new DatePickerStrings();
 
     // Check if the time element needs to be rendered
-    var timeElm: JSX.Element = <tr />;
+    let timeElm: JSX.Element = <tr />;
     if (this.props.dateConvention === DateConvention.DateTime) {
       timeElm = (<tr>
         <td className={styles.labelCell}>

@@ -69,7 +69,7 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
                 res.push(groupOrPerson);
                 break;
               case "SecGroup":
-                var group: IPropertyFieldGroupOrPerson = {
+                const group: IPropertyFieldGroupOrPerson = {
                   fullName: element.DisplayText,
                   login: element.ProviderName,
                   id: element.Key,
@@ -78,7 +78,7 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
                 res.push(group);
                 break;
               default:
-                var persona: IPropertyFieldGroupOrPerson = {
+                const persona: IPropertyFieldGroupOrPerson = {
                   fullName: element.DisplayText,
                   login: element.EntityData.AccountName,
                   id: element.EntityData.SPGroupID,

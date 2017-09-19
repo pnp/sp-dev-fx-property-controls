@@ -119,7 +119,7 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
 export function PropertyFieldDateTimePicker(targetProperty: string, properties: IPropertyFieldDateTimePickerProps): IPropertyPaneField<IPropertyFieldDateTimePickerPropsInternal> {
 
   //Create an internal properties object from the given properties
-  var newProperties: IPropertyFieldDateTimePickerPropsInternal = {
+  const newProperties: IPropertyFieldDateTimePickerPropsInternal = {
     label: properties.label,
     disabled: properties.disabled,
     targetProperty: targetProperty,

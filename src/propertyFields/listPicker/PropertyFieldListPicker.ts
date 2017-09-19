@@ -132,7 +132,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
 export function PropertyFieldListPicker(targetProperty: string, properties: IPropertyFieldListPickerProps): IPropertyPaneField<IPropertyFieldListPickerPropsInternal> {
 
   //Create an internal properties object from the given properties
-  var newProperties: IPropertyFieldListPickerPropsInternal = {
+  const newProperties: IPropertyFieldListPickerPropsInternal = {
     label: properties.label,
     targetProperty: targetProperty,
     context: properties.context,

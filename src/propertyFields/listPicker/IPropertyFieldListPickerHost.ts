@@ -15,9 +15,9 @@ export interface IPropertyFieldListPickerHostProps extends IPropertyFieldListPic
  * PropertyFieldListPickerHost state interface
  *
  */
-export interface IPropertyFieldFontPickerHostState {
+export interface IPropertyFieldListPickerHostState {
   results: IDropdownOption[];
-  selectedKey: string;
+  selectedKey?: string;
   errorMessage?: string;
 }
 

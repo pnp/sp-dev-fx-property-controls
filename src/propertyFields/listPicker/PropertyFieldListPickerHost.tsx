@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { IPropertyFieldListPickerHostProps, IPropertyFieldFontPickerHostState, ISPList, ISPLists } from "./IPropertyFieldListPickerHost";
+import { IPropertyFieldListPickerHostProps, IPropertyFieldListPickerHostState, ISPList, ISPLists } from "./IPropertyFieldListPickerHost";
 import SPListPickerService from '../../services/SPListPickerService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 
@@ -13,7 +13,7 @@ const EMPTY_LIST_KEY = "NO_LIST_SELECTED";
  * @class
  * Renders the controls for PropertyFieldListPicker component
  */
-export default class PropertyFieldListPickerHost extends React.Component<IPropertyFieldListPickerHostProps, IPropertyFieldFontPickerHostState> {
+export default class PropertyFieldListPickerHost extends React.Component<IPropertyFieldListPickerHostProps, IPropertyFieldListPickerHostState> {
   private options: IDropdownOption[] = [];
   private selectedKey: string;
 
@@ -28,15 +28,14 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
   constructor(props: IPropertyFieldListPickerHostProps) {
     super(props);
 
-    this.onChanged = this.onChanged.bind(this);
     this.state = {
       results: this.options,
-      selectedKey: this.selectedKey,
       errorMessage: ''
     };
 
     this.async = new Async(this);
     this.validate = this.validate.bind(this);
+    this.onChanged = this.onChanged.bind(this);
     this.notifyAfterValidate = this.notifyAfterValidate.bind(this);
     this.delayedValidate = this.async.debounce(this.validate, this.props.deferredValidationTime);
 
@@ -53,7 +52,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
     listService.getLibs().then((response: ISPLists) => {
       // Start mapping the list that are selected
       response.value.map((list: ISPList) => {
-        if (this.props.selectedList == list.Id) {
+        if (this.props.selectedList === list.Id) {
           this.selectedKey = list.Id;
         }
         this.options.push({
@@ -81,7 +80,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
    * Raises when a list has been selected
    */
   private onChanged(option: IDropdownOption, index?: number): void {
-    var newValue: string = option.key as string;
+    const newValue: string = option.key as string;
     this.delayedValidate(newValue);
   }
 
@@ -101,7 +100,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
 
     this.latestValidateValue = value;
 
-    var result: string | PromiseLike<string> = this.props.onGetErrorMessage(value || '');
+    const result: string | PromiseLike<string> = this.props.onGetErrorMessage(value || '');
     if (typeof result !== "undefined") {
       if (typeof result === 'string') {
         if (result === '') {
@@ -132,9 +131,22 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
   private notifyAfterValidate(oldValue: string, newValue: string) {
     // Check if the user wanted to unselect the list
     const propValue = newValue === EMPTY_LIST_KEY ? '' : newValue;
+
+    // Deselect all options
+    this.options = this.state.results.map(option => {
+      if (option.selected) {
+        option.selected = false;
+      }
+      return option;
+    })
+    // Set the current selected key
+    this.selectedKey = newValue;
+    // Update the state
     this.setState({
-      selectedKey: propValue
+      selectedKey: this.selectedKey,
+      results: this.options
     });
+
     if (this.props.onPropertyChange && propValue !== null) {
       // Store the new property value
       this.props.properties[this.props.targetProperty] = propValue;
@@ -170,8 +182,8 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
           disabled={this.props.disabled}
           label=''
           onChanged={this.onChanged}
-          options={this.options}
-          selectedKey={this.selectedKey}
+          options={this.state.results}
+          selectedKey={this.state.selectedKey}
         />
 
         <FieldErrorMessage errorMessage={this.state.errorMessage} />

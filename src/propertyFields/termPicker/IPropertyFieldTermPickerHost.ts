@@ -17,7 +17,7 @@ export interface IPropertyFieldTermPickerHostProps extends IPropertyFieldTermPic
  * PropertyFieldTermPickerHost state interface
  *
  */
-export interface IPropertyFieldFontPickerHostState {
+export interface IPropertyFieldTermPickerHostState {
   termStores?: ITermStore[];
   errorMessage?: string;
   openPanel?: boolean;

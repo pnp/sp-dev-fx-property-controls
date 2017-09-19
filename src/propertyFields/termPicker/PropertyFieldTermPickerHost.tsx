@@ -12,7 +12,7 @@ import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@micro
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { ICheckedTerms, ICheckedTerm } from './IPropertyFieldTermPicker';
-import { IPropertyFieldTermPickerHostProps, IPropertyFieldFontPickerHostState, ITermGroupProps, ITermGroupState, ITermSetProps, ITermSetState, ITermProps, ITermState } from './IPropertyFieldTermPickerHost';
+import { IPropertyFieldTermPickerHostProps, IPropertyFieldTermPickerHostState, ITermGroupProps, ITermGroupState, ITermSetProps, ITermSetState, ITermProps, ITermState } from './IPropertyFieldTermPickerHost';
 import SPTermStorePickerService from './../../services/SPTermStorePickerService';
 import { ITermStore, IGroup, ITerm } from './../../services/ISPTermStorePickerService';
 import styles from './PropertyFieldTermPickerHost.module.scss';
@@ -32,7 +32,7 @@ export const TERMSET_IMG = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAA
  * @class
  * Renders the controls for PropertyFieldTermPicker component
  */
-export default class PropertyFieldTermPickerHost extends React.Component<IPropertyFieldTermPickerHostProps, IPropertyFieldFontPickerHostState> {
+export default class PropertyFieldTermPickerHost extends React.Component<IPropertyFieldTermPickerHostProps, IPropertyFieldTermPickerHostState> {
   private async: Async;
   private delayedValidate: (value: ICheckedTerms) => void;
   private termsService: SPTermStorePickerService;
@@ -93,7 +93,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
       return;
     }
 
-    var result: string | PromiseLike<string> = this.props.onGetErrorMessage(value || []);
+    const result: string | PromiseLike<string> = this.props.onGetErrorMessage(value || []);
     if (typeof result !== "undefined") {
       if (typeof result === 'string') {
         if (result === '') {
@@ -207,7 +207,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
    * @param node
    */
   private getSelectedNodePosition(node: ICheckedTerm): number {
-    for (var i = 0; i < this.state.activeNodes.length; i++) {
+    for (let i = 0; i < this.state.activeNodes.length; i++) {
       if (node.id === this.state.activeNodes[i].id) {
         return i;
       }

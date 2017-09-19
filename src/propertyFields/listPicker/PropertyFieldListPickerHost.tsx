@@ -138,7 +138,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
         option.selected = false;
       }
       return option;
-    })
+    });
     // Set the current selected key
     this.selectedKey = newValue;
     // Update the state

@@ -9,7 +9,7 @@
     "build": "gulp bundle",
     "clean": "gulp clean",
     "test": "gulp test",
-    "prepublish": "gulp"
+    "prepublishOnly": "gulp"
   },
   "dependencies": {
     "@microsoft/sp-core-library": "~1.2.0",

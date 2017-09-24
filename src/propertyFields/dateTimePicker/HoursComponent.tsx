@@ -4,10 +4,12 @@ import { TimeConvention } from "./IPropertyFieldDateTimePicker";
 import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/components/Dropdown";
 
 /**
- * @class
+ * @class // (MG) what is this class annotation for ?
  * Hours component
  */
 export default class HoursComponent extends React.Component<IHoursComponentProps, {}> {
+
+  // (MG) constructor not required
   constructor(props: IHoursComponentProps) {
     super(props);
   }
@@ -28,6 +30,7 @@ export default class HoursComponent extends React.Component<IHoursComponentProps
         // 12 hours time convention
         if (i == 0) {
           digit = '12 am';
+  // (MG) these time fields are not localized
         } else if (i < 12) {
           digit = i + ' am';
         } else {

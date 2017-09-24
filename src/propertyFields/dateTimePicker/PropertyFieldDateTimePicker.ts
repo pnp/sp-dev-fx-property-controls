@@ -52,10 +52,12 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
 
+    // (MG) internally we do not use "double quotes" in code instead use 'single quotes'    
     if (typeof _properties.disabled !== "undefined") {
       this.disabled = _properties.disabled;
     }
 
+    // (MG) this is not required. if(_properties.deferredValidationTime) should be enough     
     if (typeof _properties.deferredValidationTime !== "undefined") {
       this.deferredValidationTime = _properties.deferredValidationTime;
     }

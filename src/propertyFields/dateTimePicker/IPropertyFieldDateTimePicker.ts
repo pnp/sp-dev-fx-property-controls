@@ -2,6 +2,7 @@ import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
 
 /**
  * @interface
+ * (MG) what is the purpose of these @xyz annotations. To be JSDoc compliant? Do we do something we these?
  * Date field value interface
  *
  */
@@ -18,6 +19,8 @@ export enum TimeConvention {
   /**
    * The 12-hour clock is a time convention in which the 24 hours of the day are
    * divided into two periods: a.m. and p.m.
+   *
+   * (MG) It is not recommended to have 0 valued enums. Start with 1.
    */
   Hours12 = 0,
   /**
@@ -32,16 +35,20 @@ export enum TimeConvention {
   * Time convention
   */
 export enum DateConvention {
+  // (MG) Same as above
   DateTime = 0,
   Date = 1
 }
 
 /**
- * @interface
+ * @interface // (MG) I don't think these annotations are required.
  * Public properties of the PropertyFieldDateTimePicker custom field
  *
  */
 export interface IPropertyFieldDateTimePickerProps {
+  
+  // (MG) it is recommended to have an empty line before each definition starts.
+
   /**
    * @var
    * Property field label displayed on top

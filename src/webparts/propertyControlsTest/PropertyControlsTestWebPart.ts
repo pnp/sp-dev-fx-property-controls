@@ -15,6 +15,7 @@ import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '../../P
 import { PropertyFieldTermPicker } from '../../PropertyFieldTermPicker';
 import { PropertyFieldDateTimePicker, DateConvention, TimeConvention } from '../../PropertyFieldDateTimePicker';
 
+// (MG) there are no explanations in many places about the purpose of the class
 export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<IPropertyControlsTestWebPartProps> {
 
   public render(): void {

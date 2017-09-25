@@ -10,7 +10,6 @@ import { IPropertyFieldTermPickerHostProps } from './IPropertyFieldTermPickerHos
 import { IPropertyFieldTermPickerPropsInternal, IPropertyFieldTermPickerProps, ICheckedTerms } from './IPropertyFieldTermPicker';
 
 /**
- * @class
  * Represents a PropertyFieldTermPicker object
  */
 class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFieldTermPickerPropsInternal> {
@@ -36,8 +35,7 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private deferredValidationTime: number = 200;
 
   /**
-   * @function
-   * Constructor
+   * Constructor method
    */
   public constructor(_targetProperty: string, _properties: IPropertyFieldTermPickerPropsInternal) {
     this.render = this.render.bind(this);
@@ -56,22 +54,21 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
     }
-    if (typeof _properties.deferredValidationTime !== "undefined") {
+    if (_properties.deferredValidationTime) {
       this.deferredValidationTime = _properties.deferredValidationTime;
     }
-    if (typeof _properties.allowMultipleSelections !== "undefined") {
+    if (typeof _properties.allowMultipleSelections !== 'undefined') {
       this.allowMultipleSelections = _properties.allowMultipleSelections;
     }
-    if (typeof _properties.initialValues !== "undefined") {
+    if (typeof _properties.initialValues !== 'undefined') {
       this.initialValues = _properties.initialValues;
     }
-    if (typeof _properties.excludeSystemGroup !== "undefined") {
+    if (typeof _properties.excludeSystemGroup !== 'undefined') {
       this.excludeSystemGroup = _properties.excludeSystemGroup;
     }
   }
 
   /**
-   * @function
    * Renders the SPListPicker field content
    */
   private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
@@ -100,7 +97,6 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
   }
 
   /**
-   * @function
    * Disposes the current object
    */
   private dispose(elem: HTMLElement): void {
@@ -110,7 +106,6 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
 }
 
 /**
- * @function
  * Helper method to create a SPList Picker on the PropertyPane.
  * @param targetProperty - Target property the SharePoint list picker is associated to.
  * @param properties - Strongly typed SPList Picker properties.

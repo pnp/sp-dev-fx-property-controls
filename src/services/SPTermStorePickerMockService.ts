@@ -1,13 +1,11 @@
-import { ITermStore, ITerm } from "./ISPTermStorePickerService";
+import { ITermStore, ITerm } from './ISPTermStorePickerService';
 
 /**
- * @class
  * Defines a http client to request mock data to use the web part with the local workbench
  */
 export default class SPTermStoreMockHttpClient {
 
   /**
-   * @const
    * Mock SharePoint result sample
    */
   private static _mockTermStores: ITermStore[] = [{
@@ -103,8 +101,7 @@ export default class SPTermStoreMockHttpClient {
   }];
 
   /**
-   * @function
-   * Mock search People method
+   * Mock method which returns mock terms stores
    */
   public static getTermStores(restUrl: string, options?: any): Promise<ITermStore[]> {
     return new Promise<ITermStore[]>((resolve) => {
@@ -112,6 +109,9 @@ export default class SPTermStoreMockHttpClient {
     });
   }
 
+  /**
+   * Mock method wich returns mock terms
+   */
   public static getAllTerms(): Promise<ITerm[]> {
     return new Promise<ITerm[]>((resolve) => {
       resolve(SPTermStoreMockHttpClient._mockTerms);

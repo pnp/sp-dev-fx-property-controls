@@ -1,19 +1,17 @@
 import { ISPHttpClientOptions, SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
-import { PrincipalType, IPropertyFieldGroupOrPerson } from "./../propertyFields/peoplePicker/IPropertyFieldPeoplePicker";
-import { ISPPeopleSearchService } from "./ISPPeopleSearchService";
+import { PrincipalType, IPropertyFieldGroupOrPerson } from './../propertyFields/peoplePicker/IPropertyFieldPeoplePicker';
+import { ISPPeopleSearchService } from './ISPPeopleSearchService';
 import SPPeoplePickerMockHttpClient from './SPPeopleSearchMockService';
 
 /**
- * @class
  * Service implementation to search people in SharePoint
  */
 export default class SPPeopleSearchService implements ISPPeopleSearchService {
   private context: IWebPartContext;
 
   /**
-   * @function
    * Service constructor
    */
   constructor(pageContext: IWebPartContext) {
@@ -21,7 +19,6 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
   }
 
   /**
-   * @function
    * Search people from the SharePoint People database
    */
   public searchPeople(query: string, principalType: PrincipalType[]): Promise<Array<IPropertyFieldGroupOrPerson>> {
@@ -47,8 +44,8 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
       };
       let httpPostOptions: ISPHttpClientOptions = {
         headers: {
-          "accept": "application/json",
-          "content-type": "application/json"
+          'accept': 'application/json',
+          'content-type': 'application/json'
         },
         body: JSON.stringify(data)
       };
@@ -60,7 +57,7 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
           const values: any = JSON.parse(usersResponse.value);
           values.map(element => {
             switch (element.EntityType) {
-              case "User":
+              case 'User':
                 const groupOrPerson: IPropertyFieldGroupOrPerson = { fullName: element.DisplayText, login: element.Description };
                 groupOrPerson.email = element.EntityData.Email;
                 groupOrPerson.jobTitle = element.EntityData.Title;
@@ -68,7 +65,7 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
                 groupOrPerson.imageUrl = this.getUserPhotoUrl(groupOrPerson.email, this.context.pageContext.web.absoluteUrl);
                 res.push(groupOrPerson);
                 break;
-              case "SecGroup":
+              case 'SecGroup':
                 const group: IPropertyFieldGroupOrPerson = {
                   fullName: element.DisplayText,
                   login: element.ProviderName,
@@ -95,7 +92,6 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
   }
 
   /**
-   * @function
    * Generates Initials from a full name
    */
   private getFullNameInitials(fullName: string): string {
@@ -103,9 +99,9 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
       return fullName;
     }
 
-    const words: string[] = fullName.split(" ");
+    const words: string[] = fullName.split(' ');
     if (words.length === 0) {
-      return "";
+      return '';
     } else if (words.length === 1) {
       return words[0].charAt(0);
     } else {
@@ -114,7 +110,6 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
   }
 
   /**
-   * @function
    * Gets the user photo url
    */
   private getUserPhotoUrl(userEmail: string, siteUrl: string): string {
@@ -123,16 +118,15 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
 
 
   /**
-   * @function
    * Returns fake people results for the Mock mode
    */
   private searchPeopleFromMock(query: string): Promise<Array<IPropertyFieldGroupOrPerson>> {
     return SPPeoplePickerMockHttpClient.searchPeople(this.context.pageContext.web.absoluteUrl).then(() => {
       const results: IPropertyFieldGroupOrPerson[] = [
-        { fullName: "Katie Jordan", initials: "KJ", jobTitle: "VIP Marketing", email: "katiej@contoso.com", login: "katiej@contoso.com" },
-        { fullName: "Gareth Fort", initials: "GF", jobTitle: "Sales Lead", email: "garethf@contoso.com", login: "garethf@contoso.com" },
-        { fullName: "Sara Davis", initials: "SD", jobTitle: "Assistant", email: "sarad@contoso.com", login: "sarad@contoso.com" },
-        { fullName: "John Doe", initials: "JD", jobTitle: "Developer", email: "johnd@contoso.com", login: "johnd@contoso.com" }
+        { fullName: 'Katie Jordan', initials: 'KJ', jobTitle: 'VIP Marketing', email: 'katiej@contoso.com', login: 'katiej@contoso.com' },
+        { fullName: 'Gareth Fort', initials: 'GF', jobTitle: 'Sales Lead', email: 'garethf@contoso.com', login: 'garethf@contoso.com' },
+        { fullName: 'Sara Davis', initials: 'SD', jobTitle: 'Assistant', email: 'sarad@contoso.com', login: 'sarad@contoso.com' },
+        { fullName: 'John Doe', initials: 'JD', jobTitle: 'Developer', email: 'johnd@contoso.com', login: 'johnd@contoso.com' }
       ];
       return results;
     }) as Promise<Array<IPropertyFieldGroupOrPerson>>;

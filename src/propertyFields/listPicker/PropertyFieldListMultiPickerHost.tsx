@@ -10,7 +10,6 @@ import SPListPickerService from '../../services/SPListPickerService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 
 /**
-* @class
 * Renders the controls for PropertyFieldSPListMultiplePicker component
 */
 export default class PropertyFieldListMultiPickerHost extends React.Component<IPropertyFieldListMultiPickerHostProps, IPropertyFieldListMultiPickerHostState> {
@@ -20,7 +19,6 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   private delayedValidate: (value: string[]) => void;
 
   /**
-  * @function
   * Constructor
   */
   constructor(props: IPropertyFieldListMultiPickerHostProps) {
@@ -43,7 +41,6 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   }
 
   /**
-  * @function
   * Loads the list from SharePoint current web site
   */
   private loadLists(): void {
@@ -76,7 +73,6 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   }
 
   /**
-  * @function
   * Raises when a list has been selected
   */
   private onChanged(element: React.FormEvent<HTMLElement>, isChecked: boolean): void {
@@ -103,17 +99,16 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   }
 
   /**
-  * @function
   * Validates the new custom field value
   */
   private validate(value: string[]): void {
-    if (this.props.onGetErrorMessage === null || typeof this.props.onGetErrorMessage === "undefined") {
+    if (this.props.onGetErrorMessage === null || typeof this.props.onGetErrorMessage === 'undefined') {
       this.notifyAfterValidate(this.props.selectedLists, value);
       return;
     }
 
     const result: string | PromiseLike<string> = this.props.onGetErrorMessage(value || []);
-    if (typeof result !== "undefined") {
+    if (typeof result !== 'undefined') {
       if (typeof result === 'string') {
         if (result === '') {
           this.notifyAfterValidate(this.props.selectedLists, value);
@@ -123,7 +118,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
         });
       } else {
         result.then((errorMessage: string) => {
-          if (typeof errorMessage === "undefined" || errorMessage === '') {
+          if (typeof errorMessage === 'undefined' || errorMessage === '') {
             this.notifyAfterValidate(this.props.selectedLists, value);
           }
           this.setState({
@@ -137,7 +132,6 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   }
 
   /**
-  * @function
   * Notifies the parent Web Part of a property value change
   */
   private notifyAfterValidate(oldValue: string[], newValue: string[]) {
@@ -145,14 +139,13 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
       this.props.properties[this.props.targetProperty] = newValue;
       this.props.onPropertyChange(this.props.targetProperty, oldValue, newValue);
       // Trigger the apply button
-      if (typeof this.props.onChange !== "undefined" && this.props.onChange !== null) {
+      if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
         this.props.onChange(this.props.targetProperty, newValue);
       }
     }
   }
 
   /**
-  * @function
   * Called when the component will unmount
   */
   public componentWillUnmount() {
@@ -160,7 +153,6 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   }
 
   /**
-  * @function
   * Renders the SPListMultiplePicker controls with Office UI  Fabric
   */
   public render(): JSX.Element {
@@ -184,7 +176,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
             this.options.map((item: IChoiceGroupOption, index: number) => {
               const uniqueKey = this.props.targetProperty + '-' + item.key;
               return (
-                <div style={{ marginBottom: '5px' }} className="ms-ChoiceField" key={this.props.key + '-multiplelistpicker-' + index}>
+                <div style={{ marginBottom: '5px' }} className='ms-ChoiceField' key={`${this.props.key}-multiplelistpicker-${index}`}>
                   <Checkbox
                     defaultChecked={item.checked}
                     disabled={this.props.disabled}

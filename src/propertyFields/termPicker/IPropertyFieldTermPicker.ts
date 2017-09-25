@@ -1,10 +1,10 @@
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
 /**
- * @interface
  * Selected terms
  */
 export interface ICheckedTerm {
+
   name: string;
   id: string;
   path: string;
@@ -14,10 +14,10 @@ export interface ICheckedTerm {
 export interface ICheckedTerms extends Array<ICheckedTerm> { }
 
 /**
- * @interface
  * Generic Term Object (abstract interface)
  */
 export interface ISPTermObject {
+
   Name: string;
   Guid: string;
   Identity: string;
@@ -28,10 +28,10 @@ export interface ISPTermObject {
 }
 
 /**
- * @interface
  * Defines a SharePoint Term Store
  */
 export interface ISPTermStore extends ISPTermObject {
+
   IsOnline: boolean;
   WorkingLanguage: string;
   DefaultLanguage: string;
@@ -39,17 +39,16 @@ export interface ISPTermStore extends ISPTermObject {
 }
 
 /**
- * @interface
  * Defines an array of Term Stores
  */
 export interface ISPTermStores extends Array<ISPTermStore> {
 }
 
 /**
- * @interface
  * Defines a Term Store Group of term sets
  */
 export interface ISPTermGroup extends ISPTermObject {
+
   IsSiteCollectionGroup: boolean;
   IsSystemGroup: boolean;
   CreatedDate: string;
@@ -57,7 +56,6 @@ export interface ISPTermGroup extends ISPTermObject {
 }
 
 /**
- * @interface
  * Array of Term Groups
  */
 export interface ISPTermGroups extends Array<ISPTermGroup> {
@@ -65,56 +63,45 @@ export interface ISPTermGroups extends Array<ISPTermGroup> {
 
 
 /**
- * @interface
  * Public properties of the PropertyFieldTermPicker custom field
- *
  */
 export interface IPropertyFieldTermPickerProps {
+
   /**
-   * @var
    * Property field label displayed on top
    */
   label: string;
   /**
-   * @var
    * TermSet Picker Panel title
    */
   panelTitle: string;
   /**
-   * @var
    * Defines if the user can select only one or many term sets. Default value is false.
-   *
    */
   allowMultipleSelections?: boolean;
   /**
-   * @var
    * Defines the selected by default term sets.
    */
   initialValues?: ICheckedTerms;
   /**
-   * @var
    * Indicator to define if the system Groups are exclude. Default is false.
    */
   excludeSystemGroup?: boolean;
   /**
-   * @var
    * WebPart's context
    */
   context: IWebPartContext;
   /**
-   * @function
    * Defines a onPropertyChange function to raise when the selected value changed.
    * Normally this function must be always defined with the 'this.onPropertyChange'
    * method of the web part object.
    */
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
   /**
-   * @var
    * Parent Web Part properties
    */
   properties: any;
   /**
-   * @var
    * An UNIQUE key indicates the identity of this control
    */
   key?: string;
@@ -144,14 +131,13 @@ export interface IPropertyFieldTermPickerProps {
 }
 
 /**
- * @interface
  * Private properties of the PropertyFieldTermPicker custom field.
  * We separate public & private properties to include onRender & onDispose method waited
  * by the PropertyFieldCustom, witout asking to the developer to add it when he's using
  * the PropertyFieldTermPicker.
- *
  */
 export interface IPropertyFieldTermPickerPropsInternal extends IPropertyFieldTermPickerProps {
+
   label: string;
   targetProperty: string;
   panelTitle: string;

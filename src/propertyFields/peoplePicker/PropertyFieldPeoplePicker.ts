@@ -9,6 +9,9 @@ import { IPropertyFieldPeoplePickerHostProps } from './IPropertyFieldPeoplePicke
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { IPropertyFieldGroupOrPerson, IPropertyFieldPeoplePickerProps, IPropertyFieldPeoplePickerPropsInternal, PrincipalType } from './IPropertyFieldPeoplePicker';
 
+/**
+ * Represents a PropertyFieldPeoplePicker object
+ */
 class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFieldPeoplePickerPropsInternal> {
 
   // Properties defined by IPropertyPaneField
@@ -30,8 +33,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
   private deferredValidationTime: number = 200;
 
   /**
-   * @function
-   * Constructor
+   * Constructor method
    */
   public constructor(_targetProperty: string, _properties: IPropertyFieldPeoplePickerPropsInternal) {
     this.render = this.render.bind(this);
@@ -49,17 +51,16 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
 
-    if (typeof _properties.disabled !== "undefined") {
+    if (typeof _properties.disabled !== 'undefined') {
       this.disabled = _properties.disabled;
     }
 
-    if (typeof _properties.deferredValidationTime !== "undefined") {
+    if (_properties.deferredValidationTime) {
       this.deferredValidationTime = _properties.deferredValidationTime;
     }
   }
 
   /**
-   * @function
    * Renders the PeoplePicker field content
    */
   private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
@@ -87,14 +88,12 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
   }
 
   /**
-   * @function
    * Disposes the current object
    */
   private dispose(elem: HTMLElement): void { }
 }
 
 /**
- * @function
  * Helper method to create a People Picker on the PropertyPane.
  * @param targetProperty - Target property the people picker is associated to.
  * @param properties - Strongly typed people Picker properties.

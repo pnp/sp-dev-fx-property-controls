@@ -1,28 +1,27 @@
 import { IWebPartContext, IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
 
+/**
+ * Enum for specifying how the lists should be sorted
+ */
 export enum PropertyFieldListPickerOrderBy {
-  Id = 0,
-  Title = 1
+  Id = 1,
+  Title
 }
 
 /**
- * @interface
  * Public properties of the PropertyFieldListPicker custom field
- *
  */
 export interface IPropertyFieldListPickerProps {
+
   /**
-   * @var
    * Property field label displayed on top
    */
   label: string;
   /**
-   * @var
    * Context of the current web part
    */
   context: IWebPartContext;
   /**
-   * @var
    * Initial selected list set of the control
    */
   selectedList?: string | string[];
@@ -43,19 +42,16 @@ export interface IPropertyFieldListPickerProps {
    */
   multiSelect?: boolean;
   /**
-   * @function
    * Defines a onPropertyChange function to raise when the selected value changed.
    * Normally this function must be always defined with the 'this.onPropertyChange'
    * method of the web part object.
    */
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
   /**
-   * @var
    * Parent Web Part properties
    */
   properties: any;
   /**
-   * @var
    * An UNIQUE key indicates the identity of this control
    */
   key?: string;
@@ -85,7 +81,6 @@ export interface IPropertyFieldListPickerProps {
 }
 
 /**
- * @interface
  * Private properties of the PropertyFieldListPicker custom field.
  * We separate public & private properties to include onRender & onDispose method waited
  * by the PropertyFieldCustom, witout asking to the developer to add it when he's using
@@ -93,6 +88,7 @@ export interface IPropertyFieldListPickerProps {
  *
  */
 export interface IPropertyFieldListPickerPropsInternal extends IPropertyFieldListPickerProps, IPropertyPaneCustomFieldProps {
+
   label: string;
   targetProperty: string;
   context: IWebPartContext;

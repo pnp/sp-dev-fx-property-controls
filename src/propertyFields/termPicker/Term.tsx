@@ -1,13 +1,13 @@
-import * as React from "react";
+import * as React from 'react';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ITermProps, ITermState } from "./IPropertyFieldTermPickerHost";
+import { ITermProps, ITermState } from './IPropertyFieldTermPickerHost';
 
 import styles from './PropertyFieldTermPickerHost.module.scss';
 
 
 /**
- * @class
  * Term component
+ * Renders a selectable term
  */
 export default class Term extends React.Component<ITermProps, ITermState> {
   constructor(props: ITermProps) {
@@ -24,7 +24,6 @@ export default class Term extends React.Component<ITermProps, ITermState> {
   }
 
   /**
-   * @function
    * Handle the checkbox change trigger
    */
   private _handleChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean) {

@@ -7,21 +7,18 @@ import {
 } from '@microsoft/sp-webpart-base';
 import { IPropertyFieldDateTimePickerHostProps } from './IPropertyFieldDateTimePickerHost';
 import PropertyFieldDateTimePickerHost from './PropertyFieldDateTimePickerHost';
-import { IDateTimeFieldValue, IPropertyFieldDateTimePickerPropsInternal, TimeConvention, IPropertyFieldDateTimePickerProps, DateConvention } from "./IPropertyFieldDateTimePicker";
+import { IDateTimeFieldValue, IPropertyFieldDateTimePickerPropsInternal, TimeConvention, IPropertyFieldDateTimePickerProps, DateConvention } from './IPropertyFieldDateTimePicker';
 
 /**
- * @class
  * Represents a PropertyFieldDateTimePicker object
- *
  */
 class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IPropertyFieldDateTimePickerPropsInternal> {
-
-  //Properties defined by IPropertyPaneField
+  // Properties defined by IPropertyPaneField
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public targetProperty: string;
   public properties: IPropertyFieldDateTimePickerPropsInternal;
 
-  //Custom properties
+  // Custom properties
   private label: string;
   private disabled: boolean = false;
   private initialDate: IDateTimeFieldValue;
@@ -35,8 +32,7 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
   private deferredValidationTime: number = 200;
 
   /**
-   * @function
-   * Ctor
+   * Constructor
    */
   public constructor(_targetProperty: string, _properties: IPropertyFieldDateTimePickerPropsInternal) {
     this.render = this.render.bind(this);
@@ -52,21 +48,21 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
 
-    if (typeof _properties.disabled !== "undefined") {
-      this.disabled = _properties.disabled;
-    }
-
-    if (typeof _properties.deferredValidationTime !== "undefined") {
+    if (_properties.deferredValidationTime) {
       this.deferredValidationTime = _properties.deferredValidationTime;
     }
 
-    if (typeof _properties.dateConvention !== "undefined") {
+    if (typeof _properties.disabled !== 'undefined') {
+      this.disabled = _properties.disabled;
+    }
+
+    if (typeof _properties.dateConvention !== 'undefined') {
       this.dateConvention = _properties.dateConvention;
     } else {
       this.dateConvention = DateConvention.DateTime;
     }
 
-    if (typeof _properties.timeConvention !== "undefined") {
+    if (typeof _properties.timeConvention !== 'undefined') {
       this.timeConvention = _properties.timeConvention;
     } else {
       this.timeConvention = TimeConvention.Hours24;
@@ -74,11 +70,10 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
   }
 
   /**
-   * @function
    * Renders the DatePicker field content
    */
   private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
-    //Construct the JSX properties
+    // Construct the JSX properties
     const element: React.ReactElement<IPropertyFieldDateTimePickerHostProps> = React.createElement(PropertyFieldDateTimePickerHost, {
       label: this.label,
       disabled: this.disabled,
@@ -96,12 +91,11 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
       onGetErrorMessage: this.onGetErrorMessage,
       deferredValidationTime: this.deferredValidationTime
     });
-    //Calls the REACT content generator
+    // Calls the REACT content generator
     ReactDom.render(element, elem);
   }
 
   /**
-   * @function
    * Disposes the current object
    */
   private dispose(elem: HTMLElement): void {
@@ -111,14 +105,13 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
 }
 
 /**
- * @function
  * Helper method to create the customer field on the PropertyPane.
  * @param targetProperty - Target property the custom field is associated to.
  * @param properties - Strongly typed custom field properties.
  */
 export function PropertyFieldDateTimePicker(targetProperty: string, properties: IPropertyFieldDateTimePickerProps): IPropertyPaneField<IPropertyFieldDateTimePickerPropsInternal> {
 
-  //Create an internal properties object from the given properties
+  // Create an internal properties object from the given properties
   const newProperties: IPropertyFieldDateTimePickerPropsInternal = {
     label: properties.label,
     disabled: properties.disabled,
@@ -135,7 +128,7 @@ export function PropertyFieldDateTimePicker(targetProperty: string, properties: 
     onGetErrorMessage: properties.onGetErrorMessage,
     deferredValidationTime: properties.deferredValidationTime
   };
-  //Calls the PropertyFieldDateTimePicker builder object
-  //This object will simulate a PropertyFieldCustom to manage his rendering process
+  // Calls the PropertyFieldDateTimePicker builder object
+  // This object will simulate a PropertyFieldCustom to manage his rendering process
   return new PropertyFieldDateTimePickerBuilder(targetProperty, newProperties);
 }

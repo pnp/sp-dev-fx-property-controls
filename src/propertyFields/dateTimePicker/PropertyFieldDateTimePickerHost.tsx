@@ -5,7 +5,7 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import * as strings from 'PropertyControlStrings';
-import { IPropertyFieldDateTimePickerHostProps, IPropertyFieldDateTimePickerHostState, ITimeComponentProps, IHoursComponentProps } from "./IPropertyFieldDateTimePickerHost";
+import { IPropertyFieldDateTimePickerHostProps, IPropertyFieldDateTimePickerHostState, ITimeComponentProps, IHoursComponentProps } from './IPropertyFieldDateTimePickerHost';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import styles from './PropertyFieldDateTimePickerHost.module.scss';
 import HoursComponent from './HoursComponent';
@@ -13,9 +13,7 @@ import MinutesComponent from './MinutesComponent';
 import SecondsComponent from './SecondsComponent';
 
 /**
- * @class
  * Defines the labels of the DatePicker control (as months, days, etc.)
- *
  */
 class DatePickerStrings implements IDatePickerStrings {
   /**
@@ -65,15 +63,14 @@ class DatePickerStrings implements IDatePickerStrings {
   /**
    * Error message to render for TextField if isRequired validation fails.
    */
-  public isRequiredErrorMessage: string = "";
+  public isRequiredErrorMessage: string = '';
   /**
    * Error message to render for TextField if input date string parsing fails.
    */
-  public invalidInputErrorMessage: string = "";
+  public invalidInputErrorMessage: string = '';
 }
 
 /**
- * @class
  * Renders the controls for PropertyFieldDateTimePicker component
  */
 export default class PropertyFieldDateTimePickerHost extends React.Component<IPropertyFieldDateTimePickerHostProps, IPropertyFieldDateTimePickerHostState> {
@@ -87,7 +84,6 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   private _crntSeconds: number;
 
   /**
-   * @function
    * Constructor
    */
   constructor(props: IPropertyFieldDateTimePickerHostProps) {
@@ -122,12 +118,11 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   }
 
   /**
-   * @function
    * Function to retrieve the initial date
    */
   private _getDateValue() {
-    if (typeof this.props.initialDate !== "undefined" && this.props.initialDate !== null) {
-      if (typeof this.props.initialDate.value !== "undefined" && this.props.initialDate.value !== null) {
+    if (typeof this.props.initialDate !== 'undefined' && this.props.initialDate !== null) {
+      if (typeof this.props.initialDate.value !== 'undefined' && this.props.initialDate.value !== null) {
         return new Date(this.props.initialDate.value);
       }
     }
@@ -135,7 +130,6 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   }
 
   /**
-   * @function
    * Function called when the DatePicker Office UI Fabric component selected date changed
    */
   private _onSelectDate(date: Date): void {
@@ -147,7 +141,6 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   }
 
   /**
-   * @function
    * Function called when hours value have been changed
    * @param element Hours dropdown value
    */
@@ -157,7 +150,6 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   }
 
   /**
-   * @function
    * Function called when minutes value have been changed
    * @param element Minutes dropdown value
    */
@@ -167,7 +159,6 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   }
 
   /**
-   * @function
    * Function called when seconds value have been changed
    * @param element Seconds dropdown value
    */
@@ -177,7 +168,6 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   }
 
   /**
-   * @function
    * Save the new date
    */
   private _saveDate(): void {
@@ -215,11 +205,10 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   }
 
   /**
-   * @function
    * Validates the new custom field value
    */
   private validate(dateVal: IDateTimeFieldValue): void {
-    if (typeof this.props.onGetErrorMessage === "undefined" || this.props.onGetErrorMessage === null) {
+    if (typeof this.props.onGetErrorMessage === 'undefined' || this.props.onGetErrorMessage === null) {
       this.notifyAfterValidate(this.props.initialDate, dateVal);
       return;
     }
@@ -241,7 +230,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
         });
       } else {
         result.then((errorMessage: string) => {
-          if (typeof errorMessage === "undefined" || errorMessage === '') {
+          if (typeof errorMessage === 'undefined' || errorMessage === '') {
             this.notifyAfterValidate(this.props.initialDate, dateVal);
           }
 
@@ -257,7 +246,6 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   }
 
   /**
-   * @function
    * Notifies the parent Web Part of a property value change
    */
   private notifyAfterValidate(oldValue: IDateTimeFieldValue, newValue: IDateTimeFieldValue) {
@@ -265,14 +253,13 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
       this.props.properties[this.props.targetProperty] = newValue;
       this.props.onPropertyChange(this.props.targetProperty, oldValue, newValue);
       //  Trigger the apply button
-      if (typeof this.props.onChange !== "undefined" && this.props.onChange !== null) {
+      if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
         this.props.onChange(this.props.targetProperty, newValue);
       }
     }
   }
 
   /**
-   * @function
    * Called when the component will unmount
    */
   public componentWillUnmount() {
@@ -280,7 +267,6 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   }
 
   /**
-   * @function
    * Renders the control
    */
   public render(): JSX.Element {
@@ -295,7 +281,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
           <Label className={styles.fieldLabel}>{strings.DateTimePickerTime}</Label>
         </td>
         <td>
-          <table cellPadding="0" cellSpacing="0">
+          <table cellPadding='0' cellSpacing='0'>
             <tbody>
               <tr>
                 <td>
@@ -330,7 +316,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
     return (
       <div className={styles.propertyFieldDateTimePicker}>
         <Label>{this.props.label}</Label>
-        <table cellPadding="0" cellSpacing="0">
+        <table cellPadding='0' cellSpacing='0'>
           <tbody>
             <tr>
               <td className={styles.labelCell}>

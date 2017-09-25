@@ -7,7 +7,6 @@ import { PropertyFieldListPickerOrderBy } from '../propertyFields/listPicker/IPr
 import SPListPickerMockHttpClient from './SPListPickerMockService';
 
 /**
- * @class
  * Service implementation to get list & list items from current SharePoint site
  */
 export default class SPListPickerService {
@@ -16,7 +15,6 @@ export default class SPListPickerService {
   private props: IPropertyFieldListPickerHostProps;
 
   /**
-   * @function
    * Service constructor
    */
   constructor(_props: IPropertyFieldListPickerHostProps, pageContext: IWebPartContext) {
@@ -25,7 +23,6 @@ export default class SPListPickerService {
   }
 
   /**
-   * @function
    * Gets the collection of libs in the current SharePoint site
    */
   public getLibs(): Promise<ISPLists> {
@@ -38,27 +35,27 @@ export default class SPListPickerService {
       let queryUrl: string = `${this.context.pageContext.web.absoluteUrl}/_api/lists?$select=Title,id,BaseTemplate`;
       // Check if the orderBy property is provided
       if (this.props.orderBy !== null) {
-        queryUrl += "&$orderby=";
+        queryUrl += '&$orderby=';
         switch (this.props.orderBy) {
           case PropertyFieldListPickerOrderBy.Id:
-            queryUrl += "Id";
+            queryUrl += 'Id';
             break;
           case PropertyFieldListPickerOrderBy.Title:
-            queryUrl += "Title";
+            queryUrl += 'Title';
             break;
         }
       }
       // Check if the list have get filtered based on the list base template type
       if (this.props.baseTemplate !== null && this.props.baseTemplate) {
-        queryUrl += "&$filter=BaseTemplate%20eq%20";
+        queryUrl += '&$filter=BaseTemplate%20eq%20';
         queryUrl += this.props.baseTemplate;
         // Check if you also want to exclude hidden list in the list
         if (this.props.includeHidden === false) {
-          queryUrl += "%20and%20Hidden%20eq%20false";
+          queryUrl += '%20and%20Hidden%20eq%20false';
         }
       } else {
         if (this.props.includeHidden === false) {
-          queryUrl += "&$filter=Hidden%20eq%20false";
+          queryUrl += '&$filter=Hidden%20eq%20false';
         }
       }
       return this.context.spHttpClient.get(queryUrl, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => {
@@ -68,7 +65,6 @@ export default class SPListPickerService {
   }
 
   /**
-   * @function
    * Returns 3 fake SharePoint lists for the Mock mode
    */
   private getLibsFromMock(): Promise<ISPLists> {

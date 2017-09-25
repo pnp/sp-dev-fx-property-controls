@@ -8,13 +8,12 @@
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
-import { IPropertyFieldTermPickerHostProps } from "./../propertyFields/termPicker/IPropertyFieldTermPickerHost";
-import { ISPTermStores, ISPTermStore, ISPTermGroups, ISPTermGroup, ICheckedTerms, ICheckedTerm } from "./../propertyFields/termPicker/IPropertyFieldTermPicker";
-import { ITermStore, ITerms, ITerm } from "./ISPTermStorePickerService";
+import { IPropertyFieldTermPickerHostProps } from './../propertyFields/termPicker/IPropertyFieldTermPickerHost';
+import { ISPTermStores, ISPTermStore, ISPTermGroups, ISPTermGroup, ICheckedTerms, ICheckedTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
+import { ITermStore, ITerms, ITerm } from './ISPTermStorePickerService';
 import SPTermStoreMockHttpClient from './SPTermStorePickerMockService';
 
 /**
- * @class
  * Service implementation to manage term stores in SharePoint
  */
 export default class SPTermStorePickerService {
@@ -25,7 +24,6 @@ export default class SPTermStorePickerService {
   private clientServiceUrl: string;
 
   /**
-   * @function
    * Service constructor
    */
   constructor(_props: IPropertyFieldTermPickerHostProps, pageContext: IWebPartContext) {
@@ -36,7 +34,6 @@ export default class SPTermStorePickerService {
   }
 
   /**
-   * @function
    * Gets the collection of term stores in the current SharePoint env
    */
   public getTermStores(): Promise<ITermStore[]> {
@@ -57,7 +54,7 @@ export default class SPTermStorePickerService {
       return this.context.spHttpClient.post(this.clientServiceUrl, SPHttpClient.configurations.v1, httpPostOptions).then((serviceResponse: SPHttpClientResponse) => {
         return serviceResponse.json().then((serviceJSONResponse: any) => {
           // Construct results
-          const termStoreResult: ITermStore[] = serviceJSONResponse.filter(r => r["_ObjectType_"] === "SP.Taxonomy.TermStore");
+          const termStoreResult: ITermStore[] = serviceJSONResponse.filter(r => r['_ObjectType_'] === 'SP.Taxonomy.TermStore');
           if (termStoreResult.length > 0) {
             // Check if system groups have to be excluded
             if (this.props.excludeSystemGroup) {
@@ -78,7 +75,6 @@ export default class SPTermStorePickerService {
   }
 
   /**
-   * @function
    * Retrieve all terms for the given term set
    * @param termsetId
    */
@@ -102,14 +98,14 @@ export default class SPTermStorePickerService {
       return this.context.spHttpClient.post(this.clientServiceUrl, SPHttpClient.configurations.v1, httpPostOptions).then((serviceResponse: SPHttpClientResponse) => {
         return serviceResponse.json().then((serviceJSONResponse: any) => {
           // Retrieve the term collection results
-          const termStoreResult: ITerms[] = serviceJSONResponse.filter(r => r["_ObjectType_"] === "SP.Taxonomy.TermCollection");
+          const termStoreResult: ITerms[] = serviceJSONResponse.filter(r => r['_ObjectType_'] === 'SP.Taxonomy.TermCollection');
           if (termStoreResult.length > 0) {
             // Retrieve all terms
             let terms = termStoreResult[0]._Child_Items_;
             // Clean the term ID and specify the path depth
             terms = terms.map(term => {
               term.Id = this._cleanGuid(term.Id);
-              term["PathDepth"] = term.PathOfTerm.split(';').length;
+              term['PathDepth'] = term.PathOfTerm.split(';').length;
               return term;
             });
             // Check if the term set was not empty
@@ -126,7 +122,6 @@ export default class SPTermStorePickerService {
   }
 
   /**
-   * @function
    * Sort the terms by their path
    * @param a term 2
    * @param b term 2
@@ -142,7 +137,6 @@ export default class SPTermStorePickerService {
   }
 
   /**
-   * @function
    * Clean the Guid from the Web Service response
    * @param guid
    */
@@ -155,7 +149,6 @@ export default class SPTermStorePickerService {
   }
 
   /**
-   * @function
    * Returns 3 fake SharePoint lists for the Mock mode
    */
   private getTermStoresFromMock(): Promise<ITermStore[]> {
@@ -165,7 +158,6 @@ export default class SPTermStorePickerService {
   }
 
   /**
-   * @function
    * Returns 3 fake SharePoint lists for the Mock mode
    */
   private getAllMockTerms(): Promise<ITerm[]> {

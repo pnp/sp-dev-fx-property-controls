@@ -2,15 +2,14 @@ import * as React from 'react';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { IPropertyFieldListPickerHostProps, IPropertyFieldListPickerHostState, ISPList, ISPLists } from "./IPropertyFieldListPickerHost";
+import { IPropertyFieldListPickerHostProps, IPropertyFieldListPickerHostState, ISPList, ISPLists } from './IPropertyFieldListPickerHost';
 import SPListPickerService from '../../services/SPListPickerService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 
 // Empty list value, to be checked for single list selection
-const EMPTY_LIST_KEY = "NO_LIST_SELECTED";
+const EMPTY_LIST_KEY = 'NO_LIST_SELECTED';
 
 /**
- * @class
  * Renders the controls for PropertyFieldListPicker component
  */
 export default class PropertyFieldListPickerHost extends React.Component<IPropertyFieldListPickerHostProps, IPropertyFieldListPickerHostState> {
@@ -22,8 +21,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
   private delayedValidate: (value: string) => void;
 
   /**
-   * @function
-   * Constructor
+   * Constructor method
    */
   constructor(props: IPropertyFieldListPickerHostProps) {
     super(props);
@@ -44,7 +42,6 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
   }
 
   /**
-   * @function
    * Loads the list from SharePoint current web site
    */
   private loadLists(): void {
@@ -76,7 +73,6 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
   }
 
   /**
-   * @function
    * Raises when a list has been selected
    */
   private onChanged(option: IDropdownOption, index?: number): void {
@@ -85,7 +81,6 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
   }
 
   /**
-   * @function
    * Validates the new custom field value
    */
   private validate(value: string): void {
@@ -101,7 +96,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
     this.latestValidateValue = value;
 
     const result: string | PromiseLike<string> = this.props.onGetErrorMessage(value || '');
-    if (typeof result !== "undefined") {
+    if (typeof result !== 'undefined') {
       if (typeof result === 'string') {
         if (result === '') {
           this.notifyAfterValidate(this.props.selectedList, value);
@@ -111,7 +106,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
         });
       } else {
         result.then((errorMessage: string) => {
-          if (typeof errorMessage === "undefined" || errorMessage === '') {
+          if (typeof errorMessage === 'undefined' || errorMessage === '') {
             this.notifyAfterValidate(this.props.selectedList, value);
           }
           this.setState({
@@ -125,7 +120,6 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
   }
 
   /**
-   * @function
    * Notifies the parent Web Part of a property value change
    */
   private notifyAfterValidate(oldValue: string, newValue: string) {
@@ -153,24 +147,22 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
       // Trigger the default onPrpertyChange event
       this.props.onPropertyChange(this.props.targetProperty, oldValue, propValue);
       // Trigger the apply button
-      if (typeof this.props.onChange !== "undefined" && this.props.onChange !== null) {
+      if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
         this.props.onChange(this.props.targetProperty, propValue);
       }
     }
   }
 
   /**
-   * @function
    * Called when the component will unmount
    */
   public componentWillUnmount() {
-    if (typeof this.async !== "undefined") {
+    if (typeof this.async !== 'undefined') {
       this.async.dispose();
     }
   }
 
   /**
-   * @function
    * Renders the SPListpicker controls with Office UI Fabric
    */
   public render(): JSX.Element {

@@ -15,6 +15,9 @@ import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '../../P
 import { PropertyFieldTermPicker } from '../../PropertyFieldTermPicker';
 import { PropertyFieldDateTimePicker, DateConvention, TimeConvention } from '../../PropertyFieldDateTimePicker';
 
+/**
+ * Web part that can be used to test out the various property controls
+ */
 export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<IPropertyControlsTestWebPartProps> {
 
   public render(): void {

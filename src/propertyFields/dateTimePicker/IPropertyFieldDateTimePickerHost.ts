@@ -1,17 +1,20 @@
 import { ITimeComponentProps } from './IPropertyFieldDateTimePickerHost';
 import { IPropertyFieldDateTimePickerPropsInternal, TimeConvention } from './IPropertyFieldDateTimePicker';
-import { IDropdownOption } from "office-ui-fabric-react/lib/components/Dropdown";
+import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
 
 /**
- * @interface
  * PropertyFieldDateTimePickerHost properties interface
- *
  */
 export interface IPropertyFieldDateTimePickerHostProps extends IPropertyFieldDateTimePickerPropsInternal {
+
   onChange: (targetProperty?: string, newValue?: any) => void;
 }
 
+/**
+ * PropertyFieldDateTimePickerHost state interface
+ */
 export interface IPropertyFieldDateTimePickerHostState {
+
   day?: Date;
   hours?: number;
   minutes?: number;
@@ -19,12 +22,20 @@ export interface IPropertyFieldDateTimePickerHostState {
   errorMessage?: string;
 }
 
+/**
+ * Time component properties interface
+ */
 export interface ITimeComponentProps {
+
   disabled?: boolean;
   value: number;
   onChange: (value?: IDropdownOption) => void;
 }
 
+/**
+ * Hours component property interface
+ */
 export interface IHoursComponentProps extends ITimeComponentProps {
+
   timeConvention: TimeConvention;
 }

@@ -1,19 +1,18 @@
 import * as React from 'react';
 import { IPropertyFieldGroupOrPerson, PrincipalType } from './IPropertyFieldPeoplePicker';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
-import { SPHttpClient, ISPHttpClientOptions, SPHttpClientResponse } from "@microsoft/sp-http";
+import { SPHttpClient, ISPHttpClientOptions, SPHttpClientResponse } from '@microsoft/sp-http';
 import { EnvironmentType, Environment } from '@microsoft/sp-core-library';
 import { NormalPeoplePicker, IBasePickerSuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { IPersonaProps, PersonaPresence, PersonaInitialsColor } from 'office-ui-fabric-react/lib/Persona';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import * as strings from 'PropertyControlStrings';
-import { IPropertyFieldPeoplePickerHostProps, IPeoplePickerState } from "./IPropertyFieldPeoplePickerHost";
-import SPPeopleSearchService from "../../services/SPPeopleSearchService";
+import { IPropertyFieldPeoplePickerHostProps, IPeoplePickerState } from './IPropertyFieldPeoplePickerHost';
+import SPPeopleSearchService from '../../services/SPPeopleSearchService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 
 /**
- * @class
  * Renders the controls for PropertyFieldPeoplePicker component
  */
 export default class PropertyFieldPeoplePickerHost extends React.Component<IPropertyFieldPeoplePickerHostProps, IPeoplePickerState> {
@@ -27,8 +26,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   private delayedValidate: (value: IPropertyFieldGroupOrPerson[]) => void;
 
   /**
-   * @function
-   * Constructor
+   * Constructor method
    */
   constructor(props: IPropertyFieldPeoplePickerHostProps) {
     super(props);
@@ -52,7 +50,6 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   }
 
   /**
-   * @function
    * Renders the PeoplePicker controls with Office UI  Fabric
    */
   public render(): JSX.Element {
@@ -94,7 +91,6 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   }
 
   /**
-   * @function
    * A search field change occured
    */
   private onSearchFieldChanged(searchText: string, currentSelected: IPersonaProps[]): Promise<IPersonaProps[]> | IPersonaProps[] {
@@ -127,7 +123,6 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   }
 
   /**
-   * @function
    * Remove the duplicates if property allowDuplicate equals false
    */
   private removeDuplicates(responsePeople: IPropertyFieldGroupOrPerson[]): IPropertyFieldGroupOrPerson[] {
@@ -154,7 +149,6 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   }
 
   /**
-   * @function
    * Creates the collection of initial personas from initial IPropertyFieldGroupOrPerson collection
    */
   private createInitialPersonas(): void {
@@ -171,7 +165,6 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   }
 
   /**
-   * @function
    * Generates a IPersonaProps object from a IPropertyFieldGroupOrPerson object
    */
   private getPersonaFromPeople(element: IPropertyFieldGroupOrPerson, index: number): IPersonaProps {
@@ -183,7 +176,6 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
 
 
   /**
-   * @function
    * Refreshes the web part properties
    */
   private refreshWebPartProperties(): void {
@@ -191,7 +183,6 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   }
 
   /**
-  * @function
   * Validates the new custom field value
   */
   private validate(value: IPropertyFieldGroupOrPerson[]): void {
@@ -201,7 +192,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
     }
 
     const result: string | PromiseLike<string> = this.props.onGetErrorMessage(value || []);
-    if (typeof result === "undefined") {
+    if (typeof result === 'undefined') {
       if (typeof result === 'string') {
         if (result === '') {
           this.notifyAfterValidate(this.props.initialData, value);
@@ -225,7 +216,6 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   }
 
   /**
-   * @function
    * Notifies the parent Web Part of a property value change
    */
   private notifyAfterValidate(oldValue: IPropertyFieldGroupOrPerson[], newValue: IPropertyFieldGroupOrPerson[]) {
@@ -233,14 +223,13 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
       this.props.properties[this.props.targetProperty] = newValue;
       this.props.onPropertyChange(this.props.targetProperty, oldValue, newValue);
       // Trigger the apply button
-      if (typeof this.props.onChange !== "undefined" && this.props.onChange !== null) {
+      if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
         this.props.onChange(this.props.targetProperty, newValue);
       }
     }
   }
 
   /**
-   * @function
    * Called when the component will unmount
    */
   public componentWillUnmount() {
@@ -248,7 +237,6 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   }
 
   /**
-   * @function
    * Event raises when the user changed people from the PeoplePicker component
    */
   private onItemChanged(selectedItems: IPersonaProps[]): void {
@@ -280,7 +268,6 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   }
 
   /**
-   * @function
    * Generate a PersonaInitialsColor from the item position in the collection
    */
   private getRandomInitialsColor(index: number): PersonaInitialsColor {

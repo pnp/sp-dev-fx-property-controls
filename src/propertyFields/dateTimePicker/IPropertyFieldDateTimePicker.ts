@@ -1,92 +1,83 @@
 import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
 
 /**
- * @interface
  * Date field value interface
  *
  */
 export interface IDateTimeFieldValue {
+
   value: Date;
   displayValue: string;
 }
 
 /**
-  * @enum
   * Time convention
   */
 export enum TimeConvention {
+
   /**
    * The 12-hour clock is a time convention in which the 24 hours of the day are
    * divided into two periods: a.m. and p.m.
    */
-  Hours12 = 0,
+  Hours12 = 1,
   /**
    * The 24-hour clock is the convention of time keeping in which the day runs from midnight to
    * midnight and is divided into 24 hours, indicated by the hours passed since midnight, from 0 to 23
    */
-  Hours24 = 1
+  Hours24
 }
 
 /**
-  * @enum
   * Time convention
   */
 export enum DateConvention {
-  DateTime = 0,
-  Date = 1
+
+  DateTime = 1,
+  Date
 }
 
 /**
- * @interface
  * Public properties of the PropertyFieldDateTimePicker custom field
  *
  */
 export interface IPropertyFieldDateTimePickerProps {
+
   /**
-   * @var
    * Property field label displayed on top
    */
   label: string;
   /**
-   * @var
    * Specify if the control needs to be disabled
    */
   disabled?: boolean;
   /**
-   * @var
    * Initial date of the control
    */
   initialDate?: IDateTimeFieldValue;
   /**
-   * @function
    * Defines a formatDate function to display the date of the custom Field.
    * By defaut date.toDateString() is used.
    */
   formatDate?: (date: Date) => string;
   /**
-   * @var
    * Defines the date convention to use. The default is date and time.
    */
   dateConvention?: DateConvention;
   /**
-   * @var
    * Defines the time convention to use. The default value is the 24-hour clock convention.
    */
   timeConvention?: TimeConvention;
   /**
-   * @function
    * Defines a onPropertyChange function to raise when the selected date changed.
    * Normally this function must be always defined with the 'this.onPropertyChange'
    * method of the web part object.
    */
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
   /**
-   * @var
    * Parent Web Part properties
    */
   properties: any;
   /**
-   * @var
    * An UNIQUE key indicates the identity of this control
    */
   key?: string;
@@ -112,7 +103,6 @@ export interface IPropertyFieldDateTimePickerProps {
 }
 
 /**
- * @interface
  * Private properties of the PropertyFieldDateTimePicker custom field.
  * We separate public & private properties to include onRender & onDispose method waited
  * by the PropertyFieldCustom, witout asking to the developer to add it when he's using
@@ -120,6 +110,7 @@ export interface IPropertyFieldDateTimePickerProps {
  *
  */
 export interface IPropertyFieldDateTimePickerPropsInternal extends IPropertyPaneCustomFieldProps {
+
   label: string;
   disabled: boolean;
   initialDate?: IDateTimeFieldValue;

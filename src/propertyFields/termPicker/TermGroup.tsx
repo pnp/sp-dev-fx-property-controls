@@ -1,12 +1,11 @@
-import * as React from "react";
-import { ITermGroupProps, ITermGroupState } from "./IPropertyFieldTermPickerHost";
-import { GROUP_IMG, EXPANDED_IMG, COLLAPSED_IMG } from "./PropertyFieldTermPickerHost";
+import * as React from 'react';
+import { ITermGroupProps, ITermGroupState } from './IPropertyFieldTermPickerHost';
+import { GROUP_IMG, EXPANDED_IMG, COLLAPSED_IMG } from './PropertyFieldTermPickerHost';
 import TermSet from './TermSet';
 
 import styles from './PropertyFieldTermPickerHost.module.scss';
 
 /**
- * @class
  * Term group component
  */
 export default class TermGroup extends React.Component<ITermGroupProps, ITermGroupState> {
@@ -22,7 +21,6 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
   }
 
   /**
-   * @function
    * Handle the click event: collapse or expand
    */
   private _handleClick() {
@@ -49,8 +47,8 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
     return (
       <div>
         <div className={`${styles.listItem}`} onClick={this._handleClick}>
-          <img src={this.state.expanded ? EXPANDED_IMG : COLLAPSED_IMG} alt="Expand This Node" title="Expand This Node" />
-          <img src={GROUP_IMG} title="Menu for Group" alt="Menu for Group" /> {this.props.group.Name}
+          <img src={this.state.expanded ? EXPANDED_IMG : COLLAPSED_IMG} alt='Expand This Node' title='Expand This Node' />
+          <img src={GROUP_IMG} title='Menu for Group' alt='Menu for Group' /> {this.props.group.Name}
         </div>
         <div style={styleProps}>
           {

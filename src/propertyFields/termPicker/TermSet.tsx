@@ -1,14 +1,13 @@
-import * as React from "react";
+import * as React from 'react';
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
-import { ITermSetProps, ITermSetState } from "./IPropertyFieldTermPickerHost";
-import { ITerm } from "../../services/ISPTermStorePickerService";
-import { EXPANDED_IMG, COLLAPSED_IMG, TERMSET_IMG } from "./PropertyFieldTermPickerHost";
+import { ITermSetProps, ITermSetState } from './IPropertyFieldTermPickerHost';
+import { ITerm } from '../../services/ISPTermStorePickerService';
+import { EXPANDED_IMG, COLLAPSED_IMG, TERMSET_IMG } from './PropertyFieldTermPickerHost';
 import Term from './Term';
 
 import styles from './PropertyFieldTermPickerHost.module.scss';
 
 /**
- * @class
  * Term set component
  */
 export default class TermSet extends React.Component<ITermSetProps, ITermSetState> {
@@ -32,7 +31,6 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
   }
 
   /**
-   * @function
    * Autoload the terms of the term set
    */
   private _autoLoadTerms() {
@@ -41,7 +39,6 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
   }
 
   /**
-   * @function
    * Handle the click event: collapse or expand
    */
   private _handleClick() {
@@ -55,7 +52,6 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
   }
 
   /**
-   * @function
    * Load the terms for the current term set
    */
   private async _loadTerms(autoExpand?: boolean) {
@@ -67,7 +63,7 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
         this.setState({
           terms: terms,
           loaded: true,
-          expanded: typeof autoExpand !== "undefined" ? autoExpand : this.state.expanded
+          expanded: typeof autoExpand !== 'undefined' ? autoExpand : this.state.expanded
         });
       } else {
         this.setState({
@@ -109,8 +105,8 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
     return (
       <div>
         <div className={`${styles.listItem} ${styles.termset}`} onClick={this._handleClick}>
-          <img src={this.state.expanded ? EXPANDED_IMG : COLLAPSED_IMG} alt="Expand This Term Set" title="Expand This Term Set" />
-          <img src={TERMSET_IMG} title="Menu for Term Set" alt="Menu for Term Set" /> {this.props.termset.Name}
+          <img src={this.state.expanded ? EXPANDED_IMG : COLLAPSED_IMG} alt='Expand This Term Set' title='Expand This Term Set' />
+          <img src={TERMSET_IMG} title='Menu for Term Set' alt='Menu for Term Set' /> {this.props.termset.Name}
         </div>
         <div style={styleProps}>
           {termElm}

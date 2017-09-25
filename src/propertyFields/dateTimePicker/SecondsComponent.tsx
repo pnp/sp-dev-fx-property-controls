@@ -1,16 +1,11 @@
-import * as React from "react";
-import { ITimeComponentProps } from "./IPropertyFieldDateTimePickerHost";
-import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/components/Dropdown";
+import * as React from 'react';
+import { ITimeComponentProps } from './IPropertyFieldDateTimePickerHost';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
 
 /**
- * @class
- * Seconds component
+ * Seconds component, renders the seconds dropdown
  */
 export default class SecondsComponent extends React.Component<ITimeComponentProps, {}> {
-  constructor(props: ITimeComponentProps) {
-    super(props);
-  }
-
   public render(): JSX.Element {
     let seconds: IDropdownOption[] = [];
     for (let k = 0; k < 60; k++) {
@@ -30,7 +25,7 @@ export default class SecondsComponent extends React.Component<ITimeComponentProp
     return (
       <Dropdown
         disabled={this.props.disabled}
-        label=""
+        label=''
         options={seconds}
         onChanged={this.props.onChange} />
     );

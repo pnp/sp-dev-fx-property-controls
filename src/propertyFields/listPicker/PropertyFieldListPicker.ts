@@ -12,9 +12,7 @@ import { IPropertyFieldListMultiPickerHostProps } from './IPropertyFieldListMult
 import { PropertyFieldListPickerOrderBy, IPropertyFieldListPickerProps, IPropertyFieldListPickerPropsInternal } from './IPropertyFieldListPicker';
 
 /**
- * @class
  * Represents a PropertyFieldListPicker object
- *
  */
 class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFieldListPickerPropsInternal> {
 
@@ -43,8 +41,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private disableReactivePropertyChanges: boolean = false;
 
   /**
-   * @function
-   * Ctor
+   * Constructor method
    */
   public constructor(_targetProperty: string, _properties: IPropertyFieldListPickerPropsInternal) {
     this.render = this.render.bind(this);
@@ -68,13 +65,12 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
     }
-    if (typeof _properties.deferredValidationTime !== "undefined") {
+    if (_properties.deferredValidationTime) {
       this.deferredValidationTime = _properties.deferredValidationTime;
     }
   }
 
   /**
-   * @function
    * Renders the SPListPicker field content
    */
   private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
@@ -100,13 +96,13 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
     // Check if the multi or single select component has to get loaded
     if (this.multiSelect) {
       // Multi selector
-      componentProps["selectedLists"] = this.selectedLists;
+      componentProps['selectedLists'] = this.selectedLists;
       const element: React.ReactElement<IPropertyFieldListMultiPickerHostProps> = React.createElement(PropertyFieldListMultiPickerHost, componentProps);
       // Calls the REACT content generator
       ReactDom.render(element, elem);
     } else {
       // Single selector
-      componentProps["selectedList"] = this.selectedList;
+      componentProps['selectedList'] = this.selectedList;
       const element: React.ReactElement<IPropertyFieldListPickerHostProps> = React.createElement(PropertyFieldListPickerHost, componentProps);
       // Calls the REACT content generator
       ReactDom.render(element, elem);
@@ -114,7 +110,6 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
   }
 
   /**
-   * @function
    * Disposes the current object
    */
   private dispose(elem: HTMLElement): void {
@@ -124,7 +119,6 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
 }
 
 /**
- * @function
  * Helper method to create a SPList Picker on the PropertyPane.
  * @param targetProperty - Target property the SharePoint list picker is associated to.
  * @param properties - Strongly typed SPList Picker properties.
@@ -136,8 +130,8 @@ export function PropertyFieldListPicker(targetProperty: string, properties: IPro
     label: properties.label,
     targetProperty: targetProperty,
     context: properties.context,
-    selectedList: typeof properties.selectedList === "string" ? properties.selectedList : null,
-    selectedLists: typeof properties.selectedList !== "string" ? properties.selectedList : null,
+    selectedList: typeof properties.selectedList === 'string' ? properties.selectedList : null,
+    selectedLists: typeof properties.selectedList !== 'string' ? properties.selectedList : null,
     baseTemplate: properties.baseTemplate,
     orderBy: properties.orderBy,
     multiSelect: properties.multiSelect || false,

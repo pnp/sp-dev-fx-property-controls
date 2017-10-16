@@ -123,26 +123,24 @@ export default class PropertyFieldDropDownHost extends React.Component<IProperty
 		const propValue = newValue === EMPTY_LIST_KEY ? '' : newValue;
 
 		// Deselect all options
-		/*TODO: fix this
-		this.props.options = this.state.options.map(option => {
+		var options = this.state.options.map(option => {
 			if (option.selected) {
 				option.selected = false;
 			}
 			return option;
 		});
-		*/
 		// Set the current selected key
 		this.selectedKey = newValue;
 		// Update the state
 		this.setState({
 			selectedKey: this.selectedKey,
-			options: this.props.options
+			options: options
 		});
 
 		if (this.props.onPropertyChange && propValue !== null) {
 			// Store the new property value
 			this.props.properties[this.props.targetProperty] = propValue;
-			// Trigger the default onPrpertyChange event
+			// Trigger the default onPropertyChange event
 			this.props.onPropertyChange(this.props.targetProperty, oldValue, propValue);
 			// Trigger the apply button
 			if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {

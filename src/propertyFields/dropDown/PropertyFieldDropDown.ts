@@ -48,8 +48,6 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 		this.properties.onRender = this.render;
 		this.label = _properties.label;
 		this.context = _properties.context;
-		//this.selectedKey = _properties.selectedKey;
-		//this.selectedKeys = _properties.selectedKeys;
 		this.multiSelect = _properties.multiSelect;
 		this.options = _properties.options;
 		this.onPropertyChange = _properties.onPropertyChange;
@@ -67,7 +65,7 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 	}
 
 	/**
-	 * Renders the SPDropDown field content
+	 * Renders the DropDown field content
 	 */
 	private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
 		const componentProps = {
@@ -103,9 +101,9 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 }
 
 /**
- * Helper method to create a SPList Picker on the PropertyPane.
+ * Helper method to create a Dropdown on the PropertyPane.
  * @param targetProperty - Target property the SharePoint list picker is associated to.
- * @param properties - Strongly typed SPList Picker properties.
+ * @param properties - Strongly typed Dropdown properties.
  */
 export function PropertyFieldDropDown(targetProperty: string, properties: IPropertyFieldDropDownProps): IPropertyPaneField<IPropertyFieldDropDownPropsInternal> {
 
@@ -114,8 +112,6 @@ export function PropertyFieldDropDown(targetProperty: string, properties: IPrope
 		label: properties.label,
 		targetProperty: targetProperty,
 		context: properties.context,
-		//selectedKey: typeof properties.selectedKey === 'string' ? properties.selectedKey : null,
-		//selectedKeys: typeof properties.selectedKey !== 'string' ? properties.selectedKey : null,
 		multiSelect: properties.multiSelect || false,
 		options: properties.options,
 		onPropertyChange: properties.onPropertyChange,

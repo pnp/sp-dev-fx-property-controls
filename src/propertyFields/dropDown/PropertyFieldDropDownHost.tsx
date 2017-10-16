@@ -159,7 +159,7 @@ export default class PropertyFieldDropDownHost extends React.Component<IProperty
 	}
 
 	/**
-	 * Renders the SPDropDown controls with Office UI Fabric
+	 * Renders the DropDown controls with Office UI Fabric
 	 */
 	public render(): JSX.Element {
 		// Renders content

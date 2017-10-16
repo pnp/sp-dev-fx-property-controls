@@ -11,4 +11,5 @@ export interface IPropertyControlsTestProps {
   multiList: string[];
   terms: ICheckedTerms;
   datetime: IDateTimeFieldValue;
+  singleValue: string;
 }

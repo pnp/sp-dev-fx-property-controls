@@ -35,7 +35,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
 				list: this.properties.singleList as string,
 				multiList: this.properties.multiList as string[] || [],
 				terms: this.properties.terms || [],
-				datetime: this.properties.datetime || { value: null, displayValue: null }
+				datetime: this.properties.datetime || { value: null, displayValue: null },
+				singleValue: this.properties.singleValue
 			}
 		);
 

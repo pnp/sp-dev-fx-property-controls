@@ -5,6 +5,7 @@ import {
 	PropertyPaneFieldType,
 	IWebPartContext
 } from '@microsoft/sp-webpart-base';
+import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import PropertyFieldDropDownHost from './PropertyFieldDropDownHost';
 import { IPropertyFieldDropDownHostProps } from './IPropertyFieldDropDownHost';
 import { IPropertyFieldDropDownProps, IPropertyFieldDropDownPropsInternal } from './IPropertyFieldDropDown';
@@ -22,9 +23,10 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 	//Custom properties label: string;
 	private label: string;
 	private context: IWebPartContext;
-	private selectedList: string;
-	private selectedLists: string[];
+	private selectedKey: string;
+	private selectedKeys: string[];
 	private multiSelect: boolean;
+	private options: IDropdownOption[];
 
 	public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { }
 	private customProperties: any;
@@ -46,9 +48,10 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 		this.properties.onRender = this.render;
 		this.label = _properties.label;
 		this.context = _properties.context;
-		this.selectedList = _properties.selectedList;
-		this.selectedLists = _properties.selectedLists;
+		this.selectedKey = _properties.selectedKey;
+		this.selectedKeys = _properties.selectedKeys;
 		this.multiSelect = _properties.multiSelect;
+		this.options = _properties.options;
 		this.onPropertyChange = _properties.onPropertyChange;
 		this.customProperties = _properties.properties;
 		this.key = _properties.key;
@@ -71,6 +74,7 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 			targetProperty: this.targetProperty,
 			context: this.context,
 			multiSelect: this.multiSelect,
+			options: this.options,
 			onDispose: this.dispose,
 			onRender: this.render,
 			onChange: changeCallback,
@@ -84,10 +88,10 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 
 		if (this.multiSelect) {
 			// Multi selector
-			componentProps['selectedLists'] = this.selectedLists;
+			componentProps['selectedLists'] = this.selectedKeys;
 		} else {
 			// Single selector
-			componentProps['selectedList'] = this.selectedList;
+			componentProps['selectedList'] = this.selectedKey;
 		}
 		const element: React.ReactElement<IPropertyFieldDropDownHostProps> = React.createElement(PropertyFieldDropDownHost, componentProps);
 		// Calls the REACT content generator
@@ -116,9 +120,10 @@ export function PropertyFieldDropDown(targetProperty: string, properties: IPrope
 		label: properties.label,
 		targetProperty: targetProperty,
 		context: properties.context,
-		selectedList: typeof properties.selectedList === 'string' ? properties.selectedList : null,
-		selectedLists: typeof properties.selectedList !== 'string' ? properties.selectedList : null,
+		selectedKey: typeof properties.selectedKey === 'string' ? properties.selectedKey : null,
+		selectedKeys: typeof properties.selectedKey !== 'string' ? properties.selectedKey : null,
 		multiSelect: properties.multiSelect || false,
+		options: properties.options,
 		onPropertyChange: properties.onPropertyChange,
 		properties: properties.properties,
 		onDispose: null,

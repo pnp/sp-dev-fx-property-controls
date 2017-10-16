@@ -12,7 +12,6 @@ const EMPTY_LIST_KEY = 'NO_LIST_SELECTED';
  * Renders the controls for PropertyFieldDropDown component
  */
 export default class PropertyFieldDropDownHost extends React.Component<IPropertyFieldDropDownHostProps, IPropertyFieldDropDownHostState> {
-	private options: IDropdownOption[] = [];
 	private selectedKey: string;
 
 	private latestValidateValue: string;
@@ -49,21 +48,21 @@ export default class PropertyFieldDropDownHost extends React.Component<IProperty
 		this.props.loader().then((response: IDropdownOption[]) => {
 			// Start mapping the list that are selected
 			response.map((opt: IDropdownOption) => {
-				if (this.props.selectedList === opt.key) {
+				if (this.props.selectedKey === opt.key) {
 					this.selectedKey = opt.key;
 				}
-				this.options.push(opt);
+				this.props.options.push(opt);
 			});
 
 			// Option to unselect the list
-			this.options.unshift({
+			this.props.options.unshift({
 				key: EMPTY_LIST_KEY,
 				text: ''
 			});
 
 			// Update the current component state
 			this.setState({
-				options: this.options,
+				options: this.props.options,
 				selectedKey: this.selectedKey
 			});
 		});
@@ -82,7 +81,7 @@ export default class PropertyFieldDropDownHost extends React.Component<IProperty
 	 */
 	private validate(value: string): void {
 		if (this.props.onGetErrorMessage === null || this.props.onGetErrorMessage === undefined) {
-			this.notifyAfterValidate(this.props.selectedList, value);
+			this.notifyAfterValidate(this.props.selectedKey, value);
 			return;
 		}
 
@@ -96,7 +95,7 @@ export default class PropertyFieldDropDownHost extends React.Component<IProperty
 		if (typeof result !== 'undefined') {
 			if (typeof result === 'string') {
 				if (result === '') {
-					this.notifyAfterValidate(this.props.selectedList, value);
+					this.notifyAfterValidate(this.props.selectedKey, value);
 				}
 				this.setState({
 					errorMessage: result
@@ -104,7 +103,7 @@ export default class PropertyFieldDropDownHost extends React.Component<IProperty
 			} else {
 				result.then((errorMessage: string) => {
 					if (typeof errorMessage === 'undefined' || errorMessage === '') {
-						this.notifyAfterValidate(this.props.selectedList, value);
+						this.notifyAfterValidate(this.props.selectedKey, value);
 					}
 					this.setState({
 						errorMessage: errorMessage
@@ -112,7 +111,7 @@ export default class PropertyFieldDropDownHost extends React.Component<IProperty
 				});
 			}
 		} else {
-			this.notifyAfterValidate(this.props.selectedList, value);
+			this.notifyAfterValidate(this.props.selectedKey, value);
 		}
 	}
 
@@ -124,18 +123,20 @@ export default class PropertyFieldDropDownHost extends React.Component<IProperty
 		const propValue = newValue === EMPTY_LIST_KEY ? '' : newValue;
 
 		// Deselect all options
-		this.options = this.state.options.map(option => {
+		/*TODO: fix this
+		this.props.options = this.state.options.map(option => {
 			if (option.selected) {
 				option.selected = false;
 			}
 			return option;
 		});
+		*/
 		// Set the current selected key
 		this.selectedKey = newValue;
 		// Update the state
 		this.setState({
 			selectedKey: this.selectedKey,
-			options: this.options
+			options: this.props.options
 		});
 
 		if (this.props.onPropertyChange && propValue !== null) {

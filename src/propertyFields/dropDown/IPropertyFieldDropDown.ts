@@ -26,7 +26,7 @@ export interface IPropertyFieldDropDownProps {
   /**
    * Initial selected list set of the control
    */
-  selectedList?: string | string[];
+  selectedKey?: string | string[];
    /**
    * Specify if you want to have a single or mult list selector.
    */
@@ -82,8 +82,8 @@ export interface IPropertyFieldDropDownPropsInternal extends IPropertyFieldDropD
   label: string;
   targetProperty: string;
   context: IWebPartContext;
-  selectedList?: string;
-  selectedLists?: string[];
+  selectedKey?: string;
+  selectedKeys?: string[];
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
   properties: any;
   key: string;

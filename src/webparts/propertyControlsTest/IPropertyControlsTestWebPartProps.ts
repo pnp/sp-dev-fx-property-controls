@@ -10,4 +10,5 @@ export interface IPropertyControlsTestWebPartProps {
   terms: ICheckedTerms;
   datetime: IDateTimeFieldValue;
   fileUrl: string;
+  singleValue: string;
 }

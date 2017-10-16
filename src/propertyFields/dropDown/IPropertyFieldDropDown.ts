@@ -1,17 +1,11 @@
 import { IWebPartContext, IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
+import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+
 
 /**
- * Enum for specifying how the lists should be sorted
+ * Public properties of the PropertyFieldDropDown custom field
  */
-export enum PropertyFieldListPickerOrderBy {
-  Id = 1,
-  Title
-}
-
-/**
- * Public properties of the PropertyFieldListPicker custom field
- */
-export interface IPropertyFieldListPickerProps {
+export interface IPropertyFieldDropDownProps {
 
   /**
    * Property field label displayed on top
@@ -22,22 +16,18 @@ export interface IPropertyFieldListPickerProps {
    */
   context: IWebPartContext;
   /**
+   * Option list
+   */
+  options?: IDropdownOption[];
+  /**
+   * Loader for dynamac options
+   */
+  loader?: () => Promise<IDropdownOption[]>;
+  /**
    * Initial selected list set of the control
    */
   selectedList?: string | string[];
-  /**
-   * BaseTemplate ID of the lists or libaries you want to return.
-   */
-  baseTemplate?: number;
-  /**
-   * Specify if you want to include or exclude hidden lists. By default this is true.
-   */
-  includeHidden?: boolean;
-  /**
-   * Specify the property on which you want to order the retrieve set of lists.
-   */
-  orderBy?: PropertyFieldListPickerOrderBy;
-  /**
+   /**
    * Specify if you want to have a single or mult list selector.
    */
   multiSelect?: boolean;
@@ -81,22 +71,19 @@ export interface IPropertyFieldListPickerProps {
 }
 
 /**
- * Private properties of the PropertyFieldListPicker custom field.
+ * Private properties of the PropertyFieldDropDown custom field.
  * We separate public & private properties to include onRender & onDispose method waited
  * by the PropertyFieldCustom, witout asking to the developer to add it when he's using
- * the PropertyFieldListPicker.
+ * the PropertyFieldDropDown.
  *
  */
-export interface IPropertyFieldListPickerPropsInternal extends IPropertyFieldListPickerProps, IPropertyPaneCustomFieldProps {
+export interface IPropertyFieldDropDownPropsInternal extends IPropertyFieldDropDownProps, IPropertyPaneCustomFieldProps {
 
   label: string;
   targetProperty: string;
   context: IWebPartContext;
   selectedList?: string;
   selectedLists?: string[];
-  baseTemplate?: number;
-  orderBy?: PropertyFieldListPickerOrderBy;
-  includeHidden?: boolean;
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
   properties: any;
   key: string;

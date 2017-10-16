@@ -1,21 +1,22 @@
-import { IPropertyFieldListPickerPropsInternal } from './IPropertyFieldListPicker';
+import { IPropertyFieldDropDownPropsInternal } from './IPropertyFieldDropDown';
 import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 
 /**
- * PropertyFieldListPickerHost properties interface
+ * PropertyFieldDropDownHost properties interface
  */
-export interface IPropertyFieldListPickerHostProps extends IPropertyFieldListPickerPropsInternal {
+export interface IPropertyFieldDropDownHostProps extends IPropertyFieldDropDownPropsInternal {
 
   onChange: (targetProperty?: string, newValue?: any) => void;
 }
 
 /**
- * PropertyFieldListPickerHost state interface
+ * PropertyFieldDropDownHost state interface
  */
-export interface IPropertyFieldListPickerHostState {
+export interface IPropertyFieldDropDownHostState {
 
-  results: IDropdownOption[];
+  options: IDropdownOption[];
   selectedKey?: string;
+  selectedKeys?: string[];
   errorMessage?: string;
 }
 

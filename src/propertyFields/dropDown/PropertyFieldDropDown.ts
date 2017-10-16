@@ -24,7 +24,7 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 	private label: string;
 	private context: IWebPartContext;
 	private selectedKey: string;
-	private selectedKeys: string[];
+	//private selectedKeys: string[];
 	private multiSelect: boolean;
 	private options: IDropdownOption[];
 
@@ -48,14 +48,15 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 		this.properties.onRender = this.render;
 		this.label = _properties.label;
 		this.context = _properties.context;
-		this.selectedKey = _properties.selectedKey;
-		this.selectedKeys = _properties.selectedKeys;
+		//this.selectedKey = _properties.selectedKey;
+		//this.selectedKeys = _properties.selectedKeys;
 		this.multiSelect = _properties.multiSelect;
 		this.options = _properties.options;
 		this.onPropertyChange = _properties.onPropertyChange;
 		this.customProperties = _properties.properties;
 		this.key = _properties.key;
 		this.onGetErrorMessage = _properties.onGetErrorMessage;
+		this.selectedKey = _properties.properties[this.targetProperty];
 
 		if (_properties.disabled === true) {
 			this.disabled = _properties.disabled;
@@ -74,6 +75,7 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 			targetProperty: this.targetProperty,
 			context: this.context,
 			multiSelect: this.multiSelect,
+			selectedKey: this.selectedKey,
 			options: this.options,
 			onDispose: this.dispose,
 			onRender: this.render,
@@ -85,14 +87,6 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 			onGetErrorMessage: this.onGetErrorMessage,
 			deferredValidationTime: this.deferredValidationTime
 		};
-
-		if (this.multiSelect) {
-			// Multi selector
-			componentProps['selectedLists'] = this.selectedKeys;
-		} else {
-			// Single selector
-			componentProps['selectedList'] = this.selectedKey;
-		}
 		const element: React.ReactElement<IPropertyFieldDropDownHostProps> = React.createElement(PropertyFieldDropDownHost, componentProps);
 		// Calls the REACT content generator
 		ReactDom.render(element, elem);
@@ -120,8 +114,8 @@ export function PropertyFieldDropDown(targetProperty: string, properties: IPrope
 		label: properties.label,
 		targetProperty: targetProperty,
 		context: properties.context,
-		selectedKey: typeof properties.selectedKey === 'string' ? properties.selectedKey : null,
-		selectedKeys: typeof properties.selectedKey !== 'string' ? properties.selectedKey : null,
+		//selectedKey: typeof properties.selectedKey === 'string' ? properties.selectedKey : null,
+		//selectedKeys: typeof properties.selectedKey !== 'string' ? properties.selectedKey : null,
 		multiSelect: properties.multiSelect || false,
 		options: properties.options,
 		onPropertyChange: properties.onPropertyChange,

@@ -133,7 +133,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
 								}),
 								PropertyFieldDropDown('singleValue', {
 									label: 'Select a value',
-									selectedKey: this.properties.singleValue,
+									//selectedKey: this.properties.singleValue,
 									options: options,
 									// multiSelect: false,
 									disabled: false,

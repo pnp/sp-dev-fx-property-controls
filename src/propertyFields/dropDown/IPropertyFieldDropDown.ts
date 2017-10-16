@@ -26,7 +26,7 @@ export interface IPropertyFieldDropDownProps {
   /**
    * Initial selected list set of the control
    */
-  selectedKey?: string | string[];
+  //selectedKey?: string | string[];
    /**
    * Specify if you want to have a single or mult list selector.
    */

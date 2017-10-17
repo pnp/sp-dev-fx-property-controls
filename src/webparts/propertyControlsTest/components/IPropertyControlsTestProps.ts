@@ -12,4 +12,5 @@ export interface IPropertyControlsTestProps {
   terms: ICheckedTerms;
   datetime: IDateTimeFieldValue;
   singleValue: string;
+  multiValue: string[];
 }

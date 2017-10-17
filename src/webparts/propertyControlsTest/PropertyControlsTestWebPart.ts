@@ -36,7 +36,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
 				multiList: this.properties.multiList as string[] || [],
 				terms: this.properties.terms || [],
 				datetime: this.properties.datetime || { value: null, displayValue: null },
-				singleValue: this.properties.singleValue
+				singleValue: this.properties.singleValue,
+				multiValue: this.properties.multiValue
 			}
 		);
 
@@ -144,6 +145,18 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
 									onGetErrorMessage: null,
 									deferredValidationTime: 0,
 									key: 'dropDownFieldId'
+								}),
+								PropertyFieldDropDown('multiValue', {
+									label: 'Select multiple values',
+									options: options,
+									multiSelect: true,
+									disabled: false,
+									onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+									properties: this.properties,
+									context: this.context,
+									onGetErrorMessage: null,
+									deferredValidationTime: 0,
+									key: 'dropDownFieldId2'
 								})
 							]
 						}

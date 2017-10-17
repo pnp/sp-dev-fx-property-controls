@@ -11,4 +11,5 @@ export interface IPropertyControlsTestWebPartProps {
   datetime: IDateTimeFieldValue;
   fileUrl: string;
   singleValue: string;
+  multiValue: string[];
 }

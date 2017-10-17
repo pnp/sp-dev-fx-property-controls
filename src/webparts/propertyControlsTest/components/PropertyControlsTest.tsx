@@ -22,6 +22,7 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
               <p className="ms-font-m ms-fontColor-neutralDark">Term(s): {this.props.terms.map(t => t.name).join(', ')}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Date: {this.props.datetime.displayValue}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Single value: {this.props.singleValue}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Multi value: {this.props.multiValue.join(', ')}</p>
             </div>
           </div>
         </div>

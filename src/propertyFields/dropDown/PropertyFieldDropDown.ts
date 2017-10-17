@@ -23,8 +23,6 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 	//Custom properties label: string;
 	private label: string;
 	private context: IWebPartContext;
-	private selectedKey: string;
-	//private selectedKeys: string[];
 	private multiSelect: boolean;
 	private options: IDropdownOption[];
 
@@ -54,8 +52,7 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 		this.customProperties = _properties.properties;
 		this.key = _properties.key;
 		this.onGetErrorMessage = _properties.onGetErrorMessage;
-		this.selectedKey = _properties.properties[this.targetProperty];
-
+		
 		if (_properties.disabled === true) {
 			this.disabled = _properties.disabled;
 		}
@@ -73,7 +70,6 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 			targetProperty: this.targetProperty,
 			context: this.context,
 			multiSelect: this.multiSelect,
-			selectedKey: this.selectedKey,
 			options: this.options,
 			onDispose: this.dispose,
 			onRender: this.render,

@@ -119,24 +119,36 @@ export default class PropertyFieldDropDownHost extends React.Component<IProperty
 	 * Notifies the parent Web Part of a property value change
 	 */
 	private notifyAfterValidate(oldValue: string, newValue: string) {
-		// Check if the user wanted to unselect the list
-		const propValue = newValue === EMPTY_LIST_KEY ? '' : newValue;
+		var propValue: any;
+		if (this.props.multiSelect) {
+			propValue = this.state.options.filter(option => {
+				return option.selected;
+			}).map(option => {
+				return option.key;
+			});
+			// Update the state
+			this.setState({
+				selectedKeys: propValue
+			});
+		} else {
+			// Check if the user wanted to unselect the list
+			propValue = newValue === EMPTY_LIST_KEY ? '' : newValue;
 
-		// Deselect all options
-		var options = this.state.options.map(option => {
-			if (option.selected) {
-				option.selected = false;
-			}
-			return option;
-		});
-		// Set the current selected key
-		this.selectedKey = newValue;
-		// Update the state
-		this.setState({
-			selectedKey: this.selectedKey,
-			options: options
-		});
-
+			// Deselect all options
+			var options = this.state.options.map(option => {
+				if (option.selected) {
+					option.selected = false;
+				}
+				return option;
+			});
+			// Set the current selected key
+			this.selectedKey = newValue;
+			// Update the state
+			this.setState({
+				selectedKey: this.selectedKey,
+				options: options
+			});
+		}
 		if (this.props.onPropertyChange && propValue !== null) {
 			// Store the new property value
 			this.props.properties[this.props.targetProperty] = propValue;

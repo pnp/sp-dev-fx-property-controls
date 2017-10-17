@@ -24,16 +24,17 @@ export default class PropertyFieldDropDownHost extends React.Component<IProperty
 	constructor(props: IPropertyFieldDropDownHostProps) {
 		super(props);
 
-		this.state = {
-			options: this.props.options,
-			errorMessage: ''
-		};
 
 		this.async = new Async(this);
 		this.validate = this.validate.bind(this);
 		this.onChanged = this.onChanged.bind(this);
 		this.notifyAfterValidate = this.notifyAfterValidate.bind(this);
 		this.delayedValidate = this.async.debounce(this.validate, this.props.deferredValidationTime);
+		this.state = {
+			options: this.props.options,
+			errorMessage: '',
+			selectedKey: props.properties[props.targetProperty]
+		};
 
 		// Start loading options
 		if (this.props.loader) {
@@ -46,24 +47,16 @@ export default class PropertyFieldDropDownHost extends React.Component<IProperty
 	 */
 	private loadOptions(): void {
 		this.props.loader().then((response: IDropdownOption[]) => {
-			// Start mapping the list that are selected
-			response.map((opt: IDropdownOption) => {
-				if (this.props.selectedKey === opt.key) {
-					this.selectedKey = opt.key;
-				}
-				this.props.options.push(opt);
-			});
-
-			// Option to unselect the list
-			this.props.options.unshift({
-				key: EMPTY_LIST_KEY,
-				text: ''
-			});
-
+			if (!this.props.multiSelect) {
+				// Option to unselect the list
+				response.unshift({
+					key: EMPTY_LIST_KEY,
+					text: ''
+				});
+			}
 			// Update the current component state
 			this.setState({
-				options: this.props.options,
-				selectedKey: this.selectedKey
+				options: response
 			});
 		});
 	}
@@ -169,13 +162,14 @@ export default class PropertyFieldDropDownHost extends React.Component<IProperty
 			this.async.dispose();
 		}
 	}
-
 	/**
 	 * Renders the DropDown controls with Office UI Fabric
 	 */
 	public render(): JSX.Element {
 		// Renders content
 		if (this.props.multiSelect) {
+			var selectedKeys = Array.isArray(this.state.selectedKey) ? this.state.selectedKey as string[] :
+				(this.state.selectedKey ? [this.state.selectedKey] : []);
 			return (
 				<div>
 					<Label>{this.props.label}</Label>
@@ -184,7 +178,7 @@ export default class PropertyFieldDropDownHost extends React.Component<IProperty
 						label=''
 						onChanged={this.onChanged}
 						options={this.state.options}
-						selectedKeys={this.state.selectedKeys}
+						selectedKeys={selectedKeys}
 						multiSelect
 					/>
 

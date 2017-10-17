@@ -14,7 +14,7 @@ export interface IPropertyFieldDropDownProps {
   /**
    * Context of the current web part
    */
-  context: IWebPartContext;
+  context?: IWebPartContext;
   /**
    * Option list
    */
@@ -23,10 +23,6 @@ export interface IPropertyFieldDropDownProps {
    * Loader for dynamac options
    */
   loader?: () => Promise<IDropdownOption[]>;
-  /**
-   * Initial selected list set of the control
-   */
-  //selectedKey?: string | string[];
    /**
    * Specify if you want to have a single or mult list selector.
    */
@@ -36,7 +32,7 @@ export interface IPropertyFieldDropDownProps {
    * Normally this function must be always defined with the 'this.onPropertyChange'
    * method of the web part object.
    */
-  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
+  onPropertyChange?(propertyPath: string, oldValue: any, newValue: any): void;
   /**
    * Parent Web Part properties
    */

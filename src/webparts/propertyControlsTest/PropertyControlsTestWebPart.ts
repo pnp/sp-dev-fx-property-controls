@@ -141,7 +141,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
 									disabled: false,
 									onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
 									properties: this.properties,
-									context: this.context,
 									onGetErrorMessage: null,
 									deferredValidationTime: 0,
 									key: 'dropDownFieldId'
@@ -153,7 +152,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
 									disabled: false,
 									onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
 									properties: this.properties,
-									context: this.context,
 									onGetErrorMessage: null,
 									deferredValidationTime: 0,
 									key: 'dropDownFieldId2'

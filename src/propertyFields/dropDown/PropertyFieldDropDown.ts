@@ -2,8 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
 	IPropertyPaneField,
-	PropertyPaneFieldType,
-	IWebPartContext
+	PropertyPaneFieldType
 } from '@microsoft/sp-webpart-base';
 import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import PropertyFieldDropDownHost from './PropertyFieldDropDownHost';
@@ -22,7 +21,6 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 
 	//Custom properties label: string;
 	private label: string;
-	private context: IWebPartContext;
 	private multiSelect: boolean;
 	private options: IDropdownOption[];
 
@@ -45,7 +43,6 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 		this.properties.onDispose = this.dispose;
 		this.properties.onRender = this.render;
 		this.label = _properties.label;
-		this.context = _properties.context;
 		this.multiSelect = _properties.multiSelect;
 		this.options = _properties.options;
 		this.onPropertyChange = _properties.onPropertyChange;
@@ -68,7 +65,6 @@ class PropertyFieldDropDownBuilder implements IPropertyPaneField<IPropertyFieldD
 		const componentProps = {
 			label: this.label,
 			targetProperty: this.targetProperty,
-			context: this.context,
 			multiSelect: this.multiSelect,
 			options: this.options,
 			onDispose: this.dispose,
@@ -107,7 +103,6 @@ export function PropertyFieldDropDown(targetProperty: string, properties: IPrope
 	const newProperties: IPropertyFieldDropDownPropsInternal = {
 		label: properties.label,
 		targetProperty: targetProperty,
-		context: properties.context,
 		multiSelect: properties.multiSelect || false,
 		options: properties.options,
 		onPropertyChange: properties.onPropertyChange,

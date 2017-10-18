@@ -12,10 +12,6 @@ export interface IPropertyFieldDropDownProps {
    */
   label: string;
   /**
-   * Context of the current web part
-   */
-  context?: IWebPartContext;
-  /**
    * Option list
    */
   options?: IDropdownOption[];
@@ -77,7 +73,6 @@ export interface IPropertyFieldDropDownPropsInternal extends IPropertyFieldDropD
 
   label: string;
   targetProperty: string;
-  context: IWebPartContext;
   selectedKey?: string;
   selectedKeys?: string[];
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;

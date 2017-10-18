@@ -6,7 +6,7 @@ import {
 	IPropertyPaneConfiguration,
 	PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
-import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { IDropdownOption, DropdownMenuItemType } from 'office-ui-fabric-react/lib/Dropdown';
 
 import * as strings from 'PropertyControlsTestWebPartStrings';
 import PropertyControlsTest from './components/PropertyControlsTest';
@@ -21,6 +21,21 @@ import { PropertyFieldDropDown } from '../../PropertyFieldDropDown';
 const options: IDropdownOption[] = [
 	{ key: 1, text: "One" }, { key: 2, text: "Two" }, { key: 3, text: "Three" }, { key: 4, text: "Four" }
 ];
+const optionsWithHeader:IDropdownOption[] = [
+	{ key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
+	{ key: 'A', text: 'Option a' },
+	{ key: 'B', text: 'Option b' },
+	{ key: 'C', text: 'Option c' },
+	{ key: 'D', text: 'Option d' },
+	{ key: 'E', text: 'Option e' },
+	{ key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
+	{ key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
+	{ key: 'F', text: 'Option f' },
+	{ key: 'G', text: 'Option g' },
+	{ key: 'H', text: 'Option h' },
+	{ key: 'I', text: 'Option i' },
+	{ key: 'J', text: 'Option j' },
+  ];
 /**
  * Web part that can be used to test out the various property controls
  */
@@ -59,6 +74,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
 					header: {
 						description: strings.PropertyPaneDescription
 					},
+					displayGroupsAsAccordion: true,
 					groups: [
 						{
 							groupName: strings.BasicGroupName,
@@ -132,16 +148,18 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
 									onGetErrorMessage: null,
 									deferredValidationTime: 0,
 									key: 'dateTimeFieldId'
-								}),
+								})
+							]
+						},
+						{
+							groupName: "DropDown",
+							isCollapsed:true,
+							groupFields: [
 								PropertyFieldDropDown('singleValue', {
 									label: 'Select a value',
-									//selectedKey: this.properties.singleValue,
 									options: options,
-									// multiSelect: false,
-									disabled: false,
 									onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
 									properties: this.properties,
-									onGetErrorMessage: null,
 									deferredValidationTime: 0,
 									key: 'dropDownFieldId'
 								}),
@@ -149,12 +167,19 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
 									label: 'Select multiple values',
 									options: options,
 									multiSelect: true,
-									disabled: false,
 									onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
 									properties: this.properties,
-									onGetErrorMessage: null,
 									deferredValidationTime: 0,
 									key: 'dropDownFieldId2'
+								}),
+								PropertyFieldDropDown('multiValueHeader', {
+									label: 'Select multiple values',
+									options: optionsWithHeader,
+									multiSelect: true,
+									onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+									properties: this.properties,
+									deferredValidationTime: 0,
+									key: 'dropDownFieldId3'
 								})
 							]
 						}

@@ -13,4 +13,5 @@ export interface IPropertyControlsTestProps {
   datetime: IDateTimeFieldValue;
   singleValue: string;
   multiValue: string[];
+  multiValueHeader: string[];
 }

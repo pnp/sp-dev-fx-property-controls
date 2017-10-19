@@ -52,7 +52,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
 				terms: this.properties.terms || [],
 				datetime: this.properties.datetime || { value: null, displayValue: null },
 				singleValue: this.properties.singleValue as string,
-				multiValue: this.properties.multiValue as string[] || []
+				multiValue: this.properties.multiValue as string[] || [],
+				multiValueHeader: this.properties.multiValueHeader as string[] || []
 			}
 		);
 
@@ -156,29 +157,26 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
 							isCollapsed:true,
 							groupFields: [
 								PropertyFieldDropDown('singleValue', {
-									label: 'Select a value',
+									label: 'Single value',
 									options: options,
 									onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
 									properties: this.properties,
-									deferredValidationTime: 0,
 									key: 'dropDownFieldId'
 								}),
 								PropertyFieldDropDown('multiValue', {
-									label: 'Select multiple values',
+									label: 'Multiple values',
 									options: options,
 									multiSelect: true,
 									onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
 									properties: this.properties,
-									deferredValidationTime: 0,
 									key: 'dropDownFieldId2'
 								}),
 								PropertyFieldDropDown('multiValueHeader', {
-									label: 'Select multiple values',
+									label: 'Grouped values',
 									options: optionsWithHeader,
 									multiSelect: true,
 									onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
 									properties: this.properties,
-									deferredValidationTime: 0,
 									key: 'dropDownFieldId3'
 								})
 							]

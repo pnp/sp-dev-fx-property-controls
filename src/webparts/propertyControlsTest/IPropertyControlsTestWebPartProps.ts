@@ -12,4 +12,5 @@ export interface IPropertyControlsTestWebPartProps {
   fileUrl: string;
   singleValue: string;
   multiValue: string[];
+  multiValueHeader: string[];
 }

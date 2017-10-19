@@ -1,3 +1,4 @@
+import { DayOfWeek } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
 
 /**
@@ -68,6 +69,10 @@ export interface IPropertyFieldDateTimePickerProps {
    */
   timeConvention?: TimeConvention;
   /**
+   * Specify the first day of the week for your locale.
+   */
+  firstDayOfWeek?: DayOfWeek;
+  /**
    * Defines a onPropertyChange function to raise when the selected date changed.
    * Normally this function must be always defined with the 'this.onPropertyChange'
    * method of the web part object.
@@ -118,6 +123,7 @@ export interface IPropertyFieldDateTimePickerPropsInternal extends IPropertyPane
   formatDate?: (date: Date) => string;
   dateConvention?: DateConvention;
   timeConvention?: TimeConvention;
+  firstDayOfWeek?: DayOfWeek;
   onRender(elem: HTMLElement): void;
   onDispose(elem: HTMLElement): void;
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;

@@ -36,7 +36,9 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
     this.onChanged = this.onChanged.bind(this);
     this.notifyAfterValidate = this.notifyAfterValidate.bind(this);
     this.delayedValidate = this.async.debounce(this.validate, this.props.deferredValidationTime);
+  }
 
+  public componentDidMount(): void {
     // Start retrieving the SharePoint lists
     this.loadLists();
   }

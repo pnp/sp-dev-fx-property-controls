@@ -1,3 +1,4 @@
+import { DayOfWeek } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
@@ -25,6 +26,7 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
   private formatDate: (date: Date) => string;
   private dateConvention: DateConvention;
   private timeConvention: TimeConvention;
+  private firstDayOfWeek: DayOfWeek;
   private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
   private customProperties: any;
   private key: string;
@@ -67,6 +69,12 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
     } else {
       this.timeConvention = TimeConvention.Hours24;
     }
+
+    if (typeof _properties.firstDayOfWeek !== 'undefined') {
+      this.firstDayOfWeek = _properties.firstDayOfWeek;
+    } else {
+      this.firstDayOfWeek = DayOfWeek.Sunday;
+    }
   }
 
   /**
@@ -82,6 +90,7 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
       formatDate: this.formatDate,
       dateConvention: this.dateConvention,
       timeConvention: this.timeConvention,
+      firstDayOfWeek: this.firstDayOfWeek,
       onDispose: this.dispose,
       onRender: this.render,
       onPropertyChange: this.onPropertyChange,
@@ -119,6 +128,7 @@ export function PropertyFieldDateTimePicker(targetProperty: string, properties: 
     initialDate: properties.initialDate,
     dateConvention: properties.dateConvention,
     timeConvention: properties.timeConvention,
+    firstDayOfWeek: properties.firstDayOfWeek,
     onPropertyChange: properties.onPropertyChange,
     properties: properties.properties,
     formatDate: properties.formatDate,

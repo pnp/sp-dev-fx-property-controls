@@ -1,3 +1,4 @@
+import { DayOfWeek } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
@@ -26,7 +27,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
       {
         context: this.context,
         people: this.properties.people || [],
-        list: this.properties.singleList as string,
+        list: this.properties.singleList as string || "",
         multiList: this.properties.multiList as string[] || [],
         terms: this.properties.terms || [],
         datetime: this.properties.datetime || { value: null, displayValue: null }
@@ -114,11 +115,12 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                 }),
                 PropertyFieldDateTimePicker('datetime', {
                   label: 'Select the date and time',
-                  disabled: true,
+                  disabled: false,
                   initialDate: this.properties.datetime,
                   // formatDate: this._formatDateIso,
                   dateConvention: DateConvention.DateTime,
                   timeConvention: TimeConvention.Hours12,
+                  firstDayOfWeek: DayOfWeek.Monday,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
                   onGetErrorMessage: null,

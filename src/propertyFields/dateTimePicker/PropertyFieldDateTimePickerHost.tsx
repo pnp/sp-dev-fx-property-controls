@@ -323,8 +323,14 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
                 <Label className={styles.fieldLabel}>{strings.DateTimePickerDate}</Label>
               </td>
               <td>
-                <DatePicker disabled={this.props.disabled} value={this.state.day} strings={dateStrings}
-                  isMonthPickerVisible={true} onSelectDate={this._onSelectDate} allowTextInput={false} />
+                <DatePicker
+                  disabled={this.props.disabled}
+                  value={this.state.day}
+                  strings={dateStrings}
+                  isMonthPickerVisible={true}
+                  onSelectDate={this._onSelectDate}
+                  allowTextInput={false}
+                  firstDayOfWeek={this.props.firstDayOfWeek} />
               </td>
             </tr>
 

@@ -27,6 +27,7 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 				<ColorPicker
 					color={this.props.selectedColor}
 					onColorChanged={this.props.onColorChanged}
+					alphaSliderHidden={this.props.alphaSliderHidden}
 					/>
 			</div>
 		);

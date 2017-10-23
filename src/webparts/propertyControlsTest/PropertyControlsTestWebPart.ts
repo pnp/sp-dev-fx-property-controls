@@ -43,7 +43,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
   }
 
   protected get disableReactivePropertyChanges(): boolean {
-    return true;
+    return false;
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -132,6 +132,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   selectedColor: this.properties.color,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
+                  //alphaSliderHidden: true,
                   key: 'colorFieldId'
                 })
               ]

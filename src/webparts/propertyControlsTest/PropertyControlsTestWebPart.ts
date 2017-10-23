@@ -14,6 +14,7 @@ import { PropertyFieldPeoplePicker, PrincipalType } from '../../PropertyFieldPeo
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '../../PropertyFieldListPicker';
 import { PropertyFieldTermPicker } from '../../PropertyFieldTermPicker';
 import { PropertyFieldDateTimePicker, DateConvention, TimeConvention } from '../../PropertyFieldDateTimePicker';
+import { PropertyFieldColorPicker } from '../../PropertyFieldColorPicker';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -29,7 +30,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         list: this.properties.singleList as string,
         multiList: this.properties.multiList as string[] || [],
         terms: this.properties.terms || [],
-        datetime: this.properties.datetime || { value: null, displayValue: null }
+        datetime: this.properties.datetime || { value: null, displayValue: null },
+        color: this.properties.color
       }
     );
 
@@ -124,6 +126,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   key: 'dateTimeFieldId'
+                }),
+                PropertyFieldColorPicker('color', {
+                  label: 'Color',
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  key: 'colorFieldId'
                 })
               ]
             }

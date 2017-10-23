@@ -1,3 +1,5 @@
+$ms-neutralDark:                "[theme:neutralDark, default:#212121]";
+
 .propertyControlsTest {
   .container {
     max-width: 700px;
@@ -13,6 +15,17 @@
     max-width: 715px;
     margin: 5px auto 5px auto;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .colorBox {
+    width: 40px;
+    line-height: 14px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $ms-neutralDark;
+    display: inline-block;
+    margin-right: 8px;
+    margin-left: 4px;
   }
 
   .button {

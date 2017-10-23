@@ -36,6 +36,11 @@ export interface IPropertyFieldColorPickerProps {
 	 * An UNIQUE key indicates the identity of this control
 	 */
 	key: string;
+
+	/**
+	 * Parent Web Part properties
+	 */
+	properties: any;
 }
 
 export interface IPropertyFieldColorPickerPropsInternal extends IPropertyFieldColorPickerProps, IPropertyPaneCustomFieldProps {

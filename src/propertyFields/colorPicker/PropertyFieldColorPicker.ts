@@ -18,6 +18,8 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 	public targetProperty: string;
 	public properties: IPropertyFieldColorPickerPropsInternal;
 	private elem: HTMLElement;
+	private color: string;
+	private changeCB?: (targetProperty?: string, newValue?: any) => void;
 
 	public constructor(_targetProperty: string, _properties: IPropertyFieldColorPickerProps) {
 		this.targetProperty = _targetProperty;
@@ -28,6 +30,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			selectedColor: _properties.selectedColor,
 			disabled: _properties.disabled,
 			alphaSliderHidden: _properties.alphaSliderHidden,
+			properties: _properties.properties,
 			onRender: this.onRender.bind(this)
 		};
 	}
@@ -40,23 +43,31 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 		this.onRender(this.elem);
 	}
 
-	private onRender(elem: HTMLElement): void {
+	private onRender(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
 		if (!this.elem) {
 			this.elem = elem;
 		}
+		this.changeCB = changeCallback;
 
 		const element: React.ReactElement<IPropertyFieldColorPickerHostProps> = React.createElement(PropertyFieldColorPickerHost, {
 			label: this.properties.label,
 			alphaSliderHidden: this.properties.alphaSliderHidden,
 			disabled: this.properties.disabled,
-			selectedColor: this.properties.selectedColor,
+			selectedColor: this.properties.selectedColor || '#FFFFFF',
 			onColorChanged: this.onColorChanged.bind(this)
 		});
 		ReactDom.render(element, elem);
 	}
 
-	private onColorChanged(color: string): void {
-
+	private onColorChanged(newColor: string): void {
+		if (this.properties.onPropertyChange && newColor !== null) {
+			this.properties.onPropertyChange(this.targetProperty, this.color, newColor);
+			this.color = newColor;
+			this.properties.properties[this.targetProperty] = newColor;
+			if (typeof this.changeCB !== 'undefined' && this.changeCB !== null) {
+				this.changeCB(this.targetProperty, newColor);
+			}
+		}
 	}
 }
 

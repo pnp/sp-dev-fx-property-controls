@@ -129,7 +129,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                 }),
                 PropertyFieldColorPicker('color', {
                   label: 'Color',
-                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  selectedColor: this.properties.color,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
                   key: 'colorFieldId'
                 })
               ]

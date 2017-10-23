@@ -5,6 +5,7 @@ import {
   PropertyPaneFieldType
 } from '@microsoft/sp-webpart-base';
 import { 
+	PropertyFieldColorPickerStyle,
 	IPropertyFieldColorPickerProps,
 	IPropertyFieldColorPickerPropsInternal
 } from './IPropertyFieldColorPicker';
@@ -31,6 +32,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			disabled: _properties.disabled,
 			alphaSliderHidden: _properties.alphaSliderHidden,
 			properties: _properties.properties,
+			style: _properties.style,
 			onRender: this.onRender.bind(this)
 		};
 	}
@@ -54,6 +56,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			alphaSliderHidden: this.properties.alphaSliderHidden,
 			disabled: this.properties.disabled,
 			selectedColor: this.properties.selectedColor || '#FFFFFF',
+			style: this.properties.style || PropertyFieldColorPickerStyle.Inline,
 			onColorChanged: this.onColorChanged.bind(this)
 		});
 		ReactDom.render(element, elem);

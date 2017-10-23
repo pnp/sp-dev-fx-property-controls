@@ -1,3 +1,5 @@
+import { PropertyFieldColorPickerStyle } from './IPropertyFieldColorPicker';
+
 /**
  * PropertyFieldColorPickerHost properties interface
  */
@@ -6,6 +8,7 @@ export interface IPropertyFieldColorPickerHostProps {
 	alphaSliderHidden: boolean;
 	disabled: boolean;
 	selectedColor: string;
+	style: PropertyFieldColorPickerStyle;
 	onColorChanged: (color: string) => void;
 }
 
@@ -14,4 +17,5 @@ export interface IPropertyFieldColorPickerHostProps {
  */
 export interface IPropertyFieldColorPickerHostState {
 	errorMessage?: string;
+	inlinePickerShowing: boolean;
 }

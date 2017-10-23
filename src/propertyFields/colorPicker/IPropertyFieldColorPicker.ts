@@ -1,6 +1,14 @@
 import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
 
 /**
+ * Enum for specifying how the control should be shown
+ */
+export enum PropertyFieldColorPickerStyle {
+	Full = 1,
+	Inline
+}
+
+/**
  * Public properties of the PropertyFieldColorPicker custom field
  */
 export interface IPropertyFieldColorPickerProps {
@@ -41,6 +49,11 @@ export interface IPropertyFieldColorPickerProps {
 	 * Parent Web Part properties
 	 */
 	properties: any;
+
+	/**
+	 * Determines how the control is displayed (defaults to inline)
+	 */
+	style?: PropertyFieldColorPickerStyle;
 }
 
 export interface IPropertyFieldColorPickerPropsInternal extends IPropertyFieldColorPickerProps, IPropertyPaneCustomFieldProps {

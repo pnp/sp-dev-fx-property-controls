@@ -14,7 +14,7 @@ import { PropertyFieldPeoplePicker, PrincipalType } from '../../PropertyFieldPeo
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '../../PropertyFieldListPicker';
 import { PropertyFieldTermPicker } from '../../PropertyFieldTermPicker';
 import { PropertyFieldDateTimePicker, DateConvention, TimeConvention } from '../../PropertyFieldDateTimePicker';
-import { PropertyFieldColorPicker } from '../../PropertyFieldColorPicker';
+import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '../../PropertyFieldColorPicker';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -133,6 +133,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
                   //alphaSliderHidden: true,
+                  //style: PropertyFieldColorPickerStyle.Full,
                   key: 'colorFieldId'
                 })
               ]

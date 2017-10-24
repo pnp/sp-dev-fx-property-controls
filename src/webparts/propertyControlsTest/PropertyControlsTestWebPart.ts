@@ -43,7 +43,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
   }
 
   protected get disableReactivePropertyChanges(): boolean {
-    return false;
+    return true;
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

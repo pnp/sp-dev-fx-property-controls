@@ -33,7 +33,7 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 							<tr>
 								<td style={{width:"100%"}}>
 									{this.state.inlinePickerShowing &&
-										<div className="ms-slideDownIn20 ms-borderColor-neutralDark">
+										<div className="ms-slideDownIn20">
 											<ColorPicker
 												color={this.props.selectedColor}
 												onColorChanged={this.props.onColorChanged}
@@ -56,11 +56,18 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 						</tbody>
 					</table>
 				}
-				{this.props.style === PropertyFieldColorPickerStyle.Full &&
+				{this.props.style === PropertyFieldColorPickerStyle.Full && !this.props.disabled &&
 					<ColorPicker
 						color={this.props.selectedColor}
 						onColorChanged={this.props.onColorChanged}
 						alphaSliderHidden={this.props.alphaSliderHidden} />
+				}
+				{this.props.style === PropertyFieldColorPickerStyle.Full && this.props.disabled &&
+					<fieldset disabled={true} className={styles.disabledCP}>
+						<ColorPicker
+							color={this.props.selectedColor}
+							alphaSliderHidden={this.props.alphaSliderHidden} />
+					</fieldset>
 				}
 			</div>
 		);

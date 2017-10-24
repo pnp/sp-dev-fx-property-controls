@@ -49,6 +49,9 @@ define([], function () {
 
     'DatepickerGoToToday': 'Today',
     'DateTimePickerDate': 'Date',
-    'DateTimePickerTime': 'Time'
+    'DateTimePickerTime': 'Time',
+
+    //ColorPicker Labels
+    'ColorPickerButtonTitle': 'Pick a Color'
   }
 });

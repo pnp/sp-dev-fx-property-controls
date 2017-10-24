@@ -7,6 +7,7 @@ import {
 	IPropertyFieldColorPickerHostState
 } from './IPropertyFieldColorPickerHost';
 import styles from './PropertyFieldColorPickerHost.module.scss';
+import * as strings from 'PropertyControlStrings';
 import { PropertyFieldColorPickerStyle } from './IPropertyFieldColorPicker';
 
 export default class PropertyFieldColorPickerHost extends React.Component<IPropertyFieldColorPickerHostProps, IPropertyFieldColorPickerHostState> {
@@ -46,7 +47,7 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 								</td>
 								<td className={styles.cpInlineRow}>
 									<IconButton
-										title="Choose Color"
+										title={strings.ColorPickerButtonTitle}
 										disabled={this.props.disabled}
 										iconProps={{ iconName: 'Color' }}
 										onClick={this.onTogglePicker} />

@@ -132,8 +132,10 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   selectedColor: this.properties.color,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
+                  //disabled: true,
                   //alphaSliderHidden: true,
                   //style: PropertyFieldColorPickerStyle.Full,
+                  //iconName: 'Precipitation',
                   key: 'colorFieldId'
                 })
               ]

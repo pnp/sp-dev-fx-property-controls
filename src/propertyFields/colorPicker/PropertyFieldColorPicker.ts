@@ -33,6 +33,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			alphaSliderHidden: _properties.alphaSliderHidden,
 			properties: _properties.properties,
 			style: _properties.style,
+			iconName: _properties.iconName,
 			onRender: this.onRender.bind(this)
 		};
 	}
@@ -57,6 +58,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			disabled: this.properties.disabled,
 			selectedColor: this.properties.selectedColor || '#FFFFFF',
 			style: this.properties.style || PropertyFieldColorPickerStyle.Inline,
+			iconName: this.properties.iconName || 'Color',
 			onColorChanged: this.onColorChanged.bind(this)
 		});
 		ReactDom.render(element, elem);

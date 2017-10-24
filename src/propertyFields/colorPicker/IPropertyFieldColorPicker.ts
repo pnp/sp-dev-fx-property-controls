@@ -54,6 +54,11 @@ export interface IPropertyFieldColorPickerProps {
 	 * Determines how the control is displayed (defaults to inline)
 	 */
 	style?: PropertyFieldColorPickerStyle;
+
+	/**
+	 * The name of the UI Fabric Font Icon to use for Inline display (defaults to Color)
+	 */
+	iconName?: string;
 }
 
 export interface IPropertyFieldColorPickerPropsInternal extends IPropertyFieldColorPickerProps, IPropertyPaneCustomFieldProps {

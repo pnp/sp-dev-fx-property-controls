@@ -49,7 +49,7 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 									<IconButton
 										title={strings.ColorPickerButtonTitle}
 										disabled={this.props.disabled}
-										iconProps={{ iconName: 'Color' }}
+										iconProps={{ iconName: this.props.iconName, ariaLabel: strings.ColorPickerButtonTitle }}
 										onClick={this.onTogglePicker} />
 								</td>
 							</tr>

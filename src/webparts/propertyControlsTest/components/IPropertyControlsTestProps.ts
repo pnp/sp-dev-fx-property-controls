@@ -12,5 +12,5 @@ export interface IPropertyControlsTestProps {
   terms: ICheckedTerms;
   datetime: IDateTimeFieldValue;
   color: string;
-  
+  spinValue: number;
 }

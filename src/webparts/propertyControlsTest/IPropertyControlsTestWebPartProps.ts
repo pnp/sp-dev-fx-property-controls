@@ -11,5 +11,5 @@ export interface IPropertyControlsTestWebPartProps {
   datetime: IDateTimeFieldValue;
   fileUrl: string;
   color: string;
-  
+  spinValue: number;
 }

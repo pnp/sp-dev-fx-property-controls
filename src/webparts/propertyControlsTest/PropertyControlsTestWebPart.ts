@@ -15,6 +15,7 @@ import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '../../P
 import { PropertyFieldTermPicker } from '../../PropertyFieldTermPicker';
 import { PropertyFieldDateTimePicker, DateConvention, TimeConvention } from '../../PropertyFieldDateTimePicker';
 import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '../../PropertyFieldColorPicker';
+import { PropertyFieldSpinButton } from '../../PropertyFieldSpinButton';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -31,7 +32,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         multiList: this.properties.multiList as string[] || [],
         terms: this.properties.terms || [],
         datetime: this.properties.datetime || { value: null, displayValue: null },
-        color: this.properties.color
+        color: this.properties.color,
+        spinValue: this.properties.spinValue
       }
     );
 
@@ -137,6 +139,12 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   //style: PropertyFieldColorPickerStyle.Full,
                   //iconName: 'Precipitation',
                   key: 'colorFieldId'
+                }),
+                PropertyFieldSpinButton('spinValue', {
+                  label: 'Spin Value',
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  key: 'spinButtonFieldId'
                 })
               ]
             }

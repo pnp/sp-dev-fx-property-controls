@@ -61,6 +61,16 @@ export interface IPropertyFieldSpinButtonProps {
 	 * The name of the UI Fabric Font Icon to use for the decrement button (defaults to ChevronDownSmall)
 	 */
 	decrementIconName?: string;
+
+	/**
+	 * An optional string value to append to the field display
+	 */
+	suffix?: string;
+
+	/**
+	 * The number of decimal places to show/allow (defaults to 0)
+	 */
+	decimalPlaces?: number;
 }
 
 export interface IPropertyFieldSpinButtonPropsInternal extends IPropertyFieldSpinButtonProps, IPropertyPaneCustomFieldProps {

@@ -26,7 +26,7 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 		this.properties = {
 			key: _properties.key,
 			label: _properties.label,
-			step: _properties.step,
+			step: _properties.step || 1,
 			min: _properties.min,
 			max: _properties.max,
 			onPropertyChange: _properties.onPropertyChange,
@@ -58,29 +58,97 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 			label: this.properties.label,
 			disabled: this.properties.disabled,
 			value: this.properties.value || this.properties.min || 0,
-			step: this.properties.step,
-			min: this.properties.min,
-			max: this.properties.max,
 			incrementIconName: this.properties.incrementIconName || 'ChevronUpSmall',
 			decrementIconName: this.properties.decrementIconName || 'ChevronDownSmall',
-			onValidate: this.onValidate.bind(this),
-			onIncrement: this.onIncrement.bind(this),
-			onDecrement: this.onDecrement.bind(this),
+			onValidate: this.validate.bind(this),
+			onIncrement: this.increment.bind(this),
+			onDecrement: this.decrement.bind(this),
 			onValueChanged: this.onValueChanged.bind(this)
 		});
 		ReactDom.render(element, elem);
 	}
 
-	private onValidate(rawValue: string): string {
-		return rawValue + "!";
+	private validate(rawValue: string): string {
+		let numValue: number = this.extractNumValue(rawValue);
+
+		return this.validateNumber(numValue);
 	}
 
-	private onIncrement(rawValue: string): string {
-		return "13";
+	private validateNumber(numValue: number): string {
+		//Check against max value
+		if(this.properties.max && numValue > this.properties.max) {
+			numValue = this.properties.max;
+		}
+		//Check against min value
+		if(this.properties.min && numValue < this.properties.min) {
+			numValue = this.properties.min;
+		}
+		return this.formatValueString(numValue);
 	}
 
-	private onDecrement(rawValue: string): string {
-		return "8";
+	private increment(rawValue: string): string {
+		let numValue: number = this.extractNumValue(rawValue);
+
+		numValue += this.properties.step;
+
+		return this.validateNumber(numValue);
+	}
+
+	private decrement(rawValue: string): string {
+		let numValue: number = this.extractNumValue(rawValue);
+		
+		numValue -= this.properties.step;
+		
+		return this.validateNumber(numValue);
+	}
+
+	private extractNumValue(rawValue: string): number {
+		let numValue: number;
+		let baseValue: string = this.removeSuffix(rawValue);
+		
+		if(isNaN(+baseValue)){
+			if(this.properties.min) {
+				numValue = Math.max(this.properties.min,0);
+			}
+			else
+			{
+				numValue = 0;
+			}
+		}
+		else
+		{
+			numValue = +baseValue;
+		}
+
+		return numValue;
+	}
+
+	private hasSuffix(rawValue: string): boolean {
+		if(!this.properties.suffix) {
+			return false;
+		}
+		let subString: string = rawValue.substr(rawValue.length - this.properties.suffix.length);
+		return subString === this.properties.suffix;
+	}
+	
+	private removeSuffix(rawValue: string): string {
+		if (!this.hasSuffix(rawValue)) {
+			return rawValue;
+		}
+
+		return rawValue.substr(0, rawValue.length - this.properties.suffix.length);
+	}
+
+	private formatValueString(numValue: number): string {
+		return this.addSuffix(numValue.toFixed(this.properties.decimalPlaces));
+	}
+
+	private addSuffix(stringValue: string): string {
+		if(!this.properties.suffix){
+			return stringValue;
+		}
+
+		return stringValue + this.properties.suffix;
 	}
 
 	private onValueChanged(newValue: number): void {

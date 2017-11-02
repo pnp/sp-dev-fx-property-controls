@@ -5,9 +5,6 @@ export interface IPropertyFieldSpinButtonHostProps {
 	label: string;
 	disabled: boolean;
 	value: number;
-	step: number;
-	min: number | undefined;
-	max: number | undefined;
 	incrementIconName: string;
 	decrementIconName: string;
 	onValidate: (value: string) => string;

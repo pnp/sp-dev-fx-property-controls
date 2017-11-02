@@ -146,6 +146,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
                   //disabled: true,
+                  suffix: 'px',
+                  //decimalPlaces: 2,
                   //incrementIconName: 'CalculatorAddition',
                   //decrementIconName: 'CalculatorSubtract',
                   key: 'spinButtonFieldId'

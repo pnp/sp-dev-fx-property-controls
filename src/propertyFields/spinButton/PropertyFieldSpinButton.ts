@@ -57,7 +57,7 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 		const element: React.ReactElement<IPropertyFieldSpinButtonHostProps> = React.createElement(PropertyFieldSpinButtonHost, {
 			label: this.properties.label,
 			disabled: this.properties.disabled,
-			value: this.properties.value || this.properties.min || 0,
+			value: this.validateNumber(this.properties.value || this.properties.min || 0),
 			incrementIconName: this.properties.incrementIconName || 'ChevronUpSmall',
 			decrementIconName: this.properties.decrementIconName || 'ChevronDownSmall',
 			onValidate: this.validate.bind(this),

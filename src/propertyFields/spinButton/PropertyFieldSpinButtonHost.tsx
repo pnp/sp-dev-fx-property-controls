@@ -28,7 +28,7 @@ export default class PropertyFieldSpinButtonHost extends React.Component<IProper
 				<SpinButton
 					 label={this.props.label}
 					 labelPosition={Position.top}
-					 value={this.props.value.toString()}
+					 value={this.props.value}
 					 onValidate={this.props.onValidate}
 					 onIncrement={this.props.onIncrement}
 					 onDecrement={this.props.onDecrement}

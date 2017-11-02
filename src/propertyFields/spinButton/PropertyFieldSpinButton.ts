@@ -4,7 +4,7 @@ import {
   IPropertyPaneField,
   PropertyPaneFieldType
 } from '@microsoft/sp-webpart-base';
-import { 
+import {
 	IPropertyFieldSpinButtonProps,
 	IPropertyFieldSpinButtonPropsInternal
 } from './IPropertyFieldSpinButton';
@@ -12,7 +12,7 @@ import { IPropertyFieldSpinButtonHostProps } from './IPropertyFieldSpinButtonHos
 import PropertyFieldSpinButtonHost from './PropertyFieldSpinButtonHost';
 
 class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFieldSpinButtonProps> {
-	
+
 	//Properties defined by IPropertyPaneField
 	public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
 	public targetProperty: string;
@@ -63,7 +63,7 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 			decrementIconName: this.properties.decrementIconName || 'ChevronDownSmall',
 			onValidate: this.validate.bind(this),
 			onIncrement: this.increment.bind(this),
-			onDecrement: this.decrement.bind(this)
+      onDecrement: this.decrement.bind(this)
 		});
 		ReactDom.render(element, elem);
 	}
@@ -75,12 +75,12 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 	}
 
 	private validateNumber(numValue: number): string {
-		//Check against max value
-		if(this.properties.max && numValue > this.properties.max) {
+		// Check against max value
+		if(typeof this.properties.max !== "undefined" && numValue > this.properties.max) {
 			numValue = this.properties.max;
 		}
-		//Check against min value
-		if(this.properties.min && numValue < this.properties.min) {
+		// Check against min value
+		if(typeof this.properties.min !== "undefined" && numValue < this.properties.min) {
 			numValue = this.properties.min;
 		}
 		//ensure matching rounding for decimals
@@ -102,27 +102,23 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 
 	private decrement(rawValue: string): string {
 		let numValue: number = this.extractNumValue(rawValue);
-		
+
 		numValue -= this.properties.step;
-		
+
 		return this.validateNumber(numValue);
 	}
 
 	private extractNumValue(rawValue: string): number {
 		let numValue: number;
 		let baseValue: string = this.removeSuffix(rawValue);
-		
+
 		if(isNaN(+baseValue)){
 			if(this.properties.min) {
 				numValue = Math.max(this.properties.min,0);
-			}
-			else
-			{
+			} else {
 				numValue = 0;
 			}
-		}
-		else
-		{
+		} else {
 			numValue = +baseValue;
 		}
 
@@ -136,7 +132,7 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 		let subString: string = rawValue.substr(rawValue.length - this.properties.suffix.length);
 		return subString === this.properties.suffix;
 	}
-	
+
 	private removeSuffix(rawValue: string): string {
 		if (!this.hasSuffix(rawValue)) {
 			return rawValue;

@@ -34,5 +34,4 @@ export default class PropertyFieldSpinButtonHost extends React.Component<IProper
 			</div>
 		);
 	}
-
 }

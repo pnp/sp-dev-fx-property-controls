@@ -10,7 +10,6 @@ export interface IPropertyFieldSpinButtonHostProps {
 	onValidate: (value: string) => string;
 	onIncrement: (value: string) => string;
 	onDecrement: (value: string) => string;
-	onValueChanged: (value: number) => void;
 }
 
 /**

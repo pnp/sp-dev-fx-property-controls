@@ -20,7 +20,7 @@ export interface IPropertyFieldSpinButtonProps {
 	/**
 	 * The number to use for the initial value (The minimum value is used by default)
 	 */
-	value?: number;
+	initialValue?: number;
 
 	/**
 	 * The difference between the two adjacent values of the SpinButton (default is 1)

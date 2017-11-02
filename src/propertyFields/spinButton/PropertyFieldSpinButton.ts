@@ -18,7 +18,7 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 	public targetProperty: string;
 	public properties: IPropertyFieldSpinButtonPropsInternal;
 	private elem: HTMLElement;
-	private value: number;
+	private svalue: number;
 	private changeCB?: (targetProperty?: string, newValue?: any) => void;
 
 	public constructor(_targetProperty: string, _properties: IPropertyFieldSpinButtonProps) {
@@ -38,6 +38,7 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 			decimalPlaces: _properties.decimalPlaces || 0,
 			onRender: this.onRender.bind(this)
 		};
+		this.svalue = _properties.initialValue || this.properties.min || 0;
 	}
 
 	public render(): void {
@@ -57,13 +58,12 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 		const element: React.ReactElement<IPropertyFieldSpinButtonHostProps> = React.createElement(PropertyFieldSpinButtonHost, {
 			label: this.properties.label,
 			disabled: this.properties.disabled,
-			value: this.validateNumber(this.properties.value || this.properties.min || 0),
+			value: this.formatValueString(this.svalue),
 			incrementIconName: this.properties.incrementIconName || 'ChevronUpSmall',
 			decrementIconName: this.properties.decrementIconName || 'ChevronDownSmall',
 			onValidate: this.validate.bind(this),
 			onIncrement: this.increment.bind(this),
-			onDecrement: this.decrement.bind(this),
-			onValueChanged: this.onValueChanged.bind(this)
+			onDecrement: this.decrement.bind(this)
 		});
 		ReactDom.render(element, elem);
 	}
@@ -82,6 +82,12 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 		//Check against min value
 		if(this.properties.min && numValue < this.properties.min) {
 			numValue = this.properties.min;
+		}
+		//ensure matching rounding for decimals
+		numValue = +numValue.toFixed(this.properties.decimalPlaces);
+		//Check for change and notify
+		if(numValue !== this.svalue) {
+			this.onValueChanged(numValue);
 		}
 		return this.formatValueString(numValue);
 	}
@@ -153,8 +159,8 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 
 	private onValueChanged(newValue: number): void {
 		if (this.properties.onPropertyChange && newValue !== null) {
-			this.properties.onPropertyChange(this.targetProperty, this.value, newValue);
-			this.value = newValue;
+			this.properties.onPropertyChange(this.targetProperty, this.svalue, newValue);
+			this.svalue = newValue;
 			this.properties.properties[this.targetProperty] = newValue;
 			if (typeof this.changeCB !== 'undefined' && this.changeCB !== null) {
 				this.changeCB(this.targetProperty, newValue);

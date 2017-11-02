@@ -10,4 +10,6 @@ export interface IPropertyControlsTestWebPartProps {
   terms: ICheckedTerms;
   datetime: IDateTimeFieldValue;
   fileUrl: string;
+  color: string;
+  spinValue: number;
 }

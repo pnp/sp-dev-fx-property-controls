@@ -49,6 +49,9 @@ declare interface IPropertyControlStrings {
   DatepickerGoToToday: string;
   DateTimePickerDate: string;
   DateTimePickerTime: string;
+
+  //ColorPicker Labels
+  ColorPickerButtonTitle: string;
 }
 
 declare module 'PropertyControlStrings' {

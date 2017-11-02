@@ -142,8 +142,12 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                 }),
                 PropertyFieldSpinButton('spinValue', {
                   label: 'Spin Value',
+                  value: this.properties.spinValue,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
+                  //disabled: true,
+                  //incrementIconName: 'CalculatorAddition',
+                  //decrementIconName: 'CalculatorSubtract',
                   key: 'spinButtonFieldId'
                 })
               ]

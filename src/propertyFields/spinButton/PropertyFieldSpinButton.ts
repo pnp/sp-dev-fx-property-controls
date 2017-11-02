@@ -32,7 +32,10 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 			onPropertyChange: _properties.onPropertyChange,
 			disabled: _properties.disabled,
 			properties: _properties.properties,
-			iconName: _properties.iconName,
+			incrementIconName: _properties.incrementIconName,
+			decrementIconName: _properties.decrementIconName,
+			suffix: _properties.suffix,
+			decimalPlaces: _properties.decimalPlaces || 0,
 			onRender: this.onRender.bind(this)
 		};
 	}
@@ -60,9 +63,24 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 			max: this.properties.max,
 			incrementIconName: this.properties.incrementIconName || 'ChevronUpSmall',
 			decrementIconName: this.properties.decrementIconName || 'ChevronDownSmall',
+			onValidate: this.onValidate.bind(this),
+			onIncrement: this.onIncrement.bind(this),
+			onDecrement: this.onDecrement.bind(this),
 			onValueChanged: this.onValueChanged.bind(this)
 		});
 		ReactDom.render(element, elem);
+	}
+
+	private onValidate(rawValue: string): string {
+		return rawValue + "!";
+	}
+
+	private onIncrement(rawValue: string): string {
+		return "13";
+	}
+
+	private onDecrement(rawValue: string): string {
+		return "8";
 	}
 
 	private onValueChanged(newValue: number): void {

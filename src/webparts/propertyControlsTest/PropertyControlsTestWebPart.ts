@@ -15,6 +15,8 @@ import { PropertyFieldPeoplePicker, PrincipalType } from '../../PropertyFieldPeo
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '../../PropertyFieldListPicker';
 import { PropertyFieldTermPicker } from '../../PropertyFieldTermPicker';
 import { PropertyFieldDateTimePicker, DateConvention, TimeConvention } from '../../PropertyFieldDateTimePicker';
+import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '../../PropertyFieldColorPicker';
+import { PropertyFieldSpinButton } from '../../PropertyFieldSpinButton';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -30,7 +32,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         list: this.properties.singleList as string || "",
         multiList: this.properties.multiList as string[] || [],
         terms: this.properties.terms || [],
-        datetime: this.properties.datetime || { value: null, displayValue: null }
+        datetime: this.properties.datetime || { value: null, displayValue: null },
+        color: this.properties.color,
+        spinValue: this.properties.spinValue
       }
     );
 
@@ -126,6 +130,32 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   key: 'dateTimeFieldId'
+                }),
+                PropertyFieldColorPicker('color', {
+                  label: 'Color',
+                  selectedColor: this.properties.color,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  //disabled: true,
+                  //alphaSliderHidden: true,
+                  //style: PropertyFieldColorPickerStyle.Full,
+                  //iconName: 'Precipitation',
+                  key: 'colorFieldId'
+                }),
+                PropertyFieldSpinButton('spinValue', {
+                  label: 'Spin Value',
+                  initialValue: this.properties.spinValue,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  //disabled: true,
+                  suffix: 'px',
+                  min: 0,
+                  max: 5,
+                  step: 0.25,
+                  decimalPlaces: 2,
+                  //incrementIconName: 'CalculatorAddition',
+                  //decrementIconName: 'CalculatorSubtract',
+                  key: 'spinButtonFieldId'
                 })
               ]
             }

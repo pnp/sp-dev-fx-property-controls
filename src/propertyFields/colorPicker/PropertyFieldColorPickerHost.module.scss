@@ -1,0 +1,15 @@
+.cpInlineTable {
+	border-spacing: 0;
+	width: 100%;
+	.cpInlineRow {
+	  vertical-align: initial;
+	}
+  }
+
+.disabledCP {
+	pointer-events: none;
+	opacity: 0.4;
+	border: none;
+	padding: 0;
+	margin: 0;
+}

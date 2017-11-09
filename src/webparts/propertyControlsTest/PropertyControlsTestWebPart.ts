@@ -18,9 +18,9 @@ import { PropertyFieldTermPicker } from '../../PropertyFieldTermPicker';
 import { PropertyFieldDateTimePicker, DateConvention, TimeConvention } from '../../PropertyFieldDateTimePicker';
 import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '../../PropertyFieldColorPicker';
 import { PropertyFieldSpinButton } from '../../PropertyFieldSpinButton';
-import { PropertyFieldDropdownInfoHeader } from '../../PropertyFieldDropdownInfoHeader';
-import { PropertyFieldTextInfoHeader } from '../../PropertyFieldTextInfoHeader';
-import { PropertyFieldToggleInfoHeader } from '../../PropertyFieldToggleInfoHeader';
+import { PropertyFieldDropdownWithCallout } from '../../PropertyFieldDropdownWithCallout';
+import { PropertyFieldTextWithCallout } from '../../PropertyFieldTextWithCallout';
+import { PropertyFieldToggleWithCallout } from '../../PropertyFieldToggleWithCallout';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -169,7 +169,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   //decrementIconName: 'CalculatorSubtract',
                   key: 'spinButtonFieldId'
                 }),
-                PropertyFieldDropdownInfoHeader('dropdownInfoHeaderKey', {
+                PropertyFieldDropdownWithCallout('dropdownInfoHeaderKey', {
                   calloutTrigger: CalloutTriggers.Hover,
                   key: 'dropdownInfoHeaderFieldId',
                   label: 'Select your house',
@@ -189,7 +189,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   selectedKey: dropdownInfoHeaderSelectedKey,
                   calloutContent: dropdownInfoHeaderCallountContent
                 }),
-                PropertyFieldTextInfoHeader('textInfoHeaderValue', {
+                PropertyFieldTextWithCallout('textInfoHeaderValue', {
                   calloutTrigger: CalloutTriggers.Hover,
                   key: 'textInfoHeaderFieldId',
                   label: 'Describe your PnP passion with few words',
@@ -197,7 +197,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   calloutWidth: 150,
                   value: this.properties.textInfoHeaderValue
                 }),
-                PropertyFieldToggleInfoHeader('toggleInfoHeaderValue', {
+                PropertyFieldToggleWithCallout('toggleInfoHeaderValue', {
                   calloutTrigger: CalloutTriggers.Click,
                   key: 'toggleInfoHeaderFieldId',
                   label: 'Select your super hero universe',

@@ -5,14 +5,14 @@ import {
 
 import { IPropertyFieldHeaderCalloutProps } from '../../common/propertyFieldHeader/IPropertyFieldHeader';
 
-export interface IPropertyFieldToggleInfoHeaderPropsInternal 
+export interface IPropertyFieldToggleWithCalloutPropsInternal
     extends IPropertyPaneCustomFieldProps, IPropertyPaneToggleProps, IPropertyFieldHeaderCalloutProps {
         key: string;
     }
 
 /**
- * Public properties of PropertyFieldToggleInfoHeader custom field
+ * Public properties of PropertyFieldToggleWithCallout custom field
  */
-export interface IPropertyFieldToggleInfoHeaderProps extends IPropertyPaneToggleProps, IPropertyFieldHeaderCalloutProps {
+export interface IPropertyFieldToggleWithCalloutProps extends IPropertyPaneToggleProps, IPropertyFieldHeaderCalloutProps {
     key: string;
 }

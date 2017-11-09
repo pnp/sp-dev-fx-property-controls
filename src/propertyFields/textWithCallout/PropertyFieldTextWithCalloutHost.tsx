@@ -5,9 +5,9 @@ import * as _ from 'lodash';
 import { TextField } from 'office-ui-fabric-react';
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 
-import {IPropertyFieldTextInfoHeaderHostProps} from './IPropertyFieldTextInfoHeaderHost';
+import {IPropertyFieldTextWithCalloutHostProps} from './IPropertyFieldTextWithCalloutHost';
 
-export default class PropertyFieldTextInfoHeaderHost extends React.Component<IPropertyFieldTextInfoHeaderHostProps, null> {
+export default class PropertyFieldTextWithCalloutHost extends React.Component<IPropertyFieldTextWithCalloutHostProps, null> {
     public render(): JSX.Element {
         return (
             <div>

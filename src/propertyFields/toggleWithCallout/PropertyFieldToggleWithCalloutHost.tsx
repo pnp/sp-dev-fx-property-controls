@@ -4,9 +4,9 @@ import { Toggle } from 'office-ui-fabric-react';
 
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 
-import { IPropertyFieldToggleInfoHeaderHostProps } from './IPropertyFieldToggleInfoHeaderHost';
+import { IPropertyFieldToggleWithCalloutHostProps } from './IPropertyFieldToggleWithCalloutHost';
 
-export default class PropertyFieldToggleInfoHeaderHost extends React.Component<IPropertyFieldToggleInfoHeaderHostProps, null> {
+export default class PropertyFieldToggleWithCalloutHost extends React.Component<IPropertyFieldToggleWithCalloutHostProps, null> {
     public render(): JSX.Element {
         return (
             <div>

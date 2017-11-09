@@ -5,12 +5,12 @@ import {
 
 import { IPropertyFieldHeaderCalloutProps } from '../../common/propertyFieldHeader/IPropertyFieldHeader';
 
-export interface IPropertyFieldTextInfoHeaderPropsInternal 
+export interface IPropertyFieldTextWithCalloutPropsInternal
     extends IPropertyPaneCustomFieldProps, IPropertyPaneTextFieldProps, IPropertyFieldHeaderCalloutProps {}
 
 /**
- * Public properties of PropertyFieldTextInfoHeader custom field
+ * Public properties of PropertyFieldTextWithCallout custom field
  */
-export interface IPropertyFieldTextInfoHeaderProps extends IPropertyPaneTextFieldProps, IPropertyFieldHeaderCalloutProps {
+export interface IPropertyFieldTextWithCalloutProps extends IPropertyPaneTextFieldProps, IPropertyFieldHeaderCalloutProps {
     key: string;
 }

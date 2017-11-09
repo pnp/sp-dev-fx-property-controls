@@ -2,24 +2,21 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
     IPropertyPaneField,
-    PropertyPaneFieldType,
-    IPropertyPaneCustomFieldProps,
-    IPropertyPaneTextFieldProps
+    PropertyPaneFieldType
 } from '@microsoft/sp-webpart-base';
 
-import PropertyFieldTextInfoHeaderHost from './PropertyFieldTextInfoHeaderHost';
+import PropertyFieldToggleWithCalloutHost from './PropertyFieldToggleWithCalloutHost';
 
-import { IPropertyFieldTextInfoHeaderPropsInternal, IPropertyFieldTextInfoHeaderProps } from './IPropertyFieldTextInfoHeader';
+import {IPropertyFieldToggleWithCalloutPropsInternal, IPropertyFieldToggleWithCalloutProps} from './IPropertyFieldToggleWithCallout';
 
-
-class PropertyFieldTextInfoHeaderBuilder implements IPropertyPaneField<IPropertyFieldTextInfoHeaderPropsInternal> {
+class PropertyFieldToggleWithCalloutBuilder implements IPropertyPaneField<IPropertyFieldToggleWithCalloutPropsInternal> {
     public targetProperty: string;
     public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
-    public properties: IPropertyFieldTextInfoHeaderPropsInternal;
+    public properties: IPropertyFieldToggleWithCalloutPropsInternal;
 
     private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
 
-    public constructor(_targetProperty: string, _properties: IPropertyFieldTextInfoHeaderPropsInternal) {
+    public constructor(_targetProperty: string, _properties: IPropertyFieldToggleWithCalloutPropsInternal) {
         this.targetProperty = _targetProperty;
         this.properties = _properties;
 
@@ -29,10 +26,10 @@ class PropertyFieldTextInfoHeaderBuilder implements IPropertyPaneField<IProperty
 
     private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
 
-        const props: IPropertyFieldTextInfoHeaderProps = <IPropertyFieldTextInfoHeaderPropsInternal>this.properties;
+        const props: IPropertyFieldToggleWithCalloutProps = <IPropertyFieldToggleWithCalloutProps>this.properties;
 
-        const element = React.createElement(PropertyFieldTextInfoHeaderHost, {
-            ...props, 
+        const element = React.createElement(PropertyFieldToggleWithCalloutHost, {
+            ...props,
             onChanged: this._onChanged.bind(this)
         });
 
@@ -54,8 +51,8 @@ class PropertyFieldTextInfoHeaderBuilder implements IPropertyPaneField<IProperty
     }
 }
 
-export function PropertyFieldTextInfoHeader(targetProperty: string, properties: IPropertyFieldTextInfoHeaderProps): IPropertyPaneField<IPropertyFieldTextInfoHeaderPropsInternal> {
-    return new PropertyFieldTextInfoHeaderBuilder(targetProperty, {
+export function PropertyFieldToggleWithCallout(targetProperty: string, properties: IPropertyFieldToggleWithCalloutProps): IPropertyPaneField<IPropertyFieldToggleWithCalloutPropsInternal> {
+    return new PropertyFieldToggleWithCalloutBuilder(targetProperty, {
         ...properties,
         onRender: null,
         onDispose: null

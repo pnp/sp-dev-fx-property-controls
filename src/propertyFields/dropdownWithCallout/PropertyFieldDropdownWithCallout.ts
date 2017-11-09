@@ -6,19 +6,19 @@ import {
     IPropertyPaneDropdownOption
 } from '@microsoft/sp-webpart-base';
 
-import PropertyFieldDropdownHost from './PropertyFieldDropdownInfoHeaderHost';
+import PropertyFieldDropdownHost from './PropertyFieldDropdownWithCalloutHost';
 
-import { IPropertyFieldDropdownInfoHeaderPropsInternal, IPropertyFieldDropdownInfoHeaderProps } from './IPropertyFieldDropdownInfoHeader';
+import { IPropertyFieldDropdownWithCalloutPropsInternal, IPropertyFieldDropdownWithCalloutProps } from './IPropertyFieldDropdownWithCallout';
 
-class PropertyFieldDropdownInfoHeaderBuilder implements IPropertyPaneField<IPropertyFieldDropdownInfoHeaderPropsInternal> {
+class PropertyFieldDropdownWithCalloutBuilder implements IPropertyPaneField<IPropertyFieldDropdownWithCalloutPropsInternal> {
     public targetProperty: string;
     public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
-    public properties: IPropertyFieldDropdownInfoHeaderPropsInternal;
-    
+    public properties: IPropertyFieldDropdownWithCalloutPropsInternal;
+
 
     private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
 
-    public constructor(_targetProperty: string, _properties: IPropertyFieldDropdownInfoHeaderPropsInternal) {
+    public constructor(_targetProperty: string, _properties: IPropertyFieldDropdownWithCalloutPropsInternal) {
         this.targetProperty = _targetProperty;
         this.properties = _properties;
 
@@ -28,7 +28,7 @@ class PropertyFieldDropdownInfoHeaderBuilder implements IPropertyPaneField<IProp
 
     private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
 
-        const props: IPropertyFieldDropdownInfoHeaderProps = <IPropertyFieldDropdownInfoHeaderProps>this.properties;
+        const props: IPropertyFieldDropdownWithCalloutProps = <IPropertyFieldDropdownWithCalloutProps>this.properties;
 
         const element = React.createElement(PropertyFieldDropdownHost, {
             ...props,
@@ -53,8 +53,8 @@ class PropertyFieldDropdownInfoHeaderBuilder implements IPropertyPaneField<IProp
     }
 }
 
-export function PropertyFieldDropdownInfoHeader(targetProperty: string, properties: IPropertyFieldDropdownInfoHeaderProps): IPropertyPaneField<IPropertyFieldDropdownInfoHeaderPropsInternal> {
-    return new PropertyFieldDropdownInfoHeaderBuilder(targetProperty, {
+export function PropertyFieldDropdownWithCallout(targetProperty: string, properties: IPropertyFieldDropdownWithCalloutProps): IPropertyPaneField<IPropertyFieldDropdownWithCalloutPropsInternal> {
+    return new PropertyFieldDropdownWithCalloutBuilder(targetProperty, {
         ...properties,
         onRender: null,
         onDispose: null

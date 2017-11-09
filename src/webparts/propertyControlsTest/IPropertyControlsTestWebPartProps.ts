@@ -12,4 +12,7 @@ export interface IPropertyControlsTestWebPartProps {
   fileUrl: string;
   color: string;
   spinValue: number;
+  dropdownInfoHeaderKey: string;
+  textInfoHeaderValue: string;
+  toggleInfoHeaderValue: boolean;
 }

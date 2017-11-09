@@ -11,12 +11,16 @@ import * as strings from 'PropertyControlsTestWebPartStrings';
 import PropertyControlsTest from './components/PropertyControlsTest';
 import { IPropertyControlsTestProps } from './components/IPropertyControlsTestProps';
 import { IPropertyControlsTestWebPartProps } from './IPropertyControlsTestWebPartProps';
+import { CalloutTriggers } from '../../PropertyFieldHeader';
 import { PropertyFieldPeoplePicker, PrincipalType } from '../../PropertyFieldPeoplePicker';
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '../../PropertyFieldListPicker';
 import { PropertyFieldTermPicker } from '../../PropertyFieldTermPicker';
 import { PropertyFieldDateTimePicker, DateConvention, TimeConvention } from '../../PropertyFieldDateTimePicker';
 import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '../../PropertyFieldColorPicker';
 import { PropertyFieldSpinButton } from '../../PropertyFieldSpinButton';
+import { PropertyFieldDropdownWithCallout } from '../../PropertyFieldDropdownWithCallout';
+import { PropertyFieldTextWithCallout } from '../../PropertyFieldTextWithCallout';
+import { PropertyFieldToggleWithCallout } from '../../PropertyFieldToggleWithCallout';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -34,7 +38,10 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         terms: this.properties.terms || [],
         datetime: this.properties.datetime || { value: null, displayValue: null },
         color: this.properties.color,
-        spinValue: this.properties.spinValue
+        spinValue: this.properties.spinValue,
+        dropdownInfoHeaderKey: this.properties.dropdownInfoHeaderKey,
+        textInfoHeaderValue: this.properties.textInfoHeaderValue,
+        toggleInfoHeaderValue: this.properties.toggleInfoHeaderValue
       }
     );
 
@@ -50,6 +57,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+
+    const dropdownInfoHeaderSelectedKey: string = this.properties.dropdownInfoHeaderKey || 'gryffindor';
+    const dropdownInfoHeaderCallountContent: JSX.Element = this.getDropdownInfoHeaderCalloutContent();
+
+
     return {
       pages: [
         {
@@ -156,6 +168,43 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   //incrementIconName: 'CalculatorAddition',
                   //decrementIconName: 'CalculatorSubtract',
                   key: 'spinButtonFieldId'
+                }),
+                PropertyFieldDropdownWithCallout('dropdownInfoHeaderKey', {
+                  calloutTrigger: CalloutTriggers.Hover,
+                  key: 'dropdownInfoHeaderFieldId',
+                  label: 'Select your house',
+                  options: [{
+                    key: 'gryffindor',
+                    text: 'Gryffindor'
+                  }, {
+                    key: 'hufflepuff',
+                    text: 'Hufflepuff'
+                  }, {
+                    key: 'ravenclaw',
+                    text: 'Ravenclaw'
+                  }, {
+                    key: 'slytherin',
+                    text: 'Slytherin'
+                  }],
+                  selectedKey: dropdownInfoHeaderSelectedKey,
+                  calloutContent: dropdownInfoHeaderCallountContent
+                }),
+                PropertyFieldTextWithCallout('textInfoHeaderValue', {
+                  calloutTrigger: CalloutTriggers.Hover,
+                  key: 'textInfoHeaderFieldId',
+                  label: 'Describe your PnP passion with few words',
+                  calloutContent: React.createElement('span', {}, 'You can describe your passion with such words as strong, cosmic, all-absorbing, etc.'),
+                  calloutWidth: 150,
+                  value: this.properties.textInfoHeaderValue
+                }),
+                PropertyFieldToggleWithCallout('toggleInfoHeaderValue', {
+                  calloutTrigger: CalloutTriggers.Click,
+                  key: 'toggleInfoHeaderFieldId',
+                  label: 'Select your super hero universe',
+                  calloutContent: React.createElement('p', {}, 'Select one of two universes of super heroes: DC comics with Superman, Batman, Wonder Woman, etc.; or Marvel with X-Men, Spider-Man, Avengers, etc.'),
+                  onText: 'Marvel',
+                  offText: 'DC Comics',
+                  checked: this.properties.toggleInfoHeaderValue
                 })
               ]
             }
@@ -163,5 +212,16 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         }
       ]
     };
+  }
+
+  private getDropdownInfoHeaderCalloutContent(): JSX.Element {
+    const selectedKey: string = this.properties.dropdownInfoHeaderKey;
+
+    if (selectedKey) {
+      return React.createElement('div', {}, `you have selected ${selectedKey}`);
+    }
+    else {
+      return React.createElement('div', {}, `you haven't selecte any house`);
+    }
   }
 }

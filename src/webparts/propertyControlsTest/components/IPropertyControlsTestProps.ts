@@ -13,4 +13,7 @@ export interface IPropertyControlsTestProps {
   datetime: IDateTimeFieldValue;
   color: string;
   spinValue: number;
+  dropdownInfoHeaderKey: string;
+  textInfoHeaderValue: string;
+  toggleInfoHeaderValue: boolean;
 }

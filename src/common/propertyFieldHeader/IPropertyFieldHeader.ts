@@ -4,7 +4,7 @@ import * as React from 'react';
  * Enum to describe possible events to show callout
  */
 export enum CalloutTriggers {
-    Click,
+    Click = 1,
     Hover
 }
 

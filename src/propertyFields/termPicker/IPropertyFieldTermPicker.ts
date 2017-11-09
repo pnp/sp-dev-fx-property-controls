@@ -104,7 +104,7 @@ export interface IPropertyFieldTermPickerProps {
   /**
    * An UNIQUE key indicates the identity of this control
    */
-  key?: string;
+  key: string;
   /**
    * Whether the property pane field is enabled or not.
    */
@@ -138,19 +138,7 @@ export interface IPropertyFieldTermPickerProps {
  */
 export interface IPropertyFieldTermPickerPropsInternal extends IPropertyFieldTermPickerProps {
 
-  label: string;
   targetProperty: string;
-  panelTitle: string;
-  allowMultipleSelections?: boolean;
-  initialValues?: ICheckedTerms;
-  excludeSystemGroup?: boolean;
-  context: IWebPartContext;
   onRender(elem: HTMLElement): void;
   onDispose(elem: HTMLElement): void;
-  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
-  properties: any;
-  key: string;
-  disabled?: boolean;
-  onGetErrorMessage?: (value: ICheckedTerms) => string | Promise<string>;
-  deferredValidationTime?: number;
 }

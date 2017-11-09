@@ -99,25 +99,12 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
  * @param properties - Strongly typed people Picker properties.
  */
 export function PropertyFieldPeoplePicker(targetProperty: string, properties: IPropertyFieldPeoplePickerProps): IPropertyPaneField<IPropertyFieldPeoplePickerPropsInternal> {
-
-  // Create an internal properties object from the given properties
-  const newProperties: IPropertyFieldPeoplePickerPropsInternal = {
-    label: properties.label,
-    disabled: properties.disabled,
-    targetProperty: targetProperty,
-    onPropertyChange: properties.onPropertyChange,
-    context: properties.context,
-    initialData: properties.initialData,
-    allowDuplicate: properties.allowDuplicate,
-    principalType: properties.principalType,
-    properties: properties.properties,
-    onDispose: null,
-    onRender: null,
-    key: properties.key,
-    onGetErrorMessage: properties.onGetErrorMessage,
-    deferredValidationTime: properties.deferredValidationTime
-  };
   // Calls the PropertyFieldPeoplePicker builder object
   // This object will simulate a PropertyFieldCustom to manage his rendering process
-  return new PropertyFieldPeoplePickerBuilder(targetProperty, newProperties);
+  return new PropertyFieldPeoplePickerBuilder(targetProperty, {
+    ...properties,
+    targetProperty: targetProperty,
+    onDispose: null,
+    onRender: null
+  });
 }

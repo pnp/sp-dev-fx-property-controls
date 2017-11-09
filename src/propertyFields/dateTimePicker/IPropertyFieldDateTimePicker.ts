@@ -114,20 +114,9 @@ export interface IPropertyFieldDateTimePickerProps {
  * the PropertyFieldDateTimePicker.
  *
  */
-export interface IPropertyFieldDateTimePickerPropsInternal extends IPropertyPaneCustomFieldProps {
+export interface IPropertyFieldDateTimePickerPropsInternal extends IPropertyFieldDateTimePickerProps {
 
-  label: string;
-  disabled: boolean;
-  initialDate?: IDateTimeFieldValue;
   targetProperty: string;
-  formatDate?: (date: Date) => string;
-  dateConvention?: DateConvention;
-  timeConvention?: TimeConvention;
-  firstDayOfWeek?: DayOfWeek;
   onRender(elem: HTMLElement): void;
   onDispose(elem: HTMLElement): void;
-  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
-  properties: any;
-  onGetErrorMessage?: (value: string) => string | Promise<string>;
-  deferredValidationTime?: number;
 }

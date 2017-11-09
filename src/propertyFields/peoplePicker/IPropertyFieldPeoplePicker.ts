@@ -130,17 +130,9 @@ export interface IPropertyFieldPeoplePickerProps {
  * the PropertyFieldPeoplePicker.
  *
  */
-export interface IPropertyFieldPeoplePickerPropsInternal extends IPropertyPaneCustomFieldProps, IPropertyPaneCustomFieldProps {
+export interface IPropertyFieldPeoplePickerPropsInternal extends IPropertyFieldPeoplePickerProps {
 
-  label: string;
-  disabled: boolean;
   targetProperty: string;
-  context: IWebPartContext;
-  initialData?: IPropertyFieldGroupOrPerson[];
-  allowDuplicate?: boolean;
-  principalType?: PrincipalType[];
-  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
-  properties: any;
-  onGetErrorMessage?: (value: IPropertyFieldGroupOrPerson[]) => string | Promise<string>;
-  deferredValidationTime?: number;
+  onRender(elem: HTMLElement): void;
+  onDispose(elem: HTMLElement): void;
 }

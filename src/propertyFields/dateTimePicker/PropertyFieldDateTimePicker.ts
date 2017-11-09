@@ -119,26 +119,12 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
  * @param properties - Strongly typed custom field properties.
  */
 export function PropertyFieldDateTimePicker(targetProperty: string, properties: IPropertyFieldDateTimePickerProps): IPropertyPaneField<IPropertyFieldDateTimePickerPropsInternal> {
-
-  // Create an internal properties object from the given properties
-  const newProperties: IPropertyFieldDateTimePickerPropsInternal = {
-    label: properties.label,
-    disabled: properties.disabled,
-    targetProperty: targetProperty,
-    initialDate: properties.initialDate,
-    dateConvention: properties.dateConvention,
-    timeConvention: properties.timeConvention,
-    firstDayOfWeek: properties.firstDayOfWeek,
-    onPropertyChange: properties.onPropertyChange,
-    properties: properties.properties,
-    formatDate: properties.formatDate,
-    onDispose: null,
-    onRender: null,
-    key: properties.key,
-    onGetErrorMessage: properties.onGetErrorMessage,
-    deferredValidationTime: properties.deferredValidationTime
-  };
   // Calls the PropertyFieldDateTimePicker builder object
   // This object will simulate a PropertyFieldCustom to manage his rendering process
-  return new PropertyFieldDateTimePickerBuilder(targetProperty, newProperties);
+  return new PropertyFieldDateTimePickerBuilder(targetProperty, {
+    ...properties,
+    targetProperty: targetProperty,
+    onDispose: null,
+    onRender: null
+  });
 }

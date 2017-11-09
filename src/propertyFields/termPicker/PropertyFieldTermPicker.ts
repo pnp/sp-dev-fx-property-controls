@@ -111,25 +111,12 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
  * @param properties - Strongly typed SPList Picker properties.
  */
 export function PropertyFieldTermPicker(targetProperty: string, properties: IPropertyFieldTermPickerProps): IPropertyPaneField<IPropertyFieldTermPickerPropsInternal> {
-  // Create an internal properties object from the given properties
-  const newProperties: IPropertyFieldTermPickerPropsInternal = {
-    label: properties.label,
-    targetProperty: targetProperty,
-    panelTitle: properties.panelTitle,
-    allowMultipleSelections: properties.allowMultipleSelections,
-    initialValues: properties.initialValues,
-    excludeSystemGroup: properties.excludeSystemGroup,
-    context: properties.context,
-    onPropertyChange: properties.onPropertyChange,
-    properties: properties.properties,
-    onDispose: null,
-    onRender: null,
-    key: properties.key,
-    disabled: properties.disabled,
-    onGetErrorMessage: properties.onGetErrorMessage,
-    deferredValidationTime: properties.deferredValidationTime
-  };
   // Calls the PropertyFieldTermPicker builder object
   // This object will simulate a PropertyFieldCustom to manage his rendering process
-  return new PropertyFieldTermPickerBuilder(targetProperty, newProperties);
+  return new PropertyFieldTermPickerBuilder(targetProperty, {
+    ...properties,
+    targetProperty: targetProperty,
+    onRender: null,
+    onDispose: null
+  });
 }

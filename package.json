@@ -1,7 +1,7 @@
 {
   "name": "@pnp/spfx-property-controls",
   "description": "Reusable property pane controls for SharePoint Framework solutions",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:SharePoint/sp-dev-fx-property-controls"
+    "url": "https://github.com/SharePoint/sp-dev-fx-property-controls"
   },
   "license": "MIT",
   "keywords": [

@@ -21,6 +21,8 @@ import { PropertyFieldSpinButton } from '../../PropertyFieldSpinButton';
 import { PropertyFieldDropdownWithCallout } from '../../PropertyFieldDropdownWithCallout';
 import { PropertyFieldTextWithCallout } from '../../PropertyFieldTextWithCallout';
 import { PropertyFieldToggleWithCallout } from '../../PropertyFieldToggleWithCallout';
+import { PropertyFieldSliderWithCallout } from '../../PropertyFieldSliderWithCallout';
+import { PropertyFieldChoiceGroupWithCallout } from '../../PropertyFieldChoiceGroupWithCallout';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -39,9 +41,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         datetime: this.properties.datetime || { value: null, displayValue: null },
         color: this.properties.color,
         spinValue: this.properties.spinValue,
-        dropdownInfoHeaderKey: this.properties.dropdownInfoHeaderKey,
-        textInfoHeaderValue: this.properties.textInfoHeaderValue,
-        toggleInfoHeaderValue: this.properties.toggleInfoHeaderValue
+        dropdownWithCalloutKey: this.properties.dropdownWithCalloutKey,
+        textWithCalloutValue: this.properties.textWithCalloutValue,
+        toggleWithCalloutValue: this.properties.toggleWithCalloutValue,
+        sliderWithCalloutValue: this.properties.sliderWithCalloutValue,
+        choiceGroupWithCalloutValue: this.properties.choiceGroupWithCalloutValue
       }
     );
 
@@ -58,8 +62,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
 
-    const dropdownInfoHeaderSelectedKey: string = this.properties.dropdownInfoHeaderKey || 'gryffindor';
-    const dropdownInfoHeaderCallountContent: JSX.Element = this.getDropdownInfoHeaderCalloutContent();
+    const dropdownWithCalloutSelectedKey: string = this.properties.dropdownWithCalloutKey || 'gryffindor';
+    const dropdownWithCalloutCallountContent: JSX.Element = this.getDropdownInfoHeaderCalloutContent();
 
 
     return {
@@ -169,9 +173,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   //decrementIconName: 'CalculatorSubtract',
                   key: 'spinButtonFieldId'
                 }),
-                PropertyFieldDropdownWithCallout('dropdownInfoHeaderKey', {
+                PropertyFieldDropdownWithCallout('dropdownWithCalloutKey', {
                   calloutTrigger: CalloutTriggers.Hover,
-                  key: 'dropdownInfoHeaderFieldId',
+                  key: 'dropdownWithCalloutFieldId',
                   label: 'Select your house',
                   options: [{
                     key: 'gryffindor',
@@ -186,25 +190,56 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                     key: 'slytherin',
                     text: 'Slytherin'
                   }],
-                  selectedKey: dropdownInfoHeaderSelectedKey,
-                  calloutContent: dropdownInfoHeaderCallountContent
+                  selectedKey: dropdownWithCalloutSelectedKey,
+                  calloutContent: dropdownWithCalloutCallountContent
                 }),
-                PropertyFieldTextWithCallout('textInfoHeaderValue', {
+                PropertyFieldTextWithCallout('textWithCalloutValue', {
                   calloutTrigger: CalloutTriggers.Hover,
-                  key: 'textInfoHeaderFieldId',
+                  key: 'textWithCalloutFieldId',
                   label: 'Describe your PnP passion with few words',
                   calloutContent: React.createElement('span', {}, 'You can describe your passion with such words as strong, cosmic, all-absorbing, etc.'),
                   calloutWidth: 150,
-                  value: this.properties.textInfoHeaderValue
+                  value: this.properties.textWithCalloutValue
                 }),
-                PropertyFieldToggleWithCallout('toggleInfoHeaderValue', {
+                PropertyFieldToggleWithCallout('toggleWithCalloutValue', {
                   calloutTrigger: CalloutTriggers.Click,
-                  key: 'toggleInfoHeaderFieldId',
+                  key: 'toggleWithCalloutFieldId',
                   label: 'Select your super hero universe',
                   calloutContent: React.createElement('p', {}, 'Select one of two universes of super heroes: DC comics with Superman, Batman, Wonder Woman, etc.; or Marvel with X-Men, Spider-Man, Avengers, etc.'),
                   onText: 'Marvel',
                   offText: 'DC Comics',
-                  checked: this.properties.toggleInfoHeaderValue
+                  checked: this.properties.toggleWithCalloutValue
+                }),
+                PropertyFieldSliderWithCallout('sliderWithCalloutValue', {
+                  calloutContent: React.createElement('div', {}, 'Enter value for the item'),
+                  calloutTrigger: CalloutTriggers.Click,
+                  calloutWidth: 200,
+                  key: 'sliderWithCalloutFieldId',
+                  label: 'Slide to select the value',
+                  max: 100,
+                  min: 0,
+                  step: 1,
+                  showValue: true,
+                  value: this.properties.sliderWithCalloutValue
+                }),
+                PropertyFieldChoiceGroupWithCallout('choiceGroupWithCalloutValue', {
+                  calloutContent: React.createElement('div', {}, 'Select preferrable mobile platform'),
+                  calloutTrigger: CalloutTriggers.Hover,
+                  key: 'choiceGroupWithCalloutFieldId',
+                  label: 'Preferred mobile platform',
+                  options: [{
+                    key: 'iOS',
+                    text: 'iOS',
+                    checked: this.properties.choiceGroupWithCalloutValue === 'iOS'
+                  }, {
+                    key: 'Android',
+                    text: 'Android',
+                    checked: this.properties.choiceGroupWithCalloutValue === 'Android'
+                  }, {
+                    key: 'Other',
+                    text: 'Other',
+                    checked: this.properties.choiceGroupWithCalloutValue === 'Other'
+                  }]
                 })
               ]
             }
@@ -215,7 +250,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
   }
 
   private getDropdownInfoHeaderCalloutContent(): JSX.Element {
-    const selectedKey: string = this.properties.dropdownInfoHeaderKey;
+    const selectedKey: string = this.properties.dropdownWithCalloutKey;
 
     if (selectedKey) {
       return React.createElement('div', {}, `you have selected ${selectedKey}`);

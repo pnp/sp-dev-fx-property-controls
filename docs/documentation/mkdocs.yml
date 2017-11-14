@@ -1,0 +1,21 @@
+site_name: SharePoint Framework React Controls
+pages:
+  - Home: 'index.md'
+  - 'Getting started': 'getting-started.md'
+  - Controls:
+    - PropertyFieldColorPicker: 'controls/PropertyFieldColorPicker.md'
+    - PropertyFieldDateTimePicker: 'controls/PropertyFieldDateTimePicker.md'
+    - PropertyFieldListPicker: 'controls/PropertyFieldListPicker.md'
+    - PropertyFieldPeoplePicker: 'controls/PropertyFieldPeoplePicker.md'
+    - PropertyFieldSpinButton: 'controls/PropertyFieldSpinButton.md'
+    - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
+  - 'Controls with callout':
+    - PropertyFieldDropdownWithCallout: 'controls/PropertyFieldDropdownWithCallout.md'
+    - PropertyFieldTextWithCallout: 'controls/PropertyFieldTextWithCallout.md'
+    - PropertyFieldToggleWithCallout: 'controls/PropertyFieldToggleWithCallout.md'
+  - About:
+    - 'Release notes': 'about/release-notes.md'
+    - License: 'about/license.md'
+theme: readthedocs
+repo_url: https://github.com/SharePoint/sp-dev-fx-property-controls
+edit_uri: blob/master/docs/documentation/docs

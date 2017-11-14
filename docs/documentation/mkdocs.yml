@@ -1,4 +1,4 @@
-site_name: SharePoint Framework React Controls
+site_name: SharePoint Framework Property Controls
 pages:
   - Home: 'index.md'
   - 'Getting started': 'getting-started.md'

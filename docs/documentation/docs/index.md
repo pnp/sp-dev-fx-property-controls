@@ -4,7 +4,7 @@ This repository provides developers with a set of reusable property pane control
 
 ## Getting started
 
-Check out how to get started here: [Getting started](./Getting-started).
+Check out how to get started here: [Getting started](./getting-started).
 
 ## Controls
 

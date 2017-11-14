@@ -13,7 +13,7 @@ This control generates a text field control with a callout.
 
 ## How to use this control in your solutions
 
-1. Check that you installed the `@pnp/spfx-property-controls` dependency. Check out The [getting started](./Getting-started) page for more information about installing the dependency.
+1. Check that you installed the `@pnp/spfx-property-controls` dependency. Check out the [getting started](../getting-started) page for more information about installing the dependency.
 2. Import the following modules to your component:
 
 ```TypeScript

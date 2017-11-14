@@ -11,7 +11,7 @@ We appreciate your initiative and would love to integrate your work with the res
     # assuming you are in the folder of your locally cloned fork....
     git checkout dev
 
-    # assuming you have a remote named `upstream` pointing to the official **sp-dev-fx-controls-react** repo
+    # assuming you have a remote named `upstream` pointing to the official **sp-dev-fx-property-controls** repo
     git fetch upstream
 
     # update your local dev branch to be a mirror of what's in the main repo

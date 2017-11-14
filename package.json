@@ -6,7 +6,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "build": "gulp bundle",
+    "build": "gulp build",
     "clean": "gulp clean",
     "test": "gulp test",
     "prepublishOnly": "gulp"

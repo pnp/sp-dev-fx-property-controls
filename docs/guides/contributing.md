@@ -26,12 +26,12 @@ Typos are embarrassing! Most PR's that fix typos will be accepted immediately. I
 
 Before contributing:
 
-- ensure that the **dev** branch on your fork is in sync with the original **sp-dev-fx-controls-react** repository
+- ensure that the **dev** branch on your fork is in sync with the original **sp-dev-fx-property-controls** repository
     ```sh
     # assuming you are in the folder of your locally cloned fork....
     git checkout dev
 
-    # assuming you have a remote named `upstream` pointing to the official **sp-dev-fx-controls-react** repo
+    # assuming you have a remote named `upstream` pointing to the official **sp-dev-fx-property-controls** repo
     git fetch upstream
 
     # update your local dev to be a mirror of what's in the main repo

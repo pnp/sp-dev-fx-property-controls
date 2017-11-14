@@ -5,7 +5,7 @@ defaults: &defaults
 
 version: 2
 jobs:
-  bundle:
+  build:
     <<: *defaults
     steps:
       - checkout
@@ -21,8 +21,8 @@ jobs:
           paths:
             - ./node_modules
       - run:
-          name: bundle
-          command: gulp bundle
+          name: build
+          command: npm run build
       - persist_to_workspace:
           root: .
           paths: .
@@ -68,26 +68,26 @@ jobs:
           name: Avoid hosts unknown for github
           command: echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
       - run:
-          name: bundle docs
+          name: build docs
           command: mkdocs gh-deploy
 
 workflows:
   version: 2
   release_next:
     jobs:
-      - bundle:
+      - build:
           filters:
             branches:
               only: dev
       - publish_next:
           requires:
-            - bundle
+            - build
           filters:
             branches:
               only: dev
   release:
     jobs:
-      - bundle:
+      - build:
           filters:
             tags:
               only: /^v[0-9]+\.[0-9]+\.[0-9]+/
@@ -95,7 +95,7 @@ workflows:
               ignore: /.*/
       - publish:
           requires:
-            - bundle
+            - build
           filters:
             tags:
               only: /^v[0-9]+\.[0-9]+\.[0-9]+/

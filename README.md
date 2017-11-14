@@ -8,7 +8,7 @@ Property controls for the SharePoint Framework solutions.
 
 ## Get Started
 
-More information to get started can be found documenation of this repository: [documentation](https://sharepoint.github.io/sp-dev-fx-property-controls/).
+More information to get started can be found documentation of this repository: [documentation](https://sharepoint.github.io/sp-dev-fx-property-controls/).
 
 # Have issues or questions?
 
@@ -16,7 +16,6 @@ Please use following logic on submitting your questions or issues to right locat
 
 * You have general question or challenge with SPFx - use [sp-dev-docs repository issue list](https://github.com/SharePoint/sp-dev-docs/issues).
 * You have issue on specific controls in this package - use [issue list in this repository](https://github.com/SharePoint/sp-dev-fx-property-controls/issues).
-
 
 ## Contributing
 

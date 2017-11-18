@@ -20,6 +20,6 @@ Once the package is installed, you will have to configure the resource file of t
 
 ## Next Steps
 
-Once you installed the dependency you can start using the controls in your solution. Go to the homepage of the wiki to get an overview of all the available controls: [home](./).
+Once you installed the dependency you can start using the controls in your solution. Go to the documentation homepage to get an overview of all the available controls: [home](./).
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/GettingStarted)

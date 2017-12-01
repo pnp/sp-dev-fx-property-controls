@@ -21,6 +21,10 @@ import { PropertyFieldSpinButton } from '../../PropertyFieldSpinButton';
 import { PropertyFieldDropdownWithCallout } from '../../PropertyFieldDropdownWithCallout';
 import { PropertyFieldTextWithCallout } from '../../PropertyFieldTextWithCallout';
 import { PropertyFieldToggleWithCallout } from '../../PropertyFieldToggleWithCallout';
+import { PropertyFieldButtonWithCallout } from '../../PropertyFieldButtonWithCallout';
+import { PropertyFieldCheckboxWithCallout } from '../../PropertyFieldCheckboxWithCallout';
+import { PropertyFieldLabelWithCallout } from '../../PropertyFieldLabelWithCallout';
+import { PropertyFieldLinkWithCallout } from '../../PropertyFieldLinkWithCallout';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -41,7 +45,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         spinValue: this.properties.spinValue,
         dropdownInfoHeaderKey: this.properties.dropdownInfoHeaderKey,
         textInfoHeaderValue: this.properties.textInfoHeaderValue,
-        toggleInfoHeaderValue: this.properties.toggleInfoHeaderValue
+        toggleInfoHeaderValue: this.properties.toggleInfoHeaderValue,
+        checkboxWithCalloutValue: this.properties.checkboxWithCalloutValue
       }
     );
 
@@ -205,6 +210,34 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onText: 'Marvel',
                   offText: 'DC Comics',
                   checked: this.properties.toggleInfoHeaderValue
+                }),
+                PropertyFieldButtonWithCallout('fakeProp', {
+                  calloutTrigger: CalloutTriggers.Click,
+                  key: 'buttonWithCalloutFieldId',
+                  calloutContent: React.createElement('p', {}, 'This is a test of the button with some description in callout'),
+                  text: 'Button with callout',
+                  onClick: () => { alert('Button is clicked'); }
+                }),
+                PropertyFieldCheckboxWithCallout('checkboxWithCalloutValue', {
+                  calloutTrigger: CalloutTriggers.Click,
+                  key: 'checkboxWithCalloutFieldId',
+                  calloutContent: React.createElement('p', {}, 'This is a test of the checkbox with some description in callout'),
+                  text: 'Checkbox with callout',
+                  checked: this.properties.checkboxWithCalloutValue
+                }),
+                PropertyFieldLabelWithCallout('fakeProp', {
+                  calloutTrigger: CalloutTriggers.Click,
+                  key: 'LabelWithCalloutFieldId',
+                  calloutContent: React.createElement('p', {}, 'This is a test of the label with some description in callout'),
+                  text: 'Label with callout'
+                }),
+                PropertyFieldLinkWithCallout('fakeProp', {
+                  calloutTrigger: CalloutTriggers.Click,
+                  key: 'LinkWithCalloutFieldId',
+                  calloutContent: React.createElement('p', {}, 'This is a test of the link with some description in callout'),
+                  text: 'Link with callout',
+                  href: 'https://github.com/SharePoint/sp-dev-fx-property-controls',
+                  target: '_blank'
                 })
               ]
             }

@@ -7,3 +7,6 @@ export * from './PropertyFieldSpinButton';
 export * from './PropertyFieldDropdownWithCallout';
 export * from './PropertyFieldTextWithCallout';
 export * from './PropertyFieldToggleWithCallout';
+export * from './PropertyFieldButtonWithCallout';
+export * from './PropertyFieldCheckboxWithCallout';
+export * from './PropertyFieldLabelWithCallout';

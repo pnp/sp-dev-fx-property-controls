@@ -1,12 +1,12 @@
 {
   "name": "@pnp/spfx-property-controls",
   "description": "Reusable property pane controls for SharePoint Framework solutions",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "build": "gulp bundle",
+    "build": "gulp build",
     "clean": "gulp clean",
     "test": "gulp test",
     "prepublishOnly": "gulp"
@@ -45,5 +45,14 @@
   "bugs": {
     "url": "https://github.com/SharePoint/sp-dev-fx-property-controls/issues"
   },
-  "homepage": "https://github.com/SharePoint/sp-dev-fx-property-controls"
+  "homepage": "https://github.com/SharePoint/sp-dev-fx-property-controls",
+  "maintainers": [
+    {
+      "name": "eliostruyf",
+      "email": "info@estruyf.be"
+    }
+  ],
+  "contributors": [
+    "Struyf, Elio <info@estruyf.be>"
+  ]
 }

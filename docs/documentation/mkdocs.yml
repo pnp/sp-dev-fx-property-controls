@@ -1,0 +1,41 @@
+site_name: SharePoint Framework Property Controls
+pages:
+  - Home: 'index.md'
+  - 'Getting started': 'getting-started.md'
+  - Controls:
+    - PropertyFieldColorPicker: 'controls/PropertyFieldColorPicker.md'
+    - PropertyFieldDateTimePicker: 'controls/PropertyFieldDateTimePicker.md'
+    - PropertyFieldListPicker: 'controls/PropertyFieldListPicker.md'
+    - PropertyFieldPeoplePicker: 'controls/PropertyFieldPeoplePicker.md'
+    - PropertyFieldSpinButton: 'controls/PropertyFieldSpinButton.md'
+    - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
+  - 'Controls with callout':
+    - PropertyFieldDropdownWithCallout: 'controls/PropertyFieldDropdownWithCallout.md'
+    - PropertyFieldTextWithCallout: 'controls/PropertyFieldTextWithCallout.md'
+    - PropertyFieldToggleWithCallout: 'controls/PropertyFieldToggleWithCallout.md'
+  - About:
+    - 'Release notes': 'about/release-notes.md'
+    - License: 'about/license.md'
+theme:
+  name: 'material'
+  palette:
+    primary: 'blue'
+  logo: 'assets/sharepoint.png'
+  feature:
+    tabs: true
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+extra:
+  social:
+    - type: 'twitter'
+      link: 'https://twitter.com/officedevpnp'
+    - type: 'youtube'
+      link: 'http://aka.ms/sppnp-videos'
+    - type: 'link'
+      link: 'https://aka.ms/sppnp'
+repo_url: https://github.com/SharePoint/sp-dev-fx-property-controls
+edit_uri: blob/master/docs/documentation/docs

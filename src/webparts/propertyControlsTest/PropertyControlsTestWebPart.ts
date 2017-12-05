@@ -71,11 +71,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: '', //strings.PropertyPaneDescription
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: '', //strings.BasicGroupName,
               groupFields: [
                 PropertyFieldPeoplePicker('people', {
                   label: 'PropertyFieldPeoplePicker',
@@ -211,31 +211,35 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   offText: 'DC Comics',
                   checked: this.properties.toggleInfoHeaderValue
                 }),
-                PropertyFieldButtonWithCallout('fakeProp', {
+                PropertyFieldButtonWithCallout('fakeProperty', {
                   calloutTrigger: CalloutTriggers.Click,
                   key: 'buttonWithCalloutFieldId',
-                  calloutContent: React.createElement('p', {}, 'This is a test of the button with some description in callout'),
-                  text: 'Button with callout',
-                  onClick: () => { alert('Button is clicked'); }
+                  calloutContent: React.createElement('p', {}, 'Tests connection to the database with the parameters listed above'),
+                  calloutWidth: 150,
+                  text: 'Test connection',
+                  onClick: () => { alert('Code to test connection goes here') }
                 }),
                 PropertyFieldCheckboxWithCallout('checkboxWithCalloutValue', {
                   calloutTrigger: CalloutTriggers.Click,
                   key: 'checkboxWithCalloutFieldId',
-                  calloutContent: React.createElement('p', {}, 'This is a test of the checkbox with some description in callout'),
-                  text: 'Checkbox with callout',
+                  calloutContent: React.createElement('p', {}, 'Check the checkbox to accept Application Terms and Conditions'),
+                  calloutWidth: 200,
+                  text: 'Accept terms and conditions',
                   checked: this.properties.checkboxWithCalloutValue
                 }),
                 PropertyFieldLabelWithCallout('fakeProp', {
                   calloutTrigger: CalloutTriggers.Click,
                   key: 'LabelWithCalloutFieldId',
-                  calloutContent: React.createElement('p', {}, 'This is a test of the label with some description in callout'),
-                  text: 'Label with callout'
+                  calloutContent: 'Use dropdowns below to select list and list\'s field to work with',
+                  calloutWidth: 200,
+                  text: 'Select List and Field'
                 }),
                 PropertyFieldLinkWithCallout('fakeProp', {
                   calloutTrigger: CalloutTriggers.Click,
-                  key: 'LinkWithCalloutFieldId',
-                  calloutContent: React.createElement('p', {}, 'This is a test of the link with some description in callout'),
-                  text: 'Link with callout',
+                  key: 'linkWithCalloutFieldId',
+                  calloutContent: React.createElement('p', {}, 'Click the link to open a new page with Application Terms & Conditions'),
+                  calloutWidth: 200,
+                  text: 'Terms & Conditions',
                   href: 'https://github.com/SharePoint/sp-dev-fx-property-controls',
                   target: '_blank'
                 })

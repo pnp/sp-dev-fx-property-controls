@@ -22,5 +22,9 @@ The following controls are extended controls that show a callout next to the lab
 - [PropertyFieldDropdownWithCallout](./controls/PropertyFieldDropdownWithCallout) (Property dropdown field with callout)
 - [PropertyFieldTextWithCallout](./controls/PropertyFieldTextWithCallout) (Property text field with callout)
 - [PropertyFieldToggleWithCallout](./controls/PropertyFieldToggleWithCallout) (Property toggle field with callout)
+- [PropertyFieldButtonWithCallout](./controls/PropertyFieldButtonWithCallout) (Property button field with callout)
+- [PropertyFieldCheckboxWithCallout](./controls/PropertyFieldCheckboxWithCallout) (Property checkbox field with callout)
+- [PropertyFieldLabelWithCallout](./controls/PropertyFieldLabelWithCallout) (Property checkbox field with callout)
+- [PropertyFieldLinkWithCallout](./controls/PropertyFieldLinkWithCallout) (Property checkbox field with callout)
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki)

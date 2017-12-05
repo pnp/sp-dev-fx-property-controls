@@ -13,6 +13,10 @@ pages:
     - PropertyFieldDropdownWithCallout: 'controls/PropertyFieldDropdownWithCallout.md'
     - PropertyFieldTextWithCallout: 'controls/PropertyFieldTextWithCallout.md'
     - PropertyFieldToggleWithCallout: 'controls/PropertyFieldToggleWithCallout.md'
+    - PropertyFieldButtonWithCallout: 'controls/PropertyFieldButtonWithCallout.md'
+    - PropertyFieldCheckboxWithCallout: 'controls/PropertyFieldCheckboxWithCallout.md'
+    - PropertyFieldLabelWithCallout: 'controls/PropertyFieldLabelWithCallout.md'
+    - PropertyFieldLinkWithCallout: 'controls/PropertyFieldLinkWithCallout.md'
   - About:
     - 'Release notes': 'about/release-notes.md'
     - License: 'about/license.md'

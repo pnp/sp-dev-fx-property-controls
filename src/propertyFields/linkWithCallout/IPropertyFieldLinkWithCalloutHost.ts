@@ -8,5 +8,5 @@ import { IPopupWindowProps } from '@microsoft/sp-webpart-base/lib/propertyPane/p
  */
 export interface IPropertyFieldLinkWithCalloutHostProps extends ILinkProps, IPlaceholderWithCalloutProps {
     text: string;
-    popupWindowProps?: IPopupWindowProps // this is not actually used, but included for types casting
+    popupWindowProps?: IPopupWindowProps; // this is not actually used, but included for types casting
 }

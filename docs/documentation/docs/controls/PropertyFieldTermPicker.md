@@ -20,6 +20,10 @@ This control generates a term picker that can be used in the property pane of yo
 
 ![Selected terms in the input](../assets/termpicker-selected-terms.png)
 
+**Limit the term set to a specific group or termset**
+
+![Limit to a group or termset](../assets/termpicker-limit-to-group.png)
+
 ## How to use this control in your solutions
 
 1. Check that you installed the `@pnp/spfx-property-controls` dependency. Check out The [getting started](../getting-started) page for more information about installing the dependency.
@@ -53,6 +57,8 @@ PropertyFieldTermPicker('terms', {
   context: this.context,
   onGetErrorMessage: null,
   deferredValidationTime: 0,
+  limitByGroupNameOrID: 'People',
+  limitByTermsetNameOrID: 'Location',
   key: 'termSetsPickerFieldId'
 })
 ```
@@ -70,6 +76,8 @@ The `PropertyFieldTermPicker` control can be configured with the following prope
 | initialValues | ICheckedTerms | no | Defines the selected by default term sets. |
 | allowMultipleSelections | boolean | no | Defines if the user can select only one or many term sets. Default value is false. |
 | excludeSystemGroup | boolean | no | Indicator to define if the system Groups are exclude. Default is false. |
+| limitByGroupNameOrID | string | no | Limit the term sets that can be used by the group name or ID. |
+| limitByTermsetNameOrID | string | no | Limit the terms that can be picked by the Term Set name or ID. |
 | onPropertyChange | function | yes | Defines a onPropertyChange function to raise when the date gets changed. |
 | properties | any | yes | Parent web part properties, this object is use to update the property value.  |
 | key | string | yes | An unique key that indicates the identity of this control. |

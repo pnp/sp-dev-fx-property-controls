@@ -13,7 +13,6 @@ import { IPropertyFieldTermPickerPropsInternal, IPropertyFieldTermPickerProps, I
  * Represents a PropertyFieldTermPicker object
  */
 class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFieldTermPickerPropsInternal> {
-
   // Properties defined by IPropertyPaneField
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public targetProperty: string;
@@ -25,6 +24,8 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private allowMultipleSelections: boolean = false;
   private initialValues: ICheckedTerms = [];
   private excludeSystemGroup: boolean = false;
+  private limitByGroupNameOrID: string = null;
+  private limitByTermsetNameOrID: string = null;
   private panelTitle: string;
 
   public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { }
@@ -50,6 +51,8 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
     this.panelTitle = _properties.panelTitle;
+    this.limitByGroupNameOrID = _properties.limitByGroupNameOrID;
+    this.limitByTermsetNameOrID = _properties.limitByTermsetNameOrID;
 
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
@@ -80,6 +83,8 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
       allowMultipleSelections: this.allowMultipleSelections,
       initialValues: this.initialValues,
       excludeSystemGroup: this.excludeSystemGroup,
+      limitByGroupNameOrID: this.limitByGroupNameOrID,
+      limitByTermsetNameOrID: this.limitByTermsetNameOrID,
       context: this.context,
       onDispose: this.dispose,
       onRender: this.render,

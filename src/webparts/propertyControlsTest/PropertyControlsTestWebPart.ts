@@ -137,6 +137,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   disabled: false,
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
+                  limitByGroupNameOrID: 'People',
+                  limitByTermsetNameOrID: 'Location',
                   key: 'termSetsPickerFieldId'
                 }),
                 PropertyFieldDateTimePicker('datetime', {

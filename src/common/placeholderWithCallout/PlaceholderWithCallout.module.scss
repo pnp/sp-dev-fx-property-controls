@@ -1,0 +1,20 @@
+.placeholder {
+    position: relative;
+    margin-bottom: 5px;
+    .children {
+        margin-right: 24px;
+    }
+
+    .info {
+        position: absolute;
+        font-size: 14px;
+        background-color: transparent;
+        top: 3px;
+        right: 0px;
+        cursor: pointer;
+    }
+}
+
+.callout {
+    padding: 10px;
+}

@@ -19,10 +19,14 @@ The following controls are currently available:
 
 The following controls are extended controls that show a callout next to the label
 
+- [PropertyFieldButtonWithCallout](./controls/PropertyFieldButtonWithCallout) (Property button field with callout)
+- [PropertyFieldCheckboxWithCallout](./controls/PropertyFieldCheckboxWithCallout) (Property checkbox field with callout)
+- [PropertyFieldChoiceGroupWithCallout](./controls/PropertyFieldChoiceGroupWithCallout) (Property choice group field with callout)
 - [PropertyFieldDropdownWithCallout](./controls/PropertyFieldDropdownWithCallout) (Property dropdown field with callout)
+- [PropertyFieldLabelWithCallout](./controls/PropertyFieldLabelWithCallout) (Property checkbox field with callout)
+- [PropertyFieldLinkWithCallout](./controls/PropertyFieldLinkWithCallout) (Property checkbox field with callout)
+- [PropertyFieldSliderWithCallout](./controls/PropertyFieldSliderWithCallout) (Property slider field with callout)
 - [PropertyFieldTextWithCallout](./controls/PropertyFieldTextWithCallout) (Property text field with callout)
 - [PropertyFieldToggleWithCallout](./controls/PropertyFieldToggleWithCallout) (Property toggle field with callout)
-- [PropertyFieldChoiceGroupWithCallout](./controls/PropertyFieldChoiceGroupWithCallout) (Property choice group field with callout)
-- [PropertyFieldSliderWithCallout](./controls/PropertyFieldSliderWithCallout) (Property slider field with callout)
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki)

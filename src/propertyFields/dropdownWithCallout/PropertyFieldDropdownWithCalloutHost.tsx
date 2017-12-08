@@ -6,7 +6,7 @@ import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldH
 
 import { IPropertyFieldDropdownWithCalloutHostProps } from './IPropertyFieldDropdownWithCalloutHost';
 
-export default class PropertyFieldToggleHost extends React.Component<IPropertyFieldDropdownWithCalloutHostProps, null> {
+export default class PropertyFieldDropdownHost extends React.Component<IPropertyFieldDropdownWithCalloutHostProps, null> {
     public render(): JSX.Element {
         return (
             <div>

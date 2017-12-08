@@ -4,6 +4,7 @@ import * as React from 'react';
  * Enum to describe possible events to show callout
  */
 export enum CalloutTriggers {
+    // TODO: remove this enum and use ../callout/Callout module instead. Make this chage after merge of PR #7
     Click = 1,
     Hover
 }
@@ -12,6 +13,7 @@ export enum CalloutTriggers {
  * Interface that discibes available settings of Header callout
  */
 export interface IPropertyFieldHeaderCalloutProps {
+    // TODO: remove this interface and use IPropertyFieldCalloutProps from ../callout/Callout module instead. Make this chage after merge of PR #7
     /**
      * Callout content - any HTML
     */

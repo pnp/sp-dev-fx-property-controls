@@ -87,7 +87,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
         // Add the selected item and filter out the doubles
         selectedKeys.push(value);
         selectedKeys = selectedKeys.filter((item, pos, self) => {
-          return self.indexOf(item) == pos;
+          return self.indexOf(item) === pos;
         });
       }
       // Update the state and validate

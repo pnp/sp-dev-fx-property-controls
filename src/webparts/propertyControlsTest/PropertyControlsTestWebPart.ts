@@ -23,6 +23,10 @@ import { PropertyFieldTextWithCallout } from '../../PropertyFieldTextWithCallout
 import { PropertyFieldToggleWithCallout } from '../../PropertyFieldToggleWithCallout';
 import { PropertyFieldSliderWithCallout } from '../../PropertyFieldSliderWithCallout';
 import { PropertyFieldChoiceGroupWithCallout } from '../../PropertyFieldChoiceGroupWithCallout';
+import { PropertyFieldButtonWithCallout } from '../../PropertyFieldButtonWithCallout';
+import { PropertyFieldCheckboxWithCallout } from '../../PropertyFieldCheckboxWithCallout';
+import { PropertyFieldLabelWithCallout } from '../../PropertyFieldLabelWithCallout';
+import { PropertyFieldLinkWithCallout } from '../../PropertyFieldLinkWithCallout';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -46,6 +50,10 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         toggleWithCalloutValue: this.properties.toggleWithCalloutValue,
         sliderWithCalloutValue: this.properties.sliderWithCalloutValue,
         choiceGroupWithCalloutValue: this.properties.choiceGroupWithCalloutValue
+        dropdownInfoHeaderKey: this.properties.dropdownInfoHeaderKey,
+        textInfoHeaderValue: this.properties.textInfoHeaderValue,
+        toggleInfoHeaderValue: this.properties.toggleInfoHeaderValue,
+        checkboxWithCalloutValue: this.properties.checkboxWithCalloutValue
       }
     );
 
@@ -70,11 +78,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: '', //strings.PropertyPaneDescription
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: '', //strings.BasicGroupName,
               groupFields: [
                 PropertyFieldPeoplePicker('people', {
                   label: 'PropertyFieldPeoplePicker',
@@ -240,6 +248,39 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                     text: 'Other',
                     checked: this.properties.choiceGroupWithCalloutValue === 'Other'
                   }]
+                  checked: this.properties.toggleInfoHeaderValue
+                }),
+                PropertyFieldButtonWithCallout('fakeProperty', {
+                  calloutTrigger: CalloutTriggers.Click,
+                  key: 'buttonWithCalloutFieldId',
+                  calloutContent: React.createElement('p', {}, 'Tests connection to the database with the parameters listed above'),
+                  calloutWidth: 150,
+                  text: 'Test connection',
+                  onClick: () => { alert('Code to test connection goes here') }
+                }),
+                PropertyFieldCheckboxWithCallout('checkboxWithCalloutValue', {
+                  calloutTrigger: CalloutTriggers.Click,
+                  key: 'checkboxWithCalloutFieldId',
+                  calloutContent: React.createElement('p', {}, 'Check the checkbox to accept Application Terms and Conditions'),
+                  calloutWidth: 200,
+                  text: 'Accept terms and conditions',
+                  checked: this.properties.checkboxWithCalloutValue
+                }),
+                PropertyFieldLabelWithCallout('fakeProp', {
+                  calloutTrigger: CalloutTriggers.Click,
+                  key: 'LabelWithCalloutFieldId',
+                  calloutContent: 'Use dropdowns below to select list and list\'s field to work with',
+                  calloutWidth: 200,
+                  text: 'Select List and Field'
+                }),
+                PropertyFieldLinkWithCallout('fakeProp', {
+                  calloutTrigger: CalloutTriggers.Click,
+                  key: 'linkWithCalloutFieldId',
+                  calloutContent: React.createElement('p', {}, 'Click the link to open a new page with Application Terms & Conditions'),
+                  calloutWidth: 200,
+                  text: 'Terms & Conditions',
+                  href: 'https://github.com/SharePoint/sp-dev-fx-property-controls',
+                  target: '_blank'
                 })
               ]
             }

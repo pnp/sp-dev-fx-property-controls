@@ -18,4 +18,8 @@ export interface IPropertyControlsTestProps {
   toggleWithCalloutValue: boolean;
   sliderWithCalloutValue: number;
   choiceGroupWithCalloutValue: string;
+  dropdownInfoHeaderKey: string;
+  textInfoHeaderValue: string;
+  toggleInfoHeaderValue: boolean;
+  checkboxWithCalloutValue: boolean;
 }

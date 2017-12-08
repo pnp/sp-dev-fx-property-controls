@@ -28,6 +28,10 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
               <p className="ms-font-m ms-fontColor-neutralDark">Toggle With Callout Value: {this.props.toggleWithCalloutValue ? 'Marvel' : 'DC Comics'}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Slider With Callout Value: {this.props.sliderWithCalloutValue}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Choice Group With Callout Value: {this.props.choiceGroupWithCalloutValue}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Dropdown Info Header Key: {this.props.dropdownInfoHeaderKey}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Text Info Header Value: {this.props.textInfoHeaderValue}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Toggle Info Header Value: {this.props.toggleInfoHeaderValue ? 'Marvel' : 'DC Comics'}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Checkbox with Callout Value: {(this.props.checkboxWithCalloutValue || '').toString()}</p>
             </div>
           </div>
         </div>

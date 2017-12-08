@@ -10,11 +10,15 @@ pages:
     - PropertyFieldSpinButton: 'controls/PropertyFieldSpinButton.md'
     - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
   - 'Controls with callout':
+    - PropertyFieldButtonWithCallout: 'controls/PropertyFieldButtonWithCallout.md'
+    - PropertyFieldCheckboxWithCallout: 'controls/PropertyFieldCheckboxWithCallout.md'
+    - PropertyFieldChoiceGroupWithCallout: 'controls/PropertyFieldChoiceGroupWithCallout.md'
     - PropertyFieldDropdownWithCallout: 'controls/PropertyFieldDropdownWithCallout.md'
+    - PropertyFieldLabelWithCallout: 'controls/PropertyFieldLabelWithCallout.md'
+    - PropertyFieldLinkWithCallout: 'controls/PropertyFieldLinkWithCallout.md'
+    - PropertyFieldSliderWithCallout: 'controls/PropertyFieldSliderWithCallout.md'
     - PropertyFieldTextWithCallout: 'controls/PropertyFieldTextWithCallout.md'
     - PropertyFieldToggleWithCallout: 'controls/PropertyFieldToggleWithCallout.md'
-    - PropertyFieldChoiceGroupWithCallout: 'controls/PropertyFieldChoiceGroupWithCallout.md'
-    - PropertyFieldSliderWithCallout: 'controls/PropertyFieldSliderWithCallout.md'
   - About:
     - 'Release notes': 'about/release-notes.md'
     - License: 'about/license.md'

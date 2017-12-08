@@ -46,10 +46,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         color: this.properties.color,
         spinValue: this.properties.spinValue,
         dropdownWithCalloutKey: this.properties.dropdownWithCalloutKey,
-        textWithCalloutValue: this.properties.textWithCalloutValue,
-        toggleWithCalloutValue: this.properties.toggleWithCalloutValue,
         sliderWithCalloutValue: this.properties.sliderWithCalloutValue,
-        choiceGroupWithCalloutValue: this.properties.choiceGroupWithCalloutValue
+        choiceGroupWithCalloutValue: this.properties.choiceGroupWithCalloutValue,
         dropdownInfoHeaderKey: this.properties.dropdownInfoHeaderKey,
         textInfoHeaderValue: this.properties.textInfoHeaderValue,
         toggleInfoHeaderValue: this.properties.toggleInfoHeaderValue,
@@ -201,22 +199,22 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   selectedKey: dropdownWithCalloutSelectedKey,
                   calloutContent: dropdownWithCalloutCallountContent
                 }),
-                PropertyFieldTextWithCallout('textWithCalloutValue', {
+                PropertyFieldTextWithCallout('textInfoHeaderValue', {
                   calloutTrigger: CalloutTriggers.Hover,
                   key: 'textWithCalloutFieldId',
                   label: 'Describe your PnP passion with few words',
                   calloutContent: React.createElement('span', {}, 'You can describe your passion with such words as strong, cosmic, all-absorbing, etc.'),
                   calloutWidth: 150,
-                  value: this.properties.textWithCalloutValue
+                  value: this.properties.textInfoHeaderValue
                 }),
-                PropertyFieldToggleWithCallout('toggleWithCalloutValue', {
+                PropertyFieldToggleWithCallout('toggleInfoHeaderValue', {
                   calloutTrigger: CalloutTriggers.Click,
                   key: 'toggleWithCalloutFieldId',
                   label: 'Select your super hero universe',
                   calloutContent: React.createElement('p', {}, 'Select one of two universes of super heroes: DC comics with Superman, Batman, Wonder Woman, etc.; or Marvel with X-Men, Spider-Man, Avengers, etc.'),
                   onText: 'Marvel',
                   offText: 'DC Comics',
-                  checked: this.properties.toggleWithCalloutValue
+                  checked: this.properties.toggleInfoHeaderValue
                 }),
                 PropertyFieldSliderWithCallout('sliderWithCalloutValue', {
                   calloutContent: React.createElement('div', {}, 'Enter value for the item'),
@@ -248,7 +246,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                     text: 'Other',
                     checked: this.properties.choiceGroupWithCalloutValue === 'Other'
                   }]
-                  checked: this.properties.toggleInfoHeaderValue
                 }),
                 PropertyFieldButtonWithCallout('fakeProperty', {
                   calloutTrigger: CalloutTriggers.Click,
@@ -256,7 +253,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   calloutContent: React.createElement('p', {}, 'Tests connection to the database with the parameters listed above'),
                   calloutWidth: 150,
                   text: 'Test connection',
-                  onClick: () => { alert('Code to test connection goes here') }
+                  onClick: () => { alert('Code to test connection goes here'); }
                 }),
                 PropertyFieldCheckboxWithCallout('checkboxWithCalloutValue', {
                   calloutTrigger: CalloutTriggers.Click,

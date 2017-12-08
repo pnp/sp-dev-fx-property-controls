@@ -24,8 +24,6 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
               <p className="ms-font-m ms-fontColor-neutralDark">Color: <span className={styles.colorBox} style={{backgroundColor:this.props.color}}>&nbsp;</span>{this.props.color}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Spin Value: {this.props.spinValue}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Dropdown With Callout Key: {this.props.dropdownWithCalloutKey}</p>
-              <p className="ms-font-m ms-fontColor-neutralDark">Text With Callout Value: {this.props.textWithCalloutValue}</p>
-              <p className="ms-font-m ms-fontColor-neutralDark">Toggle With Callout Value: {this.props.toggleWithCalloutValue ? 'Marvel' : 'DC Comics'}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Slider With Callout Value: {this.props.sliderWithCalloutValue}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Choice Group With Callout Value: {this.props.choiceGroupWithCalloutValue}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Dropdown Info Header Key: {this.props.dropdownInfoHeaderKey}</p>

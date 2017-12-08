@@ -16,7 +16,7 @@ export default class SecondsComponent extends React.Component<ITimeComponentProp
         digitSec = k.toString();
       }
       let selected: boolean = false;
-      if (k == this.props.value) {
+      if (k === this.props.value) {
         selected = true;
       }
       seconds.push({ key: k, text: digitSec, isSelected: selected });

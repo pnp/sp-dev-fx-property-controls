@@ -16,7 +16,7 @@ export default class MinutesComponent extends React.Component<ITimeComponentProp
         digitMin = j.toString();
       }
       let selected: boolean = false;
-      if (j == this.props.value) {
+      if (j === this.props.value) {
         selected = true;
       }
       minutes.push({ key: j, text: digitMin, isSelected: selected });

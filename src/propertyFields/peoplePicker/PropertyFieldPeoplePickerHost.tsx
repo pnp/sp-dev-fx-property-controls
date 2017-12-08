@@ -136,7 +136,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
 
       for (let i: number = 0; i < this.selectedPeople.length; i++) {
         const responseItem: IPropertyFieldGroupOrPerson = this.selectedPeople[i];
-        if (responseItem.login == element.login) {
+        if (responseItem.login === element.login) {
           found = true;
           break;
         }
@@ -219,7 +219,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
    * Notifies the parent Web Part of a property value change
    */
   private notifyAfterValidate(oldValue: IPropertyFieldGroupOrPerson[], newValue: IPropertyFieldGroupOrPerson[]) {
-    if (this.props.onPropertyChange && newValue != null) {
+    if (this.props.onPropertyChange && newValue) {
       this.props.properties[this.props.targetProperty] = newValue;
       this.props.onPropertyChange(this.props.targetProperty, oldValue, newValue);
       // Trigger the apply button

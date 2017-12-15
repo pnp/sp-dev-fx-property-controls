@@ -29,6 +29,8 @@ jobs:
   build_next:
     <<: *defaults
     steps:
+      - attach_workspace:
+          at: ~/sp-dev-fx-property-controls
       - run:
           name: Stamp beta to package version
           command: node scripts/update-package-version.js $CIRCLE_SHA1

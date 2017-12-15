@@ -4,7 +4,6 @@ import { IWebPartContext } from '@microsoft/sp-webpart-base';
  * Selected terms
  */
 export interface ICheckedTerm {
-
   name: string;
   id: string;
   path: string;
@@ -17,7 +16,6 @@ export interface ICheckedTerms extends Array<ICheckedTerm> { }
  * Generic Term Object (abstract interface)
  */
 export interface ISPTermObject {
-
   Name: string;
   Guid: string;
   Identity: string;
@@ -31,7 +29,6 @@ export interface ISPTermObject {
  * Defines a SharePoint Term Store
  */
 export interface ISPTermStore extends ISPTermObject {
-
   IsOnline: boolean;
   WorkingLanguage: string;
   DefaultLanguage: string;
@@ -48,7 +45,6 @@ export interface ISPTermStores extends Array<ISPTermStore> {
  * Defines a Term Store Group of term sets
  */
 export interface ISPTermGroup extends ISPTermObject {
-
   IsSiteCollectionGroup: boolean;
   IsSystemGroup: boolean;
   CreatedDate: string;
@@ -66,7 +62,6 @@ export interface ISPTermGroups extends Array<ISPTermGroup> {
  * Public properties of the PropertyFieldTermPicker custom field
  */
 export interface IPropertyFieldTermPickerProps {
-
   /**
    * Property field label displayed on top
    */
@@ -91,6 +86,14 @@ export interface IPropertyFieldTermPickerProps {
    * WebPart's context
    */
   context: IWebPartContext;
+  /**
+   * Limit the term sets that can be used by the group name or ID
+   */
+  limitByGroupNameOrID?: string;
+  /**
+   * Limit the terms that can be picked by the Term Set name or ID
+   */
+  limitByTermsetNameOrID?: string;
   /**
    * Defines a onPropertyChange function to raise when the selected value changed.
    * Normally this function must be always defined with the 'this.onPropertyChange'
@@ -137,7 +140,6 @@ export interface IPropertyFieldTermPickerProps {
  * the PropertyFieldTermPicker.
  */
 export interface IPropertyFieldTermPickerPropsInternal extends IPropertyFieldTermPickerProps {
-
   targetProperty: string;
   onRender(elem: HTMLElement): void;
   onDispose(elem: HTMLElement): void;

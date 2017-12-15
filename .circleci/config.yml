@@ -26,6 +26,21 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: .
+  build_next:
+    <<: *defaults
+    steps:
+      - run:
+          name: Stamp beta to package version
+          command: node scripts/update-package-version.js $CIRCLE_SHA1
+      - run:
+          name: Update version in
+          command: npm run versionUpdater
+      - run:
+          name: build
+          command: npm run build
+      - persist_to_workspace:
+          root: .
+          paths: .
   publish_next:
     <<: *defaults
     steps:
@@ -34,9 +49,6 @@ jobs:
       - run:
           name: Write .npmrc
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - run:
-          name: Stamp beta to package version
-          command: node scripts/update-package-version.js $CIRCLE_SHA1
       - run:
           name: Publish @next
           command: npm publish --tag next --access public
@@ -82,9 +94,15 @@ workflows:
           filters:
             branches:
               only: dev
-      - publish_next:
+      - build_next:
           requires:
             - build
+          filters:
+            branches:
+              only: dev
+      - publish_next:
+          requires:
+            - build_next
           filters:
             branches:
               only: dev

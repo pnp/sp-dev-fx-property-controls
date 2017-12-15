@@ -19,6 +19,7 @@ import styles from './PropertyFieldTermPickerHost.module.scss';
 import { sortBy, uniqBy } from '@microsoft/sp-lodash-subset';
 import TermGroup from './TermGroup';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
+import * as appInsights from '../../common/appInsights';
 
 /**
  * Image URLs / Base64
@@ -41,6 +42,8 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
    */
   constructor(props: IPropertyFieldTermPickerHostProps) {
     super(props);
+
+    appInsights.track('PropertyFieldTermPickerHost', EnvironmentType[Environment.type]);
 
     this.state = {
       activeNodes: typeof this.props.initialValues !== 'undefined' ? this.props.initialValues : [],

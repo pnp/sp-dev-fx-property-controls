@@ -11,6 +11,7 @@ import styles from './PropertyFieldDateTimePickerHost.module.scss';
 import HoursComponent from './HoursComponent';
 import MinutesComponent from './MinutesComponent';
 import SecondsComponent from './SecondsComponent';
+import * as appInsights from '../../common/appInsights';
 
 /**
  * Defines the labels of the DatePicker control (as months, days, etc.)
@@ -88,6 +89,9 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
    */
   constructor(props: IPropertyFieldDateTimePickerHostProps) {
     super(props);
+
+    appInsights.track('PropertyFieldDateTimePicker');
+
     // Bind the current object to the external called onSelectDate method
     this._onSelectDate = this._onSelectDate.bind(this);
     this._dropdownHoursChanged = this._dropdownHoursChanged.bind(this);

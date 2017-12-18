@@ -5,14 +5,13 @@ import * as _ from 'lodash';
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 
 import { IPropertyFieldDropdownWithCalloutHostProps } from './IPropertyFieldDropdownWithCalloutHost';
-import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import * as appInsights from '../../common/appInsights';
 
 export default class PropertyFieldDropdownHost extends React.Component<IPropertyFieldDropdownWithCalloutHostProps, null> {
     constructor(props: IPropertyFieldDropdownWithCalloutHostProps) {
       super(props);
 
-      appInsights.track('PropertyFieldDropdownHost', EnvironmentType[Environment.type]);
+      appInsights.track('PropertyFieldDropdown');
     }
 
     public render(): JSX.Element {

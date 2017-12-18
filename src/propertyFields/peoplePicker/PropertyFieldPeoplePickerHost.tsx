@@ -11,6 +11,7 @@ import * as strings from 'PropertyControlStrings';
 import { IPropertyFieldPeoplePickerHostProps, IPeoplePickerState } from './IPropertyFieldPeoplePickerHost';
 import SPPeopleSearchService from '../../services/SPPeopleSearchService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
+import * as appInsights from '../../common/appInsights';
 
 /**
  * Renders the controls for PropertyFieldPeoplePicker component
@@ -30,6 +31,8 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
    */
   constructor(props: IPropertyFieldPeoplePickerHostProps) {
     super(props);
+
+    appInsights.track('PropertyFieldPeoplePicker');
 
     this.searchService = new SPPeopleSearchService(props.context);
     this.onSearchFieldChanged = this.onSearchFieldChanged.bind(this);

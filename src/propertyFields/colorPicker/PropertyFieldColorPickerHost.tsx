@@ -9,11 +9,14 @@ import {
 import styles from './PropertyFieldColorPickerHost.module.scss';
 import * as strings from 'PropertyControlStrings';
 import { PropertyFieldColorPickerStyle } from './IPropertyFieldColorPicker';
+import * as appInsights from '../../common/appInsights';
 
 export default class PropertyFieldColorPickerHost extends React.Component<IPropertyFieldColorPickerHostProps, IPropertyFieldColorPickerHostState> {
 
 	constructor(props: IPropertyFieldColorPickerHostProps, state: IPropertyFieldColorPickerHostState) {
-		super(props);
+    super(props);
+
+    appInsights.track('PropertyFieldColorPicker');
 
 		this.state = {
 			errorMessage: undefined,

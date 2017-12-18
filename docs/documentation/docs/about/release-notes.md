@@ -1,6 +1,21 @@
 # Releases
 
-## Release 1.0.0
+## 1.1.0
+
+**Improvements**
+- Telemetry added
+- Term picker control has now the option to scope on term set or group
+
+**New controls**
+- Added the `PropertyFieldButtonWithCallout` control
+- Added the `PropertyFieldCheckboxWithCallout` control
+- Added the `PropertyFieldChoiceGroupWithCallout` control
+- Added the `PropertyFieldWithCallout` control
+- Added the `PropertyLabelWithCallout` control
+- Added the `PropertyLinkWithCallout` control
+- Added the `PropertySliderWithCallout` control
+
+## 1.0.0
 - Added the `PropertyFieldDropdownWithCallout` control
 - Added the `PropertyFieldTextWithCallout` control
 - Added the `PropertyFieldToggleWithCallout` control

@@ -7,11 +7,14 @@ import {
 	IPropertyFieldSpinButtonHostState
 } from './IPropertyFieldSpinButtonHost';
 import * as strings from 'PropertyControlStrings';
+import * as appInsights from '../../common/appInsights';
 
 export default class PropertyFieldSpinButtonHost extends React.Component<IPropertyFieldSpinButtonHostProps, IPropertyFieldSpinButtonHostState> {
 
 	constructor(props: IPropertyFieldSpinButtonHostProps, state: IPropertyFieldSpinButtonHostState) {
-		super(props);
+    super(props);
+
+    appInsights.track('PropertyFieldSpinButton');
 
 		this.state = {
 			errorMessage: undefined

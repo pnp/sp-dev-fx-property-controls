@@ -5,6 +5,7 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import { IPropertyFieldListPickerHostProps, IPropertyFieldListPickerHostState, ISPList, ISPLists } from './IPropertyFieldListPickerHost';
 import SPListPickerService from '../../services/SPListPickerService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
+import * as appInsights from '../../common/appInsights';
 
 // Empty list value, to be checked for single list selection
 const EMPTY_LIST_KEY = 'NO_LIST_SELECTED';
@@ -25,6 +26,8 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
    */
   constructor(props: IPropertyFieldListPickerHostProps) {
     super(props);
+
+    appInsights.track('PropertyFieldListPicker');
 
     this.state = {
       results: this.options,

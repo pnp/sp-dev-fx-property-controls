@@ -4,7 +4,6 @@ import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
-import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import {
   IPropertyFieldTermPickerPropsInternal
 } from './IPropertyFieldTermPicker';
@@ -43,7 +42,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
   constructor(props: IPropertyFieldTermPickerHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldTermPickerHost', EnvironmentType[Environment.type]);
+    appInsights.track('PropertyFieldTermPicker');
 
     this.state = {
       activeNodes: typeof this.props.initialValues !== 'undefined' ? this.props.initialValues : [],

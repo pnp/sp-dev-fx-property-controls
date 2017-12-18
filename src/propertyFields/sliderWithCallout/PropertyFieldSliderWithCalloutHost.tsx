@@ -5,14 +5,21 @@ import { Slider } from 'office-ui-fabric-react';
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 
 import { IPropertyFieldSliderWithCalloutHostProps } from './IPropertyFieldSliderWithCalloutHost';
+import * as appInsights from '../../common/appInsights';
 
-export default class PropertyFieldToggleWithCalloutHost extends React.Component<IPropertyFieldSliderWithCalloutHostProps, null> {
-    public render(): JSX.Element {
-        return (
-            <div>
-                <PropertyFieldHeader {...this.props} />
-                <Slider {..._.omit(this.props, ['label'])} />
-            </div>
-        );
-    }
+export default class PropertyFieldSliderWithCalloutHost extends React.Component<IPropertyFieldSliderWithCalloutHostProps, null> {
+  constructor(props: IPropertyFieldSliderWithCalloutHostProps) {
+    super(props);
+
+    appInsights.track('PropertyFieldSliderWithCallout');
+  }
+
+  public render(): JSX.Element {
+    return (
+      <div>
+        <PropertyFieldHeader {...this.props} />
+        <Slider {..._.omit(this.props, ['label'])} />
+      </div>
+    );
+  }
 }

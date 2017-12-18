@@ -8,6 +8,7 @@ import { IPropertyFieldListMultiPickerHostProps, IPropertyFieldListMultiPickerHo
 import { ISPLists, ISPList } from './IPropertyFieldListPickerHost';
 import SPListPickerService from '../../services/SPListPickerService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
+import * as appInsights from '../../common/appInsights';
 
 /**
 * Renders the controls for PropertyFieldSPListMultiplePicker component
@@ -23,6 +24,8 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   */
   constructor(props: IPropertyFieldListMultiPickerHostProps) {
     super(props);
+
+    appInsights.track('PropertyFieldListMultiPicker');
 
     this.onChanged = this.onChanged.bind(this);
     this.state = {

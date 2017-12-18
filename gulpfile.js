@@ -10,6 +10,7 @@ gulp.task('versionUpdater', (done) => {
   const filePath = './src/common/appInsights/version.ts';
   const fileContents = `export const version: string = "{versionPlaceholder}";`;
   const newContents = fileContents.replace("{versionPlaceholder}", pkgContents.version);
+  console.log(`Updating version number to: ${pkgContents.version}`);
   fs.writeFileSync(filePath, newContents, { encoding: "utf8" });
   done();
 });

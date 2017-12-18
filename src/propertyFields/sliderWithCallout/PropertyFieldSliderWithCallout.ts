@@ -5,7 +5,7 @@ import {
     PropertyPaneFieldType
 } from '@microsoft/sp-webpart-base';
 
-import PropertyFieldToggleWithCalloutHost from './PropertyFieldSliderWithCalloutHost';
+import PropertyFieldSliderWithCalloutHost from './PropertyFieldSliderWithCalloutHost';
 
 import {IPropertyFieldSliderWithCalloutPropsInternal, IPropertyFieldSliderWithCalloutProps} from './IPropertyFieldSliderWithCallout';
 
@@ -28,7 +28,7 @@ class PropertyFieldSliderWithCalloutBuilder implements IPropertyPaneField<IPrope
 
         const props: IPropertyFieldSliderWithCalloutProps = <IPropertyFieldSliderWithCalloutProps>this.properties;
 
-        const element = React.createElement(PropertyFieldToggleWithCalloutHost, {
+        const element = React.createElement(PropertyFieldSliderWithCalloutHost, {
             ...props,
             onChange: this._onChanged.bind(this)
         });

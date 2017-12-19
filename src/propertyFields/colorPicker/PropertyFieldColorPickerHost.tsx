@@ -16,7 +16,9 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 	constructor(props: IPropertyFieldColorPickerHostProps, state: IPropertyFieldColorPickerHostState) {
     super(props);
 
-    appInsights.track('PropertyFieldColorPicker');
+    appInsights.track('PropertyFieldColorPicker', {
+      disabled: props.disabled
+    });
 
 		this.state = {
 			errorMessage: undefined,

@@ -15,7 +15,9 @@ export default class PropertyFieldButtonHost extends React.Component<IPropertyFi
     constructor(props: IPropertyFieldButtonWithCalloutHostProps) {
       super(props);
 
-      appInsights.track('PropertyFieldButton');
+      appInsights.track('PropertyFieldButton', {
+        disabled: props.disabled
+      });
     }
 
     public render(): JSX.Element {

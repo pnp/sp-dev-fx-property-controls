@@ -27,7 +27,9 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
   constructor(props: IPropertyFieldListPickerHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldListPicker');
+    appInsights.track('PropertyFieldListPicker', {
+      disabled: props.disabled
+    });
 
     this.state = {
       results: this.options,

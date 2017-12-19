@@ -42,7 +42,13 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
   constructor(props: IPropertyFieldTermPickerHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldTermPicker');
+    appInsights.track('PropertyFieldTermPicker', {
+      allowMultipleSelections: props.allowMultipleSelections,
+      excludeSystemGroup: props.excludeSystemGroup,
+      limitByTermsetNameOrID: !!props.limitByTermsetNameOrID,
+      limitByGroupNameOrID: !!props.limitByGroupNameOrID,
+      disabled: props.disabled
+    });
 
     this.state = {
       activeNodes: typeof this.props.initialValues !== 'undefined' ? this.props.initialValues : [],

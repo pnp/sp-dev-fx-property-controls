@@ -11,7 +11,9 @@ export default class PropertyFieldDropdownHost extends React.Component<IProperty
     constructor(props: IPropertyFieldDropdownWithCalloutHostProps) {
       super(props);
 
-      appInsights.track('PropertyFieldDropdown');
+      appInsights.track('PropertyFieldDropdown', {
+        disabled: props.disabled
+      });
     }
 
     public render(): JSX.Element {

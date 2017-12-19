@@ -14,7 +14,9 @@ export default class PropertyFieldLinkHost extends React.Component<IPropertyFiel
   constructor(props: IPropertyFieldLinkWithCalloutHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldLink');
+    appInsights.track('PropertyFieldLink', {
+      disabled: props.disabled
+    });
   }
 
   public render(): JSX.Element {

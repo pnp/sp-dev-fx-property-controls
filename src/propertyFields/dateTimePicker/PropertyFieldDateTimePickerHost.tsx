@@ -90,7 +90,12 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   constructor(props: IPropertyFieldDateTimePickerHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldDateTimePicker');
+    appInsights.track('PropertyFieldDateTimePicker', {
+      dateConvention: props.dateConvention ? DateConvention[props.dateConvention] : '',
+      formatDate: !!props.formatDate,
+      timeConvention: props.timeConvention ? TimeConvention[props.timeConvention] : '',
+      disabled: props.disabled
+    });
 
     // Bind the current object to the external called onSelectDate method
     this._onSelectDate = this._onSelectDate.bind(this);

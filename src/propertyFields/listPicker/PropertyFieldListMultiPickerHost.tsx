@@ -25,7 +25,9 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   constructor(props: IPropertyFieldListMultiPickerHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldListMultiPicker');
+    appInsights.track('PropertyFieldListMultiPicker', {
+      disabled: props.disabled
+    });
 
     this.onChanged = this.onChanged.bind(this);
     this.state = {

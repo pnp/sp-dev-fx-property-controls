@@ -11,7 +11,9 @@ export default class PropertyFieldToggleWithCalloutHost extends React.Component<
   constructor(props: IPropertyFieldToggleWithCalloutHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldToggleWithCallout');
+    appInsights.track('PropertyFieldToggleWithCallout', {
+      disabled: props.disabled
+    });
   }
 
   public render(): JSX.Element {

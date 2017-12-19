@@ -14,7 +14,9 @@ export default class PropertyFieldCheckboxHost extends React.Component<IProperty
     constructor(props: IPropertyFieldCheckboxWithCalloutHostProps) {
         super(props);
 
-        appInsights.track('PropertyFieldCheckbox');
+        appInsights.track('PropertyFieldCheckbox', {
+          disabled: props.disabled
+        });
     }
 
     public render(): JSX.Element {

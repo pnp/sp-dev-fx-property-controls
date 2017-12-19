@@ -12,7 +12,9 @@ export default class PropertyFieldTextWithCalloutHost extends React.Component<IP
   constructor(props: IPropertyFieldTextWithCalloutHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldTextWithCallout');
+    appInsights.track('PropertyFieldTextWithCallout', {
+      disabled: props.disabled
+    });
   }
 
   public render(): JSX.Element {

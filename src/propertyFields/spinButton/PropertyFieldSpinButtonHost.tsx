@@ -14,7 +14,9 @@ export default class PropertyFieldSpinButtonHost extends React.Component<IProper
 	constructor(props: IPropertyFieldSpinButtonHostProps, state: IPropertyFieldSpinButtonHostState) {
     super(props);
 
-    appInsights.track('PropertyFieldSpinButton');
+    appInsights.track('PropertyFieldSpinButton', {
+      disabled: props.disabled
+    });
 
 		this.state = {
 			errorMessage: undefined

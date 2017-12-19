@@ -34,6 +34,12 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
 
     appInsights.track('PropertyFieldPeoplePicker');
 
+    appInsights.track('PropertyFieldPeoplePicker', {
+      allowDuplicate: props.allowDuplicate,
+      principalType: props.principalType ? props.principalType.toString() : '',
+      disabled: props.disabled
+    });
+
     this.searchService = new SPPeopleSearchService(props.context);
     this.onSearchFieldChanged = this.onSearchFieldChanged.bind(this);
     this.onItemChanged = this.onItemChanged.bind(this);

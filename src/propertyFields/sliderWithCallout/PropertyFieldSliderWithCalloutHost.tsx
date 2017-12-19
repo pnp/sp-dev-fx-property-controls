@@ -11,7 +11,9 @@ export default class PropertyFieldSliderWithCalloutHost extends React.Component<
   constructor(props: IPropertyFieldSliderWithCalloutHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldSliderWithCallout');
+    appInsights.track('PropertyFieldSliderWithCallout', {
+      disabled: props.disabled
+    });
   }
 
   public render(): JSX.Element {

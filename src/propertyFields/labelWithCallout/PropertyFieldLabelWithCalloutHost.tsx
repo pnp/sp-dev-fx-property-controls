@@ -14,7 +14,9 @@ export default class PropertyFieldLabelHost extends React.Component<IPropertyFie
   constructor(props: IPropertyFieldLabelWithCalloutHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldLabel');
+    appInsights.track('PropertyFieldLabel', {
+      disabled: props.disabled
+    });
   }
 
   public render(): JSX.Element {

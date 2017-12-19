@@ -21,6 +21,9 @@ jobs:
           paths:
             - ./node_modules
       - run:
+          name: Update version number for telemetry
+          command: npm run versionUpdater
+      - run:
           name: build
           command: npm run build
       - persist_to_workspace:
@@ -74,7 +77,7 @@ jobs:
           at: ~/sp-dev-fx-property-controls
       - add_ssh_keys:
           fingerprints:
-            - "fc:9d:f8:41:85:68:c7:f0:58:dc:3f:1a:8e:71:32:2d"
+            - "b3:23:f4:96:bd:28:55:ff:11:52:bb:0c:f5:ac:41:30"
       - run:
           name: Install MkDocs
           command: sudo pip install mkdocs

@@ -84,15 +84,15 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
               groupName: '', //strings.BasicGroupName,
               groupFields: [
                 PropertyFieldCodeEditor('htmlCode', {
-                  label: 'Edit Json Code',
-                  panelTitle: 'Edit Json Code',
+                  label: 'Edit HTML Code',
+                  panelTitle: 'Edit HTML Code',
                   initialValue: this.properties.htmlCode,
-                  language:PropertyFieldCodeEditorLanguages.HTML,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
                   context: this.context,
                   disabled: false,
-                  key: 'codeEditorFieldId'
+                  key: 'codeEditorFieldId',
+                  language:PropertyFieldCodeEditorLanguages.HTML,
                 }),
                 PropertyFieldPeoplePicker('people', {
                   label: 'PropertyFieldPeoplePicker',

@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@types/applicationinsights-js": "1.0.5",
-    "applicationinsights-js": "1.0.14",
+    "applicationinsights-js": "^1.0.14",
     "react-ace": "^5.8.0"
   },
   "devDependencies": {

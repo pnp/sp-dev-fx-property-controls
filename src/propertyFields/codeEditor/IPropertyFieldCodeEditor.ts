@@ -4,7 +4,7 @@ import { IWebPartContext } from '@microsoft/sp-webpart-base';
 export enum PropertyFieldCodeEditorLanguages {
   "JSON" = "json",
   "JavaScript" = "javascript",
-  "Saas" = "saas",
+  "Sass" = "sass",
   "TypeScript" = "typescript",
   "Plain Text" = "plain_text",
   "HTML" = "html",

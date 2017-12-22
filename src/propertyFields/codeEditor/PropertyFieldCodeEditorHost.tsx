@@ -20,8 +20,8 @@ import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as appInsights from '../../common/appInsights';
 import * as brace from 'brace';
 import AceEditor from 'react-ace';
-import 'brace/mode/java';
-import 'brace/theme/github';
+import 'brace/mode/html';
+import 'brace/theme/chrome';
 
 /**
  * Renders the controls for PropertyFieldCodeEditor component
@@ -175,16 +175,14 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
           isLightDismiss={true}
           type={PanelType.medium}
           headerText={this.props.panelTitle}>
-          <div id="mytestsyuff">
-            {this.state.code}
-          </div>
           <AceEditor
-    mode="java"
-    theme="github"
-    //onChange={onChange}
-    name="mytestsyuff"
-    editorProps={{$blockScrolling: true}}
-  />,
+            mode="html"
+            theme="chrome"
+            //onChange={onChange}
+            value= {this.state.code}
+            name="mytestsyuff"
+            editorProps={{ $blockScrolling: true }}
+          />,
 
           }
         </Panel>

@@ -28,7 +28,7 @@
     "properties": {
       "description": "PropertyControlsTest",
       "dropdownInfoHeaderKey": "gryffindor",
-      "jsonCode":"{'color':'blue'}"
+      "htmlCode":"<div>Hello</div>"
     }
   }]
 }

@@ -19,5 +19,5 @@ export interface IPropertyControlsTestWebPartProps {
   textInfoHeaderValue: string;
   toggleInfoHeaderValue: boolean;
   checkboxWithCalloutValue: boolean;
-  jsonCode:string;
+  htmlCode:string;
 }

@@ -36,7 +36,7 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
    * Constructor method
    */
   public constructor(_targetProperty: string, _properties: IPropertyFieldCodeEditorPropsInternal) {
-    debugger;
+  
     this.render = this.render.bind(this);
     this.targetProperty = _targetProperty;
     this.properties = _properties;

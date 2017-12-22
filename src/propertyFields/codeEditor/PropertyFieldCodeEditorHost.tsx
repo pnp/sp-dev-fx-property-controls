@@ -1,16 +1,14 @@
 import * as React from 'react';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, IButtonProps,IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
-import {
-  IPropertyFieldCodeEditorPropsInternal
-} from './IPropertyFieldCodeEditor';
+import {  IPropertyFieldCodeEditorPropsInternal} from './IPropertyFieldCodeEditor';
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { IPropertyFieldCodeEditorHostProps, IPropertyFieldCodeEditorHostState} from './IPropertyFieldCodeEditorHost';
+import { IPropertyFieldCodeEditorHostProps, IPropertyFieldCodeEditorHostState } from './IPropertyFieldCodeEditorHost';
 import SPTermStorePickerService from './../../services/SPTermStorePickerService';
 import { ITermStore, IGroup, ITerm } from './../../services/ISPTermStorePickerService';
 import styles from './PropertyFieldCodeEditorHost.module.scss';
@@ -19,7 +17,14 @@ import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as appInsights from '../../common/appInsights';
 import * as brace from 'brace';
 import AceEditor from 'react-ace';
+import 'brace/mode/json';
+import 'brace/mode/javascript';
+import 'brace/mode/sass';
+import 'brace/mode/typescript';
 import 'brace/mode/html';
+import 'brace/mode/handlebars';
+import 'brace/mode/xml';
+
 import 'brace/theme/chrome';
 
 /**
@@ -34,7 +39,6 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
    */
   constructor(props: IPropertyFieldCodeEditorHostProps) {
     super(props);
-    debugger;
     appInsights.track('PropertyFieldCodeEditor', {
       language: props.language,
       disabled: props.disabled
@@ -135,16 +139,24 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
       this.async.dispose();
     }
   }
-  public onChange(newValue: string, event?: any) {
-    this.setState((current)=>({...current,code:newValue}));
-    if (this.props.onPropertyChange && newValue !== null) {
-      this.props.properties[this.props.targetProperty] = newValue;
-      this.props.onPropertyChange(this.props.targetProperty, this.props.initialValue, newValue);
-      // Trigger the apply button
-      if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
-        this.props.onChange(this.props.targetProperty, newValue);
-      }
+  /**
+ * Called when the save button  gets clicked
+ */
+  public onSave() {
+    this.props.properties[this.props.targetProperty] = this.state.code;
+    this.props.onPropertyChange(this.props.targetProperty, this.props.initialValue, this.state.code);
+    // Trigger the apply button
+    if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
+      this.props.onChange(this.props.targetProperty, this.state.code);
     }
+    this.setState((current)=>({...current,openPanel:false}));
+  }
+
+  /**
+ * Called when the code gets changed
+ */
+  public onChange(newValue: string, event?: any) {
+    this.setState((current) => ({ ...current, code: newValue }));
   }
 
   /**
@@ -184,16 +196,18 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
           isLightDismiss={true}
           type={PanelType.medium}
           headerText={this.props.panelTitle}>
+
           <AceEditor
-            mode="html"
+            mode={this.props.language}
             theme="chrome"
             onChange={this.onChange.bind(this)}
             value={this.state.code}
             name="mytestsyuff"
             editorProps={{ $blockScrolling: true }}
-          />,
-
-          }
+          />
+          <PrimaryButton  iconProps={{ iconName: 'Save' }} text="Save" value="Save" onClick={this.onSave.bind(this)} />
+           
+          
         </Panel>
       </div>
     );

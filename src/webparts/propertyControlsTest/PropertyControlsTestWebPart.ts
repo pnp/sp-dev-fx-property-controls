@@ -53,7 +53,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         textInfoHeaderValue: this.properties.textInfoHeaderValue,
         toggleInfoHeaderValue: this.properties.toggleInfoHeaderValue,
         checkboxWithCalloutValue: this.properties.checkboxWithCalloutValue,
-        jsonCode:this.properties.jsonCode
+        htmlCode:this.properties.htmlCode
       }
     );
 
@@ -73,7 +73,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     const dropdownWithCalloutSelectedKey: string = this.properties.dropdownWithCalloutKey || 'gryffindor';
     const dropdownWithCalloutCallountContent: JSX.Element = this.getDropdownInfoHeaderCalloutContent();
 
-    debugger;
     return {
       pages: [
         {
@@ -84,16 +83,15 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
             {
               groupName: '', //strings.BasicGroupName,
               groupFields: [
-                PropertyFieldCodeEditor('jsonCode', {
+                PropertyFieldCodeEditor('htmlCode', {
                   label: 'Edit Json Code',
                   panelTitle: 'Edit Json Code',
-                  initialValue: this.properties.jsonCode,
-                  language:PropertyFieldCodeEditorLanguages.JSON,
+                  initialValue: this.properties.htmlCode,
+                  language:PropertyFieldCodeEditorLanguages.HTML,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
                   context: this.context,
                   disabled: false,
-             
                   key: 'codeEditorFieldId'
                 }),
 

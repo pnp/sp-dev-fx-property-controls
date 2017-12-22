@@ -27,7 +27,8 @@
     "officeFabricIconFontName": "Settings",
     "properties": {
       "description": "PropertyControlsTest",
-      "dropdownInfoHeaderKey": "gryffindor"
+      "dropdownInfoHeaderKey": "gryffindor",
+      "jsonCode":"{'color':'blue'}"
     }
   }]
 }

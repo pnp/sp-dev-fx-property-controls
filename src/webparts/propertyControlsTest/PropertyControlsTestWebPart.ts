@@ -7,6 +7,7 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
+import { PropertyFieldCodeEditor } from '../../PropertyFieldCodeEditor';
 import * as strings from 'PropertyControlsTestWebPartStrings';
 import PropertyControlsTest from './components/PropertyControlsTest';
 import { IPropertyControlsTestProps } from './components/IPropertyControlsTestProps';
@@ -51,7 +52,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         dropdownInfoHeaderKey: this.properties.dropdownInfoHeaderKey,
         textInfoHeaderValue: this.properties.textInfoHeaderValue,
         toggleInfoHeaderValue: this.properties.toggleInfoHeaderValue,
-        checkboxWithCalloutValue: this.properties.checkboxWithCalloutValue
+        checkboxWithCalloutValue: this.properties.checkboxWithCalloutValue,
+        jsonCode:this.properties.jsonCode
       }
     );
 
@@ -71,7 +73,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     const dropdownWithCalloutSelectedKey: string = this.properties.dropdownWithCalloutKey || 'gryffindor';
     const dropdownWithCalloutCallountContent: JSX.Element = this.getDropdownInfoHeaderCalloutContent();
 
-
+    debugger;
     return {
       pages: [
         {
@@ -82,205 +84,218 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
             {
               groupName: '', //strings.BasicGroupName,
               groupFields: [
-                PropertyFieldPeoplePicker('people', {
-                  label: 'PropertyFieldPeoplePicker',
-                  initialData: this.properties.people,
-                  allowDuplicate: true,
-                  principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
-                  // principalType: [IPrincipalType.SharePoint],
-                  onPropertyChange: this.onPropertyPaneFieldChanged,
-                  context: this.context,
-                  properties: this.properties,
-                  onGetErrorMessage: null,
-                  deferredValidationTime: 0,
-                  key: 'peopleFieldId'
-                }),
-                PropertyFieldListPicker('singleList', {
-                  label: 'Select a list',
-                  selectedList: this.properties.singleList,
-                  includeHidden: false,
-                  //baseTemplate: 109,
-                  orderBy: PropertyFieldListPickerOrderBy.Title,
-                  // multiSelect: false,
-                  disabled: false,
-                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
-                  properties: this.properties,
-                  context: this.context,
-                  onGetErrorMessage: null,
-                  deferredValidationTime: 0,
-                  key: 'listPickerFieldId'
-                }),
-                PropertyFieldListPicker('multiList', {
-                  label: 'Select multiple lists',
-                  selectedList: this.properties.multiList,
-                  includeHidden: false,
-                  //baseTemplate: 109,
-                  orderBy: PropertyFieldListPickerOrderBy.Title,
-                  multiSelect: true,
-                  disabled: false,
-                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
-                  properties: this.properties,
-                  context: this.context,
-                  onGetErrorMessage: null,
-                  deferredValidationTime: 0,
-                  key: 'multiListPickerFieldId'
-                }),
-                PropertyFieldTermPicker('terms', {
-                  label: 'Select terms',
-                  panelTitle: 'Select terms',
-                  initialValues: this.properties.terms,
-                  allowMultipleSelections: true,
-                  excludeSystemGroup: false,
+                PropertyFieldCodeEditor('jsonCode', {
+                  label: 'Edit Json Code',
+                  panelTitle: 'Edit Json Code',
+                  initialValue: this.properties.jsonCode,
+                  language:"JSON",
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
                   context: this.context,
                   disabled: false,
                   onGetErrorMessage: null,
-                  deferredValidationTime: 0,
-                  limitByGroupNameOrID: 'People',
-                  limitByTermsetNameOrID: 'Location',
-                  key: 'termSetsPickerFieldId'
+                  key: 'codeEditorFieldId'
                 }),
-                PropertyFieldDateTimePicker('datetime', {
-                  label: 'Select the date and time',
-                  disabled: false,
-                  initialDate: this.properties.datetime,
-                  // formatDate: this._formatDateIso,
-                  dateConvention: DateConvention.DateTime,
-                  timeConvention: TimeConvention.Hours12,
-                  firstDayOfWeek: DayOfWeek.Monday,
-                  onPropertyChange: this.onPropertyPaneFieldChanged,
-                  properties: this.properties,
-                  onGetErrorMessage: null,
-                  deferredValidationTime: 0,
-                  key: 'dateTimeFieldId'
-                }),
-                PropertyFieldColorPicker('color', {
-                  label: 'Color',
-                  selectedColor: this.properties.color,
-                  onPropertyChange: this.onPropertyPaneFieldChanged,
-                  properties: this.properties,
-                  //disabled: true,
-                  //alphaSliderHidden: true,
-                  //style: PropertyFieldColorPickerStyle.Full,
-                  //iconName: 'Precipitation',
-                  key: 'colorFieldId'
-                }),
-                PropertyFieldSpinButton('spinValue', {
-                  label: 'Spin Value',
-                  initialValue: this.properties.spinValue,
-                  onPropertyChange: this.onPropertyPaneFieldChanged,
-                  properties: this.properties,
-                  //disabled: true,
-                  suffix: 'px',
-                  min: 0,
-                  max: 5,
-                  step: 0.25,
-                  decimalPlaces: 2,
-                  //incrementIconName: 'CalculatorAddition',
-                  //decrementIconName: 'CalculatorSubtract',
-                  key: 'spinButtonFieldId'
-                }),
-                PropertyFieldDropdownWithCallout('dropdownWithCalloutKey', {
-                  calloutTrigger: CalloutTriggers.Hover,
-                  key: 'dropdownWithCalloutFieldId',
-                  label: 'Select your house',
-                  options: [{
-                    key: 'gryffindor',
-                    text: 'Gryffindor'
-                  }, {
-                    key: 'hufflepuff',
-                    text: 'Hufflepuff'
-                  }, {
-                    key: 'ravenclaw',
-                    text: 'Ravenclaw'
-                  }, {
-                    key: 'slytherin',
-                    text: 'Slytherin'
-                  }],
-                  selectedKey: dropdownWithCalloutSelectedKey,
-                  calloutContent: dropdownWithCalloutCallountContent
-                }),
-                PropertyFieldTextWithCallout('textInfoHeaderValue', {
-                  calloutTrigger: CalloutTriggers.Hover,
-                  key: 'textWithCalloutFieldId',
-                  label: 'Describe your PnP passion with few words',
-                  calloutContent: React.createElement('span', {}, 'You can describe your passion with such words as strong, cosmic, all-absorbing, etc.'),
-                  calloutWidth: 150,
-                  value: this.properties.textInfoHeaderValue
-                }),
-                PropertyFieldToggleWithCallout('toggleInfoHeaderValue', {
-                  calloutTrigger: CalloutTriggers.Click,
-                  key: 'toggleWithCalloutFieldId',
-                  label: 'Select your super hero universe',
-                  calloutContent: React.createElement('p', {}, 'Select one of two universes of super heroes: DC comics with Superman, Batman, Wonder Woman, etc.; or Marvel with X-Men, Spider-Man, Avengers, etc.'),
-                  onText: 'Marvel',
-                  offText: 'DC Comics',
-                  checked: this.properties.toggleInfoHeaderValue
-                }),
-                PropertyFieldSliderWithCallout('sliderWithCalloutValue', {
-                  calloutContent: React.createElement('div', {}, 'Enter value for the item'),
-                  calloutTrigger: CalloutTriggers.Click,
-                  calloutWidth: 200,
-                  key: 'sliderWithCalloutFieldId',
-                  label: 'Slide to select the value',
-                  max: 100,
-                  min: 0,
-                  step: 1,
-                  showValue: true,
-                  value: this.properties.sliderWithCalloutValue
-                }),
-                PropertyFieldChoiceGroupWithCallout('choiceGroupWithCalloutValue', {
-                  calloutContent: React.createElement('div', {}, 'Select preferrable mobile platform'),
-                  calloutTrigger: CalloutTriggers.Hover,
-                  key: 'choiceGroupWithCalloutFieldId',
-                  label: 'Preferred mobile platform',
-                  options: [{
-                    key: 'iOS',
-                    text: 'iOS',
-                    checked: this.properties.choiceGroupWithCalloutValue === 'iOS'
-                  }, {
-                    key: 'Android',
-                    text: 'Android',
-                    checked: this.properties.choiceGroupWithCalloutValue === 'Android'
-                  }, {
-                    key: 'Other',
-                    text: 'Other',
-                    checked: this.properties.choiceGroupWithCalloutValue === 'Other'
-                  }]
-                }),
-                PropertyFieldButtonWithCallout('fakeProperty', {
-                  calloutTrigger: CalloutTriggers.Click,
-                  key: 'buttonWithCalloutFieldId',
-                  calloutContent: React.createElement('p', {}, 'Tests connection to the database with the parameters listed above'),
-                  calloutWidth: 150,
-                  text: 'Test connection',
-                  onClick: () => { alert('Code to test connection goes here'); }
-                }),
-                PropertyFieldCheckboxWithCallout('checkboxWithCalloutValue', {
-                  calloutTrigger: CalloutTriggers.Click,
-                  key: 'checkboxWithCalloutFieldId',
-                  calloutContent: React.createElement('p', {}, 'Check the checkbox to accept Application Terms and Conditions'),
-                  calloutWidth: 200,
-                  text: 'Accept terms and conditions',
-                  checked: this.properties.checkboxWithCalloutValue
-                }),
-                PropertyFieldLabelWithCallout('fakeProp', {
-                  calloutTrigger: CalloutTriggers.Click,
-                  key: 'LabelWithCalloutFieldId',
-                  calloutContent: 'Use dropdowns below to select list and list\'s field to work with',
-                  calloutWidth: 200,
-                  text: 'Select List and Field'
-                }),
-                PropertyFieldLinkWithCallout('fakeProp', {
-                  calloutTrigger: CalloutTriggers.Click,
-                  key: 'linkWithCalloutFieldId',
-                  calloutContent: React.createElement('p', {}, 'Click the link to open a new page with Application Terms & Conditions'),
-                  calloutWidth: 200,
-                  text: 'Terms & Conditions',
-                  href: 'https://github.com/SharePoint/sp-dev-fx-property-controls',
-                  target: '_blank'
-                })
+
+                // PropertyFieldPeoplePicker('people', {
+                //   label: 'PropertyFieldPeoplePicker',
+                //   initialData: this.properties.people,
+                //   allowDuplicate: true,
+                //   principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
+                //   // principalType: [IPrincipalType.SharePoint],
+                //   onPropertyChange: this.onPropertyPaneFieldChanged,
+                //   context: this.context,
+                //   properties: this.properties,
+                //   onGetErrorMessage: null,
+                //   deferredValidationTime: 0,
+                //   key: 'peopleFieldId'
+                // }),
+                // PropertyFieldListPicker('singleList', {
+                //   label: 'Select a list',
+                //   selectedList: this.properties.singleList,
+                //   includeHidden: false,
+                //   //baseTemplate: 109,
+                //   orderBy: PropertyFieldListPickerOrderBy.Title,
+                //   // multiSelect: false,
+                //   disabled: false,
+                //   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                //   properties: this.properties,
+                //   context: this.context,
+                //   onGetErrorMessage: null,
+                //   deferredValidationTime: 0,
+                //   key: 'listPickerFieldId'
+                // }),
+                // PropertyFieldListPicker('multiList', {
+                //   label: 'Select multiple lists',
+                //   selectedList: this.properties.multiList,
+                //   includeHidden: false,
+                //   //baseTemplate: 109,
+                //   orderBy: PropertyFieldListPickerOrderBy.Title,
+                //   multiSelect: true,
+                //   disabled: false,
+                //   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                //   properties: this.properties,
+                //   context: this.context,
+                //   onGetErrorMessage: null,
+                //   deferredValidationTime: 0,
+                //   key: 'multiListPickerFieldId'
+                // }),
+                // PropertyFieldTermPicker('terms', {
+                //   label: 'Select terms',
+                //   panelTitle: 'Select terms',
+                //   initialValues: this.properties.terms,
+                //   allowMultipleSelections: true,
+                //   excludeSystemGroup: false,
+                //   onPropertyChange: this.onPropertyPaneFieldChanged,
+                //   properties: this.properties,
+                //   context: this.context,
+                //   disabled: false,
+                //   onGetErrorMessage: null,
+                //   deferredValidationTime: 0,
+                //   limitByGroupNameOrID: 'People',
+                //   limitByTermsetNameOrID: 'Location',
+                //   key: 'termSetsPickerFieldId'
+                // }),
+                // PropertyFieldDateTimePicker('datetime', {
+                //   label: 'Select the date and time',
+                //   disabled: false,
+                //   initialDate: this.properties.datetime,
+                //   // formatDate: this._formatDateIso,
+                //   dateConvention: DateConvention.DateTime,
+                //   timeConvention: TimeConvention.Hours12,
+                //   firstDayOfWeek: DayOfWeek.Monday,
+                //   onPropertyChange: this.onPropertyPaneFieldChanged,
+                //   properties: this.properties,
+                //   onGetErrorMessage: null,
+                //   deferredValidationTime: 0,
+                //   key: 'dateTimeFieldId'
+                // }),
+                // PropertyFieldColorPicker('color', {
+                //   label: 'Color',
+                //   selectedColor: this.properties.color,
+                //   onPropertyChange: this.onPropertyPaneFieldChanged,
+                //   properties: this.properties,
+                //   //disabled: true,
+                //   //alphaSliderHidden: true,
+                //   //style: PropertyFieldColorPickerStyle.Full,
+                //   //iconName: 'Precipitation',
+                //   key: 'colorFieldId'
+                // }),
+                // PropertyFieldSpinButton('spinValue', {
+                //   label: 'Spin Value',
+                //   initialValue: this.properties.spinValue,
+                //   onPropertyChange: this.onPropertyPaneFieldChanged,
+                //   properties: this.properties,
+                //   //disabled: true,
+                //   suffix: 'px',
+                //   min: 0,
+                //   max: 5,
+                //   step: 0.25,
+                //   decimalPlaces: 2,
+                //   //incrementIconName: 'CalculatorAddition',
+                //   //decrementIconName: 'CalculatorSubtract',
+                //   key: 'spinButtonFieldId'
+                // }),
+                // PropertyFieldDropdownWithCallout('dropdownWithCalloutKey', {
+                //   calloutTrigger: CalloutTriggers.Hover,
+                //   key: 'dropdownWithCalloutFieldId',
+                //   label: 'Select your house',
+                //   options: [{
+                //     key: 'gryffindor',
+                //     text: 'Gryffindor'
+                //   }, {
+                //     key: 'hufflepuff',
+                //     text: 'Hufflepuff'
+                //   }, {
+                //     key: 'ravenclaw',
+                //     text: 'Ravenclaw'
+                //   }, {
+                //     key: 'slytherin',
+                //     text: 'Slytherin'
+                //   }],
+                //   selectedKey: dropdownWithCalloutSelectedKey,
+                //   calloutContent: dropdownWithCalloutCallountContent
+                // }),
+                // PropertyFieldTextWithCallout('textInfoHeaderValue', {
+                //   calloutTrigger: CalloutTriggers.Hover,
+                //   key: 'textWithCalloutFieldId',
+                //   label: 'Describe your PnP passion with few words',
+                //   calloutContent: React.createElement('span', {}, 'You can describe your passion with such words as strong, cosmic, all-absorbing, etc.'),
+                //   calloutWidth: 150,
+                //   value: this.properties.textInfoHeaderValue
+                // }),
+                // PropertyFieldToggleWithCallout('toggleInfoHeaderValue', {
+                //   calloutTrigger: CalloutTriggers.Click,
+                //   key: 'toggleWithCalloutFieldId',
+                //   label: 'Select your super hero universe',
+                //   calloutContent: React.createElement('p', {}, 'Select one of two universes of super heroes: DC comics with Superman, Batman, Wonder Woman, etc.; or Marvel with X-Men, Spider-Man, Avengers, etc.'),
+                //   onText: 'Marvel',
+                //   offText: 'DC Comics',
+                //   checked: this.properties.toggleInfoHeaderValue
+                // }),
+                // PropertyFieldSliderWithCallout('sliderWithCalloutValue', {
+                //   calloutContent: React.createElement('div', {}, 'Enter value for the item'),
+                //   calloutTrigger: CalloutTriggers.Click,
+                //   calloutWidth: 200,
+                //   key: 'sliderWithCalloutFieldId',
+                //   label: 'Slide to select the value',
+                //   max: 100,
+                //   min: 0,
+                //   step: 1,
+                //   showValue: true,
+                //   value: this.properties.sliderWithCalloutValue
+                // }),
+                // PropertyFieldChoiceGroupWithCallout('choiceGroupWithCalloutValue', {
+                //   calloutContent: React.createElement('div', {}, 'Select preferrable mobile platform'),
+                //   calloutTrigger: CalloutTriggers.Hover,
+                //   key: 'choiceGroupWithCalloutFieldId',
+                //   label: 'Preferred mobile platform',
+                //   options: [{
+                //     key: 'iOS',
+                //     text: 'iOS',
+                //     checked: this.properties.choiceGroupWithCalloutValue === 'iOS'
+                //   }, {
+                //     key: 'Android',
+                //     text: 'Android',
+                //     checked: this.properties.choiceGroupWithCalloutValue === 'Android'
+                //   }, {
+                //     key: 'Other',
+                //     text: 'Other',
+                //     checked: this.properties.choiceGroupWithCalloutValue === 'Other'
+                //   }]
+                // }),
+                // PropertyFieldButtonWithCallout('fakeProperty', {
+                //   calloutTrigger: CalloutTriggers.Click,
+                //   key: 'buttonWithCalloutFieldId',
+                //   calloutContent: React.createElement('p', {}, 'Tests connection to the database with the parameters listed above'),
+                //   calloutWidth: 150,
+                //   text: 'Test connection',
+                //   onClick: () => { alert('Code to test connection goes here'); }
+                // }),
+                // PropertyFieldCheckboxWithCallout('checkboxWithCalloutValue', {
+                //   calloutTrigger: CalloutTriggers.Click,
+                //   key: 'checkboxWithCalloutFieldId',
+                //   calloutContent: React.createElement('p', {}, 'Check the checkbox to accept Application Terms and Conditions'),
+                //   calloutWidth: 200,
+                //   text: 'Accept terms and conditions',
+                //   checked: this.properties.checkboxWithCalloutValue
+                // }),
+                // PropertyFieldLabelWithCallout('fakeProp', {
+                //   calloutTrigger: CalloutTriggers.Click,
+                //   key: 'LabelWithCalloutFieldId',
+                //   calloutContent: 'Use dropdowns below to select list and list\'s field to work with',
+                //   calloutWidth: 200,
+                //   text: 'Select List and Field'
+                // }),
+                // PropertyFieldLinkWithCallout('fakeProp', {
+                //   calloutTrigger: CalloutTriggers.Click,
+                //   key: 'linkWithCalloutFieldId',
+                //   calloutContent: React.createElement('p', {}, 'Click the link to open a new page with Application Terms & Conditions'),
+                //   calloutWidth: 200,
+                //   text: 'Terms & Conditions',
+                //   href: 'https://github.com/SharePoint/sp-dev-fx-property-controls',
+                //   target: '_blank'
+                // })
               ]
             }
           ]

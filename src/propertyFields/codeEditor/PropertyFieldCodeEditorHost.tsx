@@ -49,11 +49,11 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
     this.onClosePanel = this.onClosePanel.bind(this);
     this.async = new Async(this);
     //this.validate = this.validate.bind(this);
-  //  this.notifyAfterValidate = this.notifyAfterValidate.bind(this);
-   // this.delayedValidate = this.async.debounce(this.validate, this.props.deferredValidationTime);
+    //  this.notifyAfterValidate = this.notifyAfterValidate.bind(this);
+    // this.delayedValidate = this.async.debounce(this.validate, this.props.deferredValidationTime);
   }
 
- 
+
   // /**
   //  * Validates the new custom field value
   //  */
@@ -138,7 +138,7 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
    * Renders the SPListpicker controls with Office UI  Fabric
    */
   public render(): JSX.Element {
-   
+
     // Renders content
     return (
       <div>
@@ -171,9 +171,9 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
           isLightDismiss={true}
           type={PanelType.medium}
           headerText={this.props.panelTitle}>
-      <div>
-                  {this.state.code}
-                </div>
+          <div>
+            {this.state.code}
+          </div>
           }
         </Panel>
       </div>

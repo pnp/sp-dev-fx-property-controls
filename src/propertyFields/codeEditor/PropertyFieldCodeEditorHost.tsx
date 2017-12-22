@@ -137,6 +137,17 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
       this.async.dispose();
     }
   }
+  public onChange(newValue: string, event?: any) {
+    this.setState((current)=>({...current,code:newValue}));
+    if (this.props.onPropertyChange && newValue !== null) {
+      this.props.properties[this.props.targetProperty] = newValue;
+      this.props.onPropertyChange(this.props.targetProperty, this.props.initialValue, newValue);
+      // Trigger the apply button
+      if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
+        this.props.onChange(this.props.targetProperty, newValue);
+      }
+    }
+  }
 
   /**
    * Renders the SPListpicker controls with Office UI  Fabric
@@ -178,8 +189,8 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
           <AceEditor
             mode="html"
             theme="chrome"
-            //onChange={onChange}
-            value= {this.state.code}
+            onChange={this.onChange.bind(this)}
+            value={this.state.code}
             name="mytestsyuff"
             editorProps={{ $blockScrolling: true }}
           />,

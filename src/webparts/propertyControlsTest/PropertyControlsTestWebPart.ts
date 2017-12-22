@@ -7,7 +7,7 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
-import { PropertyFieldCodeEditor } from '../../PropertyFieldCodeEditor';
+import { PropertyFieldCodeEditor,PropertyFieldCodeEditorLanguages } from '../../PropertyFieldCodeEditor';
 import * as strings from 'PropertyControlsTestWebPartStrings';
 import PropertyControlsTest from './components/PropertyControlsTest';
 import { IPropertyControlsTestProps } from './components/IPropertyControlsTestProps';
@@ -88,12 +88,12 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: 'Edit Json Code',
                   panelTitle: 'Edit Json Code',
                   initialValue: this.properties.jsonCode,
-                  language:"JSON",
+                  language:PropertyFieldCodeEditorLanguages.JSON,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
                   context: this.context,
                   disabled: false,
-                  onGetErrorMessage: null,
+             
                   key: 'codeEditorFieldId'
                 }),
 

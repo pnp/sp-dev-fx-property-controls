@@ -10,8 +10,7 @@ import {
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { ICheckedTerms, ICheckedTerm } from './IPropertyFieldCodeEditor';
-import { IPropertyFieldCodeEditorHostProps, IPropertyFieldCodeEditorHostState, ITermGroupProps, ITermGroupState, ITermSetProps, ITermSetState, ITermProps, ITermState } from './IPropertyFieldCodeEditorHost';
+import { IPropertyFieldCodeEditorHostProps, IPropertyFieldCodeEditorHostState} from './IPropertyFieldCodeEditorHost';
 import SPTermStorePickerService from './../../services/SPTermStorePickerService';
 import { ITermStore, IGroup, ITerm } from './../../services/ISPTermStorePickerService';
 import styles from './PropertyFieldCodeEditorHost.module.scss';
@@ -28,7 +27,6 @@ import 'brace/theme/chrome';
  */
 export default class PropertyFieldCodeEditorHost extends React.Component<IPropertyFieldCodeEditorHostProps, IPropertyFieldCodeEditorHostState> {
   private async: Async;
-  private delayedValidate: (value: ICheckedTerms) => void;
   private termsService: SPTermStorePickerService;
 
   /**

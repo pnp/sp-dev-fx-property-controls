@@ -7,7 +7,7 @@ import {
 } from '@microsoft/sp-webpart-base';
 import PropertyFieldCodeEditorHost from './PropertyFieldCodeEditorHost';
 import { IPropertyFieldCodeEditorHostProps } from './IPropertyFieldCodeEditorHost';
-import { IPropertyFieldCodeEditorPropsInternal, IPropertyFieldCodeEditorProps, ICheckedTerms } from './IPropertyFieldCodeEditor';
+import { IPropertyFieldCodeEditorPropsInternal, IPropertyFieldCodeEditorProps, PropertyFieldCodeEditorLanguages } from './IPropertyFieldCodeEditor';
 
 /**
  * Represents a PropertyFieldCodeEditor object
@@ -23,14 +23,13 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
   private context: IWebPartContext;
   
   private initialValue: string;
-  private language:string=null;
+  private language:PropertyFieldCodeEditorLanguages;
   private panelTitle: string;
 
   public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { }
   private customProperties: any;
   private key: string;
   private disabled: boolean = false;
-  private onGetErrorMessage: (value: ICheckedTerms) => string | Promise<string>;
   private deferredValidationTime: number = 200;
 
   /**
@@ -48,7 +47,6 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
     this.onPropertyChange = _properties.onPropertyChange;
     this.customProperties = _properties.properties;
     this.key = _properties.key;
-    this.onGetErrorMessage = _properties.onGetErrorMessage;
     this.panelTitle = _properties.panelTitle;
 
     this.language=_properties.language;
@@ -82,7 +80,6 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
       properties: this.customProperties,
       key: this.key,
       disabled: this.disabled,
-      onGetErrorMessage: this.onGetErrorMessage,
       deferredValidationTime: this.deferredValidationTime
     });
 

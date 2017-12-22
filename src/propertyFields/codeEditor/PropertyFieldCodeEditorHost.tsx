@@ -18,6 +18,10 @@ import styles from './PropertyFieldCodeEditorHost.module.scss';
 import { sortBy, uniqBy } from '@microsoft/sp-lodash-subset';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as appInsights from '../../common/appInsights';
+import * as brace from 'brace';
+import AceEditor from 'react-ace';
+import 'brace/mode/java';
+import 'brace/theme/github';
 
 /**
  * Renders the controls for PropertyFieldCodeEditor component
@@ -171,9 +175,17 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
           isLightDismiss={true}
           type={PanelType.medium}
           headerText={this.props.panelTitle}>
-          <div>
+          <div id="mytestsyuff">
             {this.state.code}
           </div>
+          <AceEditor
+    mode="java"
+    theme="github"
+    //onChange={onChange}
+    name="mytestsyuff"
+    editorProps={{$blockScrolling: true}}
+  />,
+
           }
         </Panel>
       </div>

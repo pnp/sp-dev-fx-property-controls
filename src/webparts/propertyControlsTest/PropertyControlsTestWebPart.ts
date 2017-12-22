@@ -94,7 +94,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   disabled: false,
                   key: 'codeEditorFieldId'
                 }),
-
                 PropertyFieldPeoplePicker('people', {
                   label: 'PropertyFieldPeoplePicker',
                   initialData: this.properties.people,

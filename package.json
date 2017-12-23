@@ -51,6 +51,7 @@
     "url": "https://github.com/SharePoint/sp-dev-fx-property-controls/issues"
   },
   "homepage": "https://github.com/SharePoint/sp-dev-fx-property-controls",
+  "main": "lib/index.js",
   "maintainers": [
     {
       "name": "eliostruyf",

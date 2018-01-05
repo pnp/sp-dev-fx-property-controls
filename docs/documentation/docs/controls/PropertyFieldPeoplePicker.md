@@ -61,6 +61,7 @@ The `PropertyFieldPeoplePicker` control can be configured with the following pro
 | context | WebPartContext | yes | Context of the current web part. |
 | initialData | IPropertyFieldGroupOrPerson[] | no | Intial data to load in the people picker (optional). |
 | allowDuplicate | boolean | no | Defines if the People Picker allows to select duplicated users (optional). |
+| multiSelect | boolean | no | Define if you want to allow multi user / group selection. (optional, true by default). |
 | principalType | PrincipalType[] | no | Define which type of data you want to retrieve: User, SharePoint groups, Security groups. Multiple are possible. |
 | onPropertyChange | function | yes | Defines a onPropertyChange function to raise when the date gets changed. |
 | properties | any | yes | Parent web part properties, this object is use to update the property value.  |

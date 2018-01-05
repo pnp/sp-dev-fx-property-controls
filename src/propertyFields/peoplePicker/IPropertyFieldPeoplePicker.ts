@@ -89,6 +89,10 @@ export interface IPropertyFieldPeoplePickerProps {
    */
   principalType?: PrincipalType[];
   /**
+   * Define if you want to allow multi user / group selection. True by default.
+   */
+  multiSelect?: boolean;
+  /**
    * Defines a onPropertyChange function to raise when the selected value changed.
    * Normally this function must be always defined with the 'this.onPropertyChange'
    * method of the web part object.

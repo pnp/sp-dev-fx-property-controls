@@ -12,6 +12,7 @@ import { IPropertyFieldPeoplePickerHostProps, IPeoplePickerState } from './IProp
 import SPPeopleSearchService from '../../services/SPPeopleSearchService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as appInsights from '../../common/appInsights';
+import { isEqual } from '@microsoft/sp-lodash-subset';
 
 /**
  * Renders the controls for PropertyFieldPeoplePicker component
@@ -31,8 +32,6 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
    */
   constructor(props: IPropertyFieldPeoplePickerHostProps) {
     super(props);
-
-    appInsights.track('PropertyFieldPeoplePicker');
 
     appInsights.track('PropertyFieldPeoplePicker', {
       allowDuplicate: props.allowDuplicate,
@@ -59,47 +58,6 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   }
 
   /**
-   * Renders the PeoplePicker controls with Office UI  Fabric
-   */
-  public render(): JSX.Element {
-    const suggestionProps: IBasePickerSuggestionsProps = {
-      suggestionsHeaderText: strings.PeoplePickerSuggestedContacts,
-      noResultsFoundText: strings.PeoplePickerNoResults,
-      loadingText: strings.PeoplePickerLoading,
-    };
-    // Check which text have to be shown
-    if (this.props.principalType && this.props.principalType.length > 0) {
-      let userType = this.props.principalType.indexOf(PrincipalType.Users) !== -1;
-      let groupType = this.props.principalType.indexOf(PrincipalType.SharePoint) !== -1 || this.props.principalType.indexOf(PrincipalType.Security) !== -1;
-
-      // Check if both user and group are present
-      if (userType && groupType) {
-        suggestionProps.suggestionsHeaderText = strings.PeoplePickerSuggestedCombined;
-      }
-
-      // If only group is active
-      if (!userType && groupType) {
-        suggestionProps.suggestionsHeaderText = strings.PeoplePickerSuggestedGroups;
-      }
-    }
-
-    // Renders content
-    return (
-      <div>
-        <Label>{this.props.label}</Label>
-        <NormalPeoplePicker
-          disabled={this.props.disabled}
-          pickerSuggestionsProps={suggestionProps}
-          onResolveSuggestions={this.onSearchFieldChanged}
-          onChange={this.onItemChanged}
-          defaultSelectedItems={this.intialPersonas} />
-
-        <FieldErrorMessage errorMessage={this.state.errorMessage} />
-      </div>
-    );
-  }
-
-  /**
    * A search field change occured
    */
   private onSearchFieldChanged(searchText: string, currentSelected: IPersonaProps[]): Promise<IPersonaProps[]> | IPersonaProps[] {
@@ -114,7 +72,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
         if (this.props.allowDuplicate === false) {
           response = this.removeDuplicates(response);
         }
-        response.map((element: IPropertyFieldGroupOrPerson, index: number) => {
+        response.forEach((element: IPropertyFieldGroupOrPerson, index: number) => {
           // Fill the results Array
           this.resultsPeople.push(element);
           // Transform the response in IPersonaProps object
@@ -140,7 +98,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
     }
 
     const res: IPropertyFieldGroupOrPerson[] = [];
-    responsePeople.map((element: IPropertyFieldGroupOrPerson) => {
+    responsePeople.forEach((element: IPropertyFieldGroupOrPerson) => {
       let found: boolean = false;
 
       for (let i: number = 0; i < this.selectedPeople.length; i++) {
@@ -165,7 +123,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
       return;
     }
 
-    this.props.initialData.map((element: IPropertyFieldGroupOrPerson, index: number) => {
+    this.props.initialData.forEach((element: IPropertyFieldGroupOrPerson, index: number) => {
       const persona: IPersonaProps = this.getPersonaFromPeople(element, index);
       this.intialPersonas.push(persona);
       this.selectedPersonas.push(persona);
@@ -246,12 +204,26 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   }
 
   /**
+   * Find the index of the selected person
+   * @param selectedItem
+   */
+  private _findIndex(selectedItem: IPersonaProps): number {
+    for (let i = 0; i < this.resultsPersonas.length; i++) {
+      const crntPersona = this.resultsPersonas[i];
+      if (isEqual(crntPersona, selectedItem)) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  /**
    * Event raises when the user changed people from the PeoplePicker component
    */
   private onItemChanged(selectedItems: IPersonaProps[]): void {
     if (selectedItems.length > 0) {
       if (selectedItems.length > this.selectedPersonas.length) {
-        const index: number = this.resultsPersonas.indexOf(selectedItems[selectedItems.length - 1]);
+        const index: number = this._findIndex(selectedItems[selectedItems.length - 1]);
         if (index > -1) {
           const people: IPropertyFieldGroupOrPerson = this.resultsPeople[index];
           this.selectedPeople.push(people);
@@ -259,7 +231,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
           this.refreshWebPartProperties();
         }
       } else {
-        this.selectedPersonas.map((person, index2) => {
+        this.selectedPersonas.forEach((person, index2) => {
           const selectedItemIndex: number = selectedItems.indexOf(person);
           if (selectedItemIndex === -1) {
             this.selectedPersonas.splice(index2, 1);
@@ -298,5 +270,47 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
       case 13: return PersonaInitialsColor.darkRed;
       default: return PersonaInitialsColor.blue;
     }
+  }
+
+  /**
+   * Renders the PeoplePicker controls with Office UI  Fabric
+   */
+  public render(): JSX.Element {
+    const suggestionProps: IBasePickerSuggestionsProps = {
+      suggestionsHeaderText: strings.PeoplePickerSuggestedContacts,
+      noResultsFoundText: strings.PeoplePickerNoResults,
+      loadingText: strings.PeoplePickerLoading,
+    };
+    // Check which text have to be shown
+    if (this.props.principalType && this.props.principalType.length > 0) {
+      let userType = this.props.principalType.indexOf(PrincipalType.Users) !== -1;
+      let groupType = this.props.principalType.indexOf(PrincipalType.SharePoint) !== -1 || this.props.principalType.indexOf(PrincipalType.Security) !== -1;
+
+      // Check if both user and group are present
+      if (userType && groupType) {
+        suggestionProps.suggestionsHeaderText = strings.PeoplePickerSuggestedCombined;
+      }
+
+      // If only group is active
+      if (!userType && groupType) {
+        suggestionProps.suggestionsHeaderText = strings.PeoplePickerSuggestedGroups;
+      }
+    }
+
+    // Renders content
+    return (
+      <div>
+        <Label>{this.props.label}</Label>
+        <NormalPeoplePicker
+          disabled={this.props.disabled}
+          pickerSuggestionsProps={suggestionProps}
+          onResolveSuggestions={this.onSearchFieldChanged}
+          onChange={this.onItemChanged}
+          defaultSelectedItems={this.intialPersonas}
+          itemLimit={this.props.multiSelect ? undefined : 1} />
+
+        <FieldErrorMessage errorMessage={this.state.errorMessage} />
+      </div>
+    );
   }
 }

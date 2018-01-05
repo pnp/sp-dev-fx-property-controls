@@ -1,5 +1,9 @@
 # Releases
 
+## 1.1.2
+
+- Improved telemetry with some object checks
+
 ## 1.1.1
 
 - Removed operation name from telemetry

@@ -6,7 +6,7 @@ The shortest way to prepare your local copy of the project for development and t
 
 Before you start contributing to this project, you will need Node.js. This project has been tested with the LTS version of Node.js and the version of NPM that comes with it.
 
-## Get the local version of the Project
+## Get the local version of the project
 
 - fork this repository
 - clone your fork

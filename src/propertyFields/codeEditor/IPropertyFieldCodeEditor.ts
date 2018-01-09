@@ -10,7 +10,6 @@ export enum PropertyFieldCodeEditorLanguages {
   "HTML" = "html",
   "Handlebars" = "handlebars",
   "XML" = "xml"
-
 }
 
 

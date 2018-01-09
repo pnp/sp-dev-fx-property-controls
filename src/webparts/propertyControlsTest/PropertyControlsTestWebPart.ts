@@ -92,7 +92,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   context: this.context,
                   disabled: false,
                   key: 'codeEditorFieldId',
-                  language:PropertyFieldCodeEditorLanguages.HTML,
+                  language:PropertyFieldCodeEditorLanguages.HTML
                 }),
                 PropertyFieldPeoplePicker('people', {
                   label: 'PropertyFieldPeoplePicker',

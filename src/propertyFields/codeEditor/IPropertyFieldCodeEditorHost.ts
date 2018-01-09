@@ -1,5 +1,4 @@
 import { IPropertyFieldCodeEditorPropsInternal } from './IPropertyFieldCodeEditor';
-import SPTermStorePickerService from '../../services/SPTermStorePickerService';
 
 /**
  * PropertyFieldCodeEditorHost properties interface

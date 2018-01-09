@@ -1,20 +1,15 @@
 import * as React from 'react';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { PrimaryButton, IButtonProps,IconButton } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton, IButtonProps,IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
-import {  IPropertyFieldCodeEditorPropsInternal} from './IPropertyFieldCodeEditor';
-import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
+import { IPropertyFieldCodeEditorPropsInternal } from './IPropertyFieldCodeEditor';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { IPropertyFieldCodeEditorHostProps, IPropertyFieldCodeEditorHostState } from './IPropertyFieldCodeEditorHost';
-import SPTermStorePickerService from './../../services/SPTermStorePickerService';
-import { ITermStore, IGroup, ITerm } from './../../services/ISPTermStorePickerService';
 import styles from './PropertyFieldCodeEditorHost.module.scss';
-import { sortBy, uniqBy } from '@microsoft/sp-lodash-subset';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as appInsights from '../../common/appInsights';
+import * as strings from 'PropertyControlStrings';
 import * as brace from 'brace';
 import AceEditor from 'react-ace';
 import 'brace/mode/json';
@@ -24,21 +19,22 @@ import 'brace/mode/typescript';
 import 'brace/mode/html';
 import 'brace/mode/handlebars';
 import 'brace/mode/xml';
-
-import 'brace/theme/chrome';
+import 'brace/theme/monokai';
 
 /**
  * Renders the controls for PropertyFieldCodeEditor component
  */
 export default class PropertyFieldCodeEditorHost extends React.Component<IPropertyFieldCodeEditorHostProps, IPropertyFieldCodeEditorHostState> {
   private async: Async;
-  private termsService: SPTermStorePickerService;
+  private previousValue: string;
+  private cancel = true;
 
   /**
    * Constructor method
    */
   constructor(props: IPropertyFieldCodeEditorHostProps) {
     super(props);
+
     appInsights.track('PropertyFieldCodeEditor', {
       language: props.language,
       disabled: props.disabled
@@ -53,67 +49,23 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
 
     this.onOpenPanel = this.onOpenPanel.bind(this);
     this.onClosePanel = this.onClosePanel.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSave = this.onSave.bind(this);
     this.async = new Async(this);
-    //this.validate = this.validate.bind(this);
-    //  this.notifyAfterValidate = this.notifyAfterValidate.bind(this);
-    // this.delayedValidate = this.async.debounce(this.validate, this.props.deferredValidationTime);
   }
-
-
-  // /**
-  //  * Validates the new custom field value
-  //  */
-  // private validate(value: string): void {
-  //   if (this.props.onGetErrorMessage === null || this.props.onGetErrorMessage === undefined) {
-  //     this.notifyAfterValidate(this.props.initialValue, value);
-  //     return;
-  //   }
-
-  //   const result: string | PromiseLike<string> = this.props.onGetErrorMessage(value || []);
-  //   if (typeof result !== 'undefined') {
-  //     if (typeof result === 'string') {
-  //       if (result === '') {
-  //         this.notifyAfterValidate(this.props.initialValues, value);
-  //       }
-  //       this.setState({
-  //         errorMessage: result
-  //       });
-  //     } else {
-  //       result.then((errorMessage: string) => {
-  //         if (typeof errorMessage === 'undefined' || errorMessage === '') {
-  //           this.notifyAfterValidate(this.props.initialValues, value);
-  //         }
-  //         this.setState({
-  //           errorMessage: errorMessage
-  //         });
-  //       });
-  //     }
-  //   } else {
-  //     this.notifyAfterValidate(this.props.initialValues, value);
-  //   }
-  // }
-
-  // /**
-  //  * Notifies the parent Web Part of a property value change
-  //  */
-  // private notifyAfterValidate(oldValue: string, newValue: string) {
-  //   if (this.props.onPropertyChange && newValue !== null) {
-  //     this.props.properties[this.props.targetProperty] = newValue;
-  //     this.props.onPropertyChange(this.props.targetProperty, oldValue, newValue);
-  //     // Trigger the apply button
-  //     if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
-  //       this.props.onChange(this.props.targetProperty, newValue);
-  //     }
-  //   }
-  // }
 
   /**
    * Open the right Panel
    */
   private onOpenPanel(): void {
-    if (this.props.disabled === true) {
+    if (this.props.disabled) {
       return;
     }
+
+    // Store the current code value
+    this.previousValue = this.state.code;
+    this.cancel = true;
+
     this.setState({
       openPanel: true,
       loaded: false
@@ -124,9 +76,18 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
    * Close the panel
    */
   private onClosePanel(): void {
-    this.setState({
-      openPanel: false,
-      loaded: false
+    this.setState((crntState: IPropertyFieldCodeEditorHostState) => {
+      const newState: IPropertyFieldCodeEditorHostState = {
+        openPanel: false,
+        loaded: false
+      };
+
+      // Check if the property has to be reset
+      if (this.cancel) {
+        newState.code = this.previousValue;
+      }
+
+      return newState;
     });
   }
 
@@ -139,23 +100,26 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
       this.async.dispose();
     }
   }
+
+
   /**
- * Called when the save button  gets clicked
- */
-  public onSave() {
+   * Called when the save button  gets clicked
+   */
+  public onSave(): void {
+    this.cancel = false;
     this.props.properties[this.props.targetProperty] = this.state.code;
     this.props.onPropertyChange(this.props.targetProperty, this.props.initialValue, this.state.code);
     // Trigger the apply button
     if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
       this.props.onChange(this.props.targetProperty, this.state.code);
     }
-    this.setState((current)=>({...current,openPanel:false}));
+    this.setState((current)=>({ ...current, openPanel: false }));
   }
 
   /**
- * Called when the code gets changed
- */
-  public onChange(newValue: string, event?: any) {
+   * Called when the code gets changed
+   */
+  public onChange(newValue: string, event?: any): void {
     this.setState((current) => ({ ...current, code: newValue }));
   }
 
@@ -163,25 +127,23 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
    * Renders the SPListpicker controls with Office UI  Fabric
    */
   public render(): JSX.Element {
-
-    // Renders content
     return (
       <div>
         <Label>{this.props.label}</Label>
-        <table className={styles.termFieldTable}>
+        <table className={styles.codeFieldTable}>
           <tbody>
             <tr>
               <td>
                 <TextField
                   disabled={this.props.disabled}
-                  style={{ width: '100%' }}
                   onChanged={null}
                   readOnly={true}
                   value={this.state.code}
+                  onClick={this.onOpenPanel}
                 />
               </td>
-              <td className={styles.termFieldRow}>
-                <IconButton disabled={this.props.disabled} iconProps={{ iconName: 'Tag' }} onClick={this.onOpenPanel} />
+              <td className={styles.codeFieldRow}>
+                <IconButton disabled={this.props.disabled} iconProps={{ iconName: 'Code' }} onClick={this.onOpenPanel} />
               </td>
             </tr>
           </tbody>
@@ -199,15 +161,18 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
 
           <AceEditor
             mode={this.props.language}
-            theme="chrome"
-            onChange={this.onChange.bind(this)}
+            theme="monokai"
+            onChange={this.onChange}
             value={this.state.code}
-            name="mytestsyuff"
+            name={`code-${this.props.targetProperty}`}
             editorProps={{ $blockScrolling: true }}
           />
-          <PrimaryButton  iconProps={{ iconName: 'Save' }} text="Save" value="Save" onClick={this.onSave.bind(this)} />
-           
-          
+
+          <div className={styles.actions}>
+            <PrimaryButton iconProps={{ iconName: 'Save' }} text={strings.SaveButtonLabel} value={strings.SaveButtonLabel} onClick={this.onSave} />
+
+            <DefaultButton iconProps={{ iconName: 'Cancel' }} text={strings.CancelButtonLabel} value={strings.CancelButtonLabel} onClick={this.onClosePanel} />
+          </div>
         </Panel>
       </div>
     );

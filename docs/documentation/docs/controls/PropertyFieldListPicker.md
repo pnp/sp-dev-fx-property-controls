@@ -33,7 +33,7 @@ export interface IPropertyControlsTestWebPartProps {
 4. Add the custom property control to the `groupFields` of the web part property pane configuration:
 
 ```TypeScript
-PropertyFieldListPicker('singleList', {
+PropertyFieldListPicker('lists', {
   label: 'Select a list',
   selectedList: this.properties.lists,
   includeHidden: false,

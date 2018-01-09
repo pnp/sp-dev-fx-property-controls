@@ -1,5 +1,16 @@
 # Releases
 
+## 1.1.2
+
+**Enhancements**
+
+- Added the option to the people picker to allow you to specify single or multi-selection
+
+**Fixes**
+
+- People picker accidentally picked the wrong person
+- Improved telemetry with some object checks
+
 ## 1.1.1
 
 - Removed operation name from telemetry

@@ -25,6 +25,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
   private context: IWebPartContext;
   private initialData: IPropertyFieldGroupOrPerson[];
   private allowDuplicate: boolean = true;
+  private multiSelect: boolean = true;
   private principalType: PrincipalType[] = [];
   private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
   private customProperties: any;
@@ -58,6 +59,10 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
     if (_properties.deferredValidationTime) {
       this.deferredValidationTime = _properties.deferredValidationTime;
     }
+
+    if (typeof _properties.multiSelect !== "undefined") {
+      this.multiSelect = _properties.multiSelect;
+    }
   }
 
   /**
@@ -71,6 +76,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
       targetProperty: this.targetProperty,
       initialData: this.initialData,
       allowDuplicate: this.allowDuplicate,
+      multiSelect: this.multiSelect,
       principalType: this.principalType,
       onDispose: this.dispose,
       onRender: this.render,

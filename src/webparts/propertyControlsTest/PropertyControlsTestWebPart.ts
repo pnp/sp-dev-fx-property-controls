@@ -88,6 +88,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   allowDuplicate: true,
                   principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
                   // principalType: [IPrincipalType.SharePoint],
+                  multiSelect: false,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   context: this.context,
                   properties: this.properties,

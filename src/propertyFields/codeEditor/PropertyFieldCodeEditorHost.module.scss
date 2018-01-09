@@ -1,0 +1,22 @@
+.codeFieldTable {
+  border-spacing: 0;
+  width: 100%;
+
+  .codeFieldRow {
+    vertical-align: initial;
+  }
+
+  input[type="text"] {
+    cursor: pointer;
+    opacity: 0.8;
+    width: 100%;
+  }
+}
+
+.actions {
+  margin-top: 15px;
+
+  button:first-child {
+    margin-right: 15px;
+  }
+}

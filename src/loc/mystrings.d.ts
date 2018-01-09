@@ -6,7 +6,7 @@ declare interface IPropertyControlStrings {
   PeoplePickerNoResults: string;
   PeoplePickerLoading: string;
 
-  //DatePicker labels
+  // DatePicker labels
   DatePickerMonthLongJanuary: string;
   DatePickerMonthShortJanuary: string;
   DatePickerMonthLongFebruary: string;
@@ -50,8 +50,12 @@ declare interface IPropertyControlStrings {
   DateTimePickerDate: string;
   DateTimePickerTime: string;
 
-  //ColorPicker Labels
+  // ColorPicker Labels
   ColorPickerButtonTitle: string;
+
+  // Code field labels
+  SaveButtonLabel: string;
+  CancelButtonLabel: string;
 }
 
 declare module 'PropertyControlStrings' {

@@ -7,6 +7,9 @@ import { escape } from '@microsoft/sp-lodash-subset';
  * Property control test component that renders the property control values
  */
 export default class PropertyControlsTest extends React.Component<IPropertyControlsTestProps, {}> {
+  public setHtml(){
+    return { __html:this.props.htmlCode };
+  }
   public render(): React.ReactElement<IPropertyControlsTestProps> {
     return (
       <div className={styles.propertyControlsTest}>
@@ -17,6 +20,9 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
               <p className="ms-font-m ms-fontColor-neutralDark">People: {this.props.people.map(p => {
                 return !!p.fullName ? p.fullName : p.description;
               }).join(', ')}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">HTML:
+              <div dangerouslySetInnerHTML={this.setHtml()} />
+              </p>
               <p className="ms-font-m ms-fontColor-neutralDark">List: {this.props.list}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Multi List: {this.props.multiList.join(', ')}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Term(s): {this.props.terms.map(t => t.name).join(', ')}</p>

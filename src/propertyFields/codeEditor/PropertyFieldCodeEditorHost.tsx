@@ -157,7 +157,14 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
           onDismiss={this.onClosePanel}
           isLightDismiss={true}
           type={PanelType.medium}
-          headerText={this.props.panelTitle}>
+          headerText={this.props.panelTitle}
+          onRenderFooterContent={() => (
+            <div className={styles.actions}>
+              <PrimaryButton iconProps={{ iconName: 'Save' }} text={strings.SaveButtonLabel} value={strings.SaveButtonLabel} onClick={this.onSave} />
+
+              <DefaultButton iconProps={{ iconName: 'Cancel' }} text={strings.CancelButtonLabel} value={strings.CancelButtonLabel} onClick={this.onClosePanel} />
+            </div>
+          )}>
 
           <AceEditor
             mode={this.props.language}
@@ -167,12 +174,6 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
             name={`code-${this.props.targetProperty}`}
             editorProps={{ $blockScrolling: true }}
           />
-
-          <div className={styles.actions}>
-            <PrimaryButton iconProps={{ iconName: 'Save' }} text={strings.SaveButtonLabel} value={strings.SaveButtonLabel} onClick={this.onSave} />
-
-            <DefaultButton iconProps={{ iconName: 'Cancel' }} text={strings.CancelButtonLabel} value={strings.CancelButtonLabel} onClick={this.onClosePanel} />
-          </div>
         </Panel>
       </div>
     );

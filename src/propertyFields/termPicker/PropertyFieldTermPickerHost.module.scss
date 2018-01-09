@@ -22,7 +22,9 @@
   }
 
   input[type="text"] {
+    cursor: pointer;
     opacity: 0.8;
+    width: 100%;
   }
 }
 
@@ -50,5 +52,11 @@
 
   label>span {
     padding-left: 25px;
+  }
+}
+
+.actions {
+  button:first-child {
+    margin-right: 15px;
   }
 }

@@ -20,4 +20,5 @@ export interface IPropertyControlsTestProps {
   textInfoHeaderValue: string;
   toggleInfoHeaderValue: boolean;
   checkboxWithCalloutValue: boolean;
+  htmlCode:string;
 }

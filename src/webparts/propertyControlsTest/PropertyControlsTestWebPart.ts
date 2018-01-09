@@ -7,6 +7,7 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
+import { PropertyFieldCodeEditor,PropertyFieldCodeEditorLanguages } from '../../PropertyFieldCodeEditor';
 import * as strings from 'PropertyControlsTestWebPartStrings';
 import PropertyControlsTest from './components/PropertyControlsTest';
 import { IPropertyControlsTestProps } from './components/IPropertyControlsTestProps';
@@ -51,7 +52,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         dropdownInfoHeaderKey: this.properties.dropdownInfoHeaderKey,
         textInfoHeaderValue: this.properties.textInfoHeaderValue,
         toggleInfoHeaderValue: this.properties.toggleInfoHeaderValue,
-        checkboxWithCalloutValue: this.properties.checkboxWithCalloutValue
+        checkboxWithCalloutValue: this.properties.checkboxWithCalloutValue,
+        htmlCode:this.properties.htmlCode
       }
     );
 
@@ -71,7 +73,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     const dropdownWithCalloutSelectedKey: string = this.properties.dropdownWithCalloutKey || 'gryffindor';
     const dropdownWithCalloutCallountContent: JSX.Element = this.getDropdownInfoHeaderCalloutContent();
 
-
     return {
       pages: [
         {
@@ -82,6 +83,17 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
             {
               groupName: '', //strings.BasicGroupName,
               groupFields: [
+                PropertyFieldCodeEditor('htmlCode', {
+                  label: 'Edit HTML Code',
+                  panelTitle: 'Edit HTML Code',
+                  initialValue: this.properties.htmlCode,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  context: this.context,
+                  disabled: false,
+                  key: 'codeEditorFieldId',
+                  language:PropertyFieldCodeEditorLanguages.HTML,
+                }),
                 PropertyFieldPeoplePicker('people', {
                   label: 'PropertyFieldPeoplePicker',
                   initialData: this.properties.people,

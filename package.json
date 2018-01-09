@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "@types/applicationinsights-js": "1.0.5",
-    "applicationinsights-js": "1.0.14"
+    "applicationinsights-js": "^1.0.14",
+    "react-ace": "^5.8.0"
   },
   "devDependencies": {
     "@microsoft/sp-core-library": "~1.3.0",
@@ -50,6 +51,7 @@
     "url": "https://github.com/SharePoint/sp-dev-fx-property-controls/issues"
   },
   "homepage": "https://github.com/SharePoint/sp-dev-fx-property-controls",
+  "main": "lib/index.js",
   "maintainers": [
     {
       "name": "eliostruyf",

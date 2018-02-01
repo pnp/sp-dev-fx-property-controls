@@ -9,7 +9,8 @@ export enum PropertyFieldCodeEditorLanguages {
   "Plain Text" = "plain_text",
   "HTML" = "html",
   "Handlebars" = "handlebars",
-  "XML" = "xml"
+  "XML" = "xml",
+  "css" = "sass"
 }
 
 
@@ -22,7 +23,7 @@ export interface IPropertyFieldCodeEditorProps {
    */
   label: string;
   /**
-   * TermSet Picker Panel title
+   * Title of the code editor panel
    */
   panelTitle: string;
 
@@ -32,13 +33,10 @@ export interface IPropertyFieldCodeEditorProps {
   initialValue?: string;
 
   /**
-   * WebPart's context
-   */
-  context: IWebPartContext;
-  /**
-   * sets the language on the ACE editor
+   * Sets the language on the code editor
    */
   language?: PropertyFieldCodeEditorLanguages;
+
   /**
    * Defines a onPropertyChange function to raise when the selected value changed.
    * Normally this function must be always defined with the 'this.onPropertyChange'

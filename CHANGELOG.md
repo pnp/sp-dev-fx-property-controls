@@ -2,6 +2,10 @@
 
 ## 1.3.0
 
+**New controls**
+
+- `PropertyFieldCodeEditor` got added
+
 **Enhancements**
 
 - `PropertyFieldTermPicker` improved with save and cancel button

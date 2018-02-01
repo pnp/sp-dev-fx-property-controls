@@ -53,7 +53,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         textInfoHeaderValue: this.properties.textInfoHeaderValue,
         toggleInfoHeaderValue: this.properties.toggleInfoHeaderValue,
         checkboxWithCalloutValue: this.properties.checkboxWithCalloutValue,
-        htmlCode:this.properties.htmlCode
+        htmlCode: this.properties.htmlCode
       }
     );
 
@@ -89,7 +89,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   initialValue: this.properties.htmlCode,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
-                  context: this.context,
                   disabled: false,
                   key: 'codeEditorFieldId',
                   language:PropertyFieldCodeEditorLanguages.HTML

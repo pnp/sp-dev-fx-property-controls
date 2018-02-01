@@ -21,7 +21,7 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
   // Custom properties label: string;
   private label: string;
   private context: IWebPartContext;
-  
+
   private initialValue: string;
   private language:PropertyFieldCodeEditorLanguages;
   private panelTitle: string;
@@ -36,14 +36,13 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
    * Constructor method
    */
   public constructor(_targetProperty: string, _properties: IPropertyFieldCodeEditorPropsInternal) {
-  
+
     this.render = this.render.bind(this);
     this.targetProperty = _targetProperty;
     this.properties = _properties;
     this.properties.onDispose = this.dispose;
     this.properties.onRender = this.render;
     this.label = _properties.label;
-    this.context = _properties.context;
     this.onPropertyChange = _properties.onPropertyChange;
     this.customProperties = _properties.properties;
     this.key = _properties.key;
@@ -58,7 +57,7 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
     if (_properties.deferredValidationTime) {
       this.deferredValidationTime = _properties.deferredValidationTime;
     }
-   
+
   }
 
   /**
@@ -72,7 +71,6 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
       panelTitle: this.panelTitle,
       language: this.language,
       initialValue: this.initialValue,
-      context: this.context,
       onDispose: this.dispose,
       onRender: this.render,
       onChange: changeCallback,

@@ -1,5 +1,9 @@
 define([], function () {
   return {
+    // Common field labels
+    'SaveButtonLabel': 'Save',
+    'CancelButtonLabel': 'Cancel',
+
     // PeoplePicker labels
     'PeoplePickerSuggestedContacts': 'Suggested people',
     'PeoplePickerSuggestedGroups': 'Suggested groups',
@@ -7,7 +11,7 @@ define([], function () {
     'PeoplePickerNoResults': 'No result found',
     'PeoplePickerLoading': 'Loading results ...',
 
-    //DatePicker labels
+    // DatePicker labels
     'DatePickerMonthLongJanuary': 'January',
     'DatePickerMonthShortJanuary': 'Jan',
     'DatePickerMonthLongFebruary': 'February',
@@ -51,7 +55,7 @@ define([], function () {
     'DateTimePickerDate': 'Date',
     'DateTimePickerTime': 'Time',
 
-    //ColorPicker Labels
+    // ColorPicker Labels
     'ColorPickerButtonTitle': 'Pick a Color'
   }
 });

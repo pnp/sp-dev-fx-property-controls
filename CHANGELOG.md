@@ -1,6 +1,17 @@
 # Releases
 
-## 1.1.2
+## 1.3.0
+
+**New controls**
+
+- `PropertyFieldCodeEditor` got added
+
+**Enhancements**
+
+- `PropertyFieldTermPicker` improved with save and cancel button
+- `PropertyFieldTermPicker` improved with `onClick` event on input field
+
+## 1.2.0
 
 **Enhancements**
 

@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton, IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
-import {
-  IPropertyFieldTermPickerPropsInternal
-} from './IPropertyFieldTermPicker';
+import { IPropertyFieldTermPickerPropsInternal } from './IPropertyFieldTermPicker';
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
@@ -19,6 +17,7 @@ import { sortBy, uniqBy } from '@microsoft/sp-lodash-subset';
 import TermGroup from './TermGroup';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as appInsights from '../../common/appInsights';
+import * as strings from 'PropertyControlStrings';
 
 /**
  * Image URLs / Base64
@@ -35,6 +34,8 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
   private async: Async;
   private delayedValidate: (value: ICheckedTerms) => void;
   private termsService: SPTermStorePickerService;
+  private previousValues: ICheckedTerms = [];
+  private cancel: boolean = true;
 
   /**
    * Constructor method
@@ -60,6 +61,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
 
     this.onOpenPanel = this.onOpenPanel.bind(this);
     this.onClosePanel = this.onClosePanel.bind(this);
+    this.onSave = this.onSave.bind(this);
     this.termsChanged = this.termsChanged.bind(this);
     this.async = new Async(this);
     this.validate = this.validate.bind(this);
@@ -142,7 +144,13 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
     if (this.props.disabled === true) {
       return;
     }
+
+    // Store the current code value
+    this.previousValues = this.state.activeNodes;
+    this.cancel = true;
+
     this.loadTermStores();
+
     this.setState({
       openPanel: true,
       loaded: false
@@ -153,10 +161,28 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
    * Close the panel
    */
   private onClosePanel(): void {
-    this.setState({
-      openPanel: false,
-      loaded: false
+    this.setState(() => {
+      const newState: IPropertyFieldTermPickerHostState = {
+        openPanel: false,
+        loaded: false
+      };
+
+      // Check if the property has to be reset
+      if (this.cancel) {
+        newState.activeNodes = this.previousValues;
+      }
+
+      return newState;
     });
+  }
+
+  /**
+   * On save click action
+   */
+  private onSave(): void {
+    this.cancel = false;
+    this.delayedValidate(this.state.activeNodes);
+    this.onClosePanel();
   }
 
   /**
@@ -199,7 +225,6 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
     this.setState({
       activeNodes: activeNodes
     });
-    this.delayedValidate(activeNodes);
   }
 
   /**
@@ -243,8 +268,8 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
               <td>
                 <TextField
                   disabled={this.props.disabled}
-                  style={{ width: '100%' }}
                   onChanged={null}
+                  onClick={this.onOpenPanel}
                   readOnly={true}
                   value={termSetsString}
                 />
@@ -264,7 +289,16 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
           onDismiss={this.onClosePanel}
           isLightDismiss={true}
           type={PanelType.medium}
-          headerText={this.props.panelTitle}>
+          headerText={this.props.panelTitle}
+          onRenderFooterContent={() => {
+            return (
+              <div className={styles.actions}>
+                <PrimaryButton iconProps={{ iconName: 'Save' }} text={strings.SaveButtonLabel} value={strings.SaveButtonLabel} onClick={this.onSave} />
+
+                <DefaultButton iconProps={{ iconName: 'Cancel' }} text={strings.CancelButtonLabel} value={strings.CancelButtonLabel} onClick={this.onClosePanel} />
+              </div>
+            );
+          }}>
 
           {
             /* Show spinner in the panel while retrieving terms */

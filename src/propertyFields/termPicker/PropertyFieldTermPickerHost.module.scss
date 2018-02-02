@@ -17,12 +17,15 @@
 .termFieldTable {
   border-spacing: 0;
   width: 100%;
+
   .termFieldRow {
     vertical-align: initial;
   }
 
   input[type="text"] {
+    cursor: pointer;
     opacity: 0.8;
+    width: 100%;
   }
 }
 
@@ -50,5 +53,11 @@
 
   label>span {
     padding-left: 25px;
+  }
+}
+
+.actions {
+  button:first-child {
+    margin-right: 15px;
   }
 }

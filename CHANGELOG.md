@@ -8,7 +8,7 @@
 
 **Enhancements**
 
-- `PropertyFieldTermPicker` new introduced property to specify to show or hide the term store name: `showTermStoreName`.
+- `PropertyFieldTermPicker` new introduced property to specify to show or hide the term store name: `hideTermStoreName`.
 - `PropertyFieldTermPicker` updated process when terms were unselected based on ID instead of path.
 
 ## 1.3.0

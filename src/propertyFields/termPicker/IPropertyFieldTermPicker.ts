@@ -134,7 +134,7 @@ export interface IPropertyFieldTermPickerProps {
   /**
    * Specifies if you want to show or hide the term store name from the panel
    */
-  showTermStoreName?: boolean;
+  hideTermStoreName?: boolean;
 }
 
 /**

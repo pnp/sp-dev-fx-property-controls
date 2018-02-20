@@ -1,9 +1,5 @@
 import * as React from 'react';
-import { Dropdown, IDropdownProps } from 'office-ui-fabric-react';
-import * as _ from 'lodash';
-
-import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
-
+import { Dropdown } from 'office-ui-fabric-react/lib/components/Dropdown';
 import { IPropertyFieldMultiSelectHostProps } from './IPropertyFieldMultiSelectHost';
 import * as appInsights from '../../common/appInsights';
 

@@ -29,6 +29,7 @@ import { PropertyFieldCheckboxWithCallout } from '../../PropertyFieldCheckboxWit
 import { PropertyFieldLabelWithCallout } from '../../PropertyFieldLabelWithCallout';
 import { PropertyFieldLinkWithCallout } from '../../PropertyFieldLinkWithCallout';
 import { PropertyFieldMultiSelect } from '../../PropertyFieldMultiSelect';
+import { PropertyFieldNumber } from '../../PropertyFieldNumber';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -40,6 +41,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
       PropertyControlsTest,
       {
         context: this.context,
+        numberValue: this.properties.numberValue || 0,
         multiSelect: this.properties.multiSelect || [],
         people: this.properties.people || [],
         list: this.properties.singleList as string || "",
@@ -85,6 +87,15 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
             {
               groupName: '', //strings.BasicGroupName,
               groupFields: [
+                PropertyFieldNumber("numberValue", {
+                  key: "numberValue",
+                  label: "Number value only",
+                  description: "Number field description",
+                  value: this.properties.numberValue,
+                  maxValue: 10,
+                  minValue: 1,
+                  disabled: true,
+                }),
                 PropertyFieldMultiSelect('multiSelect', {
                   key: 'multiSelect',
                   label: "Multi select field",

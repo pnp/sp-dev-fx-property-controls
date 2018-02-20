@@ -6,6 +6,7 @@ import { IPropertyFieldGroupOrPerson } from '../../../PropertyFieldPeoplePicker'
 export interface IPropertyControlsTestProps {
 
   context: WebPartContext;
+  numberValue: number;
   multiSelect: string[];
   people: IPropertyFieldGroupOrPerson[];
   list: string | string[];

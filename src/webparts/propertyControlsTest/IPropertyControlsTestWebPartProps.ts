@@ -3,6 +3,7 @@ import { ICheckedTerms } from '../../PropertyFieldTermPicker';
 import { IDateTimeFieldValue } from '../../PropertyFieldDateTimePicker';
 
 export interface IPropertyControlsTestWebPartProps {
+  numberValue: number;
   multiSelect: string[];
   people: IPropertyFieldGroupOrPerson[];
   singleList: string | string[];

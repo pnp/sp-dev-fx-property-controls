@@ -217,7 +217,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
       }
     } else {
       // Remove the term from the list of active nodes
-      activeNodes = activeNodes.filter(item => item.path !== term.PathOfTerm);
+      activeNodes = activeNodes.filter(item => item.id !== term.Id);
     }
     // Sort all active nodes
     activeNodes = sortBy(activeNodes, 'path');
@@ -310,7 +310,9 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
             this.state.loaded === true ? this.state.termStores.map((termStore: ITermStore, index: number) => {
               return (
                 <div key={termStore.Id}>
-                  <h3>{termStore.Name}</h3>
+                  {
+                    this.props.showTermStoreName ? <h3>{termStore.Name}</h3> : null
+                  }
                   {
                     termStore.Groups._Child_Items_.map((group) => {
                       return <TermGroup key={group.Id} group={group} termstore={termStore.Id} termsService={this.termsService} activeNodes={this.state.activeNodes} changedCallback={this.termsChanged} multiSelection={this.props.allowMultipleSelections} />;

@@ -78,6 +78,7 @@ The `PropertyFieldTermPicker` control can be configured with the following prope
 | excludeSystemGroup | boolean | no | Indicator to define if the system Groups are exclude. Default is false. |
 | limitByGroupNameOrID | string | no | Limit the term sets that can be used by the group name or ID. |
 | limitByTermsetNameOrID | string | no | Limit the terms that can be picked by the Term Set name or ID. |
+| showTermStoreName | boolean | no | Specifies if you want to show or hide the term store name from the panel. |
 | onPropertyChange | function | yes | Defines a onPropertyChange function to raise when the date gets changed. |
 | properties | any | yes | Parent web part properties, this object is use to update the property value.  |
 | key | string | yes | An unique key that indicates the identity of this control. |

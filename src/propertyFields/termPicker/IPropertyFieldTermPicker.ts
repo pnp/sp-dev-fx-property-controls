@@ -131,6 +131,10 @@ export interface IPropertyFieldTermPickerProps {
    * Default value is 200.
    */
   deferredValidationTime?: number;
+  /**
+   * Specifies if you want to show or hide the term store name from the panel
+   */
+  showTermStoreName?: boolean;
 }
 
 /**

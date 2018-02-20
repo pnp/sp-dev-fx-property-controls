@@ -4,6 +4,7 @@ export * from './PropertyFieldListPicker';
 export * from './PropertyFieldPeoplePicker';
 export * from './PropertyFieldSpinButton';
 export * from './PropertyFieldTermPicker';
+export * from './PropertyFieldMultiSelect';
 
 export * from './PropertyFieldButtonWithCallout';
 export * from './PropertyFieldCheckboxWithCallout';

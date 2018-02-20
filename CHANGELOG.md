@@ -1,5 +1,11 @@
 # Releases
 
+## 1.4.0
+
+**New controls**
+
+- `PropertyFieldMultiSelect` got added
+
 ## 1.3.0
 
 **New controls**

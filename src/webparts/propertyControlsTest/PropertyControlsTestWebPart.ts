@@ -28,6 +28,7 @@ import { PropertyFieldButtonWithCallout } from '../../PropertyFieldButtonWithCal
 import { PropertyFieldCheckboxWithCallout } from '../../PropertyFieldCheckboxWithCallout';
 import { PropertyFieldLabelWithCallout } from '../../PropertyFieldLabelWithCallout';
 import { PropertyFieldLinkWithCallout } from '../../PropertyFieldLinkWithCallout';
+import { PropertyFieldMultiSelect } from '../../PropertyFieldMultiSelect';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -39,6 +40,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
       PropertyControlsTest,
       {
         context: this.context,
+        multiSelect: this.properties.multiSelect || [],
         people: this.properties.people || [],
         list: this.properties.singleList as string || "",
         multiList: this.properties.multiList as string[] || [],
@@ -83,6 +85,25 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
             {
               groupName: '', //strings.BasicGroupName,
               groupFields: [
+                PropertyFieldMultiSelect('multiSelect', {
+                  key: 'multiSelect',
+                  label: "Multi select field",
+                  options: [
+                    {
+                      key: "EN",
+                      text: "EN"
+                    },
+                    {
+                      key: "FR",
+                      text: "FR"
+                    },
+                    {
+                      key: "NL",
+                      text: "NL"
+                    }
+                  ],
+                  selectedKeys: this.properties.multiSelect
+                }),
                 PropertyFieldCodeEditor('htmlCode', {
                   label: 'Edit HTML Code',
                   panelTitle: 'Edit HTML Code',

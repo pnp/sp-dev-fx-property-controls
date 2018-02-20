@@ -32,6 +32,7 @@ The following controls are currently available:
 - [PropertyFieldPeoplePicker](./controls/PropertyFieldPeoplePicker) (Property pane people / group selector)
 - [PropertyFieldSpinButton](./controls/PropertyFieldSpinButton) (Property pane spin button)
 - [PropertyFieldTermPicker](./controls/PropertyFieldTermPicker) (Property pane managed metadata term selector)
+- [PropertyFieldMultiSelect](./controls/PropertyFieldMultiSelect) (Property pane field which allows multi-value selection)
 
 The following controls are extended controls that show a callout next to the label
 

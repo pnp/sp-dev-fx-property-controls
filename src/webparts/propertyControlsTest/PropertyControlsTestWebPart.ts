@@ -183,7 +183,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   deferredValidationTime: 0,
                   // limitByGroupNameOrID: 'People',
                   // limitByTermsetNameOrID: 'Location',
-                  key: 'termSetsPickerFieldId'
+                  key: 'termSetsPickerFieldId',
+                  hideTermStoreName: true
                 }),
                 PropertyFieldDateTimePicker('datetime', {
                   label: 'Select the date and time',

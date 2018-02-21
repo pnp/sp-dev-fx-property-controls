@@ -1,4 +1,4 @@
-# Reusable property pane controls for the SharePoint Framework solutions
+# Reusable property pane controls for the SharePoint Framework solutions ![](https://img.shields.io/npm/v/@pnp/spfx-property-controls.svg)
 
 This repository provides developers with a set of reusable property pane controls that can be used in their SharePoint Framework (SPFx) solutions.
 

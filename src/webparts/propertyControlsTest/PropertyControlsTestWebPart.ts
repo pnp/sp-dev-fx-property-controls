@@ -91,10 +91,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: "numberValue",
                   label: "Number value only",
                   description: "Number field description",
+                  placeholder: "Please insert a number",
                   value: this.properties.numberValue,
                   maxValue: 10,
                   minValue: 1,
-                  disabled: true,
+                  disabled: false
                 }),
                 PropertyFieldMultiSelect('multiSelect', {
                   key: 'multiSelect',

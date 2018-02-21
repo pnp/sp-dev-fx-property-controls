@@ -5,6 +5,7 @@
 **New controls**
 
 - `PropertyFieldMultiSelect` got added
+- `PropertyFieldNumber` got added
 
 **Enhancements**
 

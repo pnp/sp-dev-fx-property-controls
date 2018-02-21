@@ -3,6 +3,7 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { IPropertyFieldNumberHostProps, IPropertyFieldNumberHostState } from './IPropertyFieldNumberHost';
 import * as appInsights from '../../common/appInsights';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
+import * as strings from 'PropertyControlStrings';
 
 export default class PropertyFieldNumberHost extends React.Component<IPropertyFieldNumberHostProps, IPropertyFieldNumberHostState> {
   private _async: Async;
@@ -28,21 +29,18 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
    * @param value
    */
   private _validateNumber = (value: string): string => {
-    // TODO: add this to the resource strings
-    // TODO: documentation
-    // TODO: Changelog
     if (isNaN(Number(value))) {
-      return `The value should be a number, actual is ${value}.`;
+      return `${strings.NotNumberValidationMessage} ${value}.`;
     }
 
     const nrValue = parseInt(value);
     // Check if number is lower or equal to minimum value
     if (this.props.minValue && nrValue < this.props.minValue) {
-      return `The value should be greater than ${this.props.minValue}`;
+      return `${strings.MinimumNumberValidationMessage} ${this.props.minValue}`;
     }
     // Check if the number is greater than the maximum value
     if (this.props.maxValue && nrValue > this.props.maxValue) {
-      return `The value should be lower than ${this.props.maxValue}`;
+      return `${strings.MaximumNumberValidationMessage} ${this.props.maxValue}`;
     }
 
     return '';
@@ -76,8 +74,11 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
                    onChanged={this._delayedChange}
                    value={this.state.value}
                    description={this.props.description}
+                   placeholder={this.props.placeholder}
+                   errorMessage={this.props.errorMessage}
                    onGetErrorMessage={this._validateNumber}
-                   deferredValidationTime={this.props.deferredValidationTime} />
+                   deferredValidationTime={this.props.deferredValidationTime}
+                   disabled={this.props.disabled} />
       </div>
     );
   }

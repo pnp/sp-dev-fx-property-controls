@@ -56,6 +56,11 @@ define([], function () {
     'DateTimePickerTime': 'Time',
 
     // ColorPicker Labels
-    'ColorPickerButtonTitle': 'Pick a Color'
+    'ColorPickerButtonTitle': 'Pick a Color',
+
+    // Number field validation messages
+    'NotNumberValidationMessage': 'The value should be a number, actual is:',
+    'MinimumNumberValidationMessage': 'The value should be greater than:',
+    'MaximumNumberValidationMessage': 'The value should be lower than:'
   }
 });

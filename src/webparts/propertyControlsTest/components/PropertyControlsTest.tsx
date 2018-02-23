@@ -17,6 +17,8 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
           <div className={`ms-Grid-row ms-bgColor-neutralLight ms-fontColor-neutralDark ${styles.row}`}>
             <div className="ms-Grid-col ms-lg10 ms-xl8 ms-xlPush2 ms-lgPush1">
               <p className="ms-font-xxl ms-fontColor-neutralDark">Property pane control values:</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Number value: {this.props.numberValue}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Multi-select: {this.props.multiSelect.toString()}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">People: {this.props.people.map(p => {
                 return !!p.fullName ? p.fullName : p.description;
               }).join(', ')}</p>

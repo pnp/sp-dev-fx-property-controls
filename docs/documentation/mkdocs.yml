@@ -8,6 +8,7 @@ pages:
     - PropertyFieldPeoplePicker: 'controls/PropertyFieldPeoplePicker.md'
     - PropertyFieldSpinButton: 'controls/PropertyFieldSpinButton.md'
     - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
+    - PropertyFieldMultiSelect: 'controls/PropertyFieldMultiSelect.md'
   - 'Controls with callout':
     - PropertyFieldButtonWithCallout: 'controls/PropertyFieldButtonWithCallout.md'
     - PropertyFieldCheckboxWithCallout: 'controls/PropertyFieldCheckboxWithCallout.md'
@@ -18,6 +19,7 @@ pages:
     - PropertyFieldSliderWithCallout: 'controls/PropertyFieldSliderWithCallout.md'
     - PropertyFieldTextWithCallout: 'controls/PropertyFieldTextWithCallout.md'
     - PropertyFieldToggleWithCallout: 'controls/PropertyFieldToggleWithCallout.md'
+  - 'Beta testing': 'beta.md'
   - About:
     - 'Release notes': 'about/release-notes.md'
     - License: 'about/license.md'

@@ -56,6 +56,11 @@ declare interface IPropertyControlStrings {
   // Code field labels
   SaveButtonLabel: string;
   CancelButtonLabel: string;
+
+  // Number field validation messages
+  NotNumberValidationMessage: string;
+  MinimumNumberValidationMessage: string;
+  MaximumNumberValidationMessage: string;
 }
 
 declare module 'PropertyControlStrings' {

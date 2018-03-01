@@ -1,5 +1,9 @@
 # Releases
 
+## 1.4.1
+
+- Optimized telemetry so that it only pushes control data
+
 ## 1.4.0
 
 **New controls**

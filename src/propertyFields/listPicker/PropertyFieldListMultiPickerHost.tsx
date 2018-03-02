@@ -112,17 +112,17 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
       return;
     }
 
-    const result: string | PromiseLike<string> = this.props.onGetErrorMessage(value || []);
-    if (typeof result !== 'undefined') {
-      if (typeof result === 'string') {
-        if (result === '') {
+    const errResult: string | PromiseLike<string> = this.props.onGetErrorMessage(value || []);
+    if (typeof errResult !== 'undefined') {
+      if (typeof errResult === 'string') {
+        if (errResult === '') {
           this.notifyAfterValidate(this.props.selectedLists, value);
         }
         this.setState({
-          errorMessage: result
+          errorMessage: errResult
         });
       } else {
-        result.then((errorMessage: string) => {
+        errResult.then((errorMessage: string) => {
           if (typeof errorMessage === 'undefined' || errorMessage === '') {
             this.notifyAfterValidate(this.props.selectedLists, value);
           }

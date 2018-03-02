@@ -2,7 +2,10 @@
 
 ## 1.4.1
 
+**Enhancements**
+
 - Optimized telemetry so that it only pushes control data
+- Fixes for issue [#30 - Check if Label is null and if so don't render it.](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/30)
 
 ## 1.4.0
 

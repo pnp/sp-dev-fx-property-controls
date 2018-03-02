@@ -261,7 +261,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
     // Renders content
     return (
       <div>
-        <Label>{this.props.label}</Label>
+        {this.props.label && <Label>{this.props.label}</Label>}
         <table className={styles.termFieldTable}>
           <tbody>
             <tr>

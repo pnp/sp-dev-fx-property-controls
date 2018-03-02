@@ -176,7 +176,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
     // Renders content
     return (
       <div>
-        <Label>{this.props.label}</Label>
+        {this.props.label && <Label>{this.props.label}</Label>}
         <Dropdown
           disabled={this.props.disabled}
           label=''

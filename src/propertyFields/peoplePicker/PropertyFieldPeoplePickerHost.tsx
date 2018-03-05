@@ -158,20 +158,20 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
       return;
     }
 
-    const result: string | PromiseLike<string> = this.props.onGetErrorMessage(value || []);
-    if (typeof result === 'undefined') {
-      if (typeof result === 'string') {
-        if (result === '') {
+    const errResult: string | PromiseLike<string> = this.props.onGetErrorMessage(value || []);
+    if (errResult) {
+      if (typeof errResult === 'string') {
+        if (errResult === '') {
           this.notifyAfterValidate(this.props.initialData, value);
-          this.setState({
-            errorMessage: result
-          });
         }
-      }
-      else {
-        result.then((errorMessage: string) => {
-          if (errorMessage === undefined || errorMessage === '')
+        this.setState({
+          errorMessage: errResult
+        });
+      } else {
+        errResult.then((errorMessage: string) => {
+          if (!errorMessage) {
             this.notifyAfterValidate(this.props.initialData, value);
+          }
           this.setState({
             errorMessage: errorMessage
           });
@@ -300,7 +300,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
     // Renders content
     return (
       <div>
-        <Label>{this.props.label}</Label>
+        {this.props.label && <Label>{this.props.label}</Label>}
         <NormalPeoplePicker
           disabled={this.props.disabled}
           pickerSuggestionsProps={suggestionProps}

@@ -31,7 +31,7 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 	public render(): JSX.Element {
 		return (
 			<div>
-				<Label>{this.props.label}</Label>
+				{this.props.label && <Label>{this.props.label}</Label>}
 				{this.props.style === PropertyFieldColorPickerStyle.Inline &&
 					<table className={styles.cpInlineTable}>
 						<tbody>

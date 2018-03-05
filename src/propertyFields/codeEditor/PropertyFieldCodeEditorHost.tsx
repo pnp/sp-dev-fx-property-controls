@@ -129,7 +129,7 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
   public render(): JSX.Element {
     return (
       <div>
-        <Label>{this.props.label}</Label>
+        {this.props.label && <Label>{this.props.label}</Label>}
         <table className={styles.codeFieldTable}>
           <tbody>
             <tr>

@@ -102,18 +102,18 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
 
     this.latestValidateValue = value;
 
-    const result: string | PromiseLike<string> = this.props.onGetErrorMessage(value || '');
-    if (typeof result !== 'undefined') {
-      if (typeof result === 'string') {
-        if (result === '') {
+    const errResult: string | PromiseLike<string> = this.props.onGetErrorMessage(value || '');
+    if (typeof errResult !== 'undefined') {
+      if (typeof errResult === 'string') {
+        if (errResult === '') {
           this.notifyAfterValidate(this.props.selectedList, value);
         }
         this.setState({
-          errorMessage: result
+          errorMessage: errResult
         });
       } else {
-        result.then((errorMessage: string) => {
-          if (typeof errorMessage === 'undefined' || errorMessage === '') {
+        errResult.then((errorMessage: string) => {
+          if (!errorMessage) {
             this.notifyAfterValidate(this.props.selectedList, value);
           }
           this.setState({
@@ -176,7 +176,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
     // Renders content
     return (
       <div>
-        <Label>{this.props.label}</Label>
+        {this.props.label && <Label>{this.props.label}</Label>}
         <Dropdown
           disabled={this.props.disabled}
           label=''

@@ -324,7 +324,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
     // Renders content
     return (
       <div className={styles.propertyFieldDateTimePicker}>
-        <Label>{this.props.label}</Label>
+        {this.props.label && <Label>{this.props.label}</Label>}
         <table cellPadding='0' cellSpacing='0'>
           <tbody>
             <tr>

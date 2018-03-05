@@ -1,8 +1,8 @@
 import * as React from 'react';
-
+import styles from './FieldErrorMessage.module.scss';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export interface IFieldErrorMessageProps {
-
   errorMessage: string;
 }
 
@@ -13,14 +13,15 @@ export default class FieldErrorMessage extends React.Component<IFieldErrorMessag
   public render(): JSX.Element {
     if (this.props.errorMessage !== 'undefined' && this.props.errorMessage !== null && this.props.errorMessage !== '') {
       return (
-        <div style={{ paddingBottom: '8px' }}><div aria-live='assertive' className='ms-u-screenReaderOnly' data-automation-id='error-message'>{this.props.errorMessage}</div>
-          <span>
-            <p className='ms-TextField-errorMessage ms-u-slideDownIn20'>{this.props.errorMessage}</p>
-          </span>
+        <div aria-live="assertive">
+          <p className={`ms-TextField-errorMessage ${styles.errorMessage}`}>
+            <Icon iconName='Error' className={styles.errorIcon} />
+            <span data-automation-id="error-message">{this.props.errorMessage}</span>
+          </p>
         </div>
       );
     } else {
-      return <div />;
+      return null;
     }
   }
 }

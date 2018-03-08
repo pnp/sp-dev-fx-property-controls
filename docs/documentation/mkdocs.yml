@@ -9,6 +9,7 @@ pages:
     - PropertyFieldSpinButton: 'controls/PropertyFieldSpinButton.md'
     - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
     - PropertyFieldMultiSelect: 'controls/PropertyFieldMultiSelect.md'
+    - PropertyFieldNumber: 'controls/PropertyFieldNumber.md'
   - 'Controls with callout':
     - PropertyFieldButtonWithCallout: 'controls/PropertyFieldButtonWithCallout.md'
     - PropertyFieldCheckboxWithCallout: 'controls/PropertyFieldCheckboxWithCallout.md'

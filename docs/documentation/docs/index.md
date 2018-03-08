@@ -21,7 +21,7 @@ npm install @pnp/spfx-property-controls --save --save-exact
 Once the package is installed, you will have to configure the resource file of the property controls to be used in your project. You can do this by opening the `config/config.json` and adding the following line to the `localizedResources` property:
 
 ```json
-"PropertyControlStrings": "./node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+"PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
 ```
 
 ## Controls
@@ -35,6 +35,7 @@ The following controls are currently available:
 - [PropertyFieldSpinButton](./controls/PropertyFieldSpinButton) (Property pane spin button)
 - [PropertyFieldTermPicker](./controls/PropertyFieldTermPicker) (Property pane managed metadata term selector)
 - [PropertyFieldMultiSelect](./controls/PropertyFieldMultiSelect) (Property pane field which allows multi-value selection)
+- [PropertyFieldNumber](./controls/PropertyFieldNumber) (Property pane field which allows only number values)
 
 The following controls are extended controls that show a callout next to the label
 

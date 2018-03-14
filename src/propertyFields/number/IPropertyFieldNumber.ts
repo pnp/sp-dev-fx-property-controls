@@ -42,6 +42,19 @@ export interface IPropertyFieldNumberProps {
    */
   errorMessage?: string;
   /**
+   * The method is used to get the validation error message and determine whether the input value is valid or not.
+   *
+   *   When it returns string:
+   *   - If valid, it returns empty string.
+   *   - If invalid, it returns the error message string and an error message is displayed below the text field.
+   *
+   *   When it returns Promise<string>:
+   *   - The resolved value is display as error message.
+   *   - The rejected, the value is thrown away.
+   *
+   */
+  onGetErrorMessage?: (value: number) => string | Promise<string>;
+  /**
    * Number field will start to validate after users stop typing for `deferredValidationTime` milliseconds.
    * Default value is 200.
    */

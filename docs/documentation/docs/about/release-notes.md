@@ -1,5 +1,11 @@
 # Releases
 
+## 1.4.2
+
+**Enhancements**
+
+- Introduced the `onGetErrorMessage` property for the `PropertyFieldNumber` field control ([#36 - PropertyFieldNumber control suggestion](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/36))
+
 ## 1.4.1
 
 **Enhancements**
@@ -7,6 +13,7 @@
 - Optimized telemetry so that it only pushes control data
 
 **Fixes**
+
 - Fixes for issue [#30 - Check if Label is null and if so don't render it.](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/30)
 - Fix for issue [#33 - `PropertyFieldPeoplePicker` Validation does not work as expected.](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/33)
 

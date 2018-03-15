@@ -28,7 +28,7 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
    * Validate if field value is a number
    * @param value
    */
-  private _validateNumber = (value: string): string => {
+  private _validateNumber = (value: string): string | Promise<string> => {
     if (isNaN(Number(value))) {
       return `${strings.NotNumberValidationMessage} ${value}.`;
     }
@@ -43,7 +43,11 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
       return `${strings.MaximumNumberValidationMessage} ${this.props.maxValue}`;
     }
 
-    return '';
+    if (this.props.onGetErrorMessage) {
+      return this.props.onGetErrorMessage(nrValue);
+    } else {
+      return '';
+    }
   }
 
   /**

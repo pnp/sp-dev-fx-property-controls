@@ -37,6 +37,26 @@ PropertyFieldNumber("numberValue", {
 })
 ```
 
+You can also implement your own validation with the `onGetErrorMessage` property as follows:
+
+```TypeScript
+PropertyFieldNumber("numberValue", {
+  key: "numberValue",
+  label: "Number value only",
+  description: "Number field description",
+  value: this.properties.numberValue,
+  maxValue: 10,
+  minValue: 1,
+  disabled: false,
+  onGetErrorMessage: (value: number) => {
+    if (value % 2 !== 0) {
+      return 'Only even numbers are allowed';
+    }
+    return '';
+  }
+})
+```
+
 ## Implementation
 
 The `PropertyFieldNumber` control can be configured with the following properties:
@@ -52,6 +72,7 @@ The `PropertyFieldNumber` control can be configured with the following propertie
 | minValue | number | no | Minimum number that can be inserted. |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
 | errorMessage | string | no | If set, this will be displayed as an error message. |
+| onGetErrorMessage | (value: number) => string | no | If set, this method is used to get the validation error message and determine whether the input value is valid or not. |
 | deferredValidationTime | number | no | Number field will start to validate after users stop typing for `deferredValidationTime` milliseconds. |
 
 

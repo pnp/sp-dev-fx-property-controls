@@ -70,3 +70,12 @@ export interface ITerm {
   TermSet: ITermSetMinimal;
   PathDepth?: number;
 }
+
+/**
+ * Properties for the Term Store Picker Service
+ */
+export interface ISPTermStorePickerServiceProps {
+  limitByGroupNameOrID?: string;
+  limitByTermsetNameOrID?: string;
+  excludeSystemGroup?: boolean;
+}

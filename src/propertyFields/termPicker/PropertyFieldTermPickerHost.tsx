@@ -8,6 +8,9 @@ import { IPropertyFieldTermPickerPropsInternal } from './IPropertyFieldTermPicke
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import  TermPicker  from './TermPicker';
+import { BasePicker, IBasePickerProps, IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
+
 import { ICheckedTerms, ICheckedTerm } from './IPropertyFieldTermPicker';
 import { IPropertyFieldTermPickerHostProps, IPropertyFieldTermPickerHostState, ITermGroupProps, ITermGroupState, ITermSetProps, ITermSetState, ITermProps, ITermState } from './IPropertyFieldTermPickerHost';
 import SPTermStorePickerService from './../../services/SPTermStorePickerService';
@@ -27,6 +30,7 @@ export const EXPANDED_IMG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AA
 export const GROUP_IMG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC9SURBVDhPY2CgNXh1qEkdiJ8D8X90TNBuJM0V6IpBhoHFgIxebKYTIwYzAMNpxGhGdsFwNoBgNEFjAWsYgOSKiorMgPgbEP/Hgj8AxXpB0Yg1gQAldYuLix8/efLkzn8s4O7du9eAan7iM+DV/v37z546der/jx8/sJkBdhVOA5qbm08ePnwYrOjQoUOkGwDU+AFowLmjR4/idwGukAYaYAkMgxfPnj27h816kDg4DPABoAI/IP6DIxZA4l0AOd9H3QXl5+cAAAAASUVORK5CYII='; // /_layouts/15/Images/EMMGroup.png
 export const TERMSET_IMG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACaSURBVDhPrZLRCcAgDERdpZMIjuQA7uWH4CqdxMY0EQtNjKWB0A/77sxF55SKMTalk8a61lqCFqsLiwKac84ZRUUBi7MoYHVmAfjfjzE6vJqZQfie0AcwBQVW8ATi7AR7zGGGNSE6Q2cyLSPIjRswjO7qKhcPDN2hK46w05wZMcEUIG+HrzzcrRsQBIJ5hS8C9fGAPmRwu/9RFxW6L8CM4Ry8AAAAAElFTkSuQmCC'; // /_layouts/15/Images/EMMTermSet.png
 
+
 /**
  * Renders the controls for PropertyFieldTermPicker component
  */
@@ -36,6 +40,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
   private termsService: SPTermStorePickerService;
   private previousValues: ICheckedTerms = [];
   private cancel: boolean = true;
+
 
   /**
    * Constructor method
@@ -65,7 +70,13 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
     this.termsChanged = this.termsChanged.bind(this);
     this.async = new Async(this);
     this.validate = this.validate.bind(this);
+    // this.onFilterChanged = this.onFilterChanged.bind(this);
+    // this.onGetTextFromItem = this.onGetTextFromItem.bind(this);
     this.notifyAfterValidate = this.notifyAfterValidate.bind(this);
+    // this.onRenderItem = this.onRenderItem.bind(this);
+    // this.onRenderSuggestionsItem = this.onRenderSuggestionsItem.bind(this);
+
+
     this.delayedValidate = this.async.debounce(this.validate, this.props.deferredValidationTime);
   }
 
@@ -137,6 +148,33 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
     }
   }
 
+  // protected onRenderItem(term : IPickerItemProps<ICheckedTerm>)
+  // {
+  //     console.log("onRenderItem called");
+  //     console.log(term);
+  //     return (<div>{term.item.name}</div>);
+      
+  // }
+
+  // protected onRenderSuggestionsItem(term : ICheckedTerm, props)
+  // {
+  //  console.log("onRenderSuggestionsItem called");
+  //  return (<div>{term.name}</div>);
+  // }
+
+
+//   private onFilterChanged(filterText: string, tagList: ICheckedTerm[]): Promise<ICheckedTerm[]>
+//   {
+//     this.termsService = new SPTermStorePickerService(this.props, this.props.context);
+//     let terms = this.termsService.searchTermsByName(filterText);
+//     return terms;
+
+//   }
+
+//   private onGetTextFromItem(item: any): any {
+//     return item.name;
+// }
+
   /**
    * Open the right Panel
    */
@@ -198,7 +236,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
     // Term item to add to the active nodes array
     const termItem = {
       name: term.Name,
-      id: term.Id,
+      key: term.Id,
       path: term.PathOfTerm,
       termSet: term.TermSet.Id
     };
@@ -217,7 +255,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
       }
     } else {
       // Remove the term from the list of active nodes
-      activeNodes = activeNodes.filter(item => item.id !== term.Id);
+      activeNodes = activeNodes.filter(item => item.key !== term.Id);
     }
     // Sort all active nodes
     activeNodes = sortBy(activeNodes, 'path');
@@ -233,7 +271,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
    */
   private getSelectedNodePosition(node: ICheckedTerm): number {
     for (let i = 0; i < this.state.activeNodes.length; i++) {
-      if (node.id === this.state.activeNodes[i].id) {
+      if (node.key === this.state.activeNodes[i].key) {
         return i;
       }
     }
@@ -266,13 +304,16 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
           <tbody>
             <tr>
               <td>
-                <TextField
+                <TermPicker
+              
+                />
+                {/* <TextField
                   disabled={this.props.disabled}
                   onChanged={null}
                   onClick={this.onOpenPanel}
                   readOnly={true}
                   value={termSetsString}
-                />
+                /> */}
               </td>
               <td className={styles.termFieldRow}>
                 <IconButton disabled={this.props.disabled} iconProps={{ iconName: 'Tag' }} onClick={this.onOpenPanel} />

@@ -1,5 +1,5 @@
-import { ITermStore, ITerm } from './ISPTermStorePickerService';
-
+import { ITermStore, ITerm  } from './ISPTermStorePickerService';
+import {ICheckedTerms, ICheckedTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
 /**
  * Defines a http client to request mock data to use the web part with the local workbench
  */
@@ -117,5 +117,31 @@ export default class SPTermStoreMockHttpClient {
       resolve(SPTermStoreMockHttpClient._mockTerms);
     });
   }
+
+
+  public static searchTermsByName(searchText: string): Promise<ICheckedTerm[]> {
+    return new Promise<ICheckedTerm[]>((resolve) => {
+      resolve([
+        {
+          key : "123", 
+          name : 'term1',
+          path : "path",
+          termSet :"123"
+         },
+         {
+          key : "124", 
+          name : 'term2',
+          path : "path",
+          termSet :"123"
+         },
+         {
+          key : "125", 
+          name : 'term3',
+          path : "path",
+          termSet :"123"
+         }
+        ]);
+    });
+  } 
 
 }

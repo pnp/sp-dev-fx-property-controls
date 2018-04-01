@@ -5,7 +5,7 @@ import { IWebPartContext } from '@microsoft/sp-webpart-base';
  */
 export interface ICheckedTerm {
   name: string;
-  id: string;
+  key: string;
   path: string;
   termSet: string;
 }

@@ -145,6 +145,65 @@ export default class SPTermStorePickerService {
   }
 
   /**
+   * Retrieve all terms that starts with the searchText 
+   * @param searchText
+   */
+  public searchTermsByName(searchText: string): Promise<ICheckedTerm[]> {
+    if (Environment.type === EnvironmentType.Local) {
+      // If the running environment is local, load the data from the mock
+      return SPTermStoreMockHttpClient.searchTermsByName(searchText);
+    } else {
+      return new Promise((resolve, reject) => {
+        this.loadTaxScripts()
+          .then(() => {
+            const ctx = SP.ClientContext.get_current();
+            const session = SP.Taxonomy.TaxonomySession.getTaxonomySession(ctx);
+            const store = session.getDefaultKeywordsTermStore();
+
+            const labelMatch = new SP.Taxonomy.LabelMatchInformation(ctx);
+            labelMatch.set_termLabel(searchText);
+            labelMatch.set_stringMatchOption(SP.Taxonomy.StringMatchOption.startsWith);
+            labelMatch.set_resultCollectionSize(10);
+            labelMatch.set_trimUnavailable(true);
+
+            const terms = store.getTerms(labelMatch);
+
+            ctx.load(terms, 'Include(IsRoot, Id, Name, LocalCustomProperties)');
+            ctx.executeQueryAsync(() => {
+
+              let returnTerms: ICheckedTerm[] = [];
+
+              const termEnumerator = terms.getEnumerator();
+
+              while (termEnumerator.moveNext()) {
+
+                const currentTerm = termEnumerator.get_current();
+                console.log(currentTerm);
+                if (currentTerm.get_isDeprecated() == false) {
+                  returnTerms.push({
+                    key: currentTerm.get_id().toString(),
+                    name: currentTerm.get_name(),
+                    path: "",
+                    termSet: ""
+                  });
+                }
+                console.log(currentTerm.get_name());
+              }
+              resolve(returnTerms);
+
+            }, (sender, args) => {
+              //fail
+              console.log(args.get_message());
+            });
+
+          });
+      });
+
+    }
+  }
+
+
+  /**
    * Sort the terms by their path
    * @param a term 2
    * @param b term 2
@@ -188,4 +247,65 @@ export default class SPTermStorePickerService {
       return data;
     }) as Promise<ITerm[]>;
   }
+
+
+
+
+
+  /**
+  * Loads needed jsom javascript files needed to access the taxonomy api's
+  */
+  private loadTaxScripts(): Promise<void> {
+    return new Promise<void>((resolve) => {
+      let layoutsBase: string = this.context.pageContext.web.absoluteUrl;
+      if (layoutsBase.lastIndexOf('/') === layoutsBase.length - 1)
+        layoutsBase = layoutsBase.slice(0, -1);
+      layoutsBase += '/_layouts/15/';
+
+      this.loadScript(layoutsBase + 'init.js', 'Sod').then(() => {
+        return this.loadScript(layoutsBase + 'sp.runtime.js', 'sp_runtime_initialize');
+      }).then(() => {
+        return this.loadScript(layoutsBase + 'sp.js', 'sp_initialize');
+      }).then(() => {
+        return this.loadScript(layoutsBase + 'sp.taxonomy.js', 'SP.Taxonomy');
+      }).then(() => {
+        resolve();
+      });
+    });
+  }
+
+  /**
+   * inserts script into header of page
+   */
+  private loadScript(url: string, globalObjectName: string): Promise<void> {
+    return new Promise<void>((resolve) => {
+      let isLoaded = true;
+      if (globalObjectName.indexOf('.') !== -1) {
+        const props = globalObjectName.split('.');
+        let currObj: any = window;
+        for (let i = 0, len = props.length; i < len; i++) {
+          if (!currObj[props[i]]) {
+            isLoaded = false;
+            break;
+          }
+          currObj = currObj[props[i]];
+        }
+      }
+      else {
+        isLoaded = !!window[globalObjectName];
+      }
+      if (isLoaded || document.head.querySelector('script[src="' + url + '"]')) {
+        resolve();
+        return;
+      }
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = url;
+      script.onload = () => {
+        resolve();
+      };
+      document.head.appendChild(script);
+    });
+  }
+
 }

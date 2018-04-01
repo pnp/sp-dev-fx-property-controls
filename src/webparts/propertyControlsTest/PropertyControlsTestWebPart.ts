@@ -183,7 +183,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   // limitByGroupNameOrID: 'People',
-                  // limitByTermsetNameOrID: 'Location',
+                  //limitByTermsetNameOrID: 'ThemePark Type',
                   key: 'termSetsPickerFieldId',
                   hideTermStoreName: true
                 }),

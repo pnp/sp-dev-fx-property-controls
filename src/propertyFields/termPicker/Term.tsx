@@ -14,7 +14,7 @@ export default class Term extends React.Component<ITermProps, ITermState> {
     super(props);
 
     // Check if current term is selected
-    let active = this.props.activeNodes.filter(item => item.id === this.props.term.Id);
+    let active = this.props.activeNodes.filter(item => item.key === this.props.term.Id);
 
     this.state = {
       selected: active.length > 0
@@ -27,6 +27,7 @@ export default class Term extends React.Component<ITermProps, ITermState> {
    * Handle the checkbox change trigger
    */
   private _handleChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean) {
+    console.log("handling change");
     this.setState({
       selected: isChecked
     });
@@ -41,7 +42,7 @@ export default class Term extends React.Component<ITermProps, ITermState> {
   public componentWillReceiveProps?(nextProps: ITermProps, nextContext: any): void {
     // If multi-selection is turned off, only a single term can be selected
     if (!this.props.multiSelection) {
-      let active = nextProps.activeNodes.filter(item => item.id === this.props.term.Id);
+      let active = nextProps.activeNodes.filter(item => item.key === this.props.term.Id);
       this.state = {
         selected: active.length > 0
       };

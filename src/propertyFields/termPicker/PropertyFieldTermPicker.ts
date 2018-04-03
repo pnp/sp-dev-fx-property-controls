@@ -7,7 +7,7 @@ import {
 } from '@microsoft/sp-webpart-base';
 import PropertyFieldTermPickerHost from './PropertyFieldTermPickerHost';
 import { IPropertyFieldTermPickerHostProps } from './IPropertyFieldTermPickerHost';
-import { IPropertyFieldTermPickerPropsInternal, IPropertyFieldTermPickerProps, ICheckedTerms } from './IPropertyFieldTermPicker';
+import { IPropertyFieldTermPickerPropsInternal, IPropertyFieldTermPickerProps, IPickerTerms } from './IPropertyFieldTermPicker';
 
 /**
  * Represents a PropertyFieldTermPicker object
@@ -22,7 +22,7 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private label: string;
   private context: IWebPartContext;
   private allowMultipleSelections: boolean = false;
-  private initialValues: ICheckedTerms = [];
+  private initialValues: IPickerTerms = [];
   private excludeSystemGroup: boolean = false;
   private limitByGroupNameOrID: string = null;
   private limitByTermsetNameOrID: string = null;
@@ -33,7 +33,7 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private customProperties: any;
   private key: string;
   private disabled: boolean = false;
-  private onGetErrorMessage: (value: ICheckedTerms) => string | Promise<string>;
+  private onGetErrorMessage: (value: IPickerTerms) => string | Promise<string>;
   private deferredValidationTime: number = 200;
 
   /**

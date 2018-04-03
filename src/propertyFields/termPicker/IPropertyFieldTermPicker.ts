@@ -1,13 +1,16 @@
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
+
+
 /**
  * Selected terms
  */
-export interface ICheckedTerm {
+export interface ICheckedTerm  {
   name: string;
   key: string;
   path: string;
   termSet: string;
+  termSetName? : string;
 }
 
 export interface ICheckedTerms extends Array<ICheckedTerm> { }

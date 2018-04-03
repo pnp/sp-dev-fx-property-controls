@@ -1,101 +1,145 @@
 import * as React from 'react';
 import { BasePicker, IBasePickerProps, IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
-import { ICheckedTerm } from './IPropertyFieldTermPicker';
+import { ICheckedTerm, ICheckedTerms } from './IPropertyFieldTermPicker';
 import SPTermStorePickerService from './../../services/SPTermStorePickerService';
-import styles from './PropertyFieldtermPickerHost.Module.scss'
+import styles from './PropertyFieldtermPickerHost.Module.scss';
+import { IPropertyFieldTermPickerHostProps } from './IPropertyFieldTermPickerHost';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
-//export type termPicker = BasePicker<ICheckedTerm, IBasePickerProps<ICheckedTerm>>;
+
+
 
 export class TermBasePicker extends BasePicker<ICheckedTerm, IBasePickerProps<ICheckedTerm>>
 {
+
 }
 
-export default class TermPicker extends React.Component<any, any> {
+export interface ITermPickerState {
+  terms: ICheckedTerms;
+}
 
+export interface ITermPickerProps {
+  termPickerHostProps: IPropertyFieldTermPickerHostProps;
+  context: IWebPartContext;
+  disabled: boolean;
+  value: ICheckedTerms;
+  onChanged: (items: ICheckedTerm[]) => void;
+}
+
+
+export default class TermPicker extends React.Component<ITermPickerProps, ITermPickerState> {
+
+  /**
+   * Constructor method
+   */
   constructor(props: any) {
     super(props);
-
     this.onRenderItem = this.onRenderItem.bind(this);
     this.onRenderSuggestionsItem = this.onRenderSuggestionsItem.bind(this);
     this.onFilterChanged = this.onFilterChanged.bind(this);
     this.onGetTextFromItem = this.onGetTextFromItem.bind(this);
 
+    this.state = {
+      terms: this.props.value
+    };
+
   }
 
+  /**
+   * componentWillReceiveProps method
+   */
+  public componentWillReceiveProps(nextProps: ITermPickerProps) {
+
+    // check to see if props is different to avoid re-rendering
+    let newKeys = nextProps.value.map(a => a.key);
+    let currentKeys = this.state.terms.map(a => a.key);
+    if (newKeys.sort().join(',') !== currentKeys.sort().join(',')) {
+      this.setState({ terms: nextProps.value });
+    }
+    
+  }
+
+  /**
+   * Renders the item in the picker
+   */
   protected onRenderItem(term: IPickerItemProps<ICheckedTerm>) {
-    console.log("onRenderItem called");
-    console.log(term);
-    return (<span className={styles.selectedItem}>{term.item.name} </span>);
-
-  }
-
-  protected onRenderSuggestionsItem(term: ICheckedTerm, props) {
-    console.log("onRenderSuggestionsItem called");
-    console.log(term);
-    return (<div className={styles.termSuggestion} title={term.path}>
-      <div>{term.name}</div>
-      <div className={styles.termSuggestionSubTitle}> in {term.termSet}</div>
+    return (<div className={styles.pickedTermRoot}
+      key={term.index}
+      data-selection-index={term.index}
+      data-is-focusable={!term.disabled && true}>
+      <span className={styles.pickedTermText}>{term.item.name}</span>
+      {!term.disabled &&
+        <span className={styles.pickedTermCloseIcon}
+          onClick={term.onRemoveItem}>
+          <i className="ms-Icon ms-Icon--Cancel" aria-hidden="true"></i>
+        </span>
+      }
     </div>);
   }
 
-  private onFilterChanged(filterText: string, tagList: ICheckedTerm[]): Promise<ICheckedTerm[]> {
-    // this.termsService = new SPTermStorePickerService(this.props, this.props.context);
-    // let terms = this.termsService.searchTermsByName(filterText);
-    // return terms;
-    return new Promise<ICheckedTerm[]>((resolve) => {
-      resolve([
-        {
-          key: "123",
-          name: 'term1',
-          path: "path",
-          termSet: "123"
-        },
-        {
-          key: "124",
-          name: 'term2',
-          path: "path",
-          termSet: "123"
-        },
-        {
-          key: "125",
-          name: 'term3',
-          path: "path",
-          termSet: "123"
-        }
-      ]);
-    });
+  /**
+   * Renders the suggestions in the picker
+   */
+  protected onRenderSuggestionsItem(term: ICheckedTerm, props) {
+    // console.log("onRenderSuggestionsItem called");
+    // console.log(term);
+    let termParent = term.termSetName;
+    let termTitle = `${term.name} [${term.termSetName}]`;
+    if (term.path.indexOf(";") !== -1) {
+      let splitPath = term.path.split(";");
+      termParent = splitPath[splitPath.length - 2];
+      splitPath.pop();
+      termTitle = `${term.name} [${term.termSetName}:${splitPath.join(':')}]`;
+    }
 
 
+    return (<div className={styles.termSuggestion} title={termTitle}>
+      <div>{term.name}</div>
+      <div className={styles.termSuggestionSubTitle}> in {termParent}</div>
+    </div>);
   }
 
+  /**
+   * When Filter Changes a new search for suggestions
+   */
+  private onFilterChanged(filterText: string, tagList: ICheckedTerm[]): Promise<ICheckedTerm[]> {
+    if (filterText !== "") {
+      let termsService = new SPTermStorePickerService(this.props.termPickerHostProps, this.props.context);
+      let terms = termsService.searchTermsByName(filterText);
+      return terms;
+    }
+    else {
+      return Promise.resolve([]);
+    }
+  }
+
+
+  /**
+   * gets the text from an item
+   */
   private onGetTextFromItem(item: any): any {
     return item.name;
   }
 
+    /**
+   * Render method
+   */
   public render(): JSX.Element {
-    return (<div><TermBasePicker
-
-      onResolveSuggestions={this.onFilterChanged}
-      onRenderSuggestionsItem={this.onRenderSuggestionsItem}
-      getTextFromItem={this.onGetTextFromItem}
-      onRenderItem={this.onRenderItem}
-    
-    // pickerSuggestionsProps={
-    //   {
-    //     suggestionsHeaderText: 'Suggested Tags',
-    //     noResultsFoundText: 'No terms Found'
-    //   }
-    // }
-    // itemLimit={2}
-    // disabled={false}
-    // inputProps={{
-    //   onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
-    //   onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
-    //   'aria-label': 'Tag Picker'
-    // }}
-    /></div>);
+    // console.log(this.props.value)
+    return (
+      <div>
+        <TermBasePicker
+          disabled={this.props.disabled}
+          onResolveSuggestions={this.onFilterChanged}
+          onRenderSuggestionsItem={this.onRenderSuggestionsItem}
+          getTextFromItem={this.onGetTextFromItem}
+          onRenderItem={this.onRenderItem}
+          defaultSelectedItems={this.props.value}
+          selectedItems={this.state.terms}
+          onChange={this.props.onChanged}
+        />
+      </div>
+    );
 
   }
-
-
 }

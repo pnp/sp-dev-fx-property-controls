@@ -8,7 +8,7 @@ import { IPropertyFieldTermPickerPropsInternal } from './IPropertyFieldTermPicke
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import  TermPicker  from './TermPicker';
+import TermPicker from './TermPicker';
 import { BasePicker, IBasePickerProps, IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 
 import { ICheckedTerms, ICheckedTerm } from './IPropertyFieldTermPicker';
@@ -41,7 +41,6 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
   private previousValues: ICheckedTerms = [];
   private cancel: boolean = true;
 
-
   /**
    * Constructor method
    */
@@ -55,6 +54,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
       limitByGroupNameOrID: !!props.limitByGroupNameOrID,
       disabled: props.disabled
     });
+
 
     this.state = {
       activeNodes: typeof this.props.initialValues !== 'undefined' ? this.props.initialValues : [],
@@ -70,13 +70,8 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
     this.termsChanged = this.termsChanged.bind(this);
     this.async = new Async(this);
     this.validate = this.validate.bind(this);
-    // this.onFilterChanged = this.onFilterChanged.bind(this);
-    // this.onGetTextFromItem = this.onGetTextFromItem.bind(this);
+    this.termsFromPickerChanged = this.termsFromPickerChanged.bind(this);
     this.notifyAfterValidate = this.notifyAfterValidate.bind(this);
-    // this.onRenderItem = this.onRenderItem.bind(this);
-    // this.onRenderSuggestionsItem = this.onRenderSuggestionsItem.bind(this);
-
-
     this.delayedValidate = this.async.debounce(this.validate, this.props.deferredValidationTime);
   }
 
@@ -148,32 +143,6 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
     }
   }
 
-  // protected onRenderItem(term : IPickerItemProps<ICheckedTerm>)
-  // {
-  //     console.log("onRenderItem called");
-  //     console.log(term);
-  //     return (<div>{term.item.name}</div>);
-      
-  // }
-
-  // protected onRenderSuggestionsItem(term : ICheckedTerm, props)
-  // {
-  //  console.log("onRenderSuggestionsItem called");
-  //  return (<div>{term.name}</div>);
-  // }
-
-
-//   private onFilterChanged(filterText: string, tagList: ICheckedTerm[]): Promise<ICheckedTerm[]>
-//   {
-//     this.termsService = new SPTermStorePickerService(this.props, this.props.context);
-//     let terms = this.termsService.searchTermsByName(filterText);
-//     return terms;
-
-//   }
-
-//   private onGetTextFromItem(item: any): any {
-//     return item.name;
-// }
 
   /**
    * Open the right Panel
@@ -199,6 +168,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
    * Close the panel
    */
   private onClosePanel(): void {
+
     this.setState(() => {
       const newState: IPropertyFieldTermPickerHostState = {
         openPanel: false,
@@ -228,6 +198,9 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
    * @param node
    */
   private termsChanged(term: ITerm, checked: boolean): void {
+    console.log("termsChanged");
+    console.log(term);
+
     let activeNodes = this.state.activeNodes;
     if (typeof term === 'undefined' || term === null) {
       return;
@@ -248,7 +221,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
         // Add the checked term
         activeNodes.push(termItem);
         // Filter out the duplicate terms
-        activeNodes = uniqBy(activeNodes, 'id');
+        activeNodes = uniqBy(activeNodes, 'key');
       } else {
         // Only store the current selected item
         activeNodes = [termItem];
@@ -264,6 +237,19 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
       activeNodes: activeNodes
     });
   }
+
+  /**
+ * Fires When Items Changed in TermPicker
+ * @param node
+ */
+  private termsFromPickerChanged(terms: ICheckedTerms) {
+    this.delayedValidate(terms);
+
+    this.setState({
+      activeNodes: terms
+    });
+  }
+
 
   /**
    * Gets the given node position in the active nodes collection
@@ -291,12 +277,6 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
    * Renders the SPListpicker controls with Office UI  Fabric
    */
   public render(): JSX.Element {
-    let termSetsString: string = '';
-    if (typeof this.state.activeNodes !== 'undefined' && this.state.activeNodes.length > 0) {
-      termSetsString = this.state.activeNodes.map(term => term.name).join(', ');
-    }
-
-    // Renders content
     return (
       <div>
         {this.props.label && <Label>{this.props.label}</Label>}
@@ -305,15 +285,12 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
             <tr>
               <td>
                 <TermPicker
-              
-                />
-                {/* <TextField
+                  context={this.props.context}
+                  termPickerHostProps={this.props}
                   disabled={this.props.disabled}
-                  onChanged={null}
-                  onClick={this.onOpenPanel}
-                  readOnly={true}
-                  value={termSetsString}
-                /> */}
+                  value={this.state.activeNodes}
+                  onChanged={this.termsFromPickerChanged}
+                />
               </td>
               <td className={styles.termFieldRow}>
                 <IconButton disabled={this.props.disabled} iconProps={{ iconName: 'Tag' }} onClick={this.onOpenPanel} />
@@ -347,8 +324,11 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
           }
 
           {
+
             /* Once the state is loaded, start rendering the term store, group, term sets */
             this.state.loaded === true ? this.state.termStores.map((termStore: ITermStore, index: number) => {
+              console.log("active nodes");
+              console.log(this.state.activeNodes);
               return (
                 <div key={termStore.Id}>
                   {

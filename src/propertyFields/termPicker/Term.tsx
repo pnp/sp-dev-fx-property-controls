@@ -27,6 +27,7 @@ export default class Term extends React.Component<ITermProps, ITermState> {
    * Handle the checkbox change trigger
    */
   private _handleChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean) {
+    console.log("handling change");
     this.setState({
       selected: isChecked
     });

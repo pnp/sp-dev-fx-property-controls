@@ -12,6 +12,7 @@ import { IPropertyFieldTermPickerHostProps } from './../propertyFields/termPicke
 import { ISPTermStores, ISPTermStore, ISPTermGroups, ISPTermGroup, ICheckedTerms, ICheckedTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
 import { ITermStore, ITerms, ITerm, IGroup, ITermSet } from './ISPTermStorePickerService';
 import SPTermStoreMockHttpClient from './SPTermStorePickerMockService';
+import TermSet from '../../lib/propertyFields/termPicker/TermSet';
 
 /**
  * Service implementation to manage term stores in SharePoint
@@ -106,7 +107,7 @@ export default class SPTermStorePickerService {
       return this.getAllMockTerms();
     } else {
       // Request body to retrieve all terms for the given term set
-      const data = `<Request AddExpandoFieldTypeSuffix="true" SchemaVersion="15.0.0.0" LibraryVersion="16.0.0.0" ApplicationName=".NET Library" xmlns="http://schemas.microsoft.com/sharepoint/clientquery/2009"><Actions><ObjectPath Id="30" ObjectPathId="29" /><Query Id="31" ObjectPathId="29"><Query SelectAllProperties="false"><Properties /></Query><ChildItemQuery SelectAllProperties="false"><Properties><Property Name="Name" ScalarProperty="true" /><Property Name="Id" ScalarProperty="true" /><Property Name="Description" ScalarProperty="true" /><Property Name="IsDeprecated" ScalarProperty="true" /><Property Name="IsRoot" ScalarProperty="true" /><Property Name="PathOfTerm" ScalarProperty="true" /><Property Name="Parent" SelectAll="true"><Query SelectAllProperties="false"><Properties /></Query></Property><Property Name="TermSet"><Query SelectAllProperties="false"><Properties><Property Name="Id" ScalarProperty="true" /></Properties></Query></Property></Properties></ChildItemQuery></Query></Actions><ObjectPaths><Method Id="29" ParentId="18" Name="GetAllTerms" /><Identity Id="18" Name="${termsetId}"
+      const data = `<Request AddExpandoFieldTypeSuffix="true" SchemaVersion="15.0.0.0" LibraryVersion="16.0.0.0" ApplicationName=".NET Library" xmlns="http://schemas.microsoft.com/sharepoint/clientquery/2009"><Actions><ObjectPath Id="30" ObjectPathId="29" /><Query Id="31" ObjectPathId="29"><Query SelectAllProperties="false"><Properties /></Query><ChildItemQuery SelectAllProperties="false"><Properties><Property Name="Name" ScalarProperty="true" /><Property Name="Id" ScalarProperty="true" /><Property Name="Description" ScalarProperty="true" /><Property Name="IsDeprecated" ScalarProperty="true" /><Property Name="IsRoot" ScalarProperty="true" /><Property Name="PathOfTerm" ScalarProperty="true" /><Property Name="TermSet" SelectAll="true" /><Property Name="Parent" SelectAll="true"><Query SelectAllProperties="false"><Properties /></Query></Property><Property Name="TermSet"><Query SelectAllProperties="false"><Properties><Property Name="Id" ScalarProperty="true" /></Properties></Query></Property></Properties></ChildItemQuery></Query></Actions><ObjectPaths><Method Id="29" ParentId="18" Name="GetAllTerms" /><Identity Id="18" Name="${termsetId}"
       /></ObjectPaths></Request>`;
 
       const reqHeaders = new Headers();
@@ -153,55 +154,172 @@ export default class SPTermStorePickerService {
       // If the running environment is local, load the data from the mock
       return SPTermStoreMockHttpClient.searchTermsByName(searchText);
     } else {
-      return new Promise((resolve, reject) => {
-        this.loadTaxScripts()
-          .then(() => {
-            const ctx = SP.ClientContext.get_current();
-            const session = SP.Taxonomy.TaxonomySession.getTaxonomySession(ctx);
-            const store = session.getDefaultKeywordsTermStore();
 
-            const labelMatch = new SP.Taxonomy.LabelMatchInformation(ctx);
-            labelMatch.set_termLabel(searchText);
-            labelMatch.set_stringMatchOption(SP.Taxonomy.StringMatchOption.startsWith);
-            labelMatch.set_resultCollectionSize(10);
-            labelMatch.set_trimUnavailable(true);
-
-            const terms = store.getTerms(labelMatch);
-
-            ctx.load(terms, 'Include(IsRoot, Id, Name, LocalCustomProperties)');
-            ctx.executeQueryAsync(() => {
-
-              let returnTerms: ICheckedTerm[] = [];
-
-              const termEnumerator = terms.getEnumerator();
-
-              while (termEnumerator.moveNext()) {
-
-                const currentTerm = termEnumerator.get_current();
-                console.log(currentTerm);
-                if (currentTerm.get_isDeprecated() == false) {
-                  returnTerms.push({
-                    key: currentTerm.get_id().toString(),
-                    name: currentTerm.get_name(),
-                    path: "",
-                    termSet: ""
-                  });
-                }
-                console.log(currentTerm.get_name());
-              }
-              resolve(returnTerms);
-
-            }, (sender, args) => {
-              //fail
-              console.log(args.get_message());
-            });
-
-          });
-      });
-
+      if (this.props.limitByTermsetNameOrID) {
+        return this.searchTermsByTermSet(searchText, this.props.limitByTermsetNameOrID);
+      }
+      else if (this.props.limitByGroupNameOrID) {
+        return this.searchTermsByGroup(searchText);
+      }
+      else {
+        return this.searchAllTerms(searchText);
+      }
     }
   }
 
+/**
+   * Searches terms for the given term set
+   * @param searchText
+   * @param termsetId
+   */
+  private searchTermsByTermSet(searchText: string, termSet: string): Promise<ICheckedTerm[]> {
+    if (Environment.type === EnvironmentType.Local) {
+      // If the running environment is local, load the data from the mock
+      return SPTermStoreMockHttpClient.searchTermsByName(searchText);
+    } else {
+      return new Promise<ICheckedTerm[]>(resolve => {
+      this.getTermStores().then(termStore => {
+        let TermSetId = termSet;
+        if (!this.isGuid(termSet)) {
+          TermSetId = this._cleanGuid(termStore[0].Groups._Child_Items_[0].TermSets._Child_Items_[0].Id);
+        }
+        let data = `<Request xmlns="http://schemas.microsoft.com/sharepoint/clientquery/2009" SchemaVersion="15.0.0.0" LibraryVersion="16.0.0.0" ApplicationName="Javascript Library"><Actions><ObjectPath Id="456" ObjectPathId="455" /><ObjectIdentityQuery Id="457" ObjectPathId="455" /><ObjectPath Id="459" ObjectPathId="458" /><ObjectIdentityQuery Id="460" ObjectPathId="458" /><ObjectPath Id="462" ObjectPathId="461" /><ObjectIdentityQuery Id="463" ObjectPathId="461" /><ObjectPath Id="465" ObjectPathId="464" /><SetProperty Id="466" ObjectPathId="464" Name="TermLabel"><Parameter Type="String">${searchText}</Parameter></SetProperty><SetProperty Id="467" ObjectPathId="464" Name="DefaultLabelOnly"><Parameter Type="Boolean">true</Parameter></SetProperty><SetProperty Id="468" ObjectPathId="464" Name="StringMatchOption"><Parameter Type="Number">0</Parameter></SetProperty><SetProperty Id="469" ObjectPathId="464" Name="ResultCollectionSize"><Parameter Type="Number">10</Parameter></SetProperty><SetProperty Id="470" ObjectPathId="464" Name="TrimUnavailable"><Parameter Type="Boolean">true</Parameter></SetProperty><ObjectPath Id="472" ObjectPathId="471" /><Query Id="473" ObjectPathId="471"><Query SelectAllProperties="false"><Properties /></Query><ChildItemQuery SelectAllProperties="false"><Properties><Property Name="IsRoot" SelectAll="true" /><Property Name="Id" SelectAll="true" /><Property Name="Name" SelectAll="true" /><Property Name="PathOfTerm" SelectAll="true" /><Property Name="TermSet" SelectAll="true" /></Properties></ChildItemQuery></Query></Actions><ObjectPaths><StaticMethod Id="455" Name="GetTaxonomySession" TypeId="{981cbc68-9edc-4f8d-872f-71146fcbb84f}" /><Method Id="458" ParentId="455" Name="GetDefaultKeywordsTermStore" /><Method Id="461" ParentId="458" Name="GetTermSet"><Parameters><Parameter Type="Guid">${TermSetId}</Parameter></Parameters></Method><Constructor Id="464" TypeId="{61a1d689-2744-4ea3-a88b-c95bee9803aa}" /><Method Id="471" ParentId="461" Name="GetTerms"><Parameters><Parameter ObjectPathId="464" /></Parameters></Method></ObjectPaths></Request>`;
+     
+        const reqHeaders = new Headers();
+        reqHeaders.append("accept", "application/json");
+        reqHeaders.append("content-type", "application/xml");
+  
+        const httpPostOptions: ISPHttpClientOptions = {
+          headers: reqHeaders,
+          body: data
+        };
+  
+     
+        return this.context.spHttpClient.post(this.clientServiceUrl, SPHttpClient.configurations.v1, httpPostOptions).then((serviceResponse: SPHttpClientResponse) => {
+          return serviceResponse.json().then((serviceJSONResponse: any) => {
+            // Retrieve the term collection results
+            const termStoreResult: ITerms[] = serviceJSONResponse.filter(r => r['_ObjectType_'] === 'SP.Taxonomy.TermCollection');
+            if (termStoreResult.length > 0) {
+              // Retrieve all terms
+              let terms = termStoreResult[0]._Child_Items_;
+             
+              let returnTerms: ICheckedTerm[] = [];
+              terms.forEach(term => {
+                if (term.Name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
+                  returnTerms.push({
+                    key: term.Id,
+                    name: term.Name,
+                    path: term.PathOfTerm,
+                    termSet: term.TermSet.Id,
+                    termSetName: term.TermSet.Name
+
+                  });
+                }
+              });
+             resolve(returnTerms);
+            }
+            return null;
+          });
+        });
+
+
+      });
+
+
+    });
+    }
+  }
+
+  /**
+   * Searches terms for a group
+   * @param searchText
+   */
+  private searchTermsByGroup(searchText: string): Promise<ICheckedTerm[]> {
+    if (Environment.type === EnvironmentType.Local) {
+      // If the running environment is local, load the data from the mock
+      return SPTermStoreMockHttpClient.searchTermsByName(searchText);
+    } else {
+      return new Promise<ICheckedTerm[]>(resolve => {
+        this.getTermStores().then(termStore => {
+          let termSetTerms: Array<Promise<ITerm[]>> = [];
+          termStore[0].Groups._Child_Items_[0].TermSets._Child_Items_.forEach(ts => {
+            termSetTerms.push(this.getAllTerms(ts._ObjectIdentity_));
+          });
+
+          Promise.all(termSetTerms).then(results => {
+            let returnTerms: ICheckedTerm[] = [];
+            results.forEach(terms => {
+              if (terms) {
+                terms.forEach(term => {
+                  if (term.Name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
+                    returnTerms.push({
+                      key: term.Id,
+                      name: term.Name,
+                      path: term.PathOfTerm,
+                      termSet: term.TermSet.Id,
+                      termSetName: term.TermSet.Name
+
+                    });
+                  }
+                });
+              }
+            });
+            resolve(returnTerms);
+          });
+
+        });
+      });
+    }
+
+  }
+
+  /**
+   * Searches terms in termstore
+   * @param searchText
+   */
+  private searchAllTerms(searchText: string): Promise<ICheckedTerm[]> {
+    if (Environment.type === EnvironmentType.Local) {
+      // If the running environment is local, load the data from the mock
+      return SPTermStoreMockHttpClient.searchTermsByName(searchText);
+    } else {
+
+      return new Promise<ICheckedTerm[]>(resolve => {
+        this.getTermStores().then(termStore => {
+          let termSetTerms: Array<Promise<ITerm[]>> = [];
+          termStore[0].Groups._Child_Items_.forEach(group => {
+            group.TermSets._Child_Items_.forEach(ts => {
+              termSetTerms.push(this.getAllTerms(ts._ObjectIdentity_));
+            });
+          });
+
+          Promise.all(termSetTerms).then(results => {
+            let returnTerms: ICheckedTerm[] = [];
+            results.forEach(terms => {
+              if (terms) {
+                terms.forEach(term => {
+                  if (term.Name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
+                    returnTerms.push({
+                      key: term.Id,
+                      name: term.Name,
+                      path: term.PathOfTerm,
+                      termSet: term.TermSet.Id,
+                      termSetName: term.TermSet.Name
+                    });
+                  }
+                });
+              }
+            });
+            resolve(returnTerms);
+          });
+        });
+      });
+    }
+  }
+
+
+  private isGuid(strGuid: string): boolean {
+    return /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(strGuid);
+  }
 
   /**
    * Sort the terms by their path
@@ -248,64 +366,5 @@ export default class SPTermStorePickerService {
     }) as Promise<ITerm[]>;
   }
 
-
-
-
-
-  /**
-  * Loads needed jsom javascript files needed to access the taxonomy api's
-  */
-  private loadTaxScripts(): Promise<void> {
-    return new Promise<void>((resolve) => {
-      let layoutsBase: string = this.context.pageContext.web.absoluteUrl;
-      if (layoutsBase.lastIndexOf('/') === layoutsBase.length - 1)
-        layoutsBase = layoutsBase.slice(0, -1);
-      layoutsBase += '/_layouts/15/';
-
-      this.loadScript(layoutsBase + 'init.js', 'Sod').then(() => {
-        return this.loadScript(layoutsBase + 'sp.runtime.js', 'sp_runtime_initialize');
-      }).then(() => {
-        return this.loadScript(layoutsBase + 'sp.js', 'sp_initialize');
-      }).then(() => {
-        return this.loadScript(layoutsBase + 'sp.taxonomy.js', 'SP.Taxonomy');
-      }).then(() => {
-        resolve();
-      });
-    });
-  }
-
-  /**
-   * inserts script into header of page
-   */
-  private loadScript(url: string, globalObjectName: string): Promise<void> {
-    return new Promise<void>((resolve) => {
-      let isLoaded = true;
-      if (globalObjectName.indexOf('.') !== -1) {
-        const props = globalObjectName.split('.');
-        let currObj: any = window;
-        for (let i = 0, len = props.length; i < len; i++) {
-          if (!currObj[props[i]]) {
-            isLoaded = false;
-            break;
-          }
-          currObj = currObj[props[i]];
-        }
-      }
-      else {
-        isLoaded = !!window[globalObjectName];
-      }
-      if (isLoaded || document.head.querySelector('script[src="' + url + '"]')) {
-        resolve();
-        return;
-      }
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = url;
-      script.onload = () => {
-        resolve();
-      };
-      document.head.appendChild(script);
-    });
-  }
 
 }

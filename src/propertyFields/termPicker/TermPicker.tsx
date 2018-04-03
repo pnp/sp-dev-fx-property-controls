@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BasePicker, IBasePickerProps, IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IPickerTerm, IPickerTerms } from './IPropertyFieldTermPicker';
 import SPTermStorePickerService from './../../services/SPTermStorePickerService';
-import styles from './PropertyFieldtermPickerHost.Module.scss';
+import styles from './PropertyFieldTermPickerHost.module.scss';
 import { IPropertyFieldTermPickerHostProps } from './IPropertyFieldTermPickerHost';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 

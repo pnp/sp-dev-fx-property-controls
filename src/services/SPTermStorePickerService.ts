@@ -12,7 +12,7 @@ import { IPropertyFieldTermPickerHostProps } from './../propertyFields/termPicke
 import { ISPTermStores, ISPTermStore, ISPTermGroups, ISPTermGroup, IPickerTerms, IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
 import { ITermStore, ITerms, ITerm, IGroup, ITermSet } from './ISPTermStorePickerService';
 import SPTermStoreMockHttpClient from './SPTermStorePickerMockService';
-import TermSet from '../../lib/propertyFields/termPicker/TermSet';
+import TermSet from './../propertyFields/termPicker/TermSet';
 
 /**
  * Service implementation to manage term stores in SharePoint

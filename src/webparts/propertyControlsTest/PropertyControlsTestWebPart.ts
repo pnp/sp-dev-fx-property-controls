@@ -183,7 +183,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   //limitByGroupNameOrID: 'Hockey Example',
-                  limitByTermsetNameOrID: 'Hockey Positions',
+                  //limitByTermsetNameOrID: 'Hockey Positions',
                   key: 'termSetsPickerFieldId',
                   hideTermStoreName: true
                 }),

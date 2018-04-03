@@ -1,5 +1,5 @@
 import { ITermStore, ITerm  } from './ISPTermStorePickerService';
-import {ICheckedTerms, ICheckedTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
+import {IPickerTerms, IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
 /**
  * Defines a http client to request mock data to use the web part with the local workbench
  */
@@ -123,8 +123,8 @@ export default class SPTermStoreMockHttpClient {
   }
 
 
-  public static searchTermsByName(searchText: string): Promise<ICheckedTerm[]> {
-    return new Promise<ICheckedTerm[]>((resolve) => {
+  public static searchTermsByName(searchText: string): Promise<IPickerTerm[]> {
+    return new Promise<IPickerTerm[]>((resolve) => {
       resolve([
         {
           key : "123", 

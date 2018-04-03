@@ -1,4 +1,4 @@
-import { ICheckedTerms } from './IPropertyFieldTermPicker';
+import { IPickerTerms } from './IPropertyFieldTermPicker';
 import { ITermStore, IGroup, ITermSet, ITerm } from '../../services/ISPTermStorePickerService';
 import { IPropertyFieldTermPickerPropsInternal } from './IPropertyFieldTermPicker';
 import SPTermStorePickerService from '../../services/SPTermStorePickerService';
@@ -18,12 +18,12 @@ export interface IPropertyFieldTermPickerHostState {
   errorMessage?: string;
   openPanel?: boolean;
   loaded?: boolean;
-  activeNodes?: ICheckedTerms;
+  activeNodes?: IPickerTerms;
 }
 
 export interface ITermChanges {
   changedCallback: (term: ITerm, checked: boolean) => void;
-  activeNodes?: ICheckedTerms;
+  activeNodes?: IPickerTerms;
 }
 
 export interface ITermGroupProps extends ITermChanges {

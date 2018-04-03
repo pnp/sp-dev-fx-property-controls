@@ -11,7 +11,7 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import TermPicker from './TermPicker';
 import { BasePicker, IBasePickerProps, IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 
-import { ICheckedTerms, ICheckedTerm } from './IPropertyFieldTermPicker';
+import { IPickerTerms, IPickerTerm } from './IPropertyFieldTermPicker';
 import { IPropertyFieldTermPickerHostProps, IPropertyFieldTermPickerHostState, ITermGroupProps, ITermGroupState, ITermSetProps, ITermSetState, ITermProps, ITermState } from './IPropertyFieldTermPickerHost';
 import SPTermStorePickerService from './../../services/SPTermStorePickerService';
 import { ITermStore, IGroup, ITerm } from './../../services/ISPTermStorePickerService';
@@ -36,9 +36,9 @@ export const TERMSET_IMG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAA
  */
 export default class PropertyFieldTermPickerHost extends React.Component<IPropertyFieldTermPickerHostProps, IPropertyFieldTermPickerHostState> {
   private async: Async;
-  private delayedValidate: (value: ICheckedTerms) => void;
+  private delayedValidate: (value: IPickerTerms) => void;
   private termsService: SPTermStorePickerService;
-  private previousValues: ICheckedTerms = [];
+  private previousValues: IPickerTerms = [];
   private cancel: boolean = true;
 
   /**
@@ -99,7 +99,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
   /**
    * Validates the new custom field value
    */
-  private validate(value: ICheckedTerms): void {
+  private validate(value: IPickerTerms): void {
     if (this.props.onGetErrorMessage === null || this.props.onGetErrorMessage === undefined) {
       this.notifyAfterValidate(this.props.initialValues, value);
       return;
@@ -132,7 +132,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
   /**
    * Notifies the parent Web Part of a property value change
    */
-  private notifyAfterValidate(oldValue: ICheckedTerms, newValue: ICheckedTerms) {
+  private notifyAfterValidate(oldValue: IPickerTerms, newValue: IPickerTerms) {
     if (this.props.onPropertyChange && newValue !== null) {
       this.props.properties[this.props.targetProperty] = newValue;
       this.props.onPropertyChange(this.props.targetProperty, oldValue, newValue);
@@ -198,8 +198,6 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
    * @param node
    */
   private termsChanged(term: ITerm, checked: boolean): void {
-    console.log("termsChanged");
-    console.log(term);
 
     let activeNodes = this.state.activeNodes;
     if (typeof term === 'undefined' || term === null) {
@@ -242,7 +240,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
  * Fires When Items Changed in TermPicker
  * @param node
  */
-  private termsFromPickerChanged(terms: ICheckedTerms) {
+  private termsFromPickerChanged(terms: IPickerTerms) {
     this.delayedValidate(terms);
 
     this.setState({
@@ -255,7 +253,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
    * Gets the given node position in the active nodes collection
    * @param node
    */
-  private getSelectedNodePosition(node: ICheckedTerm): number {
+  private getSelectedNodePosition(node: IPickerTerm): number {
     for (let i = 0; i < this.state.activeNodes.length; i++) {
       if (node.key === this.state.activeNodes[i].key) {
         return i;
@@ -327,8 +325,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
 
             /* Once the state is loaded, start rendering the term store, group, term sets */
             this.state.loaded === true ? this.state.termStores.map((termStore: ITermStore, index: number) => {
-              console.log("active nodes");
-              console.log(this.state.activeNodes);
+           
               return (
                 <div key={termStore.Id}>
                   {

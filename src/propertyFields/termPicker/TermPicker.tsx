@@ -1,31 +1,27 @@
 import * as React from 'react';
 import { BasePicker, IBasePickerProps, IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
-import { ICheckedTerm, ICheckedTerms } from './IPropertyFieldTermPicker';
+import { IPickerTerm, IPickerTerms } from './IPropertyFieldTermPicker';
 import SPTermStorePickerService from './../../services/SPTermStorePickerService';
 import styles from './PropertyFieldtermPickerHost.Module.scss';
 import { IPropertyFieldTermPickerHostProps } from './IPropertyFieldTermPickerHost';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
-
-
-
-export class TermBasePicker extends BasePicker<ICheckedTerm, IBasePickerProps<ICheckedTerm>>
+export class TermBasePicker extends BasePicker<IPickerTerm, IBasePickerProps<IPickerTerm>>
 {
 
 }
 
 export interface ITermPickerState {
-  terms: ICheckedTerms;
+  terms: IPickerTerms;
 }
 
 export interface ITermPickerProps {
   termPickerHostProps: IPropertyFieldTermPickerHostProps;
   context: IWebPartContext;
   disabled: boolean;
-  value: ICheckedTerms;
-  onChanged: (items: ICheckedTerm[]) => void;
+  value: IPickerTerms;
+  onChanged: (items: IPickerTerm[]) => void;
 }
-
 
 export default class TermPicker extends React.Component<ITermPickerProps, ITermPickerState> {
 
@@ -49,20 +45,18 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
    * componentWillReceiveProps method
    */
   public componentWillReceiveProps(nextProps: ITermPickerProps) {
-
     // check to see if props is different to avoid re-rendering
     let newKeys = nextProps.value.map(a => a.key);
     let currentKeys = this.state.terms.map(a => a.key);
     if (newKeys.sort().join(',') !== currentKeys.sort().join(',')) {
       this.setState({ terms: nextProps.value });
     }
-    
   }
 
   /**
    * Renders the item in the picker
    */
-  protected onRenderItem(term: IPickerItemProps<ICheckedTerm>) {
+  protected onRenderItem(term: IPickerItemProps<IPickerTerm>) {
     return (<div className={styles.pickedTermRoot}
       key={term.index}
       data-selection-index={term.index}
@@ -80,9 +74,7 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
   /**
    * Renders the suggestions in the picker
    */
-  protected onRenderSuggestionsItem(term: ICheckedTerm, props) {
-    // console.log("onRenderSuggestionsItem called");
-    // console.log(term);
+  protected onRenderSuggestionsItem(term: IPickerTerm, props) {
     let termParent = term.termSetName;
     let termTitle = `${term.name} [${term.termSetName}]`;
     if (term.path.indexOf(";") !== -1) {
@@ -91,8 +83,6 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
       splitPath.pop();
       termTitle = `${term.name} [${term.termSetName}:${splitPath.join(':')}]`;
     }
-
-
     return (<div className={styles.termSuggestion} title={termTitle}>
       <div>{term.name}</div>
       <div className={styles.termSuggestionSubTitle}> in {termParent}</div>
@@ -102,7 +92,7 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
   /**
    * When Filter Changes a new search for suggestions
    */
-  private onFilterChanged(filterText: string, tagList: ICheckedTerm[]): Promise<ICheckedTerm[]> {
+  private onFilterChanged(filterText: string, tagList: IPickerTerm[]): Promise<IPickerTerm[]> {
     if (filterText !== "") {
       let termsService = new SPTermStorePickerService(this.props.termPickerHostProps, this.props.context);
       let terms = termsService.searchTermsByName(filterText);
@@ -125,7 +115,6 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
    * Render method
    */
   public render(): JSX.Element {
-    // console.log(this.props.value)
     return (
       <div>
         <TermBasePicker

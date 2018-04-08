@@ -42,6 +42,18 @@ export interface IPropertyFieldListPickerProps {
    */
   multiSelect?: boolean;
   /**
+   * Specify if you want the Select All checkbox
+   */
+  showSelectAll?: boolean;
+  /**
+   * Specify where to show the Select All checkbox. When false (default), checkbox is shown before the label, when true it is shown with the lists
+   */
+  selectAllInList?: boolean;
+  /**
+   * The label to use for the in list select all checkbox
+   */
+  selectAllInListLabel?: string;
+  /**
    * Defines a onPropertyChange function to raise when the selected value changed.
    * Normally this function must be always defined with the 'this.onPropertyChange'
    * method of the web part object.

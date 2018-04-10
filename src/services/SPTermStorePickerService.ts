@@ -10,7 +10,7 @@ import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { IPropertyFieldTermPickerHostProps } from './../propertyFields/termPicker/IPropertyFieldTermPickerHost';
 import { ISPTermStores, ISPTermStore, ISPTermGroups, ISPTermGroup, ICheckedTerms, ICheckedTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
-import { ITermStore, ITerms, ITerm, IGroup, ITermSet } from './ISPTermStorePickerService';
+import { ITermStore, ITerms, ITerm, IGroup, ITermSet, ISPTermStorePickerServiceProps } from './ISPTermStorePickerService';
 import SPTermStoreMockHttpClient from './SPTermStorePickerMockService';
 
 /**
@@ -24,7 +24,7 @@ export default class SPTermStorePickerService {
   /**
    * Service constructor
    */
-  constructor(private props: IPropertyFieldTermPickerHostProps, private context: IWebPartContext) {
+  constructor(private props: ISPTermStorePickerServiceProps, private context: IWebPartContext) {
     this.clientServiceUrl = this.context.pageContext.web.absoluteUrl + '/_vti_bin/client.svc/ProcessQuery';
   }
 

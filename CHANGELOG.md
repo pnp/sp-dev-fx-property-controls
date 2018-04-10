@@ -1,5 +1,13 @@
 # Releases
 
+## 1.5.0
+
+**Enhancements**
+
+- `PropertyFieldListPicker` control extended with select all lists option [#8](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/8)
+- `PropertyFieldTermPicker` control extended with the ability to search terms by typing in the textbox [#11](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/11)
+- `SPTermStorePickerService` has an new interface which contains only the required properties 
+
 ## 1.4.2
 
 **Enhancements**

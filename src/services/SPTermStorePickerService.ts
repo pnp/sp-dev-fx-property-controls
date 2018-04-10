@@ -167,66 +167,66 @@ export default class SPTermStorePickerService {
     }
   }
 
-/**
-   * Searches terms for the given term set
-   * @param searchText
-   * @param termsetId
-   */
+  /**
+     * Searches terms for the given term set
+     * @param searchText
+     * @param termsetId
+     */
   private searchTermsByTermSet(searchText: string, termSet: string): Promise<IPickerTerm[]> {
     if (Environment.type === EnvironmentType.Local) {
       // If the running environment is local, load the data from the mock
       return SPTermStoreMockHttpClient.searchTermsByName(searchText);
     } else {
       return new Promise<IPickerTerm[]>(resolve => {
-      this.getTermStores().then(termStore => {
-        let TermSetId = termSet;
-        if (!this.isGuid(termSet)) {
-          TermSetId = this._cleanGuid(termStore[0].Groups._Child_Items_[0].TermSets._Child_Items_[0].Id);
-        }
-        let data = `<Request xmlns="http://schemas.microsoft.com/sharepoint/clientquery/2009" SchemaVersion="15.0.0.0" LibraryVersion="16.0.0.0" ApplicationName="Javascript Library"><Actions><ObjectPath Id="456" ObjectPathId="455" /><ObjectIdentityQuery Id="457" ObjectPathId="455" /><ObjectPath Id="459" ObjectPathId="458" /><ObjectIdentityQuery Id="460" ObjectPathId="458" /><ObjectPath Id="462" ObjectPathId="461" /><ObjectIdentityQuery Id="463" ObjectPathId="461" /><ObjectPath Id="465" ObjectPathId="464" /><SetProperty Id="466" ObjectPathId="464" Name="TermLabel"><Parameter Type="String">${searchText}</Parameter></SetProperty><SetProperty Id="467" ObjectPathId="464" Name="DefaultLabelOnly"><Parameter Type="Boolean">true</Parameter></SetProperty><SetProperty Id="468" ObjectPathId="464" Name="StringMatchOption"><Parameter Type="Number">0</Parameter></SetProperty><SetProperty Id="469" ObjectPathId="464" Name="ResultCollectionSize"><Parameter Type="Number">10</Parameter></SetProperty><SetProperty Id="470" ObjectPathId="464" Name="TrimUnavailable"><Parameter Type="Boolean">true</Parameter></SetProperty><ObjectPath Id="472" ObjectPathId="471" /><Query Id="473" ObjectPathId="471"><Query SelectAllProperties="false"><Properties /></Query><ChildItemQuery SelectAllProperties="false"><Properties><Property Name="IsRoot" SelectAll="true" /><Property Name="Id" SelectAll="true" /><Property Name="Name" SelectAll="true" /><Property Name="PathOfTerm" SelectAll="true" /><Property Name="TermSet" SelectAll="true" /></Properties></ChildItemQuery></Query></Actions><ObjectPaths><StaticMethod Id="455" Name="GetTaxonomySession" TypeId="{981cbc68-9edc-4f8d-872f-71146fcbb84f}" /><Method Id="458" ParentId="455" Name="GetDefaultKeywordsTermStore" /><Method Id="461" ParentId="458" Name="GetTermSet"><Parameters><Parameter Type="Guid">${TermSetId}</Parameter></Parameters></Method><Constructor Id="464" TypeId="{61a1d689-2744-4ea3-a88b-c95bee9803aa}" /><Method Id="471" ParentId="461" Name="GetTerms"><Parameters><Parameter ObjectPathId="464" /></Parameters></Method></ObjectPaths></Request>`;
+        this.getTermStores().then(termStore => {
+          let TermSetId = termSet;
+          if (!this.isGuid(termSet)) {
+            TermSetId = this._cleanGuid(termStore[0].Groups._Child_Items_[0].TermSets._Child_Items_[0].Id);
+          }
+          let data = `<Request xmlns="http://schemas.microsoft.com/sharepoint/clientquery/2009" SchemaVersion="15.0.0.0" LibraryVersion="16.0.0.0" ApplicationName="Javascript Library"><Actions><ObjectPath Id="456" ObjectPathId="455" /><ObjectIdentityQuery Id="457" ObjectPathId="455" /><ObjectPath Id="459" ObjectPathId="458" /><ObjectIdentityQuery Id="460" ObjectPathId="458" /><ObjectPath Id="462" ObjectPathId="461" /><ObjectIdentityQuery Id="463" ObjectPathId="461" /><ObjectPath Id="465" ObjectPathId="464" /><SetProperty Id="466" ObjectPathId="464" Name="TermLabel"><Parameter Type="String">${searchText}</Parameter></SetProperty><SetProperty Id="467" ObjectPathId="464" Name="DefaultLabelOnly"><Parameter Type="Boolean">true</Parameter></SetProperty><SetProperty Id="468" ObjectPathId="464" Name="StringMatchOption"><Parameter Type="Number">0</Parameter></SetProperty><SetProperty Id="469" ObjectPathId="464" Name="ResultCollectionSize"><Parameter Type="Number">10</Parameter></SetProperty><SetProperty Id="470" ObjectPathId="464" Name="TrimUnavailable"><Parameter Type="Boolean">true</Parameter></SetProperty><ObjectPath Id="472" ObjectPathId="471" /><Query Id="473" ObjectPathId="471"><Query SelectAllProperties="false"><Properties /></Query><ChildItemQuery SelectAllProperties="false"><Properties><Property Name="IsRoot" SelectAll="true" /><Property Name="Id" SelectAll="true" /><Property Name="Name" SelectAll="true" /><Property Name="PathOfTerm" SelectAll="true" /><Property Name="TermSet" SelectAll="true" /></Properties></ChildItemQuery></Query></Actions><ObjectPaths><StaticMethod Id="455" Name="GetTaxonomySession" TypeId="{981cbc68-9edc-4f8d-872f-71146fcbb84f}" /><Method Id="458" ParentId="455" Name="GetDefaultKeywordsTermStore" /><Method Id="461" ParentId="458" Name="GetTermSet"><Parameters><Parameter Type="Guid">${TermSetId}</Parameter></Parameters></Method><Constructor Id="464" TypeId="{61a1d689-2744-4ea3-a88b-c95bee9803aa}" /><Method Id="471" ParentId="461" Name="GetTerms"><Parameters><Parameter ObjectPathId="464" /></Parameters></Method></ObjectPaths></Request>`;
 
-        const reqHeaders = new Headers();
-        reqHeaders.append("accept", "application/json");
-        reqHeaders.append("content-type", "application/xml");
+          const reqHeaders = new Headers();
+          reqHeaders.append("accept", "application/json");
+          reqHeaders.append("content-type", "application/xml");
 
-        const httpPostOptions: ISPHttpClientOptions = {
-          headers: reqHeaders,
-          body: data
-        };
+          const httpPostOptions: ISPHttpClientOptions = {
+            headers: reqHeaders,
+            body: data
+          };
 
 
-        return this.context.spHttpClient.post(this.clientServiceUrl, SPHttpClient.configurations.v1, httpPostOptions).then((serviceResponse: SPHttpClientResponse) => {
-          return serviceResponse.json().then((serviceJSONResponse: any) => {
-            // Retrieve the term collection results
-            const termStoreResult: ITerms[] = serviceJSONResponse.filter(r => r['_ObjectType_'] === 'SP.Taxonomy.TermCollection');
-            if (termStoreResult.length > 0) {
-              // Retrieve all terms
-              let terms = termStoreResult[0]._Child_Items_;
+          return this.context.spHttpClient.post(this.clientServiceUrl, SPHttpClient.configurations.v1, httpPostOptions).then((serviceResponse: SPHttpClientResponse) => {
+            return serviceResponse.json().then((serviceJSONResponse: any) => {
+              // Retrieve the term collection results
+              const termStoreResult: ITerms[] = serviceJSONResponse.filter(r => r['_ObjectType_'] === 'SP.Taxonomy.TermCollection');
+              if (termStoreResult.length > 0) {
+                // Retrieve all terms
+                let terms = termStoreResult[0]._Child_Items_;
 
-              let returnTerms: IPickerTerm[] = [];
-              terms.forEach(term => {
-                if (term.Name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
-                  returnTerms.push({
-                    key: term.Id,
-                    name: term.Name,
-                    path: term.PathOfTerm,
-                    termSet: term.TermSet.Id,
-                    termSetName: term.TermSet.Name
+                let returnTerms: IPickerTerm[] = [];
+                terms.forEach(term => {
+                  if (term.Name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
+                    returnTerms.push({
+                      key: term.Id,
+                      name: term.Name,
+                      path: term.PathOfTerm,
+                      termSet: term.TermSet.Id,
+                      termSetName: term.TermSet.Name
 
-                  });
-                }
-              });
-             resolve(returnTerms);
-            }
-            return null;
+                    });
+                  }
+                });
+                resolve(returnTerms);
+              }
+              return null;
+            });
           });
+
+
         });
 
 
       });
-
-
-    });
     }
   }
 
@@ -315,7 +315,7 @@ export default class SPTermStorePickerService {
                   });
                 }
               });
-             resolve(returnTerms);
+              resolve(returnTerms);
             }
             return null;
           });

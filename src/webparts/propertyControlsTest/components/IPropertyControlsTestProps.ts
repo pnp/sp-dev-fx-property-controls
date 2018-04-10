@@ -1,5 +1,5 @@
 import { WebPartContext } from '@microsoft/sp-webpart-base';
-import { ICheckedTerms } from '../../../PropertyFieldTermPicker';
+import { IPickerTerms } from '../../../PropertyFieldTermPicker';
 import { IDateTimeFieldValue } from '../../../PropertyFieldDateTimePicker';
 import { IPropertyFieldGroupOrPerson } from '../../../PropertyFieldPeoplePicker';
 
@@ -11,7 +11,7 @@ export interface IPropertyControlsTestProps {
   people: IPropertyFieldGroupOrPerson[];
   list: string | string[];
   multiList: string[];
-  terms: ICheckedTerms;
+  terms: IPickerTerms;
   datetime: IDateTimeFieldValue;
   color: string;
   spinValue: number;

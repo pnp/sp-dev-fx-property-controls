@@ -1,5 +1,5 @@
-import { ITermStore, ITerm } from './ISPTermStorePickerService';
-
+import { ITermStore, ITerm  } from './ISPTermStorePickerService';
+import {IPickerTerms, IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
 /**
  * Defines a http client to request mock data to use the web part with the local workbench
  */
@@ -51,7 +51,8 @@ export default class SPTermStoreMockHttpClient {
     "TermSet": {
       "_ObjectType_": "SP.Taxonomy.TermSet",
       "_ObjectIdentity_": "5e06ddd0-d2dd-4fff-bcc0-42b40f4aa59e|4dbeb936-1813-4630-a4bd-9811df3fe7f1:se:generated-id-",
-      "Id": "\/Guid(5b1b6df0-09a2-42eb-a3f6-006556621931)\/"
+      "Id": "\/Guid(5b1b6df0-09a2-42eb-a3f6-006556621931)\/",
+      "Name" : "Country"
     }
   }, {
     "_ObjectType_": "SP.Taxonomy.Term",
@@ -66,7 +67,8 @@ export default class SPTermStoreMockHttpClient {
     "TermSet": {
       "_ObjectType_": "SP.Taxonomy.TermSet",
       "_ObjectIdentity_": "5e06ddd0-d2dd-4fff-bcc0-42b40f4aa59e|4dbeb936-1813-4630-a4bd-9811df3fe7f1:se:generated-id-",
-      "Id": "\/Guid(5b1b6df0-09a2-42eb-a3f6-006556621931)\/"
+      "Id": "\/Guid(5b1b6df0-09a2-42eb-a3f6-006556621931)\/",
+      "Name" : "Country"
     }
   }, {
     "_ObjectType_": "SP.Taxonomy.Term",
@@ -81,7 +83,8 @@ export default class SPTermStoreMockHttpClient {
     "TermSet": {
       "_ObjectType_": "SP.Taxonomy.TermSet",
       "_ObjectIdentity_": "5e06ddd0-d2dd-4fff-bcc0-42b40f4aa59e|4dbeb936-1813-4630-a4bd-9811df3fe7f1:se:generated-id-",
-      "Id": "\/Guid(5b1b6df0-09a2-42eb-a3f6-006556621931)\/"
+      "Id": "\/Guid(5b1b6df0-09a2-42eb-a3f6-006556621931)\/",
+      "Name" : "Country"
     }
   }, {
     "_ObjectType_": "SP.Taxonomy.Term",
@@ -96,7 +99,8 @@ export default class SPTermStoreMockHttpClient {
     "TermSet": {
       "_ObjectType_": "SP.Taxonomy.TermSet",
       "_ObjectIdentity_": "5e06ddd0-d2dd-4fff-bcc0-42b40f4aa59e|4dbeb936-1813-4630-a4bd-9811df3fe7f1:se:generated-id-",
-      "Id": "\/Guid(5b1b6df0-09a2-42eb-a3f6-006556621931)\/"
+      "Id": "\/Guid(5b1b6df0-09a2-42eb-a3f6-006556621931)\/",
+      "Name" : "Country"
     }
   }];
 
@@ -117,5 +121,34 @@ export default class SPTermStoreMockHttpClient {
       resolve(SPTermStoreMockHttpClient._mockTerms);
     });
   }
+
+
+  public static searchTermsByName(searchText: string): Promise<IPickerTerm[]> {
+    return new Promise<IPickerTerm[]>((resolve) => {
+      resolve([
+        {
+          key : "123", 
+          name : 'term1',
+          path : "path;path2",
+          termSet :"123",
+          termSetName : "tsName"
+         },
+         {
+          key : "124", 
+          name : 'term2',
+          path : "path",
+          termSet :"123",
+          termSetName : "tsName"
+         },
+         {
+          key : "125", 
+          name : 'term3',
+          path : "path;path2;path3",
+          termSet :"123",
+          termSetName : "tsName"
+         }
+        ]);
+    });
+  } 
 
 }

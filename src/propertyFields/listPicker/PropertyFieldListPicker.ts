@@ -29,6 +29,9 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private baseTemplate: number;
   private orderBy: PropertyFieldListPickerOrderBy;
   private multiSelect: boolean;
+  private showSelectAll: boolean;
+  private selectAllInList: boolean;
+  private selectAllInListLabel: string;
   private includeHidden: boolean;
 
   public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { }
@@ -56,6 +59,9 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.baseTemplate = _properties.baseTemplate;
     this.orderBy = _properties.orderBy;
     this.multiSelect = _properties.multiSelect;
+    this.showSelectAll = _properties.showSelectAll;
+    this.selectAllInList = _properties.selectAllInList;
+    this.selectAllInListLabel = _properties.selectAllInListLabel;
     this.includeHidden = _properties.includeHidden;
     this.onPropertyChange = _properties.onPropertyChange;
     this.customProperties = _properties.properties;
@@ -97,6 +103,9 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
     if (this.multiSelect) {
       // Multi selector
       componentProps['selectedLists'] = this.selectedLists;
+      componentProps['showSelectAll'] = this.showSelectAll;
+      componentProps['selectAllInList'] = this.selectAllInList;
+      componentProps['selectAllInListLabel'] = this.selectAllInListLabel;
       const element: React.ReactElement<IPropertyFieldListMultiPickerHostProps> = React.createElement(PropertyFieldListMultiPickerHost, componentProps);
       // Calls the REACT content generator
       ReactDom.render(element, elem);
@@ -135,6 +144,9 @@ export function PropertyFieldListPicker(targetProperty: string, properties: IPro
     baseTemplate: properties.baseTemplate,
     orderBy: properties.orderBy,
     multiSelect: properties.multiSelect || false,
+    showSelectAll: properties.showSelectAll || false,
+    selectAllInList: properties.selectAllInList || false,
+    selectAllInListLabel: properties.selectAllInListLabel,
     includeHidden: properties.includeHidden,
     onPropertyChange: properties.onPropertyChange,
     properties: properties.properties,

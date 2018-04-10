@@ -30,6 +30,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
     });
 
     this.onChanged = this.onChanged.bind(this);
+    this.onSelectAllChanged = this.onSelectAllChanged.bind(this);
     this.state = {
       results: this.options,
       selectedKeys: [],
@@ -96,6 +97,24 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
         });
       }
       // Update the state and validate
+      this.setState({
+        selectedKeys: selectedKeys
+      });
+      this.delayedValidate(selectedKeys);
+    }
+  }
+
+  /**
+   * Raises when the select all checkbox is changed
+   */
+  private onSelectAllChanged(element: React.FormEvent<HTMLElement>, isChecked: boolean): void {
+    if (element) {
+      let selectedKeys = new Array<string>();
+      if (isChecked === true) {
+        this.options.forEach((value: IChoiceGroupOption) => {
+          selectedKeys.push(value.key);
+        });
+      }
       this.setState({
         selectedKeys: selectedKeys
       });
@@ -176,14 +195,39 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
       // Renders content
       return (
         <div>
-          <Label>{this.props.label}</Label>
+          {
+            (this.props.showSelectAll === false || this.props.selectAllInList === true) &&
+            <Label>{this.props.label}</Label>
+          }
+          {
+            this.props.showSelectAll === true &&
+            <div style={{ marginBottom: '5px'}} className='ms-ChoiceField'>
+              <Checkbox
+                checked={this.state.selectedKeys.length === this.options.length}
+                label={this.props.selectAllInList === true ? this.props.selectAllInListLabel : this.props.label}
+                onChange={this.onSelectAllChanged}
+                styles={{
+                  checkbox: {
+                    backgroundColor: (this.state.selectedKeys.length > 0 ? '#f4f4f4' : 'inherit'),
+                    visibility: (this.props.selectAllInList === false ? 'hidden' : 'visible')
+                  },
+                  checkboxHovered: {
+                    visibility: 'visible'
+                  },
+                  checkboxChecked: {
+                    visibility: 'visible'
+                  }
+                }}
+              />
+            </div>
+          }
           {
             this.options.map((item: IChoiceGroupOption, index: number) => {
               const uniqueKey = this.props.targetProperty + '-' + item.key;
               return (
                 <div style={{ marginBottom: '5px' }} className='ms-ChoiceField' key={uniqueKey}>
                   <Checkbox
-                    defaultChecked={item.checked}
+                    checked={this.state.selectedKeys.indexOf(item.key.toString())>=0}
                     disabled={this.props.disabled}
                     label={item.text}
                     onChange={this.onChanged}

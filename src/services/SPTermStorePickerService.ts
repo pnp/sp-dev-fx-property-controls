@@ -154,14 +154,11 @@ export default class SPTermStorePickerService {
       // If the running environment is local, load the data from the mock
       return SPTermStoreMockHttpClient.searchTermsByName(searchText);
     } else {
-
       if (this.props.limitByTermsetNameOrID) {
         return this.searchTermsByTermSet(searchText, this.props.limitByTermsetNameOrID);
-      }
-      else if (this.props.limitByGroupNameOrID) {
+      } else if (this.props.limitByGroupNameOrID) {
         return this.searchTermsByGroup(searchText);
-      }
-      else {
+      } else {
         return this.searchAllTerms(searchText);
       }
     }
@@ -207,7 +204,7 @@ export default class SPTermStorePickerService {
                 terms.forEach(term => {
                   if (term.Name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
                     returnTerms.push({
-                      key: term.Id,
+                      key: this._cleanGuid(term.Id),
                       name: term.Name,
                       path: term.PathOfTerm,
                       termSet: term.TermSet.Id,
@@ -253,12 +250,11 @@ export default class SPTermStorePickerService {
                 terms.forEach(term => {
                   if (term.Name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
                     returnTerms.push({
-                      key: term.Id,
+                      key: this._cleanGuid(term.Id),
                       name: term.Name,
                       path: term.PathOfTerm,
                       termSet: term.TermSet.Id,
                       termSetName: term.TermSet.Name
-
                     });
                   }
                 });
@@ -306,12 +302,11 @@ export default class SPTermStorePickerService {
               terms.forEach(term => {
                 if (term.Name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
                   returnTerms.push({
-                    key: term.Id,
+                    key: this._cleanGuid(term.Id),
                     name: term.Name,
                     path: term.PathOfTerm,
                     termSet: term.TermSet.Id,
                     termSetName: term.TermSet.Name
-
                   });
                 }
               });

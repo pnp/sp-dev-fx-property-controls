@@ -16,7 +16,7 @@ import { IPropertyFieldTermPickerHostProps, IPropertyFieldTermPickerHostState, I
 import SPTermStorePickerService from './../../services/SPTermStorePickerService';
 import { ITermStore, IGroup, ITerm } from './../../services/ISPTermStorePickerService';
 import styles from './PropertyFieldTermPickerHost.module.scss';
-import { sortBy, uniqBy } from '@microsoft/sp-lodash-subset';
+import { sortBy, uniqBy, cloneDeep } from '@microsoft/sp-lodash-subset';
 import TermGroup from './TermGroup';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as appInsights from '../../common/appInsights';
@@ -153,7 +153,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
     }
 
     // Store the current code value
-    this.previousValues = this.state.activeNodes;
+    this.previousValues = cloneDeep(this.state.activeNodes);
     this.cancel = true;
 
     this.loadTermStores();

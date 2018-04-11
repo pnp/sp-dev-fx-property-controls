@@ -20,6 +20,7 @@ export interface ITermPickerProps {
   context: IWebPartContext;
   disabled: boolean;
   value: IPickerTerms;
+  allowMultipleSelections: boolean;
   onChanged: (items: IPickerTerm[]) => void;
 }
 
@@ -95,7 +96,8 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
    * When Filter Changes a new search for suggestions
    */
   private async onFilterChanged(filterText: string, tagList: IPickerTerm[]): Promise<IPickerTerm[]> {
-    if (filterText !== "") {
+    // Only allow to select other tags if multi-selection is enabled
+    if (filterText !== "" && (this.props.allowMultipleSelections || tagList.length === 0)) {
       let termsService = new SPTermStorePickerService(this.props.termPickerHostProps, this.props.context);
       let terms = await termsService.searchTermsByName(filterText);
       // Filter out the terms which are already set

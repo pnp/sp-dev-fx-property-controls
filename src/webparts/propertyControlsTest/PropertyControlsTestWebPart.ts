@@ -177,7 +177,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: 'Select terms',
                   panelTitle: 'Select terms',
                   initialValues: this.properties.terms,
-                  allowMultipleSelections: true,
+                  allowMultipleSelections: false,
                   excludeSystemGroup: false,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,

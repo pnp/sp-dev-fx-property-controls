@@ -288,6 +288,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
                   disabled={this.props.disabled}
                   value={this.state.activeNodes}
                   onChanged={this.termsFromPickerChanged}
+                  allowMultipleSelections={this.props.allowMultipleSelections}
                 />
               </td>
               <td className={styles.termFieldRow}>
@@ -325,7 +326,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
 
             /* Once the state is loaded, start rendering the term store, group, term sets */
             this.state.loaded === true ? this.state.termStores.map((termStore: ITermStore, index: number) => {
-           
+
               return (
                 <div key={termStore.Id}>
                   {

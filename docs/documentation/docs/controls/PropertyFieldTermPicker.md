@@ -20,6 +20,10 @@ This control generates a term picker that can be used in the property pane of yo
 
 ![Selected terms in the input](../assets/termpicker-selected-terms.png)
 
+**Term picker: Auto Complete**
+
+![Selected terms in the input](../assets/termpicker-autocomplete.png)
+
 **Limit the term set to a specific group or termset**
 
 ![Limit to a group or termset](../assets/termpicker-limit-to-group.png)
@@ -36,10 +40,10 @@ import { PropertyFieldTermPicker } from '@pnp/spfx-property-controls/lib/Propert
 3. Create a new property for your web part, for example:
 
 ```TypeScript
-import { ICheckedTerms } from "@pnp/spfx-property-controls/lib/PropertyFieldTermPicker";
+import { IPickerTerms } from "@pnp/spfx-property-controls/lib/PropertyFieldTermPicker";
 
 export interface IPropertyControlsTestWebPartProps {
-  terms: ICheckedTerms;
+  terms: IPickerTerms;
 }
 ```
 
@@ -73,7 +77,7 @@ The `PropertyFieldTermPicker` control can be configured with the following prope
 | panelTitle | string | yes | TermSet Picker Panel title. |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
 | context | WebPartContext | yes | Context of the current web part. |
-| initialValues | ICheckedTerms | no | Defines the selected by default term sets. |
+| initialValues | IPickerTerms | no | Defines the selected by default term sets. |
 | allowMultipleSelections | boolean | no | Defines if the user can select only one or many term sets. Default value is false. |
 | excludeSystemGroup | boolean | no | Indicator to define if the system Groups are exclude. Default is false. |
 | limitByGroupNameOrID | string | no | Limit the term sets that can be used by the group name or ID. |
@@ -85,13 +89,15 @@ The `PropertyFieldTermPicker` control can be configured with the following prope
 | onGetErrorMessage | function | no | The method is used to get the validation error message and determine whether the input value is valid or not. See [this documentation](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/validate-web-part-property-values) to learn how to use it. |
 | deferredValidationTime | number | no | Control will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default value is 200. |
 
-Interface `ICheckedTerms`
+Interface `IPickerTerms`
 
 | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- |
-| id | string | yes | The ID of the term |
+| key | string | yes | The ID of the term |
 | name | string | yes | The name of the term |
 | path | string | yes | The path of the term |
-| termSet | string | yes | The parent term set of the term |
+| termSet | string | yes | The Id of the parent term set of the term |
+| termSetName | string | no | The Name of the parent term set of the term |
+
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldTermPicker)

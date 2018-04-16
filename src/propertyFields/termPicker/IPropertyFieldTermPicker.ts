@@ -1,16 +1,19 @@
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
+
+
 /**
  * Selected terms
  */
-export interface ICheckedTerm {
+export interface IPickerTerm  {
   name: string;
-  id: string;
+  key: string;
   path: string;
   termSet: string;
+  termSetName? : string;
 }
 
-export interface ICheckedTerms extends Array<ICheckedTerm> { }
+export interface IPickerTerms extends Array<IPickerTerm> { }
 
 /**
  * Generic Term Object (abstract interface)
@@ -77,7 +80,7 @@ export interface IPropertyFieldTermPickerProps {
   /**
    * Defines the selected by default term sets.
    */
-  initialValues?: ICheckedTerms;
+  initialValues?: IPickerTerms;
   /**
    * Indicator to define if the system Groups are exclude. Default is false.
    */
@@ -125,7 +128,7 @@ export interface IPropertyFieldTermPickerProps {
    *   - The rejected, the value is thrown away.
    *
    */
-  onGetErrorMessage?: (value: ICheckedTerms) => string | Promise<string>;
+  onGetErrorMessage?: (value: IPickerTerms) => string | Promise<string>;
   /**
    * Custom Field will start to validate after users stop typing for `deferredValidationTime` milliseconds.
    * Default value is 200.

@@ -41,6 +41,7 @@ export interface ITermSetMinimal {
   _ObjectType_: string; // SP.Taxonomy.TermSet
   _ObjectIdentity_: string;
   Id: string;
+  Name: string;
 }
 
 export interface ITermSetNames {
@@ -69,4 +70,13 @@ export interface ITerm {
   PathOfTerm: string;
   TermSet: ITermSetMinimal;
   PathDepth?: number;
+}
+
+/**
+ * Properties for the Term Store Picker Service
+ */
+export interface ISPTermStorePickerServiceProps {
+  limitByGroupNameOrID?: string;
+  limitByTermsetNameOrID?: string;
+  excludeSystemGroup?: boolean;
 }

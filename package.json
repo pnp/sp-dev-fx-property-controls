@@ -10,7 +10,8 @@
     "clean": "gulp clean",
     "test": "gulp test",
     "versionUpdater": "gulp versionUpdater",
-    "prepublishOnly": "gulp"
+    "prepublishOnly": "gulp",
+    "changelog": "node scripts/sync-changelogs.js"
   },
   "dependencies": {
     "@types/applicationinsights-js": "1.0.5",

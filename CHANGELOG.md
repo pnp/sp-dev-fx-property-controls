@@ -1,5 +1,11 @@
 # Releases
 
+## 1.5.1
+
+**Fixes**
+
+- Undefined web part context fixed in the `PropertyFieldPeoplePicker` [#47](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/47)
+
 ## 1.5.0
 
 **Enhancements**

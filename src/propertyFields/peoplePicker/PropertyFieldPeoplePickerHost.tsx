@@ -39,7 +39,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
       disabled: props.disabled
     });
 
-    this.searchService = new SPPeopleSearchService(props.context);
+    this.searchService = new SPPeopleSearchService();
     this.onSearchFieldChanged = this.onSearchFieldChanged.bind(this);
     this.onItemChanged = this.onItemChanged.bind(this);
 
@@ -65,7 +65,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
       // Clear the suggestions list
       this.setState({ resultsPeople: this.resultsPeople, resultsPersonas: this.resultsPersonas });
       // Request the search service
-      const result = this.searchService.searchPeople(searchText, this.props.principalType).then((response: IPropertyFieldGroupOrPerson[]) => {
+      const result = this.searchService.searchPeople(this.props.context, searchText, this.props.principalType).then((response: IPropertyFieldGroupOrPerson[]) => {
         this.resultsPeople = [];
         this.resultsPersonas = [];
         // If allowDuplicate == false, so remove duplicates from results

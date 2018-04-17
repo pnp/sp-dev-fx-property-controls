@@ -4,8 +4,8 @@ import { ITermSetProps, ITermSetState } from './IPropertyFieldTermPickerHost';
 import { ITerm } from '../../services/ISPTermStorePickerService';
 import { EXPANDED_IMG, COLLAPSED_IMG, TERMSET_IMG } from './PropertyFieldTermPickerHost';
 import Term from './Term';
-
 import styles from './PropertyFieldTermPickerHost.module.scss';
+import * as strings from 'PropertyControlStrings';
 
 /**
  * Term set component
@@ -95,7 +95,7 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
             </div>
           );
         } else {
-          termElm = <div className={`${styles.listItem} ${styles.term}`}>Term set does not contain any terms</div>;
+          termElm = <div className={`${styles.listItem} ${styles.term}`}>{strings.TermPickerNoTerms}</div>;
         }
       } else {
         termElm = <Spinner type={SpinnerType.normal} />;
@@ -105,8 +105,8 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
     return (
       <div>
         <div className={`${styles.listItem} ${styles.termset}`} onClick={this._handleClick}>
-          <img src={this.state.expanded ? EXPANDED_IMG : COLLAPSED_IMG} alt='Expand This Term Set' title='Expand This Term Set' />
-          <img src={TERMSET_IMG} title='Menu for Term Set' alt='Menu for Term Set' /> {this.props.termset.Name}
+          <img src={this.state.expanded ? EXPANDED_IMG : COLLAPSED_IMG} alt={strings.TermPickerExpandTitle} title={strings.TermPickerExpandTitle} />
+          <img src={TERMSET_IMG} alt={strings.TermPickerMenuTermSet} title={strings.TermPickerMenuTermSet} /> {this.props.termset.Name}
         </div>
         <div style={styleProps}>
           {termElm}

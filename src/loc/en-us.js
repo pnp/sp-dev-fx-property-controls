@@ -61,6 +61,15 @@ define([], function () {
     // Number field validation messages
     'NotNumberValidationMessage': 'The value should be a number, actual is:',
     'MinimumNumberValidationMessage': 'The value should be greater than:',
-    'MaximumNumberValidationMessage': 'The value should be lower than:'
+    'MaximumNumberValidationMessage': 'The value should be lower than:',
+
+    // TermPicker
+    "TermPickerNoTerms": "Term set does not contain any terms",
+    "TermPickerExpandTitle": "Expand this Term Set",
+    "TermPickerExpandNode": "Expand this Node",
+    "TermPickerMenuTermSet": "Menu for Term Set",
+    "TermPickerMenuGroup": "Menu for Term Set",
+    "TermPickerInLabel": "in",
+    "TermPickerTermSetLabel": "Term Set"
   }
 });

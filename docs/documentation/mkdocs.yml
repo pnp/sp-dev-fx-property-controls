@@ -10,6 +10,7 @@ pages:
     - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
     - PropertyFieldMultiSelect: 'controls/PropertyFieldMultiSelect.md'
     - PropertyFieldNumber: 'controls/PropertyFieldNumber.md'
+    - PropertyFieldOrder: 'controls/PropertyFieldOrder.md'
   - 'Controls with callout':
     - PropertyFieldButtonWithCallout: 'controls/PropertyFieldButtonWithCallout.md'
     - PropertyFieldCheckboxWithCallout: 'controls/PropertyFieldCheckboxWithCallout.md'

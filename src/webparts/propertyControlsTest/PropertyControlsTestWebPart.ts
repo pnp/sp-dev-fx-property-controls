@@ -30,6 +30,8 @@ import { PropertyFieldLabelWithCallout } from '../../PropertyFieldLabelWithCallo
 import { PropertyFieldLinkWithCallout } from '../../PropertyFieldLinkWithCallout';
 import { PropertyFieldMultiSelect } from '../../PropertyFieldMultiSelect';
 import { PropertyFieldNumber } from '../../PropertyFieldNumber';
+import { PropertyFieldOrder } from '../../PropertyFieldOrder';
+import { orderedItem } from './components/OrderedItem';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -57,7 +59,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         textInfoHeaderValue: this.properties.textInfoHeaderValue,
         toggleInfoHeaderValue: this.properties.toggleInfoHeaderValue,
         checkboxWithCalloutValue: this.properties.checkboxWithCalloutValue,
-        htmlCode: this.properties.htmlCode
+        htmlCode: this.properties.htmlCode,
+        orderedItems: this.properties.orderedItems
       }
     );
 
@@ -329,6 +332,19 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   text: 'Terms & Conditions',
                   href: 'https://github.com/SharePoint/sp-dev-fx-property-controls',
                   target: '_blank'
+                }),
+                PropertyFieldOrder("orderedItems", {
+                  key: "orderedItems",
+                  label: "Ordered Items",
+                  items: this.properties.orderedItems,
+                  textProperty: "text",
+                  //removeArrows: true,
+                  //disableDragAndDrop: true,
+                  //onRenderItem: orderedItem,
+                  //maxHeight: 90,
+                  //disabled: true,
+                  properties: this.properties,
+                  onPropertyChange: this.onPropertyPaneFieldChanged
                 })
               ]
             }

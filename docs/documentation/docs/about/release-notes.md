@@ -6,6 +6,7 @@
 
 - Undefined web part context fixed in the `PropertyFieldPeoplePicker` [#47](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/47)
 - Taxonomy service fix for working with term set GUID [#48](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/48)
+- Added focus intercepting input for Full style [#52](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/52)
 
 ## 1.5.0
 

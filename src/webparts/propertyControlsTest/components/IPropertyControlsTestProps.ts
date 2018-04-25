@@ -24,4 +24,5 @@ export interface IPropertyControlsTestProps {
   checkboxWithCalloutValue: boolean;
   htmlCode: string;
   orderedItems: Array<any>;
+  swatchColor: string;
 }

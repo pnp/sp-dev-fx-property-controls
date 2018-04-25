@@ -21,5 +21,6 @@ export interface IPropertyControlsTestWebPartProps {
   toggleInfoHeaderValue: boolean;
   checkboxWithCalloutValue: boolean;
   htmlCode: string;
-  orderedItems: Array<any>
+  orderedItems: Array<any>;
+  swatchColor: string;
 }

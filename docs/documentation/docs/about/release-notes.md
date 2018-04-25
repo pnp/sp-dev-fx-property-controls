@@ -2,6 +2,10 @@
 
 ## 1.5.1
 
+**Enhancements**
+
+- Color Pickers optionally return Color Objects [#55](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/55)
+
 **Fixes**
 
 - Undefined web part context fixed in the `PropertyFieldPeoplePicker` [#47](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/47)

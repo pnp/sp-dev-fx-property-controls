@@ -62,10 +62,15 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 					</table>
 				}
 				{this.props.style === PropertyFieldColorPickerStyle.Full && !this.props.disabled &&
-					<ColorPicker
-						color={this.props.selectedColor}
-						onColorChanged={this.props.onColorChanged}
-						alphaSliderHidden={this.props.alphaSliderHidden} />
+					<div>
+						<div style={{width:0,height:0,overflow:'hidden'}}>
+							<input/>
+						</div>
+						<ColorPicker
+							color={this.props.selectedColor}
+							onColorChanged={this.props.onColorChanged}
+							alphaSliderHidden={this.props.alphaSliderHidden} />
+					</div>
 				}
 				{this.props.style === PropertyFieldColorPickerStyle.Full && this.props.disabled &&
 					<fieldset disabled={true} className={styles.disabledCP}>

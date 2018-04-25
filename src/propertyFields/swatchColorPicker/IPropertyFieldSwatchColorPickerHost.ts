@@ -1,4 +1,4 @@
-import { PropertyFieldSwatchColorPickerStyle, IPropertyFieldSwatchColorOption } from './IPropertyFieldSwatchColorPicker';
+import { IPropertyFieldSwatchColorOption, PropertyFieldSwatchColorPickerStyle } from './IPropertyFieldSwatchColorPicker';
 
 /**
  * PropertyFieldSwatchColorPickerHost properties interface

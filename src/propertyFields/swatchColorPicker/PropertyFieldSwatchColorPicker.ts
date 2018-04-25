@@ -1,13 +1,11 @@
+import { IPropertyPaneField, PropertyPaneFieldType } from '@microsoft/sp-webpart-base';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+
 import {
-  IPropertyPaneField,
-  PropertyPaneFieldType
-} from '@microsoft/sp-webpart-base';
-import { 
-	PropertyFieldSwatchColorPickerStyle,
-	IPropertyFieldSwatchColorPickerProps,
-	IPropertyFieldSwatchColorPickerPropsInternal
+    IPropertyFieldSwatchColorPickerProps,
+    IPropertyFieldSwatchColorPickerPropsInternal,
+    PropertyFieldSwatchColorPickerStyle,
 } from './IPropertyFieldSwatchColorPicker';
 import { IPropertyFieldSwatchColorPickerHostProps } from './IPropertyFieldSwatchColorPickerHost';
 import PropertyFieldSwatchColorPickerHost from './PropertyFieldSwatchColorPickerHost';

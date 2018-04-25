@@ -1,16 +1,16 @@
-import * as React from 'react';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
-import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IColorCellProps, SwatchColorPicker } from 'office-ui-fabric-react/lib/SwatchColorPicker';
+import * as strings from 'PropertyControlStrings';
+import * as React from 'react';
+
+import * as appInsights from '../../common/appInsights';
+import { IPropertyFieldSwatchColorOption, PropertyFieldSwatchColorPickerStyle } from './IPropertyFieldSwatchColorPicker';
 import {
-	IPropertyFieldSwatchColorPickerHostProps,
-	IPropertyFieldSwatchColorPickerHostState
+    IPropertyFieldSwatchColorPickerHostProps,
+    IPropertyFieldSwatchColorPickerHostState,
 } from './IPropertyFieldSwatchColorPickerHost';
 import styles from './PropertyFieldSwatchColorPickerHost.module.scss';
-import * as strings from 'PropertyControlStrings';
-import { PropertyFieldSwatchColorPickerStyle, IPropertyFieldSwatchColorOption } from './IPropertyFieldSwatchColorPicker';
-import * as appInsights from '../../common/appInsights';
-import { SwatchColorPicker, IColorCellProps } from 'office-ui-fabric-react/lib/SwatchColorPicker';
 
 export default class PropertyFieldSwatchColorPickerHost extends React.Component<IPropertyFieldSwatchColorPickerHostProps, IPropertyFieldSwatchColorPickerHostState> {
 

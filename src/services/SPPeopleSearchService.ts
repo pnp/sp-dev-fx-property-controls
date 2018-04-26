@@ -1,33 +1,24 @@
 import { ISPHttpClientOptions, SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { PrincipalType, IPropertyFieldGroupOrPerson } from './../propertyFields/peoplePicker/IPropertyFieldPeoplePicker';
 import { ISPPeopleSearchService } from './ISPPeopleSearchService';
 import SPPeoplePickerMockHttpClient from './SPPeopleSearchMockService';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
 /**
  * Service implementation to search people in SharePoint
  */
 export default class SPPeopleSearchService implements ISPPeopleSearchService {
-  private context: IWebPartContext;
-
-  /**
-   * Service constructor
-   */
-  constructor(pageContext: IWebPartContext) {
-    this.context = pageContext;
-  }
-
   /**
    * Search people from the SharePoint People database
    */
-  public searchPeople(query: string, principalType: PrincipalType[]): Promise<Array<IPropertyFieldGroupOrPerson>> {
+  public searchPeople(ctx: IWebPartContext, query: string, principalType: PrincipalType[]): Promise<Array<IPropertyFieldGroupOrPerson>> {
     if (Environment.type === EnvironmentType.Local) {
       // If the running environment is local, load the data from the mock
-      return this.searchPeopleFromMock(query);
+      return this.searchPeopleFromMock(ctx, query);
     } else {
       // If the running env is SharePoint, loads from the peoplepicker web service
-      const userRequestUrl: string = `${this.context.pageContext.web.absoluteUrl}/_api/SP.UI.ApplicationPages.ClientPeoplePickerWebServiceInterface.clientPeoplePickerSearchUser`;
+      const userRequestUrl: string = `${ctx.pageContext.web.absoluteUrl}/_api/SP.UI.ApplicationPages.ClientPeoplePickerWebServiceInterface.clientPeoplePickerSearchUser`;
       const data = {
         'queryParams': {
           'AllowEmailAddresses': true,
@@ -51,7 +42,7 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
       };
 
       // Do the call against the People REST API endpoint
-      return this.context.spHttpClient.post(userRequestUrl, SPHttpClient.configurations.v1, httpPostOptions).then((searchResponse: SPHttpClientResponse) => {
+      return ctx.spHttpClient.post(userRequestUrl, SPHttpClient.configurations.v1, httpPostOptions).then((searchResponse: SPHttpClientResponse) => {
         return searchResponse.json().then((usersResponse: any) => {
           const res: IPropertyFieldGroupOrPerson[] = [];
           const values: any = JSON.parse(usersResponse.value);
@@ -62,7 +53,7 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
                 groupOrPerson.email = element.EntityData.Email;
                 groupOrPerson.jobTitle = element.EntityData.Title;
                 groupOrPerson.initials = this.getFullNameInitials(groupOrPerson.fullName);
-                groupOrPerson.imageUrl = this.getUserPhotoUrl(groupOrPerson.email, this.context.pageContext.web.absoluteUrl);
+                groupOrPerson.imageUrl = this.getUserPhotoUrl(groupOrPerson.email, ctx.pageContext.web.absoluteUrl);
                 res.push(groupOrPerson);
                 break;
               case 'SecGroup':
@@ -120,8 +111,8 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
   /**
    * Returns fake people results for the Mock mode
    */
-  private searchPeopleFromMock(query: string): Promise<Array<IPropertyFieldGroupOrPerson>> {
-    return SPPeoplePickerMockHttpClient.searchPeople(this.context.pageContext.web.absoluteUrl).then(() => {
+  private searchPeopleFromMock(ctx: IWebPartContext, query: string): Promise<Array<IPropertyFieldGroupOrPerson>> {
+    return SPPeoplePickerMockHttpClient.searchPeople(ctx.pageContext.web.absoluteUrl).then(() => {
       const results: IPropertyFieldGroupOrPerson[] = [
         { fullName: 'Katie Jordan', initials: 'KJ', jobTitle: 'VIP Marketing', email: 'katiej@contoso.com', login: 'katiej@contoso.com' },
         { fullName: 'Gareth Fort', initials: 'GF', jobTitle: 'Sales Lead', email: 'garethf@contoso.com', login: 'garethf@contoso.com' },

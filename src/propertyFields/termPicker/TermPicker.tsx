@@ -135,6 +135,7 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
           onRenderItem={this.onRenderItem}
           defaultSelectedItems={this.props.value}
           selectedItems={this.state.terms}
+          itemLimit={!this.props.allowMultipleSelections ? 1 : undefined}
           onChange={this.props.onChanged}
         />
       </div>

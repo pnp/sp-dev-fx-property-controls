@@ -36,6 +36,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			iconName: _properties.iconName,
 			onRender: this.onRender.bind(this)
 		};
+		this.color = _properties.selectedColor || '#ffffff';
 	}
 
 	public render(): void {
@@ -56,7 +57,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			label: this.properties.label,
 			alphaSliderHidden: this.properties.alphaSliderHidden,
 			disabled: this.properties.disabled,
-			selectedColor: this.properties.selectedColor || '#FFFFFF',
+			selectedColor: this.color,
 			style: this.properties.style || PropertyFieldColorPickerStyle.Inline,
 			iconName: this.properties.iconName || 'Color',
 			onColorChanged: this.onColorChanged.bind(this)

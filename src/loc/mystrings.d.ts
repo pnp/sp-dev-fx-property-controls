@@ -61,6 +61,15 @@ declare interface IPropertyControlStrings {
   NotNumberValidationMessage: string;
   MinimumNumberValidationMessage: string;
   MaximumNumberValidationMessage: string;
+
+  // TermPicker
+  TermPickerNoTerms: string;
+  TermPickerExpandTitle: string;
+  TermPickerExpandNode: string;
+  TermPickerMenuTermSet: string;
+  TermPickerMenuGroup: string;
+  TermPickerInLabel: string;
+  TermPickerTermSetLabel: string;
 }
 
 declare module 'PropertyControlStrings' {

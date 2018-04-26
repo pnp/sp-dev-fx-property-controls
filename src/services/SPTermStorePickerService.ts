@@ -69,7 +69,7 @@ export default class SPTermStorePickerService {
                 if (this.props.limitByTermsetNameOrID) {
                   const termsetNameOrId = this.props.limitByTermsetNameOrID;
                   termGroups = termGroups.map((group: IGroup) => {
-                    group.TermSets._Child_Items_ = group.TermSets._Child_Items_.filter((termSet: ITermSet) => termSet.Name === termsetNameOrId || termSet.Id.toLowerCase() === termsetNameOrId.toLowerCase());
+                    group.TermSets._Child_Items_ = group.TermSets._Child_Items_.filter((termSet: ITermSet) => termSet.Name === termsetNameOrId || this._cleanGuid(termSet.Id).toLowerCase() === this._cleanGuid(termsetNameOrId).toLowerCase());
                     return group;
                   });
                 }

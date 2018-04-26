@@ -4,6 +4,7 @@ import { GROUP_IMG, EXPANDED_IMG, COLLAPSED_IMG } from './PropertyFieldTermPicke
 import TermSet from './TermSet';
 
 import styles from './PropertyFieldTermPickerHost.module.scss';
+import * as strings from 'PropertyControlStrings';
 
 /**
  * Term group component
@@ -47,8 +48,8 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
     return (
       <div>
         <div className={`${styles.listItem}`} onClick={this._handleClick}>
-          <img src={this.state.expanded ? EXPANDED_IMG : COLLAPSED_IMG} alt='Expand This Node' title='Expand This Node' />
-          <img src={GROUP_IMG} title='Menu for Group' alt='Menu for Group' /> {this.props.group.Name}
+          <img src={this.state.expanded ? EXPANDED_IMG : COLLAPSED_IMG} alt={strings.TermPickerExpandNode} title={strings.TermPickerExpandNode} />
+          <img src={GROUP_IMG} title={strings.TermPickerMenuGroup} alt={strings.TermPickerMenuGroup} /> {this.props.group.Name}
         </div>
         <div style={styleProps}>
           {

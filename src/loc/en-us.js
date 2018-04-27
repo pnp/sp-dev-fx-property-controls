@@ -70,6 +70,13 @@ define([], function () {
     "TermPickerMenuTermSet": "Menu for Term Set",
     "TermPickerMenuGroup": "Menu for Term Set",
     "TermPickerInLabel": "in",
-    "TermPickerTermSetLabel": "Term Set"
+    "TermPickerTermSetLabel": "Term Set",
+
+    // Collection data
+    "CollectionDataEmptyFields": "No fields were provided for the collection data.",
+    "CollectionDataEmptyValue": "No data in your collection.",
+    'CollectionAddRowButtonLabel': 'Add data to the collection',
+    'CollectionDeleteRowButtonLabel': 'Delete the current row',
+    'CollectionSaveAndAddButtonLabel': 'Add and save',
   }
 });

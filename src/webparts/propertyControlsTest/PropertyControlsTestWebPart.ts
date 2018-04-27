@@ -30,6 +30,7 @@ import { PropertyFieldLabelWithCallout } from '../../PropertyFieldLabelWithCallo
 import { PropertyFieldLinkWithCallout } from '../../PropertyFieldLinkWithCallout';
 import { PropertyFieldMultiSelect } from '../../PropertyFieldMultiSelect';
 import { PropertyFieldNumber } from '../../PropertyFieldNumber';
+import { PropertyFieldCollectionData, CustomCollectionFieldType } from '../../PropertyFieldCollectionData';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -57,7 +58,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         textInfoHeaderValue: this.properties.textInfoHeaderValue,
         toggleInfoHeaderValue: this.properties.toggleInfoHeaderValue,
         checkboxWithCalloutValue: this.properties.checkboxWithCalloutValue,
-        htmlCode: this.properties.htmlCode
+        htmlCode: this.properties.htmlCode,
+        collectionData: this.properties.collectionData
       }
     );
 
@@ -87,6 +89,59 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
             {
               groupName: '', //strings.BasicGroupName,
               groupFields: [
+                PropertyFieldCollectionData("collectionData", {
+                  key: "collectionData",
+                  label: "Collection data",
+                  description: "Collection data description",
+                  panelHeader: "Collection data panel header",
+                  manageBtnLabel: "Manage collection data",
+                  value: this.properties.collectionData,
+                  fields: [
+                    {
+                      id: "Title",
+                      title: "Firstname",
+                      type: CustomCollectionFieldType.string,
+                      required: true
+                    },
+                    {
+                      id: "Lastname",
+                      title: "Lastname",
+                      type: CustomCollectionFieldType.string
+                    },
+                    {
+                      id: "Age",
+                      title: "Age",
+                      type: CustomCollectionFieldType.number,
+                      required: true
+                    },
+                    {
+                      id: "City",
+                      title: "Favorite city",
+                      type: CustomCollectionFieldType.dropdown,
+                      options: [
+                        {
+                          key: "antwerp",
+                          text: "Antwerp"
+                        },
+                        {
+                          key: "helsinki",
+                          text: "Helsinki"
+                        },
+                        {
+                          key: "montreal",
+                          text: "Montreal"
+                        }
+                      ],
+                      required: true
+                    },
+                    {
+                      id: "Sign",
+                      title: "Signed",
+                      type: CustomCollectionFieldType.boolean
+                    }
+                  ],
+                  disabled: false
+                }),
                 PropertyFieldNumber("numberValue", {
                   key: "numberValue",
                   label: "Number value only",

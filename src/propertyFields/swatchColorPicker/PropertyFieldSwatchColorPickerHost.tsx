@@ -31,7 +31,7 @@ export default class PropertyFieldSwatchColorPickerHost extends React.Component<
 
 	public render(): JSX.Element {
 		return (
-			<div>
+			<div className={styles.pfSwatchColorPicker}>
 				{this.props.label && <Label>{this.props.label}</Label>}
 				{this.props.style === PropertyFieldSwatchColorPickerStyle.Inline &&
 					<table className={styles.cpInlineTable}>

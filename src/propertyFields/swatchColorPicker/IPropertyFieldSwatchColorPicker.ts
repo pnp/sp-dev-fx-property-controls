@@ -1,4 +1,5 @@
 import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
+import { IColor } from 'office-ui-fabric-react/lib/utilities/color/colors';
 
 /**
  * Enum for specifying how the control should be shown
@@ -33,7 +34,7 @@ export interface IPropertyFieldSwatchColorPickerProps {
 	/**
 	 * The CSS-compatible string to describe the initial color
 	 */
-	selectedColor?: string;
+	selectedColor?: string | IColor;
 
 	/**
 	 * The color choices (color can be any CSS-Compatible string, labels are optional and will be shown as a tooltip on the swatch)
@@ -74,6 +75,11 @@ export interface IPropertyFieldSwatchColorPickerProps {
 	 * The name of the UI Fabric Font Icon to use for Inline display (defaults to Color)
 	 */
 	iconName?: string;
+
+	/**
+	 * When true, the property is returned as an IColor object. When false (default), the property is returned as a CSS-compatible string
+	 */
+	valueAsObject?: boolean;
 }
 
 export interface IPropertyFieldSwatchColorPickerPropsInternal extends IPropertyFieldSwatchColorPickerProps, IPropertyPaneCustomFieldProps {

@@ -1,12 +1,16 @@
-.cpInlineTable {
-	border-spacing: 0;
-	width: 100%;
+.pfSwatchColorPicker {
 
-	.cpInlineRow {
-	  vertical-align: initial;
+	.cpInlineTable {
+		border-spacing: 0;
+		width: 100%;
+	
+		.cpInlineRow {
+			vertical-align: top;
+		}
+	
+		.cpSwatchRow {
+			margin-top: -5px;
+		}
 	}
 
-	.cpSwatchRow {
-		margin-top: -5px;
-	}
 }

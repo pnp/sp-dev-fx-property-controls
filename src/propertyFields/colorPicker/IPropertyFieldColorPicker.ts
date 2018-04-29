@@ -1,4 +1,5 @@
 import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
+import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
 
 /**
  * Enum for specifying how the control should be shown
@@ -28,7 +29,7 @@ export interface IPropertyFieldColorPickerProps {
 	/**
 	 * The CSS-compatible string to describe the initial color
 	 */
-	selectedColor?: string;
+	selectedColor?: string | IColor;
 
 	/**
 	 * When true, the alpha slider control is hidden
@@ -59,6 +60,11 @@ export interface IPropertyFieldColorPickerProps {
 	 * The name of the UI Fabric Font Icon to use for Inline display (defaults to Color)
 	 */
 	iconName?: string;
+
+	/**
+	 * When true, the property is returned as an IColor object. When false (default), the property is returned as a CSS-compatible string
+	 */
+	valueAsObject?: boolean;
 }
 
 export interface IPropertyFieldColorPickerPropsInternal extends IPropertyFieldColorPickerProps, IPropertyPaneCustomFieldProps {

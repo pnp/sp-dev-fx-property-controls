@@ -30,6 +30,7 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
               <p className="ms-font-m ms-fontColor-neutralDark">Term(s): {this.props.terms.map(t => t.name).join(', ')}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Date: {this.props.datetime.displayValue}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Color: <span className={styles.colorBox} style={{backgroundColor:this.props.color}}>&nbsp;</span>{this.props.color}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Color Object: <span className={styles.colorBox} style={{backgroundColor:this.props.colorObj ? this.props.colorObj.str : ''}}>&nbsp;</span>{this.props.colorObj ? `${this.props.colorObj.str}= R:${this.props.colorObj.r},G:${this.props.colorObj.g},B:${this.props.colorObj.b},A:${this.props.colorObj.a} H:${this.props.colorObj.h},S:${this.props.colorObj.s},V:${this.props.colorObj.v} HEX:${this.props.colorObj.hex}` : ''}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Spin Value: {this.props.spinValue}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Dropdown With Callout Key: {this.props.dropdownWithCalloutKey}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Slider With Callout Value: {this.props.sliderWithCalloutValue}</p>

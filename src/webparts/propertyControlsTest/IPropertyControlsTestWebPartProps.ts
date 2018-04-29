@@ -1,6 +1,8 @@
+import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
+
+import { IDateTimeFieldValue } from '../../PropertyFieldDateTimePicker';
 import { IPropertyFieldGroupOrPerson } from '../../PropertyFieldPeoplePicker';
 import { IPickerTerms } from '../../PropertyFieldTermPicker';
-import { IDateTimeFieldValue } from '../../PropertyFieldDateTimePicker';
 
 export interface IPropertyControlsTestWebPartProps {
   numberValue: number;
@@ -12,6 +14,7 @@ export interface IPropertyControlsTestWebPartProps {
   datetime: IDateTimeFieldValue;
   fileUrl: string;
   color: string;
+  colorObj: IColor;
   spinValue: number;
   dropdownWithCalloutKey: string;
   sliderWithCalloutValue: number;

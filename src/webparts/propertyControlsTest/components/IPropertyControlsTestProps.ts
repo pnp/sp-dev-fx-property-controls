@@ -1,7 +1,9 @@
 import { WebPartContext } from '@microsoft/sp-webpart-base';
-import { IPickerTerms } from '../../../PropertyFieldTermPicker';
+import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
+
 import { IDateTimeFieldValue } from '../../../PropertyFieldDateTimePicker';
 import { IPropertyFieldGroupOrPerson } from '../../../PropertyFieldPeoplePicker';
+import { IPickerTerms } from '../../../PropertyFieldTermPicker';
 
 export interface IPropertyControlsTestProps {
 
@@ -14,6 +16,7 @@ export interface IPropertyControlsTestProps {
   terms: IPickerTerms;
   datetime: IDateTimeFieldValue;
   color: string;
+  colorObj: IColor;
   spinValue: number;
   dropdownWithCalloutKey: string;
   sliderWithCalloutValue: number;

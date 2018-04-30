@@ -1,5 +1,11 @@
 # Releases
 
+## 1.6.0 
+
+**New controls**
+
+- `PropertyFieldCollectionData` was added [58](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/58)
+
 ## 1.5.1
 
 **Enhancements**

@@ -53,6 +53,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         terms: this.properties.terms || [],
         datetime: this.properties.datetime || { value: null, displayValue: null },
         color: this.properties.color,
+        colorObj: this.properties.colorObj,
         spinValue: this.properties.spinValue,
         dropdownWithCalloutKey: this.properties.dropdownWithCalloutKey,
         sliderWithCalloutValue: this.properties.sliderWithCalloutValue,
@@ -273,6 +274,14 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   //alphaSliderHidden: true,
                   //style: PropertyFieldColorPickerStyle.Full,
                   //iconName: 'Precipitation',
+                  key: 'colorFieldId'
+                }),
+                PropertyFieldColorPicker('colorObj', {
+                  label: 'Color Object',
+                  selectedColor: this.properties.colorObj,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  valueAsObject: true,
                   key: 'colorFieldId'
                 }),
                 PropertyFieldSpinButton('spinValue', {

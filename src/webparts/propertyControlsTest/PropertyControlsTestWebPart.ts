@@ -98,7 +98,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                 PropertyFieldCollectionData("collectionData", {
                   key: "collectionData",
                   label: "Collection data",
-                  description: "Collection data description",
                   panelHeader: "Collection data panel header",
                   manageBtnLabel: "Manage collection data",
                   value: this.properties.collectionData,

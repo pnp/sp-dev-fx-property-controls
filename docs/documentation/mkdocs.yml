@@ -2,6 +2,7 @@ site_name: SharePoint Framework Property Controls
 pages:
   - Home: 'index.md'
   - Controls:
+    - PropertyFieldCollectionData: 'controls/PropertyFieldCollectionData.md'
     - PropertyFieldColorPicker: 'controls/PropertyFieldColorPicker.md'
     - PropertyFieldDateTimePicker: 'controls/PropertyFieldDateTimePicker.md'
     - PropertyFieldListPicker: 'controls/PropertyFieldListPicker.md'

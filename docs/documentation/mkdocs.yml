@@ -10,6 +10,7 @@ pages:
     - PropertyFieldOrder: 'controls/PropertyFieldOrder.md'
     - PropertyFieldPeoplePicker: 'controls/PropertyFieldPeoplePicker.md'
     - PropertyFieldSpinButton: 'controls/PropertyFieldSpinButton.md'
+    - PropertyFieldSwatchColorPicker: 'controls/PropertyFieldSwatchColorPicker.md'
     - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
   - 'Controls with callout':
     - PropertyFieldButtonWithCallout: 'controls/PropertyFieldButtonWithCallout.md'

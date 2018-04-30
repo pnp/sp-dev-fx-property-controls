@@ -23,4 +23,5 @@ export interface IPropertyControlsTestWebPartProps {
   htmlCode:string;
   collectionData: any[];
   orderedItems: any[];
+  swatchColor: string;
 }

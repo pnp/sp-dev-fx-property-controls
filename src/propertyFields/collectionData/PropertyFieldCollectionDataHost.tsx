@@ -18,7 +18,7 @@ export class PropertyFieldCollectionDataHost extends React.Component<IPropertyFi
       panelOpen: false
     };
 
-    // appInsights.track('PropertyFieldCollectionData', {});
+    appInsights.track('PropertyFieldCollectionData', {});
   }
 
   /**

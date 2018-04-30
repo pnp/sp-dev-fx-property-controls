@@ -33,6 +33,7 @@ import { PropertyFieldNumber } from '../../PropertyFieldNumber';
 import { PropertyFieldCollectionData, CustomCollectionFieldType } from '../../PropertyFieldCollectionData';
 import { PropertyFieldOrder } from '../../PropertyFieldOrder';
 import { orderedItem } from './components/OrderedItem';
+import { PropertyFieldSwatchColorPicker, PropertyFieldSwatchColorPickerStyle } from '../../PropertyFieldSwatchColorPicker';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -62,7 +63,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         checkboxWithCalloutValue: this.properties.checkboxWithCalloutValue,
         htmlCode: this.properties.htmlCode,
         collectionData: this.properties.collectionData,
-        orderedItems: this.properties.orderedItems
+        orderedItems: this.properties.orderedItems,
+        swatchColor: this.properties.swatchColor
       }
     );
 
@@ -400,6 +402,37 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   //disabled: true,
                   properties: this.properties,
                   onPropertyChange: this.onPropertyPaneFieldChanged
+                }),
+                PropertyFieldSwatchColorPicker('swatchColor', {
+                  label: 'Swatch Color',
+                  selectedColor: this.properties.swatchColor,
+                  colors: [
+                    { color: '#ffb900', label: 'Yellow' },
+                    { color: '#fff100', label: 'Light Yellow' },
+                    { color: '#d83b01', label: 'Orange'},
+                    { color: '#e81123', label: 'Red' },
+                    { color: '#a80000', label: 'Dark Red'},
+                    { color: '#5c005c', label: 'Dark Magenta' },
+                    { color: '#e3008c', label: 'Light Magenta'},
+                    { color: '#5c2d91', label: 'Purple'},
+                    { color: '#0078d4', label: 'Blue'},
+                    { color: '#00bcf2', label: 'Light Blue' },
+                    { color: '#008272', label: 'Teal'},
+                    { color: '#107c10', label: 'Green'},
+                    { color: '#bad80a', label: 'Light Green' },
+                    { color: '#eaeaea'},
+                    { color: 'black', label: 'Black'},
+                    { color: '#333333', label: 'Neutral'},
+                    { color: 'rgba(102, 102, 102, 0.5)', label: 'Half Gray' }
+                  ],
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  //disabled: true,
+                  //style: PropertyFieldSwatchColorPickerStyle.Full,
+                  //columnCount: 8,
+                  //showAsCircles: true,
+                  //iconName: 'FangBody',
+                  key: 'swatchColorFieldId'
                 })
               ]
             }

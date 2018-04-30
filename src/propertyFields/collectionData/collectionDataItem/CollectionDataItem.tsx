@@ -6,8 +6,7 @@ import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import { Checkbox } from 'office-ui-fabric-react/lib/components/Checkbox';
 import * as strings from 'PropertyControlStrings';
-import { ICustomCollectionField } from '../../../../lib/propertyFields/collectionData';
-import { CustomCollectionFieldType } from '..';
+import { ICustomCollectionField, CustomCollectionFieldType } from '..';
 import { Dropdown } from 'office-ui-fabric-react';
 
 export class CollectionDataItem extends React.Component<ICollectionDataItemProps, ICollectionDataItemState> {

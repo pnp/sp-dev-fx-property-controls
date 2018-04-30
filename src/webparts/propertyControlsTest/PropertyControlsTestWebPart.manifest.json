@@ -28,7 +28,14 @@
     "properties": {
       "description": "PropertyControlsTest",
       "dropdownInfoHeaderKey": "gryffindor",
-      "htmlCode":"<div>Hello</div>"
+      "htmlCode":"<div>Hello</div>",
+      "orderedItems": [
+        {"text": "Cat", "iconName": "Cat"},
+        {"text": "Pig", "iconName": "Savings"},
+        {"text": "Human", "iconName": "Running"},
+        {"text": "Robot", "iconName": "Robot"},
+        {"text": "Dog", "iconName": "FangBody"}
+      ]
     }
   }]
 }

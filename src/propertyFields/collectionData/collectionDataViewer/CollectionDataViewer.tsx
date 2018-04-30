@@ -136,9 +136,9 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
         }
 
         <div className={styles.panelActions}>
-          { this.state.inCreationItem && <PrimaryButton iconProps={{ iconName: 'Add' }} text={strings.CollectionSaveAndAddButtonLabel} onClick={this.addAndSave} /> }
-          <PrimaryButton iconProps={{ iconName: 'Save' }} text={strings.SaveButtonLabel} onClick={this.onSave} />
-          <DefaultButton iconProps={{ iconName: 'Cancel' }} text={strings.CancelButtonLabel} onClick={this.onCancel} />
+          { this.state.inCreationItem && <PrimaryButton text={strings.CollectionSaveAndAddButtonLabel} onClick={this.addAndSave} /> }
+          <PrimaryButton text={strings.SaveButtonLabel} onClick={this.onSave} />
+          <DefaultButton text={strings.CancelButtonLabel} onClick={this.onCancel} />
         </div>
       </div>
     );

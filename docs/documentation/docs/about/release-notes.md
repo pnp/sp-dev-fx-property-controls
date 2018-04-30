@@ -5,6 +5,7 @@
 **New controls**
 
 - `PropertyFieldCollectionData` was added [58](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/58)
+- `PropertyFieldOrder` was added [19](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/19)
 
 ## 1.5.1
 

@@ -22,4 +22,5 @@ export interface IPropertyControlsTestWebPartProps {
   checkboxWithCalloutValue: boolean;
   htmlCode:string;
   collectionData: any[];
+  orderedItems: any[];
 }

@@ -1,15 +1,30 @@
-.cpInlineTable {
-	border-spacing: 0;
-	width: 100%;
-	.cpInlineRow {
-	  vertical-align: initial;
-	}
-  }
+.pfColorPicker {
 
-.disabledCP {
-	pointer-events: none;
-	opacity: 0.4;
-	border: none;
-	padding: 0;
-	margin: 0;
+	:global {
+		.ms-ColorPicker-table {
+			table-layout: fixed;
+			width: 100%;
+
+			thead > tr > td:first-child {
+				width: 28%;
+			}
+		}
+	}
+
+	.cpInlineTable {
+		border-spacing: 0;
+		width: 100%;
+
+			.cpInlineRow {
+				vertical-align: top;
+			}
+		}
+
+	.disabledCP {
+		pointer-events: none;
+		opacity: 0.4;
+		border: none;
+		padding: 0;
+		margin: 0;
+	}
 }

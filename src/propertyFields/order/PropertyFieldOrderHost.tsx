@@ -20,7 +20,7 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 	private _lastBox: HTMLElement;
 
 	constructor(props: IPropertyFieldOrderHostProps, state: IPropertyFieldOrderHostState) {
-    	super(props);
+    super(props);
 
 		appInsights.track('PropertyFieldOrder', {
 			disabled: props.disabled
@@ -225,7 +225,7 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 		}
 		this.moveItemAtIndexToTargetIndex(itemIndex,targetIndex);
 	}
-	
+
 
 	@autobind
 	private onMoveUpClick(itemIndex:number): void {

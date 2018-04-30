@@ -8,6 +8,10 @@
 - `PropertyFieldOrder` was added [19](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/19)
 - `PropertyFieldSwatchColorPicker` was added [55](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/55)
 
+**Fixes**
+
+- Fix for `PropertyFieldColorPicker` Palette Icon alignment issue in IE11 [56](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/56)
+
 ## 1.5.1
 
 **Enhancements**

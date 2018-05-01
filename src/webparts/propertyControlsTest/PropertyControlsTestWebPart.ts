@@ -237,7 +237,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: 'Select terms',
                   panelTitle: 'Select terms',
                   initialValues: this.properties.terms,
-                  allowMultipleSelections: false,
+                  allowMultipleSelections: true,
                   excludeSystemGroup: false,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
@@ -246,7 +246,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   //limitByGroupNameOrID: 'Hockey Example',
-                  //limitByTermsetNameOrID: 'Hockey Positions',
+                  limitByTermsetNameOrID: 'Countries',
+                  isTermSetSelectable: true,
                   key: 'termSetsPickerFieldId',
                   hideTermStoreName: true
                 }),

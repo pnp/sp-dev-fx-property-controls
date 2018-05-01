@@ -34,6 +34,17 @@
   margin-left: 15px;
 }
 
+.termSetSelectable {
+  height: 50px;
+  line-height: 50px;
+}
+
+.termSetSelector {
+  display: inline-block;
+  margin: 0 8px 0 4px;
+  vertical-align: middle;
+}
+
 .term {
   padding-left: 20px;
 

@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ITermSetProps, ITermSetState } from './IPropertyFieldTermPickerHost';
 import { ITerm } from '../../services/ISPTermStorePickerService';
 import { EXPANDED_IMG, COLLAPSED_IMG, TERMSET_IMG } from './PropertyFieldTermPickerHost';
 import Term from './Term';
 import styles from './PropertyFieldTermPickerHost.module.scss';
 import * as strings from 'PropertyControlStrings';
+import SPTermStorePickerService from '../../services/SPTermStorePickerService';
 
 /**
  * Term set component
@@ -74,6 +76,24 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
     }
   }
 
+  /**
+   * The term set selection changed
+   */
+  private termSetSelectionChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
+    const { termset } = this.props;
+    this.props.changedCallback({
+      Id: SPTermStorePickerService.cleanGuid(termset.Id),
+      Name: termset.Name,
+      PathOfTerm: "",
+      _ObjectType_: termset._ObjectType_,
+      _ObjectIdentity_: termset._ObjectIdentity_,
+      Description: termset.Description,
+      IsDeprecated: null,
+      IsRoot: null,
+      TermSet: termset
+    }, isChecked);
+  }
+
   public render(): JSX.Element {
     // Specify the inline styling to show or hide the termsets
     const styleProps: React.CSSProperties = {
@@ -104,8 +124,17 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
 
     return (
       <div>
-        <div className={`${styles.listItem} ${styles.termset}`} onClick={this._handleClick}>
+        <div className={`${styles.listItem} ${styles.termset} ${this.props.isTermSetSelectable ? styles.termSetSelectable : ""}`} onClick={this._handleClick}>
           <img src={this.state.expanded ? EXPANDED_IMG : COLLAPSED_IMG} alt={strings.TermPickerExpandTitle} title={strings.TermPickerExpandTitle} />
+
+          {
+            // Show the termset selection box
+            this.props.isTermSetSelectable &&
+            <Checkbox className={styles.termSetSelector}
+                      checked={this.props.activeNodes.filter(a => a.path === "" && a.termSet.indexOf(a.key) !== -1 && this.props.termset.Id.indexOf(a.key) !== -1).length >= 1}
+                      onChange={this.termSetSelectionChange} />
+          }
+
           <img src={TERMSET_IMG} alt={strings.TermPickerMenuTermSet} title={strings.TermPickerMenuTermSet} /> {this.props.termset.Name}
         </div>
         <div style={styleProps}>

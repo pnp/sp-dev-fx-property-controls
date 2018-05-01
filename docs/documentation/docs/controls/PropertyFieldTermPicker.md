@@ -83,6 +83,7 @@ The `PropertyFieldTermPicker` control can be configured with the following prope
 | limitByGroupNameOrID | string | no | Limit the term sets that can be used by the group name or ID. |
 | limitByTermsetNameOrID | string | no | Limit the terms that can be picked by the Term Set name or ID. |
 | hideTermStoreName | boolean | no | Specifies if you want to show or hide the term store name from the panel. |
+| isTermSetSelectable | boolean | no | Specify if the term set itself is selectable in the tree view. |
 | onPropertyChange | function | yes | Defines a onPropertyChange function to raise when the date gets changed. |
 | properties | any | yes | Parent web part properties, this object is use to update the property value.  |
 | key | string | yes | An unique key that indicates the identity of this control. |

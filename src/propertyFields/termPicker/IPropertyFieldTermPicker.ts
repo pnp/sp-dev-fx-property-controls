@@ -138,6 +138,10 @@ export interface IPropertyFieldTermPickerProps {
    * Specifies if you want to show or hide the term store name from the panel
    */
   hideTermStoreName?: boolean;
+  /**
+   * Specify if the term set itself is selectable in the tree view
+   */
+  isTermSetSelectable?: boolean;
 }
 
 /**

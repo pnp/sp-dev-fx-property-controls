@@ -54,7 +54,7 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
         <div style={styleProps}>
           {
             this.props.group.TermSets._Child_Items_.map(termset => {
-              return <TermSet key={termset.Id} termset={termset} termstore={this.props.termstore} termsService={this.props.termsService} autoExpand={this._autoExpand} activeNodes={this.props.activeNodes} changedCallback={this.props.changedCallback} multiSelection={this.props.multiSelection} />;
+              return <TermSet key={termset.Id} termset={termset} termstore={this.props.termstore} termsService={this.props.termsService} autoExpand={this._autoExpand} activeNodes={this.props.activeNodes} changedCallback={this.props.changedCallback} multiSelection={this.props.multiSelection} isTermSetSelectable={this.props.isTermSetSelectable} />;
             })
           }
         </div>

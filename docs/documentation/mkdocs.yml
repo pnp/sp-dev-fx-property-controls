@@ -2,14 +2,17 @@ site_name: SharePoint Framework Property Controls
 pages:
   - Home: 'index.md'
   - Controls:
+    - PropertyFieldCollectionData: 'controls/PropertyFieldCollectionData.md'
     - PropertyFieldColorPicker: 'controls/PropertyFieldColorPicker.md'
     - PropertyFieldDateTimePicker: 'controls/PropertyFieldDateTimePicker.md'
     - PropertyFieldListPicker: 'controls/PropertyFieldListPicker.md'
-    - PropertyFieldPeoplePicker: 'controls/PropertyFieldPeoplePicker.md'
-    - PropertyFieldSpinButton: 'controls/PropertyFieldSpinButton.md'
-    - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
     - PropertyFieldMultiSelect: 'controls/PropertyFieldMultiSelect.md'
     - PropertyFieldNumber: 'controls/PropertyFieldNumber.md'
+    - PropertyFieldOrder: 'controls/PropertyFieldOrder.md'
+    - PropertyFieldPeoplePicker: 'controls/PropertyFieldPeoplePicker.md'
+    - PropertyFieldSpinButton: 'controls/PropertyFieldSpinButton.md'
+    - PropertyFieldSwatchColorPicker: 'controls/PropertyFieldSwatchColorPicker.md'
+    - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
   - 'Controls with callout':
     - PropertyFieldButtonWithCallout: 'controls/PropertyFieldButtonWithCallout.md'
     - PropertyFieldCheckboxWithCallout: 'controls/PropertyFieldCheckboxWithCallout.md'

@@ -70,6 +70,13 @@ declare interface IPropertyControlStrings {
   TermPickerMenuGroup: string;
   TermPickerInLabel: string;
   TermPickerTermSetLabel: string;
+
+  // Collection data
+  CollectionDataEmptyFields: string;
+  CollectionDataEmptyValue: string;
+  CollectionAddRowButtonLabel: string;
+  CollectionDeleteRowButtonLabel: string;
+  CollectionSaveAndAddButtonLabel: string;
 }
 
 declare module 'PropertyControlStrings' {

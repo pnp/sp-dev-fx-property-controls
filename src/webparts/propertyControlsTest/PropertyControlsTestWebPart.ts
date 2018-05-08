@@ -30,6 +30,10 @@ import { PropertyFieldLabelWithCallout } from '../../PropertyFieldLabelWithCallo
 import { PropertyFieldLinkWithCallout } from '../../PropertyFieldLinkWithCallout';
 import { PropertyFieldMultiSelect } from '../../PropertyFieldMultiSelect';
 import { PropertyFieldNumber } from '../../PropertyFieldNumber';
+import { PropertyFieldCollectionData, CustomCollectionFieldType } from '../../PropertyFieldCollectionData';
+import { PropertyFieldOrder } from '../../PropertyFieldOrder';
+import { orderedItem } from './components/OrderedItem';
+import { PropertyFieldSwatchColorPicker, PropertyFieldSwatchColorPickerStyle } from '../../PropertyFieldSwatchColorPicker';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -49,6 +53,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         terms: this.properties.terms || [],
         datetime: this.properties.datetime || { value: null, displayValue: null },
         color: this.properties.color,
+        colorObj: this.properties.colorObj,
         spinValue: this.properties.spinValue,
         dropdownWithCalloutKey: this.properties.dropdownWithCalloutKey,
         sliderWithCalloutValue: this.properties.sliderWithCalloutValue,
@@ -57,7 +62,10 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         textInfoHeaderValue: this.properties.textInfoHeaderValue,
         toggleInfoHeaderValue: this.properties.toggleInfoHeaderValue,
         checkboxWithCalloutValue: this.properties.checkboxWithCalloutValue,
-        htmlCode: this.properties.htmlCode
+        htmlCode: this.properties.htmlCode,
+        collectionData: this.properties.collectionData,
+        orderedItems: this.properties.orderedItems,
+        swatchColor: this.properties.swatchColor
       }
     );
 
@@ -87,6 +95,58 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
             {
               groupName: '', //strings.BasicGroupName,
               groupFields: [
+                PropertyFieldCollectionData("collectionData", {
+                  key: "collectionData",
+                  label: "Collection data",
+                  panelHeader: "Collection data panel header",
+                  manageBtnLabel: "Manage collection data",
+                  value: this.properties.collectionData,
+                  fields: [
+                    {
+                      id: "Title",
+                      title: "Firstname",
+                      type: CustomCollectionFieldType.string,
+                      required: true
+                    },
+                    {
+                      id: "Lastname",
+                      title: "Lastname",
+                      type: CustomCollectionFieldType.string
+                    },
+                    {
+                      id: "Age",
+                      title: "Age",
+                      type: CustomCollectionFieldType.number,
+                      required: true
+                    },
+                    {
+                      id: "City",
+                      title: "Favorite city",
+                      type: CustomCollectionFieldType.dropdown,
+                      options: [
+                        {
+                          key: "antwerp",
+                          text: "Antwerp"
+                        },
+                        {
+                          key: "helsinki",
+                          text: "Helsinki"
+                        },
+                        {
+                          key: "montreal",
+                          text: "Montreal"
+                        }
+                      ],
+                      required: true
+                    },
+                    {
+                      id: "Sign",
+                      title: "Signed",
+                      type: CustomCollectionFieldType.boolean
+                    }
+                  ],
+                  disabled: false
+                }),
                 PropertyFieldNumber("numberValue", {
                   key: "numberValue",
                   label: "Number value only",
@@ -177,7 +237,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: 'Select terms',
                   panelTitle: 'Select terms',
                   initialValues: this.properties.terms,
-                  allowMultipleSelections: false,
+                  allowMultipleSelections: true,
                   excludeSystemGroup: false,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
@@ -186,7 +246,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   //limitByGroupNameOrID: 'Hockey Example',
-                  //limitByTermsetNameOrID: 'Hockey Positions',
+                  limitByTermsetNameOrID: 'Countries',
+                  isTermSetSelectable: true,
                   key: 'termSetsPickerFieldId',
                   hideTermStoreName: true
                 }),
@@ -213,6 +274,14 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   //alphaSliderHidden: true,
                   //style: PropertyFieldColorPickerStyle.Full,
                   //iconName: 'Precipitation',
+                  key: 'colorFieldId'
+                }),
+                PropertyFieldColorPicker('colorObj', {
+                  label: 'Color Object',
+                  selectedColor: this.properties.colorObj,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  valueAsObject: true,
                   key: 'colorFieldId'
                 }),
                 PropertyFieldSpinButton('spinValue', {
@@ -329,6 +398,50 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   text: 'Terms & Conditions',
                   href: 'https://github.com/SharePoint/sp-dev-fx-property-controls',
                   target: '_blank'
+                }),
+                PropertyFieldOrder("orderedItems", {
+                  key: "orderedItems",
+                  label: "Ordered Items",
+                  items: this.properties.orderedItems,
+                  textProperty: "text",
+                  //removeArrows: true,
+                  //disableDragAndDrop: true,
+                  //onRenderItem: orderedItem,
+                  //maxHeight: 90,
+                  //disabled: true,
+                  properties: this.properties,
+                  onPropertyChange: this.onPropertyPaneFieldChanged
+                }),
+                PropertyFieldSwatchColorPicker('swatchColor', {
+                  label: 'Swatch Color',
+                  selectedColor: this.properties.swatchColor,
+                  colors: [
+                    { color: '#ffb900', label: 'Yellow' },
+                    { color: '#fff100', label: 'Light Yellow' },
+                    { color: '#d83b01', label: 'Orange'},
+                    { color: '#e81123', label: 'Red' },
+                    { color: '#a80000', label: 'Dark Red'},
+                    { color: '#5c005c', label: 'Dark Magenta' },
+                    { color: '#e3008c', label: 'Light Magenta'},
+                    { color: '#5c2d91', label: 'Purple'},
+                    { color: '#0078d4', label: 'Blue'},
+                    { color: '#00bcf2', label: 'Light Blue' },
+                    { color: '#008272', label: 'Teal'},
+                    { color: '#107c10', label: 'Green'},
+                    { color: '#bad80a', label: 'Light Green' },
+                    { color: '#eaeaea'},
+                    { color: 'black', label: 'Black'},
+                    { color: '#333333', label: 'Neutral'},
+                    { color: 'rgba(102, 102, 102, 0.5)', label: 'Half Gray' }
+                  ],
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  //disabled: true,
+                  //style: PropertyFieldSwatchColorPickerStyle.Full,
+                  //columnCount: 8,
+                  //showAsCircles: true,
+                  //iconName: 'FangBody',
+                  key: 'swatchColorFieldId'
                 })
               ]
             }

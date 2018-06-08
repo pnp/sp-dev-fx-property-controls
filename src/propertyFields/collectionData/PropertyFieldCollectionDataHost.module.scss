@@ -72,6 +72,18 @@
   }
 }
 
+.iconField {
+  position: relative;
+
+  i {
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    vertical-align: top;
+  }
+}
+
 
 /* Table layout */
 .table {

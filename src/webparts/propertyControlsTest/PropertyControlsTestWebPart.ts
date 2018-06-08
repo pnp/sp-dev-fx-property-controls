@@ -100,6 +100,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: "Collection data",
                   panelHeader: "Collection data panel header",
                   manageBtnLabel: "Manage collection data",
+                  panelDescription: "This is the description which appears in the panel.",
                   value: this.properties.collectionData,
                   fields: [
                     {
@@ -143,6 +144,17 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       id: "Sign",
                       title: "Signed",
                       type: CustomCollectionFieldType.boolean
+                    },
+                    {
+                      id: "IconName",
+                      title: "Icon Name",
+                      type: CustomCollectionFieldType.fabricIcon
+                    },
+                    {
+                      id: "URL",
+                      title: "URL",
+                      type: CustomCollectionFieldType.url,
+                      required: true
                     }
                   ],
                   disabled: false

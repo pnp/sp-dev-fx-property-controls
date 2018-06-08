@@ -1,12 +1,22 @@
 # Releases
 
+## 1.7.0
+
+**Enhancements**
+
+- Add `npm postinstall` script to automatically add the localization config [#64](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/64)
+- Added a font field type for the `PropertyFieldCollectionData` control [#66](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/66)
+- Added a URL field type for the `PropertyFieldCollectionData` control [#72](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/72)
+- Add a description to the `PropertyFieldCollectionData` panel [#67](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/67)
+- Field validation implemented to enable/disable save buttons in `PropertyFieldCollectionData` control
+
 ## 1.6.0 
 
 **New controls**
 
-- `PropertyFieldCollectionData` was added [58](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/58)
-- `PropertyFieldOrder` was added [19](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/19)
-- `PropertyFieldSwatchColorPicker` was added [55](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/55)
+- `PropertyFieldCollectionData` was added [#58](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/58)
+- `PropertyFieldOrder` was added [#19](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/19)
+- `PropertyFieldSwatchColorPicker` was added [#55](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/55)
 
 **Enhancements**
 
@@ -14,7 +24,7 @@
 
 **Fixes**
 
-- Fix for `PropertyFieldColorPicker` Palette Icon alignment issue in IE11 [56](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/56)
+- Fix for `PropertyFieldColorPicker` Palette Icon alignment issue in IE11 [#56](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/56)
 
 ## 1.5.1
 
@@ -40,7 +50,7 @@
 
 **Enhancements**
 
-- Introduced the `onGetErrorMessage` property for the `PropertyFieldNumber` field control ([#36 - PropertyFieldNumber control suggestion](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/36))
+- Introduced the `onGetErrorMessage` property for the `PropertyFieldNumber` field control ([#36](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/36))
 
 ## 1.4.1
 
@@ -50,8 +60,8 @@
 
 **Fixes**
 
-- Fixes for issue [#30 - Check if Label is null and if so don't render it.](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/30)
-- Fix for issue [#33 - `PropertyFieldPeoplePicker` Validation does not work as expected.](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/33)
+- Fixes for issue [#30](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/30)
+- `PropertyFieldPeoplePicker` Validation does not work as expected  [#33](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/33)
 
 ## 1.4.0
 

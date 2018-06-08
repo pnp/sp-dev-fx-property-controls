@@ -27,5 +27,7 @@ export enum CustomCollectionFieldType {
   string = 1,
   number,
   boolean,
-  dropdown
+  dropdown,
+  fabricIcon,
+  url
 }

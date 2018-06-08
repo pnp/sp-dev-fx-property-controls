@@ -1,7 +1,7 @@
 {
   "name": "@pnp/spfx-property-controls",
   "description": "Reusable property pane controls for SharePoint Framework solutions",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -11,7 +11,8 @@
     "test": "gulp test",
     "versionUpdater": "gulp versionUpdater",
     "prepublishOnly": "gulp",
-    "changelog": "node scripts/sync-changelogs.js"
+    "changelog": "node scripts/sync-changelogs.js",
+    "postinstall": "node postinstall/install.js"
   },
   "dependencies": {
     "@types/applicationinsights-js": "1.0.5",

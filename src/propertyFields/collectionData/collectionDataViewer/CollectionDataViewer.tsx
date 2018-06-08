@@ -14,7 +14,8 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
 
     this.state = {
       crntItems: [],
-      inCreationItem: null
+      inCreationItem: null,
+      validation: {}
     };
   }
 
@@ -58,6 +59,35 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
       crntItems.splice(idx, 1);
       return { crntItems };
     });
+  }
+
+  /**
+   * Validate every item
+   */
+  private validateItem = (idx: number, isValid: boolean) => {
+    this.setState((prevState: ICollectionDataViewerState) => {
+      const { validation } = prevState;
+      validation[idx] = isValid;
+      return {
+        validation: prevState.validation
+      };
+    });
+  }
+
+  /**
+   * Check if all items are valid
+   */
+  private allItemsValid() {
+    const { validation } = this.state;
+    if (validation) {
+      const keys = Object.keys(validation);
+      for (const key of keys) {
+        if (!validation[key]) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   /**
@@ -118,7 +148,8 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
                                     index={idx}
                                     item={item}
                                     fUpdateItem={this.updateItem}
-                                    fdeleteItem={this.deleteItem} />
+                                    fDeleteItem={this.deleteItem}
+                                    fValidation={this.validateItem} />
               ))
             )
           }
@@ -136,8 +167,8 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
         }
 
         <div className={styles.panelActions}>
-          { this.state.inCreationItem && <PrimaryButton text={strings.CollectionSaveAndAddButtonLabel} onClick={this.addAndSave} /> }
-          <PrimaryButton text={strings.SaveButtonLabel} onClick={this.onSave} />
+          { this.state.inCreationItem && <PrimaryButton text={strings.CollectionSaveAndAddButtonLabel} onClick={this.addAndSave} disabled={!this.allItemsValid()} /> }
+          <PrimaryButton text={strings.SaveButtonLabel} onClick={this.onSave} disabled={!this.allItemsValid()} />
           <DefaultButton text={strings.CancelButtonLabel} onClick={this.onCancel} />
         </div>
       </div>

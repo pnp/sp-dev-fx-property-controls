@@ -34,6 +34,7 @@ import { PropertyFieldCollectionData, CustomCollectionFieldType } from '../../Pr
 import { PropertyFieldOrder } from '../../PropertyFieldOrder';
 import { orderedItem } from './components/OrderedItem';
 import { PropertyFieldSwatchColorPicker, PropertyFieldSwatchColorPickerStyle } from '../../PropertyFieldSwatchColorPicker';
+import { IPropertyFieldGroupOrPerson } from '../../../lib/propertyFields/peoplePicker';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -208,7 +209,10 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   context: this.context,
                   properties: this.properties,
-                  onGetErrorMessage: null,
+                  onGetErrorMessage: (value: IPropertyFieldGroupOrPerson[]) => {
+                    const users = value.filter(u => u.fullName.toLowerCase().indexOf("elio") !== -1);
+                    return users.length === 0 ? 'Please use a person with "Elio" in its name' : "";
+                  },
                   deferredValidationTime: 0,
                   key: 'peopleFieldId'
                 }),

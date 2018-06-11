@@ -10,6 +10,10 @@
 - Add a description to the `PropertyFieldCollectionData` panel [#67](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/67)
 - Field validation implemented to enable/disable save buttons in `PropertyFieldCollectionData` control
 
+**Fixes**
+
+- `PropertyFieldPeoplePicker` validation error does not clear as expected [#68](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/68)
+
 ## 1.6.0
 
 **New control(s)**

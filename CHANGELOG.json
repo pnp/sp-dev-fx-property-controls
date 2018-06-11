@@ -1,0 +1,194 @@
+{
+  "versions": [
+    {
+      "version": "1.7.0",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "Add `npm postinstall` script to automatically add the localization config [#64](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/64)",
+          "Added a font field type for the `PropertyFieldCollectionData` control [#66](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/66)",
+          "Added a URL field type for the `PropertyFieldCollectionData` control [#72](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/72)",
+          "Add a description to the `PropertyFieldCollectionData` panel [#67](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/67)",
+          "Field validation implemented to enable/disable save buttons in `PropertyFieldCollectionData` control"
+        ],
+        "fixes": []
+      },
+      "contributions": []
+    },
+    {
+      "version": "1.6.0",
+      "changes": {
+        "new": [
+          "`PropertyFieldCollectionData` was added [#58](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/58)",
+          "`PropertyFieldOrder` was added [#19](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/19)",
+          "`PropertyFieldSwatchColorPicker` was added [#55](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/55)"
+        ],
+        "enhancements": [
+          "Allow the term set to be selectable in the `PropertyFieldTermPicker` [#60](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/60)"
+        ],
+        "fixes": [
+          "Fix for `PropertyFieldColorPicker` Palette Icon alignment issue in IE11 [#56](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/56)"
+        ]
+      },
+      "contributions": []
+    },
+    {
+      "version": "1.5.1",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "Color Pickers optionally return Color Objects [#55](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/55)"
+        ],
+        "fixes": [
+          "Undefined web part context fixed in the `PropertyFieldPeoplePicker` [#47](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/47)",
+          "Taxonomy service fix for working with term set GUID [#48](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/48)",
+          "Added focus intercepting input for Full style [#52](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/52)"
+        ]
+      },
+      "contributions": []
+    },
+    {
+      "version": "1.5.0",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "`PropertyFieldListPicker` control extended with select all lists option [#8](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/8)",
+          "`PropertyFieldTermPicker` control extended with the ability to search terms by typing in the textbox [#11](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/11) [#42](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/42) [#44](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/44) [#45](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/45)",
+          "`SPTermStorePickerService` has a new interface which contains only the required properties"
+        ],
+        "fixes": []
+      },
+      "contributions": []
+    },
+    {
+      "version": "1.4.2",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "Introduced the `onGetErrorMessage` property for the `PropertyFieldNumber` field control ([#36](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/36))"
+        ],
+        "fixes": []
+      },
+      "contributions": []
+    },
+    {
+      "version": "1.4.1",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "Optimized telemetry so that it only pushes control data"
+        ],
+        "fixes": [
+          "Fixes for issue [#30](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/30)",
+          "`PropertyFieldPeoplePicker` Validation does not work as expected [#33](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/33)"
+        ]
+      },
+      "contributions": []
+    },
+    {
+      "version": "1.4.0",
+      "changes": {
+        "new": [
+          "`PropertyFieldMultiSelect` got added",
+          "`PropertyFieldNumber` got added"
+        ],
+        "enhancements": [
+          "`PropertyFieldTermPicker` new introduced property to specify to show or hide the term store name: `hideTermStoreName`.",
+          "`PropertyFieldTermPicker` updated process when terms were unselected based on ID instead of path."
+        ],
+        "fixes": []
+      },
+      "contributions": []
+    },
+    {
+      "version": "1.3.0",
+      "changes": {
+        "new": [
+          "`PropertyFieldCodeEditor` got added"
+        ],
+        "enhancements": [
+          "`PropertyFieldTermPicker` improved with save and cancel button",
+          "`PropertyFieldTermPicker` improved with `onClick` event on input field"
+        ],
+        "fixes": []
+      },
+      "contributions": []
+    },
+    {
+      "version": "1.2.0",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "Added the option to the people picker to allow you to specify single or multi-selection"
+        ],
+        "fixes": [
+          "People picker accidentally picked the wrong person",
+          "Improved telemetry with some object checks"
+        ]
+      },
+      "contributions": []
+    },
+    {
+      "version": "1.1.1",
+      "changes": {
+        "new": [],
+        "enhancements": ["Removed operation name from telemetry"],
+        "fixes": []
+      },
+      "contributions": []
+    },
+    {
+      "version": "1.1.0",
+      "changes": {
+        "new": [
+          "Added the `PropertyFieldButtonWithCallout` control",
+          "Added the `PropertyFieldCheckboxWithCallout` control",
+          "Added the `PropertyFieldChoiceGroupWithCallout` control",
+          "Added the `PropertyFieldWithCallout` control",
+          "Added the `PropertyLabelWithCallout` control",
+          "Added the `PropertyLinkWithCallout` control",
+          "Added the `PropertySliderWithCallout` control"
+        ],
+        "enhancements": [
+          "Telemetry added",
+          "Term picker control has now the option to scope on term set or group"
+        ],
+        "fixes": []
+      },
+      "contributions": []
+    },
+    {
+      "version": "1.0.0",
+      "changes": {
+        "new": [
+          "Added the `PropertyFieldDropdownWithCallout` control",
+          "Added the `PropertyFieldTextWithCallout` control",
+          "Added the `PropertyFieldToggleWithCallout` control"
+        ],
+        "enhancements": [],
+        "fixes": []
+      },
+      "contributions": []
+    },
+    {
+      "version": "1.0.0-beta.3",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "Added `firstDayOfWeek` option to the date picker control"
+        ],
+        "fixes": []
+      },
+      "contributions": []
+    },
+    {
+      "version": "1.0.0-beta.2",
+      "changes": {
+        "new": ["Initial release"],
+        "enhancements": [],
+        "fixes": []
+      },
+      "contributions": []
+    }
+  ]
+}

@@ -84,6 +84,16 @@
   }
 }
 
+.urlField {
+  > span {
+    display: none;
+  }
+
+  div[class^="invalid_"] {
+    border-color: #a80000 !important;
+  }
+}
+
 
 /* Table layout */
 .table {

@@ -11,7 +11,7 @@
     "test": "gulp test",
     "versionUpdater": "gulp versionUpdater",
     "prepublishOnly": "gulp",
-    "changelog": "node scripts/sync-changelogs.js",
+    "changelog": "node scripts/create-changelog.js && node scripts/sync-changelogs.js",
     "postinstall": "node postinstall/install.js"
   },
   "dependencies": {

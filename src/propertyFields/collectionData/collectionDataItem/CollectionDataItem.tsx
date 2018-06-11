@@ -208,6 +208,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
         return <TextField placeholder={field.title}
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
+                          className={styles.urlField}
                           onGetErrorMessage={(value) => {
                             // Check if entered value is a valid URL
                             const regEx: RegExp = /^((http|https)?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;

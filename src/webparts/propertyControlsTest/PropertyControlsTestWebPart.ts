@@ -1,3 +1,4 @@
+import { IPropertyFieldGroupOrPerson } from './../../propertyFields/peoplePicker/IPropertyFieldPeoplePicker';
 import { DayOfWeek } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
@@ -34,7 +35,6 @@ import { PropertyFieldCollectionData, CustomCollectionFieldType } from '../../Pr
 import { PropertyFieldOrder } from '../../PropertyFieldOrder';
 import { orderedItem } from './components/OrderedItem';
 import { PropertyFieldSwatchColorPicker, PropertyFieldSwatchColorPickerStyle } from '../../PropertyFieldSwatchColorPicker';
-import { IPropertyFieldGroupOrPerson } from '../../../lib/propertyFields/peoplePicker';
 
 /**
  * Web part that can be used to test out the various property controls

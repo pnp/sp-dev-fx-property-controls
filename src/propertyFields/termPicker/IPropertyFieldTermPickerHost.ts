@@ -32,6 +32,7 @@ export interface ITermGroupProps extends ITermChanges {
   termsService: SPTermStorePickerService;
   multiSelection: boolean;
   isTermSetSelectable?: boolean;
+  disabledTermIds?: string[];
 }
 
 export interface ITermGroupState {
@@ -45,6 +46,7 @@ export interface ITermSetProps extends ITermChanges {
   autoExpand: () => void;
   multiSelection: boolean;
   isTermSetSelectable?: boolean;
+  disabledTermIds?: string[];
 }
 
 export interface ITermSetState {
@@ -57,6 +59,7 @@ export interface ITermProps extends ITermChanges {
   termset: string;
   term: ITerm;
   multiSelection: boolean;
+  disabled: boolean;
 }
 
 export interface ITermState {

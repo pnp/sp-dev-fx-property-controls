@@ -6,10 +6,11 @@
         "new": [],
         "enhancements": [
           "Add `npm postinstall` script to automatically add the localization config [#64](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/64)",
+          "Add a description to the `PropertyFieldCollectionData` panel [#67](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/67)",
           "Added a font field type for the `PropertyFieldCollectionData` control [#66](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/66)",
           "Added a URL field type for the `PropertyFieldCollectionData` control [#72](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/72)",
-          "Add a description to the `PropertyFieldCollectionData` panel [#67](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/67)",
-          "Field validation implemented to enable/disable save buttons in `PropertyFieldCollectionData` control"
+          "Field validation implemented to enable/disable save buttons in `PropertyFieldCollectionData` control. Related to previous enhancement.",
+          "Added a properties to the `TaxonomyPicker` to specify which terms are disabled/not-selectable [#69](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/69)"
         ],
         "fixes": [
           "`PropertyFieldPeoplePicker` validation error does not clear as expected [#68](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/68)"

@@ -160,6 +160,27 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   ],
                   disabled: false
                 }),
+                PropertyFieldTermPicker('terms', {
+                  label: 'Select terms',
+                  panelTitle: 'Select terms',
+                  initialValues: this.properties.terms,
+                  allowMultipleSelections: true,
+                  excludeSystemGroup: false,
+                  disabledTermIds: ["943fd9f0-3d7c-415c-9192-93c0e54573fb", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
+                  // disabledTermIds: ["943fd9f0-3d7c-415c-9192-93c0e54573fb", "73d18756-20af-41de-808c-2a1e21851e44", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
+                  // disabledTermIds: ["cd6f6d3c-672d-4244-9320-c1e64cc0626f", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  context: this.context,
+                  disabled: false,
+                  onGetErrorMessage: null,
+                  deferredValidationTime: 0,
+                  //limitByGroupNameOrID: 'Hockey Example',
+                  // limitByTermsetNameOrID: 'Countries',
+                  isTermSetSelectable: true,
+                  key: 'termSetsPickerFieldId',
+                  hideTermStoreName: true
+                }),
                 PropertyFieldNumber("numberValue", {
                   key: "numberValue",
                   label: "Number value only",
@@ -248,24 +269,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   key: 'multiListPickerFieldId'
-                }),
-                PropertyFieldTermPicker('terms', {
-                  label: 'Select terms',
-                  panelTitle: 'Select terms',
-                  initialValues: this.properties.terms,
-                  allowMultipleSelections: true,
-                  excludeSystemGroup: false,
-                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
-                  properties: this.properties,
-                  context: this.context,
-                  disabled: false,
-                  onGetErrorMessage: null,
-                  deferredValidationTime: 0,
-                  //limitByGroupNameOrID: 'Hockey Example',
-                  limitByTermsetNameOrID: 'Countries',
-                  isTermSetSelectable: true,
-                  key: 'termSetsPickerFieldId',
-                  hideTermStoreName: true
                 }),
                 PropertyFieldDateTimePicker('datetime', {
                   label: 'Select the date and time',

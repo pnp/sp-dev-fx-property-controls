@@ -23,6 +23,7 @@ export interface ITermPickerProps {
   value: IPickerTerms;
   allowMultipleSelections: boolean;
   isTermSetSelectable: boolean;
+  disabledTermIds: string[];
   onChanged: (items: IPickerTerm[]) => void;
 }
 
@@ -105,12 +106,13 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
    * When Filter Changes a new search for suggestions
    */
   private async onFilterChanged(filterText: string, tagList: IPickerTerm[]): Promise<IPickerTerm[]> {
+    const { context, termPickerHostProps, allowMultipleSelections, isTermSetSelectable, disabledTermIds } = this.props;
     // Only allow to select other tags if multi-selection is enabled
-    if (filterText !== "" && (this.props.allowMultipleSelections || tagList.length === 0)) {
-      let termsService = new SPTermStorePickerService(this.props.termPickerHostProps, this.props.context);
+    if (filterText !== "" && (allowMultipleSelections || tagList.length === 0)) {
+      let termsService = new SPTermStorePickerService(termPickerHostProps, context);
       let terms = await termsService.searchTermsByName(filterText);
       // Check if the termset can be selected
-      if (this.props.isTermSetSelectable) {
+      if (isTermSetSelectable) {
         // Retrieve the current termset
         const termSets = await termsService.getTermSets();
         // Check if termset was retrieved and if it contains the filter value
@@ -131,8 +133,19 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
       // Filter out the terms which are already set
       const filteredTerms = [];
       for (const term of terms) {
-        if (tagList.filter(tag => tag.key === term.key).length === 0) {
-          filteredTerms.push(term);
+        let canBePicked = true;
+        // Check if the term is in the disabled list
+        if (disabledTermIds && disabledTermIds.length > 0) {
+          if (disabledTermIds.indexOf(term.key) !== -1) {
+            canBePicked = false;
+          }
+        }
+        // Check if the term can be used
+        if (canBePicked) {
+          // Only retrieve the terms which are not yet tagged
+          if (tagList.filter(tag => tag.key === term.key).length === 0) {
+            filteredTerms.push(term);
+          }
         }
       }
       return filteredTerms;

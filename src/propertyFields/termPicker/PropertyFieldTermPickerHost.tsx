@@ -290,6 +290,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
                   onChanged={this.termsFromPickerChanged}
                   allowMultipleSelections={this.props.allowMultipleSelections}
                   isTermSetSelectable={this.props.isTermSetSelectable}
+                  disabledTermIds={this.props.disabledTermIds}
                 />
               </td>
               <td className={styles.termFieldRow}>
@@ -335,7 +336,15 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
                   }
                   {
                     termStore.Groups._Child_Items_.map((group) => {
-                      return <TermGroup key={group.Id} group={group} termstore={termStore.Id} termsService={this.termsService} activeNodes={this.state.activeNodes} changedCallback={this.termsChanged} multiSelection={this.props.allowMultipleSelections} isTermSetSelectable={this.props.isTermSetSelectable} />;
+                      return <TermGroup key={group.Id} 
+                                        group={group} 
+                                        termstore={termStore.Id} 
+                                        termsService={this.termsService} 
+                                        activeNodes={this.state.activeNodes} 
+                                        changedCallback={this.termsChanged} 
+                                        multiSelection={this.props.allowMultipleSelections} 
+                                        isTermSetSelectable={this.props.isTermSetSelectable} 
+                                        disabledTermIds={this.props.disabledTermIds} />;
                     })
                   }
                 </div>

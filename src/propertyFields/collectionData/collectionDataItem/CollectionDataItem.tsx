@@ -6,11 +6,14 @@ import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import { Checkbox } from 'office-ui-fabric-react/lib/components/Checkbox';
 import * as strings from 'PropertyControlStrings';
-import { ICustomCollectionField, CustomCollectionFieldType } from '..';
+import { ICustomCollectionField, CustomCollectionFieldType, FieldValidator } from '..';
 import { Dropdown } from 'office-ui-fabric-react';
+import { CollectionIconField } from '../collectionIconField';
+import { clone } from '@microsoft/sp-lodash-subset';
 
 export class CollectionDataItem extends React.Component<ICollectionDataItemProps, ICollectionDataItemState> {
   private emptyItem: any = null;
+  private validation: FieldValidator = {};
 
   constructor(props: ICollectionDataItemProps) {
     super(props);
@@ -22,7 +25,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
     }
 
     this.state = {
-      crntItem: this.props.item || {...this.emptyItem}
+      crntItem: clone(this.props.item) || {...this.emptyItem}
     };
   }
 
@@ -31,10 +34,10 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * @param prevProps
    * @param prevState
    */
-  public componentDidUpdate(prevProps: ICollectionDataItemProps, prevState: ICollectionDataItemState): void {
+  public componentDidUpdate(prevProps: ICollectionDataItemProps): void {
     if (this.props.item !== prevProps.item) {
       this.setState({
-        crntItem: this.props.item
+        crntItem: clone(this.props.item)
       });
     }
   }
@@ -50,11 +53,18 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
 
       // Check if current item is valid
       if (this.props.fAddInCreation) {
-        if (this.checkAllRequiredFieldsValid(crntItem) && this.checkAnyFieldContainsValue(crntItem)) {
+        if (this.checkAllRequiredFieldsValid(crntItem) &&
+            this.checkAnyFieldContainsValue(crntItem) &&
+            this.checkAllFieldsAreValid()) {
           this.props.fAddInCreation(crntItem);
         } else {
           this.props.fAddInCreation(null);
         }
+      }
+
+      // Check if item needs to be updated
+      if (this.props.fUpdateItem) {
+        this.updateItem();
       }
 
       // Store this in the current state
@@ -95,7 +105,22 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * Check if the add action needs to be disabled
    */
   private disableAdd(item: any) {
-    return !this.checkAllRequiredFieldsValid(item) || !this.checkAnyFieldContainsValue(item) || !this.props.fAddItem;
+    return !this.checkAllRequiredFieldsValid(item) || !this.checkAnyFieldContainsValue(item) || !this.checkAllFieldsAreValid() || !this.props.fAddItem;
+  }
+
+  /**
+   * Checks if all fields are valid
+   */
+  private checkAllFieldsAreValid(): boolean {
+    if (this.validation) {
+      const keys = Object.keys(this.validation);
+      for (const key of keys) {
+        if (!this.validation[key]) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   /**
@@ -105,7 +130,9 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
     if (this.props.fAddItem) {
       const { crntItem } = this.state;
       // Check if all the fields are correctly provided
-      if (this.checkAllRequiredFieldsValid(crntItem) && this.checkAnyFieldContainsValue(crntItem)) {
+      if (this.checkAllRequiredFieldsValid(crntItem) &&
+          this.checkAnyFieldContainsValue(crntItem) &&
+          this.checkAllFieldsAreValid()) {
         this.props.fAddItem(crntItem);
         // Clear all field values
         this.setState({
@@ -119,12 +146,19 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * Add the current row to the collection
    */
   private updateItem = () => {
+    const { crntItem } = this.state;
+    const isValid = this.checkAllRequiredFieldsValid(crntItem) && this.checkAnyFieldContainsValue(crntItem) && this.checkAllFieldsAreValid();
+
     if (this.props.fUpdateItem) {
-      const { crntItem } = this.state;
       // Check if all the fields are correctly provided
-      if (this.checkAllRequiredFieldsValid(crntItem) && this.checkAnyFieldContainsValue(crntItem)) {
+      if (isValid) {
         this.props.fUpdateItem(this.props.index, crntItem);
       }
+    }
+
+    // Set the validation for the item
+    if (this.props.fValidation) {
+      this.props.fValidation(this.props.index, isValid);
     }
   }
 
@@ -132,8 +166,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * Delete the item from the collection
    */
   private deleteRow = () => {
-    if (this.props.fdeleteItem) {
-      this.props.fdeleteItem(this.props.index);
+    if (this.props.fDeleteItem) {
+      this.props.fDeleteItem(this.props.index);
     }
   }
 
@@ -166,6 +200,26 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                    onChange={(ev) => this.onValueChanged(field.id, ev.target.value)} />
           </div>
         );
+      case CustomCollectionFieldType.fabricIcon:
+        return (
+          <CollectionIconField field={field} item={item} fOnValueChange={this.onValueChanged} />
+        );
+      case CustomCollectionFieldType.url:
+        return <TextField placeholder={field.title}
+                          value={item[field.id] ? item[field.id] : ""}
+                          required={field.required}
+                          className={styles.urlField}
+                          onGetErrorMessage={(value) => {
+                            // Check if entered value is a valid URL
+                            const regEx: RegExp = /^((http|https)?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+                            const isValid = (value === null || value.length === 0 || regEx.test(value));
+                            // Store the field validation
+                            this.validation[field.id] = isValid;
+                            // Trigger field change
+                            this.onValueChanged(field.id, value);
+                            // Return the error message if needed
+                            return isValid ? "" : strings.InvalidUrlError;
+                          }} />;
       case CustomCollectionFieldType.string:
       default:
         return <TextField placeholder={field.title}
@@ -193,7 +247,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
         {
           /* Check add or delete action */
           this.props.index !== null ? (
-            <Link title={strings.CollectionDeleteRowButtonLabel} disabled={!this.props.fdeleteItem} onClick={this.deleteRow}>
+            <Link title={strings.CollectionDeleteRowButtonLabel} disabled={!this.props.fDeleteItem} onClick={this.deleteRow}>
               <Icon iconName="Clear" />
             </Link>
           ) : (

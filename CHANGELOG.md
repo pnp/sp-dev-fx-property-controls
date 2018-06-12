@@ -1,12 +1,27 @@
 # Releases
 
-## 1.6.0 
+## 1.7.0
 
-**New controls**
+**Enhancements**
 
-- `PropertyFieldCollectionData` was added [58](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/58)
-- `PropertyFieldOrder` was added [19](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/19)
-- `PropertyFieldSwatchColorPicker` was added [55](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/55)
+- Add `npm postinstall` script to automatically add the localization config [#64](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/64)
+- Add a description to the `PropertyFieldCollectionData` panel [#67](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/67)
+- Added a font field type for the `PropertyFieldCollectionData` control [#66](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/66)
+- Added a URL field type for the `PropertyFieldCollectionData` control [#72](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/72)
+- Field validation implemented to enable/disable save buttons in `PropertyFieldCollectionData` control. Related to previous enhancement.
+- Added a properties to the `TaxonomyPicker` to specify which terms are disabled/not-selectable [#69](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/69)
+
+**Fixes**
+
+- `PropertyFieldPeoplePicker` validation error does not clear as expected [#68](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/68)
+
+## 1.6.0
+
+**New control(s)**
+
+- `PropertyFieldCollectionData` was added [#58](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/58)
+- `PropertyFieldOrder` was added [#19](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/19)
+- `PropertyFieldSwatchColorPicker` was added [#55](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/55)
 
 **Enhancements**
 
@@ -14,7 +29,7 @@
 
 **Fixes**
 
-- Fix for `PropertyFieldColorPicker` Palette Icon alignment issue in IE11 [56](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/56)
+- Fix for `PropertyFieldColorPicker` Palette Icon alignment issue in IE11 [#56](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/56)
 
 ## 1.5.1
 
@@ -34,13 +49,13 @@
 
 - `PropertyFieldListPicker` control extended with select all lists option [#8](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/8)
 - `PropertyFieldTermPicker` control extended with the ability to search terms by typing in the textbox [#11](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/11) [#42](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/42) [#44](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/44) [#45](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/45)
-- `SPTermStorePickerService` has a new interface which contains only the required properties 
+- `SPTermStorePickerService` has a new interface which contains only the required properties
 
 ## 1.4.2
 
 **Enhancements**
 
-- Introduced the `onGetErrorMessage` property for the `PropertyFieldNumber` field control ([#36 - PropertyFieldNumber control suggestion](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/36))
+- Introduced the `onGetErrorMessage` property for the `PropertyFieldNumber` field control ([#36](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/36))
 
 ## 1.4.1
 
@@ -50,12 +65,12 @@
 
 **Fixes**
 
-- Fixes for issue [#30 - Check if Label is null and if so don't render it.](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/30)
-- Fix for issue [#33 - `PropertyFieldPeoplePicker` Validation does not work as expected.](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/33)
+- Fixes for issue [#30](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/30)
+- `PropertyFieldPeoplePicker` Validation does not work as expected [#33](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/33)
 
 ## 1.4.0
 
-**New controls**
+**New control(s)**
 
 - `PropertyFieldMultiSelect` got added
 - `PropertyFieldNumber` got added
@@ -67,7 +82,7 @@
 
 ## 1.3.0
 
-**New controls**
+**New control(s)**
 
 - `PropertyFieldCodeEditor` got added
 
@@ -89,15 +104,14 @@
 
 ## 1.1.1
 
+**Enhancements**
+
 - Removed operation name from telemetry
 
 ## 1.1.0
 
-**Improvements**
-- Telemetry added
-- Term picker control has now the option to scope on term set or group
+**New control(s)**
 
-**New controls**
 - Added the `PropertyFieldButtonWithCallout` control
 - Added the `PropertyFieldCheckboxWithCallout` control
 - Added the `PropertyFieldChoiceGroupWithCallout` control
@@ -106,21 +120,27 @@
 - Added the `PropertyLinkWithCallout` control
 - Added the `PropertySliderWithCallout` control
 
+**Enhancements**
+
+- Telemetry added
+- Term picker control has now the option to scope on term set or group
+
 ## 1.0.0
+
+**New control(s)**
+
 - Added the `PropertyFieldDropdownWithCallout` control
 - Added the `PropertyFieldTextWithCallout` control
 - Added the `PropertyFieldToggleWithCallout` control
 
-## Beta 1.0.0-beta.4
+## 1.0.0-beta.3
 
-**New Controls**
-- Added the `PropertyFieldColorPicker` control
-- Added the `PropertyFieldSpinButton` control
+**Enhancements**
 
-## Beta 1.0.0-beta.3
-
-**Improvement**
 - Added `firstDayOfWeek` option to the date picker control
 
-## Beta 1.0.0-beta.2
+## 1.0.0-beta.2
+
+**New control(s)**
+
 - Initial release

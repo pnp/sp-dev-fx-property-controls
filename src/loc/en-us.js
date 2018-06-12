@@ -1,5 +1,6 @@
 define([], function () {
   return {
+    InvalidUrlError: "The provided URL is not valid",
     // Common field labels
     'SaveButtonLabel': 'Save',
     'CancelButtonLabel': 'Cancel',

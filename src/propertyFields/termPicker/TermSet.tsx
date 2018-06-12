@@ -109,7 +109,19 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
             <div style={styleProps}>
               {
                 this.state.terms.map(term => {
-                  return <Term key={term.Id} term={term} termset={this.props.termset.Id} activeNodes={this.props.activeNodes} changedCallback={this.props.changedCallback} multiSelection={this.props.multiSelection} />;
+                  let disabled = false;
+                  if (this.props.disabledTermIds && this.props.disabledTermIds.length > 0) {
+                    // Check if the current term ID exists in the disabled term IDs array
+                    disabled = this.props.disabledTermIds.indexOf(term.Id) !== -1;
+                  }
+
+                  return <Term key={term.Id}
+                               term={term}
+                               termset={this.props.termset.Id}
+                               activeNodes={this.props.activeNodes}
+                               changedCallback={this.props.changedCallback}
+                               multiSelection={this.props.multiSelection}
+                               disabled={disabled} />;
                 })
               }
             </div>

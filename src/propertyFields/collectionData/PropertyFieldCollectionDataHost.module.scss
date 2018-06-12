@@ -72,6 +72,28 @@
   }
 }
 
+.iconField {
+  position: relative;
+
+  i {
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    vertical-align: top;
+  }
+}
+
+.urlField {
+  > span {
+    display: none;
+  }
+
+  div[class^="invalid_"] {
+    border-color: #a80000 !important;
+  }
+}
+
 
 /* Table layout */
 .table {

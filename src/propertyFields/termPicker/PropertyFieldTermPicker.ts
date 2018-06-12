@@ -29,6 +29,7 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private panelTitle: string;
   private hideTermStoreName: boolean;
   private isTermSetSelectable: boolean;
+  private disabledTermIds: string[];
 
   public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { }
   private customProperties: any;
@@ -57,6 +58,7 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.limitByTermsetNameOrID = _properties.limitByTermsetNameOrID;
     this.hideTermStoreName = _properties.hideTermStoreName;
     this.isTermSetSelectable = _properties.isTermSetSelectable;
+    this.disabledTermIds = _properties.disabledTermIds;
 
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
@@ -91,6 +93,7 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
       limitByTermsetNameOrID: this.limitByTermsetNameOrID,
       hideTermStoreName: this.hideTermStoreName,
       isTermSetSelectable: this.isTermSetSelectable,
+      disabledTermIds: this.disabledTermIds,
       context: this.context,
       onDispose: this.dispose,
       onRender: this.render,

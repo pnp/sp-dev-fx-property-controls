@@ -15,6 +15,10 @@ export interface IPropertyFieldCollectionDataProps {
    */
   panelHeader: string;
   /**
+   * Property that allows you to specify a description in the collection panel.
+   */
+  panelDescription?: string;
+  /**
    * Label of the button to open the panel.
    */
   manageBtnLabel: string;

@@ -1,8 +1,6 @@
 import * as React from 'react';
 import * as appInsights from '../../common/appInsights';
-import { ICustomCollectionField, IPropertyFieldCollectionDataHostProps, IPropertyFieldCollectionDataHostState } from '.';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import styles from './PropertyFieldCollectionDataHost.module.scss';
+import { IPropertyFieldCollectionDataHostProps, IPropertyFieldCollectionDataHostState } from '.';
 import { DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/components/Panel';
 import { Label } from 'office-ui-fabric-react/lib/components/Label';
@@ -66,6 +64,11 @@ export class PropertyFieldCollectionDataHost extends React.Component<IPropertyFi
                onDismiss={this.closePanel}
                type={PanelType.large}
                headerText={this.props.panelHeader}>
+          {
+            this.props.panelDescription && (
+              <p>{this.props.panelDescription}</p>
+            )
+          }
           <CollectionDataViewer {...this.props} fOnSave={this.onSave} fOnClose={this.closePanel} />
         </Panel>
       </div>

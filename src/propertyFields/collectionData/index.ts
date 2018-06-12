@@ -3,3 +3,4 @@ export * from './IPropertyFieldCollectionData';
 export * from './PropertyFieldCollectionData';
 export * from './IPropertyFieldCollectionDataHost';
 export * from './PropertyFieldCollectionDataHost';
+export * from './FieldValidator';

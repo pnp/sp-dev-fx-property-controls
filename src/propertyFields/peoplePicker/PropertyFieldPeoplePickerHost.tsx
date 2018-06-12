@@ -1,8 +1,5 @@
 import * as React from 'react';
 import { IPropertyFieldGroupOrPerson, PrincipalType } from './IPropertyFieldPeoplePicker';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
-import { SPHttpClient, ISPHttpClientOptions, SPHttpClientResponse } from '@microsoft/sp-http';
-import { EnvironmentType, Environment } from '@microsoft/sp-core-library';
 import { NormalPeoplePicker, IBasePickerSuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { IPersonaProps, PersonaPresence, PersonaInitialsColor } from 'office-ui-fabric-react/lib/Persona';
@@ -12,7 +9,6 @@ import { IPropertyFieldPeoplePickerHostProps, IPeoplePickerState } from './IProp
 import SPPeopleSearchService from '../../services/SPPeopleSearchService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as appInsights from '../../common/appInsights';
-import { isEqual } from '@microsoft/sp-lodash-subset';
 
 /**
  * Renders the controls for PropertyFieldPeoplePicker component
@@ -109,8 +105,9 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
         }
       }
 
-      if (found === false)
+      if (found === false) {
         res.push(element);
+      }
     });
     return res;
   }
@@ -179,6 +176,9 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
       }
     } else {
       this.notifyAfterValidate(this.props.initialData, value);
+      this.setState({
+        errorMessage: null
+      });
     }
   }
 
@@ -210,7 +210,10 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   private _findIndex(selectedItem: IPersonaProps): number {
     for (let i = 0; i < this.resultsPersonas.length; i++) {
       const crntPersona = this.resultsPersonas[i];
-      if (isEqual(crntPersona, selectedItem)) {
+      // Check if the imageUrl, primaryText, secondaryText are equal
+      if (crntPersona.imageUrl === selectedItem.imageUrl &&
+          crntPersona.primaryText === selectedItem.primaryText &&
+          crntPersona.secondaryText === selectedItem.secondaryText) {
         return i;
       }
     }
@@ -228,7 +231,6 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
           const people: IPropertyFieldGroupOrPerson = this.resultsPeople[index];
           this.selectedPeople.push(people);
           this.selectedPersonas.push(this.resultsPersonas[index]);
-          this.refreshWebPartProperties();
         }
       } else {
         this.selectedPersonas.forEach((person, index2) => {
@@ -239,7 +241,6 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
           }
         });
       }
-
     } else {
       this.selectedPersonas.splice(0, this.selectedPersonas.length);
       this.selectedPeople.splice(0, this.selectedPeople.length);

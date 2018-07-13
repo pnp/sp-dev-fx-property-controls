@@ -1,7 +1,7 @@
 {
   "name": "@pnp/spfx-property-controls",
   "description": "Reusable property pane controls for SharePoint Framework solutions",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -11,12 +11,11 @@
     "test": "gulp test",
     "versionUpdater": "gulp versionUpdater",
     "prepublishOnly": "gulp",
-    "changelog": "node scripts/create-changelog.js && node scripts/sync-changelogs.js",
+    "changelog": "node scripts/create-changelog.js && node scripts/sync-changelogs.js && gulp versionUpdater",
     "postinstall": "node postinstall/install.js"
   },
   "dependencies": {
-    "@types/applicationinsights-js": "1.0.5",
-    "applicationinsights-js": "^1.0.14",
+    "@pnp/telemetry-js": "1.0.0",
     "react-ace": "5.8.0"
   },
   "devDependencies": {
@@ -52,7 +51,7 @@
   "bugs": {
     "url": "https://github.com/SharePoint/sp-dev-fx-property-controls/issues"
   },
-  "homepage": "https://github.com/SharePoint/sp-dev-fx-property-controls",
+  "homepage": "https://sharepoint.github.io/sp-dev-fx-property-controls/",
   "main": "lib/index.js",
   "maintainers": [
     {

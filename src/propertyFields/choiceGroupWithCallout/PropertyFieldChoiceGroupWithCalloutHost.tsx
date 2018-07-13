@@ -5,13 +5,13 @@ import { ChoiceGroup } from 'office-ui-fabric-react';
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 
 import { IPropertyFieldChoiceGroupWithCalloutHostProps } from './IPropertyFieldChoiceGroupWithCalloutHost';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 
 export default class PropertyFieldToggleWithCalloutHost extends React.Component<IPropertyFieldChoiceGroupWithCalloutHostProps, null> {
     constructor(props: IPropertyFieldChoiceGroupWithCalloutHostProps) {
         super(props);
 
-        appInsights.track('PropertyFieldToggleWithCallout', {
+        telemetry.track('PropertyFieldToggleWithCallout', {
           disabled: props.disabled
         });
     }

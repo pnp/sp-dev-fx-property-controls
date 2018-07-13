@@ -6,13 +6,13 @@ import { TextField } from 'office-ui-fabric-react';
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 
 import {IPropertyFieldTextWithCalloutHostProps} from './IPropertyFieldTextWithCalloutHost';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 
 export default class PropertyFieldTextWithCalloutHost extends React.Component<IPropertyFieldTextWithCalloutHostProps, null> {
   constructor(props: IPropertyFieldTextWithCalloutHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldTextWithCallout', {
+    telemetry.track('PropertyFieldTextWithCallout', {
       disabled: props.disabled
     });
   }

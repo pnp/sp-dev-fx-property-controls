@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 import PlaceholderWithCallout from '../../common/placeholderWithCallout/PlaceholderWithCallout';
 
 import { IPropertyFieldLabelWithCalloutHostProps } from './IPropertyFieldLabelWithCalloutHost';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 
 /**
 * Renders the control for PropertyFieldLabelWithCallout component
@@ -14,7 +14,7 @@ export default class PropertyFieldLabelHost extends React.Component<IPropertyFie
   constructor(props: IPropertyFieldLabelWithCalloutHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldLabel', {
+    telemetry.track('PropertyFieldLabel', {
       disabled: props.disabled
     });
   }

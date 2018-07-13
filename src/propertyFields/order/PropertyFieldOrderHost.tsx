@@ -6,7 +6,7 @@ import { DragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop';
 import { IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import * as React from 'react';
 
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 import { IPropertyFieldOrderHostProps, IPropertyFieldOrderHostState } from './IPropertyFieldOrderHost';
 import styles from './PropertyFieldOrderHost.module.scss';
 
@@ -22,7 +22,7 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 	constructor(props: IPropertyFieldOrderHostProps, state: IPropertyFieldOrderHostState) {
     super(props);
 
-		appInsights.track('PropertyFieldOrder', {
+		telemetry.track('PropertyFieldOrder', {
 			disabled: props.disabled
 		});
 

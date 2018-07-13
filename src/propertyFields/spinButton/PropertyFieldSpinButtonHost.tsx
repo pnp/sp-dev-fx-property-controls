@@ -7,14 +7,14 @@ import {
 	IPropertyFieldSpinButtonHostState
 } from './IPropertyFieldSpinButtonHost';
 import * as strings from 'PropertyControlStrings';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 
 export default class PropertyFieldSpinButtonHost extends React.Component<IPropertyFieldSpinButtonHostProps, IPropertyFieldSpinButtonHostState> {
 
 	constructor(props: IPropertyFieldSpinButtonHostProps, state: IPropertyFieldSpinButtonHostState) {
     super(props);
 
-    appInsights.track('PropertyFieldSpinButton', {
+    telemetry.track('PropertyFieldSpinButton', {
       disabled: props.disabled
     });
 

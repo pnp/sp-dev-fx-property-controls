@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 import { IPropertyFieldCollectionDataHostProps, IPropertyFieldCollectionDataHostState } from '.';
 import { DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/components/Panel';
@@ -16,7 +16,7 @@ export class PropertyFieldCollectionDataHost extends React.Component<IPropertyFi
       panelOpen: false
     };
 
-    appInsights.track('PropertyFieldCollectionData', {});
+    telemetry.track('PropertyFieldCollectionData', {});
   }
 
   /**

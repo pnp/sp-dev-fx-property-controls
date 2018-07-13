@@ -5,13 +5,13 @@ import { Slider } from 'office-ui-fabric-react';
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 
 import { IPropertyFieldSliderWithCalloutHostProps } from './IPropertyFieldSliderWithCalloutHost';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 
 export default class PropertyFieldSliderWithCalloutHost extends React.Component<IPropertyFieldSliderWithCalloutHostProps, null> {
   constructor(props: IPropertyFieldSliderWithCalloutHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldSliderWithCallout', {
+    telemetry.track('PropertyFieldSliderWithCallout', {
       disabled: props.disabled
     });
   }

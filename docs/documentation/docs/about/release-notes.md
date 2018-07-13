@@ -5,6 +5,7 @@
 **Enhancements**
 
 - New telemetry approach which allows you to use Application Insights instance [#79](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/79)
+- `PropertyFieldListPicker` add optional property for target site [#21](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/21)
 
 ## 1.7.0
 

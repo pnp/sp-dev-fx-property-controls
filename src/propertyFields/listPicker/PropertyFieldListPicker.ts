@@ -24,6 +24,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
   //Custom properties label: string;
   private label: string;
   private context: IWebPartContext;
+  private webAbsoluteUrl?: string;
   private selectedList: string;
   private selectedLists: string[];
   private baseTemplate: number;
@@ -54,6 +55,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.properties.onRender = this.render;
     this.label = _properties.label;
     this.context = _properties.context;
+    this.webAbsoluteUrl = _properties.webAbsoluteUrl;
     this.selectedList = _properties.selectedList;
     this.selectedLists = _properties.selectedLists;
     this.baseTemplate = _properties.baseTemplate;
@@ -84,6 +86,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
       label: this.label,
       targetProperty: this.targetProperty,
       context: this.context,
+      webAbsoluteUrl: this.webAbsoluteUrl,
       baseTemplate: this.baseTemplate,
       orderBy: this.orderBy,
       multiSelect: this.multiSelect,
@@ -139,6 +142,7 @@ export function PropertyFieldListPicker(targetProperty: string, properties: IPro
     label: properties.label,
     targetProperty: targetProperty,
     context: properties.context,
+    webAbsoluteUrl: properties.webAbsoluteUrl,
     selectedList: typeof properties.selectedList === 'string' ? properties.selectedList : null,
     selectedLists: typeof properties.selectedList !== 'string' ? properties.selectedList : null,
     baseTemplate: properties.baseTemplate,

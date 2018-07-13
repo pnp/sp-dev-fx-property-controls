@@ -22,6 +22,10 @@ export interface IPropertyFieldListPickerProps {
    */
   context: IWebPartContext;
   /**
+   * Relative Web Url of target site (user requires permissions)
+   */
+  webAbsoluteUrl?: string;
+  /**
    * Initial selected list set of the control
    */
   selectedList?: string | string[];
@@ -104,6 +108,7 @@ export interface IPropertyFieldListPickerPropsInternal extends IPropertyFieldLis
   label: string;
   targetProperty: string;
   context: IWebPartContext;
+  webAbsoluteUrl?: string;
   selectedList?: string;
   selectedLists?: string[];
   baseTemplate?: number;

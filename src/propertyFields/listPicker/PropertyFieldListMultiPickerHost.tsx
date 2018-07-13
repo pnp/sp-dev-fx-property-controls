@@ -47,7 +47,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   }
 
   /**
-  * Loads the list from SharePoint current web site
+  * Loads the list from SharePoint current web site, or target site if specified by webRelativeUrl
   */
   private loadLists(): void {
     // Builds the SharePoint List service

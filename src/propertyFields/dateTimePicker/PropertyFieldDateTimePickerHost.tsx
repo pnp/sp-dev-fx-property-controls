@@ -11,7 +11,7 @@ import styles from './PropertyFieldDateTimePickerHost.module.scss';
 import HoursComponent from './HoursComponent';
 import MinutesComponent from './MinutesComponent';
 import SecondsComponent from './SecondsComponent';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 
 /**
  * Defines the labels of the DatePicker control (as months, days, etc.)
@@ -90,7 +90,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   constructor(props: IPropertyFieldDateTimePickerHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldDateTimePicker', {
+    telemetry.track('PropertyFieldDateTimePicker', {
       dateConvention: props.dateConvention ? DateConvention[props.dateConvention] : '',
       formatDate: !!props.formatDate,
       timeConvention: props.timeConvention ? TimeConvention[props.timeConvention] : '',
@@ -132,7 +132,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   private _getDateValue() {
     if (typeof this.props.initialDate !== 'undefined' && this.props.initialDate !== null) {
       if (typeof this.props.initialDate.value !== 'undefined' && this.props.initialDate.value !== null) {
-        return new Date(this.props.initialDate.value);
+        return new Date(this.props.initialDate.value.toString());
       }
     }
     return null;

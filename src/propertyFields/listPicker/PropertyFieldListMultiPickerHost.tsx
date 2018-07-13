@@ -8,7 +8,7 @@ import { IPropertyFieldListMultiPickerHostProps, IPropertyFieldListMultiPickerHo
 import { ISPLists, ISPList } from './IPropertyFieldListPickerHost';
 import SPListPickerService from '../../services/SPListPickerService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 
 /**
 * Renders the controls for PropertyFieldSPListMultiplePicker component
@@ -25,7 +25,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   constructor(props: IPropertyFieldListMultiPickerHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldListMultiPicker', {
+    telemetry.track('PropertyFieldListMultiPicker', {
       disabled: props.disabled
     });
 
@@ -47,7 +47,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   }
 
   /**
-  * Loads the list from SharePoint current web site
+  * Loads the list from SharePoint current web site, or target site if specified by webRelativeUrl
   */
   private loadLists(): void {
     // Builds the SharePoint List service

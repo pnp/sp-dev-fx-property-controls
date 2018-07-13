@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 import PlaceholderWithCallout from '../../common/placeholderWithCallout/PlaceholderWithCallout';
 
 import { IPropertyFieldButtonWithCalloutHostProps } from './IPropertyFieldButtonWithCalloutHost';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 
 
 /**
@@ -15,7 +15,7 @@ export default class PropertyFieldButtonHost extends React.Component<IPropertyFi
     constructor(props: IPropertyFieldButtonWithCalloutHostProps) {
       super(props);
 
-      appInsights.track('PropertyFieldButton', {
+      telemetry.track('PropertyFieldButton', {
         disabled: props.disabled
       });
     }

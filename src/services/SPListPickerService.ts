@@ -23,7 +23,7 @@ export default class SPListPickerService {
   }
 
   /**
-   * Gets the collection of libs in the current SharePoint site
+   * Gets the collection of libs in the current SharePoint site, or target site if specified by webRelativeUrl
    */
   public getLibs(): Promise<ISPLists> {
     if (Environment.type === EnvironmentType.Local) {
@@ -31,8 +31,10 @@ export default class SPListPickerService {
       return this.getLibsFromMock();
     }
     else {
+      // use the web relative url if provided, otherwise default to current SharePoint site
+      const webAbsoluteUrl = this.props.webAbsoluteUrl ? this.props.webAbsoluteUrl : this.context.pageContext.web.absoluteUrl;
       // If the running environment is SharePoint, request the lists REST service
-      let queryUrl: string = `${this.context.pageContext.web.absoluteUrl}/_api/lists?$select=Title,id,BaseTemplate`;
+      let queryUrl: string = `${webAbsoluteUrl}/_api/lists?$select=Title,id,BaseTemplate`;
       // Check if the orderBy property is provided
       if (this.props.orderBy !== null) {
         queryUrl += '&$orderby=';

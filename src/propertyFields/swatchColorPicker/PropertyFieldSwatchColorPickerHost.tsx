@@ -4,7 +4,7 @@ import { IColorCellProps, SwatchColorPicker } from 'office-ui-fabric-react/lib/S
 import * as strings from 'PropertyControlStrings';
 import * as React from 'react';
 
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 import { IPropertyFieldSwatchColorOption, PropertyFieldSwatchColorPickerStyle } from './IPropertyFieldSwatchColorPicker';
 import {
     IPropertyFieldSwatchColorPickerHostProps,
@@ -17,7 +17,7 @@ export default class PropertyFieldSwatchColorPickerHost extends React.Component<
 	constructor(props: IPropertyFieldSwatchColorPickerHostProps, state: IPropertyFieldSwatchColorPickerHostState) {
     super(props);
 
-		appInsights.track('PropertyFieldSwatchColorPicker', {
+		telemetry.track('PropertyFieldSwatchColorPicker', {
 		  disabled: props.disabled
 		});
 

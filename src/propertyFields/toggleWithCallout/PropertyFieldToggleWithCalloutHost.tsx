@@ -5,13 +5,13 @@ import { Toggle } from 'office-ui-fabric-react';
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 
 import { IPropertyFieldToggleWithCalloutHostProps } from './IPropertyFieldToggleWithCalloutHost';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 
 export default class PropertyFieldToggleWithCalloutHost extends React.Component<IPropertyFieldToggleWithCalloutHostProps, null> {
   constructor(props: IPropertyFieldToggleWithCalloutHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldToggleWithCallout', {
+    telemetry.track('PropertyFieldToggleWithCallout', {
       disabled: props.disabled
     });
   }

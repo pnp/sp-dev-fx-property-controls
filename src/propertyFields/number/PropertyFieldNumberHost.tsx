@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { IPropertyFieldNumberHostProps, IPropertyFieldNumberHostState } from './IPropertyFieldNumberHost';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import * as strings from 'PropertyControlStrings';
 
@@ -12,7 +12,7 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
   constructor(props: IPropertyFieldNumberHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldNumber', {
+    telemetry.track('PropertyFieldNumber', {
       disabled: props.disabled
     });
 

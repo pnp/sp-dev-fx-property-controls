@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 import PlaceholderWithCallout from '../../common/placeholderWithCallout/PlaceholderWithCallout';
 
 import { IPropertyFieldLinkWithCalloutHostProps } from './IPropertyFieldLinkWithCalloutHost';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 
 /**
 * Renders the control for PropertyFieldLinkWithCallout component
@@ -14,7 +14,7 @@ export default class PropertyFieldLinkHost extends React.Component<IPropertyFiel
   constructor(props: IPropertyFieldLinkWithCalloutHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldLink', {
+    telemetry.track('PropertyFieldLink', {
       disabled: props.disabled
     });
   }

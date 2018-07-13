@@ -8,7 +8,7 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { IPropertyFieldCodeEditorHostProps, IPropertyFieldCodeEditorHostState } from './IPropertyFieldCodeEditorHost';
 import styles from './PropertyFieldCodeEditorHost.module.scss';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 import * as strings from 'PropertyControlStrings';
 import * as brace from 'brace';
 import AceEditor from 'react-ace';
@@ -35,7 +35,7 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
   constructor(props: IPropertyFieldCodeEditorHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldCodeEditor', {
+    telemetry.track('PropertyFieldCodeEditor', {
       language: props.language,
       disabled: props.disabled
     });

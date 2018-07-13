@@ -19,7 +19,7 @@ import styles from './PropertyFieldTermPickerHost.module.scss';
 import { sortBy, uniqBy, cloneDeep } from '@microsoft/sp-lodash-subset';
 import TermGroup from './TermGroup';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 import * as strings from 'PropertyControlStrings';
 
 /**
@@ -47,7 +47,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
   constructor(props: IPropertyFieldTermPickerHostProps) {
     super(props);
 
-    appInsights.track('PropertyFieldTermPicker', {
+    telemetry.track('PropertyFieldTermPicker', {
       allowMultipleSelections: props.allowMultipleSelections,
       excludeSystemGroup: props.excludeSystemGroup,
       limitByTermsetNameOrID: !!props.limitByTermsetNameOrID,

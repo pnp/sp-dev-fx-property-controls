@@ -5,13 +5,13 @@ import * as _ from 'lodash';
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 
 import { IPropertyFieldDropdownWithCalloutHostProps } from './IPropertyFieldDropdownWithCalloutHost';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 
 export default class PropertyFieldDropdownHost extends React.Component<IPropertyFieldDropdownWithCalloutHostProps, null> {
     constructor(props: IPropertyFieldDropdownWithCalloutHostProps) {
       super(props);
 
-      appInsights.track('PropertyFieldDropdown', {
+      telemetry.track('PropertyFieldDropdown', {
         disabled: props.disabled
       });
     }

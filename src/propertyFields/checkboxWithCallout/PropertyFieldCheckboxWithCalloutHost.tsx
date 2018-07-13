@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 import PlaceholderWithCallout from '../../common/placeholderWithCallout/PlaceholderWithCallout';
 
 import { IPropertyFieldCheckboxWithCalloutHostProps } from './IPropertyFieldCheckboxWithCalloutHost';
-import * as appInsights from '../../common/appInsights';
+import * as telemetry from '../../common/telemetry';
 
 /**
  * Renders the control for PropertyFieldCheckboxWithCallout component
@@ -14,7 +14,7 @@ export default class PropertyFieldCheckboxHost extends React.Component<IProperty
     constructor(props: IPropertyFieldCheckboxWithCalloutHostProps) {
         super(props);
 
-        appInsights.track('PropertyFieldCheckbox', {
+        telemetry.track('PropertyFieldCheckbox', {
           disabled: props.disabled
         });
     }

@@ -250,7 +250,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   context: this.context,
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
-                  key: 'listPickerFieldId'
+                  key: 'listPickerFieldId',
+                  webAbsoluteUrl: this.context.pageContext.web.absoluteUrl
                 }),
                 PropertyFieldListPicker('multiList', {
                   label: 'Select multiple lists',
@@ -268,7 +269,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   context: this.context,
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
-                  key: 'multiListPickerFieldId'
+                  key: 'multiListPickerFieldId',
+                  webAbsoluteUrl: this.context.pageContext.web.absoluteUrl
                 }),
                 PropertyFieldDateTimePicker('datetime', {
                   label: 'Select the date and time',

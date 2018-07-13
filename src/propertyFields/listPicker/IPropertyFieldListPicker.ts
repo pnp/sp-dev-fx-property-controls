@@ -22,7 +22,7 @@ export interface IPropertyFieldListPickerProps {
    */
   context: IWebPartContext;
   /**
-   * Relative Web Url of target site (user requires permissions)
+   * Absolute Web Url of target site (user requires permissions)
    */
   webAbsoluteUrl?: string;
   /**

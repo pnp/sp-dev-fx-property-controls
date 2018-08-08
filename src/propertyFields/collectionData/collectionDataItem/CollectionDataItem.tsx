@@ -182,7 +182,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
         return <Checkbox checked={item[field.id] ? item[field.id] : false}
                          onChange={(ev, value) => this.onValueChanged(field.id, value)} />;
       case CustomCollectionFieldType.dropdown:
-        return <Dropdown placeHolder={field.title}
+        return <Dropdown placeHolder={field.placeholder || field.title}
                          options={field.options}
                          selectedKey={item[field.id] || null}
                          required={field.required}
@@ -192,7 +192,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
           <div className={styles.numberField}>
             <input type="number"
                    role="spinbutton"
-                   placeholder={field.title}
+                   placeholder={field.placeholder || field.title}
                    aria-valuemax="99999"
                    aria-valuemin="-999999"
                    aria-valuenow={item[field.id] || ''}
@@ -205,7 +205,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
           <CollectionIconField field={field} item={item} fOnValueChange={this.onValueChanged} />
         );
       case CustomCollectionFieldType.url:
-        return <TextField placeholder={field.title}
+        return <TextField placeholder={field.placeholder || field.title}
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
                           className={styles.urlField}
@@ -222,7 +222,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           }} />;
       case CustomCollectionFieldType.string:
       default:
-        return <TextField placeholder={field.title}
+        return <TextField placeholder={field.placeholder || field.title}
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
                           onChanged={(value) => this.onValueChanged(field.id, value)} />;

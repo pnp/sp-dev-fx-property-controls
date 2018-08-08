@@ -108,7 +108,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       id: "Title",
                       title: "Firstname",
                       type: CustomCollectionFieldType.string,
-                      required: true
+                      required: true,
+                      placeholder: "Enter the firstname"
                     },
                     {
                       id: "Lastname",
@@ -119,7 +120,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       id: "Age",
                       title: "Age",
                       type: CustomCollectionFieldType.number,
-                      required: true
+                      required: true,
+                      placeholder: "Enter the age"
                     },
                     {
                       id: "City",
@@ -139,7 +141,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                           text: "Montreal"
                         }
                       ],
-                      required: true
+                      required: true,
+                      placeholder: "Favorite city of the person"
                     },
                     {
                       id: "Sign",
@@ -149,13 +152,15 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                     {
                       id: "IconName",
                       title: "Icon Name",
-                      type: CustomCollectionFieldType.fabricIcon
+                      type: CustomCollectionFieldType.fabricIcon,
+                      placeholder: "Enter the name of the icon"
                     },
                     {
                       id: "URL",
                       title: "URL",
                       type: CustomCollectionFieldType.url,
-                      required: true
+                      required: true,
+                      placeholder: "Enter a URL"
                     }
                   ],
                   disabled: false

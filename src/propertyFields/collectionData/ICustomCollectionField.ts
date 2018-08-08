@@ -21,6 +21,10 @@ export interface ICustomCollectionField {
    * Dropdown options. Only nescessary when dropdown type is used.
    */
   options?: IDropdownOption[];
+  /**
+   * Input placeholder text.
+   */
+  placeholder?: string;
 }
 
 export enum CustomCollectionFieldType {

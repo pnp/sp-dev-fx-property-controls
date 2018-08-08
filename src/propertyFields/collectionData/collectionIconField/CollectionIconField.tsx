@@ -16,7 +16,7 @@ export class CollectionIconField extends React.Component<ICollectionIconFieldPro
   public render(): React.ReactElement<ICollectionIconFieldProps> {
     return (
       <div className={styles.iconField}>
-        <TextField placeholder={this.props.field.title}
+        <TextField placeholder={this.props.field.placeholder || this.props.field.title}
                    value={this.props.item[this.props.field.id] ? this.props.item[this.props.field.id] : ""}
                    required={this.props.field.required}
                    onChanged={(value) => this.props.fOnValueChange(this.props.field.id, value)} />

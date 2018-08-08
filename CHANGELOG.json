@@ -1,6 +1,17 @@
 {
   "versions": [
     {
+      "version": "1.9.0",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "`PropertyFieldCollectionData`: Hide save button when \"Add and save\" is shown [#88](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/88)"
+        ],
+        "fixes": []
+      },
+      "contributions": []
+    },
+    {
       "version": "1.8.0",
       "changes": {
         "new": [],

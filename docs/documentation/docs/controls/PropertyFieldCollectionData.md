@@ -117,6 +117,7 @@ Interface `ICustomCollectionField`
 | options | [IDropdownOption[]](https://developer.microsoft.com/en-us/fabric#/components/dropdown) | no | Dropdown options. Only necessary when dropdown type is used. |
 | placeholder | string | no | Placehoder text which will be used for the input field. If not provided the input title will be used. |
 | defaultValue | any | no | Specify a default value for the input field. |
+| onGetErrorMessage | (value: any): string \| Promise<string> | no | The method is used to get the validation error message and determine whether the input value is valid or not. |
 
 Enum `CustomCollectionFieldType`
 

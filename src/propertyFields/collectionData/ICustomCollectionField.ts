@@ -29,6 +29,14 @@ export interface ICustomCollectionField {
    * Default value for the field
    */
   defaultValue?: any;
+  /**
+   * The method is used to get the validation error message and determine whether the input value is valid or not.
+   *
+   * When it returns string:
+   * - If valid, it returns empty string.
+   * - If invalid, the field will show a red border
+   */
+  onGetErrorMessage?: (value: any) => string | Promise<string>;
 }
 
 export enum CustomCollectionFieldType {

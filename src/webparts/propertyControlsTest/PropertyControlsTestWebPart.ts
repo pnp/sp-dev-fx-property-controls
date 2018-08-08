@@ -81,6 +81,15 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     return true;
   }
 
+  private minLengthValidation (value: string) {
+    return value.length >= 3 ? "" : "Should at least contain 3 characters.";
+  }
+
+  private ageValidation (value: number) {
+    console.log(value);
+    return value >= 18 ? "" : "Person should be at least 18 years old";
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
 
     const dropdownWithCalloutSelectedKey: string = this.properties.dropdownWithCalloutKey || 'gryffindor';
@@ -109,7 +118,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       title: "Firstname",
                       type: CustomCollectionFieldType.string,
                       required: true,
-                      placeholder: "Enter the firstname"
+                      placeholder: "Enter the firstname",
+                      onGetErrorMessage: this.minLengthValidation
                     },
                     {
                       id: "Lastname",
@@ -121,7 +131,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       title: "Age",
                       type: CustomCollectionFieldType.number,
                       required: true,
-                      placeholder: "Enter the age"
+                      placeholder: "Enter the age",
+                      onGetErrorMessage: this.ageValidation
                     },
                     {
                       id: "City",
@@ -156,7 +167,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       title: "Icon Name",
                       type: CustomCollectionFieldType.fabricIcon,
                       placeholder: "Enter the name of the icon",
-                      defaultValue: "website"
+                      defaultValue: "website",
+                      onGetErrorMessage: this.minLengthValidation
                     },
                     {
                       id: "URL",

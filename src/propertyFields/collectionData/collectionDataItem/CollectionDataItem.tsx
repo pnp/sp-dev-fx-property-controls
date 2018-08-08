@@ -21,7 +21,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
     // Create an empty item with all properties
     this.emptyItem = {};
     for (const field of this.props.fields) {
-      this.emptyItem[field.id] = null;
+      // Assign default value or null to the emptyItem
+      this.emptyItem[field.id] = field.defaultValue || null;
     }
 
     this.state = {

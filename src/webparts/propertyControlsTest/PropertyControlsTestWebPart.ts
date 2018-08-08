@@ -142,18 +142,21 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                         }
                       ],
                       required: true,
-                      placeholder: "Favorite city of the person"
+                      placeholder: "Favorite city of the person",
+                      defaultValue: "antwerp"
                     },
                     {
                       id: "Sign",
                       title: "Signed",
-                      type: CustomCollectionFieldType.boolean
+                      type: CustomCollectionFieldType.boolean,
+                      defaultValue: true
                     },
                     {
                       id: "IconName",
                       title: "Icon Name",
                       type: CustomCollectionFieldType.fabricIcon,
-                      placeholder: "Enter the name of the icon"
+                      placeholder: "Enter the name of the icon",
+                      defaultValue: "website"
                     },
                     {
                       id: "URL",

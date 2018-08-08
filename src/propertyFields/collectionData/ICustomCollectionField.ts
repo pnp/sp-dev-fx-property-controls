@@ -25,6 +25,10 @@ export interface ICustomCollectionField {
    * Input placeholder text.
    */
   placeholder?: string;
+  /**
+   * Default value for the field
+   */
+  defaultValue?: any;
 }
 
 export enum CustomCollectionFieldType {

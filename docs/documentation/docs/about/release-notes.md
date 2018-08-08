@@ -4,6 +4,7 @@
 
 **Enhancements**
 
+- `PropertyFieldCollectionData`: Add an option to specify a default value [#86](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/86)
 - `PropertyFieldCollectionData`: override placeholder for the inputs [#87](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/87)
 - `PropertyFieldCollectionData`: Hide save button when "Add and save" is shown [#88](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/88)
 

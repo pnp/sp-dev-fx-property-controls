@@ -15,18 +15,17 @@ export default class PropertyFieldMultiSelectHost extends React.Component<IPrope
   }
 
   public render(): JSX.Element {
-    if (this.props.options && this.props.options.length === 0 &&
-        this.props.selectedKeys && this.props.selectedKeys.length > 0) {
+    if (!this.props.options || (this.props.options && this.props.options.length === 0)) {
       return (
         <div>
-          <Dropdown label={this.props.label} placeHolder={strings.propertyFieldMultiSelectNoOptions} disabled={true} />
+          <Dropdown key={`MultiSelectOptionsDisabled`} label={this.props.label} options={[]} placeHolder={strings.propertyFieldMultiSelectNoOptions} disabled={true} />
         </div>
       );
     }
 
     return (
       <div>
-        <Dropdown key={`MultiSelectOptions-${this.props.options.length}`} {...this.props} multiSelect={true} />
+        <Dropdown key={`MultiSelectOptions`} {...this.props} multiSelect={true} />
       </div>
     );
   }

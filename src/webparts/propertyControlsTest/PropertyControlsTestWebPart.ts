@@ -238,6 +238,13 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   options: this.multiSelectProps,
                   selectedKeys: this.properties.multiSelect
                 }),
+                PropertyFieldOrder("asyncOrderItems", {
+                  key: "asyncOrderItems",
+                  label: "Async order items",
+                  items: this.properties.multiSelect,
+                  properties: this.properties,
+                  onPropertyChange: this.onPropertyPaneFieldChanged
+                }),
                 PropertyFieldCodeEditor('htmlCode', {
                   label: 'Edit HTML Code',
                   panelTitle: 'Edit HTML Code',

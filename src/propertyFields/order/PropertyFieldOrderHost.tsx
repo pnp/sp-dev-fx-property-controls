@@ -9,6 +9,7 @@ import * as React from 'react';
 import * as telemetry from '../../common/telemetry';
 import { IPropertyFieldOrderHostProps, IPropertyFieldOrderHostState } from './IPropertyFieldOrderHost';
 import styles from './PropertyFieldOrderHost.module.scss';
+import { isEqual } from '@microsoft/sp-lodash-subset';
 
 export default class PropertyFieldOrderHost extends React.Component<IPropertyFieldOrderHostProps, IPropertyFieldOrderHostState> {
 
@@ -38,27 +39,31 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 		this._draggedItem = null;
 
 		this.state = {
-			items: this.props.items
+			items: []
 		};
-	}
+  }
 
 	public render(): JSX.Element {
 		return (
 			<div className={styles.propertyFieldOrder}>
 				{this.props.label && <Label>{this.props.label}</Label>}
 				<ul style={{maxHeight: this.props.maxHeight ? this.props.maxHeight + 'px' : '100%'}} className={!this.props.disabled ? styles.enabled : styles.disabled}>
-					{this.state.items.map((value:any, index:number) => {
-						return (
-							<li
-								ref={this.registerRef}
-								key={index}
-								draggable={!this.props.disableDragAndDrop && !this.props.disabled}
-								style={{cursor: !this.props.disableDragAndDrop && !this.props.disabled ? 'pointer' : 'default'}}
-							>{this.renderItem(value,index)}</li>
-						);
-					})}
-					{this.state.items.length &&
-						<div className={styles.lastBox} ref={(ref:HTMLElement) => {this._lastBox = ref;}}/>
+          {
+            (this.state.items && this.state.items.length >= 0) && (
+              this.state.items.map((value:any, index:number) => {
+                return (
+                  <li
+                    ref={this.registerRef}
+                    key={index}
+                    draggable={!this.props.disableDragAndDrop && !this.props.disabled}
+                    style={{cursor: !this.props.disableDragAndDrop && !this.props.disabled ? 'pointer' : 'default'}}
+                  >{this.renderItem(value,index)}</li>
+                );
+              })
+            )
+          }
+					{
+            (this.state.items && this.state.items.length) && <div className={styles.lastBox} ref={(ref:HTMLElement) => {this._lastBox = ref;}}/>
 					}
 				</ul>
 			</div>
@@ -119,16 +124,31 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 				/>
 			</div>
 		);
-	}
+  }
+
+  public componentWillMount(): void {
+    this.setState({
+      items: this.props.items || []
+    });
+  }
 
 	public componentDidMount(): void {
 		this.setupSubscriptions();
 	}
 
+  public componentWillUpdate(nextProps: IPropertyFieldOrderHostProps): void {
+    // Check if the provided items are still the same
+    if (!isEqual(nextProps.items, this.state.items)) {
+      this.setState({
+        items: this.props.items || []
+      });
+    }
+  }
+
 	public componentDidUpdate(): void {
 		this.cleanupSubscriptions();
 		this.setupSubscriptions();
-	}
+  }
 
 	public componentWillUnmount(): void {
 		this.cleanupSubscriptions();

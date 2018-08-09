@@ -12,6 +12,7 @@
 **Fixes**
 
 - `PropertyFieldMultiSelect`: fixed an issue where the control didn't retain the preselected values when dropdown options were provided async [#85](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/85)
+- `PropertyFieldOrder`: fixed an issue where items where provided async [#81](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/81)
 
 ## 1.8.0
 

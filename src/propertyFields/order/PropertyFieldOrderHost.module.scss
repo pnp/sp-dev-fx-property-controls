@@ -6,7 +6,7 @@ $ms-color-white: '[theme:white, default:#ffffff]';
 
 
 .propertyFieldOrder {
-  margin-bottom: -8px;
+  margin-bottom: 2px;
 
   ul {
     padding: 0.5px;
@@ -19,7 +19,7 @@ $ms-color-white: '[theme:white, default:#ffffff]';
     li {
       color: $ms-color-neutralTertiary;
     }
-    
+
   }
 
   li {
@@ -29,7 +29,7 @@ $ms-color-white: '[theme:white, default:#ffffff]';
     border-color: $ms-color-neutralLight;
     outline: 0.5px solid;
     outline-color: $ms-color-neutralLight;
-  
+
     .enabled & :hover {
       background-color: $ms-color-neutralLighter;
     }

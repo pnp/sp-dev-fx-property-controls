@@ -40,6 +40,7 @@ import { PropertyFieldSwatchColorPicker, PropertyFieldSwatchColorPickerStyle } f
  * Web part that can be used to test out the various property controls
  */
 export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<IPropertyControlsTestWebPartProps> {
+  private multiSelectProps = [];
 
   public render(): void {
     const element: React.ReactElement<IPropertyControlsTestProps> = React.createElement(
@@ -88,6 +89,26 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
   private ageValidation (value: number) {
     console.log(value);
     return value >= 18 ? "" : "Person should be at least 18 years old";
+  }
+
+  protected onPropertyPaneConfigurationStart(): void {
+    setTimeout(() => {
+      this.multiSelectProps = [
+        {
+          key: "EN",
+          text: "EN"
+        },
+        {
+          key: "FR",
+          text: "FR"
+        },
+        {
+          key: "NL",
+          text: "NL"
+        }
+      ];
+      this.context.propertyPane.refresh();
+    }, 2000);
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -214,20 +235,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                 PropertyFieldMultiSelect('multiSelect', {
                   key: 'multiSelect',
                   label: "Multi select field",
-                  options: [
-                    {
-                      key: "EN",
-                      text: "EN"
-                    },
-                    {
-                      key: "FR",
-                      text: "FR"
-                    },
-                    {
-                      key: "NL",
-                      text: "NL"
-                    }
-                  ],
+                  options: this.multiSelectProps,
                   selectedKeys: this.properties.multiSelect
                 }),
                 PropertyFieldCodeEditor('htmlCode', {

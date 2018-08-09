@@ -1,5 +1,6 @@
 define([], function () {
   return {
+    propertyFieldMultiSelectNoOptions: "No options to select",
     InvalidUrlError: "The provided URL is not valid",
     // Common field labels
     'SaveButtonLabel': 'Save',

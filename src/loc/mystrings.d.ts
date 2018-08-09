@@ -1,4 +1,5 @@
 declare interface IPropertyControlStrings {
+  propertyFieldMultiSelectNoOptions: string;
   InvalidUrlError: string;
   // PeoplePicker labels
   PeoplePickerSuggestedContacts: string;

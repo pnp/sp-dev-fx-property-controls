@@ -70,6 +70,10 @@
     text-overflow: ellipsis;
     outline: 0;
   }
+
+  &.invalidField {
+    border-color: #a80000;
+  }
 }
 
 .iconField {
@@ -84,7 +88,7 @@
   }
 }
 
-.urlField {
+.collectionDataField {
   > span {
     display: none;
   }

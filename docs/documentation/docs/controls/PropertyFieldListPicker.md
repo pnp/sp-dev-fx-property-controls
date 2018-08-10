@@ -65,6 +65,7 @@ The `PropertyFieldListPicker` control can be configured with the following prope
 | showSelectAll | boolean | no | Specify if you want the Select All checkbox. By default this is set to `false` (mult-list picker only). |
 | selectAllInList | boolean | no | Specify where to show the Select All checkbox. When false (default), checkbox is shown before the label, when true it is shown with the lists  (mult-list picker only). |
 | selectAllInListLabel | string | no | The label to use for the in list select all checkbox (mult-list picker only). |
+| webAbsoluteUrl | string | no | Absolute Web Url of target site (user requires permissions) |
 | onPropertyChange | function | yes | Defines a onPropertyChange function to raise when the date gets changed. |
 | properties | any | yes | Parent web part properties, this object is use to update the property value.  |
 | key | string | yes | An unique key that indicates the identity of this control. |

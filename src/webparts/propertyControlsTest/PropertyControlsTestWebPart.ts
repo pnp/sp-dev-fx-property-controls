@@ -40,6 +40,7 @@ import { PropertyFieldSwatchColorPicker, PropertyFieldSwatchColorPickerStyle } f
  * Web part that can be used to test out the various property controls
  */
 export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<IPropertyControlsTestWebPartProps> {
+  private multiSelectProps = [];
 
   public render(): void {
     const element: React.ReactElement<IPropertyControlsTestProps> = React.createElement(
@@ -81,6 +82,35 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     return true;
   }
 
+  private minLengthValidation (value: string) {
+    return value.length >= 3 ? "" : "Should at least contain 3 characters.";
+  }
+
+  private ageValidation (value: number) {
+    console.log(value);
+    return value >= 18 ? "" : "Person should be at least 18 years old";
+  }
+
+  protected onPropertyPaneConfigurationStart(): void {
+    setTimeout(() => {
+      this.multiSelectProps = [
+        {
+          key: "EN",
+          text: "EN"
+        },
+        {
+          key: "FR",
+          text: "FR"
+        },
+        {
+          key: "NL",
+          text: "NL"
+        }
+      ];
+      this.context.propertyPane.refresh();
+    }, 2000);
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
 
     const dropdownWithCalloutSelectedKey: string = this.properties.dropdownWithCalloutKey || 'gryffindor';
@@ -108,7 +138,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       id: "Title",
                       title: "Firstname",
                       type: CustomCollectionFieldType.string,
-                      required: true
+                      required: true,
+                      placeholder: "Enter the firstname",
+                      onGetErrorMessage: this.minLengthValidation
                     },
                     {
                       id: "Lastname",
@@ -119,7 +151,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       id: "Age",
                       title: "Age",
                       type: CustomCollectionFieldType.number,
-                      required: true
+                      required: true,
+                      placeholder: "Enter the age",
+                      onGetErrorMessage: this.ageValidation
                     },
                     {
                       id: "City",
@@ -139,23 +173,30 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                           text: "Montreal"
                         }
                       ],
-                      required: true
+                      required: true,
+                      placeholder: "Favorite city of the person",
+                      defaultValue: "antwerp"
                     },
                     {
                       id: "Sign",
                       title: "Signed",
-                      type: CustomCollectionFieldType.boolean
+                      type: CustomCollectionFieldType.boolean,
+                      defaultValue: true
                     },
                     {
                       id: "IconName",
                       title: "Icon Name",
-                      type: CustomCollectionFieldType.fabricIcon
+                      type: CustomCollectionFieldType.fabricIcon,
+                      placeholder: "Enter the name of the icon",
+                      defaultValue: "website",
+                      onGetErrorMessage: this.minLengthValidation
                     },
                     {
                       id: "URL",
                       title: "URL",
                       type: CustomCollectionFieldType.url,
-                      required: true
+                      required: true,
+                      placeholder: "Enter a URL"
                     }
                   ],
                   disabled: false
@@ -194,21 +235,15 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                 PropertyFieldMultiSelect('multiSelect', {
                   key: 'multiSelect',
                   label: "Multi select field",
-                  options: [
-                    {
-                      key: "EN",
-                      text: "EN"
-                    },
-                    {
-                      key: "FR",
-                      text: "FR"
-                    },
-                    {
-                      key: "NL",
-                      text: "NL"
-                    }
-                  ],
+                  options: this.multiSelectProps,
                   selectedKeys: this.properties.multiSelect
+                }),
+                PropertyFieldOrder("asyncOrderItems", {
+                  key: "asyncOrderItems",
+                  label: "Async order items",
+                  items: this.properties.multiSelect,
+                  properties: this.properties,
+                  onPropertyChange: this.onPropertyPaneFieldChanged
                 }),
                 PropertyFieldCodeEditor('htmlCode', {
                   label: 'Edit HTML Code',

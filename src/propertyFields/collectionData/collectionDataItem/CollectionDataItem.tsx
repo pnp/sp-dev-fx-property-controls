@@ -10,6 +10,7 @@ import { ICustomCollectionField, CustomCollectionFieldType, FieldValidator } fro
 import { Dropdown } from 'office-ui-fabric-react';
 import { CollectionIconField } from '../collectionIconField';
 import { clone } from '@microsoft/sp-lodash-subset';
+import { CollectionNumberField } from '../collectionNumberField';
 
 export class CollectionDataItem extends React.Component<ICollectionDataItemProps, ICollectionDataItemState> {
   private emptyItem: any = null;
@@ -21,7 +22,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
     // Create an empty item with all properties
     this.emptyItem = {};
     for (const field of this.props.fields) {
-      this.emptyItem[field.id] = null;
+      // Assign default value or null to the emptyItem
+      this.emptyItem[field.id] = field.defaultValue || null;
     }
 
     this.state = {
@@ -172,7 +174,26 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   }
 
   /**
+   * Allow custom field validation
+   *
+   * @param field
+   * @param value
+   */
+  private fieldValidation = async (field: ICustomCollectionField, value: any): Promise<string> => {
+    let validation = "";
+    if (field.onGetErrorMessage) {
+      validation = await field.onGetErrorMessage(value);
+    }
+    // Store the field validation
+    this.validation[field.id] = validation === "";
+    // Trigger field change
+    this.onValueChanged(field.id, value);
+    return validation;
+  }
+
+  /**
    * Render the field
+   *
    * @param field
    * @param item
    */
@@ -182,50 +203,55 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
         return <Checkbox checked={item[field.id] ? item[field.id] : false}
                          onChange={(ev, value) => this.onValueChanged(field.id, value)} />;
       case CustomCollectionFieldType.dropdown:
-        return <Dropdown placeHolder={field.title}
+        return <Dropdown placeHolder={field.placeholder || field.title}
                          options={field.options}
                          selectedKey={item[field.id] || null}
                          required={field.required}
                          onChanged={(opt) => this.onValueChanged(field.id, opt.key)} />;
       case CustomCollectionFieldType.number:
         return (
-          <div className={styles.numberField}>
-            <input type="number"
-                   role="spinbutton"
-                   placeholder={field.title}
-                   aria-valuemax="99999"
-                   aria-valuemin="-999999"
-                   aria-valuenow={item[field.id] || ''}
-                   value={item[field.id] || ''}
-                   onChange={(ev) => this.onValueChanged(field.id, ev.target.value)} />
-          </div>
+          <CollectionNumberField field={field} item={item} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
         );
       case CustomCollectionFieldType.fabricIcon:
         return (
-          <CollectionIconField field={field} item={item} fOnValueChange={this.onValueChanged} />
+          <CollectionIconField field={field} item={item} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
         );
       case CustomCollectionFieldType.url:
-        return <TextField placeholder={field.title}
+        return <TextField placeholder={field.placeholder || field.title}
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
-                          className={styles.urlField}
-                          onGetErrorMessage={(value) => {
-                            // Check if entered value is a valid URL
-                            const regEx: RegExp = /^((http|https)?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
-                            const isValid = (value === null || value.length === 0 || regEx.test(value));
+                          className={styles.collectionDataField}
+                          onGetErrorMessage={async (value) => {
+                            let isValid = true;
+                            let validation = "";
+
+                            // Check if custom validation is configured
+                            if (field.onGetErrorMessage) {
+                              // Using the custom validation
+                              validation = await field.onGetErrorMessage(value);
+                              isValid = validation === "";
+                            } else {
+                              // Check if entered value is a valid URL
+                              const regEx: RegExp = /^((http|https)?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+                              isValid = (value === null || value.length === 0 || regEx.test(value));
+                              validation = isValid ? "" : strings.InvalidUrlError;
+                            }
+
                             // Store the field validation
                             this.validation[field.id] = isValid;
                             // Trigger field change
                             this.onValueChanged(field.id, value);
                             // Return the error message if needed
-                            return isValid ? "" : strings.InvalidUrlError;
+                            return validation;
                           }} />;
       case CustomCollectionFieldType.string:
       default:
-        return <TextField placeholder={field.title}
+        return <TextField placeholder={field.placeholder || field.title}
+                          className={styles.collectionDataField}
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
-                          onChanged={(value) => this.onValueChanged(field.id, value)} />;
+                          onChanged={(value) => this.onValueChanged(field.id, value)}
+                          onGetErrorMessage={(value: string) => this.fieldValidation(field, value)} />;
     }
   }
 

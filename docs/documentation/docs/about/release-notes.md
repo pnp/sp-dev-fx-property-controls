@@ -1,5 +1,19 @@
 # Releases
 
+## 1.9.0
+
+**Enhancements**
+
+- `PropertyFieldCollectionData`: Added custom validation for `string`, `number`, `icon`, and `URL` field types [#74](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/74)
+- `PropertyFieldCollectionData`: Add an option to specify a default value [#86](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/86)
+- `PropertyFieldCollectionData`: override placeholder for the inputs [#87](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/87)
+- `PropertyFieldCollectionData`: Hide save button when "Add and save" is shown [#88](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/88)
+
+**Fixes**
+
+- `PropertyFieldMultiSelect`: fixed an issue where the control didn't retain the preselected values when dropdown options were provided async [#85](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/85)
+- `PropertyFieldOrder`: fixed an issue where items where provided async [#81](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/81)
+
 ## 1.8.0
 
 **Enhancements**

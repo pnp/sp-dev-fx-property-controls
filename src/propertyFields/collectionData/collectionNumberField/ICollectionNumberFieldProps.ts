@@ -1,6 +1,6 @@
 import { ICustomCollectionField } from "..";
 
-export interface ICollectionIconFieldProps {
+export interface ICollectionNumberFieldProps {
   field: ICustomCollectionField;
   item: any;
 

@@ -25,7 +25,7 @@ import { PropertyFieldToggleWithCallout } from '@pnp/spfx-property-controls/lib/
 
 ```TypeScript
 export interface IPropertyControlsTestWebPartProps {
-  toggleInfoHeaderValue: string;
+  toggleInfoHeaderValue: boolean;
 }
 ```
 

@@ -1,7 +1,8 @@
-site_name: SharePoint Framework Property Controls
-pages:
+site_name: '@pnp/spfx-property-controls'
+nav:
   - Home: 'index.md'
   - Controls:
+    - PropertyFieldCodeEditor: 'controls/PropertyFieldCodeEditor.md'
     - PropertyFieldCollectionData: 'controls/PropertyFieldCollectionData.md'
     - PropertyFieldColorPicker: 'controls/PropertyFieldColorPicker.md'
     - PropertyFieldDateTimePicker: 'controls/PropertyFieldDateTimePicker.md'
@@ -31,9 +32,11 @@ theme:
   name: 'material'
   palette:
     primary: 'blue'
-  logo: 'assets/sharepoint.png'
+  logo: 'assets/pnp-spfx-controls.svg'
   feature:
     tabs: true
+extra_css:
+  - 'css/extra.css'
 markdown_extensions:
   - admonition
   - codehilite:

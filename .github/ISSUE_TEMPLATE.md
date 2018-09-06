@@ -4,11 +4,9 @@ needs please complete the below template to ensure we have the details to help. 
 **Please check out the [documentation](https://sharepoint.github.io/sp-dev-fx-property-controls/) to see if your question is already addressed there. This will help us ensure our documentation is up to date.**
 
 #### Category
-[ ] Enhancement
-
-[ ] Bug
-
-[ ] Question
+- [ ] Enhancement
+- [ ] Bug
+- [ ] Question
 
 #### Version
 

@@ -94,12 +94,13 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
     }
 
     const res: IPropertyFieldGroupOrPerson[] = [];
-    responsePeople.forEach((element: IPropertyFieldGroupOrPerson) => {
+    for (const element of responsePeople) {
       let found: boolean = false;
 
       for (let i: number = 0; i < this.selectedPeople.length; i++) {
         const responseItem: IPropertyFieldGroupOrPerson = this.selectedPeople[i];
-        if (responseItem.login === element.login) {
+        if (responseItem.login === element.login &&
+            responseItem.id === element.id) {
           found = true;
           break;
         }
@@ -108,7 +109,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
       if (found === false) {
         res.push(element);
       }
-    });
+    }
     return res;
   }
 

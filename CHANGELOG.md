@@ -1,5 +1,11 @@
 # Releases
 
+## 1.10.0
+
+**Enhancements**
+
+- `PropertyFieldPeoplePicker` - Security groups come back with EntityType of `FormsRole` rather then `SecGroup` [#93](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/93)
+
 ## 1.9.0
 
 **Enhancements**

@@ -65,6 +65,15 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
                 };
                 res.push(group);
                 break;
+              case 'FormsRole':
+                const formsRole: IPropertyFieldGroupOrPerson = {
+                  fullName: element.DisplayText,
+                  login: element.ProviderName,
+                  id: element.Key,
+                  description: element.Description
+                };
+                res.push(formsRole);
+                break;
               default:
                 const persona: IPropertyFieldGroupOrPerson = {
                   fullName: element.DisplayText,

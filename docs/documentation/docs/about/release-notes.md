@@ -5,6 +5,7 @@
 **Enhancements**
 
 - `PropertyFieldPeoplePicker` - Security groups come back with EntityType of `FormsRole` rather then `SecGroup` [#93](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/93)
+- `PropertyFieldCollectionData`: Add the current row's information in the `onGetErrorMessage` callback [#92](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/92)
 
 ## 1.9.0
 

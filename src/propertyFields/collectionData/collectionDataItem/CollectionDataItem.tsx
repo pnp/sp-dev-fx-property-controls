@@ -182,7 +182,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   private fieldValidation = async (field: ICustomCollectionField, value: any): Promise<string> => {
     let validation = "";
     if (field.onGetErrorMessage) {
-      validation = await field.onGetErrorMessage(value);
+      validation = await field.onGetErrorMessage(value, this.props.index, this.state.crntItem);
     }
     // Store the field validation
     this.validation[field.id] = validation === "";
@@ -228,7 +228,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                             // Check if custom validation is configured
                             if (field.onGetErrorMessage) {
                               // Using the custom validation
-                              validation = await field.onGetErrorMessage(value);
+                              validation = await field.onGetErrorMessage(value, this.props.index, item);
                               isValid = validation === "";
                             } else {
                               // Check if entered value is a valid URL

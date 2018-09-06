@@ -82,7 +82,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     return true;
   }
 
-  private minLengthValidation (value: string) {
+  private minLengthValidation (value: string, index: number, item: any) {
+    console.log(`Currently editing item nr: ${index === null ? "new item" : index}. It contains the following properties:`, item);
     return value.length >= 3 ? "" : "Should at least contain 3 characters.";
   }
 

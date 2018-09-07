@@ -10,7 +10,7 @@
 **Fixes**
 
 - `PropertyFieldPeoplePicker`: No suggestions returned when using Security Groups, Multi-select and NO duplicates. [#90](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/90)
-- `TermPicker`:  Terms which are set as unavailable for tagging are still selectable [#94](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/94)
+- `PropertyFieldTermPicker`:  Terms which are set as unavailable for tagging are still selectable [#94](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/94)
 
 ## 1.9.0
 

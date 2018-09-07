@@ -9,7 +9,8 @@
           "`PropertyFieldCollectionData`: Add the current row's information in the `onGetErrorMessage` callback [#92](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/92)"
         ],
         "fixes": [
-          "`PropertyFieldPeoplePicker`: No suggestions returned when using Security Groups, Multi-select and NO duplicates. [#90](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/90)"
+          "`PropertyFieldPeoplePicker`: No suggestions returned when using Security Groups, Multi-select and NO duplicates. [#90](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/90)",
+          "`PropertyFieldTermPicker`:  Terms which are set as unavailable for tagging are still selectable [#94](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/94)"
         ]
       },
       "contributions": []

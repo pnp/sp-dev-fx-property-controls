@@ -89,6 +89,7 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
       _ObjectIdentity_: termset._ObjectIdentity_,
       Description: termset.Description,
       IsDeprecated: null,
+      IsAvailableForTagging: null,
       IsRoot: null,
       TermSet: termset
     }, isChecked);

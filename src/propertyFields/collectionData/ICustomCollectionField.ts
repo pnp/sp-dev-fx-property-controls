@@ -36,7 +36,7 @@ export interface ICustomCollectionField {
    * - If valid, it returns empty string.
    * - If invalid, the field will show a red border
    */
-  onGetErrorMessage?: (value: any) => string | Promise<string>;
+  onGetErrorMessage?: (value: any, index: number, currentItem: any) => string | Promise<string>;
 }
 
 export enum CustomCollectionFieldType {

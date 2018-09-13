@@ -45,6 +45,7 @@ export default class SPTermStoreMockHttpClient {
     "Id": "0ec2f948-3978-499e-9d3f-e51c4494d44c",
     "Description": "",
     "IsDeprecated": false,
+    "IsAvailableForTagging": false,
     "IsRoot": true,
     "PathOfTerm": "Belgium",
     "PathDepth": 1,
@@ -61,6 +62,7 @@ export default class SPTermStoreMockHttpClient {
     "Name": "Antwerp",
     "Description": "",
     "IsDeprecated": false,
+    "IsAvailableForTagging": false,
     "IsRoot": false,
     "PathOfTerm": "Belgium;Antwerp",
     "PathDepth": 2,
@@ -77,6 +79,7 @@ export default class SPTermStoreMockHttpClient {
     "Id": "23d42658-26b2-4cb3-ac4f-f06493835485",
     "Description": "",
     "IsDeprecated": false,
+    "IsAvailableForTagging": true,
     "IsRoot": false,
     "PathOfTerm": "Belgium;Brussels",
     "PathDepth": 2,
@@ -93,6 +96,7 @@ export default class SPTermStoreMockHttpClient {
     "Id": "23d42658-26b2-4cb3-ac4f-f06493835486",
     "Description": "",
     "IsDeprecated": true,
+    "IsAvailableForTagging": false,
     "IsRoot": true,
     "PathOfTerm": "Deprecated",
     "PathDepth": 1,
@@ -127,21 +131,21 @@ export default class SPTermStoreMockHttpClient {
     return new Promise<IPickerTerm[]>((resolve) => {
       resolve([
         {
-          key : "123", 
+          key : "123",
           name : 'term1',
           path : "path;path2",
           termSet :"123",
           termSetName : "tsName"
          },
          {
-          key : "124", 
+          key : "124",
           name : 'term2',
           path : "path",
           termSet :"123",
           termSetName : "tsName"
          },
          {
-          key : "125", 
+          key : "125",
           name : 'term3',
           path : "path;path2;path3",
           termSet :"123",
@@ -149,6 +153,6 @@ export default class SPTermStoreMockHttpClient {
          }
         ]);
     });
-  } 
+  }
 
 }

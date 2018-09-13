@@ -82,7 +82,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     return true;
   }
 
-  private minLengthValidation (value: string) {
+  private minLengthValidation (value: string, index: number, item: any) {
+    console.log(`Currently editing item nr: ${index === null ? "new item" : index}. It contains the following properties:`, item);
     return value.length >= 3 ? "" : "Should at least contain 3 characters.";
   }
 
@@ -201,6 +202,24 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   ],
                   disabled: false
                 }),
+                PropertyFieldPeoplePicker('people', {
+                  label: 'PropertyFieldPeoplePicker',
+                  initialData: this.properties.people,
+                  allowDuplicate: false,
+                  principalType: [PrincipalType.Security],
+                  // principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
+                  // principalType: [IPrincipalType.SharePoint],
+                  multiSelect: true,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  context: this.context,
+                  properties: this.properties,
+                  onGetErrorMessage: (value: IPropertyFieldGroupOrPerson[]) => {
+                    const users = value.filter(u => u.fullName.toLowerCase().indexOf("elio") !== -1);
+                    return users.length === 0 ? 'Please use a person with "Elio" in its name' : "";
+                  },
+                  deferredValidationTime: 0,
+                  key: 'peopleFieldId'
+                }),
                 PropertyFieldTermPicker('terms', {
                   label: 'Select terms',
                   panelTitle: 'Select terms',
@@ -254,23 +273,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   disabled: false,
                   key: 'codeEditorFieldId',
                   language:PropertyFieldCodeEditorLanguages.HTML
-                }),
-                PropertyFieldPeoplePicker('people', {
-                  label: 'PropertyFieldPeoplePicker',
-                  initialData: this.properties.people,
-                  allowDuplicate: true,
-                  principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
-                  // principalType: [IPrincipalType.SharePoint],
-                  multiSelect: false,
-                  onPropertyChange: this.onPropertyPaneFieldChanged,
-                  context: this.context,
-                  properties: this.properties,
-                  onGetErrorMessage: (value: IPropertyFieldGroupOrPerson[]) => {
-                    const users = value.filter(u => u.fullName.toLowerCase().indexOf("elio") !== -1);
-                    return users.length === 0 ? 'Please use a person with "Elio" in its name' : "";
-                  },
-                  deferredValidationTime: 0,
-                  key: 'peopleFieldId'
                 }),
                 PropertyFieldListPicker('singleList', {
                   label: 'Select a list',

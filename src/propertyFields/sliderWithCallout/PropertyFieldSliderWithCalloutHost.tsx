@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Slider } from 'office-ui-fabric-react';
 
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 
 import { IPropertyFieldSliderWithCalloutHostProps } from './IPropertyFieldSliderWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
+import { Slider } from 'office-ui-fabric-react/lib/components/Slider';
 
 export default class PropertyFieldSliderWithCalloutHost extends React.Component<IPropertyFieldSliderWithCalloutHostProps, null> {
   constructor(props: IPropertyFieldSliderWithCalloutHostProps) {

@@ -139,6 +139,31 @@
   }
 }
 
+.errorCallout {
+  padding: 0 15px;
+  min-width: 200px;
+}
+
+.errorCalloutLink:not([disabled]) {
+  color: #a80000;
+}
+
+.errorMsgs {
+  @include ms-font-m;
+
+  p {
+    @include ms-font-l;
+  }
+
+  ul {
+    padding-left: 15px;
+  }
+
+  li {
+    color: #a80000;
+  }
+}
+
 .tableHead {
   @include ms-fontWeight-semilight;
   @include ms-fontSize-s;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IconButton, Callout, DirectionalHint } from 'office-ui-fabric-react';
+import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/components/Callout';
 import { IPropertyFieldHeaderProps, IPropertyFieldHeaderState, CalloutTriggers } from './IPropertyFieldHeader';
 
 import styles from './PropertyFieldHeader.module.scss';
@@ -9,9 +9,9 @@ import styles from './PropertyFieldHeader.module.scss';
  * Displays a label and a callout
  */
 export default class PropertyFieldHeader extends React.Component<IPropertyFieldHeaderProps, IPropertyFieldHeaderState> {
-    
+
         private _infoIcon: HTMLElement;
-    
+
         public constructor(props: IPropertyFieldHeaderProps, state: IPropertyFieldHeaderState) {
             super(props, state);
             this._onCalloutDismiss = this._onCalloutDismiss.bind(this);
@@ -19,7 +19,7 @@ export default class PropertyFieldHeader extends React.Component<IPropertyFieldH
                 isCalloutVisible: false
             };
         }
-    
+
         public render(): JSX.Element {
             return (
                 <div className={styles.headerBar}>
@@ -28,7 +28,7 @@ export default class PropertyFieldHeader extends React.Component<IPropertyFieldH
                     </div>
                     <div className={styles.info}>
                         <i className={'ms-Icon ms-Icon--Info'} ref={(infoIcon) => { this._infoIcon = infoIcon; }}
-                            onMouseOver={this.props.calloutTrigger === CalloutTriggers.Hover ? this._onInfoIconMouseOver.bind(this) : null} 
+                            onMouseOver={this.props.calloutTrigger === CalloutTriggers.Hover ? this._onInfoIconMouseOver.bind(this) : null}
                             onMouseOut={this.props.calloutTrigger === CalloutTriggers.Hover ? this._onInfoIconMouseOut.bind(this) : null}
                             onClick={this.props.calloutTrigger === CalloutTriggers.Click ? this._onInfoIconClick.bind(this) : null}></i>
                     </div>
@@ -48,8 +48,8 @@ export default class PropertyFieldHeader extends React.Component<IPropertyFieldH
                     }
                 </div>);
         }
-    
-    
+
+
         private _onCalloutDismiss() {
             if (this.state.isCalloutVisible) {
                 this.setState({
@@ -57,7 +57,7 @@ export default class PropertyFieldHeader extends React.Component<IPropertyFieldH
                 });
             }
         }
-        
+
         private _onInfoIconMouseOver(): void {
             if (this.props.calloutTrigger !== CalloutTriggers.Hover) {
                 return;
@@ -69,24 +69,24 @@ export default class PropertyFieldHeader extends React.Component<IPropertyFieldH
                 });
             }
         }
-    
+
         private _onInfoIconMouseOut(e: MouseEvent): void {
             if (this.props.calloutTrigger !== CalloutTriggers.Hover) {
                 return;
             }
 
             if (e.relatedTarget) {
-    
+
                 let relatedTarget: HTMLElement = (e.relatedTarget as HTMLElement);
                 if (relatedTarget && relatedTarget.closest('.ms-Callout-container')) {
                     return;
                 }
             }
-    
+
             this.setState({
                 isCalloutVisible: false
             });
-    
+
         }
 
         private _onInfoIconClick(): void {

@@ -1,6 +1,5 @@
-import { IButtonProps } from 'office-ui-fabric-react';
-
 import { IPlaceholderWithCalloutProps } from '../../common/placeholderWithCallout/IPlaceholderWithCallout';
+import { IButtonProps } from 'office-ui-fabric-react/lib/components/Button';
 
 /**
  * PropertyFieldButtonWithCalloutHost properties interface

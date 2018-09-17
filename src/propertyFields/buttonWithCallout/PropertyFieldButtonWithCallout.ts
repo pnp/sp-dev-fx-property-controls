@@ -9,7 +9,7 @@ import {
 import PropertyFieldButtonHost from './PropertyFieldButtonWithCalloutHost';
 
 import { IPropertyFieldButtonWithCalloutPropsInternal, IPropertyFieldButtonWithCalloutProps } from './IPropertyFieldButtonWithCallout';
-import { ButtonType } from 'office-ui-fabric-react';
+import { ButtonType } from 'office-ui-fabric-react/lib/components/Button';
 import * as _ from 'lodash';
 
 /**
@@ -32,7 +32,7 @@ class PropertyFieldButtonWithCalloutBuilder implements IPropertyPaneField<IPrope
     private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
 
         const props: IPropertyFieldButtonWithCalloutProps = <IPropertyFieldButtonWithCalloutProps>_.omit(this.properties, ['buttonType']);
-        
+
         //
         // PropertyPaneButtonType is not assignable to ButtonType
         //

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
 import { ICollectionDataViewerProps, ICollectionDataViewerState } from '.';
-import { CustomCollectionFieldType } from '..';
 import { CollectionDataItem } from '../collectionDataItem';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
 import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
@@ -138,6 +137,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
                 <span className={styles.tableCell}>{f.title} { f.required && <Icon className={styles.required} iconName="Asterisk" /> }</span>
               ))
             }
+            <span className={styles.tableCell}></span>
             <span className={styles.tableCell}></span>
           </div>
           {

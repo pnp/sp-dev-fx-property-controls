@@ -1,6 +1,5 @@
-import { IToggleProps } from 'office-ui-fabric-react';
-
 import { IPropertyFieldHeaderCalloutProps } from '../../common/propertyFieldHeader/IPropertyFieldHeader';
+import { IToggleProps } from 'office-ui-fabric-react/lib/components/Toggle';
 
 /**
  * PropertyFieldToggleWithCalloutHost properties interface

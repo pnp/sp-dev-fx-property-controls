@@ -8,7 +8,6 @@ import {
 import PropertyFieldCheckboxHost from './PropertyFieldCheckboxWithCalloutHost';
 
 import { IPropertyFieldCheckboxWithCalloutPropsInternal, IPropertyFieldCheckboxWithCalloutProps } from './IPropertyFieldCheckboxWithCallout';
-import { ButtonType } from 'office-ui-fabric-react';
 import * as _ from 'lodash';
 
 

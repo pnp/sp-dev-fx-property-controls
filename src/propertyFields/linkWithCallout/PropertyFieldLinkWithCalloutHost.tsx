@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Link, ILinkProps } from 'office-ui-fabric-react';
 import * as _ from 'lodash';
 
 import PlaceholderWithCallout from '../../common/placeholderWithCallout/PlaceholderWithCallout';
 
 import { IPropertyFieldLinkWithCalloutHostProps } from './IPropertyFieldLinkWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
+import { Link } from 'office-ui-fabric-react/lib/components/Link';
 
 /**
 * Renders the control for PropertyFieldLinkWithCallout component

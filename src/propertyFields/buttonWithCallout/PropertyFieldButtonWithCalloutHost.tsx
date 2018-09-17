@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, IButtonProps } from 'office-ui-fabric-react';
+import { Button } from 'office-ui-fabric-react/lib/components/Button';
 import * as _ from 'lodash';
 
 import PlaceholderWithCallout from '../../common/placeholderWithCallout/PlaceholderWithCallout';

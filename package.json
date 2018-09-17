@@ -37,7 +37,7 @@
     "gulp": "~3.9.1",
     "react": "15.4.2",
     "react-dom": "15.4.2",
-    "sonar-scanner": "3.1.0"
+    "sonarqube-scanner": "2.1.1"
   },
   "repository": {
     "type": "git",

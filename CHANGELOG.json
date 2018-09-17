@@ -7,7 +7,9 @@
         "enhancements": [
           "`PropertyFieldCollectionData`: Show error messages [#96](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/96)"
         ],
-        "fixes": []
+        "fixes": [
+          "Fixes based on SonarCloud analysis"
+        ]
       },
       "contributions": []
     },

@@ -28,7 +28,7 @@ jobs:
           command: npm run build
       - run:
           name: sonarcloud:config
-          command: npm run sonarcloud:config $SONARCLOUD_TOKEN
+          command: npm run sonarcloud:config $SONARCLOUD_TOKEN $CIRCLE_BRANCH
       - run:
           name: sonarcloud:start
           command: npm run sonarcloud:start

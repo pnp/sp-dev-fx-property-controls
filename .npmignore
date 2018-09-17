@@ -23,3 +23,6 @@ gulpfile.js
 tsconfig.json
 yarn.lock
 *.tgz
+sonar-project.properties
+gulpfile.sonarqube.js
+tslint.json

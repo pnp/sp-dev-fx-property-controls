@@ -1,7 +1,5 @@
 define([], function () {
   return {
-    propertyFieldMultiSelectNoOptions: "No options to select",
-    InvalidUrlError: "The provided URL is not valid",
     // Common field labels
     'SaveButtonLabel': 'Save',
     'CancelButtonLabel': 'Cancel',
@@ -74,11 +72,17 @@ define([], function () {
     "TermPickerInLabel": "in",
     "TermPickerTermSetLabel": "Term Set",
 
+    // Multi-select field
+    propertyFieldMultiSelectNoOptions: "No options to select",
+
     // Collection data
     "CollectionDataEmptyFields": "No fields were provided for the collection data.",
     "CollectionDataEmptyValue": "No data in your collection.",
     'CollectionAddRowButtonLabel': 'Add data to the collection',
     'CollectionDeleteRowButtonLabel': 'Delete the current row',
     'CollectionSaveAndAddButtonLabel': 'Add and save',
+    CollectionDataItemShowErrorsLabel: "Show row errors",
+    CollectionDataItemFieldRequiredLabel: "Field is required.",
+    InvalidUrlError: "The provided URL is not valid"
   }
 });

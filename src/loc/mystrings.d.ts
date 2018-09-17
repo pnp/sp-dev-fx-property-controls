@@ -1,6 +1,4 @@
 declare interface IPropertyControlStrings {
-  propertyFieldMultiSelectNoOptions: string;
-  InvalidUrlError: string;
   // PeoplePicker labels
   PeoplePickerSuggestedContacts: string;
   PeoplePickerSuggestedGroups: string;
@@ -73,12 +71,18 @@ declare interface IPropertyControlStrings {
   TermPickerInLabel: string;
   TermPickerTermSetLabel: string;
 
+  // Multi-select field
+  propertyFieldMultiSelectNoOptions: string;
+
   // Collection data
   CollectionDataEmptyFields: string;
   CollectionDataEmptyValue: string;
   CollectionAddRowButtonLabel: string;
   CollectionDeleteRowButtonLabel: string;
   CollectionSaveAndAddButtonLabel: string;
+  CollectionDataItemShowErrorsLabel: string;
+  CollectionDataItemFieldRequiredLabel: string;
+  InvalidUrlError: string;
 }
 
 declare module 'PropertyControlStrings' {

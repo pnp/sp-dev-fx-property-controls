@@ -359,7 +359,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
 
         <span className={styles.tableCell}>
           <span ref={ref => this.calloutCellRef = ref}>
-            <Link title="Show row errors"
+            <Link title={strings.CollectionDataItemShowErrorsLabel}
                   className={styles.errorCalloutLink}
                   disabled={!this.state.errorMsgs || this.state.errorMsgs.length === 0}
                   onClick={this.toggleErrorCallout}>
@@ -382,7 +382,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                       <ul>
                         {
                           this.state.errorMsgs.map(msg => (
-                            <li><b>{msg.field}</b>: {msg.message ? msg.message : msg.isRequired ? "Field is required." : null}</li>
+                            <li><b>{msg.field}</b>: {msg.message ? msg.message : msg.isRequired ? strings.CollectionDataItemFieldRequiredLabel : null}</li>
                           ))
                         }
                       </ul>

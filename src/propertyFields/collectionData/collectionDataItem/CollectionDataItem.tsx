@@ -7,14 +7,16 @@ import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import { Checkbox } from 'office-ui-fabric-react/lib/components/Checkbox';
 import * as strings from 'PropertyControlStrings';
 import { ICustomCollectionField, CustomCollectionFieldType, FieldValidator } from '..';
-import { Dropdown } from 'office-ui-fabric-react';
+import { Dropdown } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/components/Callout';
 import { CollectionIconField } from '../collectionIconField';
-import { clone } from '@microsoft/sp-lodash-subset';
+import { clone, findIndex, sortBy } from '@microsoft/sp-lodash-subset';
 import { CollectionNumberField } from '../collectionNumberField';
 
 export class CollectionDataItem extends React.Component<ICollectionDataItemProps, ICollectionDataItemState> {
   private emptyItem: any = null;
   private validation: FieldValidator = {};
+  private calloutCellRef: HTMLElement;
 
   constructor(props: ICollectionDataItemProps) {
     super(props);
@@ -27,7 +29,9 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
     }
 
     this.state = {
-      crntItem: clone(this.props.item) || {...this.emptyItem}
+      crntItem: clone(this.props.item) || {...this.emptyItem},
+      errorMsgs: [],
+      showCallout: false
     };
   }
 
@@ -188,7 +192,89 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
     this.validation[field.id] = validation === "";
     // Trigger field change
     this.onValueChanged(field.id, value);
+    // Add message for the error callout
+    this.errorCalloutHandler(field.id, validation);
     return validation;
+  }
+
+  /**
+   * Error callout message handler
+   *
+   * @param field
+   * @param message
+   */
+  private errorCalloutHandler(fieldId: string, message: string) {
+    this.setState((prevState: ICollectionDataItemState) => {
+      let { crntItem, errorMsgs } = prevState;
+
+      // Get the current field
+      const fieldIdx = findIndex(this.props.fields, f => f.id === fieldId);
+      if (fieldIdx === -1) {
+        return;
+      }
+      const field = this.props.fields[fieldIdx];
+
+      // Check if there already is a message for the field
+      const fieldMsgIdx = findIndex(errorMsgs, msg => msg.field === field.title);
+
+      // Add message
+      let fieldMsg;
+      if (fieldMsgIdx === -1) {
+        fieldMsg = {
+          field: field.title,
+          message: message
+        };
+      } else {
+        // Update message
+        fieldMsg = errorMsgs[fieldMsgIdx];
+        if (fieldMsg) {
+          fieldMsg.message = message;
+        }
+      }
+
+      // Check if field required message needs to be shown
+      if (field.required) {
+        if (typeof crntItem[field.id] === "undefined" || crntItem[field.id] === null || crntItem[field.id] === "") {
+          fieldMsg.isRequired = true;
+        } else {
+          fieldMsg.isRequired = false;
+        }
+      }
+
+      // If required and message are false, it doesn't need to be added
+      if (!fieldMsg.message && !fieldMsg.isRequired) {
+        // Remove the item
+        if (fieldMsgIdx !== -1) {
+          errorMsgs.splice(fieldMsgIdx, 1);
+        }
+      } else {
+        if (fieldMsgIdx === -1) {
+          errorMsgs.push(fieldMsg);
+        }
+      }
+
+      // Sort based on the index
+      errorMsgs = sortBy(errorMsgs, ["field"]);
+
+      return {
+        errorMsgs
+      };
+    });
+  }
+
+  /**
+   * Toggle the error callout
+   */
+  private toggleErrorCallout = () => {
+    this.setState((prevState: ICollectionDataItemState) => ({
+      showCallout: !prevState.showCallout
+    }));
+  }
+
+  private hideErrorCallout = () => {
+    this.setState({
+      showCallout: false
+    });
   }
 
   /**
@@ -241,6 +327,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                             this.validation[field.id] = isValid;
                             // Trigger field change
                             this.onValueChanged(field.id, value);
+                            // Add message for the error callout
+                            this.errorCalloutHandler(field.id, validation);
                             // Return the error message if needed
                             return validation;
                           }} />;
@@ -268,6 +356,43 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
             <span className={`${styles.tableCell} ${styles.inputField}`}>{this.renderField(f, crntItem)}</span>
           ))
         }
+
+        <span className={styles.tableCell}>
+          <span ref={ref => this.calloutCellRef = ref}>
+            <Link title={strings.CollectionDataItemShowErrorsLabel}
+                  className={styles.errorCalloutLink}
+                  disabled={!this.state.errorMsgs || this.state.errorMsgs.length === 0}
+                  onClick={this.toggleErrorCallout}>
+              <Icon iconName="Error" />
+            </Link>
+          </span>
+
+          {
+            this.state.showCallout && (
+              <Callout className={styles.errorCallout}
+                       target={this.calloutCellRef}
+                       isBeakVisible={true}
+                       directionalHint={DirectionalHint.bottomLeftEdge}
+                       directionalHintForRTL={DirectionalHint.rightBottomEdge}
+                       onDismiss={this.hideErrorCallout}>
+                {
+                  (this.state.errorMsgs && this.state.errorMsgs.length > 0) && (
+                    <div className={styles.errorMsgs}>
+                      <p>Field issues:</p>
+                      <ul>
+                        {
+                          this.state.errorMsgs.map(msg => (
+                            <li><b>{msg.field}</b>: {msg.message ? msg.message : msg.isRequired ? strings.CollectionDataItemFieldRequiredLabel : null}</li>
+                          ))
+                        }
+                      </ul>
+                    </div>
+                  )
+                }
+              </Callout>
+            )
+          }
+        </span>
 
         <span className={styles.tableCell}>
         {

@@ -189,8 +189,7 @@ export default class SPTermStorePickerService {
             // Check if the term set was not empty
             if (terms.length > 0) {
               // Sort the terms by PathOfTerm
-              terms = terms.sort(this._sortTerms);
-              return terms;
+              return terms.sort(this._sortTerms);
             }
           }
           return null;

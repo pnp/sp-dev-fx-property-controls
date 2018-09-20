@@ -55,7 +55,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
     const listService: SPListPickerService = new SPListPickerService(this.props, this.props.context);
     listService.getLibs().then((response: ISPLists) => {
       // Start mapping the list that are selected
-      response.value.map((list: ISPList) => {
+      response.value.forEach((list: ISPList) => {
         if (this.props.selectedList === list.Id) {
           this.selectedKey = list.Id;
         }

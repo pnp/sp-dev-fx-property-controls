@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Checkbox, ICheckboxProps } from 'office-ui-fabric-react';
 import * as _ from 'lodash';
 
 import PlaceholderWithCallout from '../../common/placeholderWithCallout/PlaceholderWithCallout';
 
 import { IPropertyFieldCheckboxWithCalloutHostProps } from './IPropertyFieldCheckboxWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
+import { Checkbox } from 'office-ui-fabric-react/lib/components/Checkbox';
 
 /**
  * Renders the control for PropertyFieldCheckboxWithCallout component

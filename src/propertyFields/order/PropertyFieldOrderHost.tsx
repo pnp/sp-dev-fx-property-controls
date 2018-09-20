@@ -49,7 +49,7 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 				{this.props.label && <Label>{this.props.label}</Label>}
 				<ul style={{maxHeight: this.props.maxHeight ? this.props.maxHeight + 'px' : '100%'}} className={!this.props.disabled ? styles.enabled : styles.disabled}>
           {
-            (this.state.items && this.state.items.length >= 0) && (
+            (this.state.items && this.state.items.length > 0) && (
               this.state.items.map((value:any, index:number) => {
                 return (
                   <li

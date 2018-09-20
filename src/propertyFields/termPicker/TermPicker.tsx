@@ -52,7 +52,9 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
     // check to see if props is different to avoid re-rendering
     let newKeys = nextProps.value.map(a => a.key);
     let currentKeys = this.state.terms.map(a => a.key);
-    if (newKeys.sort().join(',') !== currentKeys.sort().join(',')) {
+    newKeys.sort();
+    currentKeys.sort();
+    if (newKeys.join(',') !== currentKeys.join(',')) {
       this.setState({ terms: nextProps.value });
     }
   }

@@ -54,7 +54,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
     const listService: SPListPickerService = new SPListPickerService(this.props, this.props.context);
     // Gets the libs
     listService.getLibs().then((response: ISPLists) => {
-      response.value.map((list: ISPList) => {
+      response.value.forEach((list: ISPList) => {
         let isSelected: boolean = false;
         let indexInExisting: number = -1;
         // Defines if the current list must be selected by default

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Label, ILabelProps } from 'office-ui-fabric-react';
 import * as _ from 'lodash';
 
 import PlaceholderWithCallout from '../../common/placeholderWithCallout/PlaceholderWithCallout';
 
 import { IPropertyFieldLabelWithCalloutHostProps } from './IPropertyFieldLabelWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
+import { Label } from 'office-ui-fabric-react/lib/components/Label';
 
 /**
 * Renders the control for PropertyFieldLabelWithCallout component

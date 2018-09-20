@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Toggle } from 'office-ui-fabric-react';
 
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 
 import { IPropertyFieldToggleWithCalloutHostProps } from './IPropertyFieldToggleWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
+import { Toggle } from 'office-ui-fabric-react/lib/components/Toggle';
 
 export default class PropertyFieldToggleWithCalloutHost extends React.Component<IPropertyFieldToggleWithCalloutHostProps, null> {
   constructor(props: IPropertyFieldToggleWithCalloutHostProps) {

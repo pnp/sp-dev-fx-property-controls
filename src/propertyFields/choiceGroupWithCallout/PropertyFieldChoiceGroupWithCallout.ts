@@ -5,11 +5,11 @@ import {
     PropertyPaneFieldType
 } from '@microsoft/sp-webpart-base';
 import * as _ from 'lodash';
-import { IChoiceGroupOption } from 'office-ui-fabric-react';
 
 import PropertyFieldToggleWithCalloutHost from './PropertyFieldChoiceGroupWithCalloutHost';
 
 import {IPropertyFieldChoiceGroupWithCalloutPropsInternal, IPropertyFieldChoiceGroupWithCalloutProps} from './IPropertyFieldChoiceGroupWithCallout';
+import { IChoiceGroupOption } from 'office-ui-fabric-react/lib/components/ChoiceGroup';
 
 class PropertyFieldChoiceGroupWithCalloutBuilder implements IPropertyPaneField<IPropertyFieldChoiceGroupWithCalloutPropsInternal> {
     public targetProperty: string;

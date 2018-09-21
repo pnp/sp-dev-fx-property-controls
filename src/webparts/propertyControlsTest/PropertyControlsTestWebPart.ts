@@ -141,7 +141,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       type: CustomCollectionFieldType.string,
                       required: true,
                       placeholder: "Enter the firstname",
-                      onGetErrorMessage: this.minLengthValidation
+                      onGetErrorMessage: this.minLengthValidation,
+                      deferredValidationTime: 1000
                     },
                     {
                       id: "Lastname",
@@ -154,7 +155,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       type: CustomCollectionFieldType.number,
                       required: true,
                       placeholder: "Enter the age",
-                      onGetErrorMessage: this.ageValidation
+                      onGetErrorMessage: this.ageValidation,
+                      deferredValidationTime: 0
                     },
                     {
                       id: "City",

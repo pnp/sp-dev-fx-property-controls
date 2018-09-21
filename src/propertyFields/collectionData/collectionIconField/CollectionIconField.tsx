@@ -7,15 +7,17 @@ import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 export class CollectionIconField extends React.Component<ICollectionIconFieldProps, {}> {
 
   public render(): React.ReactElement<ICollectionIconFieldProps> {
+    const { field, item } = this.props;
     return (
       <div className={styles.iconField}>
-        <TextField placeholder={this.props.field.placeholder || this.props.field.title}
+        <TextField placeholder={field.placeholder || field.title}
                    className={styles.collectionDataField}
-                   value={this.props.item[this.props.field.id] ? this.props.item[this.props.field.id] : ""}
-                   required={this.props.field.required}
-                   onChanged={(value) => this.props.fOnValueChange(this.props.field.id, value)}
+                   value={item[field.id] ? item[field.id] : ""}
+                   required={field.required}
+                   onChanged={(value) => this.props.fOnValueChange(field.id, value)}
+                   deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
                    onGetErrorMessage={(value) => this.props.fValidation(this.props.field, value)} />
-        <Icon iconName={this.props.item[this.props.field.id] ? this.props.item[this.props.field.id] : ""} />
+        <Icon iconName={item[field.id] ? item[field.id] : ""} />
       </div>
     );
   }

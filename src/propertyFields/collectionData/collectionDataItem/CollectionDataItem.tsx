@@ -307,6 +307,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
                           className={styles.collectionDataField}
+                          deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
                           onGetErrorMessage={async (value) => {
                             let isValid = true;
                             let validation = "";
@@ -339,6 +340,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
                           onChanged={(value) => this.onValueChanged(field.id, value)}
+                          deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
                           onGetErrorMessage={(value: string) => this.fieldValidation(field, value)} />;
     }
   }

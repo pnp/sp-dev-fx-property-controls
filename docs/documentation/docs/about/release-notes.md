@@ -1,5 +1,11 @@
 # Releases
 
+## 1.12.0
+
+**Enhancements**
+
+- `PropertyFieldCollectionData`: Allow the user to specify a deferred validation time for each field [#98](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/98)
+
 ## 1.11.0
 
 **Enhancements**

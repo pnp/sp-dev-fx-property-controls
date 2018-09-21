@@ -1,21 +1,32 @@
 import * as React from 'react';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
+import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { ICollectionNumberFieldProps, ICollectionNumberFieldState } from '.';
 import { ICustomCollectionField } from '..';
 
 export class CollectionNumberField extends React.Component<ICollectionNumberFieldProps, ICollectionNumberFieldState> {
+  private async: Async;
+  private delayedValidate: (field: ICustomCollectionField, inputVal: number) => void;
+
   constructor(props: ICollectionNumberFieldProps) {
     super(props);
 
     this.state = {
+      value: null,
       errorMessage: ''
     };
+
+    this.async = new Async(this);
+    this.delayedValidate = this.async.debounce(this.valueValidation, (this.props.field.deferredValidationTime || this.props.field.deferredValidationTime >= 0) ? this.props.field.deferredValidationTime : 200);
   }
 
   /**
    * componentWillMount lifecycle hook
    */
   public componentWillMount(): void {
+    this.setState({
+      value: this.props.item[this.props.field.id]
+    });
     this.valueChange(this.props.field, this.props.item[this.props.field.id]);
   }
 
@@ -25,9 +36,20 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
    * @param field
    * @param value
    */
-  private valueChange = async (field: ICustomCollectionField, value: string | number) => {
+  private valueChange = (field: ICustomCollectionField, value: string | number) => {
     const inputVal = typeof value === "string" ? parseInt(value) : value;
-    const validation = await this.props.fValidation(field, inputVal);
+    this.setState({
+      value: inputVal
+    });
+    this.delayedValidate(field, inputVal);
+  }
+
+  /**
+   * Delayed field validation
+   */
+  private valueValidation = async (field: ICustomCollectionField, value: number) => {
+    // debugger;
+    const validation = await this.props.fValidation(field, value);
     // Update the error message
     this.setState({
       errorMessage: validation
@@ -47,7 +69,7 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
                aria-valuemin="-999999"
                aria-valuenow={this.props.item[this.props.field.id] || ''}
                aria-invalid={!!this.state.errorMessage}
-               value={this.props.item[this.props.field.id] || ''}
+               value={this.state.value || ''}
                onChange={(ev) => this.valueChange(this.props.field, ev.target.value)} />
       </div>
     );

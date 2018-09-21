@@ -30,6 +30,10 @@ export interface ICustomCollectionField {
    */
   defaultValue?: any;
   /**
+   * Field will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default: 200ms.
+   */
+  deferredValidationTime?: number;
+  /**
    * The method is used to get the validation error message and determine whether the input value is valid or not.
    *
    * When it returns string:

@@ -185,13 +185,14 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    */
   private fieldValidation = async (field: ICustomCollectionField, value: any): Promise<string> => {
     let validation = "";
+    // Trigger field change
+    this.onValueChanged(field.id, value);
+    // Do the custom validation check
     if (field.onGetErrorMessage) {
       validation = await field.onGetErrorMessage(value, this.props.index, this.state.crntItem);
     }
     // Store the field validation
     this.validation[field.id] = validation === "";
-    // Trigger field change
-    this.onValueChanged(field.id, value);
     // Add message for the error callout
     this.errorCalloutHandler(field.id, validation);
     return validation;

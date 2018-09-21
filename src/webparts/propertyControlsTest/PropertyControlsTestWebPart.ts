@@ -82,9 +82,13 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     return true;
   }
 
-  private minLengthValidation (value: string, index: number, item: any) {
-    console.log(`Currently editing item nr: ${index === null ? "new item" : index}. It contains the following properties:`, item);
-    return value.length >= 3 ? "" : "Should at least contain 3 characters.";
+  private minLengthValidation (value: string, index: number, item: any): Promise<string> {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log(`Currently editing item nr: ${index === null ? "new item" : index}. It contains the following properties:`, item);
+        return value.length >= 3 ? resolve("") : resolve("Should at least contain 3 characters.");
+      }, (Math.floor(Math.random() * 4) + 1) * 1000); // Random number between 1 - 4
+    });
   }
 
   private ageValidation (value: number) {

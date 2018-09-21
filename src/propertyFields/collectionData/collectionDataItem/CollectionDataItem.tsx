@@ -185,14 +185,19 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    */
   private fieldValidation = async (field: ICustomCollectionField, value: any): Promise<string> => {
     let validation = "";
-    // Trigger field change
-    this.onValueChanged(field.id, value);
     // Do the custom validation check
     if (field.onGetErrorMessage) {
+      // Set initial field validation
+      this.validation[field.id] = false;
+      // Trigger field change
+      this.onValueChanged(field.id, value);
+      // Do the validation
       validation = await field.onGetErrorMessage(value, this.props.index, this.state.crntItem);
     }
     // Store the field validation
     this.validation[field.id] = validation === "";
+    // Trigger field change
+    this.onValueChanged(field.id, value);
     // Add message for the error callout
     this.errorCalloutHandler(field.id, validation);
     return validation;
@@ -340,7 +345,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           className={styles.collectionDataField}
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
-                          onChanged={(value) => this.onValueChanged(field.id, value)}
+                          // onChanged={(value) => this.onValueChanged(field.id, value)}
                           deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
                           onGetErrorMessage={(value: string) => this.fieldValidation(field, value)} />;
     }

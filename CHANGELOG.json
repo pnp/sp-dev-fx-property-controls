@@ -5,12 +5,13 @@
       "changes": {
         "new": [],
         "enhancements": [
+          "French localization added [#84](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/84)",
           "`PropertyFieldCollectionData`: Allow the user to specify a deferred validation time for each field [#98](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/98)",
-          "French localization added [#84](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/84)"
+          "`PropertyFieldNumber`: Introduced the aria label [#104](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/104)"
         ],
         "fixes": []
       },
-      "contributions": ["[PooLP](https://github.com/PooLP)"]
+      "contributions": ["[Junle Li](https://github.com/lijunle)", "[PooLP](https://github.com/PooLP)"]
     },
     {
       "version": "1.11.0",

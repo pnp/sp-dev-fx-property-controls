@@ -4,12 +4,13 @@
 
 **Enhancements**
 
-- `PropertyFieldCollectionData`: Allow the user to specify a deferred validation time for each field [#98](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/98)
 - French localization added [#84](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/84)
+- `PropertyFieldCollectionData`: Allow the user to specify a deferred validation time for each field [#98](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/98)
+- `PropertyFieldNumber`: Introduced the aria label [#104](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/104)
 
 ### Contributors
 
-Special thanks to our contributor: [PooLP](https://github.com/PooLP).
+Special thanks to our contributors (in alphabetical order): [Junle Li](https://github.com/lijunle), [PooLP](https://github.com/PooLP).
 
 ## 1.11.0
 

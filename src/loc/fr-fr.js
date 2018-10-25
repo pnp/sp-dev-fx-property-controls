@@ -1,7 +1,5 @@
 define([], function () {
   return {
-    propertyFieldMultiSelectNoOptions: "Aucune option à sélectionner",
-    InvalidUrlError: "L'URL fournie n'est pas valide",
     // Common field labels
     'SaveButtonLabel': 'Sauvegarder',
     'CancelButtonLabel': 'Annuler',
@@ -74,11 +72,17 @@ define([], function () {
     "TermPickerInLabel": "dans",
     "TermPickerTermSetLabel": "Ensemble de termes",
 
+    // Multiselect field
+    propertyFieldMultiSelectNoOptions: "Aucune option à sélectionner",
+
     // Collection data
     "CollectionDataEmptyFields": "Aucun champ n'a été fourni pour la collection de données.",
     "CollectionDataEmptyValue": "Aucune donnée dans votre collection.",
     'CollectionAddRowButtonLabel': 'Ajouter des données à la collection',
     'CollectionDeleteRowButtonLabel': 'Supprimer la ligne',
     'CollectionSaveAndAddButtonLabel': 'Ajouter et sauvegarder',
+    CollectionDataItemShowErrorsLabel: "Afficher les erreurs de ligne",
+    CollectionDataItemFieldRequiredLabel: "Champ obligatoire",
+    InvalidUrlError: "L'URL fournie n'est pas valide",
   }
 });

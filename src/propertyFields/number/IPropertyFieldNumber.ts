@@ -63,6 +63,10 @@ export interface IPropertyFieldNumberProps {
    * Whether the property pane number field is enabled or not.
    */
   disabled?: boolean;
+  /**
+   * The aria label for the number field.
+   */
+  ariaLabel?: string;
 }
 
 /**

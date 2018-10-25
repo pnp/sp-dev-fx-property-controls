@@ -75,6 +75,7 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
     return (
       <div>
         <TextField label={this.props.label}
+                   ariaLabel={this.props.ariaLabel}
                    onChanged={this._delayedChange}
                    value={this.state.value}
                    description={this.props.description}

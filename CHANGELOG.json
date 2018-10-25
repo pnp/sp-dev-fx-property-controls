@@ -5,11 +5,12 @@
       "changes": {
         "new": [],
         "enhancements": [
-          "`PropertyFieldCollectionData`: Allow the user to specify a deferred validation time for each field [#98](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/98)"
+          "`PropertyFieldCollectionData`: Allow the user to specify a deferred validation time for each field [#98](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/98)",
+          "French localization added [#84](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/84)"
         ],
         "fixes": []
       },
-      "contributions": []
+      "contributions": ["[PooLP](https://github.com/PooLP)"]
     },
     {
       "version": "1.11.0",
@@ -66,7 +67,7 @@
         ],
         "fixes": []
       },
-      "contributions": ["Joel Rodrigues"]
+      "contributions": ["[Joel Rodrigues](https://github.com/joelfmrodrigues)"]
     },
     {
       "version": "1.7.0",

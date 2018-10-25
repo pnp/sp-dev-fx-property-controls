@@ -5,6 +5,11 @@
 **Enhancements**
 
 - `PropertyFieldCollectionData`: Allow the user to specify a deferred validation time for each field [#98](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/98)
+- French localization added [#84](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/84)
+
+### Contributors
+
+Special thanks to our contributor: [PooLP](https://github.com/PooLP).
 
 ## 1.11.0
 
@@ -48,6 +53,10 @@
 
 - New telemetry approach which allows you to use Application Insights instance [#79](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/79)
 - `PropertyFieldListPicker` add optional property for target site [#21](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/21)
+
+### Contributors
+
+Special thanks to our contributor: [Joel Rodrigues](https://github.com/joelfmrodrigues).
 
 ## 1.7.0
 

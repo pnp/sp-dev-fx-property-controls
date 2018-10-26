@@ -325,7 +325,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                               isValid = validation === "";
                             } else {
                               // Check if entered value is a valid URL
-                              const regEx: RegExp = /^((http|https)?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+                              const regEx: RegExp = /(http|https)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
                               isValid = (value === null || value.length === 0 || regEx.test(value));
                               validation = isValid ? "" : strings.InvalidUrlError;
                             }

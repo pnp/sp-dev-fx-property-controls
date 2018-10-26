@@ -1,4 +1,6 @@
 import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { IRenderFunction } from '@uifabric/utilities/lib/IRenderFunction';
+import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.Props';
 
 export interface ICustomCollectionField {
   /**
@@ -21,6 +23,10 @@ export interface ICustomCollectionField {
    * Dropdown options. Only nescessary when dropdown type is used.
    */
   options?: IDropdownOption[];
+  /**
+   * Dropdown custom options render method.
+   */
+  onRenderOption?: IRenderFunction<ISelectableOption>;
   /**
    * Input placeholder text.
    */

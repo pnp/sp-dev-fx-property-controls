@@ -299,7 +299,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                          options={field.options}
                          selectedKey={item[field.id] || null}
                          required={field.required}
-                         onChanged={(opt) => this.onValueChanged(field.id, opt.key)} />;
+                         onChanged={(opt) => this.onValueChanged(field.id, opt.key)}
+                         onRenderOption={field.onRenderOption} />;
       case CustomCollectionFieldType.number:
         return (
           <CollectionNumberField field={field} item={item} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />

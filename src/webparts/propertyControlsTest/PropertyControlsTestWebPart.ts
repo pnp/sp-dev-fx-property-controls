@@ -182,7 +182,14 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       ],
                       required: true,
                       placeholder: "Favorite city of the person",
-                      defaultValue: "antwerp"
+                      defaultValue: "antwerp",
+                      onRenderOption: (props, defaultRenderer) => {
+                        if (props.text.toLowerCase() === "antwerp") {
+                          return React.createElement("b", { className: "Testing" }, `${props.text.toUpperCase()} 🎉`);
+                        } else {
+                          return defaultRenderer(props);
+                        }
+                      }
                     },
                     {
                       id: "Sign",

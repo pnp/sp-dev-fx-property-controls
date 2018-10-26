@@ -7,6 +7,7 @@
 - Dutch localization added [#82](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/82)
 - French localization added [#84](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/84)
 - `PropertyFieldCollectionData`: Allow the user to specify a deferred validation time for each field [#98](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/98)
+- `PropertyFieldCollectionData`: added a onRenderOption option to allow custom option rendering [#102](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/102)
 - `PropertyFieldNumber`: Introduced the aria label [#104](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/104)
 
 **Fixes**

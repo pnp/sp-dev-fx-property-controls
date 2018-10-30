@@ -10,17 +10,14 @@ import { IPropertyWebPartInformationHostProps } from './IPropertyWebPartInformat
 import PropertyWebPartInformationHost from './PropertyWebPartInformationHost';
 
 class PropertyWebPartInformationBuilder implements IPropertyPaneField<IPropertyWebPartInformationProps> {
-
 	//Properties defined by IPropertyPaneField
-	public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
 	public targetProperty: string;
+	public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
 	public properties: IPropertyWebPartInformationPropsInternal;
 
 	private elem: HTMLElement;
 
-
-	public constructor(_targetProperty: string, _properties: IPropertyWebPartInformationProps) {
-		this.targetProperty = _targetProperty;
+	public constructor(_properties: IPropertyWebPartInformationProps) {
 		this.properties = {
 			key: _properties.key,
 			moreInfoLink: _properties.moreInfoLink,
@@ -53,6 +50,6 @@ class PropertyWebPartInformationBuilder implements IPropertyPaneField<IPropertyW
 	}
 }
 
-export function PropertyWebPartInformation(targetProperty: string, properties: IPropertyWebPartInformationProps): IPropertyPaneField<IPropertyWebPartInformationProps> {
-	return new PropertyWebPartInformationBuilder(targetProperty, properties);
+export function PropertyWebPartInformation(properties: IPropertyWebPartInformationProps): IPropertyPaneField<IPropertyWebPartInformationProps> {
+	return new PropertyWebPartInformationBuilder(properties);
 }

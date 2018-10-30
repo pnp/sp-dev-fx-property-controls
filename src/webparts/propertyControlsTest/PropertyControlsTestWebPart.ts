@@ -36,6 +36,7 @@ import { PropertyFieldOrder } from '../../PropertyFieldOrder';
 import { orderedItem } from './components/OrderedItem';
 import { PropertyFieldSwatchColorPicker, PropertyFieldSwatchColorPickerStyle } from '../../PropertyFieldSwatchColorPicker';
 import { PropertyWebPartInformation } from '../../propertyFields/webPartInformation';
+import { RawPropertyEditor } from '../../propertyFields/rawPropertyEditor/RawPropertyEditor';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -523,7 +524,17 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'swatchColorFieldId'
                 })
               ]
-            }
+            },
+            { 
+              groupName: "Advanced",
+              groupFields: [
+                RawPropertyEditor({
+                  webpart: this,
+                  allowEditOfNonPresentValues: true,
+                  key: 'exporter',
+                })
+              ]
+            },
           ]
         }
       ]

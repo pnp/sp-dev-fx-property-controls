@@ -1,1 +1,1 @@
-export * from './propertyFields/webPartInformation/index';
+export * from './propertyFields/webPartInformation';

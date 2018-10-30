@@ -2,6 +2,7 @@ declare interface IPropertyControlsTestWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
+  AboutGroupName: string;
 }
 
 declare module 'PropertyControlsTestWebPartStrings' {

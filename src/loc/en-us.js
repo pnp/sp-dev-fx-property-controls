@@ -3,6 +3,9 @@ define([], function () {
     // Common field labels
     'SaveButtonLabel': 'Save',
     'CancelButtonLabel': 'Cancel',
+    'DescriptionLabel' : 'Description',
+    'MoreInfoLabel' : 'More info',
+    'AboutGroupLabel': 'About',
 
     // PeoplePicker labels
     'PeoplePickerSuggestedContacts': 'Suggested people',

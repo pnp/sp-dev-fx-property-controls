@@ -299,7 +299,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                          options={field.options}
                          selectedKey={item[field.id] || null}
                          required={field.required}
-                         onChanged={(opt) => this.onValueChanged(field.id, opt.key)} />;
+                         onChanged={(opt) => this.onValueChanged(field.id, opt.key)}
+                         onRenderOption={field.onRenderOption} />;
       case CustomCollectionFieldType.number:
         return (
           <CollectionNumberField field={field} item={item} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
@@ -325,7 +326,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                               isValid = validation === "";
                             } else {
                               // Check if entered value is a valid URL
-                              const regEx: RegExp = /^((http|https)?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+                              const regEx: RegExp = /(http|https)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
                               isValid = (value === null || value.length === 0 || regEx.test(value));
                               validation = isValid ? "" : strings.InvalidUrlError;
                             }

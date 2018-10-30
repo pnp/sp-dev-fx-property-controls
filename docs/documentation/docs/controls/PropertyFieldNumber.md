@@ -70,6 +70,7 @@ The `PropertyFieldNumber` control can be configured with the following propertie
 | value | number | no | Value to be displayed in the number field. |
 | maxValue | number | no | Maximum number that can be inserted. |
 | minValue | number | no | Minimum number that can be inserted. |
+| ariaLabel | string | no | The aria label for the number field. |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
 | errorMessage | string | no | If set, this will be displayed as an error message. |
 | onGetErrorMessage | (value: number) => string | no | If set, this method is used to get the validation error message and determine whether the input value is valid or not. |

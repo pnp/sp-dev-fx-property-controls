@@ -35,6 +35,7 @@ import { PropertyFieldCollectionData, CustomCollectionFieldType } from '../../Pr
 import { PropertyFieldOrder } from '../../PropertyFieldOrder';
 import { orderedItem } from './components/OrderedItem';
 import { PropertyFieldSwatchColorPicker, PropertyFieldSwatchColorPickerStyle } from '../../PropertyFieldSwatchColorPicker';
+import { PropertyWebPartInformation } from '../../propertyFields/webPartInformation';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -128,6 +129,20 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
             description: '', //strings.PropertyPaneDescription
           },
           groups: [
+            { 
+              groupName: strings.AboutGroupName,
+              groupFields: [
+                PropertyWebPartInformation('webPartInfo', {
+                  description: `This is a <strong>demo webpart</strong>, used to demonstrate all the <a href="https://aka.ms/sppnp">PnP</a> property controls`,
+                  moreInfoLink: `https://sharepoint.github.io/sp-dev-fx-property-controls/`,
+                  videoProperties: {
+                    embedLink: `https://www.youtube.com/embed/d_9o3tQ90zo`,
+                    properties: { allowFullScreen: true}
+                  },
+                  key: 'webPartInfoId'
+                })                
+              ]
+            },
             {
               groupName: '', //strings.BasicGroupName,
               groupFields: [

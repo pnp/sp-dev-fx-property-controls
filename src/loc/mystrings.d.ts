@@ -1,4 +1,8 @@
 declare interface IPropertyControlStrings {
+
+  DescriptionLabel: string;
+  MoreInfoLabel: string;
+  
   // PeoplePicker labels
   PeoplePickerSuggestedContacts: string;
   PeoplePickerSuggestedGroups: string;

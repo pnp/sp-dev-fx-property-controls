@@ -1,5 +1,9 @@
 define([], function() {
   return {
+    ApplyButtonLabel: "Bevestig",
+    ImportButtonLabel: "Importeer",
+    ExportButtonLabel: "Exporteer",
+    JsonFileRequiredMessage: "Alleen JSON files toegestaan",
     SaveButtonLabel: "Opslaan",
     CancelButtonLabel: "Annuleren",
     PeoplePickerSuggestedContacts: "Voorgestelde personen",

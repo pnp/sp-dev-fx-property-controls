@@ -1,5 +1,7 @@
 declare interface IPropertyControlStrings {
 
+
+
   DescriptionLabel: string;
   MoreInfoLabel: string;
   
@@ -87,6 +89,12 @@ declare interface IPropertyControlStrings {
   CollectionDataItemShowErrorsLabel: string;
   CollectionDataItemFieldRequiredLabel: string;
   InvalidUrlError: string;
+
+  // Property Editor 
+  ApplyButtonLabel: string;
+  ImportButtonLabel: string;
+  ExportButtonLabel: string;
+  JsonFileRequiredMessage: string;
 }
 
 declare module 'PropertyControlStrings' {

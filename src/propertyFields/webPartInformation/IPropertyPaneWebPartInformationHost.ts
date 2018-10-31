@@ -1,9 +1,9 @@
-import { IVideoEmbedProperties } from "./IPropertyWebPartInformation";
+import { IVideoEmbedProperties } from "./IPropertyPaneWebPartInformation";
 
 /**
  * PropertyFieldColorPickerHost properties interface
  */
-export interface IPropertyWebPartInformationHostProps {
+export interface IPropertyPaneWebPartInformationHostProps {
 	videoProperties?: IVideoEmbedProperties;
 	moreInfoLink?: string;
 	moreInfoLinkTarget?: string;

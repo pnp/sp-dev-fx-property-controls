@@ -1,14 +1,14 @@
 /**
  * PropertyFieldColorPickerHost properties interface
  */
-export interface IPropertyEditorHostProps {
+export interface IPropertyPanePropertyEditorHostProps {
 	webpart: any;
 }
 
 /**
  * PropertyFieldColorPickerHost state interface
  */
-export interface IPropertyEditorHostState {
+export interface IPropertyPanePropertyEditorHostState {
 	errorMessage?: string;
 	openPanel? : boolean;
 	propertiesJson?: string;

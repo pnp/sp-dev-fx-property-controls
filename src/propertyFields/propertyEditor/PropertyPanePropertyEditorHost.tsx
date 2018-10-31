@@ -1,21 +1,21 @@
 import * as React from 'react';
-import { IPropertyEditorHostProps, IPropertyEditorHostState } from './IPropertyEditorHost';
+import { IPropertyPanePropertyEditorHostProps, IPropertyPanePropertyEditorHostState } from './IPropertyPanePropertyEditorHost';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { PrimaryButton, DefaultButton, IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
 import AceEditor from 'react-ace';
 import { set } from '@microsoft/sp-lodash-subset';
 import * as telemetry from '../../common/telemetry';
-import styles from './PropertyEditorHost.module.scss';
+import styles from './PropertyPanePropertyEditorHost.module.scss';
 import * as strings from 'PropertyControlStrings';
 
 
-export default class PropertyEditorHost extends React.Component<IPropertyEditorHostProps, IPropertyEditorHostState> {
+export default class PropertyPanePropertyEditorHost extends React.Component<IPropertyPanePropertyEditorHostProps, IPropertyPanePropertyEditorHostState> {
 
     private previousValue: string;
     private cancel: boolean = true;
     private fileRef: HTMLInputElement = null;
 
-    constructor(props: IPropertyEditorHostProps, state: IPropertyEditorHostState) {
+    constructor(props: IPropertyPanePropertyEditorHostProps, state: IPropertyPanePropertyEditorHostState) {
         super(props);
 
         telemetry.track('PropertyWebPartInformation', {});
@@ -81,8 +81,8 @@ export default class PropertyEditorHost extends React.Component<IPropertyEditorH
     * Close the panel
     */
     private onClosePanel(): void {
-        this.setState((crntState: IPropertyEditorHostState) => {
-            const newState: IPropertyEditorHostState = {
+        this.setState((crntState: IPropertyPanePropertyEditorHostState) => {
+            const newState: IPropertyPanePropertyEditorHostState = {
                 openPanel: false,
             };
 

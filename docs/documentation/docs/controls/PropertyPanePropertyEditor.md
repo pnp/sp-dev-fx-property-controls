@@ -1,15 +1,15 @@
-# PropertyEditor control
+# PropertyPanePropertyEditor control
 
 This control allows the user to edit the webpart properties in JSON. It can also be used to export properties of a webpart and later import them again to a similar webpart on a different page. If the user clicks 'export' a file named 'webpartproperties.json' is presented for download. The same file can be uploaded to a new instance of the same webpart on for instance another site or page.
 
-**PropertyEditor rendering in property pane**
+**PropertyPanePropertyEditor rendering in property pane**
 
-![PropertyEditor rendering](../assets/propertyeditorinpane.png)
+![PropertyPanePropertyEditor rendering](../assets/propertyeditorinpane.png)
 
 
-**PropertyEditor rendering when expanded**
+**PropertyPanePropertyEditor rendering when expanded**
 
-![PropertyEditor rendering](../assets/propertyeditorexpanded.png)
+![PropertyPanePropertyEditor rendering](../assets/propertyeditorexpanded.png)
 
 ## How to use this control in your solutions
 
@@ -17,7 +17,7 @@ This control allows the user to edit the webpart properties in JSON. It can also
 2. Import the following modules to your component: 
 
 ```TypeScript
-import { PropertyWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyEditor';
+import { PropertyWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPanePropertyEditor';
 ```
 
 3. Create a new property for your web part, for example:
@@ -31,7 +31,7 @@ export interface IPropertyControlsTestWebPartProps {
 4. Add the custom property control to the `groupFields` of the web part property pane configuration:
 
 ```TypeScript
-  PropertyEditor({
+  PropertyPanePropertyEditor({
     webpart: this,
     key: 'propertyEditor'
   })    

@@ -1,8 +1,8 @@
-# PropertyWebPartInformation control
+# PropertyPaneWebPartInformation control
 
 This control allows you to specify a description, a 'read more' link, and an optional embedded video
 
-**PropertyWebPartInformation rendering**
+**PropertyPaneWebPartInformation rendering**
 
 ![WebPart Information](../assets/webpartinformation.png)
 
@@ -13,7 +13,7 @@ This control allows you to specify a description, a 'read more' link, and an opt
 2. Import the following modules to your component: 
 
 ```TypeScript
-import { PropertyWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyWebPartInformation';
+import { PropertyWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 ```
 
 3. Create a new property for your web part, for example:
@@ -27,7 +27,7 @@ export interface IPropertyControlsTestWebPartProps {
 4. Add the custom property control to the `groupFields` of the web part property pane configuration:
 
 ```TypeScript
-  PropertyWebPartInformation({
+  PropertyPaneWebPartInformation({
     description: `This is a <strong>demo webpart</strong>, used to demonstrate all the <a href="https://aka.ms/sppnp">PnP</a> property controls`,
     moreInfoLink: `https://sharepoint.github.io/sp-dev-fx-property-controls/`,
     videoProperties: {
@@ -40,7 +40,7 @@ export interface IPropertyControlsTestWebPartProps {
 
 ## Implementation
 
-The `PropertyWebPartInformation` control has the following properties:
+The `PropertyPaneWebPartInformation` control has the following properties:
 
 | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- |
@@ -60,4 +60,4 @@ Class `IVideoEmbedProperties`
 
 
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyWebPartInformation)
+![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyPaneWebPartInformation)

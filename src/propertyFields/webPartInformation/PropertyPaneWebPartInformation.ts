@@ -5,11 +5,11 @@ import {
   PropertyPaneFieldType
 } from '@microsoft/sp-webpart-base';
 
-import { IPropertyWebPartInformationProps, IPropertyWebPartInformationPropsInternal } from "./IPropertyWebPartInformation";
-import { IPropertyWebPartInformationHostProps } from './IPropertyWebPartInformationHost';
-import PropertyWebPartInformationHost from './PropertyWebPartInformationHost';
+import { IPropertyPaneWebPartInformationProps, IPropertyWebPartInformationPropsInternal } from "./IPropertyPaneWebPartInformation";
+import { IPropertyPaneWebPartInformationHostProps } from './IPropertyPaneWebPartInformationHost';
+import PropertyPaneWebPartInformationHost from './PropertyPaneWebPartInformationHost';
 
-class PropertyWebPartInformationBuilder implements IPropertyPaneField<IPropertyWebPartInformationProps> {
+class PropertyPaneWebPartInformationBuilder implements IPropertyPaneField<IPropertyPaneWebPartInformationProps> {
 	//Properties defined by IPropertyPaneField
 	public targetProperty: string;
 	public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
@@ -17,7 +17,7 @@ class PropertyWebPartInformationBuilder implements IPropertyPaneField<IPropertyW
 
 	private elem: HTMLElement;
 
-	public constructor(_properties: IPropertyWebPartInformationProps) {
+	public constructor(_properties: IPropertyPaneWebPartInformationProps) {
 		this.properties = {
 			key: _properties.key,
 			moreInfoLink: _properties.moreInfoLink,
@@ -40,7 +40,7 @@ class PropertyWebPartInformationBuilder implements IPropertyPaneField<IPropertyW
 			this.elem = elem;
 		}
 
-		const element: React.ReactElement<IPropertyWebPartInformationHostProps> = React.createElement(PropertyWebPartInformationHost, {
+		const element: React.ReactElement<IPropertyPaneWebPartInformationHostProps> = React.createElement(PropertyPaneWebPartInformationHost, {
 			moreInfoLink: this.properties.moreInfoLink,
 			moreInfoLinkTarget: this.properties.moreInfoLinkTarget,
 			description: this.properties.description,
@@ -50,6 +50,6 @@ class PropertyWebPartInformationBuilder implements IPropertyPaneField<IPropertyW
 	}
 }
 
-export function PropertyWebPartInformation(properties: IPropertyWebPartInformationProps): IPropertyPaneField<IPropertyWebPartInformationProps> {
-	return new PropertyWebPartInformationBuilder(properties);
+export function PropertyPaneWebPartInformation(properties: IPropertyPaneWebPartInformationProps): IPropertyPaneField<IPropertyPaneWebPartInformationProps> {
+	return new PropertyPaneWebPartInformationBuilder(properties);
 }

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import * as strings from 'PropertyControlStrings';
-import { IPropertyWebPartInformationHostProps } from './IPropertyWebPartInformationHost';
+import { IPropertyPaneWebPartInformationHostProps } from './IPropertyPaneWebPartInformationHost';
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 import * as telemetry from '../../common/telemetry';
 
-export default class PropertyWebPartInformationHost extends React.Component<IPropertyWebPartInformationHostProps> {
+export default class PropertyPaneWebPartInformationHost extends React.Component<IPropertyPaneWebPartInformationHostProps> {
 
-  constructor(props: IPropertyWebPartInformationHostProps) {
+  constructor(props: IPropertyPaneWebPartInformationHostProps) {
     super(props);
 
     telemetry.track('PropertyWebPartInformation', {});

@@ -4,7 +4,7 @@ import { IPropertyPaneCustomFieldProps, BaseClientSideWebPart } from '@microsoft
 /**
  * Public properties of the PropertyFieldSpinButton custom field
  */
-export interface IPropertyWebPartInformationProps {
+export interface IPropertyPaneWebPartInformationProps {
 
 	/**
 	 * A link pointing to an external source for more information
@@ -28,7 +28,7 @@ export interface IPropertyWebPartInformationProps {
 	key: string;
 }
 
-export interface IPropertyWebPartInformationPropsInternal extends IPropertyWebPartInformationProps, IPropertyPaneCustomFieldProps {
+export interface IPropertyWebPartInformationPropsInternal extends IPropertyPaneWebPartInformationProps, IPropertyPaneCustomFieldProps {
 }
 
 export interface IVideoEmbedProperties {

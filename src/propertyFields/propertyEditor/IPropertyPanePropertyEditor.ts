@@ -3,7 +3,7 @@ import { IPropertyPaneCustomFieldProps, BaseClientSideWebPart } from '@microsoft
 /**
  * Public properties of the PropertyFieldSpinButton custom field
  */
-export interface IPropertyEditorProps {
+export interface IPropertyPanePropertyEditorProps {
 
 	/**
 	 * This current webpart. Usually 'this'.
@@ -17,5 +17,5 @@ export interface IPropertyEditorProps {
 }
 
 
-export interface IPropertyEditorPropsInternal extends IPropertyEditorProps, IPropertyPaneCustomFieldProps {
+export interface IPropertyPanePropertyEditorPropsInternal extends IPropertyPanePropertyEditorProps, IPropertyPaneCustomFieldProps {
 }

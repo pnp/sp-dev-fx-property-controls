@@ -1,9 +1,10 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "sp-dev-fx-property-controls-client-side-solution",
     "id": "0253ef52-be23-4282-b00f-e5a9350eb408",
     "version": "1.0.0.0",
+    "includeClientSideAssets": true,
     "skipFeatureDeployment": true
   },
   "paths": {

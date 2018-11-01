@@ -1,4 +1,5 @@
-import { autobind, EventGroup } from '@uifabric/utilities';
+import { autobind } from '@uifabric/utilities';
+import { EventGroup } from '@uifabric/utilities/lib/EventGroup';
 import { IButtonStyles, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { Label } from 'office-ui-fabric-react/lib/Label';

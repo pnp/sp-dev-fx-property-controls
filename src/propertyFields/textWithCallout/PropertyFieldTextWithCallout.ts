@@ -10,6 +10,7 @@ import {
 import PropertyFieldTextWithCalloutHost from './PropertyFieldTextWithCalloutHost';
 
 import { IPropertyFieldTextWithCalloutPropsInternal, IPropertyFieldTextWithCalloutProps } from './IPropertyFieldTextWithCallout';
+import { IPropertyFieldTextWithCalloutHostProps } from '.';
 
 class PropertyFieldTextWithCalloutBuilder implements IPropertyPaneField<IPropertyFieldTextWithCalloutPropsInternal> {
     public targetProperty: string;
@@ -28,7 +29,7 @@ class PropertyFieldTextWithCalloutBuilder implements IPropertyPaneField<IPropert
 
     private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
 
-        const props: IPropertyFieldTextWithCalloutProps = <IPropertyFieldTextWithCalloutPropsInternal>this.properties;
+        const props: IPropertyFieldTextWithCalloutHostProps = <IPropertyFieldTextWithCalloutHostProps>this.properties;
 
         const element = React.createElement(PropertyFieldTextWithCalloutHost, {
             ...props,

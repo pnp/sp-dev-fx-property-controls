@@ -11,6 +11,7 @@ import PropertyFieldMultiSelectHost from './PropertyFieldMultiSelectHost';
 
 import { IPropertyFieldMultiSelectPropsInternal, IPropertyFieldMultiSelectProps } from './IPropertyFieldMultiSelect';
 import { cloneDeep } from 'lodash';
+import { IPropertyFieldMultiSelectHostProps } from '.';
 
 class PropertyFieldMultiSelectBuilder implements IPropertyPaneField<IPropertyFieldMultiSelectPropsInternal> {
   public targetProperty: string;
@@ -30,7 +31,7 @@ class PropertyFieldMultiSelectBuilder implements IPropertyPaneField<IPropertyFie
 
   private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
 
-    const props: IPropertyFieldMultiSelectProps = <IPropertyFieldMultiSelectProps>this.properties;
+    const props: IPropertyFieldMultiSelectHostProps = <IPropertyFieldMultiSelectHostProps>this.properties;
 
     const element = React.createElement(PropertyFieldMultiSelectHost, {
       ...props,

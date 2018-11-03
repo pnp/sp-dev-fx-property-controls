@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
+import { IPropertyFieldHeaderProps } from '../../common/propertyFieldHeader/IPropertyFieldHeader';
 
 import { IPropertyFieldSliderWithCalloutHostProps } from './IPropertyFieldSliderWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
@@ -17,9 +18,11 @@ export default class PropertyFieldSliderWithCalloutHost extends React.Component<
   }
 
   public render(): JSX.Element {
+    const props: IPropertyFieldHeaderProps = this.props as IPropertyFieldHeaderProps;
+
     return (
       <div>
-        <PropertyFieldHeader {...this.props} />
+        <PropertyFieldHeader {...props} />
         <Slider {..._.omit(this.props, ['label'])} />
       </div>
     );

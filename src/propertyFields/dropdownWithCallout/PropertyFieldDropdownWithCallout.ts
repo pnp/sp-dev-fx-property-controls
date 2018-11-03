@@ -9,6 +9,7 @@ import {
 import PropertyFieldDropdownHost from './PropertyFieldDropdownWithCalloutHost';
 
 import { IPropertyFieldDropdownWithCalloutPropsInternal, IPropertyFieldDropdownWithCalloutProps } from './IPropertyFieldDropdownWithCallout';
+import { IPropertyFieldDropdownWithCalloutHostProps } from '.';
 
 class PropertyFieldDropdownWithCalloutBuilder implements IPropertyPaneField<IPropertyFieldDropdownWithCalloutPropsInternal> {
     public targetProperty: string;
@@ -28,7 +29,7 @@ class PropertyFieldDropdownWithCalloutBuilder implements IPropertyPaneField<IPro
 
     private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
 
-        const props: IPropertyFieldDropdownWithCalloutProps = <IPropertyFieldDropdownWithCalloutProps>this.properties;
+        const props: IPropertyFieldDropdownWithCalloutHostProps = <IPropertyFieldDropdownWithCalloutHostProps>this.properties;
 
         const element = React.createElement(PropertyFieldDropdownHost, {
             ...props,

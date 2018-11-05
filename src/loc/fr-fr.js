@@ -1,5 +1,9 @@
 define([], function() {
   return {
+    ApplyButtonLabel: "Apply",
+    ImportButtonLabel: "Import",
+    ExportButtonLabel: "Export",
+    JsonFileRequiredMessage: "Please upload a json file",
     SaveButtonLabel: "Sauvegarder",
     CancelButtonLabel: "Annuler",
     PeoplePickerSuggestedContacts: "Personnes suggérées",

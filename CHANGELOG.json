@@ -4,7 +4,8 @@
       "version": "1.12.0",
       "changes": {
         "new": [
-          "`PropertyWebPartInformation`: New control to show more information about the current web part [#108](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/108)"
+          "`PropertyPaneWebPartInformation`: New control to show more information about the current web part [#108](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/108)",
+          "`PropertyPanePropertyEditor`: New control that allows you to export/import property pane settings [#114](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/114)"
         ],
         "enhancements": [
           "Dutch localization added [#82](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/82)",

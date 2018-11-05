@@ -16,4 +16,5 @@ export * from './PropertyFieldLinkWithCallout';
 export * from './PropertyFieldSliderWithCallout';
 export * from './PropertyFieldTextWithCallout';
 export * from './PropertyFieldToggleWithCallout';
-export * from './PropertyWebPartInformation';
+export * from './PropertyPaneWebPartInformation';
+export * from './PropertyPanePropertyEditor';

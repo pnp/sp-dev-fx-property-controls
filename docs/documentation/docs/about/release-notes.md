@@ -4,7 +4,8 @@
 
 **New control(s)**
 
-- `PropertyWebPartInformation`: New control to show more information about the current web part [#108](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/108)
+- `PropertyPaneWebPartInformation`: New control to show more information about the current web part [#108](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/108)
+- `PropertyPanePropertyEditor`: New control that allows you to export/import property pane settings [#114](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/114)
 
 **Enhancements**
 

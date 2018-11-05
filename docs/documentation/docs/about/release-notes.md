@@ -15,6 +15,7 @@
 - `PropertyFieldCollectionData`: added a onRenderOption option to allow custom option rendering [#102](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/102)
 - `PropertyFieldNumber`: Introduced the aria label [#104](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/104)
 - Hide callout from the controls with callout if no message is provided [#107](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/107)
+- `PropertyFieldListPicker`: Add the ability to refresh target site while pane is open [#109](https://github.com/SharePoint/sp-dev-fx-controls-react/pull/109)
 
 **Fixes**
 

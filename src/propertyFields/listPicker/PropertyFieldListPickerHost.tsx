@@ -48,11 +48,19 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
     this.loadLists();
   }
 
+  public componentDidUpdate(prevProps: IPropertyFieldListPickerHostProps, prevState: IPropertyFieldListPickerHostState): void {
+    if (this.props.baseTemplate !== prevProps.baseTemplate ||
+        this.props.webAbsoluteUrl !== prevProps.webAbsoluteUrl) {
+      this.loadLists();
+    }
+  }
+
   /**
    * Loads the list from SharePoint current web site, or target site if specified by webRelativeUrl
    */
   private loadLists(): void {
     const listService: SPListPickerService = new SPListPickerService(this.props, this.props.context);
+    this.options = [];
     listService.getLibs().then((response: ISPLists) => {
       // Start mapping the list that are selected
       response.value.forEach((list: ISPList) => {

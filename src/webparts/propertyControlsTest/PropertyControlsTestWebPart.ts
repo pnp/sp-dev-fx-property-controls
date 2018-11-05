@@ -130,7 +130,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
             description: '', //strings.PropertyPaneDescription
           },
           groups: [
-            { 
+            {
               groupName: strings.AboutGroupName,
               groupFields: [
                 PropertyPaneWebPartInformation({
@@ -141,7 +141,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                     properties: { allowFullScreen: true}
                   },
                   key: 'webPartInfoId'
-                })                
+                })
               ]
             },
             {
@@ -303,6 +303,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'codeEditorFieldId',
                   language:PropertyFieldCodeEditorLanguages.HTML
                 }),
+                PropertyPaneTextField("siteUrl", {
+                  label: "Site URL"
+                }),
                 PropertyFieldListPicker('singleList', {
                   label: 'Select a list',
                   selectedList: this.properties.singleList,
@@ -317,7 +320,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   key: 'listPickerFieldId',
-                  webAbsoluteUrl: this.context.pageContext.web.absoluteUrl
+                  webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl
                 }),
                 PropertyFieldListPicker('multiList', {
                   label: 'Select multiple lists',
@@ -336,7 +339,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   key: 'multiListPickerFieldId',
-                  webAbsoluteUrl: this.context.pageContext.web.absoluteUrl
+                  webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl
                 }),
                 PropertyFieldDateTimePicker('datetime', {
                   label: 'Select the date and time',
@@ -532,7 +535,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                 })
               ]
             },
-            { 
+            {
               groupName: "Advanced",
               groupFields: [
                 PropertyPanePropertyEditor({

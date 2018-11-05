@@ -42,8 +42,17 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
     this.validate = this.validate.bind(this);
     this.notifyAfterValidate = this.notifyAfterValidate.bind(this);
     this.delayedValidate = this.async.debounce(this.validate, this.props.deferredValidationTime);
+  }
 
+  public componentDidMount() {
     this.loadLists();
+  }
+
+  public componentDidUpdate(prevProps: IPropertyFieldListMultiPickerHostProps, prevState: IPropertyFieldListMultiPickerHostState): void {
+    if (this.props.baseTemplate !== prevProps.baseTemplate ||
+        this.props.webAbsoluteUrl !== prevProps.webAbsoluteUrl) {
+      this.loadLists();
+    }
   }
 
   /**
@@ -52,6 +61,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   private loadLists(): void {
     // Builds the SharePoint List service
     const listService: SPListPickerService = new SPListPickerService(this.props, this.props.context);
+    this.options = [];
     // Gets the libs
     listService.getLibs().then((response: ISPLists) => {
       response.value.forEach((list: ISPList) => {
@@ -74,7 +84,11 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
         });
       });
       this.loaded = true;
-      this.setState({ results: this.options, selectedKeys: this.state.selectedKeys, loaded: true });
+      this.setState({
+        results: this.options,
+        selectedKeys: this.state.selectedKeys,
+        loaded: true
+      });
     });
   }
 

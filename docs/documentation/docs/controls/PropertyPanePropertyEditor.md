@@ -24,17 +24,17 @@ import { PropertyWebPartInformation } from '@pnp/spfx-property-controls/lib/Prop
 
 ```TypeScript
 export interface IPropertyControlsTestWebPartProps {
-  toggleInfoHeaderValue: boolean;
+  toggleInfoHeaderValue: boolean; 
 }
 ```
 
 4. Add the custom property control to the `groupFields` of the web part property pane configuration:
 
 ```TypeScript
-  PropertyPanePropertyEditor({
-    webpart: this,
-    key: 'propertyEditor'
-  })    
+PropertyPanePropertyEditor({
+  webpart: this,
+  key: 'propertyEditor'
+})    
 ```
 
 ## Implementation
@@ -46,4 +46,4 @@ The `PropertyEditor` control has the following properties:
 | webpart | BaseClientSideWebPart | yes | The webpart, which is in principle the current webpart, of which you want to be able to edit the properties from |
 
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyEditor)
+![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyPanePropertyEditor)

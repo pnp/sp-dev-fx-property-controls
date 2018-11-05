@@ -24,9 +24,6 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
             propertiesJson: this.getProperties(),
             errorMessage: undefined,
         };
-
-        this.onOpenPanel = this.onOpenPanel.bind(this);
-        this.onClosePanel = this.onClosePanel.bind(this);
     }
 
     private setFileRef = (element: HTMLInputElement) => {
@@ -65,7 +62,7 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
     /**
      * Called to open the editor panel
      */
-    private onOpenPanel(): void {
+    private onOpenPanel = (): void => {
 
         // Store the current code value
         this.previousValue = JSON.stringify(this.props.webpart.properties, null, '\t');
@@ -80,7 +77,7 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
     /**
     * Close the panel
     */
-    private onClosePanel(): void {
+    private onClosePanel = (): void => {
         this.setState((crntState: IPropertyPanePropertyEditorHostState) => {
             const newState: IPropertyPanePropertyEditorHostState = {
                 openPanel: false,
@@ -152,7 +149,7 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
                                     </div>
                                     <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6 ms-textAlignRight">
                                         <DefaultButton color="ms-bgColor-themeLight" iconProps={{ iconName: 'Download' }} text={strings.ExportButtonLabel} value={strings.ExportButtonLabel} onClick={this.onDownload} />
-                                        
+
                                         <input type="file" id="uploadwebpartjson" ref={this.setFileRef} style={{ display: "none" }} onChange={this.onUpload} />
 
                                         <DefaultButton iconProps={{ iconName: 'Upload' }} text={strings.ImportButtonLabel} value={strings.ImportButtonLabel} onClick={() => { this.fileRef.click(); }} />

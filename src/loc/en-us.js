@@ -42,7 +42,7 @@ define([], function() {
     DatePickerDayLongTuesday: "Tuesday",
     DatePickerDayShortTuesday: "Tue",
     DatePickerDayLongWednesday: "Wednesday",
-    DatePickerDayShortWednesday: "Web",
+    DatePickerDayShortWednesday: "Wed",
     DatePickerDayLongThursday: "Thursday",
     DatePickerDayShortThursday: "Thu",
     DatePickerDayLongFriday: "Friday",

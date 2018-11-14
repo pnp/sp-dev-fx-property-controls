@@ -35,6 +35,8 @@ import { PropertyFieldCollectionData, CustomCollectionFieldType } from '../../Pr
 import { PropertyFieldOrder } from '../../PropertyFieldOrder';
 import { orderedItem } from './components/OrderedItem';
 import { PropertyFieldSwatchColorPicker, PropertyFieldSwatchColorPickerStyle } from '../../PropertyFieldSwatchColorPicker';
+import { PropertyPaneWebPartInformation } from '../../propertyFields/webPartInformation';
+import { PropertyPanePropertyEditor } from '../../propertyFields/propertyEditor/PropertyPanePropertyEditor';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -82,9 +84,13 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     return true;
   }
 
-  private minLengthValidation (value: string, index: number, item: any) {
-    console.log(`Currently editing item nr: ${index === null ? "new item" : index}. It contains the following properties:`, item);
-    return value.length >= 3 ? "" : "Should at least contain 3 characters.";
+  private minLengthValidation (value: string, index: number, item: any): Promise<string> {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log(`Currently editing item nr: ${index === null ? "new item" : index}. It contains the following properties:`, item);
+        return value.length >= 3 ? resolve("") : resolve("Should at least contain 3 characters.");
+      }, (Math.floor(Math.random() * 4) + 1) * 1000); // Random number between 1 - 4
+    });
   }
 
   private ageValidation (value: number) {
@@ -125,6 +131,20 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
           },
           groups: [
             {
+              groupName: strings.AboutGroupName,
+              groupFields: [
+                PropertyPaneWebPartInformation({
+                  description: `This is a <strong>demo webpart</strong>, used to demonstrate all the <a href="https://aka.ms/sppnp">PnP</a> property controls`,
+                  moreInfoLink: `https://sharepoint.github.io/sp-dev-fx-property-controls/`,
+                  videoProperties: {
+                    embedLink: `https://www.youtube.com/embed/d_9o3tQ90zo`,
+                    properties: { allowFullScreen: true}
+                  },
+                  key: 'webPartInfoId'
+                })
+              ]
+            },
+            {
               groupName: '', //strings.BasicGroupName,
               groupFields: [
                 PropertyFieldCollectionData("collectionData", {
@@ -141,7 +161,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       type: CustomCollectionFieldType.string,
                       required: true,
                       placeholder: "Enter the firstname",
-                      onGetErrorMessage: this.minLengthValidation
+                      onGetErrorMessage: this.minLengthValidation,
+                      deferredValidationTime: 1000
                     },
                     {
                       id: "Lastname",
@@ -154,7 +175,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       type: CustomCollectionFieldType.number,
                       required: true,
                       placeholder: "Enter the age",
-                      onGetErrorMessage: this.ageValidation
+                      onGetErrorMessage: this.ageValidation,
+                      deferredValidationTime: 0
                     },
                     {
                       id: "City",
@@ -176,7 +198,14 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       ],
                       required: true,
                       placeholder: "Favorite city of the person",
-                      defaultValue: "antwerp"
+                      defaultValue: "antwerp",
+                      onRenderOption: (props, defaultRenderer) => {
+                        if (props.text.toLowerCase() === "antwerp") {
+                          return React.createElement("b", { className: "Testing" }, `${props.text.toUpperCase()} 🎉`);
+                        } else {
+                          return defaultRenderer(props);
+                        }
+                      }
                     },
                     {
                       id: "Sign",
@@ -274,6 +303,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'codeEditorFieldId',
                   language:PropertyFieldCodeEditorLanguages.HTML
                 }),
+                PropertyPaneTextField("siteUrl", {
+                  label: "Site URL"
+                }),
                 PropertyFieldListPicker('singleList', {
                   label: 'Select a list',
                   selectedList: this.properties.singleList,
@@ -288,7 +320,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   key: 'listPickerFieldId',
-                  webAbsoluteUrl: this.context.pageContext.web.absoluteUrl
+                  webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl
                 }),
                 PropertyFieldListPicker('multiList', {
                   label: 'Select multiple lists',
@@ -307,7 +339,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   key: 'multiListPickerFieldId',
-                  webAbsoluteUrl: this.context.pageContext.web.absoluteUrl
+                  webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl
                 }),
                 PropertyFieldDateTimePicker('datetime', {
                   label: 'Select the date and time',
@@ -502,7 +534,16 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'swatchColorFieldId'
                 })
               ]
-            }
+            },
+            {
+              groupName: "Advanced",
+              groupFields: [
+                PropertyPanePropertyEditor({
+                  webpart: this,
+                  key: 'propertyeditor'
+                })
+              ]
+            },
           ]
         }
       ]

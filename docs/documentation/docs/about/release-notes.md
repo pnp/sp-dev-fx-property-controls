@@ -1,5 +1,30 @@
 # Releases
 
+## 1.12.0
+
+**New control(s)**
+
+- `PropertyPaneWebPartInformation`: New control to show more information about the current web part [#108](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/108)
+- `PropertyPanePropertyEditor`: New control that allows you to export/import property pane settings [#114](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/114)
+
+**Enhancements**
+
+- Dutch localization added [#82](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/82)
+- French localization added [#84](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/84)
+- `PropertyFieldCollectionData`: Allow the user to specify a deferred validation time for each field [#98](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/98)
+- `PropertyFieldCollectionData`: added a onRenderOption option to allow custom option rendering [#102](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/102)
+- `PropertyFieldNumber`: Introduced the aria label [#104](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/104)
+- Hide callout from the controls with callout if no message is provided [#107](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/107)
+- `PropertyFieldListPicker`: Add the ability to refresh target site while pane is open [#109](https://github.com/SharePoint/sp-dev-fx-controls-react/pull/109)
+
+**Fixes**
+
+- `PropertyFieldCollectionData`: Fixed catastrophic backtracking regex issue for URL validation [#99](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/99)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Junle Li](https://github.com/lijunle), [PooLP](https://github.com/PooLP), [Erwin van Hunen](https://github.com/erwinvanhunen).
+
 ## 1.11.0
 
 **Enhancements**
@@ -42,6 +67,10 @@
 
 - New telemetry approach which allows you to use Application Insights instance [#79](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/79)
 - `PropertyFieldListPicker` add optional property for target site [#21](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/21)
+
+### Contributors
+
+Special thanks to our contributor: [Joel Rodrigues](https://github.com/joelfmrodrigues).
 
 ## 1.7.0
 

@@ -5,6 +5,7 @@ import { IPropertyFieldGroupOrPerson } from '../../PropertyFieldPeoplePicker';
 import { IPickerTerms } from '../../PropertyFieldTermPicker';
 
 export interface IPropertyControlsTestWebPartProps {
+  siteUrl: string;
   numberValue: number;
   multiSelect: string[];
   people: IPropertyFieldGroupOrPerson[];

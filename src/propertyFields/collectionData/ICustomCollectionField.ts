@@ -1,4 +1,6 @@
 import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { IRenderFunction } from '@uifabric/utilities/lib/IRenderFunction';
+import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.Props';
 
 export interface ICustomCollectionField {
   /**
@@ -22,6 +24,10 @@ export interface ICustomCollectionField {
    */
   options?: IDropdownOption[];
   /**
+   * Dropdown custom options render method.
+   */
+  onRenderOption?: IRenderFunction<ISelectableOption>;
+  /**
    * Input placeholder text.
    */
   placeholder?: string;
@@ -29,6 +35,10 @@ export interface ICustomCollectionField {
    * Default value for the field
    */
   defaultValue?: any;
+  /**
+   * Field will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default: 200ms.
+   */
+  deferredValidationTime?: number;
   /**
    * The method is used to get the validation error message and determine whether the input value is valid or not.
    *

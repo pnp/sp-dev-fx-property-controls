@@ -185,7 +185,13 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    */
   private fieldValidation = async (field: ICustomCollectionField, value: any): Promise<string> => {
     let validation = "";
+    // Do the custom validation check
     if (field.onGetErrorMessage) {
+      // Set initial field validation
+      this.validation[field.id] = false;
+      // Trigger field change
+      this.onValueChanged(field.id, value);
+      // Do the validation
       validation = await field.onGetErrorMessage(value, this.props.index, this.state.crntItem);
     }
     // Store the field validation
@@ -293,7 +299,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                          options={field.options}
                          selectedKey={item[field.id] || null}
                          required={field.required}
-                         onChanged={(opt) => this.onValueChanged(field.id, opt.key)} />;
+                         onChanged={(opt) => this.onValueChanged(field.id, opt.key)}
+                         onRenderOption={field.onRenderOption} />;
       case CustomCollectionFieldType.number:
         return (
           <CollectionNumberField field={field} item={item} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
@@ -307,6 +314,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
                           className={styles.collectionDataField}
+                          deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
                           onGetErrorMessage={async (value) => {
                             let isValid = true;
                             let validation = "";
@@ -318,7 +326,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                               isValid = validation === "";
                             } else {
                               // Check if entered value is a valid URL
-                              const regEx: RegExp = /^((http|https)?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+                              const regEx: RegExp = /(http|https)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
                               isValid = (value === null || value.length === 0 || regEx.test(value));
                               validation = isValid ? "" : strings.InvalidUrlError;
                             }
@@ -338,7 +346,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           className={styles.collectionDataField}
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
-                          onChanged={(value) => this.onValueChanged(field.id, value)}
+                          // onChanged={(value) => this.onValueChanged(field.id, value)}
+                          deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
                           onGetErrorMessage={(value: string) => this.fieldValidation(field, value)} />;
     }
   }

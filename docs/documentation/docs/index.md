@@ -40,7 +40,8 @@ The following controls are currently available:
 - [PropertyFieldTermPicker](./controls/PropertyFieldTermPicker) (Property pane managed metadata term selector)
 - [PropertyFieldMultiSelect](./controls/PropertyFieldMultiSelect) (Property pane field which allows multi-value selection)
 - [PropertyFieldNumber](./controls/PropertyFieldNumber) (Property pane field which allows only number values)
-
+- [PropertyPaneWebPartInformation](./controls/PropertyPaneWebPartInformation) (Property pane webpart information panel)
+- [PropertyPanePropertyEditor](./controls/PropertyPanePropertyEditor) (Property pane control that allows raw editing, export and import of webpart properties)
 The following controls are extended controls that show a callout next to the label
 
 - [PropertyFieldButtonWithCallout](./controls/PropertyFieldButtonWithCallout) (Property button field with callout)

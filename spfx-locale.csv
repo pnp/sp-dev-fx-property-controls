@@ -1,0 +1,72 @@
+key;Locale en-us;Locale nl-nl;Locale fr-fr;PropertyControlStrings
+SaveButtonLabel;Save;Opslaan;Sauvegarder;x
+CancelButtonLabel;Cancel;Annuleren;Annuler;x
+PeoplePickerSuggestedContacts;Suggested people;Voorgestelde personen;Personnes suggérées;x
+PeoplePickerSuggestedGroups;Suggested groups;Voorgestelde groepen;Groupes suggérés;x
+PeoplePickerSuggestedCombined;Suggested people and groups;Voorgestelde personen en groepen;Personnes et groupes suggérés;x
+PeoplePickerNoResults;No result found;Geen resultaten gevonden;Aucun résultat trouvé;x
+PeoplePickerLoading;Loading results ...;Resultaten laden ...;Chargement des résultats ...;x
+DatePickerMonthLongJanuary;January;Januari;Janvier;x
+DatePickerMonthShortJanuary;Jan;Jan;Jan.;x
+DatePickerMonthLongFebruary;February;Februari;Février;x
+DatePickerMonthShortFebruary;Feb;Feb;Fev.;x
+DatePickerMonthLongMarch;March;Maart;Mars;x
+DatePickerMonthShortMarch;Mar;Maa;Mar.;x
+DatePickerMonthLongApril;April;April;Avril;x
+DatePickerMonthShortApril;Apr;Apr;Avr.;x
+DatePickerMonthLongMay;May;Mei;Mai;x
+DatePickerMonthShortMay;May;Mei;Mai;x
+DatePickerMonthLongJune;June;Juni;Juin;x
+DatePickerMonthShortJune;Jun;Jun;Juin;x
+DatePickerMonthLongJuly;July;Juli;Juillet;x
+DatePickerMonthShortJuly;Jul;Jul;Jul.;x
+DatePickerMonthLongAugust;August;Augustus;Août;x
+DatePickerMonthShortAugust;Aug;Aug;Août;x
+DatePickerMonthLongSeptember;September;September;Septembre;x
+DatePickerMonthShortSeptember;Sept;Sept;Sept.;x
+DatePickerMonthLongOctober;October;Oktober;Octobre;x
+DatePickerMonthShortOctober;Oct;Okt;Oct.;x
+DatePickerMonthLongNovember;November;November;Novembre;x
+DatePickerMonthShortNovember;Nov;Nov;Nov.;x
+DatePickerMonthLongDecember;December;December;Decembre;x
+DatePickerMonthShortDecember;Dec;Dec;Dec.;x
+DatePickerDayLongSunday;Sunday;Zondag;Dimanche;x
+DatePickerDayShortSunday;Sun;Zon;Dim;x
+DatePickerDayLongMonday;Monday;Maandag;Lundi;x
+DatePickerDayShortMonday;Mon;Maa;Lun;x
+DatePickerDayLongTuesday;Tuesday;Dinsdag;Mardi;x
+DatePickerDayShortTuesday;Tue;Din;Mar;x
+DatePickerDayLongWednesday;Wednesday;Woensdag;Mercredi;x
+DatePickerDayShortWednesday;Wed;Woe;Mer;x
+DatePickerDayLongThursday;Thursday;Donderdag;Jeudi;x
+DatePickerDayShortThursday;Thu;Don;Jeu;x
+DatePickerDayLongFriday;Friday;Vrijdag;Vendredi;x
+DatePickerDayShortFriday;Fri;Vri;Ven;x
+DatePickerDayLongSaturday;Saturday;Zaterdag;Samedi;x
+DatePickerDayShortSaturday;Sat;Zat;Sam;x
+DatepickerGoToToday;Today;Vandaag;Aujourd\'hui;x
+DateTimePickerDate;Date;Dag;Date;x
+DateTimePickerTime;Time;Tijd;Temps;x
+ColorPickerButtonTitle;Pick a Color;Kies een kleur;Choisis une couleur;x
+NotNumberValidationMessage;The value should be a number, actual is:;De waarde moet een nummer zijn. Huidige waarde is:;La valeur doit être un nombre, la valeur actuel est :;x
+MinimumNumberValidationMessage;The value should be greater than:;De waarde moet groter zijn dan:;La valeur doit être supérieure à :;x
+MaximumNumberValidationMessage;The value should be lower than:;De waarde moet kleiner zijn dan:;La valeur doit être inférieure à :;x
+TermPickerNoTerms;Term set does not contain any terms;De termen set heeft geen termen beschikbaar;L'ensemble de termes ne contient aucun terme;x
+TermPickerExpandTitle;Expand this Term Set;Vouw deze termen set uit;Développer cet ensemble de termes;x
+TermPickerExpandNode;Expand this Node;Vouw deze node uit;Développer ce nœud;x
+TermPickerMenuTermSet;Menu for Term Set;Menu voor de termen set;Menu pour l'ensemble de termes;x
+TermPickerMenuGroup;Menu for Term Set;Menu voor de groep;Menu pour l'ensemble de termes;x
+TermPickerInLabel;in;in;dans;x
+TermPickerTermSetLabel;Term Set;Termen set;Ensemble de termes;x
+propertyFieldMultiSelectNoOptions;No options to select;Geen opties om te selecteren;Aucune option à sélectionner;x
+CollectionDataEmptyFields;No fields were provided for the collection data.;Er zijn geen velden opgegeven voor de data collectie control.;Aucun champ n'a été fourni pour la collection de données.;x
+CollectionDataEmptyValue;No data in your collection.;Er is geen data in de collectie.;Aucune donnée dans votre collection.;x
+CollectionAddRowButtonLabel;Add data to the collection;Voeg data toe aan de collectie;Ajouter des données à la collection;x
+CollectionDeleteRowButtonLabel;Delete the current row;Verwijder de huidige rij;Supprimer la ligne;x
+CollectionSaveAndAddButtonLabel;Add and save;Voeg toe en sla op;Ajouter et sauvegarder;x
+CollectionDataItemShowErrorsLabel;Show row errors;Problemen tonen;Afficher les erreurs de ligne;x
+CollectionDataItemFieldRequiredLabel;Field is required.;Veld is verplicht.;Champ obligatoire;x
+InvalidUrlError;The provided URL is not valid;De huidige URL is niet geldig;L'URL fournie n'est pas valide;x
+DescriptionLabel;Description;Beschrijving;La description;x
+MoreInfoLabel;More info;Meer info;Plus d'informations;x
+AboutGroupLabel;About;Over;Sur;x

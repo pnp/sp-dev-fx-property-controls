@@ -23,7 +23,7 @@
 
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [Junle Li](https://github.com/lijunle), [PooLP](https://github.com/PooLP), [Erwin van Hunen](https://github.com/erwinvanhunen).
+Special thanks to our contributors (in alphabetical order): [Paul Bullock](https://github.com/pkbullock), [Junle Li](https://github.com/lijunle), [PooLP](https://github.com/PooLP), [Erwin van Hunen](https://github.com/erwinvanhunen).
 
 ## 1.11.0
 

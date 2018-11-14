@@ -20,7 +20,7 @@
           "`PropertyFieldCollectionData`: Fixed catastrophic backtracking regex issue for URL validation [#99](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/99)"
         ]
       },
-      "contributions": ["[Junle Li](https://github.com/lijunle)", "[PooLP](https://github.com/PooLP)", "[Erwin van Hunen](https://github.com/erwinvanhunen)"]
+      "contributions": ["[Paul Bullock](https://github.com/pkbullock)", "[Junle Li](https://github.com/lijunle)", "[PooLP](https://github.com/PooLP)", "[Erwin van Hunen](https://github.com/erwinvanhunen)"]
     },
     {
       "version": "1.11.0",

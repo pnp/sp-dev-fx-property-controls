@@ -88,8 +88,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     return new Promise(resolve => {
       setTimeout(() => {
         console.log(`Currently editing item nr: ${index === null ? "new item" : index}. It contains the following properties:`, item);
-        return value.length >= 3 ? resolve("") : resolve("Should at least contain 3 characters.");
-      }, (Math.floor(Math.random() * 4) + 1) * 1000); // Random number between 1 - 4
+        value.length >= 3 ? resolve("") : resolve("Should at least contain 3 characters.");
+      }, (Math.floor(Math.random() * 4) + 1) * 100); // Random number between 1 - 4
     });
   }
 
@@ -162,7 +162,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       required: true,
                       placeholder: "Enter the firstname",
                       onGetErrorMessage: this.minLengthValidation,
-                      deferredValidationTime: 1000
+                      deferredValidationTime: 500
                     },
                     {
                       id: "Lastname",

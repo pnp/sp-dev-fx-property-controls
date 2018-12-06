@@ -6,6 +6,7 @@
 
 - `PropertyFieldCollectionData`: Issue with debounce validation overriding the inserted values [#113](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/113)
 - `PropertyPaneWebPartInformation`: Remove redundant 'Description' label [#119](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/119)
+- `PropertyFieldCodeEditor`: Handle initial value after updating properties [#121](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/121)
 
 ### Contributors
 

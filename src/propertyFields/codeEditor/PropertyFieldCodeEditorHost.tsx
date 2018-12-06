@@ -63,7 +63,7 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
   public componentWillUpdate(nextProps: IPropertyFieldCodeEditorHostProps, nextState: IPropertyFieldCodeEditorHostState): void {
     if (nextProps.initialValue !== this.props.initialValue) {
       this.setState({
-        code: typeof this.props.initialValue !== 'undefined' ? this.props.initialValue : ''
+        code: typeof nextProps.initialValue !== 'undefined' ? nextProps.initialValue : ''
       });
     }
   }

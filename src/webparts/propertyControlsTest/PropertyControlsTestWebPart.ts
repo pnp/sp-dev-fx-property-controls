@@ -154,6 +154,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   manageBtnLabel: "Manage collection data",
                   panelDescription: "This is the description which appears in the panel.",
                   value: this.properties.collectionData,
+                  enableSorting: true,
                   fields: [
                     {
                       id: "Title",

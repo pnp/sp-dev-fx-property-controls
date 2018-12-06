@@ -3,6 +3,7 @@ import styles from '../PropertyFieldCollectionDataHost.module.scss';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { ICollectionNumberFieldProps, ICollectionNumberFieldState } from '.';
 import { ICustomCollectionField } from '..';
+import { isEqual } from '@microsoft/sp-lodash-subset';
 
 export class CollectionNumberField extends React.Component<ICollectionNumberFieldProps, ICollectionNumberFieldState> {
   private async: Async;
@@ -28,6 +29,20 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
       value: this.props.item[this.props.field.id]
     });
     this.valueChange(this.props.field, this.props.item[this.props.field.id]);
+  }
+
+  /**
+   * componentWillUpdate lifecycle hook
+   *
+   * @param nextProps
+   * @param nextState
+   */
+  public componentWillUpdate(nextProps: ICollectionNumberFieldProps, nextState: ICollectionNumberFieldState): void {
+    if (!isEqual(nextProps.item, this.props.item)) {
+      this.setState({
+        value: nextProps.item[nextProps.field.id]
+      });
+    }
   }
 
   /**

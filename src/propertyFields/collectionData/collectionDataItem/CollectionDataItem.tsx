@@ -7,7 +7,7 @@ import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import { Checkbox } from 'office-ui-fabric-react/lib/components/Checkbox';
 import * as strings from 'PropertyControlStrings';
 import { ICustomCollectionField, CustomCollectionFieldType, FieldValidator } from '..';
-import { Dropdown } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/components/Callout';
 import { CollectionIconField } from '../collectionIconField';
 import { clone, findIndex, sortBy } from '@microsoft/sp-lodash-subset';
@@ -368,13 +368,41 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   }
 
   /**
+   * Retrieve all dropdown options
+   */
+  private getSortingOptions(): IDropdownOption[] {
+    let opts: IDropdownOption[] = [];
+    const { totalItems } = this.props;
+    for (let i = 1; i <= totalItems; i++) {
+      opts.push({
+        text: i.toString(),
+        key: i
+      });
+    }
+    return opts;
+  }
+
+  /**
    * Default React render
    */
   public render(): React.ReactElement<ICollectionDataItemProps> {
     const { crntItem } = this.state;
+    const opts = this.getSortingOptions();
 
     return (
       <div className={`${styles.tableRow} ${this.props.index === null ? styles.tableFooter : ""}`}>
+        {
+          (this.props.sortingEnabled && this.props.totalItems) && (
+            <span className={`${styles.tableCell}`}>
+              <Dropdown options={opts} selectedKey={this.props.index + 1} onChanged={(opt) => this.props.fOnSorting(this.props.index, opt.key as number) } />
+            </span>
+          )
+        }
+        {
+          (this.props.sortingEnabled && this.props.totalItems === null) && (
+            <span className={`${styles.tableCell}`}></span>
+          )
+        }
         {
           this.props.fields.map(f => (
             <span className={`${styles.tableCell} ${styles.inputField}`}>{this.renderField(f, crntItem)}</span>

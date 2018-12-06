@@ -95,16 +95,17 @@ PropertyFieldCollectionData("collectionData", {
 
 The `PropertyFieldCollectionData` control can be configured with the following properties:
 
-| Property | Type | Required | Description |
+| Property | Type | Required | Description | Default Value |
 | ---- | ---- | ---- | ---- |
-| key | string | yes | An unique key that indicates the identity of this control. |
-| label | string | yes | Property field label displayed on top. |
-| panelHeader | string | yes | Label to be used as the header in the panel. |
-| panelDescription | string | no | Property that allows you to specify a description in the collection panel. |
-| manageBtnLabel | string | yes | Label of the button to open the panel. |
-| fields | ICustomCollectionField[] | yes | The fields to be used for the list of collection data. |
-| value | string | yes | The collection data value. |
-| disabled | boolean | no | Specify if the control is disabled. |
+| key | string | yes | An unique key that indicates the identity of this control. | |
+| label | string | yes | Property field label displayed on top. | |
+| panelHeader | string | yes | Label to be used as the header in the panel. | |
+| panelDescription | string | no | Property that allows you to specify a description in the collection panel. | |
+| manageBtnLabel | string | yes | Label of the button to open the panel. | |
+| fields | ICustomCollectionField[] | yes | The fields to be used for the list of collection data. | |
+| value | string | yes | The collection data value. | |
+| enableSorting | boolean | no | Specify if you want to be able to sort the items in the collection. | false |
+| disabled | boolean | no | Specify if the control is disabled. | false |
 
 Interface `ICustomCollectionField`
 

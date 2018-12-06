@@ -5,9 +5,11 @@ import { CollectionDataItem } from '../collectionDataItem';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
 import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import * as strings from 'PropertyControlStrings';
-import { cloneDeep } from '@microsoft/sp-lodash-subset';
+import { cloneDeep, sortBy } from '@microsoft/sp-lodash-subset';
 
 export class CollectionDataViewer extends React.Component<ICollectionDataViewerProps, ICollectionDataViewerState> {
+  private readonly SORT_IDX = "sortIdx";
+
   constructor(props: ICollectionDataViewerProps) {
     super(props);
 
@@ -22,8 +24,17 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
    * componentDidMount lifecycle hook
    */
   public componentDidMount(): void {
+    let crntItems = this.props.value ? sortBy(cloneDeep(this.props.value), this.SORT_IDX) : [];
+    crntItems = crntItems.map((item, idx) => {
+      if (!item[this.SORT_IDX]) {
+        item[this.SORT_IDX] = idx + 1;
+      }
+      return item;
+    });
+    // Update the sort propety
+    crntItems = this.updateSortProperty(crntItems);
     this.setState({
-      crntItems: this.props.value ? cloneDeep(this.props.value) : []
+      crntItems: sortBy(crntItems, this.SORT_IDX)
     });
   }
 
@@ -31,10 +42,14 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
    * Add a new item to the collection
    */
   private addItem = (item: any) => {
-    this.setState((prevState: ICollectionDataViewerState): ICollectionDataViewerState => ({
-      crntItems: [...prevState.crntItems, item],
-      inCreationItem: null
-    }));
+    this.setState((prevState: ICollectionDataViewerState): ICollectionDataViewerState => {
+      let crntItems = [...prevState.crntItems, item];
+      crntItems = this.updateSortProperty(crntItems);
+      return {
+        crntItems,
+        inCreationItem: null
+      };
+    });
   }
 
   /**
@@ -54,9 +69,15 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
    */
   private deleteItem = (idx: number) => {
     this.setState((prevState: ICollectionDataViewerState): ICollectionDataViewerState => {
-      const { crntItems } = prevState;
+      let { crntItems } = prevState;
       crntItems.splice(idx, 1);
-      return { crntItems };
+
+      // Update the sort propety
+      crntItems = this.updateSortProperty(crntItems);
+
+      return {
+        crntItems: sortBy(crntItems, this.SORT_IDX)
+      };
     });
   }
 
@@ -111,6 +132,54 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
   }
 
   /**
+   * Move an item in the array
+   *
+   * @param crntItems
+   * @param oldIdx
+   * @param newIdx
+   */
+  private moveItemTo(crntItems: any[], oldIdx: number, newIdx: number): any[] {
+    if (newIdx > -1 && newIdx < crntItems.length) {
+      const removedElement = crntItems.splice(oldIdx, 1)[0];
+      if (removedElement) {
+        crntItems.splice(newIdx, 0, removedElement);
+      }
+    }
+    return crntItems;
+  }
+
+  /**
+   * Update the sort property
+   *
+   * @param crntItems
+   */
+  private updateSortProperty(crntItems: any[]): any[] {
+    // Update the sort order
+    return crntItems.map((item, itemIdx) => {
+      item[this.SORT_IDX] = itemIdx + 1;
+      return item;
+    });
+  }
+
+  /**
+   * Update the sort order
+   */
+  private updateSortOrder = (oldIdx: number, newIdx: number) => {
+    this.setState((prevState: ICollectionDataViewerState) => {
+      const { crntItems } = prevState;
+      let newOrderedItems = cloneDeep(crntItems);
+      newOrderedItems = this.moveItemTo(newOrderedItems, oldIdx, newIdx - 1);
+      newOrderedItems = this.updateSortProperty(newOrderedItems);
+      newOrderedItems = sortBy(newOrderedItems, this.SORT_IDX);
+      console.log(newOrderedItems);
+
+      return {
+        crntItems: newOrderedItems
+      };
+    });
+  }
+
+  /**
    * Save the collection data
    */
   private onSave = () => {
@@ -133,6 +202,11 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
         <div className={styles.table}>
           <div className={`${styles.tableRow} ${styles.tableHead}`}>
             {
+              this.props.enableSorting && (
+                <span className={styles.tableCell}></span>
+              )
+            }
+            {
               this.props.fields.map(f => (
                 <span className={styles.tableCell}>{f.title} { f.required && <Icon className={styles.required} iconName="Asterisk" /> }</span>
               ))
@@ -142,20 +216,25 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
           </div>
           {
             (this.state.crntItems && this.state.crntItems.length > 0) && (
-              this.state.crntItems.map((item, idx) => (
+              this.state.crntItems.map((item, idx, allItems) => (
                 <CollectionDataItem key={idx}
                                     fields={this.props.fields}
                                     index={idx}
                                     item={item}
+                                    totalItems={allItems.length}
+                                    sortingEnabled={this.props.enableSorting}
                                     fUpdateItem={this.updateItem}
                                     fDeleteItem={this.deleteItem}
-                                    fValidation={this.validateItem} />
+                                    fValidation={this.validateItem}
+                                    fOnSorting={this.updateSortOrder} />
               ))
             )
           }
           <CollectionDataItem fields={this.props.fields}
                               index={null}
                               item={null}
+                              sortingEnabled={this.props.enableSorting}
+                              totalItems={null}
                               fAddItem={this.addItem}
                               fAddInCreation={this.addInCreation} />
         </div>

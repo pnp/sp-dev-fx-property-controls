@@ -2,6 +2,10 @@
 
 ## 1.13.0
 
+**Enhancements**
+
+- `PropertyFieldCodeEditor`: Added the functionality to sort the items in the collection [#123](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/123)
+
 **Fixes**
 
 - `PropertyFieldCollectionData`: Issue with debounce validation overriding the inserted values [#113](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/113)

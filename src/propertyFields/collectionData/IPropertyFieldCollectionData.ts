@@ -31,6 +31,10 @@ export interface IPropertyFieldCollectionDataProps {
    */
   value: any[];
   /**
+   * Specify if you want to enable sorting
+   */
+  enableSorting?: boolean;
+  /**
    * Specify if the control is disabled.
    */
   disabled?: boolean;

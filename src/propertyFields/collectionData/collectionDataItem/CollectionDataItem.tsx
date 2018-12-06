@@ -355,6 +355,11 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           onChanged={(value) => this.onValueChanged(field.id, value)}
                           deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
                           onGetErrorMessage={async (value: string) => this.urlFieldValidation(field, value, item)} />;
+      case CustomCollectionFieldType.custom:
+          if (field.onCustomRender) {
+            return field.onCustomRender(field, item[field.id], this.onValueChanged);
+          }
+          return null;
       case CustomCollectionFieldType.string:
       default:
         return <TextField placeholder={field.placeholder || field.title}

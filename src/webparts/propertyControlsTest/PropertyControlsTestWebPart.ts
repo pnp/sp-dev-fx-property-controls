@@ -228,6 +228,18 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       type: CustomCollectionFieldType.url,
                       required: true,
                       placeholder: "Enter a URL"
+                    },
+                    {
+                      id: "custom",
+                      title: "Custom Field",
+                      type: CustomCollectionFieldType.custom,
+                      onCustomRender: (field, value, onUpdate) => {
+                        return (
+                          React.createElement("div", null,
+                            React.createElement("input", { value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => onUpdate(field.id, event.currentTarget.value) }), " 🎉"
+                          )
+                        );
+                      }
                     }
                   ],
                   disabled: false

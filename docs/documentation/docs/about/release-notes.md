@@ -4,6 +4,7 @@
 
 **Enhancements**
 
+- `PropertyFieldCodeEditor`: Added support for custom field rendering [#122](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/122)
 - `PropertyFieldCodeEditor`: Added the functionality to sort the items in the collection [#123](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/123)
 
 **Fixes**

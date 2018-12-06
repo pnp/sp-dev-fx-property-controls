@@ -1,5 +1,16 @@
 # Releases
 
+## 1.13.0
+
+**Fixes**
+
+- `PropertyFieldCollectionData`: Issue with debounce validation overriding the inserted values [#113](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/113)
+- `PropertyPaneWebPartInformation`: Remove redundant 'Description' label [#119](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/119)
+
+### Contributors
+
+Special thanks to our contributor: [Erwin van Hunen](https://github.com/erwinvanhunen).
+
 ## 1.12.0
 
 **New control(s)**

@@ -47,7 +47,8 @@ export default class HoursComponent extends React.Component<IHoursComponentProps
         disabled={this.props.disabled}
         label=''
         options={hours}
-        onChanged={this.props.onChange} />
+        onChanged={this.props.onChange}
+        dropdownWidth={110} />
     );
   }
 }

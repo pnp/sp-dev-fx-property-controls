@@ -29,6 +29,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
   private principalType: PrincipalType[] = [];
   private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
   private customProperties: any;
+  private targetSiteUrl: string;
   private key: string;
   private onGetErrorMessage: (value: IPropertyFieldGroupOrPerson[]) => string | Promise<string>;
   private deferredValidationTime: number = 200;
@@ -48,6 +49,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
     this.initialData = _properties.initialData;
     this.allowDuplicate = _properties.allowDuplicate;
     this.principalType = _properties.principalType;
+    this.targetSiteUrl = _properties.targetSiteUrl;
     this.customProperties = _properties.properties;
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
@@ -84,6 +86,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
       onPropertyChange: this.onPropertyChange,
       context: this.context,
       properties: this.customProperties,
+      targetSiteUrl: this.targetSiteUrl,
       key: this.key,
       onGetErrorMessage: this.onGetErrorMessage,
       deferredValidationTime: this.deferredValidationTime

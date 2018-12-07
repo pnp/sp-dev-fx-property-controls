@@ -6,11 +6,12 @@
         "new": [
         ],
         "enhancements": [
-          "`PropertyFieldDateTimePicker`: Fix for the hours dropdown not showing values [#112](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/112)",
+          "`PropertyFieldPeoplePicker`: Ability to select only from a specific site [#9](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/9)",
           "`PropertyFieldCodeEditor`: Added support for custom field rendering [#122](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/122)",
           "`PropertyFieldCodeEditor`: Added the functionality to sort the items in the collection [#123](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/123)"
         ],
         "fixes": [
+          "`PropertyFieldDateTimePicker`: Fix for the hours dropdown not showing values [#112](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/112)",
           "`PropertyFieldCollectionData`: Issue with debounce validation overriding the inserted values [#113](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/113)",
           "`PropertyPaneWebPartInformation`: Remove redundant 'Description' label [#119](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/119)",
           "`PropertyFieldCodeEditor`: Handle initial value after updating properties [#121](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/121)"

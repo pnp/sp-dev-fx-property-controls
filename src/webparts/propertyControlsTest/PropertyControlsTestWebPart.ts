@@ -248,7 +248,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: 'PropertyFieldPeoplePicker',
                   initialData: this.properties.people,
                   allowDuplicate: false,
-                  principalType: [PrincipalType.Security],
+                  // principalType: [PrincipalType.Security],
+                  principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
                   // principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
                   // principalType: [IPrincipalType.SharePoint],
                   multiSelect: true,
@@ -260,7 +261,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                     return users.length === 0 ? 'Please use a person with "Elio" in its name' : "";
                   },
                   deferredValidationTime: 0,
-                  key: 'peopleFieldId'
+                  key: 'peopleFieldId',
+                  targetSiteUrl: this.context.pageContext.site.absoluteUrl
                 }),
                 PropertyFieldTermPicker('terms', {
                   label: 'Select terms',

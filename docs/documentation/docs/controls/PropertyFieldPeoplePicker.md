@@ -64,7 +64,8 @@ The `PropertyFieldPeoplePicker` control can be configured with the following pro
 | multiSelect | boolean | no | Define if you want to allow multi user / group selection. (optional, true by default). |
 | principalType | PrincipalType[] | no | Define which type of data you want to retrieve: User, SharePoint groups, Security groups. Multiple are possible. |
 | onPropertyChange | function | yes | Defines a onPropertyChange function to raise when the date gets changed. |
-| properties | any | yes | Parent web part properties, this object is use to update the property value.  |
+| properties | any | yes | Parent web part properties, this object is use to update the property value. |
+| targetSiteUrl | string | no | Specify the URL of the target site from which you want to retreive the users/groups. |
 | key | string | yes | An unique key that indicates the identity of this control. |
 | onGetErrorMessage | function | no | The method is used to get the validation error message and determine whether the input value is valid or not. See [this documentation](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/validate-web-part-property-values) to learn how to use it. |
 | deferredValidationTime | number | no | Control will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default value is 200. |

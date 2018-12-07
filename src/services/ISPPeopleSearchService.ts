@@ -11,5 +11,5 @@ export interface ISPPeopleSearchService {
   /**
    * Search People from a query
    */
-  searchPeople(ctx: IWebPartContext, query: string, principleType: PrincipalType[]): Promise<Array<IPropertyFieldGroupOrPerson>>;
+  searchPeople(ctx: IWebPartContext, query: string, principleType: PrincipalType[], siteUrl?: string): Promise<Array<IPropertyFieldGroupOrPerson>>;
 }

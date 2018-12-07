@@ -22,12 +22,12 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
       if (siteUrl) {
         let userRequestUrl = `${siteUrl}/_api/web/siteusers`;
         // filter for principal Type
-        let filterVal: string = `?$filter=(substringof('${query}', Title) or substringof('${query}', LoginName))`;
+        let filterVal: string = "";
         if (principalType) {
-          filterVal = `${filterVal} and (${principalType.map(type => `(PrincipalType eq ${type})`).join(" or ")})`;
+          filterVal = `?$filter=(${principalType.map(type => `(PrincipalType eq ${type})`).join(" or ")})`;
         }
         // Filter for hidden values
-        filterVal = `${filterVal} and (IsHiddenInUI eq false)`;
+        filterVal = filterVal ? `${filterVal} and (IsHiddenInUI eq false)` : `?$filter=(IsHiddenInUI eq false)`;
         userRequestUrl = `${userRequestUrl}${filterVal}`;
 
         return ctx.spHttpClient.get(userRequestUrl, SPHttpClient.configurations.v1, {
@@ -40,7 +40,7 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
           let res: IPropertyFieldGroupOrPerson[] = [];
 
           if (usersData && usersData.value && usersData.value.length > 0) {
-            res = usersData.value.map(element => ({
+            res = usersData.value.filter(element => element.Title.toLowerCase().indexOf(query.toLowerCase()) !== -1 || element.LoginName.toLowerCase().indexOf(query.toLowerCase()) !== -1).map(element => ({
               fullName: element.Title,
               id: element.Id.toString(),
               login: element.LoginName,

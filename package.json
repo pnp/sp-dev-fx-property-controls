@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "@pnp/telemetry-js": "1.0.0",
-    "react-ace": "5.8.0"
+    "react-ace": "5.8.0",
+    "office-ui-fabric-react": "5.131.0"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.3.0",

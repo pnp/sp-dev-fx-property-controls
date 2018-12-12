@@ -79,8 +79,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
         return this.resultsPersonas;
       });
       return result;
-    }
-    else {
+    } else {
       return [];
     }
   }
@@ -134,8 +133,12 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
    */
   private getPersonaFromPeople(element: IPropertyFieldGroupOrPerson, index: number): IPersonaProps {
     return {
-      primaryText: element.fullName, secondaryText: element.jobTitle, imageUrl: element.imageUrl,
-      imageInitials: element.initials, presence: PersonaPresence.none, initialsColor: this.getRandomInitialsColor(index)
+      primaryText: element.fullName,
+      secondaryText: element.jobTitle,
+      imageUrl: element.imageUrl,
+      imageInitials: element.initials,
+      presence: PersonaPresence.none,
+      initialsColor: this.getRandomInitialsColor(index)
     };
   }
 

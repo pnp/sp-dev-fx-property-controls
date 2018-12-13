@@ -4,10 +4,10 @@
 
 **Enhancements**
 
+- Updated the `office-ui-fabric-react` to the same version as in SPFx 1.7.0 [#105](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/105)
 - `PropertyFieldPeoplePicker`: Ability to select only from a specific site [#9](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/9)
 - `PropertyFieldCodeEditor`: Added support for custom field rendering [#122](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/122)
 - `PropertyFieldCodeEditor`: Added the functionality to sort the items in the collection [#123](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/123)
-- Updated the `office-ui-fabric-react` to the same version as in SPFx 1.7.0
 
 **Fixes**
 

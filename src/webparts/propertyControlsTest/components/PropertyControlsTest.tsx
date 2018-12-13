@@ -39,7 +39,7 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
               <p className="ms-font-m ms-fontColor-neutralDark">Text Info Header Value: {this.props.textInfoHeaderValue}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Toggle Info Header Value: {this.props.toggleInfoHeaderValue ? 'Marvel' : 'DC Comics'}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Checkbox with Callout Value: {(this.props.checkboxWithCalloutValue || '').toString()}</p>
-              <p className="ms-font-m ms-fontColor-neutralDark">Collection data: {JSON.stringify(this.props.collectionData)}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark" style={{wordBreak:"break-all"}}>Collection data: {JSON.stringify(this.props.collectionData)}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Ordered Items: {this.props.orderedItems.map((value: any) => {
                 return (
                   <i

@@ -36,7 +36,6 @@ export default class PropertyPaneWebPartInformationHost extends React.Component<
 
     return (
       <div>
-        <PropertyFieldHeader label={strings.DescriptionLabel}  ></PropertyFieldHeader>
         <div dangerouslySetInnerHTML={{ __html: this.props.description }}></div>
 
         {

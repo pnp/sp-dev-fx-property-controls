@@ -88,8 +88,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     return new Promise(resolve => {
       setTimeout(() => {
         console.log(`Currently editing item nr: ${index === null ? "new item" : index}. It contains the following properties:`, item);
-        return value.length >= 3 ? resolve("") : resolve("Should at least contain 3 characters.");
-      }, (Math.floor(Math.random() * 4) + 1) * 1000); // Random number between 1 - 4
+        value.length >= 3 ? resolve("") : resolve("Should at least contain 3 characters.");
+      }, (Math.floor(Math.random() * 4) + 1) * 100); // Random number between 1 - 4
     });
   }
 
@@ -154,6 +154,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   manageBtnLabel: "Manage collection data",
                   panelDescription: "This is the description which appears in the panel.",
                   value: this.properties.collectionData,
+                  enableSorting: true,
                   fields: [
                     {
                       id: "Title",
@@ -162,7 +163,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       required: true,
                       placeholder: "Enter the firstname",
                       onGetErrorMessage: this.minLengthValidation,
-                      deferredValidationTime: 1000
+                      deferredValidationTime: 500
                     },
                     {
                       id: "Lastname",
@@ -227,6 +228,18 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       type: CustomCollectionFieldType.url,
                       required: true,
                       placeholder: "Enter a URL"
+                    },
+                    {
+                      id: "custom",
+                      title: "Custom Field",
+                      type: CustomCollectionFieldType.custom,
+                      onCustomRender: (field, value, onUpdate) => {
+                        return (
+                          React.createElement("div", null,
+                            React.createElement("input", { value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => onUpdate(field.id, event.currentTarget.value) }), " 🎉"
+                          )
+                        );
+                      }
                     }
                   ],
                   disabled: false
@@ -235,7 +248,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: 'PropertyFieldPeoplePicker',
                   initialData: this.properties.people,
                   allowDuplicate: false,
-                  principalType: [PrincipalType.Security],
+                  // principalType: [PrincipalType.Security],
+                  principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
                   // principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
                   // principalType: [IPrincipalType.SharePoint],
                   multiSelect: true,
@@ -247,7 +261,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                     return users.length === 0 ? 'Please use a person with "Elio" in its name' : "";
                   },
                   deferredValidationTime: 0,
-                  key: 'peopleFieldId'
+                  key: 'peopleFieldId',
+                  targetSiteUrl: this.context.pageContext.site.absoluteUrl
                 }),
                 PropertyFieldTermPicker('terms', {
                   label: 'Select terms',

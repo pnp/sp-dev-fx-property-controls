@@ -61,7 +61,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
       // Clear the suggestions list
       this.setState({ resultsPeople: this.resultsPeople, resultsPersonas: this.resultsPersonas });
       // Request the search service
-      const result = this.searchService.searchPeople(this.props.context, searchText, this.props.principalType).then((response: IPropertyFieldGroupOrPerson[]) => {
+      const result = this.searchService.searchPeople(this.props.context, searchText, this.props.principalType, this.props.targetSiteUrl).then((response: IPropertyFieldGroupOrPerson[]) => {
         this.resultsPeople = [];
         this.resultsPersonas = [];
         // If allowDuplicate == false, so remove duplicates from results
@@ -79,8 +79,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
         return this.resultsPersonas;
       });
       return result;
-    }
-    else {
+    } else {
       return [];
     }
   }
@@ -134,8 +133,12 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
    */
   private getPersonaFromPeople(element: IPropertyFieldGroupOrPerson, index: number): IPersonaProps {
     return {
-      primaryText: element.fullName, secondaryText: element.jobTitle, imageUrl: element.imageUrl,
-      imageInitials: element.initials, presence: PersonaPresence.none, initialsColor: this.getRandomInitialsColor(index)
+      primaryText: element.fullName,
+      secondaryText: element.jobTitle,
+      imageUrl: element.imageUrl,
+      imageInitials: element.initials,
+      presence: PersonaPresence.none,
+      initialsColor: this.getRandomInitialsColor(index)
     };
   }
 

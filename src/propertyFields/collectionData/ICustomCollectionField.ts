@@ -1,6 +1,6 @@
 import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { IRenderFunction } from '@uifabric/utilities/lib/IRenderFunction';
-import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.Props';
+import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 
 export interface ICustomCollectionField {
   /**
@@ -47,6 +47,11 @@ export interface ICustomCollectionField {
    * - If invalid, the field will show a red border
    */
   onGetErrorMessage?: (value: any, index: number, currentItem: any) => string | Promise<string>;
+
+  /**
+   * Custom field rendering support
+   */
+  onCustomRender?: (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void) => JSX.Element;
 }
 
 export enum CustomCollectionFieldType {
@@ -55,5 +60,6 @@ export enum CustomCollectionFieldType {
   boolean,
   dropdown,
   fabricIcon,
-  url
+  url,
+  custom
 }

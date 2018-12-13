@@ -55,6 +55,20 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
   }
 
   /**
+   * componentWillUpdate lifecycle hook
+   *
+   * @param nextProps
+   * @param nextState
+   */
+  public componentWillUpdate(nextProps: IPropertyFieldCodeEditorHostProps, nextState: IPropertyFieldCodeEditorHostState): void {
+    if (nextProps.initialValue !== this.props.initialValue) {
+      this.setState({
+        code: typeof nextProps.initialValue !== 'undefined' ? nextProps.initialValue : ''
+      });
+    }
+  }
+
+  /**
    * Open the right Panel
    */
   private onOpenPanel(): void {

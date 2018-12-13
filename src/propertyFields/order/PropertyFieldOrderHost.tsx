@@ -1,4 +1,3 @@
-import { autobind, EventGroup } from '@uifabric/utilities';
 import { IButtonStyles, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { Label } from 'office-ui-fabric-react/lib/Label';
@@ -10,6 +9,7 @@ import * as telemetry from '../../common/telemetry';
 import { IPropertyFieldOrderHostProps, IPropertyFieldOrderHostState } from './IPropertyFieldOrderHost';
 import styles from './PropertyFieldOrderHost.module.scss';
 import { isEqual } from '@microsoft/sp-lodash-subset';
+import { EventGroup } from '@uifabric/utilities/lib/EventGroup';
 
 export default class PropertyFieldOrderHost extends React.Component<IPropertyFieldOrderHostProps, IPropertyFieldOrderHostState> {
 
@@ -154,13 +154,11 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 		this.cleanupSubscriptions();
 	}
 
-	@autobind
-	private registerRef(ref:HTMLElement): void {
+	private registerRef = (ref:HTMLElement): void => {
 		this._refs.push(ref);
 	}
 
-	@autobind
-	private setupSubscriptions(): void {
+	private setupSubscriptions = (): void => {
 		if(!this.props.disableDragAndDrop && !this.props.disabled) {
 			this._refs.forEach((value:HTMLElement, index:number) => {
 				this._ddSubs.push(this._ddHelper.subscribe(value, new EventGroup(value), {
@@ -228,16 +226,14 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 		}
 	}
 
-	@autobind
-	private cleanupSubscriptions(): void {
+	private cleanupSubscriptions = (): void => {
 		while(this._ddSubs.length){
 			let sub:any = this._ddSubs.pop();
 			sub.dispose();
 		}
 	}
 
-	@autobind
-	private insertBeforeItem(item: any) {
+	private insertBeforeItem = (item: any) => {
 		let itemIndex:number = this.state.items.indexOf(this._draggedItem);
 		let targetIndex:number = this.state.items.indexOf(item);
 		if(itemIndex < targetIndex) {
@@ -247,22 +243,19 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 	}
 
 
-	@autobind
-	private onMoveUpClick(itemIndex:number): void {
+	private onMoveUpClick = (itemIndex:number): void => {
 		if(itemIndex > 0) {
 			this.moveItemAtIndexToTargetIndex(itemIndex, itemIndex-1);
 		}
 	}
 
-	@autobind
-	private onMoveDownClick(itemIndex:number): void {
+	private onMoveDownClick = (itemIndex:number): void => {
 		if(itemIndex < this.state.items.length-1) {
 			this.moveItemAtIndexToTargetIndex(itemIndex, itemIndex+1);
 		}
 	}
 
-	@autobind
-	private moveItemAtIndexToTargetIndex(itemIndex:number, targetIndex:number): void {
+	private moveItemAtIndexToTargetIndex = (itemIndex:number, targetIndex:number): void => {
 		if(itemIndex !== targetIndex && itemIndex > -1 && targetIndex > -1 && itemIndex < this.state.items.length && targetIndex < this.state.items.length) {
 			let items: Array<any> = this.state.items;
 			items.splice(targetIndex, 0, ...items.splice(itemIndex, 1)[0]);

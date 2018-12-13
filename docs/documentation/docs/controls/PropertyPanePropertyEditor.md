@@ -17,7 +17,7 @@ This control allows the user to edit the webpart properties in JSON. It can also
 2. Import the following modules to your component: 
 
 ```TypeScript
-import { PropertyWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPanePropertyEditor';
+import { PropertyPanePropertyEditor } from '@pnp/spfx-property-controls/lib/PropertyPanePropertyEditor';
 ```
 
 3. Create a new property for your web part, for example:

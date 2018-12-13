@@ -3,6 +3,7 @@ import styles from '../PropertyFieldCollectionDataHost.module.scss';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { ICollectionNumberFieldProps, ICollectionNumberFieldState } from '.';
 import { ICustomCollectionField } from '..';
+import { isEqual } from '@microsoft/sp-lodash-subset';
 
 export class CollectionNumberField extends React.Component<ICollectionNumberFieldProps, ICollectionNumberFieldState> {
   private async: Async;
@@ -31,6 +32,20 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
   }
 
   /**
+   * componentWillUpdate lifecycle hook
+   *
+   * @param nextProps
+   * @param nextState
+   */
+  public componentWillUpdate(nextProps: ICollectionNumberFieldProps, nextState: ICollectionNumberFieldState): void {
+    if (!isEqual(nextProps.item, this.props.item)) {
+      this.setState({
+        value: nextProps.item[nextProps.field.id]
+      });
+    }
+  }
+
+  /**
    * Value change event handler
    *
    * @param field
@@ -41,6 +56,7 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
     this.setState({
       value: inputVal
     });
+    this.props.fOnValueChange(field.id, value);
     this.delayedValidate(field, inputVal);
   }
 
@@ -70,7 +86,7 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
                aria-valuenow={this.props.item[this.props.field.id] || ''}
                aria-invalid={!!this.state.errorMessage}
                value={this.state.value || ''}
-               onChange={(ev) => this.valueChange(this.props.field, ev.target.value)} />
+               onChange={async (ev) => await this.valueChange(this.props.field, ev.target.value)} />
       </div>
     );
   }

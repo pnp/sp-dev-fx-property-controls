@@ -91,20 +91,40 @@ PropertyFieldCollectionData("collectionData", {
 })
 ```
 
+### Sample of custom field rendering
+
+Here is an example of how you can render your own controls in the `PropertyFieldCollectionData` control:
+
+```TypeScript
+{
+  id: "customFieldId",
+  title: "Custom Field",
+  type: CustomCollectionFieldType.custom,
+  onCustomRender: (field, value, onUpdate) => {
+    return (
+      React.createElement("div", null,
+        React.createElement("input", { value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => onUpdate(field.id, event.currentTarget.value) }), " 🎉"
+      )
+    );
+  }
+}
+```
+
 ## Implementation
 
 The `PropertyFieldCollectionData` control can be configured with the following properties:
 
-| Property | Type | Required | Description |
+| Property | Type | Required | Description | Default Value |
 | ---- | ---- | ---- | ---- |
-| key | string | yes | An unique key that indicates the identity of this control. |
-| label | string | yes | Property field label displayed on top. |
-| panelHeader | string | yes | Label to be used as the header in the panel. |
-| panelDescription | string | no | Property that allows you to specify a description in the collection panel. |
-| manageBtnLabel | string | yes | Label of the button to open the panel. |
-| fields | ICustomCollectionField[] | yes | The fields to be used for the list of collection data. |
-| value | string | yes | The collection data value. |
-| disabled | boolean | no | Specify if the control is disabled. |
+| key | string | yes | An unique key that indicates the identity of this control. | |
+| label | string | yes | Property field label displayed on top. | |
+| panelHeader | string | yes | Label to be used as the header in the panel. | |
+| panelDescription | string | no | Property that allows you to specify a description in the collection panel. | |
+| manageBtnLabel | string | yes | Label of the button to open the panel. | |
+| fields | ICustomCollectionField[] | yes | The fields to be used for the list of collection data. | |
+| value | string | yes | The collection data value. | |
+| enableSorting | boolean | no | Specify if you want to be able to sort the items in the collection. | false |
+| disabled | boolean | no | Specify if the control is disabled. | false |
 
 Interface `ICustomCollectionField`
 
@@ -120,6 +140,7 @@ Interface `ICustomCollectionField`
 | defaultValue | any | no | Specify a default value for the input field. |
 | deferredValidationTime | number | no | Field will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default: 200ms. |
 | onGetErrorMessage | (value: any, index: number, crntItem: any): string \| Promise<string> | no | The method is used to get the validation error message and determine whether the input value is valid or not. It provides you the current row index and the item you are currently editing. |
+| onCustomRender | (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void) => JSX.Element | no | This property is only required if you are using the `custom` field type and it can be used to specify the custom rendering of your control in the collection data. |
 
 Enum `CustomCollectionFieldType`
 
@@ -131,5 +152,6 @@ Enum `CustomCollectionFieldType`
 | dropdown | Dropdown field. You will have to specify the `options` property when using this field type |
 | fabricIcon | Name of the [Office UI Fabric icon](https://developer.microsoft.com/en-us/fabric#/styles/icons) |
 | url | URL field |
+| custom | This gives you control over the whole field rendering. Be sure to provide the `onCustomRender` method to render your control in the collection data. |
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldCollectionData)

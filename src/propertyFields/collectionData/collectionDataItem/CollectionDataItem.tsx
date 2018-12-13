@@ -7,7 +7,7 @@ import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import { Checkbox } from 'office-ui-fabric-react/lib/components/Checkbox';
 import * as strings from 'PropertyControlStrings';
 import { ICustomCollectionField, CustomCollectionFieldType, FieldValidator } from '..';
-import { Dropdown } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/components/Callout';
 import { CollectionIconField } from '../collectionIconField';
 import { clone, findIndex, sortBy } from '@microsoft/sp-lodash-subset';
@@ -57,25 +57,34 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
       // Update the changed field
       crntItem[fieldId] = value;
 
-      // Check if current item is valid
-      if (this.props.fAddInCreation) {
-        if (this.checkAllRequiredFieldsValid(crntItem) &&
-            this.checkAnyFieldContainsValue(crntItem) &&
-            this.checkAllFieldsAreValid()) {
-          this.props.fAddInCreation(crntItem);
-        } else {
-          this.props.fAddInCreation(null);
-        }
-      }
-
-      // Check if item needs to be updated
-      if (this.props.fUpdateItem) {
-        this.updateItem();
-      }
+      this.doAllFieldChecks();
 
       // Store this in the current state
       return { crntItem };
     });
+  }
+
+  /**
+   * Perform all required field checks at once
+   */
+  private doAllFieldChecks() {
+    const { crntItem } = this.state;
+
+    // Check if current item is valid
+    if (this.props.fAddInCreation) {
+      if (this.checkAllRequiredFieldsValid(crntItem) &&
+          this.checkAnyFieldContainsValue(crntItem) &&
+          this.checkAllFieldsAreValid()) {
+        this.props.fAddInCreation(crntItem);
+      } else {
+        this.props.fAddInCreation(null);
+      }
+    }
+
+    // Check if item needs to be updated
+    if (this.props.fUpdateItem) {
+      this.updateItem();
+    }
   }
 
   /**
@@ -189,17 +198,46 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
     if (field.onGetErrorMessage) {
       // Set initial field validation
       this.validation[field.id] = false;
-      // Trigger field change
-      this.onValueChanged(field.id, value);
       // Do the validation
       validation = await field.onGetErrorMessage(value, this.props.index, this.state.crntItem);
     }
     // Store the field validation
     this.validation[field.id] = validation === "";
-    // Trigger field change
-    this.onValueChanged(field.id, value);
     // Add message for the error callout
     this.errorCalloutHandler(field.id, validation);
+    this.doAllFieldChecks();
+    return validation;
+  }
+
+  /**
+   * URL field validation
+   *
+   * @param field
+   * @param value
+   * @param item
+   */
+  private urlFieldValidation = async (field: ICustomCollectionField, value: any, item: any): Promise<string> => {
+    let isValid = true;
+    let validation = "";
+
+    // Check if custom validation is configured
+    if (field.onGetErrorMessage) {
+      // Using the custom validation
+      validation = await field.onGetErrorMessage(value, this.props.index, item);
+      isValid = validation === "";
+    } else {
+      // Check if entered value is a valid URL
+      const regEx: RegExp = /(http|https)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
+      isValid = (value === null || value.length === 0 || regEx.test(value));
+      validation = isValid ? "" : strings.InvalidUrlError;
+    }
+
+    // Store the field validation
+    this.validation[field.id] = isValid;
+    // Add message for the error callout
+    this.errorCalloutHandler(field.id, validation);
+    this.doAllFieldChecks();
+    // Return the error message if needed
     return validation;
   }
 
@@ -314,42 +352,39 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
                           className={styles.collectionDataField}
+                          onChanged={(value) => this.onValueChanged(field.id, value)}
                           deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
-                          onGetErrorMessage={async (value) => {
-                            let isValid = true;
-                            let validation = "";
-
-                            // Check if custom validation is configured
-                            if (field.onGetErrorMessage) {
-                              // Using the custom validation
-                              validation = await field.onGetErrorMessage(value, this.props.index, item);
-                              isValid = validation === "";
-                            } else {
-                              // Check if entered value is a valid URL
-                              const regEx: RegExp = /(http|https)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
-                              isValid = (value === null || value.length === 0 || regEx.test(value));
-                              validation = isValid ? "" : strings.InvalidUrlError;
-                            }
-
-                            // Store the field validation
-                            this.validation[field.id] = isValid;
-                            // Trigger field change
-                            this.onValueChanged(field.id, value);
-                            // Add message for the error callout
-                            this.errorCalloutHandler(field.id, validation);
-                            // Return the error message if needed
-                            return validation;
-                          }} />;
+                          onGetErrorMessage={async (value: string) => this.urlFieldValidation(field, value, item)} />;
+      case CustomCollectionFieldType.custom:
+          if (field.onCustomRender) {
+            return field.onCustomRender(field, item[field.id], this.onValueChanged);
+          }
+          return null;
       case CustomCollectionFieldType.string:
       default:
         return <TextField placeholder={field.placeholder || field.title}
                           className={styles.collectionDataField}
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
-                          // onChanged={(value) => this.onValueChanged(field.id, value)}
+                          onChanged={(value) => this.onValueChanged(field.id, value)}
                           deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
-                          onGetErrorMessage={(value: string) => this.fieldValidation(field, value)} />;
+                          onGetErrorMessage={async (value: string) => await this.fieldValidation(field, value)} />;
     }
+  }
+
+  /**
+   * Retrieve all dropdown options
+   */
+  private getSortingOptions(): IDropdownOption[] {
+    let opts: IDropdownOption[] = [];
+    const { totalItems } = this.props;
+    for (let i = 1; i <= totalItems; i++) {
+      opts.push({
+        text: i.toString(),
+        key: i
+      });
+    }
+    return opts;
   }
 
   /**
@@ -357,9 +392,22 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    */
   public render(): React.ReactElement<ICollectionDataItemProps> {
     const { crntItem } = this.state;
+    const opts = this.getSortingOptions();
 
     return (
       <div className={`${styles.tableRow} ${this.props.index === null ? styles.tableFooter : ""}`}>
+        {
+          (this.props.sortingEnabled && this.props.totalItems) && (
+            <span className={`${styles.tableCell}`}>
+              <Dropdown options={opts} selectedKey={this.props.index + 1} onChanged={(opt) => this.props.fOnSorting(this.props.index, opt.key as number) } />
+            </span>
+          )
+        }
+        {
+          (this.props.sortingEnabled && this.props.totalItems === null) && (
+            <span className={`${styles.tableCell}`}></span>
+          )
+        }
         {
           this.props.fields.map(f => (
             <span className={`${styles.tableCell} ${styles.inputField}`}>{this.renderField(f, crntItem)}</span>

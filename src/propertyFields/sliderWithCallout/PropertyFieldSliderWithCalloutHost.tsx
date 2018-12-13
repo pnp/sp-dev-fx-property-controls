@@ -6,6 +6,7 @@ import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldH
 import { IPropertyFieldSliderWithCalloutHostProps } from './IPropertyFieldSliderWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
 import { Slider } from 'office-ui-fabric-react/lib/components/Slider';
+import { omit } from 'lodash';
 
 export default class PropertyFieldSliderWithCalloutHost extends React.Component<IPropertyFieldSliderWithCalloutHostProps, null> {
   constructor(props: IPropertyFieldSliderWithCalloutHostProps) {
@@ -19,7 +20,7 @@ export default class PropertyFieldSliderWithCalloutHost extends React.Component<
   public render(): JSX.Element {
     return (
       <div>
-        <PropertyFieldHeader {...this.props} />
+        <PropertyFieldHeader {...omit(this.props, "ref")} />
         <Slider {..._.omit(this.props, ['label'])} />
       </div>
     );

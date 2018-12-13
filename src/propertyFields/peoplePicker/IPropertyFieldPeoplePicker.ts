@@ -93,6 +93,10 @@ export interface IPropertyFieldPeoplePickerProps {
    */
   multiSelect?: boolean;
   /**
+   * Target a specific site to retrieve the users
+   */
+  targetSiteUrl?: string;
+  /**
    * Defines a onPropertyChange function to raise when the selected value changed.
    * Normally this function must be always defined with the 'this.onPropertyChange'
    * method of the web part object.

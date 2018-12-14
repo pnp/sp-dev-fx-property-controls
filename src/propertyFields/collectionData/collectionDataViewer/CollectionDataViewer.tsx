@@ -171,7 +171,6 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
       newOrderedItems = this.moveItemTo(newOrderedItems, oldIdx, newIdx - 1);
       newOrderedItems = this.updateSortProperty(newOrderedItems);
       newOrderedItems = sortBy(newOrderedItems, this.SORT_IDX);
-      console.log(newOrderedItems);
 
       return {
         crntItems: newOrderedItems
@@ -208,7 +207,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
             }
             {
               this.props.fields.map(f => (
-                <span className={styles.tableCell}>{f.title} { f.required && <Icon className={styles.required} iconName="Asterisk" /> }</span>
+                <span key={`dataviewer-${f.id}`} className={styles.tableCell}>{f.title} { f.required && <Icon className={styles.required} iconName="Asterisk" /> }</span>
               ))
             }
             <span className={styles.tableCell}></span>

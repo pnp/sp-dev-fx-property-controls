@@ -410,7 +410,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
         }
         {
           this.props.fields.map(f => (
-            <span className={`${styles.tableCell} ${styles.inputField}`}>{this.renderField(f, crntItem)}</span>
+            <span key={`dataitem-${f.id}`} className={`${styles.tableCell} ${styles.inputField}`}>{this.renderField(f, crntItem)}</span>
           ))
         }
 
@@ -438,8 +438,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                       <p>Field issues:</p>
                       <ul>
                         {
-                          this.state.errorMsgs.map(msg => (
-                            <li><b>{msg.field}</b>: {msg.message ? msg.message : msg.isRequired ? strings.CollectionDataItemFieldRequiredLabel : null}</li>
+                          this.state.errorMsgs.map((msg, idx) => (
+                            <li key={`${msg.field}-${idx}`}><b>{msg.field}</b>: {msg.message ? msg.message : msg.isRequired ? strings.CollectionDataItemFieldRequiredLabel : null}</li>
                           ))
                         }
                       </ul>

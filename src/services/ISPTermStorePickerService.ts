@@ -1,3 +1,5 @@
+import { IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
+
 /**
  * Interfaces for Term store, groups and term sets
  */
@@ -80,4 +82,14 @@ export interface ISPTermStorePickerServiceProps {
   limitByGroupNameOrID?: string;
   limitByTermsetNameOrID?: string;
   excludeSystemGroup?: boolean;
+}
+
+export interface IPnPTermStorePickerServiceProps extends ISPTermStorePickerServiceProps {
+  includeLabels?: boolean;
+}
+
+export interface ISPTermStorePickerService {
+  cleanGuid: (guid: string) => string;
+  searchTermsByName: (searchText: string) => Promise<IPickerTerm[]>;
+  getTermSets: () => Promise<ITermSet[]>;
 }

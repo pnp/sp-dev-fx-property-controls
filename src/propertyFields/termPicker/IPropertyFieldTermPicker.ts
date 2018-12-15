@@ -11,6 +11,7 @@ export interface IPickerTerm  {
   path: string;
   termSet: string;
   termSetName? : string;
+  labels?: string[];
 }
 
 export interface IPickerTerms extends Array<IPickerTerm> { }

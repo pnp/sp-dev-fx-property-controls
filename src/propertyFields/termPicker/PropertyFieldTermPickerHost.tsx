@@ -55,6 +55,8 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
       disabled: props.disabled
     });
 
+    this.termsService = new SPTermStorePickerService(this.props, this.props.context);
+
 
     this.state = {
       activeNodes: typeof this.props.initialValues !== 'undefined' ? this.props.initialValues : [],
@@ -79,7 +81,6 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
    * Loads the list from SharePoint current web site
    */
   private loadTermStores(): void {
-    this.termsService = new SPTermStorePickerService(this.props, this.props.context);
     this.termsService.getTermStores().then((response: ITermStore[]) => {
       // Check if a response was retrieved
       if (response !== null) {
@@ -291,6 +292,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
                   allowMultipleSelections={this.props.allowMultipleSelections}
                   isTermSetSelectable={this.props.isTermSetSelectable}
                   disabledTermIds={this.props.disabledTermIds}
+                  termsService={this.termsService}
                 />
               </td>
               <td className={styles.termFieldRow}>

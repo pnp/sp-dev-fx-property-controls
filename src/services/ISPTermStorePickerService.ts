@@ -89,7 +89,28 @@ export interface IPnPTermStorePickerServiceProps extends ISPTermStorePickerServi
 }
 
 export interface ISPTermStorePickerService {
-  cleanGuid: (guid: string) => string;
   searchTermsByName: (searchText: string) => Promise<IPickerTerm[]>;
   getTermSets: () => Promise<ITermSet[]>;
+}
+
+export class TermStorePickerServiceHelper {
+  /**
+   * Cleans the Guid from the Web Service response
+   * @param guid
+   */
+  public static cleanGuid(guid: string): string {
+    if (guid !== undefined) {
+      return guid.replace('/Guid(', '').replace('/', '').replace(')', '');
+    } else {
+      return '';
+    }
+  }
+
+  /**
+   * Checks if the provided string is a GUID
+   * @param strGuid string to check
+   */
+  public static isGuid(strGuid: string): boolean {
+    return /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(strGuid);
+  }
 }

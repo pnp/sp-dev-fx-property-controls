@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ITermSetProps, ITermSetState } from './IPropertyFieldTermPickerHost';
-import { ITerm } from '../../services/ISPTermStorePickerService';
+import { ITerm, TermStorePickerServiceHelper } from '../../services/ISPTermStorePickerService';
 import { EXPANDED_IMG, COLLAPSED_IMG, TERMSET_IMG } from './PropertyFieldTermPickerHost';
 import Term from './Term';
 import styles from './PropertyFieldTermPickerHost.module.scss';
@@ -82,7 +82,7 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
   private termSetSelectionChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
     const { termset } = this.props;
     this.props.changedCallback({
-      Id: SPTermStorePickerService.cleanGuid(termset.Id),
+      Id: TermStorePickerServiceHelper.cleanGuid(termset.Id),
       Name: termset.Name,
       PathOfTerm: "",
       _ObjectType_: termset._ObjectType_,

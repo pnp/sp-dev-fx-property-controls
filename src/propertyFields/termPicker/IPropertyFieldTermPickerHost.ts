@@ -1,5 +1,5 @@
 import { IPickerTerms } from './IPropertyFieldTermPicker';
-import { ITermStore, IGroup, ITermSet, ITerm } from '../../services/ISPTermStorePickerService';
+import { ITermStore, IGroup, ITermSet, ITerm, ISPTermStorePickerService } from '../../services/ISPTermStorePickerService';
 import { IPropertyFieldTermPickerPropsInternal } from './IPropertyFieldTermPicker';
 import SPTermStorePickerService from '../../services/SPTermStorePickerService';
 
@@ -29,7 +29,7 @@ export interface ITermChanges {
 export interface ITermGroupProps extends ITermChanges {
   group: IGroup;
   termstore: string;
-  termsService: SPTermStorePickerService;
+  termsService: ISPTermStorePickerService;
   multiSelection: boolean;
   isTermSetSelectable?: boolean;
   disabledTermIds?: string[];
@@ -42,7 +42,7 @@ export interface ITermGroupState {
 export interface ITermSetProps extends ITermChanges {
   termset: ITermSet;
   termstore: string;
-  termsService: SPTermStorePickerService;
+  termsService: ISPTermStorePickerService;
   autoExpand: () => void;
   multiSelection: boolean;
   isTermSetSelectable?: boolean;

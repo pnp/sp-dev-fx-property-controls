@@ -6,7 +6,7 @@ import styles from './PropertyFieldTermPickerHost.module.scss';
 import { IPropertyFieldTermPickerHostProps } from './IPropertyFieldTermPickerHost';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import * as strings from 'PropertyControlStrings';
-import { ISPTermStorePickerService } from '../../services/ISPTermStorePickerService';
+import { ISPTermStorePickerService, TermStorePickerServiceHelper } from '../../services/ISPTermStorePickerService';
 
 export class TermBasePicker extends BasePicker<IPickerTerm, IBasePickerProps<IPickerTerm>>
 {
@@ -125,7 +125,7 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
             if (termSet.Name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) {
               // Add the termset to the suggestion list
               terms.push({
-                key: termsService.cleanGuid(termSet.Id),
+                key: TermStorePickerServiceHelper.cleanGuid(termSet.Id),
                 name: termSet.Name,
                 path: "",
                 termSet: termSet.Id

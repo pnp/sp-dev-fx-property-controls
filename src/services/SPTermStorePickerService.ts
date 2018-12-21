@@ -8,11 +8,9 @@
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
-import { IPropertyFieldTermPickerHostProps } from './../propertyFields/termPicker/IPropertyFieldTermPickerHost';
-import { ISPTermStores, ISPTermStore, ISPTermGroups, ISPTermGroup, IPickerTerms, IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
+import { IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
 import { ITermStore, ITerms, ITerm, IGroup, ITermSet, ISPTermStorePickerServiceProps } from './ISPTermStorePickerService';
 import SPTermStoreMockHttpClient from './SPTermStorePickerMockService';
-import TermSet from './../propertyFields/termPicker/TermSet';
 
 /**
  * Service implementation to manage term stores in SharePoint
@@ -379,10 +377,10 @@ export default class SPTermStorePickerService {
    * @param b term 2
    */
   private _sortTerms(a: ITerm, b: ITerm) {
-    if (a.PathOfTerm < b.PathOfTerm) {
+    if (a.PathOfTerm.toLowerCase() < b.PathOfTerm.toLowerCase()) {
       return -1;
     }
-    if (a.PathOfTerm > b.PathOfTerm) {
+    if (a.PathOfTerm.toLowerCase() > b.PathOfTerm.toLowerCase()) {
       return 1;
     }
     return 0;

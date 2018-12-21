@@ -1,6 +1,17 @@
 {
   "versions": [
     {
+      "version": "1.14.0",
+      "changes": {
+        "new": [],
+        "enhancements": [],
+        "fixes": [
+          "`PropertyFieldTermPicker`: fix sort order with lowercased terms [#133](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/133)"
+        ]
+      },
+      "contributions": []
+    },
+    {
       "version": "1.13.1",
       "changes": {
         "new": [],

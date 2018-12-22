@@ -91,6 +91,7 @@ export interface IPnPTermStorePickerServiceProps extends ISPTermStorePickerServi
 export interface ISPTermStorePickerService {
   searchTermsByName: (searchText: string) => Promise<IPickerTerm[]>;
   getTermSets: () => Promise<ITermSet[]>;
+  getAllTerms: (termSet: ITermSet) => Promise<ITerm[]>;
 }
 
 export class TermStorePickerServiceHelper {

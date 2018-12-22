@@ -1,4 +1,4 @@
-import { ISPTermStorePickerService, IPnPTermStorePickerServiceProps, ITermStore, ITermSet, TermStorePickerServiceHelper } from "./ISPTermStorePickerService";
+import { ISPTermStorePickerService, IPnPTermStorePickerServiceProps, ITermStore, ITermSet, TermStorePickerServiceHelper, ITerm } from "./ISPTermStorePickerService";
 import { IWebPartContext } from "@microsoft/sp-webpart-base";
 import {
     taxonomy,
@@ -44,6 +44,41 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         }
 
         return [];
+    }
+
+    public async getAllTerms(termSet: ITermSet): Promise<ITerm[]> {
+        if (Environment.type === EnvironmentType.Local) {
+            // If the running environment is local, load the data from the mock
+            return SPTermStoreMockHttpClient.getAllTerms();
+        }
+        await this._ensureTermStores();
+        const pnpTermStores = this._pnpTermStores;
+        for (let i = 0, len = pnpTermStores.length; i < len; i++) {
+            const pnpTermStore = pnpTermStores[i];
+            const termsResult: any = await this._tryGetAllTerms(pnpTermStore, termSet).catch((error) => {}); // .catch part is needed to proceed if there was a rejected promise
+            if (!termsResult) { // terms variable will be undefined if the Promise has been rejected. Otherwise it will contain an array
+                continue;
+            }
+
+            const terms: ITerm[] = termsResult as ITerm[];
+            return terms;
+        }
+
+    }
+
+    private _tryGetAllTerms(pnpTermStore: ITermStoreData & PnPTermStore, termSet: ITermSet): Promise<ITerm[]> {
+        return new Promise<ITerm[]>((resolve, reject) => {
+            pnpTermStore.getTermSetById(termSet.Id).terms.get().then((pnpTerms) => {
+                const terms = pnpTerms.map(pnpTerm => {
+                    const term: ITerm = (pnpTerm as any) as ITerm;
+                    term.Id = TermStorePickerServiceHelper.cleanGuid(term.Id);
+                    term.PathDepth = term.PathOfTerm.split(';').length;
+                    term.TermSet = termSet;
+                });
+            }, (error) => {
+                reject(error);
+            });
+        });
     }
 
     private async _searchTermsByTermSet(searchText: string): Promise<IPickerTerm[]> {

@@ -60,7 +60,7 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
     // Check if there are already terms loaded
     if (!this.state.loaded) {
       // Receive all the terms for the current term set
-      const terms: ITerm[] = await this.props.termsService.getAllTerms(this.props.termset._ObjectIdentity_);
+      const terms: ITerm[] = await this.props.termsService.getAllTerms(this.props.termset);
       if (terms !== null) {
         this.setState({
           terms: terms,

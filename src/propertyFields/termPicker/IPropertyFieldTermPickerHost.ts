@@ -22,7 +22,7 @@ export interface IPropertyFieldTermPickerHostState {
 }
 
 export interface ITermChanges {
-  changedCallback: (term: ITerm, checked: boolean) => void;
+  changedCallback: (term: ITerm, termGroup: string, checked: boolean) => void;
   activeNodes?: IPickerTerms;
 }
 
@@ -37,11 +37,13 @@ export interface ITermGroupProps extends ITermChanges {
 
 export interface ITermGroupState {
   expanded: boolean;
+  loaded?: boolean;
 }
 
 export interface ITermSetProps extends ITermChanges {
   termset: ITermSet;
   termstore: string;
+  termGroup: string;
   termsService: ISPTermStorePickerService;
   autoExpand: () => void;
   multiSelection: boolean;
@@ -57,6 +59,7 @@ export interface ITermSetState {
 
 export interface ITermProps extends ITermChanges {
   termset: string;
+  termGroup: string;
   term: ITerm;
   multiSelection: boolean;
   disabled: boolean;

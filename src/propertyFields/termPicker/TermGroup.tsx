@@ -14,7 +14,8 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
     super(props);
 
     this.state = {
-      expanded: false
+      expanded: false,
+      loaded: !!(props.group.TermSets && props.group.TermSets._Child_Items_)
     };
 
     this._handleClick = this._handleClick.bind(this);
@@ -39,6 +40,23 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
     });
   }
 
+  private async _loadTermSets(autoExpand?: boolean): Promise<void> {
+    if (this.state.loaded) {
+      return;
+    }
+
+    const termSets = await this.props.termsService.getGroupTermSets(this.props.group);
+    
+    //
+    // NOTE: the next line is kinda incorrect from React perspective as we're modifying props.
+    // But it is done to avoid redux usage or reimplementing the whole logic
+    // 
+    this.props.group.TermSets = termSets;
+    this.setState({
+      loaded: true
+    });
+  }
+
   public render(): JSX.Element {
     // Specify the inline styling to show or hide the termsets
     const styleProps: React.CSSProperties = {
@@ -55,7 +73,8 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
           {
             this.props.group.TermSets._Child_Items_.map(termset => {
               return <TermSet key={termset.Id} 
-                              termset={termset} 
+                              termset={termset}
+                              termGroup={this.props.group.Id} 
                               termstore={this.props.termstore} 
                               termsService={this.props.termsService} 
                               autoExpand={this._autoExpand} 

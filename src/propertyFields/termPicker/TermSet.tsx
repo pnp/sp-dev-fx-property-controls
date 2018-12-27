@@ -92,7 +92,7 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
       IsAvailableForTagging: null,
       IsRoot: null,
       TermSet: termset
-    }, isChecked);
+    }, this.props.termGroup, isChecked);
   }
 
   public render(): JSX.Element {
@@ -119,6 +119,7 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
                   return <Term key={term.Id}
                                term={term}
                                termset={this.props.termset.Id}
+                               termGroup={this.props.termGroup}
                                activeNodes={this.props.activeNodes}
                                changedCallback={this.props.changedCallback}
                                multiSelection={this.props.multiSelection}

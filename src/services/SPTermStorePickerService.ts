@@ -8,18 +8,14 @@
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
-import { IPropertyFieldTermPickerHostProps } from './../propertyFields/termPicker/IPropertyFieldTermPickerHost';
-import { ISPTermStores, ISPTermStore, ISPTermGroups, ISPTermGroup, IPickerTerms, IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
-import { ITermStore, ITerms, ITerm, IGroup, ITermSet, ISPTermStorePickerServiceProps, ISPTermStorePickerService, TermStorePickerServiceHelper } from './ISPTermStorePickerService';
+import { IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
+import { ITermStore, ITerms, ITerm, IGroup, ITermSet, ISPTermStorePickerServiceProps, ISPTermStorePickerService, TermStorePickerServiceHelper, ITermSets } from './ISPTermStorePickerService';
 import SPTermStoreMockHttpClient from './SPTermStorePickerMockService';
-import TermSet from './../propertyFields/termPicker/TermSet';
 
 /**
  * Service implementation to manage term stores in SharePoint
  */
 export default class SPTermStorePickerService implements ISPTermStorePickerService {
-  private taxonomySession: string;
-  private formDigest: string;
   private clientServiceUrl: string;
 
   /**
@@ -205,6 +201,10 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
     }
   }
 
+  public async getGroupTermSets(group: IGroup): Promise<ITermSets> {
+    return group.TermSets;
+  }
+
   /**
      * Searches terms for the given term set
      * @param searchText
@@ -221,6 +221,9 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
           if (!this.isGuid(termSet)) {
             TermSetId = TermStorePickerServiceHelper.cleanGuid(termStore[0].Groups._Child_Items_[0].TermSets._Child_Items_[0].Id);
           }
+
+          const group: IGroup = this.getTermGroupByTermSetId(TermSetId, termStore);
+
           let data = `<Request xmlns="http://schemas.microsoft.com/sharepoint/clientquery/2009" SchemaVersion="15.0.0.0" LibraryVersion="16.0.0.0" ApplicationName="Javascript Library"><Actions><ObjectPath Id="456" ObjectPathId="455" /><ObjectIdentityQuery Id="457" ObjectPathId="455" /><ObjectPath Id="459" ObjectPathId="458" /><ObjectIdentityQuery Id="460" ObjectPathId="458" /><ObjectPath Id="462" ObjectPathId="461" /><ObjectIdentityQuery Id="463" ObjectPathId="461" /><ObjectPath Id="465" ObjectPathId="464" /><SetProperty Id="466" ObjectPathId="464" Name="TermLabel"><Parameter Type="String">${searchText}</Parameter></SetProperty><SetProperty Id="467" ObjectPathId="464" Name="DefaultLabelOnly"><Parameter Type="Boolean">true</Parameter></SetProperty><SetProperty Id="468" ObjectPathId="464" Name="StringMatchOption"><Parameter Type="Number">0</Parameter></SetProperty><SetProperty Id="469" ObjectPathId="464" Name="ResultCollectionSize"><Parameter Type="Number">10</Parameter></SetProperty><SetProperty Id="470" ObjectPathId="464" Name="TrimUnavailable"><Parameter Type="Boolean">true</Parameter></SetProperty><ObjectPath Id="472" ObjectPathId="471" /><Query Id="473" ObjectPathId="471"><Query SelectAllProperties="false"><Properties /></Query><ChildItemQuery SelectAllProperties="false"><Properties><Property Name="IsRoot" SelectAll="true" /><Property Name="Id" SelectAll="true" /><Property Name="Name" SelectAll="true" /><Property Name="PathOfTerm" SelectAll="true" /><Property Name="TermSet" SelectAll="true" /></Properties></ChildItemQuery></Query></Actions><ObjectPaths><StaticMethod Id="455" Name="GetTaxonomySession" TypeId="{981cbc68-9edc-4f8d-872f-71146fcbb84f}" /><Method Id="458" ParentId="455" Name="GetDefaultKeywordsTermStore" /><Method Id="461" ParentId="458" Name="GetTermSet"><Parameters><Parameter Type="Guid">${TermSetId}</Parameter></Parameters></Method><Constructor Id="464" TypeId="{61a1d689-2744-4ea3-a88b-c95bee9803aa}" /><Method Id="471" ParentId="461" Name="GetTerms"><Parameters><Parameter ObjectPathId="464" /></Parameters></Method></ObjectPaths></Request>`;
 
           const reqHeaders = new Headers();
@@ -249,8 +252,8 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
                       name: term.Name,
                       path: term.PathOfTerm,
                       termSet: term.TermSet.Id,
-                      termSetName: term.TermSet.Name
-
+                      termSetName: term.TermSet.Name,
+                      termGroup: group ? TermStorePickerServiceHelper.cleanGuid(group.Id) : ''
                     });
                   }
                 });
@@ -291,7 +294,8 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
                       name: term.Name,
                       path: term.PathOfTerm,
                       termSet: term.TermSet.Id,
-                      termSetName: term.TermSet.Name
+                      termSetName: term.TermSet.Name,
+                      termGroup: TermStorePickerServiceHelper.cleanGuid(termStore[0].Groups._Child_Items_[0].Id) // ??? I don't know why we always work with the 1st group
                     });
                   }
                 });
@@ -392,5 +396,21 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
     return SPTermStoreMockHttpClient.getAllTerms().then((data) => {
       return data;
     }) as Promise<ITerm[]>;
+  }
+
+  private getTermGroupByTermSetId(termSetId: string, termStores: ITermStore[]): IGroup {
+    for (let i = 0, len = termStores.length; i < len; i++) {
+      const termStore = termStores[i];
+
+      for (let groupIdx = 0, groupsLen = termStore.Groups._Child_Items_.length; groupIdx < groupsLen; groupIdx++) {
+        const group = termStore.Groups._Child_Items_[groupIdx];
+
+        if (group.TermSets._Child_Items_.filter(ts => TermStorePickerServiceHelper.cleanGuid(ts.Id) === termSetId).length) {
+          return group;
+        }
+      }
+    }
+
+    return null;
   }
 }

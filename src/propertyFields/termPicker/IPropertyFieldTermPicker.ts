@@ -12,6 +12,7 @@ export interface IPickerTerm  {
   termSet: string;
   termSetName? : string;
   labels?: string[];
+  termGroup: string;
 }
 
 export interface IPickerTerms extends Array<IPickerTerm> { }

@@ -128,7 +128,8 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
                 key: TermStorePickerServiceHelper.cleanGuid(termSet.Id),
                 name: termSet.Name,
                 path: "",
-                termSet: termSet.Id
+                termSet: termSet.Id,
+                termGroup: termSet.Group
               });
             }
           }

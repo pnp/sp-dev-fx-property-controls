@@ -11,6 +11,14 @@ export interface ITermStore {
   Groups: IGroups;
 }
 
+/**
+ * Interface to store backward connection between Group and Term store
+ */
+export interface ITermStoreMinimal {
+  Id: string;
+  Name: string;
+}
+
 export interface IGroups {
   _ObjectType_: string; // SP.Taxonomy.TermGroupCollection
   _Child_Items_: IGroup[];
@@ -23,6 +31,7 @@ export interface IGroup {
   Id: string;
   Name: string;
   IsSystemGroup: boolean;
+  TermStore?: ITermStoreMinimal;
 }
 
 export interface ITermSets {
@@ -37,6 +46,11 @@ export interface ITermSet {
   Name: string;
   Description: string;
   Names: ITermSetNames;
+  /**
+   * This prop is internal. It is not returned from SP Service.
+   * We need that to store Group Id.
+   */
+  Group?: string;
 }
 
 export interface ITermSetMinimal {
@@ -91,6 +105,7 @@ export interface IPnPTermStorePickerServiceProps extends ISPTermStorePickerServi
 export interface ISPTermStorePickerService {
   searchTermsByName: (searchText: string) => Promise<IPickerTerm[]>;
   getTermSets: () => Promise<ITermSet[]>;
+  getGroupTermSets: (group: IGroup) => Promise<ITermSets>;
   getAllTerms: (termSet: ITermSet) => Promise<ITerm[]>;
 }
 

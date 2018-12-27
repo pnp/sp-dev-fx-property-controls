@@ -30,7 +30,7 @@ export default class Term extends React.Component<ITermProps, ITermState> {
     this.setState({
       selected: isChecked
     });
-    this.props.changedCallback(this.props.term, isChecked);
+    this.props.changedCallback(this.props.term, this.props.termGroup, isChecked);
   }
 
   /**

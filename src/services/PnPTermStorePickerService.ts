@@ -1,4 +1,4 @@
-import { ISPTermStorePickerService, IPnPTermStorePickerServiceProps, ITermStore, ITermSet, TermStorePickerServiceHelper, ITerm } from "./ISPTermStorePickerService";
+import { ISPTermStorePickerService, IPnPTermStorePickerServiceProps, ITermStore, ITermSet, TermStorePickerServiceHelper, ITerm, IGroup, ITermSets } from "./ISPTermStorePickerService";
 import { IWebPartContext } from "@microsoft/sp-webpart-base";
 import {
     taxonomy,
@@ -55,7 +55,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         const pnpTermStores = this._pnpTermStores;
         for (let i = 0, len = pnpTermStores.length; i < len; i++) {
             const pnpTermStore = pnpTermStores[i];
-            const termsResult: any = await this._tryGetAllTerms(pnpTermStore, termSet).catch((error) => {}); // .catch part is needed to proceed if there was a rejected promise
+            const termsResult: any = await this._tryGetAllTerms(pnpTermStore, termSet).catch((error) => { }); // .catch part is needed to proceed if there was a rejected promise
             if (!termsResult) { // terms variable will be undefined if the Promise has been rejected. Otherwise it will contain an array
                 continue;
             }
@@ -64,6 +64,23 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
             return terms;
         }
 
+    }
+
+    public async getGroupTermSets(group: IGroup): Promise<ITermSets> {
+        await this._ensureTermStores();
+        const pnpTermStore = this._pnpTermStores.filter(ts => ts.Id === group.TermStore.Id)[0];
+
+        const pnpGroup = await pnpTermStore.getTermGroupById(group.Id).usingCaching().get();
+        const pnpTermSets = await pnpGroup.termSets.get();
+
+        const result: ITermSets = {
+            _ObjectType_: 'SP.Taxonomy.TermSetCollection',
+            _Child_Items_: pnpTermSets.map(pnpTermSet => {
+                return this._pnpTermSet2TermSet(pnpTermSet);
+            })
+        };
+
+        return result;
     }
 
     private _tryGetAllTerms(pnpTermStore: ITermStoreData & PnPTermStore, termSet: ITermSet): Promise<ITerm[]> {
@@ -111,7 +128,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
 
                 // getting filtered terms from term sets
                 returnTerms.push(...await this._searchTermsInTermSets(pnpTermSets, searchText));
-                
+
             }
 
             return returnTerms;
@@ -150,7 +167,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                 // getting term sets from term group
                 const pnpTermSets = await pnpGroup.termSets.usingCaching().get();
                 // getting filtered terms from term sets
-                returnTerms.push(...await this._searchTermsInTermSets(pnpTermSets, searchText));
+                returnTerms.push(...await this._searchTermsInTermSets(pnpTermSets, searchText, pnpGroup.Id));
             }
 
             return returnTerms;
@@ -193,9 +210,14 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                     key: TermStorePickerServiceHelper.cleanGuid(pnpTerm.Id),
                     name: pnpTerm.Name,
                     path: pnpTerm.PathOfTerm,
-                    termSet: ''
+                    termSet: '',
+                    termGroup: ''
                 };
                 returnTerms.push(pickerTerm);
+
+                pnpTerm.termSet.group.inBatch(batch).usingCaching().get().then(pnpTermGroup => {
+                    pickerTerm.termGroup = pnpTermGroup.Id;
+                });
 
                 pnpTerm.termSet.inBatch(batch).usingCaching().get().then(pnpTermSet => {
                     pickerTerm.termSet = pnpTermSet.Id;
@@ -215,13 +237,25 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         return returnTerms;
     }
 
-    private async _searchTermsInTermSets(pnpTermSets: (ITermSetData & PnPTermSet)[], searchText: string): Promise<IPickerTerm[]> {
+    private async _searchTermsInTermSets(pnpTermSets: (ITermSetData & PnPTermSet)[], searchText: string, termGroupId?: string): Promise<IPickerTerm[]> {
         const returnTerms: IPickerTerm[] = [];
+        const termSetGroups: { [key: string]: string } = {};
         const termsBatch = taxonomy.createBatch();
         const labelsBatch = taxonomy.createBatch();
 
         for (let termSetIdx = 0, termSetLen = pnpTermSets.length; termSetIdx < termSetLen; termSetIdx++) {
             const pnpTermSet = pnpTermSets[termSetIdx];
+
+            if (!termGroupId) { // if no group id provided we need to load it from store
+                pnpTermSet.group.inBatch(termsBatch).usingCaching().get().then(pnpTermGroup => {
+                    termSetGroups[pnpTermSet.Id] = pnpTermGroup.Id;
+
+                    const loadedTerms = returnTerms.filter(t => t.termSet === pnpTermSet.Id);
+                    loadedTerms.forEach(t => {
+                        t.termGroup = pnpTermGroup.Id;
+                    });
+                });
+            }
 
             // getting terms for term set in batch
             pnpTermSet.terms.inBatch(termsBatch).usingCaching().get().then(pnpTerms => {
@@ -233,7 +267,8 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                             name: pnpTerm.Name,
                             path: pnpTerm.PathOfTerm,
                             termSet: pnpTermSet.Id,
-                            termSetName: pnpTermSet.Name
+                            termSetName: pnpTermSet.Name,
+                            termGroup: termGroupId || termSetGroups[pnpTermSet.Id]
                         };
                         returnTerms.push(pickerTerm);
 
@@ -263,5 +298,17 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         if (!this._pnpTermStores) {
             this._pnpTermStores = await taxonomy.termStores.usingCaching().get();
         }
+    }
+
+    private _pnpTermSet2TermSet(pnpTermSet: (ITermSetData & PnPTermSet)): ITermSet {
+        const anyPnPTermSet: any = pnpTermSet as any; // we need this one to reference _ObjectType_ and _ObjectIdentity_
+        return {
+            _ObjectType_: anyPnPTermSet._ObjectType_,
+            _ObjectIdentity_: anyPnPTermSet._ObjectIdentity_,
+            Id: pnpTermSet.Id,
+            Name: pnpTermSet.Name,
+            Description: pnpTermSet.Description,
+            Names: pnpTermSet.Names
+        };
     }
 }

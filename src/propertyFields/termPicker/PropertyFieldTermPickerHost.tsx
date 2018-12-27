@@ -198,7 +198,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
    * Clicks on a node
    * @param node
    */
-  private termsChanged(term: ITerm, checked: boolean): void {
+  private termsChanged(term: ITerm, termGroup: string, checked: boolean): void {
 
     let activeNodes = this.state.activeNodes;
     if (typeof term === 'undefined' || term === null) {
@@ -210,7 +210,8 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
       name: term.Name,
       key: term.Id,
       path: term.PathOfTerm,
-      termSet: term.TermSet.Id
+      termSet: term.TermSet.Id,
+      termGroup: termGroup
     };
 
     // Check if the term is checked or unchecked

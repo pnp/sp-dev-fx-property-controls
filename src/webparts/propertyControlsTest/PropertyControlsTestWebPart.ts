@@ -37,6 +37,7 @@ import { orderedItem } from './components/OrderedItem';
 import { PropertyFieldSwatchColorPicker, PropertyFieldSwatchColorPickerStyle } from '../../PropertyFieldSwatchColorPicker';
 import { PropertyPaneWebPartInformation } from '../../propertyFields/webPartInformation';
 import { PropertyPanePropertyEditor } from '../../propertyFields/propertyEditor/PropertyPanePropertyEditor';
+import { PropertyFieldEnterpriseTermPicker } from '../../propertyFields/termPicker/PropertyFieldEnterpriseTermPicker';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -69,7 +70,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         htmlCode: this.properties.htmlCode,
         collectionData: this.properties.collectionData,
         orderedItems: this.properties.orderedItems,
-        swatchColor: this.properties.swatchColor
+        swatchColor: this.properties.swatchColor,
+        enterpriseTerms: this.properties.enterpriseTerms || []
       }
     );
 
@@ -547,6 +549,27 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   //showAsCircles: true,
                   //iconName: 'FangBody',
                   key: 'swatchColorFieldId'
+                }),
+                PropertyFieldEnterpriseTermPicker('enterpriseTerms', {
+                  label: 'Select enterprise terms',
+                  panelTitle: 'Select enterprise terms',
+                  initialValues: this.properties.enterpriseTerms,
+                  allowMultipleSelections: true,
+                  excludeSystemGroup: false,
+                  disabledTermIds: ["943fd9f0-3d7c-415c-9192-93c0e54573fb", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
+                  // disabledTermIds: ["943fd9f0-3d7c-415c-9192-93c0e54573fb", "73d18756-20af-41de-808c-2a1e21851e44", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
+                  // disabledTermIds: ["cd6f6d3c-672d-4244-9320-c1e64cc0626f", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  context: this.context,
+                  disabled: false,
+                  onGetErrorMessage: null,
+                  deferredValidationTime: 0,
+                  //limitByGroupNameOrID: 'Hockey Example',
+                  // limitByTermsetNameOrID: 'Countries',
+                  isTermSetSelectable: true,
+                  key: 'enterpriseTermSetsPickerFieldId',
+                  hideTermStoreName: false
                 })
               ]
             },

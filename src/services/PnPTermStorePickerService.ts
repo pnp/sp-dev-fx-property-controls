@@ -42,6 +42,8 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                     Groups: null // TODO: process pnpTermStore.groups
                 });
             });
+
+            return result;
         }
     }
 
@@ -61,6 +63,34 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
     }
 
     public async getTermSets(): Promise<ITermSet[]> {
+        if (Environment.type === EnvironmentType.Local) {
+            const termStores = await SPTermStoreMockHttpClient.getTermStores(this.context.pageContext.web.absoluteUrl) as ITermStore[];
+            if (termStores && termStores.length > 0) {
+                // Get the first term store
+                const ts = termStores[0];
+                let termSets: ITermSet[] = [];
+                // Check if the term store contains groups
+                if (ts.Groups && ts.Groups._Child_Items_) {
+                    for (const group of ts.Groups._Child_Items_) {
+                        // Check if the group contains term sets
+                        if (group.TermSets && group.TermSets._Child_Items_) {
+                            if (this.props.limitByTermsetNameOrID) {
+                                for (const termSet of group.TermSets._Child_Items_) {
+                                    // Check if the term set is found
+                                    if (termSet.Name === this.props.limitByTermsetNameOrID || termSet.Id.indexOf(this.props.limitByTermsetNameOrID) !== -1) {
+                                        termSets = [...termSets, termSet];
+                                    }
+                                }
+                            } else {
+                                termSets = [...termSets, ...group.TermSets._Child_Items_];
+                            }
+                        }
+                    }
+                }
+                return termSets;
+            }
+            return [];
+        }
         if (!this._pnpTermStores) {
             this._pnpTermStores = await taxonomy.termStores.get();
         }
@@ -202,7 +232,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
             return SPTermStoreMockHttpClient.searchTermsByName(searchText);
         }
 
-        this._ensureTermStores();
+        await this._ensureTermStores();
 
         const pnpTermStores = this._pnpTermStores;
         const returnTerms: IPickerTerm[] = [];
@@ -237,7 +267,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                 };
                 returnTerms.push(pickerTerm);
 
-                pnpTerm.termSet.group.inBatch(batch).usingCaching().get().then(pnpTermGroup => {
+                /*pnpTerm.termSet.group.inBatch(batch).usingCaching().get().then(pnpTermGroup => {
                     pickerTerm.termGroup = pnpTermGroup.Id;
                 });
 
@@ -248,6 +278,21 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
 
                 if (this.props.includeLabels) {
                     pnpTerm.labels.inBatch(batch).usingCaching().get().then(labels => {
+                        pickerTerm.labels = labels.map(label => label.Value);
+                    });
+                }*/
+
+                pnpTerm.termSet.group.usingCaching().get().then(pnpTermGroup => {
+                    pickerTerm.termGroup = pnpTermGroup.Id;
+                });
+
+                pnpTerm.termSet.usingCaching().get().then(pnpTermSet => {
+                    pickerTerm.termSet = pnpTermSet.Id;
+                    pickerTerm.termSetName = pnpTermSet.Name;
+                });
+
+                if (this.props.includeLabels) {
+                    pnpTerm.labels.usingCaching().get().then(labels => {
                         pickerTerm.labels = labels.map(label => label.Value);
                     });
                 }

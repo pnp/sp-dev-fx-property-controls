@@ -8,7 +8,7 @@ import { IPropertyPaneField } from "@microsoft/sp-webpart-base";
  * @param targetProperty - Target property the SharePoint list picker is associated to.
  * @param properties - Strongly typed SPList Picker properties.
  */
-export function PropertyFieldTermPicker(targetProperty: string, properties: IPropertyFieldTermPickerProps): IPropertyPaneField<IPropertyFieldTermPickerPropsInternal> {
+export function PropertyFieldEnterpriseTermPicker(targetProperty: string, properties: IPropertyFieldTermPickerProps): IPropertyPaneField<IPropertyFieldTermPickerPropsInternal> {
     // Calls the PropertyFieldTermPicker builder object
     // This object will simulate a PropertyFieldCustom to manage his rendering process
     return new PropertyFieldTermPickerBuilder(targetProperty, {

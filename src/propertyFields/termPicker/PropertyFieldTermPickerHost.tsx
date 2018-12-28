@@ -332,7 +332,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
                     !this.props.hideTermStoreName ? <h3>{termStore.Name}</h3> : null
                   }
                   {
-                    termStore.Groups._Child_Items_.map((group) => {
+                    termStore.Groups && termStore.Groups._Child_Items_ && termStore.Groups._Child_Items_.map((group) => {
                       return <TermGroup key={group.Id}
                         group={group}
                         termstore={termStore.Id}

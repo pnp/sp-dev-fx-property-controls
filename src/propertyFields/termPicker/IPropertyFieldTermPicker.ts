@@ -1,4 +1,5 @@
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { ISPTermStorePickerService } from '../../services/ISPTermStorePickerService';
 
 
 
@@ -157,6 +158,7 @@ export interface IPropertyFieldTermPickerProps {
  * the PropertyFieldTermPicker.
  */
 export interface IPropertyFieldTermPickerPropsInternal extends IPropertyFieldTermPickerProps {
+  termService: ISPTermStorePickerService;
   targetProperty: string;
   onRender(elem: HTMLElement): void;
   onDispose(elem: HTMLElement): void;

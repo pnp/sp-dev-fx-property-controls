@@ -135,21 +135,24 @@ export default class SPTermStoreMockHttpClient {
           name : 'term1',
           path : "path;path2",
           termSet :"123",
-          termSetName : "tsName"
+          termSetName : "tsName",
+          termGroup: 'groupId'
          },
          {
           key : "124",
           name : 'term2',
           path : "path",
           termSet :"123",
-          termSetName : "tsName"
+          termSetName : "tsName",
+          termGroup: 'groupId'
          },
          {
           key : "125",
           name : 'term3',
           path : "path;path2;path3",
           termSet :"123",
-          termSetName : "tsName"
+          termSetName : "tsName",
+          termGroup: 'groupId'
          }
         ]);
     });

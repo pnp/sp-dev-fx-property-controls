@@ -1,20 +1,14 @@
 import * as React from 'react';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { PrimaryButton, DefaultButton, IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
-import { IPropertyFieldTermPickerPropsInternal } from './IPropertyFieldTermPicker';
-import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import TermPicker from './TermPicker';
-import { BasePicker, IBasePickerProps, IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 
 import { IPickerTerms, IPickerTerm } from './IPropertyFieldTermPicker';
-import { IPropertyFieldTermPickerHostProps, IPropertyFieldTermPickerHostState, ITermGroupProps, ITermGroupState, ITermSetProps, ITermSetState, ITermProps, ITermState } from './IPropertyFieldTermPickerHost';
-import SPTermStorePickerService from './../../services/SPTermStorePickerService';
-import { ITermStore, IGroup, ITerm } from './../../services/ISPTermStorePickerService';
+import { IPropertyFieldTermPickerHostProps, IPropertyFieldTermPickerHostState } from './IPropertyFieldTermPickerHost';
+import { ITermStore, ITerm, ISPTermStorePickerService } from './../../services/ISPTermStorePickerService';
 import styles from './PropertyFieldTermPickerHost.module.scss';
 import { sortBy, uniqBy, cloneDeep } from '@microsoft/sp-lodash-subset';
 import TermGroup from './TermGroup';
@@ -37,7 +31,7 @@ export const TERMSET_IMG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAA
 export default class PropertyFieldTermPickerHost extends React.Component<IPropertyFieldTermPickerHostProps, IPropertyFieldTermPickerHostState> {
   private async: Async;
   private delayedValidate: (value: IPickerTerms) => void;
-  private termsService: SPTermStorePickerService;
+  private termsService: ISPTermStorePickerService;
   private previousValues: IPickerTerms = [];
   private cancel: boolean = true;
 
@@ -55,7 +49,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
       disabled: props.disabled
     });
 
-    this.termsService = new SPTermStorePickerService(this.props, this.props.context);
+    this.termsService = props.termService;
 
 
     this.state = {
@@ -339,15 +333,15 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
                   }
                   {
                     termStore.Groups._Child_Items_.map((group) => {
-                      return <TermGroup key={group.Id} 
-                                        group={group} 
-                                        termstore={termStore.Id} 
-                                        termsService={this.termsService} 
-                                        activeNodes={this.state.activeNodes} 
-                                        changedCallback={this.termsChanged} 
-                                        multiSelection={this.props.allowMultipleSelections} 
-                                        isTermSetSelectable={this.props.isTermSetSelectable} 
-                                        disabledTermIds={this.props.disabledTermIds} />;
+                      return <TermGroup key={group.Id}
+                        group={group}
+                        termstore={termStore.Id}
+                        termsService={this.termsService}
+                        activeNodes={this.state.activeNodes}
+                        changedCallback={this.termsChanged}
+                        multiSelection={this.props.allowMultipleSelections}
+                        isTermSetSelectable={this.props.isTermSetSelectable}
+                        disabledTermIds={this.props.disabledTermIds} />;
                     })
                   }
                 </div>

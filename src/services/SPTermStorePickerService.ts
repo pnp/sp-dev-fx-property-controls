@@ -173,7 +173,7 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
             // Check if the term set was not empty
             if (terms.length > 0) {
               // Sort the terms by PathOfTerm
-              return terms.sort(this._sortTerms);
+              return terms.sort(TermStorePickerServiceHelper.sortTerms);
             }
           }
           return null;
@@ -218,7 +218,7 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
       return new Promise<IPickerTerm[]>(resolve => {
         this.getTermStores().then(termStore => {
           let TermSetId = termSet;
-          if (!this.isGuid(termSet)) {
+          if (!TermStorePickerServiceHelper.isGuid(termSet)) {
             TermSetId = TermStorePickerServiceHelper.cleanGuid(termStore[0].Groups._Child_Items_[0].TermSets._Child_Items_[0].Id);
           }
 
@@ -347,7 +347,8 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
                     name: term.Name,
                     path: term.PathOfTerm,
                     termSet: term.TermSet.Id,
-                    termSetName: term.TermSet.Name
+                    termSetName: term.TermSet.Name,
+                    termGroup: '' // didn't find a way to simply get Group in that situation. It won't affect functionality. Only switch between TermStorePicker and EnterpriseTermStorePicker
                   });
                 }
               });
@@ -358,26 +359,6 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
         });
       });
     }
-  }
-
-
-  private isGuid(strGuid: string): boolean {
-    return /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(strGuid);
-  }
-
-  /**
-   * Sort the terms by their path
-   * @param a term 2
-   * @param b term 2
-   */
-  private _sortTerms(a: ITerm, b: ITerm) {
-    if (a.PathOfTerm < b.PathOfTerm) {
-      return -1;
-    }
-    if (a.PathOfTerm > b.PathOfTerm) {
-      return 1;
-    }
-    return 0;
   }
 
   /**

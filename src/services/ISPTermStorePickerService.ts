@@ -107,6 +107,7 @@ export interface ISPTermStorePickerService {
   getTermSets: () => Promise<ITermSet[]>;
   getGroupTermSets: (group: IGroup) => Promise<ITermSets>;
   getAllTerms: (termSet: ITermSet) => Promise<ITerm[]>;
+  getTermStores: () => Promise<ITermStore[]>;
 }
 
 export class TermStorePickerServiceHelper {
@@ -128,5 +129,20 @@ export class TermStorePickerServiceHelper {
    */
   public static isGuid(strGuid: string): boolean {
     return /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(strGuid);
+  }
+
+    /**
+   * Sort the terms by their path
+   * @param a term 2
+   * @param b term 2
+   */
+  public static sortTerms(a: ITerm, b: ITerm) {
+    if (a.PathOfTerm < b.PathOfTerm) {
+      return -1;
+    }
+    if (a.PathOfTerm > b.PathOfTerm) {
+      return 1;
+    }
+    return 0;
   }
 }

@@ -1,7 +1,6 @@
 import { IPickerTerms } from './IPropertyFieldTermPicker';
 import { ITermStore, IGroup, ITermSet, ITerm, ISPTermStorePickerService } from '../../services/ISPTermStorePickerService';
 import { IPropertyFieldTermPickerPropsInternal } from './IPropertyFieldTermPicker';
-import SPTermStorePickerService from '../../services/SPTermStorePickerService';
 
 /**
  * PropertyFieldTermPickerHost properties interface

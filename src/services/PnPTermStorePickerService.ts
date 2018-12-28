@@ -23,6 +23,28 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         });
     }
 
+    public async getTermStores(): Promise<ITermStore[]> {
+        if (Environment.type === EnvironmentType.Local) {
+            // If the running environment is local, load the data from the mock
+            return await SPTermStoreMockHttpClient.getTermStores(this.context.pageContext.web.absoluteUrl) as ITermStore[];
+        }
+        else {
+            await this._ensureTermStores();
+
+            const result: ITermStore[] = [];
+            this._pnpTermStores.forEach(pnpTermStore => {
+                const pnpTermStoreAny: any = pnpTermStore as any;
+                result.push({
+                    _ObjectType_: 'SP.Taxonomy.TermStore',
+                    _ObjectIdentity_: pnpTermStoreAny._ObjectIdentity_,
+                    Id: pnpTermStore.Id,
+                    Name: pnpTermStore.Name,
+                    Groups: null // TODO: process pnpTermStore.groups
+                });
+            });
+        }
+    }
+
     public async searchTermsByName(searchText: string): Promise<IPickerTerm[]> {
         if (Environment.type === EnvironmentType.Local) {
             // If the running environment is local, load the data from the mock

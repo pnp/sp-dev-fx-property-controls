@@ -7,7 +7,6 @@ import { EXPANDED_IMG, COLLAPSED_IMG, TERMSET_IMG } from './PropertyFieldTermPic
 import Term from './Term';
 import styles from './PropertyFieldTermPickerHost.module.scss';
 import * as strings from 'PropertyControlStrings';
-import SPTermStorePickerService from '../../services/SPTermStorePickerService';
 
 /**
  * Term set component

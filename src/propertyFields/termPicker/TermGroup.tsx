@@ -18,6 +18,12 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
       loaded: !!(props.group.TermSets && props.group.TermSets._Child_Items_)
     };
 
+    // Check if the term group has to be automatically opened
+    const selectedTermsInGroup = this.props.activeNodes.filter(node => node.termGroup === this.props.group.Id);
+    if (selectedTermsInGroup.length > 0) {
+      this._loadTermSets(true);
+    }
+
     this._handleClick = this._handleClick.bind(this);
     this._autoExpand = this._autoExpand.bind(this);
   }
@@ -26,9 +32,15 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
    * Handle the click event: collapse or expand
    */
   private _handleClick() {
+    const isExpanded: boolean = this.state.expanded; // current state
+
     this.setState({
-      expanded: !this.state.expanded
+      expanded: !isExpanded
     });
+
+    if (!isExpanded) {
+      this._loadTermSets();
+    }
   }
 
   /**
@@ -46,14 +58,15 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
     }
 
     const termSets = await this.props.termsService.getGroupTermSets(this.props.group);
-    
+
     //
     // NOTE: the next line is kinda incorrect from React perspective as we're modifying props.
     // But it is done to avoid redux usage or reimplementing the whole logic
     // 
     this.props.group.TermSets = termSets;
     this.setState({
-      loaded: true
+      loaded: true,
+      expanded: typeof autoExpand !== 'undefined' ? autoExpand : this.state.expanded
     });
   }
 
@@ -72,17 +85,17 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
         <div style={styleProps}>
           {
             this.props.group.TermSets._Child_Items_.map(termset => {
-              return <TermSet key={termset.Id} 
-                              termset={termset}
-                              termGroup={this.props.group.Id} 
-                              termstore={this.props.termstore} 
-                              termsService={this.props.termsService} 
-                              autoExpand={this._autoExpand} 
-                              activeNodes={this.props.activeNodes} 
-                              changedCallback={this.props.changedCallback} 
-                              multiSelection={this.props.multiSelection} 
-                              isTermSetSelectable={this.props.isTermSetSelectable}
-                              disabledTermIds={this.props.disabledTermIds} />;
+              return <TermSet key={termset.Id}
+                termset={termset}
+                termGroup={this.props.group.Id}
+                termstore={this.props.termstore}
+                termsService={this.props.termsService}
+                autoExpand={this._autoExpand}
+                activeNodes={this.props.activeNodes}
+                changedCallback={this.props.changedCallback}
+                multiSelection={this.props.multiSelection}
+                isTermSetSelectable={this.props.isTermSetSelectable}
+                disabledTermIds={this.props.disabledTermIds} />;
             })
           }
         </div>

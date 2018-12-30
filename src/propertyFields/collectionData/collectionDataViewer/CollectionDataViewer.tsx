@@ -232,7 +232,6 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
           <CollectionDataItem fields={this.props.fields}
                               index={null}
                               item={null}
-                              key={ this.state.crntItems ? this.state.crntItems.length + 1 : 1 } // This makes sure the empty row is rerendered from scratch when a new row is added / removed
                               sortingEnabled={this.props.enableSorting}
                               totalItems={null}
                               fAddItem={this.addItem}

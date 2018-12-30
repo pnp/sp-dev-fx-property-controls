@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as uuid from "uuid";
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
 import { ICollectionDataItemProps, ICollectionDataItemState } from '.';
 import { TextField } from 'office-ui-fabric-react/lib/components/TextField';
@@ -23,6 +24,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
 
     // Create an empty item with all properties
     this.emptyItem = {};
+    this.emptyItem.uniqueId = uuid();
+
     for (const field of this.props.fields) {
       // Assign default value or null to the emptyItem
       this.emptyItem[field.id] = field.defaultValue || null;
@@ -149,10 +152,6 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
           this.checkAnyFieldContainsValue(crntItem) &&
           this.checkAllFieldsAreValid()) {
         this.props.fAddItem(crntItem);
-        // Clear all field values
-        this.setState({
-          crntItem: {...this.emptyItem}
-        });
       }
     }
   }

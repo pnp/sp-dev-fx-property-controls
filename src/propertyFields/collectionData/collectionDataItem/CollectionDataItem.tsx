@@ -23,16 +23,10 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
     super(props);
 
     // Create an empty item with all properties
-    this.emptyItem = {};
-    this.emptyItem.uniqueId = uuid();
-
-    for (const field of this.props.fields) {
-      // Assign default value or null to the emptyItem
-      this.emptyItem[field.id] = field.defaultValue || null;
-    }
+    let emptyItem = this.generateEmptyItem();
 
     this.state = {
-      crntItem: clone(this.props.item) || {...this.emptyItem},
+      crntItem: clone(this.props.item) || {...emptyItem},
       errorMsgs: [],
       showCallout: false
     };
@@ -152,6 +146,11 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
           this.checkAnyFieldContainsValue(crntItem) &&
           this.checkAllFieldsAreValid()) {
         this.props.fAddItem(crntItem);
+        // Clear all field values
+        let emptyItem = this.generateEmptyItem();
+        this.setState({
+          crntItem: {...emptyItem}
+        });
       }
     }
   }
@@ -356,7 +355,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           onGetErrorMessage={async (value: string) => this.urlFieldValidation(field, value, item)} />;
       case CustomCollectionFieldType.custom:
           if (field.onCustomRender) {
-            return field.onCustomRender(field, item[field.id], this.onValueChanged);
+            return field.onCustomRender(field, item[field.id], this.onValueChanged, item.uniqueId);
           }
           return null;
       case CustomCollectionFieldType.string:
@@ -384,6 +383,21 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
       });
     }
     return opts;
+  }
+
+   /**
+   * Creates an empty item with a unique id
+   */
+  private generateEmptyItem(): any {
+    // Create an empty item with all properties
+    let emptyItem:any = {};
+    emptyItem.uniqueId = uuid();
+    
+    for (const field of this.props.fields) {
+      // Assign default value or null to the emptyItem
+      emptyItem[field.id] = field.defaultValue || null;
+    }
+    return emptyItem;
   }
 
   /**

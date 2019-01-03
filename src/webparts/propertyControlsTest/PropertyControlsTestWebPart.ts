@@ -6,7 +6,8 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneToggle,
 } from '@microsoft/sp-webpart-base';
 import { PropertyFieldCodeEditor,PropertyFieldCodeEditorLanguages } from '../../PropertyFieldCodeEditor';
 import * as strings from 'PropertyControlsTestWebPartStrings';
@@ -370,6 +371,10 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   deferredValidationTime: 0,
                   key: 'dateTimeFieldId'
                 }),
+                PropertyPaneToggle("isColorFieldVisible", {
+                  label: "Color Field Visible",
+                  checked: true
+                }),
                 PropertyFieldColorPicker('color', {
                   label: 'Color',
                   selectedColor: this.properties.color,
@@ -379,6 +384,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   //alphaSliderHidden: true,
                   //style: PropertyFieldColorPickerStyle.Full,
                   //iconName: 'Precipitation',
+                  isHidden: this.properties.isColorFieldVisible===false,
                   key: 'colorFieldId'
                 }),
                 PropertyFieldColorPicker('colorObj', {

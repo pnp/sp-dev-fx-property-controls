@@ -7,6 +7,7 @@ export interface IPropertyFieldColorPickerHostProps {
 	label: string;
 	alphaSliderHidden: boolean;
 	disabled: boolean;
+	isHidden: boolean;
 	selectedColor: string;
 	style: PropertyFieldColorPickerStyle;
 	iconName: string;

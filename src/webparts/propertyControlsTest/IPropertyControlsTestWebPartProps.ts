@@ -14,6 +14,7 @@ export interface IPropertyControlsTestWebPartProps {
   terms: IPickerTerms;
   datetime: IDateTimeFieldValue;
   fileUrl: string;
+  isColorFieldVisible:boolean;
   color: string;
   colorObj: IColor;
   spinValue: number;

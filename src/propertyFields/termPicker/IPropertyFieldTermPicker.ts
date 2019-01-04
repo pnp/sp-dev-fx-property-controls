@@ -149,6 +149,11 @@ export interface IPropertyFieldTermPickerProps {
    * Specify which terms should be disabled in the term set so that they cannot be selected
    */
   disabledTermIds?: string[];
+
+  /**
+   * Specify if term labels should be loaded from the store
+   */
+  includeLabels?: boolean;
 }
 
 /**

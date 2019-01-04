@@ -15,11 +15,17 @@ import { Environment, EnvironmentType } from "@microsoft/sp-core-library";
 import SPTermStoreMockHttpClient from "./SPTermStorePickerMockService";
 
 export default class PnPTermStorePickerService implements ISPTermStorePickerService {
+
+    private readonly _termSetCollectionObjectType: string = 'SP.Taxonomy.TermSetCollection';
+    private readonly _termGroupCollectionObjectType: string = 'SP.Taxonomy.TermGroupCollection';
+
     private _pnpTermStores: (ITermStoreData & PnPTermStore)[];
+    private _pnpGroups: { [termStoreId: string]: (ITermGroupData & PnPTermGroup)[] } = {};
 
     constructor(private props: IPnPTermStorePickerServiceProps, private context: IWebPartContext) {
         taxonomy.setup({
-            spfxContext: context
+            spfxContext: context,
+            globalCacheDisable: true
         });
     }
 
@@ -39,7 +45,12 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                     _ObjectIdentity_: pnpTermStoreAny._ObjectIdentity_,
                     Id: pnpTermStore.Id,
                     Name: pnpTermStore.Name,
-                    Groups: null // TODO: process pnpTermStore.groups
+                    Groups: {
+                        _ObjectType_: this._termGroupCollectionObjectType,
+                        _Child_Items_: this._pnpGroups[pnpTermStore.Id].map(g => {
+                            return this._pnpTermGroup2TermGroup(g);
+                        })
+                    }
                 });
             });
 
@@ -63,12 +74,13 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
     }
 
     public async getTermSets(): Promise<ITermSet[]> {
+        let termSets: ITermSet[] = [];
+
         if (Environment.type === EnvironmentType.Local) {
             const termStores = await SPTermStoreMockHttpClient.getTermStores(this.context.pageContext.web.absoluteUrl) as ITermStore[];
             if (termStores && termStores.length > 0) {
                 // Get the first term store
                 const ts = termStores[0];
-                let termSets: ITermSet[] = [];
                 // Check if the term store contains groups
                 if (ts.Groups && ts.Groups._Child_Items_) {
                     for (const group of ts.Groups._Child_Items_) {
@@ -87,15 +99,51 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                         }
                     }
                 }
-                return termSets;
             }
-            return [];
-        }
-        if (!this._pnpTermStores) {
-            this._pnpTermStores = await taxonomy.termStores.get();
+            return termSets;
         }
 
-        return [];
+        this._ensureTermStores();
+
+        for (let i = 0, len = this._pnpTermStores.length; i < len; i++) {
+            const pnpTermStore = this._pnpTermStores[i];
+
+            if (this.props.limitByTermsetNameOrID) {
+                let pnpTermSets = await this._getPnPTermSetsByIdOrName(pnpTermStore, this.props.limitByTermsetNameOrID);
+
+                termSets = [...termSets, ...pnpTermSets.map(pnpTermSet => {
+                    return this._pnpTermSet2TermSet(pnpTermSet);
+                })];
+            }
+            else {
+                let pnpGroups: (ITermGroupData & PnPTermGroup)[];
+                if (this.props.limitByGroupNameOrID) {
+                    const pnpGroup = this._getPnPTermGroupsByNameOrId(pnpTermStore.Id, this.props.limitByGroupNameOrID);
+                    pnpGroups = [];
+
+                    if (pnpGroup) {
+                        pnpGroups.push(pnpGroup);
+                    }
+                }
+                else {
+                    pnpGroups = this._pnpGroups[pnpTermStore.Id];
+                }
+
+                const batch = taxonomy.createBatch();
+
+                pnpGroups.forEach(pnpGroup => {
+                    pnpGroup.termSets.inBatch(batch).usingCaching().get().then(pnpTermSets => {
+                        termSets = [...termSets, ...pnpTermSets.map(pnpTermSet => {
+                            return this._pnpTermSet2TermSet(pnpTermSet);
+                        })];
+                    });
+                });
+
+                await batch.execute();
+            }
+        }
+
+        return termSets;
     }
 
     public async getAllTerms(termSet: ITermSet): Promise<ITerm[]> {
@@ -126,7 +174,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         const pnpTermSets = await pnpGroup.termSets.get();
 
         const result: ITermSets = {
-            _ObjectType_: 'SP.Taxonomy.TermSetCollection',
+            _ObjectType_: this._termSetCollectionObjectType,
             _Child_Items_: pnpTermSets.map(pnpTermSet => {
                 return this._pnpTermSet2TermSet(pnpTermSet);
             })
@@ -143,7 +191,11 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                     term.Id = TermStorePickerServiceHelper.cleanGuid(term.Id);
                     term.PathDepth = term.PathOfTerm.split(';').length;
                     term.TermSet = termSet;
+
+                    return term;
                 });
+
+                resolve(terms);
             }, (error) => {
                 reject(error);
             });
@@ -156,8 +208,6 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
             return SPTermStoreMockHttpClient.searchTermsByName(searchText);
         } else {
             await this._ensureTermStores();
-            const termSetNameOrID = this.props.limitByTermsetNameOrID;
-            const isGuid = TermStorePickerServiceHelper.isGuid(termSetNameOrID);
             let returnTerms: IPickerTerm[] = [];
             const pnpTermStores = this._pnpTermStores;
 
@@ -166,17 +216,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
             //
             for (let i = 0, len = pnpTermStores.length; i < len; i++) {
                 const pnpTermStore = pnpTermStores[i];
-                let pnpTermSets: (ITermSetData & PnPTermSet)[];
-
-                //
-                // getting term sets by filter
-                //
-                if (isGuid) {
-                    pnpTermSets = [await pnpTermStore.usingCaching().getTermSetById(termSetNameOrID)];
-                }
-                else {
-                    pnpTermSets = await pnpTermStore.getTermSetsByName(termSetNameOrID, pnpTermStore.DefaultLanguage).usingCaching().get();
-                }
+                const pnpTermSets = await this._getPnPTermSetsByIdOrName(pnpTermStore, this.props.limitByTermsetNameOrID);
 
                 // getting filtered terms from term sets
                 returnTerms.push(...await this._searchTermsInTermSets(pnpTermSets, searchText));
@@ -194,7 +234,6 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         } else {
             this._ensureTermStores();
             const groupNameOrID = this.props.limitByGroupNameOrID;
-            const isGuid = TermStorePickerServiceHelper.isGuid(groupNameOrID);
             let returnTerms: IPickerTerm[] = [];
             const pnpTermStores = this._pnpTermStores;
 
@@ -203,18 +242,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
             //
             for (let i = 0, len = pnpTermStores.length; i < len; i++) {
                 const pnpTermStore = pnpTermStores[i];
-                let pnpGroup: (ITermGroupData & PnPTermGroup);
-
-                //
-                // getting group by id or name
-                //
-                if (isGuid) {
-                    pnpGroup = await pnpTermStore.getTermGroupById(groupNameOrID).usingCaching().get();
-                }
-                else {
-                    // TODO: pnpTermStore.groups.getByName().get();
-                    pnpGroup = null;
-                }
+                const pnpGroup = this._getPnPTermGroupsByNameOrId(pnpTermStore.Id, groupNameOrID);
 
                 // getting term sets from term group
                 const pnpTermSets = await pnpGroup.termSets.usingCaching().get();
@@ -249,7 +277,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                 StringMatchOption: StringMatchOption.StartsWith,
                 DefaultLabelOnly: true,
                 TrimUnavailable: true,
-                ResultCollectionSize: 10
+                ResultCollectionSize: 30
             }).usingCaching().get();
 
             const batch = taxonomy.createBatch();
@@ -268,21 +296,21 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                 returnTerms.push(pickerTerm);
 
                 /*pnpTerm.termSet.group.inBatch(batch).usingCaching().get().then(pnpTermGroup => {
-                    pickerTerm.termGroup = pnpTermGroup.Id;
-                });
+                    pickerTerm.termGroup = TermStorePickerServiceHelper.cleanGuid(pnpTermGroup.Id);
+                });*/
 
-                pnpTerm.termSet.inBatch(batch).usingCaching().get().then(pnpTermSet => {
-                    pickerTerm.termSet = pnpTermSet.Id;
+                pnpTerm.termSet.inBatch(batch).get().then(pnpTermSet => {
+                    pickerTerm.termSet = TermStorePickerServiceHelper.cleanGuid(pnpTermSet.Id);
                     pickerTerm.termSetName = pnpTermSet.Name;
                 });
 
                 if (this.props.includeLabels) {
-                    pnpTerm.labels.inBatch(batch).usingCaching().get().then(labels => {
+                    pnpTerm.labels.inBatch(batch).get().then(labels => {
                         pickerTerm.labels = labels.map(label => label.Value);
                     });
-                }*/
+                }
 
-                pnpTerm.termSet.group.usingCaching().get().then(pnpTermGroup => {
+                /*pnpTerm.termSet.group.usingCaching().get().then(pnpTermGroup => {
                     pickerTerm.termGroup = pnpTermGroup.Id;
                 });
 
@@ -295,7 +323,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                     pnpTerm.labels.usingCaching().get().then(labels => {
                         pickerTerm.labels = labels.map(label => label.Value);
                     });
-                }
+                }*/
             });
 
             await batch.execute();
@@ -364,6 +392,13 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
     private async _ensureTermStores(): Promise<void> {
         if (!this._pnpTermStores) {
             this._pnpTermStores = await taxonomy.termStores.usingCaching().get();
+
+            for (let i = 0, len = this._pnpTermStores.length; i < len; i++) {
+                const pnpTermStore = this._pnpTermStores[i];
+                const pnpGroups = await pnpTermStore.groups.usingCaching().get();
+
+                this._pnpGroups[pnpTermStore.Id] = pnpGroups;
+            }
         }
     }
 
@@ -377,5 +412,56 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
             Description: pnpTermSet.Description,
             Names: pnpTermSet.Names
         };
+    }
+
+    private _pnpTermGroup2TermGroup(pnpTermGroup: (ITermGroupData & PnPTermGroup)): IGroup {
+        const anyPnPTermGroup: any = pnpTermGroup as any; // we need this one to reference _ObjectType_ and _ObjectIdentity_
+        return {
+            _ObjectType_: anyPnPTermGroup._ObjectType_,
+            _ObjectIdentity_: anyPnPTermGroup._ObjectIdentity_,
+            Id: pnpTermGroup.Id,
+            Name: pnpTermGroup.Name,
+            IsSystemGroup: pnpTermGroup.IsSystemGroup,
+            TermSets: {
+                _ObjectType_: this._termSetCollectionObjectType,
+                _Child_Items_: null
+            }
+        };
+    }
+
+    private async _getPnPTermSetsByIdOrName(pnpTermStore: (ITermStoreData & PnPTermStore), termSetNameOrID: string): Promise<(ITermSetData & PnPTermSet)[]> {
+        let pnpTermSets: (ITermSetData & PnPTermSet)[];
+        const isGuid = TermStorePickerServiceHelper.isGuid(termSetNameOrID);
+        //
+        // getting term sets by filter
+        //
+        if (isGuid) {
+            pnpTermSets = [];
+            const pnpTermSet = await pnpTermStore.usingCaching().getTermSetById(termSetNameOrID).usingCaching().get();
+            if (pnpTermSet.Id) {
+                pnpTermSets.push(pnpTermSet);
+            }
+        }
+        else {
+            pnpTermSets = await pnpTermStore.getTermSetsByName(termSetNameOrID, pnpTermStore.DefaultLanguage).usingCaching().get();
+        }
+
+        return pnpTermSets;
+    }
+
+    private _getPnPTermGroupsByNameOrId(termStoreId: string, groupNameOrID: string): (ITermGroupData & PnPTermGroup) {
+        const isGuid = TermStorePickerServiceHelper.isGuid(groupNameOrID);
+
+        const pnpTermStoreGroups = this._pnpGroups[termStoreId];
+        if (pnpTermStoreGroups) {
+            const groups = pnpTermStoreGroups.filter(pnpGroup =>
+                isGuid ? pnpGroup.Id === groupNameOrID
+                    : pnpGroup.Name === groupNameOrID);
+            if (groups && groups.length) {
+                return groups[0];
+            }
+        }
+
+        return null;
     }
 }

@@ -569,7 +569,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   // limitByTermsetNameOrID: 'Countries',
                   isTermSetSelectable: true,
                   key: 'enterpriseTermSetsPickerFieldId',
-                  hideTermStoreName: false
+                  hideTermStoreName: false,
+                  includeLabels: true
                 })
               ]
             },

@@ -1,4 +1,13 @@
-import { ISPTermStorePickerService, IPnPTermStorePickerServiceProps, ITermStore, ITermSet, TermStorePickerServiceHelper, ITerm, IGroup, ITermSets } from "./ISPTermStorePickerService";
+import {
+    ISPTermStorePickerService,
+    IPnPTermStorePickerServiceProps,
+    ITermStore,
+    ITermSet,
+    TermStorePickerServiceHelper,
+    ITerm,
+    IGroup,
+    ITermSets
+} from "./ISPTermStorePickerService";
 import { IWebPartContext } from "@microsoft/sp-webpart-base";
 import {
     taxonomy,
@@ -8,12 +17,18 @@ import {
     ITermSet as PnPTermSet,
     ITermSetData,
     ITermGroupData,
-    ITermGroup as PnPTermGroup
+    ITermGroup as PnPTermGroup,
+    ITermData,
+    ITerm as PnPTerm,
+    Terms
 } from "@pnp/sp-taxonomy";
 import { IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
 import { Environment, EnvironmentType } from "@microsoft/sp-core-library";
 import SPTermStoreMockHttpClient from "./SPTermStorePickerMockService";
 
+/**
+ * Term Store Picker Service implementation that uses @pnp/sp-taxonomy to work with taxonomy service
+ */
 export default class PnPTermStorePickerService implements ISPTermStorePickerService {
 
     private readonly _termSetCollectionObjectType: string = 'SP.Taxonomy.TermSetCollection';
@@ -24,11 +39,14 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
 
     constructor(private props: IPnPTermStorePickerServiceProps, private context: IWebPartContext) {
         taxonomy.setup({
-            spfxContext: context,
-            globalCacheDisable: true
+            spfxContext: context/*,
+            globalCacheDisable: true*/
         });
     }
 
+    /**
+     * Gets term stores from the taxonomy service
+     */
     public async getTermStores(): Promise<ITermStore[]> {
         if (Environment.type === EnvironmentType.Local) {
             // If the running environment is local, load the data from the mock
@@ -48,7 +66,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                     Groups: {
                         _ObjectType_: this._termGroupCollectionObjectType,
                         _Child_Items_: this._pnpGroups[pnpTermStore.Id].map(g => {
-                            return this._pnpTermGroup2TermGroup(g);
+                            return this._pnpTermGroup2TermGroup(g, pnpTermStore);
                         })
                     }
                 });
@@ -58,24 +76,34 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         }
     }
 
+    /**
+     * Searches terms by provided text
+     * @param searchText text to search
+     */
     public async searchTermsByName(searchText: string): Promise<IPickerTerm[]> {
         if (Environment.type === EnvironmentType.Local) {
             // If the running environment is local, load the data from the mock
             return SPTermStoreMockHttpClient.searchTermsByName(searchText);
         } else {
-            if (this.props.limitByTermsetNameOrID) {
+            if (this.props.limitByTermsetNameOrID) { // search in specific term(s)
                 return this._searchTermsByTermSet(searchText);
-            } else if (this.props.limitByGroupNameOrID) {
+            } else if (this.props.limitByGroupNameOrID) { // search in specific group
                 return this._searchTermsByGroup(searchText);
-            } else {
+            } else { // search everywhere
                 return this._searchAllTerms(searchText);
             }
         }
     }
 
+    /**
+     * Gets term sets from the stores
+     */
     public async getTermSets(): Promise<ITermSet[]> {
         let termSets: ITermSet[] = [];
 
+        //
+        // for local tests
+        //
         if (Environment.type === EnvironmentType.Local) {
             const termStores = await SPTermStoreMockHttpClient.getTermStores(this.context.pageContext.web.absoluteUrl) as ITermStore[];
             if (termStores && termStores.length > 0) {
@@ -103,17 +131,29 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
             return termSets;
         }
 
-        this._ensureTermStores();
+        await this._ensureTermStores();
 
         for (let i = 0, len = this._pnpTermStores.length; i < len; i++) {
             const pnpTermStore = this._pnpTermStores[i];
 
             if (this.props.limitByTermsetNameOrID) {
-                let pnpTermSets = await this._getPnPTermSetsByIdOrName(pnpTermStore, this.props.limitByTermsetNameOrID);
+                let pnpTermSets = await this._getPnPTermSetsByNameOrId(pnpTermStore, this.props.limitByTermsetNameOrID);
 
-                termSets = [...termSets, ...pnpTermSets.map(pnpTermSet => {
-                    return this._pnpTermSet2TermSet(pnpTermSet);
-                })];
+                const groupsBatch = taxonomy.createBatch();
+
+                for (let termSetIdx = 0, termSetLen = pnpTermSets.length; termSetIdx < termSetLen; termSetIdx++) {
+                    const pnpTermSet = pnpTermSets[termSetIdx];
+                    const termSet: ITermSet = this._pnpTermSet2TermSet(pnpTermSet, '');
+                    termSets.push(termSet);
+                    /*pnpTermSet.group.inBatch(groupsBatch).usingCaching().get().then(pnpTermGroup => {
+                        termSet.Group = TermStorePickerServiceHelper.cleanGuid(pnpTermGroup.Id);
+                    });*/
+                    taxonomy.termStores.getById(pnpTermStore.Id).getTermSetById(pnpTermSet.Id).group.inBatch(groupsBatch).usingCaching().get().then(pnpTermGroup => {
+                        termSet.Group = TermStorePickerServiceHelper.cleanGuid(pnpTermGroup.Id);
+                    });
+                }
+
+                await groupsBatch.execute();
             }
             else {
                 let pnpGroups: (ITermGroupData & PnPTermGroup)[];
@@ -132,9 +172,14 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                 const batch = taxonomy.createBatch();
 
                 pnpGroups.forEach(pnpGroup => {
-                    pnpGroup.termSets.inBatch(batch).usingCaching().get().then(pnpTermSets => {
+                    /*pnpGroup.termSets.inBatch(batch).usingCaching().get().then(pnpTermSets => {
                         termSets = [...termSets, ...pnpTermSets.map(pnpTermSet => {
-                            return this._pnpTermSet2TermSet(pnpTermSet);
+                            return this._pnpTermSet2TermSet(pnpTermSet, TermStorePickerServiceHelper.cleanGuid(pnpGroup.Id));
+                        })];
+                    });*/
+                    taxonomy.termStores.getById(pnpTermStore.Id).groups.getById(pnpGroup.Id).termSets.inBatch(batch).usingCaching().get().then(pnpTermSets => {
+                        termSets = [...termSets, ...pnpTermSets.map(pnpTermSet => {
+                            return this._pnpTermSet2TermSet(pnpTermSet, TermStorePickerServiceHelper.cleanGuid(pnpGroup.Id));
                         })];
                     });
                 });
@@ -146,6 +191,10 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         return termSets;
     }
 
+    /**
+     * Gets all terms from the specified term set
+     * @param termSet Term Set to get terms from
+     */
     public async getAllTerms(termSet: ITermSet): Promise<ITerm[]> {
         if (Environment.type === EnvironmentType.Local) {
             // If the running environment is local, load the data from the mock
@@ -160,48 +209,98 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                 continue;
             }
 
-            const terms: ITerm[] = termsResult as ITerm[];
-            return terms;
+            const pnpTerms: (ITermData & PnPTerm)[] = termsResult as (ITermData & PnPTerm)[];
+            const resultTerms: ITerm[] = [];
+            const labelsBatch = taxonomy.createBatch();
+
+            for (let termIdx = 0, termsLen = pnpTerms.length; termIdx < termsLen; termIdx++) {
+                const pnpTerm = pnpTerms[termIdx];
+
+                const term: ITerm = (pnpTerm as any) as ITerm;
+                term.Id = TermStorePickerServiceHelper.cleanGuid(term.Id);
+                term.PathDepth = term.PathOfTerm.split(';').length;
+                term.TermSet = termSet;
+
+                resultTerms.push(term);
+
+                if (this.props.includeLabels) {
+                    /*pnpTerm.labels.inBatch(labelsBatch).usingCaching().get().then(labels => {
+                        term.Labels = labels.map(label => label.Value);
+                    });*/
+                    taxonomy.termStores.getById(pnpTermStore.Id).getTermById(pnpTerm.Id).labels.inBatch(labelsBatch).usingCaching().get().then(labels => {
+                        term.Labels = labels.map(label => label.Value);
+                    });
+                }
+            }
+
+            if (this.props.includeLabels) {
+                await labelsBatch.execute();
+            }
+
+            return resultTerms;
         }
 
     }
 
+    /**
+     * Get term sets from the specified group
+     * @param group Term Group
+     */
     public async getGroupTermSets(group: IGroup): Promise<ITermSets> {
         await this._ensureTermStores();
-        const pnpTermStore = this._pnpTermStores.filter(ts => ts.Id === group.TermStore.Id)[0];
+        const pnpTermStore = this._pnpTermStores.filter(ts => TermStorePickerServiceHelper.cleanGuid(ts.Id) === group.TermStore.Id)[0];
 
-        const pnpGroup = await pnpTermStore.getTermGroupById(group.Id).usingCaching().get();
-        const pnpTermSets = await pnpGroup.termSets.get();
+        const pnpGroups = this._pnpGroups[pnpTermStore.Id].filter(gr => TermStorePickerServiceHelper.cleanGuid(gr.Id) === group.Id); //await pnpTermStore.getTermGroupById(group.Id).usingCaching().get();
+        if (!pnpGroups || !pnpGroups.length) {
+            return {
+                _ObjectType_: this._termSetCollectionObjectType,
+                _Child_Items_: []
+            };
+        }
+        const pnpGroup = pnpGroups[0];
+        let pnpTermSets: (ITermSetData & PnPTermSet)[];
+        if (this.props.limitByTermsetNameOrID) {
+            const isGuid: boolean = TermStorePickerServiceHelper.isGuid(this.props.limitByTermsetNameOrID);
+            if (isGuid) {
+                pnpTermSets = [await pnpGroup.termSets.getById(this.props.limitByTermsetNameOrID).usingCaching().get()];
+            }
+            else {
+                pnpTermSets = [await pnpGroup.termSets.getByName(this.props.limitByTermsetNameOrID).usingCaching().get()];
+            }
+        }
+        else {
+            pnpTermSets = await pnpGroup.termSets.usingCaching().get();
+        }
 
         const result: ITermSets = {
             _ObjectType_: this._termSetCollectionObjectType,
             _Child_Items_: pnpTermSets.map(pnpTermSet => {
-                return this._pnpTermSet2TermSet(pnpTermSet);
+                return this._pnpTermSet2TermSet(pnpTermSet, TermStorePickerServiceHelper.cleanGuid(pnpGroup.Id));
             })
         };
 
         return result;
     }
 
-    private _tryGetAllTerms(pnpTermStore: ITermStoreData & PnPTermStore, termSet: ITermSet): Promise<ITerm[]> {
-        return new Promise<ITerm[]>((resolve, reject) => {
-            pnpTermStore.getTermSetById(termSet.Id).terms.get().then((pnpTerms) => {
-                const terms = pnpTerms.map(pnpTerm => {
-                    const term: ITerm = (pnpTerm as any) as ITerm;
-                    term.Id = TermStorePickerServiceHelper.cleanGuid(term.Id);
-                    term.PathDepth = term.PathOfTerm.split(';').length;
-                    term.TermSet = termSet;
-
-                    return term;
-                });
-
-                resolve(terms);
+    /**
+     * Tries to get terms from the specified Term Set.
+     * @param pnpTermStore Term Store to work with
+     * @param termSet Term set to get terms from
+     */
+    private _tryGetAllTerms(pnpTermStore: ITermStoreData & PnPTermStore, termSet: ITermSet): Promise<(ITermData & PnPTerm)[]> {
+        return new Promise<(ITermData & PnPTerm)[]>((resolve, reject) => {
+            pnpTermStore.getTermSetById(termSet.Id).terms.usingCaching().get().then((pnpTerms) => {
+                resolve(pnpTerms);
             }, (error) => {
                 reject(error);
             });
         });
     }
 
+    /**
+     * Searches terms by provided text in the term sets specified by the this.props.limitByTermSetNameOrId
+     * @param searchText text to search
+     */
     private async _searchTermsByTermSet(searchText: string): Promise<IPickerTerm[]> {
         if (Environment.type === EnvironmentType.Local) {
             // If the running environment is local, load the data from the mock
@@ -216,10 +315,10 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
             //
             for (let i = 0, len = pnpTermStores.length; i < len; i++) {
                 const pnpTermStore = pnpTermStores[i];
-                const pnpTermSets = await this._getPnPTermSetsByIdOrName(pnpTermStore, this.props.limitByTermsetNameOrID);
+                const pnpTermSets = await this._getPnPTermSetsByNameOrId(pnpTermStore, this.props.limitByTermsetNameOrID);
 
                 // getting filtered terms from term sets
-                returnTerms.push(...await this._searchTermsInTermSets(pnpTermSets, searchText));
+                returnTerms.push(...await this._searchTermsInTermSets(pnpTermStore, pnpTermSets, searchText));
 
             }
 
@@ -227,12 +326,16 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         }
     }
 
+    /**
+     * Searches terms by provided text in the term sets specified by the this.props.limitByGroupNameOrId
+     * @param searchText text to search
+     */
     private async _searchTermsByGroup(searchText: string): Promise<IPickerTerm[]> {
         if (Environment.type === EnvironmentType.Local) {
             // If the running environment is local, load the data from the mock
             return SPTermStoreMockHttpClient.searchTermsByName(searchText);
         } else {
-            this._ensureTermStores();
+            await this._ensureTermStores();
             const groupNameOrID = this.props.limitByGroupNameOrID;
             let returnTerms: IPickerTerm[] = [];
             const pnpTermStores = this._pnpTermStores;
@@ -244,16 +347,23 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                 const pnpTermStore = pnpTermStores[i];
                 const pnpGroup = this._getPnPTermGroupsByNameOrId(pnpTermStore.Id, groupNameOrID);
 
+                if (!pnpGroup) {
+                    continue;
+                }
                 // getting term sets from term group
                 const pnpTermSets = await pnpGroup.termSets.usingCaching().get();
                 // getting filtered terms from term sets
-                returnTerms.push(...await this._searchTermsInTermSets(pnpTermSets, searchText, pnpGroup.Id));
+                returnTerms.push(...await this._searchTermsInTermSets(pnpTermStore, pnpTermSets, searchText, pnpGroup.Id));
             }
 
             return returnTerms;
         }
     }
 
+    /**
+     * Searches for terms in the term store
+     * @param searchText text to search
+     */
     private async _searchAllTerms(searchText: string): Promise<IPickerTerm[]> {
         if (Environment.type === EnvironmentType.Local) {
             // If the running environment is local, load the data from the mock
@@ -295,35 +405,35 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                 };
                 returnTerms.push(pickerTerm);
 
-                /*pnpTerm.termSet.group.inBatch(batch).usingCaching().get().then(pnpTermGroup => {
-                    pickerTerm.termGroup = TermStorePickerServiceHelper.cleanGuid(pnpTermGroup.Id);
-                });*/
+                /* pnpTerm.termSet.group.inBatch(batch).usingCaching().get().then(pnpTermGroup => {
+                     pickerTerm.termGroup = TermStorePickerServiceHelper.cleanGuid(pnpTermGroup.Id);
+                 });
+ 
+                 pnpTerm.termSet.inBatch(batch).usingCaching().get().then(pnpTermSet => {
+                     pickerTerm.termSet = TermStorePickerServiceHelper.cleanGuid(pnpTermSet.Id);
+                     pickerTerm.termSetName = pnpTermSet.Name;
+                 });
+ 
+                 if (this.props.includeLabels) {
+                     pnpTerm.labels.inBatch(batch).usingCaching().get().then(labels => {
+                         pickerTerm.labels = labels.map(label => label.Value);
+                     });
+                 }*/
 
-                pnpTerm.termSet.inBatch(batch).get().then(pnpTermSet => {
+                taxonomy.termStores.getById(pnpTermStore.Id).getTermById(pnpTerm.Id).termSet.group.inBatch(batch).usingCaching().get().then(pnpTermGroup => {
+                    pickerTerm.termGroup = TermStorePickerServiceHelper.cleanGuid(pnpTermGroup.Id);
+                });
+
+                taxonomy.termStores.getById(pnpTermStore.Id).getTermById(pnpTerm.Id).termSet.inBatch(batch).usingCaching().get().then(pnpTermSet => {
                     pickerTerm.termSet = TermStorePickerServiceHelper.cleanGuid(pnpTermSet.Id);
                     pickerTerm.termSetName = pnpTermSet.Name;
                 });
 
                 if (this.props.includeLabels) {
-                    pnpTerm.labels.inBatch(batch).get().then(labels => {
+                    taxonomy.termStores.getById(pnpTermStore.Id).getTermById(pnpTerm.Id).labels.inBatch(batch).usingCaching().get().then(labels => {
                         pickerTerm.labels = labels.map(label => label.Value);
                     });
                 }
-
-                /*pnpTerm.termSet.group.usingCaching().get().then(pnpTermGroup => {
-                    pickerTerm.termGroup = pnpTermGroup.Id;
-                });
-
-                pnpTerm.termSet.usingCaching().get().then(pnpTermSet => {
-                    pickerTerm.termSet = pnpTermSet.Id;
-                    pickerTerm.termSetName = pnpTermSet.Name;
-                });
-
-                if (this.props.includeLabels) {
-                    pnpTerm.labels.usingCaching().get().then(labels => {
-                        pickerTerm.labels = labels.map(label => label.Value);
-                    });
-                }*/
             });
 
             await batch.execute();
@@ -332,44 +442,56 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         return returnTerms;
     }
 
-    private async _searchTermsInTermSets(pnpTermSets: (ITermSetData & PnPTermSet)[], searchText: string, termGroupId?: string): Promise<IPickerTerm[]> {
+    /**
+     * Searches for terms by provided text in specified term sets
+     * @param pnpTermStore Term Store
+     * @param pnpTermSets term sets where the terms should be searched for
+     * @param searchText text to search
+     * @param termGroupId Id of the group that contains the term sets
+     */
+    private async _searchTermsInTermSets(pnpTermStore: ITermStoreData & PnPTermStore, pnpTermSets: (ITermSetData & PnPTermSet)[], searchText: string, termGroupId?: string): Promise<IPickerTerm[]> {
         const returnTerms: IPickerTerm[] = [];
         const termSetGroups: { [key: string]: string } = {};
         const termsBatch = taxonomy.createBatch();
         const labelsBatch = taxonomy.createBatch();
+        const lowerCasedSearchText = searchText.toLowerCase();
 
         for (let termSetIdx = 0, termSetLen = pnpTermSets.length; termSetIdx < termSetLen; termSetIdx++) {
             const pnpTermSet = pnpTermSets[termSetIdx];
+            const pnpTermSetGuid = TermStorePickerServiceHelper.cleanGuid(pnpTermSet.Id);
 
             if (!termGroupId) { // if no group id provided we need to load it from store
-                pnpTermSet.group.inBatch(termsBatch).usingCaching().get().then(pnpTermGroup => {
+                //pnpTermSet.group.inBatch(termsBatch).usingCaching().get().then(pnpTermGroup => {
+                taxonomy.termStores.getById(pnpTermStore.Id).getTermSetById(pnpTermSet.Id).group.inBatch(termsBatch).usingCaching().get().then(pnpTermGroup => {
                     termSetGroups[pnpTermSet.Id] = pnpTermGroup.Id;
 
-                    const loadedTerms = returnTerms.filter(t => t.termSet === pnpTermSet.Id);
+                    const loadedTerms = returnTerms.filter(t => t.termSet === pnpTermSetGuid);
                     loadedTerms.forEach(t => {
-                        t.termGroup = pnpTermGroup.Id;
+                        t.termGroup = TermStorePickerServiceHelper.cleanGuid(pnpTermGroup.Id);
                     });
                 });
             }
 
             // getting terms for term set in batch
-            pnpTermSet.terms.inBatch(termsBatch).usingCaching().get().then(pnpTerms => {
+            //pnpTermSet.terms.inBatch(termsBatch).usingCaching().get().then(pnpTerms => {
+            taxonomy.termStores.getById(pnpTermStore.Id).getTermSetById(pnpTermSet.Id).terms.inBatch(termsBatch).usingCaching().get().then(pnpTerms => {
                 for (let termIdx = 0, termLen = pnpTerms.length; termIdx < termLen; termIdx++) {
                     const pnpTerm = pnpTerms[termIdx];
-                    if (pnpTerm.Name.toLowerCase().indexOf(searchText) === 0) {
+                    if (pnpTerm.Name.toLowerCase().indexOf(lowerCasedSearchText) === 0) {
                         const pickerTerm: IPickerTerm = {
                             key: TermStorePickerServiceHelper.cleanGuid(pnpTerm.Id),
                             name: pnpTerm.Name,
                             path: pnpTerm.PathOfTerm,
-                            termSet: pnpTermSet.Id,
+                            termSet: TermStorePickerServiceHelper.cleanGuid(pnpTermSetGuid),
                             termSetName: pnpTermSet.Name,
-                            termGroup: termGroupId || termSetGroups[pnpTermSet.Id]
+                            termGroup: termGroupId || TermStorePickerServiceHelper.cleanGuid(termSetGroups[pnpTermSet.Id])
                         };
                         returnTerms.push(pickerTerm);
 
                         // getting labels for each term in a separate batch
                         if (this.props.includeLabels) {
-                            pnpTerm.labels.inBatch(labelsBatch).usingCaching().get().then(pnpLabels => {
+                            //pnpTerm.labels.inBatch(labelsBatch).usingCaching().get().then(pnpLabels => {
+                            taxonomy.termStores.getById(pnpTermStore.Id).getTermById(pnpTerm.Id).labels.inBatch(labelsBatch).usingCaching().get().then(pnpLabels => {
                                 pickerTerm.labels = pnpLabels.map(l => l.Value);
                             });
                         }
@@ -389,39 +511,85 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         return returnTerms;
     }
 
+    /**
+     * Ensures (loads if needed) term stores and term groups from taxonomy service
+     */
     private async _ensureTermStores(): Promise<void> {
         if (!this._pnpTermStores) {
             this._pnpTermStores = await taxonomy.termStores.usingCaching().get();
 
+            // TODO: limit by group or termset
             for (let i = 0, len = this._pnpTermStores.length; i < len; i++) {
                 const pnpTermStore = this._pnpTermStores[i];
-                const pnpGroups = await pnpTermStore.groups.usingCaching().get();
+
+                let pnpGroups: (ITermGroupData & PnPTermGroup)[];
+
+                if (this.props.limitByGroupNameOrID) {
+                    const group = await this._requestPnPTermGroupByNameOrId(pnpTermStore, this.props.limitByGroupNameOrID);
+                    pnpGroups = [];
+                    if (group) {
+                        pnpGroups.push(group);
+                    }
+                }
+                else if (this.props.limitByTermsetNameOrID) {
+                    const pnpTermSets = await this._getPnPTermSetsByNameOrId(pnpTermStore, this.props.limitByTermsetNameOrID);
+                    pnpGroups = [];
+                    const groupsBatch = taxonomy.createBatch();
+                    pnpTermSets.forEach(pnpTermSet => {
+                        //pnpTermSet.group.inBatch(groupsBatch).usingCaching().get().then(pnpGroup => {
+                        taxonomy.termStores.getById(pnpTermStore.Id).getTermSetById(pnpTermSet.Id).group.inBatch(groupsBatch).usingCaching().get().then(pnpGroup => {
+                            if (!pnpGroups.filter(gr => gr.Id === pnpGroup.Id).length) {
+                                pnpGroups.push(pnpGroup);
+                            }
+                        });
+                    });
+
+                    await groupsBatch.execute();
+                }
+                else {
+                    pnpGroups = await pnpTermStore.groups.usingCaching().get();
+                }
 
                 this._pnpGroups[pnpTermStore.Id] = pnpGroups;
             }
         }
     }
 
-    private _pnpTermSet2TermSet(pnpTermSet: (ITermSetData & PnPTermSet)): ITermSet {
+    /**
+     * Converts @pnp/sp-taxonomy Term Set instance into internal ITermSet object
+     * @param pnpTermSet @pnp/sp-taxonomy Term Set instance
+     * @param groupId Id of the group that contains the term set
+     */
+    private _pnpTermSet2TermSet(pnpTermSet: (ITermSetData & PnPTermSet), groupId: string): ITermSet {
         const anyPnPTermSet: any = pnpTermSet as any; // we need this one to reference _ObjectType_ and _ObjectIdentity_
         return {
             _ObjectType_: anyPnPTermSet._ObjectType_,
             _ObjectIdentity_: anyPnPTermSet._ObjectIdentity_,
-            Id: pnpTermSet.Id,
+            Id: TermStorePickerServiceHelper.cleanGuid(pnpTermSet.Id),
             Name: pnpTermSet.Name,
             Description: pnpTermSet.Description,
-            Names: pnpTermSet.Names
+            Names: pnpTermSet.Names,
+            Group: groupId
         };
     }
 
-    private _pnpTermGroup2TermGroup(pnpTermGroup: (ITermGroupData & PnPTermGroup)): IGroup {
+    /**
+     * Converts @pnp/sp-taxonomy Term Group instance into internal IGroup object
+     * @param pnpTermGroup @pnp/sp-taxonomy Term Group instance
+     * @param pnpTermStore @pnp/sp-taxonumy term store to work with
+     */
+    private _pnpTermGroup2TermGroup(pnpTermGroup: (ITermGroupData & PnPTermGroup), pnpTermStore: (ITermStoreData & PnPTermStore)): IGroup {
         const anyPnPTermGroup: any = pnpTermGroup as any; // we need this one to reference _ObjectType_ and _ObjectIdentity_
         return {
             _ObjectType_: anyPnPTermGroup._ObjectType_,
             _ObjectIdentity_: anyPnPTermGroup._ObjectIdentity_,
-            Id: pnpTermGroup.Id,
+            Id: TermStorePickerServiceHelper.cleanGuid(pnpTermGroup.Id),
             Name: pnpTermGroup.Name,
             IsSystemGroup: pnpTermGroup.IsSystemGroup,
+            TermStore: {
+                Id: TermStorePickerServiceHelper.cleanGuid(pnpTermStore.Id),
+                Name: pnpTermStore.Name
+            },
             TermSets: {
                 _ObjectType_: this._termSetCollectionObjectType,
                 _Child_Items_: null
@@ -429,7 +597,12 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         };
     }
 
-    private async _getPnPTermSetsByIdOrName(pnpTermStore: (ITermStoreData & PnPTermStore), termSetNameOrID: string): Promise<(ITermSetData & PnPTermSet)[]> {
+    /**
+     * Gets term set(s) from taxonomy service by name or id
+     * @param pnpTermStore @pnp/sp-taxonumy term store to work with
+     * @param termSetNameOrID term set name or id
+     */
+    private async _getPnPTermSetsByNameOrId(pnpTermStore: (ITermStoreData & PnPTermStore), termSetNameOrID: string): Promise<(ITermSetData & PnPTermSet)[]> {
         let pnpTermSets: (ITermSetData & PnPTermSet)[];
         const isGuid = TermStorePickerServiceHelper.isGuid(termSetNameOrID);
         //
@@ -437,7 +610,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         //
         if (isGuid) {
             pnpTermSets = [];
-            const pnpTermSet = await pnpTermStore.usingCaching().getTermSetById(termSetNameOrID).usingCaching().get();
+            const pnpTermSet = await pnpTermStore.getTermSetById(termSetNameOrID).usingCaching().get();
             if (pnpTermSet.Id) {
                 pnpTermSets.push(pnpTermSet);
             }
@@ -449,17 +622,47 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         return pnpTermSets;
     }
 
+    /**
+     * Gets group from cached (previously loaded) list of groups by name or id
+     * @param termStoreId term store id
+     * @param groupNameOrID group name or id
+     */
     private _getPnPTermGroupsByNameOrId(termStoreId: string, groupNameOrID: string): (ITermGroupData & PnPTermGroup) {
         const isGuid = TermStorePickerServiceHelper.isGuid(groupNameOrID);
 
         const pnpTermStoreGroups = this._pnpGroups[termStoreId];
         if (pnpTermStoreGroups) {
             const groups = pnpTermStoreGroups.filter(pnpGroup =>
-                isGuid ? pnpGroup.Id === groupNameOrID
+                isGuid ? TermStorePickerServiceHelper.cleanGuid(pnpGroup.Id) === groupNameOrID
                     : pnpGroup.Name === groupNameOrID);
             if (groups && groups.length) {
                 return groups[0];
             }
+        }
+
+        return null;
+    }
+
+    /**
+     * Gets group from taxonomy service by name or id
+     * @param pnpTermStore @pnp/sp-taxonomy term store to work with
+     * @param groupNameOrID group name or id
+     */
+    private async _requestPnPTermGroupByNameOrId(pnpTermStore: (ITermStoreData & PnPTermStore), groupNameOrID: string): Promise<(ITermGroupData & PnPTermGroup)> {
+        const isGuid = TermStorePickerServiceHelper.isGuid(groupNameOrID);
+
+        let group: ITermGroupData & PnPTermGroup;
+        if (isGuid) {
+            //group = await pnpTermStore.getTermGroupById(groupNameOrID).usingCaching().get();
+            group = await taxonomy.termStores.getById(pnpTermStore.Id).getTermGroupById(groupNameOrID).usingCaching().get();
+        }
+        else {
+            //group = await pnpTermStore.groups.getByName(groupNameOrID).usingCaching().get();
+            group = await taxonomy.termStores.getById(pnpTermStore.Id).groups.getByName(groupNameOrID).usingCaching().get();
+        }
+
+        if (group.Id) {
+            return group;
         }
 
         return null;

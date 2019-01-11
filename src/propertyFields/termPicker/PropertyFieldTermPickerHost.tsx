@@ -200,12 +200,13 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
     }
 
     // Term item to add to the active nodes array
-    const termItem = {
+    const termItem: IPickerTerm = {
       name: term.Name,
       key: term.Id,
       path: term.PathOfTerm,
       termSet: term.TermSet.Id,
-      termGroup: termGroup
+      termGroup: termGroup,
+      labels: term.Labels
     };
 
     // Check if the term is checked or unchecked
@@ -288,6 +289,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
                   isTermSetSelectable={this.props.isTermSetSelectable}
                   disabledTermIds={this.props.disabledTermIds}
                   termsService={this.termsService}
+                  resolveDelay={this.props.resolveDelay === undefined ? 500 : this.props.resolveDelay} // in future this can be bubbled upper to the settings
                 />
               </td>
               <td className={styles.termFieldRow}>

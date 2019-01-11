@@ -87,6 +87,7 @@ export interface ITerm {
   PathOfTerm: string;
   TermSet: ITermSetMinimal;
   PathDepth?: number;
+  Labels?: string[];
 }
 
 /**
@@ -98,18 +99,45 @@ export interface ISPTermStorePickerServiceProps {
   excludeSystemGroup?: boolean;
 }
 
+/**
+ * Properties for the Enterprise Term Store Picker Service
+ */
 export interface IPnPTermStorePickerServiceProps extends ISPTermStorePickerServiceProps {
+  /**
+   * Specifies if term labels should be loaded from the store
+   */
   includeLabels?: boolean;
 }
 
+/**
+ * Interface to be implemented by Term Store Picker Services
+ */
 export interface ISPTermStorePickerService {
+  /**
+   * Searches terms by provided text
+   */
   searchTermsByName: (searchText: string) => Promise<IPickerTerm[]>;
+  /**
+   * Gets term sets from the stores
+   */
   getTermSets: () => Promise<ITermSet[]>;
+  /**
+   * Get term sets from the specified group
+   */
   getGroupTermSets: (group: IGroup) => Promise<ITermSets>;
+  /**
+   * Gets all terms from the specified term set
+   */
   getAllTerms: (termSet: ITermSet) => Promise<ITerm[]>;
+  /**
+   * Gets term stores from the taxonomy service
+   */
   getTermStores: () => Promise<ITermStore[]>;
 }
 
+/**
+ * Helper class with some methods that can be used in any Term Store Picker Service implementation
+ */
 export class TermStorePickerServiceHelper {
   /**
    * Cleans the Guid from the Web Service response

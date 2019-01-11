@@ -17,12 +17,12 @@
     "sonarcloud:start": "gulp sonarqube --gulpfile gulpfile.sonarqube.js"
   },
   "dependencies": {
-    "@pnp/common": "^1.2.8-1",
-    "@pnp/logging": "^1.2.8-1",
-    "@pnp/odata": "^1.2.8-1",
-    "@pnp/sp": "^1.2.8-1",
-    "@pnp/sp-clientsvc": "^1.2.8-1",
-    "@pnp/sp-taxonomy": "^1.2.8-1",
+    "@pnp/common": "^1.2.8-2",
+    "@pnp/logging": "^1.2.8-2",
+    "@pnp/odata": "^1.2.8-2",
+    "@pnp/sp": "^1.2.8-2",
+    "@pnp/sp-clientsvc": "^1.2.8-2",
+    "@pnp/sp-taxonomy": "^1.2.8-2",
     "@pnp/telemetry-js": "1.0.0",
     "office-ui-fabric-react": "5.131.0",
     "react-ace": "5.8.0"

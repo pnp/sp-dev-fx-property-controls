@@ -116,13 +116,13 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
                   }
 
                   return <Term key={term.Id}
-                               term={term}
-                               termset={this.props.termset.Id}
-                               termGroup={this.props.termGroup}
-                               activeNodes={this.props.activeNodes}
-                               changedCallback={this.props.changedCallback}
-                               multiSelection={this.props.multiSelection}
-                               disabled={disabled} />;
+                    term={term}
+                    termset={this.props.termset.Id}
+                    termGroup={this.props.termGroup}
+                    activeNodes={this.props.activeNodes}
+                    changedCallback={this.props.changedCallback}
+                    multiSelection={this.props.multiSelection}
+                    disabled={disabled} />;
                 })
               }
             </div>
@@ -144,8 +144,8 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
             // Show the termset selection box
             this.props.isTermSetSelectable &&
             <Checkbox className={styles.termSetSelector}
-                      checked={this.props.activeNodes.filter(a => a.path === "" && a.termSet.indexOf(a.key) !== -1 && this.props.termset.Id.indexOf(a.key) !== -1).length >= 1}
-                      onChange={this.termSetSelectionChange} />
+              checked={this.props.activeNodes.filter(a => a.path === "" && a.termSet.indexOf(a.key) !== -1 && this.props.termset.Id.indexOf(a.key) !== -1).length >= 1}
+              onChange={this.termSetSelectionChange} />
           }
 
           <img src={TERMSET_IMG} alt={strings.TermPickerMenuTermSet} title={strings.TermPickerMenuTermSet} /> {this.props.termset.Name}

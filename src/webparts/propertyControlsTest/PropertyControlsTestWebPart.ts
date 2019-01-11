@@ -281,8 +281,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   disabled: false,
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
-                  //limitByGroupNameOrID: 'Hockey Example',
-                  // limitByTermsetNameOrID: 'Countries',
+                  //limitByGroupNameOrID: 'Test',
+                  //limitByTermsetNameOrID: 'ad54531f-506e-4cc6-af4f-71157f6f3280',
                   isTermSetSelectable: true,
                   key: 'termSetsPickerFieldId',
                   hideTermStoreName: true
@@ -554,9 +554,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: 'Select enterprise terms',
                   panelTitle: 'Select enterprise terms',
                   initialValues: this.properties.enterpriseTerms,
-                  allowMultipleSelections: true,
+                  allowMultipleSelections: false,
                   excludeSystemGroup: false,
-                  disabledTermIds: ["943fd9f0-3d7c-415c-9192-93c0e54573fb", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
+                  disabledTermIds: ["98601196-66f3-470f-8555-6c4f3b46139c", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
                   // disabledTermIds: ["943fd9f0-3d7c-415c-9192-93c0e54573fb", "73d18756-20af-41de-808c-2a1e21851e44", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
                   // disabledTermIds: ["cd6f6d3c-672d-4244-9320-c1e64cc0626f", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
@@ -565,12 +565,12 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   disabled: false,
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
-                  //limitByGroupNameOrID: 'Hockey Example',
-                  // limitByTermsetNameOrID: 'Countries',
-                  isTermSetSelectable: true,
+                  //limitByGroupNameOrID: 'ded538ee-6e07-4cf5-802a-3de4e1f2ea7a',
+                  //limitByTermsetNameOrID: '77ca4514-a227-4155-a795-8c8af0ee57dd',
+                  isTermSetSelectable: false,
                   key: 'enterpriseTermSetsPickerFieldId',
-                  hideTermStoreName: false,
-                  includeLabels: true
+                  hideTermStoreName: true,
+                  includeLabels: false
                 })
               ]
             },

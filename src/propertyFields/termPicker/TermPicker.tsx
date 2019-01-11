@@ -26,6 +26,7 @@ export interface ITermPickerProps {
   disabledTermIds: string[];
   onChanged: (items: IPickerTerm[]) => void;
   termsService: ISPTermStorePickerService;
+  resolveDelay?: number;
 }
 
 export default class TermPicker extends React.Component<ITermPickerProps, ITermPickerState> {
@@ -182,6 +183,7 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
           selectedItems={this.state.terms}
           itemLimit={!this.props.allowMultipleSelections ? 1 : undefined}
           onChange={this.props.onChanged}
+          resolveDelay={this.props.resolveDelay}
         />
       </div>
     );

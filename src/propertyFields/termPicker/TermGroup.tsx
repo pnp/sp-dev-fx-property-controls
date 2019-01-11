@@ -5,6 +5,7 @@ import TermSet from './TermSet';
 
 import styles from './PropertyFieldTermPickerHost.module.scss';
 import * as strings from 'PropertyControlStrings';
+import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
 
 /**
  * Term group component
@@ -84,7 +85,7 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
         </div>
         <div style={styleProps}>
           {
-            this.props.group.TermSets._Child_Items_.map(termset => {
+            this.state.loaded ? this.props.group.TermSets._Child_Items_.map(termset => {
               return <TermSet key={termset.Id}
                 termset={termset}
                 termGroup={this.props.group.Id}
@@ -96,7 +97,7 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
                 multiSelection={this.props.multiSelection}
                 isTermSetSelectable={this.props.isTermSetSelectable}
                 disabledTermIds={this.props.disabledTermIds} />;
-            })
+            }) : <Spinner type={SpinnerType.normal} />
           }
         </div>
       </div>

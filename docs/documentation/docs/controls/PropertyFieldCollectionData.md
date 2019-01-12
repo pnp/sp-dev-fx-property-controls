@@ -115,7 +115,7 @@ Here is an example of how you can render your own controls in the `PropertyField
 The `PropertyFieldCollectionData` control can be configured with the following properties:
 
 | Property | Type | Required | Description | Default Value |
-| ---- | ---- | ---- | ---- |
+| ---- | ---- | ---- | ---- | ---- |
 | key | string | yes | An unique key that indicates the identity of this control. | |
 | label | string | yes | Property field label displayed on top. | |
 | panelHeader | string | yes | Label to be used as the header in the panel. | |

@@ -39,8 +39,8 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
 
     constructor(private props: IPnPTermStorePickerServiceProps, private context: IWebPartContext) {
         taxonomy.setup({
-            spfxContext: context/*,
-            globalCacheDisable: true*/
+            spfxContext: context
+            //globalCacheDisable: true // uncomment this one for debugging with no cache
         });
     }
 
@@ -145,10 +145,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                     const pnpTermSet = pnpTermSets[termSetIdx];
                     const termSet: ITermSet = this._pnpTermSet2TermSet(pnpTermSet, '');
                     termSets.push(termSet);
-                    /*pnpTermSet.group.inBatch(groupsBatch).usingCaching().get().then(pnpTermGroup => {
-                        termSet.Group = TermStorePickerServiceHelper.cleanGuid(pnpTermGroup.Id);
-                    });*/
-                    taxonomy.termStores.getById(pnpTermStore.Id).getTermSetById(pnpTermSet.Id).group.inBatch(groupsBatch).usingCaching().get().then(pnpTermGroup => {
+                    pnpTermSet.group.inBatch(groupsBatch).usingCaching().get().then(pnpTermGroup => {
                         termSet.Group = TermStorePickerServiceHelper.cleanGuid(pnpTermGroup.Id);
                     });
                 }
@@ -172,12 +169,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                 const batch = taxonomy.createBatch();
 
                 pnpGroups.forEach(pnpGroup => {
-                    /*pnpGroup.termSets.inBatch(batch).usingCaching().get().then(pnpTermSets => {
-                        termSets = [...termSets, ...pnpTermSets.map(pnpTermSet => {
-                            return this._pnpTermSet2TermSet(pnpTermSet, TermStorePickerServiceHelper.cleanGuid(pnpGroup.Id));
-                        })];
-                    });*/
-                    taxonomy.termStores.getById(pnpTermStore.Id).groups.getById(pnpGroup.Id).termSets.inBatch(batch).usingCaching().get().then(pnpTermSets => {
+                    pnpGroup.termSets.inBatch(batch).usingCaching().get().then(pnpTermSets => {
                         termSets = [...termSets, ...pnpTermSets.map(pnpTermSet => {
                             return this._pnpTermSet2TermSet(pnpTermSet, TermStorePickerServiceHelper.cleanGuid(pnpGroup.Id));
                         })];
@@ -224,10 +216,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                 resultTerms.push(term);
 
                 if (this.props.includeLabels) {
-                    /*pnpTerm.labels.inBatch(labelsBatch).usingCaching().get().then(labels => {
-                        term.Labels = labels.map(label => label.Value);
-                    });*/
-                    taxonomy.termStores.getById(pnpTermStore.Id).getTermById(pnpTerm.Id).labels.inBatch(labelsBatch).usingCaching().get().then(labels => {
+                    pnpTerm.labels.inBatch(labelsBatch).usingCaching().get().then(labels => {
                         term.Labels = labels.map(label => label.Value);
                     });
                 }
@@ -405,7 +394,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                 };
                 returnTerms.push(pickerTerm);
 
-                /* pnpTerm.termSet.group.inBatch(batch).usingCaching().get().then(pnpTermGroup => {
+                pnpTerm.termSet.group.inBatch(batch).usingCaching().get().then(pnpTermGroup => {
                      pickerTerm.termGroup = TermStorePickerServiceHelper.cleanGuid(pnpTermGroup.Id);
                  });
  
@@ -418,22 +407,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                      pnpTerm.labels.inBatch(batch).usingCaching().get().then(labels => {
                          pickerTerm.labels = labels.map(label => label.Value);
                      });
-                 }*/
-
-                taxonomy.termStores.getById(pnpTermStore.Id).getTermById(pnpTerm.Id).termSet.group.inBatch(batch).usingCaching().get().then(pnpTermGroup => {
-                    pickerTerm.termGroup = TermStorePickerServiceHelper.cleanGuid(pnpTermGroup.Id);
-                });
-
-                taxonomy.termStores.getById(pnpTermStore.Id).getTermById(pnpTerm.Id).termSet.inBatch(batch).usingCaching().get().then(pnpTermSet => {
-                    pickerTerm.termSet = TermStorePickerServiceHelper.cleanGuid(pnpTermSet.Id);
-                    pickerTerm.termSetName = pnpTermSet.Name;
-                });
-
-                if (this.props.includeLabels) {
-                    taxonomy.termStores.getById(pnpTermStore.Id).getTermById(pnpTerm.Id).labels.inBatch(batch).usingCaching().get().then(labels => {
-                        pickerTerm.labels = labels.map(label => label.Value);
-                    });
-                }
+                 }
             });
 
             await batch.execute();
@@ -461,8 +435,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
             const pnpTermSetGuid = TermStorePickerServiceHelper.cleanGuid(pnpTermSet.Id);
 
             if (!termGroupId) { // if no group id provided we need to load it from store
-                //pnpTermSet.group.inBatch(termsBatch).usingCaching().get().then(pnpTermGroup => {
-                taxonomy.termStores.getById(pnpTermStore.Id).getTermSetById(pnpTermSet.Id).group.inBatch(termsBatch).usingCaching().get().then(pnpTermGroup => {
+                pnpTermSet.group.inBatch(termsBatch).usingCaching().get().then(pnpTermGroup => {
                     termSetGroups[pnpTermSet.Id] = pnpTermGroup.Id;
 
                     const loadedTerms = returnTerms.filter(t => t.termSet === pnpTermSetGuid);
@@ -473,8 +446,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
             }
 
             // getting terms for term set in batch
-            //pnpTermSet.terms.inBatch(termsBatch).usingCaching().get().then(pnpTerms => {
-            taxonomy.termStores.getById(pnpTermStore.Id).getTermSetById(pnpTermSet.Id).terms.inBatch(termsBatch).usingCaching().get().then(pnpTerms => {
+            pnpTermSet.terms.inBatch(termsBatch).usingCaching().get().then(pnpTerms => {
                 for (let termIdx = 0, termLen = pnpTerms.length; termIdx < termLen; termIdx++) {
                     const pnpTerm = pnpTerms[termIdx];
                     if (pnpTerm.Name.toLowerCase().indexOf(lowerCasedSearchText) === 0) {
@@ -490,8 +462,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
 
                         // getting labels for each term in a separate batch
                         if (this.props.includeLabels) {
-                            //pnpTerm.labels.inBatch(labelsBatch).usingCaching().get().then(pnpLabels => {
-                            taxonomy.termStores.getById(pnpTermStore.Id).getTermById(pnpTerm.Id).labels.inBatch(labelsBatch).usingCaching().get().then(pnpLabels => {
+                            pnpTerm.labels.inBatch(labelsBatch).usingCaching().get().then(pnpLabels => {
                                 pickerTerm.labels = pnpLabels.map(l => l.Value);
                             });
                         }
@@ -536,8 +507,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                     pnpGroups = [];
                     const groupsBatch = taxonomy.createBatch();
                     pnpTermSets.forEach(pnpTermSet => {
-                        //pnpTermSet.group.inBatch(groupsBatch).usingCaching().get().then(pnpGroup => {
-                        taxonomy.termStores.getById(pnpTermStore.Id).getTermSetById(pnpTermSet.Id).group.inBatch(groupsBatch).usingCaching().get().then(pnpGroup => {
+                        pnpTermSet.group.inBatch(groupsBatch).usingCaching().get().then(pnpGroup => {
                             if (!pnpGroups.filter(gr => gr.Id === pnpGroup.Id).length) {
                                 pnpGroups.push(pnpGroup);
                             }
@@ -653,12 +623,10 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
 
         let group: ITermGroupData & PnPTermGroup;
         if (isGuid) {
-            //group = await pnpTermStore.getTermGroupById(groupNameOrID).usingCaching().get();
-            group = await taxonomy.termStores.getById(pnpTermStore.Id).getTermGroupById(groupNameOrID).usingCaching().get();
+            group = await pnpTermStore.getTermGroupById(groupNameOrID).usingCaching().get();
         }
         else {
-            //group = await pnpTermStore.groups.getByName(groupNameOrID).usingCaching().get();
-            group = await taxonomy.termStores.getById(pnpTermStore.Id).groups.getByName(groupNameOrID).usingCaching().get();
+            group = await pnpTermStore.groups.getByName(groupNameOrID).usingCaching().get();
         }
 
         if (group.Id) {

@@ -2,6 +2,10 @@
 
 ## 1.14.0
 
+### Enhancements
+
+- `PropertyFieldCollectionData`: return the item in the custom renderer [#147](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/147)
+
 ### Fixes
 
 - `PropertyFieldTermPicker`: fix sort order with lowercased terms [#133](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/133)

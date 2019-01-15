@@ -357,7 +357,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           onGetErrorMessage={async (value: string) => this.urlFieldValidation(field, value, item)} />;
       case CustomCollectionFieldType.custom:
           if (field.onCustomRender) {
-            return field.onCustomRender(field, item[field.id], this.onValueChanged);
+            return field.onCustomRender(field, item[field.id], this.onValueChanged, item);
           }
           return null;
       case CustomCollectionFieldType.string:

@@ -8,6 +8,7 @@
 
 ### Enhancements
 
+- `PropertyFieldCollectionData`: Setting to specify if item deletion is disabled [#131](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/131)
 - `PropertyFieldCollectionData`: Implemented a property to specify if field editing is enabled/disabled [#132](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/132)
 - Added `Chinese` localization [#137](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/137)
 - `PropertyFieldColorPicker`: Added a `isHidden` property [#138](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/138)

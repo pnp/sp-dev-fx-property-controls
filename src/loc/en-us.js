@@ -60,7 +60,7 @@ define([], function() {
     TermPickerExpandTitle: "Expand this Term Set",
     TermPickerExpandNode: "Expand this Node",
     TermPickerMenuTermSet: "Menu for Term Set",
-    TermPickerMenuGroup: "Menu for Term Set",
+    TermPickerMenuGroup: "Menu for Term Group",
     TermPickerInLabel: "in",
     TermPickerTermSetLabel: "Term Set",
     propertyFieldMultiSelectNoOptions: "No options to select",

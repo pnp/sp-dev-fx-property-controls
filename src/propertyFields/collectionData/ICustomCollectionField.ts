@@ -16,6 +16,10 @@ export interface ICustomCollectionField {
    */
   type: CustomCollectionFieldType;
   /**
+   * Allows you to specify if a field is disabled for editing
+   */
+  disableEdit?: boolean;
+  /**
    * Specify if the field is required.
    */
   required?: boolean;

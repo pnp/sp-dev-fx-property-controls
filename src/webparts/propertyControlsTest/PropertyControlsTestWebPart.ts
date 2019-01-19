@@ -166,7 +166,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       required: true,
                       placeholder: "Enter the firstname",
                       onGetErrorMessage: this.minLengthValidation,
-                      deferredValidationTime: 500
+                      deferredValidationTime: 500,
+                      disableEdit: true
                     },
                     {
                       id: "Lastname",
@@ -335,7 +336,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
                   context: this.context,
-                  onGetErrorMessage: null,
+                  onGetErrorMessage: (value: string) => {
+                    return value;
+                  },
                   deferredValidationTime: 0,
                   key: 'listPickerFieldId',
                   webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl

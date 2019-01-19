@@ -326,29 +326,34 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * @param item
    */
   private renderField(field: ICustomCollectionField, item: any) {
+    const disableFieldOnEdit: boolean = field.disableEdit && !!this.props.fUpdateItem;
+
     switch(field.type) {
       case CustomCollectionFieldType.boolean:
         return <Checkbox checked={item[field.id] ? item[field.id] : false}
-                         onChange={(ev, value) => this.onValueChanged(field.id, value)} />;
+                         onChange={(ev, value) => this.onValueChanged(field.id, value)}
+                         disabled={disableFieldOnEdit} />;
       case CustomCollectionFieldType.dropdown:
         return <Dropdown placeHolder={field.placeholder || field.title}
                          options={field.options}
                          selectedKey={item[field.id] || null}
                          required={field.required}
+                         disabled={disableFieldOnEdit}
                          onChanged={(opt) => this.onValueChanged(field.id, opt.key)}
                          onRenderOption={field.onRenderOption} />;
       case CustomCollectionFieldType.number:
         return (
-          <CollectionNumberField field={field} item={item} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
+          <CollectionNumberField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
         );
       case CustomCollectionFieldType.fabricIcon:
         return (
-          <CollectionIconField field={field} item={item} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
+          <CollectionIconField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
         );
       case CustomCollectionFieldType.url:
         return <TextField placeholder={field.placeholder || field.title}
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
+                          disabled={disableFieldOnEdit}
                           className={styles.collectionDataField}
                           onChanged={(value) => this.onValueChanged(field.id, value)}
                           deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
@@ -364,6 +369,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           className={styles.collectionDataField}
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
+                          disabled={disableFieldOnEdit}
                           onChanged={(value) => this.onValueChanged(field.id, value)}
                           deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
                           onGetErrorMessage={async (value: string) => await this.fieldValidation(field, value)} />;
@@ -391,7 +397,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   private generateEmptyItem(): any {
     // Create an empty item with all properties
     let emptyItem:any = {};
-    emptyItem.uniqueId = Guid.newGuid();
+    emptyItem.uniqueId = Guid.newGuid().toString();
 
     for (const field of this.props.fields) {
       // Assign default value or null to the emptyItem

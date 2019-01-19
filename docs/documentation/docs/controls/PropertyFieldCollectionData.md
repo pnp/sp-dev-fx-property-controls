@@ -133,6 +133,7 @@ Interface `ICustomCollectionField`
 | id | string | yes | ID of the field. |
 | title | string | yes | Title of the field. This will be used for the label in the table. |
 | type | CustomCollectionFieldType | yes | Specifies the type of field to render. |
+| disableEdit | boolean | no | Allows you to specify if a field is disabled for editing. |
 | required | boolean | no | Specify if the field is required. |
 | options | [IDropdownOption[]](https://developer.microsoft.com/en-us/fabric#/components/dropdown) | no | Dropdown options. Only necessary when dropdown type is used. |
 | onRenderOption | IRenderFunction<ISelectableOption> | no | Dropdown custom options render method. Only for the **dropdown** field type. |

@@ -86,7 +86,8 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
                aria-valuenow={this.props.item[this.props.field.id] || ''}
                aria-invalid={!!this.state.errorMessage}
                value={this.state.value || ''}
-               onChange={async (ev) => await this.valueChange(this.props.field, ev.target.value)} />
+               onChange={async (ev) => await this.valueChange(this.props.field, ev.target.value)}
+               disabled={this.props.disableEdit} />
       </div>
     );
   }

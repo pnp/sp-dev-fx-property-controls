@@ -50,6 +50,7 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
                 );
               })}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Swatch Color: <span className={styles.colorBox} style={{backgroundColor:this.props.swatchColor}}>&nbsp;</span>{this.props.swatchColor}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Enterprise Term(s): {this.props.enterpriseTerms.map(t => t.name).join(', ')}</p>
             </div>
           </div>
         </div>

@@ -2,12 +2,11 @@ import * as React from 'react';
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ITermSetProps, ITermSetState } from './IPropertyFieldTermPickerHost';
-import { ITerm } from '../../services/ISPTermStorePickerService';
+import { ITerm, TermStorePickerServiceHelper } from '../../services/ISPTermStorePickerService';
 import { EXPANDED_IMG, COLLAPSED_IMG, TERMSET_IMG } from './PropertyFieldTermPickerHost';
 import Term from './Term';
 import styles from './PropertyFieldTermPickerHost.module.scss';
 import * as strings from 'PropertyControlStrings';
-import SPTermStorePickerService from '../../services/SPTermStorePickerService';
 
 /**
  * Term set component
@@ -60,7 +59,7 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
     // Check if there are already terms loaded
     if (!this.state.loaded) {
       // Receive all the terms for the current term set
-      const terms: ITerm[] = await this.props.termsService.getAllTerms(this.props.termset._ObjectIdentity_);
+      const terms: ITerm[] = await this.props.termsService.getAllTerms(this.props.termset);
       if (terms !== null) {
         this.setState({
           terms: terms,
@@ -82,7 +81,7 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
   private termSetSelectionChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
     const { termset } = this.props;
     this.props.changedCallback({
-      Id: SPTermStorePickerService.cleanGuid(termset.Id),
+      Id: TermStorePickerServiceHelper.cleanGuid(termset.Id),
       Name: termset.Name,
       PathOfTerm: "",
       _ObjectType_: termset._ObjectType_,
@@ -92,7 +91,7 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
       IsAvailableForTagging: null,
       IsRoot: null,
       TermSet: termset
-    }, isChecked);
+    }, this.props.termGroup, isChecked);
   }
 
   public render(): JSX.Element {
@@ -117,12 +116,13 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
                   }
 
                   return <Term key={term.Id}
-                               term={term}
-                               termset={this.props.termset.Id}
-                               activeNodes={this.props.activeNodes}
-                               changedCallback={this.props.changedCallback}
-                               multiSelection={this.props.multiSelection}
-                               disabled={disabled} />;
+                    term={term}
+                    termset={this.props.termset.Id}
+                    termGroup={this.props.termGroup}
+                    activeNodes={this.props.activeNodes}
+                    changedCallback={this.props.changedCallback}
+                    multiSelection={this.props.multiSelection}
+                    disabled={disabled} />;
                 })
               }
             </div>
@@ -144,8 +144,8 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
             // Show the termset selection box
             this.props.isTermSetSelectable &&
             <Checkbox className={styles.termSetSelector}
-                      checked={this.props.activeNodes.filter(a => a.path === "" && a.termSet.indexOf(a.key) !== -1 && this.props.termset.Id.indexOf(a.key) !== -1).length >= 1}
-                      onChange={this.termSetSelectionChange} />
+              checked={this.props.activeNodes.filter(a => a.path === "" && a.termSet.indexOf(a.key) !== -1 && this.props.termset.Id.indexOf(a.key) !== -1).length >= 1}
+              onChange={this.termSetSelectionChange} />
           }
 
           <img src={TERMSET_IMG} alt={strings.TermPickerMenuTermSet} title={strings.TermPickerMenuTermSet} /> {this.props.termset.Name}

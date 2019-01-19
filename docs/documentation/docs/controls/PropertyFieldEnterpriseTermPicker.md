@@ -1,8 +1,8 @@
-# PropertyFieldTermPicker control
+# PropertyFieldEnterpriseTermPicker control
 
 This control generates a term picker that can be used in the property pane of your SharePoint Framework web parts.
 
-> **Disclaimer**: This control makes use of the `ProcessQuery` API end-points to retrieve the managed metadata information. This will get changed once the APIs for managing managed metadata will become available.
+> **Disclaimer**: This control makes use of the `@pnp/sp-taxonomy` module to retrieve the managed metadata information. It leads to increase of the bundle/package size if the control is being used. Use the control for "enterprise" scenarios (large term stores with lots of objects) or if you need to request labels for terms.
 
 **Empty term picker**
 
@@ -34,13 +34,13 @@ This control generates a term picker that can be used in the property pane of yo
 2. Import the following modules to your component:
 
 ```TypeScript
-import { PropertyFieldTermPicker } from '@pnp/spfx-property-controls/lib/PropertyFieldTermPicker';
+import { PropertyFieldEnterpriseTermPicker } from '@pnp/spfx-property-controls/lib/PropertyFieldEnterpriseTermPicker';
 ```
 
 3. Create a new property for your web part, for example:
 
 ```TypeScript
-import { IPickerTerms } from "@pnp/spfx-property-controls/lib/PropertyFieldTermPicker";
+import { IPickerTerms } from "@pnp/spfx-property-controls/lib/PropertyFieldEnterpriseTermPicker";
 
 export interface IPropertyControlsTestWebPartProps {
   terms: IPickerTerms;
@@ -50,7 +50,7 @@ export interface IPropertyControlsTestWebPartProps {
 4. Add the custom property control to the `groupFields` of the web part property pane configuration:
 
 ```TypeScript
-PropertyFieldTermPicker('terms', {
+PropertyFieldEnterpriseTermPicker('terms', {
   label: 'Select terms',
   panelTitle: 'Select terms',
   initialValues: this.properties.terms,
@@ -63,13 +63,14 @@ PropertyFieldTermPicker('terms', {
   deferredValidationTime: 0,
   limitByGroupNameOrID: 'People',
   limitByTermsetNameOrID: 'Location',
-  key: 'termSetsPickerFieldId'
+  key: 'termSetsPickerFieldId',
+  includeLabels: true
 })
 ```
 
 ## Implementation
 
-The `PropertyFieldTermPicker` control can be configured with the following properties:
+The `PropertyFieldEnterpriseTermPicker` control can be configured with the following properties:
 
 | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- |
@@ -91,6 +92,7 @@ The `PropertyFieldTermPicker` control can be configured with the following prope
 | onGetErrorMessage | function | no | The method is used to get the validation error message and determine whether the input value is valid or not. See [this documentation](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/validate-web-part-property-values) to learn how to use it. |
 | deferredValidationTime | number | no | Control will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default value is 200. |
 | resolveDelay | number | no | The delay time in ms before resolving suggestions, which is kicked off when input has been changed. e.g. if a second input change happens within the resolveDelay time, the timer will start over. Only until after the timer completes will onResolveSuggestions be called. Default is 500. |
+| includeLabels | boolean | no | Specifies if term labels should be loaded from the store.|
 
 Interface `IPickerTerms`
 

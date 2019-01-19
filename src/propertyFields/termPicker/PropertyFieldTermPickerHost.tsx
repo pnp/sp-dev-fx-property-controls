@@ -1,20 +1,14 @@
 import * as React from 'react';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { PrimaryButton, DefaultButton, IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
-import { IPropertyFieldTermPickerPropsInternal } from './IPropertyFieldTermPicker';
-import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import TermPicker from './TermPicker';
-import { BasePicker, IBasePickerProps, IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 
 import { IPickerTerms, IPickerTerm } from './IPropertyFieldTermPicker';
-import { IPropertyFieldTermPickerHostProps, IPropertyFieldTermPickerHostState, ITermGroupProps, ITermGroupState, ITermSetProps, ITermSetState, ITermProps, ITermState } from './IPropertyFieldTermPickerHost';
-import SPTermStorePickerService from './../../services/SPTermStorePickerService';
-import { ITermStore, IGroup, ITerm } from './../../services/ISPTermStorePickerService';
+import { IPropertyFieldTermPickerHostProps, IPropertyFieldTermPickerHostState } from './IPropertyFieldTermPickerHost';
+import { ITermStore, ITerm, ISPTermStorePickerService } from './../../services/ISPTermStorePickerService';
 import styles from './PropertyFieldTermPickerHost.module.scss';
 import { sortBy, uniqBy, cloneDeep } from '@microsoft/sp-lodash-subset';
 import TermGroup from './TermGroup';
@@ -37,7 +31,7 @@ export const TERMSET_IMG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAA
 export default class PropertyFieldTermPickerHost extends React.Component<IPropertyFieldTermPickerHostProps, IPropertyFieldTermPickerHostState> {
   private async: Async;
   private delayedValidate: (value: IPickerTerms) => void;
-  private termsService: SPTermStorePickerService;
+  private termsService: ISPTermStorePickerService;
   private previousValues: IPickerTerms = [];
   private cancel: boolean = true;
 
@@ -54,6 +48,8 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
       limitByGroupNameOrID: !!props.limitByGroupNameOrID,
       disabled: props.disabled
     });
+
+    this.termsService = props.termService;
 
 
     this.state = {
@@ -79,7 +75,6 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
    * Loads the list from SharePoint current web site
    */
   private loadTermStores(): void {
-    this.termsService = new SPTermStorePickerService(this.props, this.props.context);
     this.termsService.getTermStores().then((response: ITermStore[]) => {
       // Check if a response was retrieved
       if (response !== null) {
@@ -197,7 +192,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
    * Clicks on a node
    * @param node
    */
-  private termsChanged(term: ITerm, checked: boolean): void {
+  private termsChanged(term: ITerm, termGroup: string, checked: boolean): void {
 
     let activeNodes = this.state.activeNodes;
     if (typeof term === 'undefined' || term === null) {
@@ -205,11 +200,13 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
     }
 
     // Term item to add to the active nodes array
-    const termItem = {
+    const termItem: IPickerTerm = {
       name: term.Name,
       key: term.Id,
       path: term.PathOfTerm,
-      termSet: term.TermSet.Id
+      termSet: term.TermSet.Id,
+      termGroup: termGroup,
+      labels: term.Labels
     };
 
     // Check if the term is checked or unchecked
@@ -291,6 +288,8 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
                   allowMultipleSelections={this.props.allowMultipleSelections}
                   isTermSetSelectable={this.props.isTermSetSelectable}
                   disabledTermIds={this.props.disabledTermIds}
+                  termsService={this.termsService}
+                  resolveDelay={this.props.resolveDelay === undefined ? 500 : this.props.resolveDelay} // in future this can be bubbled upper to the settings
                 />
               </td>
               <td className={styles.termFieldRow}>
@@ -335,16 +334,16 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
                     !this.props.hideTermStoreName ? <h3>{termStore.Name}</h3> : null
                   }
                   {
-                    termStore.Groups._Child_Items_.map((group) => {
-                      return <TermGroup key={group.Id} 
-                                        group={group} 
-                                        termstore={termStore.Id} 
-                                        termsService={this.termsService} 
-                                        activeNodes={this.state.activeNodes} 
-                                        changedCallback={this.termsChanged} 
-                                        multiSelection={this.props.allowMultipleSelections} 
-                                        isTermSetSelectable={this.props.isTermSetSelectable} 
-                                        disabledTermIds={this.props.disabledTermIds} />;
+                    termStore.Groups && termStore.Groups._Child_Items_ && termStore.Groups._Child_Items_.map((group) => {
+                      return <TermGroup key={group.Id}
+                        group={group}
+                        termstore={termStore.Id}
+                        termsService={this.termsService}
+                        activeNodes={this.state.activeNodes}
+                        changedCallback={this.termsChanged}
+                        multiSelection={this.props.allowMultipleSelections}
+                        isTermSetSelectable={this.props.isTermSetSelectable}
+                        disabledTermIds={this.props.disabledTermIds} />;
                     })
                   }
                 </div>

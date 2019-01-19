@@ -29,4 +29,5 @@ export interface IPropertyControlsTestWebPartProps {
   collectionData: any[];
   orderedItems: any[];
   swatchColor: string;
+  enterpriseTerms: IPickerTerms;
 }

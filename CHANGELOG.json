@@ -14,7 +14,7 @@
           "`PropertyFieldCollectionData`: Fixed bug with dropdown rendering in IE [#136](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/136"
         ]
       },
-      "contributions": ["[Simon-Pierre Plante](https://github.com/spplante)"]
+      "contributions": ["[Simon-Pierre Plante](https://github.com/spplante)", "[Roger Zhang](https://github.com/RogerZhang-CatapultSystems)"]
     },
     {
       "version": "1.13.1",

@@ -15,7 +15,7 @@
 
 ### Contributors
 
-Special thanks to our contributor: [Simon-Pierre Plante](https://github.com/spplante).
+Special thanks to our contributors (in alphabetical order): [Simon-Pierre Plante](https://github.com/spplante), [Roger Zhang](https://github.com/RogerZhang-CatapultSystems).
 
 ## 1.13.1
 

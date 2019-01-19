@@ -9,6 +9,12 @@
 ### Fixes
 
 - `PropertyFieldTermPicker`: fix sort order with lowercased terms [#133](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/133)
+- `PropertyFieldCollectionData`: Bug with onCustomRender() [#135](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/135
+- `PropertyFieldCollectionData`: Fixed bug with dropdown rendering in IE [#136](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/136
+
+### Contributors
+
+Special thanks to our contributor: [Simon-Pierre Plante](https://github.com/spplante).
 
 ## 1.13.1
 

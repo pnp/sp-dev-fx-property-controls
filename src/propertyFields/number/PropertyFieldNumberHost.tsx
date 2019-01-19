@@ -35,11 +35,11 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
 
     const nrValue = parseInt(value);
     // Check if number is lower or equal to minimum value
-    if (this.props.minValue && nrValue < this.props.minValue) {
+    if (this.props.minValue && nrValue <= this.props.minValue) {
       return `${strings.MinimumNumberValidationMessage} ${this.props.minValue}`;
     }
     // Check if the number is greater than the maximum value
-    if (this.props.maxValue && nrValue > this.props.maxValue) {
+    if (this.props.maxValue && nrValue >= this.props.maxValue) {
       return `${strings.MaximumNumberValidationMessage} ${this.props.maxValue}`;
     }
 

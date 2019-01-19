@@ -474,7 +474,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
         {
           /* Check add or delete action */
           this.props.index !== null ? (
-            <Link title={strings.CollectionDeleteRowButtonLabel} disabled={!this.props.fDeleteItem} onClick={this.deleteRow}>
+            <Link title={strings.CollectionDeleteRowButtonLabel} disabled={!this.props.fDeleteItem || this.props.disableItemDeletion} onClick={this.deleteRow}>
               <Icon iconName="Clear" />
             </Link>
           ) : (

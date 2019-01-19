@@ -38,6 +38,10 @@ export interface IPropertyFieldCollectionDataProps {
    * Specify if the control is disabled.
    */
   disabled?: boolean;
+  /**
+   * Allows you to specify if users can delete already inserted items
+   */
+  disableItemDeletion?: boolean;
 }
 
 export interface IPropertyFieldCollectionDataPropsInternal extends IPropertyPaneCustomFieldProps, IPropertyFieldCollectionDataProps {}

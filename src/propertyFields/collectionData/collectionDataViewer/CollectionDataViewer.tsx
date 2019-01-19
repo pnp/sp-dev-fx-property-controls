@@ -222,6 +222,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
                                     item={item}
                                     totalItems={allItems.length}
                                     sortingEnabled={this.props.enableSorting}
+                                    disableItemDeletion={this.props.disableItemDeletion}
                                     fUpdateItem={this.updateItem}
                                     fDeleteItem={this.deleteItem}
                                     fValidation={this.validateItem}

@@ -6,6 +6,7 @@ export interface ICollectionDataItemProps {
   item?: any;
   sortingEnabled?: boolean;
   totalItems?: number;
+  disableItemDeletion?: boolean;
 
   fAddItem?: (item: any) => void;
   fAddInCreation?: (item: any) => void;

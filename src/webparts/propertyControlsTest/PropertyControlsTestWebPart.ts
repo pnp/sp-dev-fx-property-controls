@@ -158,6 +158,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   panelDescription: "This is the description which appears in the panel.",
                   value: this.properties.collectionData,
                   enableSorting: true,
+                  disableItemDeletion: false,
                   fields: [
                     {
                       id: "Title",

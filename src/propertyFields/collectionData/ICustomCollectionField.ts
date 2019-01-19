@@ -51,7 +51,7 @@ export interface ICustomCollectionField {
   /**
    * Custom field rendering support
    */
-  onCustomRender?: (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void, item: any) => JSX.Element;
+  onCustomRender?: (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void, item: any, rowUniqueId: string) => JSX.Element;
 }
 
 export enum CustomCollectionFieldType {

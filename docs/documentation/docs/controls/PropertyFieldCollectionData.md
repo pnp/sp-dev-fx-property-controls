@@ -100,10 +100,10 @@ Here is an example of how you can render your own controls in the `PropertyField
   id: "customFieldId",
   title: "Custom Field",
   type: CustomCollectionFieldType.custom,
-  onCustomRender: (field, value, onUpdate, item) => {
+  onCustomRender: (field, value, onUpdate, item, itemId) => {
     return (
       React.createElement("div", null,
-        React.createElement("input", { value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => onUpdate(field.id, event.currentTarget.value) }), " 🎉"
+        React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => onUpdate(field.id, event.currentTarget.value) }), " 🎉"
       )
     );
   }
@@ -140,7 +140,7 @@ Interface `ICustomCollectionField`
 | defaultValue | any | no | Specify a default value for the input field. |
 | deferredValidationTime | number | no | Field will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default: 200ms. |
 | onGetErrorMessage | (value: any, index: number, crntItem: any): string \| Promise<string> | no | The method is used to get the validation error message and determine whether the input value is valid or not. It provides you the current row index and the item you are currently editing. |
-| onCustomRender | (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void, item: any) => JSX.Element | no | This property is only required if you are using the `custom` field type and it can be used to specify the custom rendering of your control in the collection data. |
+| onCustomRender | (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void, item: any, itemUniqueId: string) => JSX.Element | no | This property is only required if you are using the `custom` field type and it can be used to specify the custom rendering of your control in the collection data. |
 
 Enum `CustomCollectionFieldType`
 

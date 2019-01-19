@@ -216,7 +216,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
           {
             (this.state.crntItems && this.state.crntItems.length > 0) && (
               this.state.crntItems.map((item, idx, allItems) => (
-                <CollectionDataItem key={idx}
+                <CollectionDataItem key={item.uniqueId}
                                     fields={this.props.fields}
                                     index={idx}
                                     item={item}

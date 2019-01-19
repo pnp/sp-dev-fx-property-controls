@@ -36,10 +36,15 @@ export interface IPropertyFieldColorPickerProps {
 	 */
 	alphaSliderHidden?: boolean;
 
-	 /**
-	 * Whether the property pane field is enabled or not.
-	 */
+	/**
+	* Whether the property pane field is enabled or not.
+	*/
 	disabled?: boolean;
+
+	/**
+	* Whether the property pane field is hidden or not.
+	*/
+	isHidden?: boolean;
 
 	/**
 	 * An UNIQUE key indicates the identity of this control

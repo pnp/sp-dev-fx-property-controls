@@ -38,6 +38,7 @@ The following controls are currently available:
 - [PropertyFieldPeoplePicker](./controls/PropertyFieldPeoplePicker) (Property pane people / group selector)
 - [PropertyFieldSpinButton](./controls/PropertyFieldSpinButton) (Property pane spin button)
 - [PropertyFieldTermPicker](./controls/PropertyFieldTermPicker) (Property pane managed metadata term selector)
+- [PropertyFieldEnterpriseTermPicker](./controls/PropertyFieldEnterpriseTermPicker) (Property pane managed metadata term selector for enterprise scenarios)
 - [PropertyFieldMultiSelect](./controls/PropertyFieldMultiSelect) (Property pane field which allows multi-value selection)
 - [PropertyFieldNumber](./controls/PropertyFieldNumber) (Property pane field which allows only number values)
 - [PropertyPaneWebPartInformation](./controls/PropertyPaneWebPartInformation) (Property pane webpart information panel)

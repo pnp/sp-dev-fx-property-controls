@@ -3,7 +3,9 @@
     {
       "version": "1.14.0",
       "changes": {
-        "new": [],
+        "new": [
+          "`PropertyFieldEnterpriseTermPicker`: New control to load term sets by using `@pnp/pnpjs` [#70](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/70) [#120](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/120)"
+        ],
         "enhancements": [
           "Added `Chinese` localization [#137](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/137)",
           "`PropertyFieldColorPicker`: Added a `isHidden` property [#138](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/138)",

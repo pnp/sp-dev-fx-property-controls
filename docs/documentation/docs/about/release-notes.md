@@ -2,6 +2,10 @@
 
 ## 1.14.0
 
+### New control(s)
+
+- `PropertyFieldEnterpriseTermPicker`: New control to load term sets by using `@pnp/pnpjs` [#70](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/70) [#120](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/120)
+
 ### Enhancements
 
 - Added `Chinese` localization [#137](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/137)

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { BasePicker, IBasePickerProps, IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IPickerTerm, IPickerTerms } from './IPropertyFieldTermPicker';
-import SPTermStorePickerService from './../../services/SPTermStorePickerService';
 import styles from './PropertyFieldTermPickerHost.module.scss';
 import { IPropertyFieldTermPickerHostProps } from './IPropertyFieldTermPickerHost';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import * as strings from 'PropertyControlStrings';
+import { ISPTermStorePickerService, TermStorePickerServiceHelper } from '../../services/ISPTermStorePickerService';
 
 export class TermBasePicker extends BasePicker<IPickerTerm, IBasePickerProps<IPickerTerm>>
 {
@@ -25,6 +25,8 @@ export interface ITermPickerProps {
   isTermSetSelectable: boolean;
   disabledTermIds: string[];
   onChanged: (items: IPickerTerm[]) => void;
+  termsService: ISPTermStorePickerService;
+  resolveDelay?: number;
 }
 
 export default class TermPicker extends React.Component<ITermPickerProps, ITermPickerState> {
@@ -111,7 +113,7 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
     const { context, termPickerHostProps, allowMultipleSelections, isTermSetSelectable, disabledTermIds } = this.props;
     // Only allow to select other tags if multi-selection is enabled
     if (filterText !== "" && (allowMultipleSelections || tagList.length === 0)) {
-      let termsService = new SPTermStorePickerService(termPickerHostProps, context);
+      let { termsService } = this.props;
       let terms = await termsService.searchTermsByName(filterText);
       // Check if the termset can be selected
       if (isTermSetSelectable) {
@@ -123,10 +125,11 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
             if (termSet.Name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) {
               // Add the termset to the suggestion list
               terms.push({
-                key: SPTermStorePickerService.cleanGuid(termSet.Id),
+                key: TermStorePickerServiceHelper.cleanGuid(termSet.Id),
                 name: termSet.Name,
                 path: "",
-                termSet: termSet.Id
+                termSet: termSet.Id,
+                termGroup: termSet.Group
               });
             }
           }
@@ -180,6 +183,7 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
           selectedItems={this.state.terms}
           itemLimit={!this.props.allowMultipleSelections ? 1 : undefined}
           onChange={this.props.onChanged}
+          resolveDelay={this.props.resolveDelay}
         />
       </div>
     );

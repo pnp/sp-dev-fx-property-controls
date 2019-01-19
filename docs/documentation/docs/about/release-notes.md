@@ -4,9 +4,10 @@
 
 ### Enhancements
 
-- Added Chinese localization [#137](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/137)
+- Added `Chinese` localization [#137](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/137)
 - `PropertyFieldColorPicker`: Added a `isHidden` property [#138](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/138)
 - `PropertyFieldCollectionData`: return the item in the custom renderer [#147](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/147)
+- Added `Russian` localization [#142](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/142)
 
 ### Fixes
 
@@ -17,7 +18,7 @@
 
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [Simon-Pierre Plante](https://github.com/spplante), [Yannick Plenevaux](https://github.com/ypcode), [Roger Zhang](https://github.com/RogerZhang-CatapultSystems).
+Special thanks to our contributors (in alphabetical order): [Simon-Pierre Plante](https://github.com/spplante), [Yannick Plenevaux](https://github.com/ypcode), [Alex Terentiev](https://github.com/AJIXuMuK), [Roger Zhang](https://github.com/RogerZhang-CatapultSystems).
 
 ## 1.13.1
 

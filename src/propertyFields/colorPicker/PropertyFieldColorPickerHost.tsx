@@ -29,9 +29,8 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 	}
 
 	public render(): JSX.Element {
-		let colorPickerClassName = styles.pfColorPicker + (this.props.isHidden === true ? (' ' + styles.hidden): '' );
 		return (
-			<div className={colorPickerClassName}>
+			<div className={`${styles.pfColorPicker} ${this.props.isHidden ? styles.hidden : ""}`}>
 				{this.props.label && <Label>{this.props.label}</Label>}
 				{this.props.style === PropertyFieldColorPickerStyle.Inline &&
 					<table className={styles.cpInlineTable}>
@@ -89,5 +88,5 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 			inlinePickerShowing: !this.state.inlinePickerShowing
 		});
 	}
-	
+
 }

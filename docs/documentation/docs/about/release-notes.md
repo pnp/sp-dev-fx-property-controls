@@ -5,17 +5,19 @@
 ### Enhancements
 
 - Added Chinese localization [#137](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/137)
+- `PropertyFieldColorPicker`: Added a `isHidden` property [#138](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/138)
 - `PropertyFieldCollectionData`: return the item in the custom renderer [#147](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/147)
 
 ### Fixes
 
 - `PropertyFieldTermPicker`: fix sort order with lowercased terms [#133](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/133)
-- `PropertyFieldCollectionData`: Bug with onCustomRender() [#135](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/135
-- `PropertyFieldCollectionData`: Fixed bug with dropdown rendering in IE [#136](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/136
+- `PropertyFieldCollectionData`: Bug with onCustomRender() [#135](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/135)
+- `PropertyFieldCollectionData`: Fixed bug with dropdown rendering in IE [#136](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/136)
+- `PropertyFieldNumber`: Min/max number check fix + localization label fixes [#141](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/141)
 
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [Simon-Pierre Plante](https://github.com/spplante), [Roger Zhang](https://github.com/RogerZhang-CatapultSystems).
+Special thanks to our contributors (in alphabetical order): [Simon-Pierre Plante](https://github.com/spplante), [Yannick Plenevaux](https://github.com/ypcode), [Roger Zhang](https://github.com/RogerZhang-CatapultSystems).
 
 ## 1.13.1
 

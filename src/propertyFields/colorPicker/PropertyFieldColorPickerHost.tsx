@@ -14,11 +14,11 @@ import * as telemetry from '../../common/telemetry';
 export default class PropertyFieldColorPickerHost extends React.Component<IPropertyFieldColorPickerHostProps, IPropertyFieldColorPickerHostState> {
 
 	constructor(props: IPropertyFieldColorPickerHostProps, state: IPropertyFieldColorPickerHostState) {
-    super(props);
+		super(props);
 
-    telemetry.track('PropertyFieldColorPicker', {
-      disabled: props.disabled
-    });
+		telemetry.track('PropertyFieldColorPicker', {
+			disabled: props.disabled
+		  });
 
 		this.state = {
 			errorMessage: undefined,
@@ -30,7 +30,7 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 
 	public render(): JSX.Element {
 		return (
-			<div className={styles.pfColorPicker}>
+			<div className={`${styles.pfColorPicker} ${this.props.isHidden ? styles.hidden : ""}`}>
 				{this.props.label && <Label>{this.props.label}</Label>}
 				{this.props.style === PropertyFieldColorPickerStyle.Inline &&
 					<table className={styles.cpInlineTable}>
@@ -47,7 +47,7 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 									}
 									{!this.state.inlinePickerShowing &&
 										<div className="ms-slideUpIn20 ms-borderColor-neutralDark"
-										 style={{backgroundColor:this.props.selectedColor, border:"1px solid"}}>&nbsp;</div>
+											style={{backgroundColor:this.props.selectedColor, border:"1px solid"}}>&nbsp;</div>
 									}
 								</td>
 								<td className={styles.cpInlineRow}>

@@ -184,6 +184,7 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
           itemLimit={!this.props.allowMultipleSelections ? 1 : undefined}
           onChange={this.props.onChanged}
           resolveDelay={this.props.resolveDelay}
+          className={styles.termBasePicker}
         />
       </div>
     );

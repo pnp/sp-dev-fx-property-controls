@@ -94,26 +94,26 @@
 }
 
 .pickedTermRoot {
-  position: relative;
-  outline: transparent;
-  box-sizing: content-box;
-  flex-shrink: 1;
-  background: #f4f4f4;
-  margin: 2px;
-  height: 26px;
-  line-height: 26px;
-  cursor: default;
-  display: flex;
-  flex-wrap: nowrap;
-  max-width: 300px;
+    position: relative;
+    outline: transparent;
+    box-sizing: content-box;
+    flex-shrink: 1;
+    background: #f4f4f4;
+    margin: 2px;
+    height: 26px;
+    line-height: 26px;
+    cursor: default;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    max-width: 249px;
 
-  .pickedTermText {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    min-width: 30px;
-    margin: 0 8px;
-  }
+    .pickedTermText {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 30px;
+      margin: 0 8px;
+    }
 
   .pickedTermCloseIcon {
     cursor: pointer;
@@ -127,6 +127,10 @@
     -ms-flex-negative: 0;
     flex-shrink: 0;
   }
+}
+
+.termBasePicker {
+  max-width: 255px;
 }
 
 

@@ -7,8 +7,9 @@
           "`PropertyFieldEnterpriseTermPicker`: New control to load term sets by using `@pnp/pnpjs` [#70](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/70) [#120](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/120)"
         ],
         "enhancements": [
-          "`PropertyFieldCollectionData`: Setting to specify if item deletion is disabled [#131](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/131)",
-          "`PropertyFieldCollectionData`: Implemented a property to specify if field editing is enabled/disabled [#132](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/132)",
+          "`PropertyFieldCollectionData`: Setting to specify if item `creation` is enabled/disabled [#130](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/130)",
+          "`PropertyFieldCollectionData`: Setting to specify if item `deletion` is enabled/disabled [#131](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/131)",
+          "`PropertyFieldCollectionData`: Implemented a property to specify if field `editing` is enabled/disabled [#132](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/132)",
           "Added `Chinese` localization [#137](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/137)",
           "`PropertyFieldColorPicker`: Added a `isHidden` property [#138](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/138)",
           "`PropertyFieldCollectionData`: return the item in the custom renderer [#147](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/147)",

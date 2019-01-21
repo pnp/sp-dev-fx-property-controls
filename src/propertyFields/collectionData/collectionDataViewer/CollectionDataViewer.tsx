@@ -230,13 +230,18 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
               ))
             )
           }
-          <CollectionDataItem fields={this.props.fields}
-                              index={null}
-                              item={null}
-                              sortingEnabled={this.props.enableSorting}
-                              totalItems={null}
-                              fAddItem={this.addItem}
-                              fAddInCreation={this.addInCreation} />
+
+          {
+            !this.props.disableItemCreation && (
+              <CollectionDataItem fields={this.props.fields}
+                                  index={null}
+                                  item={null}
+                                  sortingEnabled={this.props.enableSorting}
+                                  totalItems={null}
+                                  fAddItem={this.addItem}
+                                  fAddInCreation={this.addInCreation} />
+            )
+          }
         </div>
 
         {

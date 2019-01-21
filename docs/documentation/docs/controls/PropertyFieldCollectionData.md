@@ -125,6 +125,7 @@ The `PropertyFieldCollectionData` control can be configured with the following p
 | value | string | yes | The collection data value. | |
 | enableSorting | boolean | no | Specify if you want to be able to sort the items in the collection. | false |
 | disabled | boolean | no | Specify if the control is disabled. | false |
+| disableItemCreation | boolean | no | Allows you to specify if user can create new items. | false |
 | disableItemDeletion | boolean | no | Allows you to specify if users can delete already inserted items. | false |
 
 Interface `ICustomCollectionField`

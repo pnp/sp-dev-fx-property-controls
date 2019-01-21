@@ -39,6 +39,10 @@ export interface IPropertyFieldCollectionDataProps {
    */
   disabled?: boolean;
   /**
+   * Allows you to specify if user can create new items
+   */
+  disableItemCreation?: boolean;
+  /**
    * Allows you to specify if users can delete already inserted items
    */
   disableItemDeletion?: boolean;

@@ -159,6 +159,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   value: this.properties.collectionData,
                   enableSorting: true,
                   disableItemDeletion: false,
+                  disableItemCreation: false,
                   fields: [
                     {
                       id: "Title",

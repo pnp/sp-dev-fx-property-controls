@@ -22,6 +22,7 @@
 - `PropertyFieldCollectionData`: Bug with onCustomRender() [#135](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/135)
 - `PropertyFieldCollectionData`: Fixed bug with dropdown rendering in IE [#136](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/136)
 - `PropertyFieldNumber`: Min/max number check fix + localization label fixes [#141](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/141)
+- `PropertyFieldTermPicker`: Fix layout issues in IE11 [#143](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/143)
 
 ### Contributors
 

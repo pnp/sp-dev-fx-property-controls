@@ -216,12 +216,13 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
           {
             (this.state.crntItems && this.state.crntItems.length > 0) && (
               this.state.crntItems.map((item, idx, allItems) => (
-                <CollectionDataItem key={idx}
+                <CollectionDataItem key={item.uniqueId}
                                     fields={this.props.fields}
                                     index={idx}
                                     item={item}
                                     totalItems={allItems.length}
                                     sortingEnabled={this.props.enableSorting}
+                                    disableItemDeletion={this.props.disableItemDeletion}
                                     fUpdateItem={this.updateItem}
                                     fDeleteItem={this.deleteItem}
                                     fValidation={this.validateItem}
@@ -229,13 +230,18 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
               ))
             )
           }
-          <CollectionDataItem fields={this.props.fields}
-                              index={null}
-                              item={null}
-                              sortingEnabled={this.props.enableSorting}
-                              totalItems={null}
-                              fAddItem={this.addItem}
-                              fAddInCreation={this.addInCreation} />
+
+          {
+            !this.props.disableItemCreation && (
+              <CollectionDataItem fields={this.props.fields}
+                                  index={null}
+                                  item={null}
+                                  sortingEnabled={this.props.enableSorting}
+                                  totalItems={null}
+                                  fAddItem={this.addItem}
+                                  fAddInCreation={this.addInCreation} />
+            )
+          }
         </div>
 
         {

@@ -1,7 +1,6 @@
 import { IPickerTerms } from './IPropertyFieldTermPicker';
-import { ITermStore, IGroup, ITermSet, ITerm } from '../../services/ISPTermStorePickerService';
+import { ITermStore, IGroup, ITermSet, ITerm, ISPTermStorePickerService } from '../../services/ISPTermStorePickerService';
 import { IPropertyFieldTermPickerPropsInternal } from './IPropertyFieldTermPicker';
-import SPTermStorePickerService from '../../services/SPTermStorePickerService';
 
 /**
  * PropertyFieldTermPickerHost properties interface
@@ -22,14 +21,14 @@ export interface IPropertyFieldTermPickerHostState {
 }
 
 export interface ITermChanges {
-  changedCallback: (term: ITerm, checked: boolean) => void;
+  changedCallback: (term: ITerm, termGroup: string, checked: boolean) => void;
   activeNodes?: IPickerTerms;
 }
 
 export interface ITermGroupProps extends ITermChanges {
   group: IGroup;
   termstore: string;
-  termsService: SPTermStorePickerService;
+  termsService: ISPTermStorePickerService;
   multiSelection: boolean;
   isTermSetSelectable?: boolean;
   disabledTermIds?: string[];
@@ -37,12 +36,14 @@ export interface ITermGroupProps extends ITermChanges {
 
 export interface ITermGroupState {
   expanded: boolean;
+  loaded?: boolean;
 }
 
 export interface ITermSetProps extends ITermChanges {
   termset: ITermSet;
   termstore: string;
-  termsService: SPTermStorePickerService;
+  termGroup: string;
+  termsService: ISPTermStorePickerService;
   autoExpand: () => void;
   multiSelection: boolean;
   isTermSetSelectable?: boolean;
@@ -57,6 +58,7 @@ export interface ITermSetState {
 
 export interface ITermProps extends ITermChanges {
   termset: string;
+  termGroup: string;
   term: ITerm;
   multiSelection: boolean;
   disabled: boolean;

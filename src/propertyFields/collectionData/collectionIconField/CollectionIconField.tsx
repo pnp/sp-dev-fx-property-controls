@@ -16,7 +16,8 @@ export class CollectionIconField extends React.Component<ICollectionIconFieldPro
                    required={field.required}
                    onChanged={(value) => this.props.fOnValueChange(field.id, value)}
                    deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
-                   onGetErrorMessage={(value) => this.props.fValidation(this.props.field, value)} />
+                   onGetErrorMessage={(value) => this.props.fValidation(this.props.field, value)}
+                   disabled={this.props.disableEdit} />
         <Icon iconName={item[field.id] ? item[field.id] : ""} />
       </div>
     );

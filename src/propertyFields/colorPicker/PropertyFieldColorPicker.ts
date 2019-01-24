@@ -4,15 +4,15 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
 import {
-    IPropertyFieldColorPickerProps,
-    IPropertyFieldColorPickerPropsInternal,
-    PropertyFieldColorPickerStyle,
+	IPropertyFieldColorPickerProps,
+	IPropertyFieldColorPickerPropsInternal,
+	PropertyFieldColorPickerStyle,
 } from './IPropertyFieldColorPicker';
 import { IPropertyFieldColorPickerHostProps } from './IPropertyFieldColorPickerHost';
 import PropertyFieldColorPickerHost from './PropertyFieldColorPickerHost';
 
 class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFieldColorPickerProps> {
-	
+
 	//Properties defined by IPropertyPaneField
 	public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
 	public targetProperty: string;
@@ -30,6 +30,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			onPropertyChange: _properties.onPropertyChange,
 			selectedColor: _properties.selectedColor,
 			disabled: _properties.disabled,
+			isHidden: _properties.isHidden,
 			alphaSliderHidden: _properties.alphaSliderHidden,
 			properties: _properties.properties,
 			style: _properties.style,
@@ -68,6 +69,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			label: this.properties.label,
 			alphaSliderHidden: this.properties.alphaSliderHidden,
 			disabled: this.properties.disabled,
+			isHidden: this.properties.isHidden,
 			selectedColor: this.color,
 			style: this.properties.style || PropertyFieldColorPickerStyle.Inline,
 			iconName: this.properties.iconName || 'Color',

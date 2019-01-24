@@ -6,7 +6,8 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneToggle,
 } from '@microsoft/sp-webpart-base';
 import { PropertyFieldCodeEditor,PropertyFieldCodeEditorLanguages } from '../../PropertyFieldCodeEditor';
 import * as strings from 'PropertyControlsTestWebPartStrings';
@@ -37,6 +38,7 @@ import { orderedItem } from './components/OrderedItem';
 import { PropertyFieldSwatchColorPicker, PropertyFieldSwatchColorPickerStyle } from '../../PropertyFieldSwatchColorPicker';
 import { PropertyPaneWebPartInformation } from '../../propertyFields/webPartInformation';
 import { PropertyPanePropertyEditor } from '../../propertyFields/propertyEditor/PropertyPanePropertyEditor';
+import { PropertyFieldEnterpriseTermPicker } from '../../propertyFields/termPicker/PropertyFieldEnterpriseTermPicker';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -69,7 +71,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         htmlCode: this.properties.htmlCode,
         collectionData: this.properties.collectionData,
         orderedItems: this.properties.orderedItems,
-        swatchColor: this.properties.swatchColor
+        swatchColor: this.properties.swatchColor,
+        enterpriseTerms: this.properties.enterpriseTerms || []
       }
     );
 
@@ -155,6 +158,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   panelDescription: "This is the description which appears in the panel.",
                   value: this.properties.collectionData,
                   enableSorting: true,
+                  disableItemDeletion: false,
+                  disableItemCreation: false,
                   fields: [
                     {
                       id: "Title",
@@ -163,7 +168,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       required: true,
                       placeholder: "Enter the firstname",
                       onGetErrorMessage: this.minLengthValidation,
-                      deferredValidationTime: 500
+                      deferredValidationTime: 500,
+                      disableEdit: true
                     },
                     {
                       id: "Lastname",
@@ -233,10 +239,10 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       id: "custom",
                       title: "Custom Field",
                       type: CustomCollectionFieldType.custom,
-                      onCustomRender: (field, value, onUpdate) => {
+                      onCustomRender: (field, value, onUpdate, item, itemId) => {
                         return (
                           React.createElement("div", null,
-                            React.createElement("input", { value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => onUpdate(field.id, event.currentTarget.value) }), " 🎉"
+                            React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => onUpdate(field.id, event.currentTarget.value) }), " 🎉"
                           )
                         );
                       }
@@ -279,8 +285,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   disabled: false,
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
-                  //limitByGroupNameOrID: 'Hockey Example',
-                  // limitByTermsetNameOrID: 'Countries',
+                  //limitByGroupNameOrID: 'Test',
+                  //limitByTermsetNameOrID: 'ad54531f-506e-4cc6-af4f-71157f6f3280',
                   isTermSetSelectable: true,
                   key: 'termSetsPickerFieldId',
                   hideTermStoreName: true
@@ -332,7 +338,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
                   context: this.context,
-                  onGetErrorMessage: null,
+                  onGetErrorMessage: (value: string) => {
+                    return value;
+                  },
                   deferredValidationTime: 0,
                   key: 'listPickerFieldId',
                   webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl
@@ -370,6 +378,10 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   deferredValidationTime: 0,
                   key: 'dateTimeFieldId'
                 }),
+                PropertyPaneToggle("isColorFieldVisible", {
+                  label: "Color Field Visible",
+                  checked: true
+                }),
                 PropertyFieldColorPicker('color', {
                   label: 'Color',
                   selectedColor: this.properties.color,
@@ -379,6 +391,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   //alphaSliderHidden: true,
                   //style: PropertyFieldColorPickerStyle.Full,
                   //iconName: 'Precipitation',
+                  isHidden: this.properties.isColorFieldVisible===false,
                   key: 'colorFieldId'
                 }),
                 PropertyFieldColorPicker('colorObj', {
@@ -547,6 +560,28 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   //showAsCircles: true,
                   //iconName: 'FangBody',
                   key: 'swatchColorFieldId'
+                }),
+                PropertyFieldEnterpriseTermPicker('enterpriseTerms', {
+                  label: 'Select enterprise terms',
+                  panelTitle: 'Select enterprise terms',
+                  initialValues: this.properties.enterpriseTerms,
+                  allowMultipleSelections: true,
+                  excludeSystemGroup: false,
+                  disabledTermIds: ["98601196-66f3-470f-8555-6c4f3b46139c", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
+                  // disabledTermIds: ["943fd9f0-3d7c-415c-9192-93c0e54573fb", "73d18756-20af-41de-808c-2a1e21851e44", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
+                  // disabledTermIds: ["cd6f6d3c-672d-4244-9320-c1e64cc0626f", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  context: this.context,
+                  disabled: false,
+                  onGetErrorMessage: null,
+                  deferredValidationTime: 0,
+                  //limitByGroupNameOrID: 'ded538ee-6e07-4cf5-802a-3de4e1f2ea7a',
+                  //limitByTermsetNameOrID: '77ca4514-a227-4155-a795-8c8af0ee57dd',
+                  isTermSetSelectable: true,
+                  key: 'enterpriseTermSetsPickerFieldId',
+                  hideTermStoreName: true,
+                  includeLabels: false
                 })
               ]
             },

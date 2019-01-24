@@ -100,10 +100,10 @@ Here is an example of how you can render your own controls in the `PropertyField
   id: "customFieldId",
   title: "Custom Field",
   type: CustomCollectionFieldType.custom,
-  onCustomRender: (field, value, onUpdate) => {
+  onCustomRender: (field, value, onUpdate, item, itemId) => {
     return (
       React.createElement("div", null,
-        React.createElement("input", { value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => onUpdate(field.id, event.currentTarget.value) }), " 🎉"
+        React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => onUpdate(field.id, event.currentTarget.value) }), " 🎉"
       )
     );
   }
@@ -115,7 +115,7 @@ Here is an example of how you can render your own controls in the `PropertyField
 The `PropertyFieldCollectionData` control can be configured with the following properties:
 
 | Property | Type | Required | Description | Default Value |
-| ---- | ---- | ---- | ---- |
+| ---- | ---- | ---- | ---- | ---- |
 | key | string | yes | An unique key that indicates the identity of this control. | |
 | label | string | yes | Property field label displayed on top. | |
 | panelHeader | string | yes | Label to be used as the header in the panel. | |
@@ -125,6 +125,8 @@ The `PropertyFieldCollectionData` control can be configured with the following p
 | value | string | yes | The collection data value. | |
 | enableSorting | boolean | no | Specify if you want to be able to sort the items in the collection. | false |
 | disabled | boolean | no | Specify if the control is disabled. | false |
+| disableItemCreation | boolean | no | Allows you to specify if user can create new items. | false |
+| disableItemDeletion | boolean | no | Allows you to specify if users can delete already inserted items. | false |
 
 Interface `ICustomCollectionField`
 
@@ -133,6 +135,7 @@ Interface `ICustomCollectionField`
 | id | string | yes | ID of the field. |
 | title | string | yes | Title of the field. This will be used for the label in the table. |
 | type | CustomCollectionFieldType | yes | Specifies the type of field to render. |
+| disableEdit | boolean | no | Allows you to specify if a field is disabled for editing. |
 | required | boolean | no | Specify if the field is required. |
 | options | [IDropdownOption[]](https://developer.microsoft.com/en-us/fabric#/components/dropdown) | no | Dropdown options. Only necessary when dropdown type is used. |
 | onRenderOption | IRenderFunction<ISelectableOption> | no | Dropdown custom options render method. Only for the **dropdown** field type. |
@@ -140,7 +143,7 @@ Interface `ICustomCollectionField`
 | defaultValue | any | no | Specify a default value for the input field. |
 | deferredValidationTime | number | no | Field will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default: 200ms. |
 | onGetErrorMessage | (value: any, index: number, crntItem: any): string \| Promise<string> | no | The method is used to get the validation error message and determine whether the input value is valid or not. It provides you the current row index and the item you are currently editing. |
-| onCustomRender | (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void) => JSX.Element | no | This property is only required if you are using the `custom` field type and it can be used to specify the custom rendering of your control in the collection data. |
+| onCustomRender | (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void, item: any, itemUniqueId: string) => JSX.Element | no | This property is only required if you are using the `custom` field type and it can be used to specify the custom rendering of your control in the collection data. |
 
 Enum `CustomCollectionFieldType`
 

@@ -1,5 +1,33 @@
 # Releases
 
+## 1.14.0
+
+### New control(s)
+
+- `PropertyFieldEnterpriseTermPicker`: New control to load term sets by using `@pnp/pnpjs` [#70](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/70) [#120](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/120)
+
+### Enhancements
+
+- `PropertyFieldCollectionData`: Setting to specify if item `creation` is enabled/disabled [#130](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/130)
+- `PropertyFieldCollectionData`: Setting to specify if item `deletion` is enabled/disabled [#131](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/131)
+- `PropertyFieldCollectionData`: Implemented a property to specify if field `editing` is enabled/disabled [#132](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/132)
+- Added `Chinese` localization [#137](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/137)
+- `PropertyFieldColorPicker`: Added a `isHidden` property [#138](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/138)
+- `PropertyFieldCollectionData`: return the item in the custom renderer [#147](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/147)
+- Added `Russian` localization [#142](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/142)
+
+### Fixes
+
+- `PropertyFieldTermPicker`: fix sort order with lowercased terms [#133](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/133)
+- `PropertyFieldCollectionData`: Bug with onCustomRender() [#135](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/135)
+- `PropertyFieldCollectionData`: Fixed bug with dropdown rendering in IE [#136](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/136)
+- `PropertyFieldNumber`: Min/max number check fix + localization label fixes [#141](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/141)
+- `PropertyFieldTermPicker`: Fix layout issues in IE11 [#143](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/143)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Simon-Pierre Plante](https://github.com/spplante), [Yannick Plenevaux](https://github.com/ypcode), [Alex Terentiev](https://github.com/AJIXuMuK), [Roger Zhang](https://github.com/RogerZhang-CatapultSystems).
+
 ## 1.13.1
 
 ### Fixes
@@ -12,8 +40,8 @@
 
 - Updated the `office-ui-fabric-react` to the same version as in SPFx 1.7.0 [#105](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/105)
 - `PropertyFieldPeoplePicker`: Ability to select only from a specific site [#9](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/9)
-- `PropertyFieldCodeEditor`: Added support for custom field rendering [#122](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/122)
-- `PropertyFieldCodeEditor`: Added the functionality to sort the items in the collection [#123](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/123)
+- `PropertyFieldCollectionData`: Added support for custom field rendering [#122](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/122)
+- `PropertyFieldCollectionData`: Added the functionality to sort the items in the collection [#123](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/123)
 
 ### Fixes
 

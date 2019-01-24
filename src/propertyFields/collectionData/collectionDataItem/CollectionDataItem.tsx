@@ -12,6 +12,7 @@ import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/components/
 import { CollectionIconField } from '../collectionIconField';
 import { clone, findIndex, sortBy } from '@microsoft/sp-lodash-subset';
 import { CollectionNumberField } from '../collectionNumberField';
+import { Guid } from '@microsoft/sp-core-library';
 
 export class CollectionDataItem extends React.Component<ICollectionDataItemProps, ICollectionDataItemState> {
   private emptyItem: any = null;
@@ -22,14 +23,10 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
     super(props);
 
     // Create an empty item with all properties
-    this.emptyItem = {};
-    for (const field of this.props.fields) {
-      // Assign default value or null to the emptyItem
-      this.emptyItem[field.id] = field.defaultValue || null;
-    }
+    let emptyItem = this.generateEmptyItem();
 
     this.state = {
-      crntItem: clone(this.props.item) || {...this.emptyItem},
+      crntItem: clone(this.props.item) || {...emptyItem},
       errorMsgs: [],
       showCallout: false
     };
@@ -150,8 +147,9 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
           this.checkAllFieldsAreValid()) {
         this.props.fAddItem(crntItem);
         // Clear all field values
+        let emptyItem = this.generateEmptyItem();
         this.setState({
-          crntItem: {...this.emptyItem}
+          crntItem: {...emptyItem}
         });
       }
     }
@@ -328,36 +326,41 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * @param item
    */
   private renderField(field: ICustomCollectionField, item: any) {
+    const disableFieldOnEdit: boolean = field.disableEdit && !!this.props.fUpdateItem;
+
     switch(field.type) {
       case CustomCollectionFieldType.boolean:
         return <Checkbox checked={item[field.id] ? item[field.id] : false}
-                         onChange={(ev, value) => this.onValueChanged(field.id, value)} />;
+                         onChange={(ev, value) => this.onValueChanged(field.id, value)}
+                         disabled={disableFieldOnEdit} />;
       case CustomCollectionFieldType.dropdown:
         return <Dropdown placeHolder={field.placeholder || field.title}
                          options={field.options}
                          selectedKey={item[field.id] || null}
                          required={field.required}
+                         disabled={disableFieldOnEdit}
                          onChanged={(opt) => this.onValueChanged(field.id, opt.key)}
                          onRenderOption={field.onRenderOption} />;
       case CustomCollectionFieldType.number:
         return (
-          <CollectionNumberField field={field} item={item} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
+          <CollectionNumberField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
         );
       case CustomCollectionFieldType.fabricIcon:
         return (
-          <CollectionIconField field={field} item={item} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
+          <CollectionIconField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
         );
       case CustomCollectionFieldType.url:
         return <TextField placeholder={field.placeholder || field.title}
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
+                          disabled={disableFieldOnEdit}
                           className={styles.collectionDataField}
                           onChanged={(value) => this.onValueChanged(field.id, value)}
                           deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
                           onGetErrorMessage={async (value: string) => this.urlFieldValidation(field, value, item)} />;
       case CustomCollectionFieldType.custom:
           if (field.onCustomRender) {
-            return field.onCustomRender(field, item[field.id], this.onValueChanged);
+            return field.onCustomRender(field, item[field.id], this.onValueChanged, item, item.uniqueId);
           }
           return null;
       case CustomCollectionFieldType.string:
@@ -366,6 +369,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           className={styles.collectionDataField}
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
+                          disabled={disableFieldOnEdit}
                           onChanged={(value) => this.onValueChanged(field.id, value)}
                           deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
                           onGetErrorMessage={async (value: string) => await this.fieldValidation(field, value)} />;
@@ -385,6 +389,21 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
       });
     }
     return opts;
+  }
+
+   /**
+   * Creates an empty item with a unique id
+   */
+  private generateEmptyItem(): any {
+    // Create an empty item with all properties
+    let emptyItem:any = {};
+    emptyItem.uniqueId = Guid.newGuid().toString();
+
+    for (const field of this.props.fields) {
+      // Assign default value or null to the emptyItem
+      emptyItem[field.id] = field.defaultValue || null;
+    }
+    return emptyItem;
   }
 
   /**
@@ -455,7 +474,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
         {
           /* Check add or delete action */
           this.props.index !== null ? (
-            <Link title={strings.CollectionDeleteRowButtonLabel} disabled={!this.props.fDeleteItem} onClick={this.deleteRow}>
+            <Link title={strings.CollectionDeleteRowButtonLabel} disabled={!this.props.fDeleteItem || this.props.disableItemDeletion} onClick={this.deleteRow}>
               <Icon iconName="Clear" />
             </Link>
           ) : (

@@ -16,6 +16,10 @@ export interface ICustomCollectionField {
    */
   type: CustomCollectionFieldType;
   /**
+   * Allows you to specify if a field is disabled for editing
+   */
+  disableEdit?: boolean;
+  /**
    * Specify if the field is required.
    */
   required?: boolean;
@@ -51,7 +55,7 @@ export interface ICustomCollectionField {
   /**
    * Custom field rendering support
    */
-  onCustomRender?: (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void) => JSX.Element;
+  onCustomRender?: (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void, item: any, rowUniqueId: string) => JSX.Element;
 }
 
 export enum CustomCollectionFieldType {

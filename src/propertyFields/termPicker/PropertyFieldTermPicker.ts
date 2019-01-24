@@ -8,11 +8,15 @@ import {
 import PropertyFieldTermPickerHost from './PropertyFieldTermPickerHost';
 import { IPropertyFieldTermPickerHostProps } from './IPropertyFieldTermPickerHost';
 import { IPropertyFieldTermPickerPropsInternal, IPropertyFieldTermPickerProps, IPickerTerms } from './IPropertyFieldTermPicker';
+import { ISPTermStorePickerService } from '../../services/ISPTermStorePickerService';
+import SPTermStorePickerService from '../../services/SPTermStorePickerService';
 
 /**
- * Represents a PropertyFieldTermPicker object
+ * Represents a PropertyFieldTermPicker object.
+ * NOTE: INTERNAL USE ONLY
+ * @internal
  */
-class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFieldTermPickerPropsInternal> {
+export class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFieldTermPickerPropsInternal> {
   // Properties defined by IPropertyPaneField
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public targetProperty: string;
@@ -30,6 +34,7 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private hideTermStoreName: boolean;
   private isTermSetSelectable: boolean;
   private disabledTermIds: string[];
+  private termService: ISPTermStorePickerService;
 
   public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { }
   private customProperties: any;
@@ -59,6 +64,7 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.hideTermStoreName = _properties.hideTermStoreName;
     this.isTermSetSelectable = _properties.isTermSetSelectable;
     this.disabledTermIds = _properties.disabledTermIds;
+    this.termService = _properties.termService;
 
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
@@ -103,7 +109,8 @@ class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPropertyFiel
       key: this.key,
       disabled: this.disabled,
       onGetErrorMessage: this.onGetErrorMessage,
-      deferredValidationTime: this.deferredValidationTime
+      deferredValidationTime: this.deferredValidationTime,
+      termService: this.termService
     });
 
     // Calls the REACT content generator
@@ -131,6 +138,7 @@ export function PropertyFieldTermPicker(targetProperty: string, properties: IPro
     ...properties,
     targetProperty: targetProperty,
     onRender: null,
-    onDispose: null
+    onDispose: null,
+    termService: new SPTermStorePickerService(properties, properties.context)
   });
 }

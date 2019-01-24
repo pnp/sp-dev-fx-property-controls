@@ -1,4 +1,5 @@
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { ISPTermStorePickerService } from '../../services/ISPTermStorePickerService';
 
 
 
@@ -11,6 +12,8 @@ export interface IPickerTerm  {
   path: string;
   termSet: string;
   termSetName? : string;
+  labels?: string[];
+  termGroup: string;
 }
 
 export interface IPickerTerms extends Array<IPickerTerm> { }
@@ -146,6 +149,20 @@ export interface IPropertyFieldTermPickerProps {
    * Specify which terms should be disabled in the term set so that they cannot be selected
    */
   disabledTermIds?: string[];
+
+  /**
+   * The delay time in ms before resolving suggestions, which is kicked off when input has been changed. e.g. if a second input change happens within the resolveDelay time, the timer will start over. 
+   * Only until after the timer completes will onResolveSuggestions be called.
+   * Default is 500
+   */
+  resolveDelay?: number;
+}
+
+export interface IPropertyFieldEnterpriseTermPickerProps extends IPropertyFieldTermPickerProps {
+  /**
+   * Specifies if term labels should be loaded from the store
+   */
+  includeLabels?: boolean;
 }
 
 /**
@@ -155,6 +172,20 @@ export interface IPropertyFieldTermPickerProps {
  * the PropertyFieldTermPicker.
  */
 export interface IPropertyFieldTermPickerPropsInternal extends IPropertyFieldTermPickerProps {
+  termService: ISPTermStorePickerService;
+  targetProperty: string;
+  onRender(elem: HTMLElement): void;
+  onDispose(elem: HTMLElement): void;
+}
+
+/**
+ * Private properties of the EnterpriseFieldTermPicker custom field.
+ * We separate public & private properties to include onRender & onDispose method waited
+ * by the PropertyFieldCustom, witout asking to the developer to add it when he's using
+ * the PropertyFieldTermPicker.
+ */
+export interface IPropertyFieldEnterpriseTermPickerPropsInternal extends IPropertyFieldEnterpriseTermPickerProps {
+  termService: ISPTermStorePickerService;
   targetProperty: string;
   onRender(elem: HTMLElement): void;
   onDispose(elem: HTMLElement): void;

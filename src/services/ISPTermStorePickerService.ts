@@ -1,3 +1,5 @@
+import { IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
+
 /**
  * Interfaces for Term store, groups and term sets
  */
@@ -7,6 +9,14 @@ export interface ITermStore {
   Id: string;
   Name: string;
   Groups: IGroups;
+}
+
+/**
+ * Interface to store backward connection between Group and Term store
+ */
+export interface ITermStoreMinimal {
+  Id: string;
+  Name: string;
 }
 
 export interface IGroups {
@@ -21,6 +31,7 @@ export interface IGroup {
   Id: string;
   Name: string;
   IsSystemGroup: boolean;
+  TermStore?: ITermStoreMinimal;
 }
 
 export interface ITermSets {
@@ -35,6 +46,11 @@ export interface ITermSet {
   Name: string;
   Description: string;
   Names: ITermSetNames;
+  /**
+   * This prop is internal. It is not returned from SP Service.
+   * We need that to store Group Id.
+   */
+  Group?: string;
 }
 
 export interface ITermSetMinimal {
@@ -71,6 +87,7 @@ export interface ITerm {
   PathOfTerm: string;
   TermSet: ITermSetMinimal;
   PathDepth?: number;
+  Labels?: string[];
 }
 
 /**
@@ -80,4 +97,80 @@ export interface ISPTermStorePickerServiceProps {
   limitByGroupNameOrID?: string;
   limitByTermsetNameOrID?: string;
   excludeSystemGroup?: boolean;
+}
+
+/**
+ * Properties for the Enterprise Term Store Picker Service
+ */
+export interface IPnPTermStorePickerServiceProps extends ISPTermStorePickerServiceProps {
+  /**
+   * Specifies if term labels should be loaded from the store
+   */
+  includeLabels?: boolean;
+}
+
+/**
+ * Interface to be implemented by Term Store Picker Services
+ */
+export interface ISPTermStorePickerService {
+  /**
+   * Searches terms by provided text
+   */
+  searchTermsByName: (searchText: string) => Promise<IPickerTerm[]>;
+  /**
+   * Gets term sets from the stores
+   */
+  getTermSets: () => Promise<ITermSet[]>;
+  /**
+   * Get term sets from the specified group
+   */
+  getGroupTermSets: (group: IGroup) => Promise<ITermSets>;
+  /**
+   * Gets all terms from the specified term set
+   */
+  getAllTerms: (termSet: ITermSet) => Promise<ITerm[]>;
+  /**
+   * Gets term stores from the taxonomy service
+   */
+  getTermStores: () => Promise<ITermStore[]>;
+}
+
+/**
+ * Helper class with some methods that can be used in any Term Store Picker Service implementation
+ */
+export class TermStorePickerServiceHelper {
+  /**
+   * Cleans the Guid from the Web Service response
+   * @param guid
+   */
+  public static cleanGuid(guid: string): string {
+    if (guid !== undefined) {
+      return guid.replace('/Guid(', '').replace('/', '').replace(')', '');
+    } else {
+      return '';
+    }
+  }
+
+  /**
+   * Checks if the provided string is a GUID
+   * @param strGuid string to check
+   */
+  public static isGuid(strGuid: string): boolean {
+    return /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(strGuid);
+  }
+
+    /**
+   * Sort the terms by their path
+   * @param a term 2
+   * @param b term 2
+   */
+  public static sortTerms(a: ITerm, b: ITerm) {
+    if (a.PathOfTerm < b.PathOfTerm) {
+      return -1;
+    }
+    if (a.PathOfTerm > b.PathOfTerm) {
+      return 1;
+    }
+    return 0;
+  }
 }

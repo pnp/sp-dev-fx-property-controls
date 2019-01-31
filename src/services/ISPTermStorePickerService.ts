@@ -1,4 +1,5 @@
 import { IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
+import { findIndex } from '@microsoft/sp-lodash-subset';
 
 /**
  * Interfaces for Term store, groups and term sets
@@ -159,12 +160,56 @@ export class TermStorePickerServiceHelper {
     return /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(strGuid);
   }
 
-    /**
+  /**
+   * Sorting terms based on their path and depth
+   *
+   * @param terms
+   */
+  public static sortTerms(terms: ITerm[]) {
+    // Start sorting by depth
+    let newTermsOrder: ITerm[] = [];
+    let itemsToSort = true;
+    let pathLevel = 1;
+    while (itemsToSort) {
+      // Get terms for the current level
+      let crntTerms = terms.filter(term => term.PathDepth === pathLevel);
+      if (crntTerms && crntTerms.length > 0) {
+        crntTerms = crntTerms.sort(this.sortTermByPath);
+
+        if (pathLevel !== 1) {
+          crntTerms = crntTerms.reverse();
+          for (const crntTerm of crntTerms) {
+            const pathElms = crntTerm.PathOfTerm.split(";");
+            // Last item is not needed for parent path
+            pathElms.pop();
+            // Find the parent item and add the new item
+            const idx = findIndex(newTermsOrder, term => term.PathOfTerm === pathElms.join(";"));
+            if (idx !== -1) {
+              newTermsOrder.splice(idx + 1, 0, crntTerm);
+            } else {
+              // Push the item at the end if the parent couldn't be found
+              newTermsOrder.push(crntTerm);
+            }
+          }
+        } else {
+          newTermsOrder = crntTerms;
+        }
+
+        ++pathLevel;
+      } else {
+        itemsToSort = false;
+      }
+    }
+    return newTermsOrder;
+  }
+
+  /**
    * Sort the terms by their path
+   *
    * @param a term 2
    * @param b term 2
    */
-  public static sortTerms(a: ITerm, b: ITerm) {
+  private static sortTermByPath(a: ITerm, b: ITerm) {
     if (a.PathOfTerm < b.PathOfTerm) {
       return -1;
     }

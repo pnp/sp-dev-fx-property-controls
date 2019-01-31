@@ -286,7 +286,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   //limitByGroupNameOrID: 'Test',
-                  //limitByTermsetNameOrID: 'ad54531f-506e-4cc6-af4f-71157f6f3280',
+                  limitByTermsetNameOrID: '7276c08b-58c1-4fcd-812e-f21299a06b85',
                   isTermSetSelectable: true,
                   key: 'termSetsPickerFieldId',
                   hideTermStoreName: true

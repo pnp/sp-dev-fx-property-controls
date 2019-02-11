@@ -194,8 +194,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
         }
         await this._ensureTermStores();
         const pnpTermStores = this._pnpTermStores;
-        for (let i = 0, len = pnpTermStores.length; i < len; i++) {
-            const pnpTermStore = pnpTermStores[i];
+        for (const pnpTermStore of pnpTermStores) {
             const termsResult: any = await this._tryGetAllTerms(pnpTermStore, termSet).catch((error) => { }); // .catch part is needed to proceed if there was a rejected promise
             if (!termsResult) { // terms variable will be undefined if the Promise has been rejected. Otherwise it will contain an array
                 continue;
@@ -226,7 +225,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                 await labelsBatch.execute();
             }
 
-            return resultTerms;
+            return TermStorePickerServiceHelper.sortTerms(resultTerms);
         }
 
     }
@@ -397,12 +396,12 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
                 pnpTerm.termSet.group.inBatch(batch).usingCaching().get().then(pnpTermGroup => {
                      pickerTerm.termGroup = TermStorePickerServiceHelper.cleanGuid(pnpTermGroup.Id);
                  });
- 
+
                  pnpTerm.termSet.inBatch(batch).usingCaching().get().then(pnpTermSet => {
                      pickerTerm.termSet = TermStorePickerServiceHelper.cleanGuid(pnpTermSet.Id);
                      pickerTerm.termSetName = pnpTermSet.Name;
                  });
- 
+
                  if (this.props.includeLabels) {
                      pnpTerm.labels.inBatch(batch).usingCaching().get().then(labels => {
                          pickerTerm.labels = labels.map(label => label.Value);

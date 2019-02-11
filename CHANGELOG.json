@@ -6,7 +6,8 @@
         "new": [],
         "enhancements": [],
         "fixes": [
-          "`TaxonomyPicker`: Terms are sorted incorrectly under the wrong parent [#153](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/153)"
+          "`TaxonomyPicker`: Terms are sorted incorrectly under the wrong parent [#153](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/153)",
+          "`EnterpriseTermPicker`: Terms are sorted incorrectly under the wrong parent [#156](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/156)"
         ]
       },
       "contributions": []

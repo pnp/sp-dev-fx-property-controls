@@ -13,7 +13,7 @@ This control allows you to specify a description, a 'read more' link, and an opt
 2. Import the following modules to your component: 
 
 ```TypeScript
-import { PropertyWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
+import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 ```
 
 3. Create a new property for your web part, for example:

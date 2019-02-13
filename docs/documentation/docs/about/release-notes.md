@@ -1,5 +1,12 @@
 # Releases
 
+## 1.14.1
+
+### Fixes
+
+- `TaxonomyPicker`: Terms are sorted incorrectly under the wrong parent [#153](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/153)
+- `EnterpriseTermPicker`: Terms are sorted incorrectly under the wrong parent [#156](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/156)
+
 ## 1.14.0
 
 ### New control(s)

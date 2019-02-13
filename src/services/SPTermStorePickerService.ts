@@ -172,8 +172,8 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
             });
             // Check if the term set was not empty
             if (terms.length > 0) {
-              // Sort the terms by PathOfTerm
-              return terms.sort(TermStorePickerServiceHelper.sortTerms);
+              // Sort the terms by PathOfTerm and their depth
+              return TermStorePickerServiceHelper.sortTerms(terms);
             }
           }
           return null;

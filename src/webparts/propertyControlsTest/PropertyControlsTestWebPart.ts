@@ -376,7 +376,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   properties: this.properties,
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
-                  key: 'dateTimeFieldId'
+                  key: 'dateTimeFieldId',
+                  showLabels: false
                 }),
                 PropertyPaneToggle("isColorFieldVisible", {
                   label: "Color Field Visible",

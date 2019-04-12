@@ -1,5 +1,11 @@
 # Releases
 
+## 1.15.0
+
+### Fixes
+
+- `PropertyFieldNumber`: not handling changes correctly [#170](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/170)
+
 ## 1.14.1
 
 ### Fixes

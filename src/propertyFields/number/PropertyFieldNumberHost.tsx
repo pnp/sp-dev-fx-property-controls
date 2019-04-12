@@ -25,6 +25,20 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
   }
 
   /**
+   * componentDidUpdate lifecycle hook
+   *
+   * @param prevProps
+   * @param prevState
+   */
+  public componentDidUpdate(prevProps: IPropertyFieldNumberHostProps, prevState: IPropertyFieldNumberHostState): void {
+    if (prevProps.value !== this.props.value) {
+      this.setState({
+        value: this.props.value ? this.props.value.toString() : null
+      });
+    }
+  }
+
+  /**
    * Validate if field value is a number
    * @param value
    */

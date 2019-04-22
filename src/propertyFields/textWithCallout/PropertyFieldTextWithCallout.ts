@@ -2,9 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
     IPropertyPaneField,
-    PropertyPaneFieldType,
-    IPropertyPaneCustomFieldProps,
-    IPropertyPaneTextFieldProps
+    PropertyPaneFieldType
 } from '@microsoft/sp-webpart-base';
 
 import PropertyFieldTextWithCalloutHost from './PropertyFieldTextWithCalloutHost';
@@ -32,7 +30,7 @@ class PropertyFieldTextWithCalloutBuilder implements IPropertyPaneField<IPropert
 
         const element = React.createElement(PropertyFieldTextWithCalloutHost, {
             ...props,
-            onChanged: this._onChanged.bind(this)
+            onNotifyValidationResult: this._onValidated.bind(this)
         });
 
         ReactDOM.render(element, elem);
@@ -46,9 +44,9 @@ class PropertyFieldTextWithCalloutBuilder implements IPropertyPaneField<IPropert
         ReactDOM.unmountComponentAtNode(elem);
     }
 
-    private _onChanged(checked: boolean): void {
-        if (this._onChangeCallback) {
-            this._onChangeCallback(this.targetProperty, checked);
+    private _onValidated(errorMessage: string, value: string | undefined): void {
+        if (!errorMessage && this._onChangeCallback) {
+            this._onChangeCallback(this.targetProperty, value);
         }
     }
 }

@@ -94,6 +94,10 @@ export interface IPropertyFieldListPickerProps {
    * Default value is 200.
    */
   deferredValidationTime?: number;
+  /**
+   * Define list Titles which should be excluded from the list picker control
+   */
+  listsToExclude?: string[];
 }
 
 /**
@@ -120,4 +124,5 @@ export interface IPropertyFieldListPickerPropsInternal extends IPropertyFieldLis
   disabled?: boolean;
   onGetErrorMessage?: (value: string | string[]) => string | Promise<string>;
   deferredValidationTime?: number;
+  listsToExclude?: string[];
 }

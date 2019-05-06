@@ -34,6 +34,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private selectAllInList: boolean;
   private selectAllInListLabel: string;
   private includeHidden: boolean;
+  private listsToExclude: string[];
 
   public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { }
   private customProperties: any;
@@ -69,6 +70,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.customProperties = _properties.properties;
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
+    this.listsToExclude = _properties.listsToExclude;
 
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;

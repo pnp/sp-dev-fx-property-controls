@@ -95,7 +95,7 @@ export interface IPropertyFieldListPickerProps {
    */
   deferredValidationTime?: number;
   /**
-   * Define list Titles which should be excluded from the list picker control
+   * Defines list titles which should be excluded from the list picker control
    */
   listsToExclude?: string[];
 }

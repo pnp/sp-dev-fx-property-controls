@@ -61,7 +61,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   private loadLists(): void {
     // Builds the SharePoint List service
     const listService: SPListPickerService = new SPListPickerService(this.props, this.props.context);
-    const listsToExclude: string[] = this.props.listsToExclude ? this.props.listsToExclude : [];
+    const listsToExclude: string[] = this.props.listsToExclude || [];
 
     this.options = [];
     // Gets the libs
@@ -80,7 +80,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
         }
 
         // Add the option to the list if not inside the 'listsToExclude' array
-        if(listsToExclude.indexOf(list.Title) === -1){
+        if (listsToExclude.indexOf(list.Title) === -1 && listsToExclude.indexOf(list.Id) === -1) {
           this.options.push({
             key: list.Id,
             text: list.Title,

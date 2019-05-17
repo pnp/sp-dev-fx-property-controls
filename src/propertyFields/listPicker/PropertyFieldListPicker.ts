@@ -101,7 +101,8 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
       key: this.key,
       disabled: this.disabled,
       onGetErrorMessage: this.onGetErrorMessage,
-      deferredValidationTime: this.deferredValidationTime
+      deferredValidationTime: this.deferredValidationTime,
+      listsToExclude: this.listsToExclude
     };
 
     // Check if the multi or single select component has to get loaded
@@ -161,7 +162,8 @@ export function PropertyFieldListPicker(targetProperty: string, properties: IPro
     key: properties.key,
     disabled: properties.disabled,
     onGetErrorMessage: properties.onGetErrorMessage,
-    deferredValidationTime: properties.deferredValidationTime
+    deferredValidationTime: properties.deferredValidationTime,
+    listsToExclude: properties.listsToExclude
   };
   //Calls the PropertyFieldListPicker builder object
   //This object will simulate a PropertyFieldCustom to manage his rendering process

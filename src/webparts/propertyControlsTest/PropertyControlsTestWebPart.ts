@@ -345,7 +345,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   },
                   deferredValidationTime: 0,
                   key: 'listPickerFieldId',
-                  webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl
+                  webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
+                  listsToExclude: ["cdn"]
                 }),
                 PropertyFieldListPicker('multiList', {
                   label: 'Select multiple lists',
@@ -364,7 +365,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   key: 'multiListPickerFieldId',
-                  webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl
+                  webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
+                  listsToExclude: ["cdn"]
                 }),
                 PropertyFieldDateTimePicker('datetime', {
                   label: 'Select the date and time',

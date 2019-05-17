@@ -75,6 +75,11 @@ class DatePickerStrings implements IDatePickerStrings {
  * Renders the controls for PropertyFieldDateTimePicker component
  */
 export default class PropertyFieldDateTimePickerHost extends React.Component<IPropertyFieldDateTimePickerHostProps, IPropertyFieldDateTimePickerHostState> {
+
+  public static defaultProps = {
+    showLabels: true
+  };
+
   private _latestValidateValue: string;
   private async: Async;
   private delayedValidate: (value: IDateTimeFieldValue) => void;
@@ -282,58 +287,67 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
     // Defines the DatePicker control labels
     const dateStrings: DatePickerStrings = new DatePickerStrings();
 
+    const {
+      showLabels,
+      disabled,
+      timeConvention,
+      dateConvention,
+      label
+    } = this.props;
+
     // Check if the time element needs to be rendered
     let timeElm: JSX.Element = <tr />;
-    if (this.props.dateConvention === DateConvention.DateTime) {
-      timeElm = (<tr>
-        <td className={styles.labelCell}>
-          <Label className={styles.fieldLabel}>{strings.DateTimePickerTime}</Label>
-        </td>
-        <td>
-          <table cellPadding='0' cellSpacing='0'>
-            <tbody>
-              <tr>
-                <td>
-                  <HoursComponent
-                    disabled={this.props.disabled}
-                    timeConvention={this.props.timeConvention}
-                    value={this.state.hours}
-                    onChange={this._dropdownHoursChanged} />
-                </td>
-                <td className={styles.seperator}><Label>:</Label></td>
-                <td>
-                  <MinutesComponent
-                    disabled={this.props.disabled}
-                    value={this.state.minutes}
-                    onChange={this._dropdownMinutesChanged} />
-                </td>
-                <td className={styles.seperator}><Label>:</Label></td>
-                <td>
-                  <SecondsComponent
-                    disabled={this.props.disabled}
-                    value={this.state.seconds}
-                    onChange={this._dropdownSecondsChanged} />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>);
+    if (dateConvention === DateConvention.DateTime) {
+      timeElm = (
+        <tr>
+          {showLabels && <td className={styles.labelCell}>
+            <Label className={styles.fieldLabel}>{strings.DateTimePickerTime}</Label>
+          </td>}
+          <td>
+            <table cellPadding='0' cellSpacing='0'>
+              <tbody>
+                <tr>
+                  <td>
+                    <HoursComponent
+                      disabled={disabled}
+                      timeConvention={timeConvention}
+                      value={this.state.hours}
+                      onChange={this._dropdownHoursChanged} />
+                  </td>
+                  <td className={styles.seperator}><Label>:</Label></td>
+                  <td>
+                    <MinutesComponent
+                      disabled={disabled}
+                      value={this.state.minutes}
+                      onChange={this._dropdownMinutesChanged} />
+                  </td>
+                  <td className={styles.seperator}><Label>:</Label></td>
+                  <td>
+                    <SecondsComponent
+                      disabled={disabled}
+                      value={this.state.seconds}
+                      onChange={this._dropdownSecondsChanged} />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>);
     }
 
     // Renders content
     return (
       <div className={styles.propertyFieldDateTimePicker}>
-        {this.props.label && <Label>{this.props.label}</Label>}
+        {label && <Label>{label}</Label>}
         <table cellPadding='0' cellSpacing='0'>
           <tbody>
             <tr>
-              <td className={styles.labelCell}>
+              {showLabels && <td className={styles.labelCell}>
                 <Label className={styles.fieldLabel}>{strings.DateTimePickerDate}</Label>
-              </td>
+              </td>}
               <td>
                 <DatePicker
-                  disabled={this.props.disabled}
+                  disabled={disabled}
                   value={this.state.day}
                   strings={dateStrings}
                   isMonthPickerVisible={true}
@@ -342,7 +356,10 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
                   firstDayOfWeek={this.props.firstDayOfWeek} />
               </td>
             </tr>
-
+            {!!timeElm &&
+              <tr>
+                <td className={styles.spacerRow} colSpan={showLabels ? 2 : 1}></td>
+              </tr>}
             {timeElm}
           </tbody>
         </table>

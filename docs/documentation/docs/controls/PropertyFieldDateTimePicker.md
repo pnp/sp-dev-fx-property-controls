@@ -48,7 +48,8 @@ PropertyFieldDateTimePicker('datetime', {
   properties: this.properties,
   onGetErrorMessage: null,
   deferredValidationTime: 0,
-  key: 'dateTimeFieldId'
+  key: 'dateTimeFieldId',
+  showLabels: false
 })
 ```
 
@@ -69,6 +70,7 @@ The `PropertyFieldDateTimePicker` control can be configured with the following p
 | key | string | yes | An unique key that indicates the identity of this control. |
 | onGetErrorMessage | function | no | The method is used to get the validation error message and determine whether the input value is valid or not. See [this documentation](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/validate-web-part-property-values) to learn how to use it. |
 | deferredValidationTime | number | no | Control will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default value is 200. |
+| showLabels | boolean | no | Specify if labels in front of Date and Time parts should be rendered. By default this is set to `true` |
 
 Interface `IDateTimeFieldValue`
 

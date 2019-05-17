@@ -32,6 +32,7 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
   private key: string;
   private onGetErrorMessage: (value: string) => string | Promise<string>;
   private deferredValidationTime: number = 200;
+  private showLabels: boolean = true;
 
   /**
    * Constructor
@@ -75,6 +76,8 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
     } else {
       this.firstDayOfWeek = DayOfWeek.Sunday;
     }
+
+    this.showLabels = _properties.showLabels;
   }
 
   /**
@@ -98,7 +101,8 @@ class PropertyFieldDateTimePickerBuilder implements IPropertyPaneField<IProperty
       properties: this.customProperties,
       key: this.key,
       onGetErrorMessage: this.onGetErrorMessage,
-      deferredValidationTime: this.deferredValidationTime
+      deferredValidationTime: this.deferredValidationTime,
+      showLabels: this.showLabels
     });
     // Calls the REACT content generator
     ReactDom.render(element, elem);

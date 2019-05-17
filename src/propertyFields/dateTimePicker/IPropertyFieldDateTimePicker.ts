@@ -105,6 +105,11 @@ export interface IPropertyFieldDateTimePickerProps {
    * Default value is 200.
    */
   deferredValidationTime?: number;
+
+  /**
+   * Specify if labels in front of date and time parts should be rendered. True by default
+   */
+  showLabels?: boolean;
 }
 
 /**

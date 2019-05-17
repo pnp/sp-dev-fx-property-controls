@@ -7,6 +7,7 @@
         "enhancements": [],
         "fixes": [
           "Callout icons missing with SPFx `1.8.2` web part [#178](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/178)",
+          "`PropertyFieldTextWithCallout`: still persists property value when error occurred [#172](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/172)",
           "`PropertyFieldNumber`: not handling changes correctly [#170](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/170)"
         ]
       },

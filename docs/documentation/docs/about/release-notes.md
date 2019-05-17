@@ -2,6 +2,10 @@
 
 ## 1.14.2
 
+### Enhancements
+
+- `PropertyFieldDateTimePicker`: Add ability to hide the date and time labels [#77](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/77)
+
 ### Fixes
 
 - Callout icons missing with SPFx `1.8.2` web part [#178](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/178)

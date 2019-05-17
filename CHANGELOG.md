@@ -4,7 +4,12 @@
 
 ### Fixes
 
+- Callout icons missing with SPFx `1.8.2` web part [#178](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/178)
 - `PropertyFieldNumber`: not handling changes correctly [#170](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/170)
+
+### Contributors
+
+Special thanks to our contributor: [Alex Terentiev](https://github.com/AJIXuMuK).
 
 ## 1.14.1
 

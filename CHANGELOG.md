@@ -1,9 +1,10 @@
 # Releases
 
-## 1.14.2
+## 1.15.0
 
 ### Enhancements
 
+- `PropertyFieldCollectionData`: add a property to be able to set a custom class on the collection data panel [#180](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/180)
 - `PropertyFieldDateTimePicker`: Add ability to hide the date and time labels [#77](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/77)
 
 ### Fixes

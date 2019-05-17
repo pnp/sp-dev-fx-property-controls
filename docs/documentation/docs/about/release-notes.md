@@ -4,7 +4,8 @@
 
 ### Enhancements
 
-- `PropertyFieldCollectionData`: add a property to be able to set a custom class on the collection data panel [#180](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/180)
+- `PropertyFieldCollectionData`: Add a property to be able to set a custom class on the collection data panel [#180](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/180)
+- `PropertyFieldListPicker`: Added `listsToExclude` property to the control [#176](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/176)
 - `PropertyFieldDateTimePicker`: Add ability to hide the date and time labels [#77](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/77)
 
 ### Fixes
@@ -17,7 +18,7 @@
 
 ### Contributors
 
-Special thanks to our contributor: [Alex Terentiev](https://github.com/AJIXuMuK).
+Special thanks to our contributors (in alphabetical order): [Alex Terentiev](https://github.com/AJIXuMuK), [Ward Wilmsen](https://github.com/WardWilmsen).
 
 ## 1.14.1
 

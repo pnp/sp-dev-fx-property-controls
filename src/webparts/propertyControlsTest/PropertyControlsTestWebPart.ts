@@ -475,15 +475,24 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   options: [{
                     key: 'iOS',
                     text: 'iOS',
-                    checked: this.properties.choiceGroupWithCalloutValue === 'iOS'
+                    checked: this.properties.choiceGroupWithCalloutValue === 'iOS',
+                    iconProps: {
+                      officeFabricIconFontName: 'CheckMark'
+                    }
                   }, {
                     key: 'Android',
                     text: 'Android',
-                    checked: this.properties.choiceGroupWithCalloutValue === 'Android'
+                    checked: this.properties.choiceGroupWithCalloutValue === 'Android',
+                    iconProps: {
+                      officeFabricIconFontName: 'CheckMark'
+                    }
                   }, {
                     key: 'Other',
                     text: 'Other',
-                    checked: this.properties.choiceGroupWithCalloutValue === 'Other'
+                    checked: this.properties.choiceGroupWithCalloutValue === 'Other',
+                    iconProps: {
+                      officeFabricIconFontName: 'CheckMark'
+                    }
                   }]
                 }),
                 PropertyFieldButtonWithCallout('fakeProperty', {

@@ -9,7 +9,7 @@ export class CollectionIconField extends React.Component<ICollectionIconFieldPro
   public render(): React.ReactElement<ICollectionIconFieldProps> {
     const { field, item } = this.props;
     return (
-      <div className={styles.iconField}>
+      <div className={`PropertyFieldCollectionData__panel__icon-field ${styles.iconField}`}>
         <TextField placeholder={field.placeholder || field.title}
                    className={styles.collectionDataField}
                    value={item[field.id] ? item[field.id] : ""}

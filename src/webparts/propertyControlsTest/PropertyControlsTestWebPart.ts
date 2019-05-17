@@ -160,6 +160,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   enableSorting: true,
                   disableItemDeletion: false,
                   disableItemCreation: false,
+                  panelClassName: "MyAwesomePanelClassName",
+                  tableClassName: "MyAwesomeTableClassName",
                   fields: [
                     {
                       id: "Title",

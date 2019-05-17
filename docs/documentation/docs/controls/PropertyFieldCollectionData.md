@@ -127,6 +127,8 @@ The `PropertyFieldCollectionData` control can be configured with the following p
 | disabled | boolean | no | Specify if the control is disabled. | false |
 | disableItemCreation | boolean | no | Allows you to specify if user can create new items. | false |
 | disableItemDeletion | boolean | no | Allows you to specify if users can delete already inserted items. | false |
+| panelClassName | string | no | Allows you to specify a custom CSS class name for the collection data panel. | |
+| tableClassName | string | no | Allows you to specify a custom CSS class name for the collection data table inside the panel. | |
 
 Interface `ICustomCollectionField`
 

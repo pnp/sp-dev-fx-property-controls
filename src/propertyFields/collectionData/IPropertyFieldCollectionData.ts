@@ -46,6 +46,14 @@ export interface IPropertyFieldCollectionDataProps {
    * Allows you to specify if users can delete already inserted items
    */
   disableItemDeletion?: boolean;
+  /**
+   * Allows you to specify a custom CSS class name for the collection data panel
+   */
+  panelClassName?: string;
+  /**
+   * Allows you to specify a custom CSS class name for the collection data table inside the panel
+   */
+  tableClassName?: string;
 }
 
 export interface IPropertyFieldCollectionDataPropsInternal extends IPropertyPaneCustomFieldProps, IPropertyFieldCollectionDataProps {}

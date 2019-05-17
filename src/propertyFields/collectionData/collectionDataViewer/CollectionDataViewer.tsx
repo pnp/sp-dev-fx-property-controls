@@ -198,20 +198,20 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
   public render(): React.ReactElement<ICollectionDataViewerProps> {
     return (
       <div>
-        <div className={styles.table}>
-          <div className={`${styles.tableRow} ${styles.tableHead}`}>
+        <div className={`PropertyFieldCollectionData__panel__table ${styles.table} ${this.props.tableClassName || ""}`}>
+          <div className={`PropertyFieldCollectionData__panel__table-head ${styles.tableRow} ${styles.tableHead}`}>
             {
               this.props.enableSorting && (
-                <span className={styles.tableCell}></span>
+                <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}></span>
               )
             }
             {
               this.props.fields.map(f => (
-                <span key={`dataviewer-${f.id}`} className={styles.tableCell}>{f.title} { f.required && <Icon className={styles.required} iconName="Asterisk" /> }</span>
+                <span key={`dataviewer-${f.id}`} className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}>{f.title} { f.required && <Icon className={styles.required} iconName="Asterisk" /> }</span>
               ))
             }
-            <span className={styles.tableCell}></span>
-            <span className={styles.tableCell}></span>
+            <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}></span>
+            <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}></span>
           </div>
           {
             (this.state.crntItems && this.state.crntItems.length > 0) && (
@@ -246,14 +246,14 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
 
         {
           (!this.state.crntItems || this.state.crntItems.length === 0) && (
-            <p className={styles.noCollectionData}>{strings.CollectionDataEmptyValue}</p>
+            <p className={`PropertyFieldCollectionData__panel__no-collection-data ${styles.noCollectionData}`}>{strings.CollectionDataEmptyValue}</p>
           )
         }
 
-        <div className={styles.panelActions}>
-          { this.state.inCreationItem && <PrimaryButton text={strings.CollectionSaveAndAddButtonLabel} onClick={this.addAndSave} disabled={!this.allItemsValid()} /> }
-          { !this.state.inCreationItem && <PrimaryButton text={strings.SaveButtonLabel} onClick={this.onSave} disabled={!this.allItemsValid()} /> }
-          <DefaultButton text={strings.CancelButtonLabel} onClick={this.onCancel} />
+        <div className={`PropertyFieldCollectionData__panel__actions ${styles.panelActions}`}>
+          { this.state.inCreationItem && <PrimaryButton text={strings.CollectionSaveAndAddButtonLabel} onClick={this.addAndSave} disabled={!this.allItemsValid()} className="PropertyFieldCollectionData__panel__action__add" /> }
+          { !this.state.inCreationItem && <PrimaryButton text={strings.SaveButtonLabel} onClick={this.onSave} disabled={!this.allItemsValid()} className="PropertyFieldCollectionData__panel__action__save" /> }
+          <DefaultButton text={strings.CancelButtonLabel} onClick={this.onCancel} className="PropertyFieldCollectionData__panel__action__cancel" />
         </div>
       </div>
     );

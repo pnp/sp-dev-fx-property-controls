@@ -77,7 +77,7 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
    */
   public render(): React.ReactElement<ICollectionNumberFieldProps> {
     return (
-      <div className={`${styles.numberField} ${this.state.errorMessage ? styles.invalidField : ""}`}>
+      <div className={`PropertyFieldCollectionData__panel__number-field ${styles.numberField} ${this.state.errorMessage ? styles.invalidField : ""}`}>
         <input type="number"
                role="spinbutton"
                placeholder={this.props.field.placeholder || this.props.field.title}

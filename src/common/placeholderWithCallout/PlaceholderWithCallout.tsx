@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/components/Callout';
 import { IPlaceholderWithCalloutProps, IPlaceholderWithCalloutState } from './IPlaceholderWithCallout';
 import { CalloutTriggers } from '../callout/Callout';
+import { getIconClassName } from 'office-ui-fabric-react/lib/Styling';
 
 import styles from './PlaceholderWithCallout.module.scss';
 
@@ -28,7 +29,7 @@ export default class PlaceholderWithCallout extends React.Component<IPlaceholder
                         {this.props.children}
                     </div>
                     <div className={styles.info}>
-                        <i className={'ms-Icon ms-Icon--Info'} ref={(infoIcon) => { this._infoIcon = infoIcon; }}
+                        <i className={getIconClassName('Info')} ref={(infoIcon) => { this._infoIcon = infoIcon; }}
                             onMouseOver={this.props.calloutTrigger === CalloutTriggers.Hover ? this._onInfoIconMouseOver.bind(this) : null}
                             onMouseOut={this.props.calloutTrigger === CalloutTriggers.Hover ? this._onInfoIconMouseOut.bind(this) : null}
                             onClick={this.props.calloutTrigger === CalloutTriggers.Click ? this._onInfoIconClick.bind(this) : null}></i>

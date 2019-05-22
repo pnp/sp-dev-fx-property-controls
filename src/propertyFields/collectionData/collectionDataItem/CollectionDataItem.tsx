@@ -332,7 +332,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
       case CustomCollectionFieldType.boolean:
         return <Checkbox checked={item[field.id] ? item[field.id] : false}
                          onChange={(ev, value) => this.onValueChanged(field.id, value)}
-                         disabled={disableFieldOnEdit} />;
+                         disabled={disableFieldOnEdit}
+                         className="PropertyFieldCollectionData__panel__boolean-field" />;
       case CustomCollectionFieldType.dropdown:
         return <Dropdown placeHolder={field.placeholder || field.title}
                          options={field.options}
@@ -340,7 +341,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                          required={field.required}
                          disabled={disableFieldOnEdit}
                          onChanged={(opt) => this.onValueChanged(field.id, opt.key)}
-                         onRenderOption={field.onRenderOption} />;
+                         onRenderOption={field.onRenderOption}
+                         className="PropertyFieldCollectionData__panel__dropdown-field" />;
       case CustomCollectionFieldType.number:
         return (
           <CollectionNumberField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
@@ -357,7 +359,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           className={styles.collectionDataField}
                           onChanged={(value) => this.onValueChanged(field.id, value)}
                           deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
-                          onGetErrorMessage={async (value: string) => this.urlFieldValidation(field, value, item)} />;
+                          onGetErrorMessage={async (value: string) => this.urlFieldValidation(field, value, item)}
+                          inputClassName="PropertyFieldCollectionData__panel__url-field" />;
       case CustomCollectionFieldType.custom:
           if (field.onCustomRender) {
             return field.onCustomRender(field, item[field.id], this.onValueChanged, item, item.uniqueId);
@@ -372,7 +375,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           disabled={disableFieldOnEdit}
                           onChanged={(value) => this.onValueChanged(field.id, value)}
                           deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
-                          onGetErrorMessage={async (value: string) => await this.fieldValidation(field, value)} />;
+                          onGetErrorMessage={async (value: string) => await this.fieldValidation(field, value)}
+                          inputClassName="PropertyFieldCollectionData__panel__string-field" />;
     }
   }
 
@@ -414,10 +418,10 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
     const opts = this.getSortingOptions();
 
     return (
-      <div className={`${styles.tableRow} ${this.props.index === null ? styles.tableFooter : ""}`}>
+      <div className={`PropertyFieldCollectionData__panel__table-row ${styles.tableRow} ${this.props.index === null ? styles.tableFooter : ""}`}>
         {
           (this.props.sortingEnabled && this.props.totalItems) && (
-            <span className={`${styles.tableCell}`}>
+            <span className={`PropertyFieldCollectionData__panel__sorting-field ${styles.tableCell}`}>
               <Dropdown options={opts} selectedKey={this.props.index + 1} onChanged={(opt) => this.props.fOnSorting(this.props.index, opt.key as number) } />
             </span>
           )

@@ -34,6 +34,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private selectAllInList: boolean;
   private selectAllInListLabel: string;
   private includeHidden: boolean;
+  private listsToExclude: string[];
 
   public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { }
   private customProperties: any;
@@ -69,6 +70,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.customProperties = _properties.properties;
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
+    this.listsToExclude = _properties.listsToExclude;
 
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
@@ -99,7 +101,8 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
       key: this.key,
       disabled: this.disabled,
       onGetErrorMessage: this.onGetErrorMessage,
-      deferredValidationTime: this.deferredValidationTime
+      deferredValidationTime: this.deferredValidationTime,
+      listsToExclude: this.listsToExclude
     };
 
     // Check if the multi or single select component has to get loaded
@@ -159,7 +162,8 @@ export function PropertyFieldListPicker(targetProperty: string, properties: IPro
     key: properties.key,
     disabled: properties.disabled,
     onGetErrorMessage: properties.onGetErrorMessage,
-    deferredValidationTime: properties.deferredValidationTime
+    deferredValidationTime: properties.deferredValidationTime,
+    listsToExclude: properties.listsToExclude
   };
   //Calls the PropertyFieldListPicker builder object
   //This object will simulate a PropertyFieldCustom to manage his rendering process

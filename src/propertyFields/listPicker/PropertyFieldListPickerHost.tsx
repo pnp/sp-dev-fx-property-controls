@@ -60,6 +60,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
    */
   private loadLists(): void {
     const listService: SPListPickerService = new SPListPickerService(this.props, this.props.context);
+    const listsToExclude: string[] = this.props.listsToExclude || [];
     this.options = [];
     listService.getLibs().then((response: ISPLists) => {
       // Start mapping the list that are selected
@@ -67,10 +68,14 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
         if (this.props.selectedList === list.Id) {
           this.selectedKey = list.Id;
         }
-        this.options.push({
-          key: list.Id,
-          text: list.Title
-        });
+
+        // Make sure that the current list is NOT in the 'listsToExclude' array
+        if (listsToExclude.indexOf(list.Title) === -1 && listsToExclude.indexOf(list.Id) === -1) {
+          this.options.push({
+            key: list.Id,
+            text: list.Title
+          });
+        }
       });
 
       // Option to unselect the list

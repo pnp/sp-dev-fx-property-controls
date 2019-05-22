@@ -63,12 +63,14 @@ export class PropertyFieldCollectionDataHost extends React.Component<IPropertyFi
         <Panel isOpen={this.state.panelOpen}
                onDismiss={this.closePanel}
                type={PanelType.large}
-               headerText={this.props.panelHeader}>
+               headerText={this.props.panelHeader}
+               className={`PropertyFieldCollectionData__panel ${this.props.panelClassName || ""}`}>
           {
             this.props.panelDescription && (
-              <p>{this.props.panelDescription}</p>
+              <p className="PropertyFieldCollectionData__panel__description">{this.props.panelDescription}</p>
             )
           }
+
           <CollectionDataViewer {...this.props} fOnSave={this.onSave} fOnClose={this.closePanel} />
         </Panel>
       </div>

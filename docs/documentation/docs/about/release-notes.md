@@ -1,5 +1,25 @@
 # Releases
 
+## 1.15.0
+
+### Enhancements
+
+- `PropertyFieldCollectionData`: Add a property to be able to set a custom class on the collection data panel [#180](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/180)
+- `PropertyFieldListPicker`: Added `listsToExclude` property to the control [#176](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/176)
+- `PropertyFieldDateTimePicker`: Add ability to hide the date and time labels [#77](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/77)
+
+### Fixes
+
+- Callout icons missing with SPFx `1.8.2` web part [#178](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/178)
+- `PropertyFieldTextWithCallout`: still persists property value when error occurred [#172](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/172)
+- `PropertyFieldNumber`: not handling changes correctly [#170](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/170)
+- `PropertyFieldChoiceGroupWithCallout`: iconProps not working [#154](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/154)
+- `PropertyFieldDropdownWithCallout`: Options of type `Divider` and `Header` are ignored [#145](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/145)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Alex Terentiev](https://github.com/AJIXuMuK), [Ward Wilmsen](https://github.com/WardWilmsen).
+
 ## 1.14.1
 
 ### Fixes

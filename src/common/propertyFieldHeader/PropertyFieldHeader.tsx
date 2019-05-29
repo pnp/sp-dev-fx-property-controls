@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/components/Callout';
 import { IPropertyFieldHeaderProps, IPropertyFieldHeaderState, CalloutTriggers } from './IPropertyFieldHeader';
+import { getIconClassName } from 'office-ui-fabric-react/lib/Styling';
 
 import styles from './PropertyFieldHeader.module.scss';
 
@@ -28,7 +29,7 @@ export default class PropertyFieldHeader extends React.Component<IPropertyFieldH
                     </div>
                     <div className={styles.info}>
                     {this.props.calloutContent && (
-                        <i className={'ms-Icon ms-Icon--Info'} ref={(infoIcon) => { this._infoIcon = infoIcon; }}
+                        <i className={getIconClassName('Info')} ref={(infoIcon) => { this._infoIcon = infoIcon; }}
                         onMouseOver={this.props.calloutTrigger === CalloutTriggers.Hover ? this._onInfoIconMouseOver.bind(this) : null}
                         onMouseOut={this.props.calloutTrigger === CalloutTriggers.Hover ? this._onInfoIconMouseOut.bind(this) : null}
                         onClick={this.props.calloutTrigger === CalloutTriggers.Click ? this._onInfoIconClick.bind(this) : null}></i>

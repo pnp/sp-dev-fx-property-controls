@@ -1,6 +1,19 @@
 {
   "versions": [
     {
+      "version": "1.16.0",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "`PropertyFieldCollectionData`: Ability to provide custom labels for the save and cancel buttons [#187](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/187)"
+        ],
+        "fixes": [
+        ]
+      },
+      "contributions": [
+      ]
+    },
+    {
       "version": "1.15.0",
       "changes": {
         "new": [],

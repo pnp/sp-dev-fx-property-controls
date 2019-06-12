@@ -121,6 +121,9 @@ The `PropertyFieldCollectionData` control can be configured with the following p
 | panelHeader | string | yes | Label to be used as the header in the panel. | |
 | panelDescription | string | no | Property that allows you to specify a description in the collection panel. | |
 | manageBtnLabel | string | yes | Label of the button to open the panel. | |
+| saveBtnLabel | string | no | Label of the save button. | |
+| saveAndAddBtnLabel | string | yes | Label of the save and add button. | |
+| cancelBtnLabel | string | yes | Label of the cancel button. | |
 | fields | ICustomCollectionField[] | yes | The fields to be used for the list of collection data. | |
 | value | string | yes | The collection data value. | |
 | enableSorting | boolean | no | Specify if you want to be able to sort the items in the collection. | false |

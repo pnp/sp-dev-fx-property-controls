@@ -26,7 +26,9 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
               <div dangerouslySetInnerHTML={this.setHtml()} />
               </p>
               <p className="ms-font-m ms-fontColor-neutralDark">List: {this.props.list}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">List Filtered: {this.props.listFiltered}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Multi List: {this.props.multiList.join(', ')}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Multi Filtered: {this.props.multiListFiltered.join(', ')}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Term(s): {this.props.terms.map(t => t.name).join(', ')}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Date: {this.props.datetime.displayValue}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Color: <span className={styles.colorBox} style={{backgroundColor:this.props.color}}>&nbsp;</span>{this.props.color}</p>

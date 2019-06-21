@@ -7,7 +7,7 @@ import {
 } from '@microsoft/sp-webpart-base';
 import PropertyFieldListPickerHost from './PropertyFieldListPickerHost';
 import PropertyFieldListMultiPickerHost from './PropertyFieldListMultiPickerHost';
-import { IPropertyFieldListPickerHostProps } from './IPropertyFieldListPickerHost';
+import { IPropertyFieldListPickerHostProps, ISPList } from './IPropertyFieldListPickerHost';
 import { IPropertyFieldListMultiPickerHostProps } from './IPropertyFieldListMultiPickerHost';
 import { PropertyFieldListPickerOrderBy, IPropertyFieldListPickerProps, IPropertyFieldListPickerPropsInternal } from './IPropertyFieldListPicker';
 
@@ -44,7 +44,8 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private deferredValidationTime: number = 200;
   private renderWebPart: () => void;
   private disableReactivePropertyChanges: boolean = false;
-
+  private filter: string;
+  private onListsRetrieved?: (lists: ISPList[]) => PromiseLike<ISPList[]> | ISPList[];
   /**
    * Constructor method
    */
@@ -71,7 +72,9 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
     this.listsToExclude = _properties.listsToExclude;
-
+    this.filter = _properties.filter;
+    this.onListsRetrieved = _properties.onListsRetrieved;
+    
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
     }
@@ -102,7 +105,9 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
       disabled: this.disabled,
       onGetErrorMessage: this.onGetErrorMessage,
       deferredValidationTime: this.deferredValidationTime,
-      listsToExclude: this.listsToExclude
+      listsToExclude: this.listsToExclude,
+      filter: this.filter,
+      onListsRetrieved: this.onListsRetrieved
     };
 
     // Check if the multi or single select component has to get loaded
@@ -163,7 +168,9 @@ export function PropertyFieldListPicker(targetProperty: string, properties: IPro
     disabled: properties.disabled,
     onGetErrorMessage: properties.onGetErrorMessage,
     deferredValidationTime: properties.deferredValidationTime,
-    listsToExclude: properties.listsToExclude
+    listsToExclude: properties.listsToExclude,
+    filter: properties.filter,
+    onListsRetrieved: properties.onListsRetrieved
   };
   //Calls the PropertyFieldListPicker builder object
   //This object will simulate a PropertyFieldCustom to manage his rendering process

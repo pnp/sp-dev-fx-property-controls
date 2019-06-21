@@ -11,6 +11,8 @@ export interface IPropertyControlsTestWebPartProps {
   people: IPropertyFieldGroupOrPerson[];
   singleList: string | string[];
   multiList: string | string[];
+  singleListFiltered: string;
+  multiListFiltered: string[];
   terms: IPickerTerms;
   datetime: IDateTimeFieldValue;
   fileUrl: string;

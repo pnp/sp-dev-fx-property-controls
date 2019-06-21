@@ -1,5 +1,6 @@
 import { IWebPartContext, IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
-import { ISPList, ISPLists } from '../../../lib';
+import { ISPList } from './IPropertyFieldListPickerHost';
+
 
 /**
  * Enum for specifying how the lists should be sorted

@@ -4,6 +4,7 @@
 
 ### Enhancements
 
+- `PropertyFieldCollectionData`: Add the ability for field validation to the custom fields [#187](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/190)
 - `PropertyFieldCollectionData`: Ability to provide custom labels for the save and cancel buttons [#187](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/187)
 
 ## 1.15.0

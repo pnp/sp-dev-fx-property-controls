@@ -2,7 +2,7 @@ import { SPHttpClientResponse } from '@microsoft/sp-http';
 import { SPHttpClient } from '@microsoft/sp-http';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
-import { ISPLists, IPropertyFieldListPickerHostProps } from '../propertyFields/listPicker/IPropertyFieldListPickerHost';
+import { ISPLists, IPropertyFieldListPickerHostProps, ISPList } from '../propertyFields/listPicker/IPropertyFieldListPickerHost';
 import { PropertyFieldListPickerOrderBy } from '../propertyFields/listPicker/IPropertyFieldListPicker';
 import SPListPickerMockHttpClient from './SPListPickerMockService';
 
@@ -25,7 +25,7 @@ export default class SPListPickerService {
   /**
    * Gets the collection of libs in the current SharePoint site, or target site if specified by webRelativeUrl
    */
-  public getLibs(): Promise<ISPLists> {
+  public async getLibs(): Promise<ISPLists> {
     if (Environment.type === EnvironmentType.Local) {
       // If the running environment is local, load the data from the mock
       return this.getLibsFromMock();
@@ -47,8 +47,13 @@ export default class SPListPickerService {
             break;
         }
       }
+
+      // Adds an OData Filter to the list
+      if(this.props.filter){
+        queryUrl += `&$filter=${encodeURIComponent(this.props.filter)}`;
+      }
       // Check if the list have get filtered based on the list base template type
-      if (this.props.baseTemplate !== null && this.props.baseTemplate) {
+      else if (this.props.baseTemplate !== null && this.props.baseTemplate) {
         queryUrl += '&$filter=BaseTemplate%20eq%20';
         queryUrl += this.props.baseTemplate;
         // Check if you also want to exclude hidden list in the list
@@ -60,10 +65,31 @@ export default class SPListPickerService {
           queryUrl += '&$filter=Hidden%20eq%20false';
         }
       }
-      return this.context.spHttpClient.get(queryUrl, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => {
-        return response.json();
-      }) as Promise<ISPLists>;
+      let response = await this.context.spHttpClient.get(queryUrl, SPHttpClient.configurations.v1);
+
+      let lists = (await response.json()) as ISPLists;
+
+      // Check if onListsRetrieved callback is defined
+      if(this.props.onListsRetrieved){
+        //Call onListsRetrieved
+        let lr = this.props.onListsRetrieved(lists.value);
+        let output: ISPList[];
+
+        //Conditional checking to see of PromiseLike object or array
+        if(lr instanceof Array){
+
+          output = lr;
+        }else{
+          output = await lr;
+        }
+
+        lists = {
+          value: output
+        };
+      }
+      return lists;
     }
+    
   }
 
   /**

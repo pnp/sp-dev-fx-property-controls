@@ -1,4 +1,6 @@
 import { IWebPartContext, IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
+import { ISPList } from './IPropertyFieldListPickerHost';
+
 
 /**
  * Enum for specifying how the lists should be sorted
@@ -98,6 +100,14 @@ export interface IPropertyFieldListPickerProps {
    * Defines list titles which should be excluded from the list picker control
    */
   listsToExclude?: string[];
+  /**
+   * Filter list from Odata query (takes precendents over Hidden and BaseTemplate Filters)
+   */
+  filter?: string;
+  /** 
+   * Callback that is called before the dropdown is populated
+   */
+  onListsRetrieved?: (lists: ISPList[]) => PromiseLike<ISPList[]> | ISPList[];
 }
 
 /**
@@ -125,4 +135,6 @@ export interface IPropertyFieldListPickerPropsInternal extends IPropertyFieldLis
   onGetErrorMessage?: (value: string | string[]) => string | Promise<string>;
   deferredValidationTime?: number;
   listsToExclude?: string[];
+  filter?: string;
+  onListsRetrieved?: (lists: ISPList[]) => PromiseLike<ISPList[]> | ISPList[];
 }

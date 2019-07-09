@@ -10,10 +10,12 @@
           "`PropertyFieldListPicker`: add ability to filter the control via OData [#184](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/184)"
         ],
         "fixes": [
+          "Fix for callout controls missing icon since SPFx `1.8.2` [#182](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/182)"
         ]
       },
       "contributions": [
-        "[araver](https://github.com/araver)"
+        "[araver](https://github.com/araver)",
+        "[Chad Eiserloh](https://github.com/c-eiser13)"
       ]
     },
     {

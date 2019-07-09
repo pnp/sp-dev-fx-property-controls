@@ -8,9 +8,13 @@
 - `PropertyFieldCollectionData`: Ability to provide custom labels for the save and cancel buttons [#187](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/187)
 - `PropertyFieldListPicker`: add ability to filter the control via OData [#184](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/184)
 
+### Fixes
+
+- Fix for callout controls missing icon since SPFx `1.8.2` [#182](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/182)
+
 ### Contributors
 
-Special thanks to our contributor: [araver](https://github.com/araver).
+Special thanks to our contributors (in alphabetical order): [araver](https://github.com/araver), [Chad Eiserloh](https://github.com/c-eiser13).
 
 ## 1.15.0
 

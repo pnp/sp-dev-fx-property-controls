@@ -12,7 +12,9 @@ export interface IPropertyControlsTestProps {
   multiSelect: string[];
   people: IPropertyFieldGroupOrPerson[];
   list: string | string[];
+  listFiltered: string;
   multiList: string[];
+  multiListFiltered: string[];
   terms: IPickerTerms;
   datetime: IDateTimeFieldValue;
   color: string;

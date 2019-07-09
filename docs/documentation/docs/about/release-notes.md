@@ -6,6 +6,11 @@
 
 - `PropertyFieldCollectionData`: Add the ability for field validation to the custom fields [#187](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/190)
 - `PropertyFieldCollectionData`: Ability to provide custom labels for the save and cancel buttons [#187](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/187)
+- `PropertyFieldListPicker`: add ability to filter the control via OData [#184](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/184)
+
+### Contributors
+
+Special thanks to our contributor: [araver](https://github.com/araver).
 
 ## 1.15.0
 
@@ -154,7 +159,7 @@ Special thanks to our contributors (in alphabetical order): [Paul Bullock](https
 ### Enhancements
 
 - New telemetry approach which allows you to use Application Insights instance [#79](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/79)
-- `PropertyFieldListPicker` add optional property for target site [#21](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/21)
+- `PropertyFieldListPicker`: add optional property for target site [#21](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/21)
 
 ### Contributors
 

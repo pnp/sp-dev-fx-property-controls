@@ -364,8 +364,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                 PropertyFieldListPicker('singleListFiltered', {
                   label: 'Select a list (Filtered)',
                   selectedList: this.properties.singleListFiltered,
-                  includeHidden: false,
-                  //baseTemplate: 109,
+                  // includeHidden: false,
+                  // baseTemplate: 101,
                   orderBy: PropertyFieldListPickerOrderBy.Title,
                   // multiSelect: false,
                   disabled: false,

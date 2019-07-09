@@ -49,7 +49,7 @@ export default class SPListPickerService {
       }
 
       // Adds an OData Filter to the list
-      if(this.props.filter){
+      if (this.props.filter){
         queryUrl += `&$filter=${encodeURIComponent(this.props.filter)}`;
       }
       // Check if the list have get filtered based on the list base template type
@@ -89,7 +89,7 @@ export default class SPListPickerService {
       }
       return lists;
     }
-    
+
   }
 
   /**

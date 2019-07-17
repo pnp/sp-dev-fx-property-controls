@@ -39,6 +39,7 @@ import { PropertyFieldSwatchColorPicker, PropertyFieldSwatchColorPickerStyle } f
 import { PropertyPaneWebPartInformation } from '../../propertyFields/webPartInformation';
 import { PropertyPanePropertyEditor } from '../../propertyFields/propertyEditor/PropertyPanePropertyEditor';
 import { PropertyFieldEnterpriseTermPicker } from '../../propertyFields/termPicker/PropertyFieldEnterpriseTermPicker';
+import { ISPList } from '../../propertyFields/listPicker';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -55,7 +56,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         multiSelect: this.properties.multiSelect || [],
         people: this.properties.people || [],
         list: this.properties.singleList as string || "",
+        listFiltered: this.properties.singleListFiltered || "",
         multiList: this.properties.multiList as string[] || [],
+        multiListFiltered: this.properties.multiListFiltered || [],
         terms: this.properties.terms || [],
         datetime: this.properties.datetime || { value: null, displayValue: null },
         color: this.properties.color,
@@ -155,6 +158,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: "Collection data",
                   panelHeader: "Collection data panel header",
                   manageBtnLabel: "Manage collection data",
+                  saveBtnLabel: "Save button",
+                  saveAndAddBtnLabel: "Save + Add button",
+                  cancelBtnLabel: "Cancel button",
                   panelDescription: "This is the description which appears in the panel.",
                   value: this.properties.collectionData,
                   enableSorting: true,
@@ -241,10 +247,17 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       id: "custom",
                       title: "Custom Field",
                       type: CustomCollectionFieldType.custom,
-                      onCustomRender: (field, value, onUpdate, item, itemId) => {
+                      onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
                         return (
                           React.createElement("div", null,
-                            React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => onUpdate(field.id, event.currentTarget.value) }), " 🎉"
+                            React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+                              if (event.currentTarget.value === "error") {
+                                onError(field.id, "Value shouldn't be equal to error");
+                              } else {
+                                onError(field.id, "");
+                              }
+                              onUpdate(field.id, event.currentTarget.value);
+                            }}), " 🎉"
                           )
                         );
                       }
@@ -346,7 +359,31 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   deferredValidationTime: 0,
                   key: 'listPickerFieldId',
                   webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
-                  listsToExclude: ["cdn"]
+                  listsToExclude: ["cdn"],
+                }),
+                PropertyFieldListPicker('singleListFiltered', {
+                  label: 'Select a list (Filtered)',
+                  selectedList: this.properties.singleListFiltered,
+                  // includeHidden: false,
+                  // baseTemplate: 101,
+                  orderBy: PropertyFieldListPickerOrderBy.Title,
+                  // multiSelect: false,
+                  disabled: false,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  context: this.context,
+                  onGetErrorMessage: (value: string) => {
+                    return value;
+                  },
+                  deferredValidationTime: 0,
+                  key: 'listPickerFieldId',
+                  webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
+                  listsToExclude: ["cdn"],
+                  filter: "ItemCount gt 0",
+                  onListsRetrieved: (lists: ISPList[]) => {
+                    console.log("Lists", lists);
+                    return lists;
+                  }
                 }),
                 PropertyFieldListPicker('multiList', {
                   label: 'Select multiple lists',
@@ -366,6 +403,31 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   deferredValidationTime: 0,
                   key: 'multiListPickerFieldId',
                   webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
+                  listsToExclude: ["cdn"]
+                }),
+                PropertyFieldListPicker('multiListFiltered', {
+                  label: 'Select multiple lists (Filtered)',
+                  selectedList: this.properties.multiListFiltered,
+                  includeHidden: false,
+                  //baseTemplate: 109,
+                  orderBy: PropertyFieldListPickerOrderBy.Title,
+                  multiSelect: true,
+                  showSelectAll: true,
+                  selectAllInList: false,
+                  selectAllInListLabel: 'Select all',
+                  disabled: false,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  context: this.context,
+                  onGetErrorMessage: null,
+                  deferredValidationTime: 0,
+                  key: 'multiListPickerFieldId',
+                  webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
+                  filter: "ItemCount gt 0",
+                  onListsRetrieved: (lists: ISPList[]) => {
+                    console.log("Lists", lists);
+                    return Promise.resolve(lists);
+                  },
                   listsToExclude: ["cdn"]
                 }),
                 PropertyFieldDateTimePicker('datetime', {

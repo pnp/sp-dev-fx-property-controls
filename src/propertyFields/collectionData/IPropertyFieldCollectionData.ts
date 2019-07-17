@@ -23,6 +23,18 @@ export interface IPropertyFieldCollectionDataProps {
    */
   manageBtnLabel: string;
   /**
+   * Label of the cancel button
+   */
+  cancelBtnLabel?: string;
+  /**
+   * Label of the save button
+   */
+  saveBtnLabel?: string;
+  /**
+   * Label of the save and add button
+   */
+  saveAndAddBtnLabel?: string;
+  /**
    * The fields to be used for the list of collection data.
    */
   fields: ICustomCollectionField[];

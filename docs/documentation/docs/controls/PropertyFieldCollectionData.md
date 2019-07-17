@@ -19,7 +19,7 @@ The type of data you get returned depends on the fields you defined. For the exa
 
 ## How to use this control in your solutions
 
-1. Check that you installed the `@pnp/spfx-property-controls` dependency. Check out The [getting started](../#getting-started) page for more information about installing the dependency.
+1. Check that you installed the `@pnp/spfx-property-controls` dependency. Check out The [getting started](../../#getting-started) page for more information about installing the dependency.
 2. Import the following modules to your component:
 
 ```TypeScript
@@ -103,7 +103,14 @@ Here is an example of how you can render your own controls in the `PropertyField
   onCustomRender: (field, value, onUpdate, item, itemId) => {
     return (
       React.createElement("div", null,
-        React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => onUpdate(field.id, event.currentTarget.value) }), " 🎉"
+        React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+          if (event.currentTarget.value === "error") {
+            onError(field.id, "Value shouldn't be equal to error");
+          } else {
+            onError(field.id, "");
+          }
+          onUpdate(field.id, event.currentTarget.value);
+        }}), " 🎉"
       )
     );
   }
@@ -121,6 +128,9 @@ The `PropertyFieldCollectionData` control can be configured with the following p
 | panelHeader | string | yes | Label to be used as the header in the panel. | |
 | panelDescription | string | no | Property that allows you to specify a description in the collection panel. | |
 | manageBtnLabel | string | yes | Label of the button to open the panel. | |
+| saveBtnLabel | string | no | Label of the save button. | |
+| saveAndAddBtnLabel | string | yes | Label of the save and add button. | |
+| cancelBtnLabel | string | yes | Label of the cancel button. | |
 | fields | ICustomCollectionField[] | yes | The fields to be used for the list of collection data. | |
 | value | string | yes | The collection data value. | |
 | enableSorting | boolean | no | Specify if you want to be able to sort the items in the collection. | false |
@@ -145,7 +155,7 @@ Interface `ICustomCollectionField`
 | defaultValue | any | no | Specify a default value for the input field. |
 | deferredValidationTime | number | no | Field will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default: 200ms. |
 | onGetErrorMessage | (value: any, index: number, crntItem: any): string \| Promise<string> | no | The method is used to get the validation error message and determine whether the input value is valid or not. It provides you the current row index and the item you are currently editing. |
-| onCustomRender | (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void, item: any, itemUniqueId: string) => JSX.Element | no | This property is only required if you are using the `custom` field type and it can be used to specify the custom rendering of your control in the collection data. |
+| onCustomRender | (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void, item: any, itemUniqueId: string, onCustomFieldValidation: (fieldId: string, errorMessage: string) => void) => JSX.Element | no | This property is only required if you are using the `custom` field type and it can be used to specify the custom rendering of your control in the collection data. |
 
 Enum `CustomCollectionFieldType`
 

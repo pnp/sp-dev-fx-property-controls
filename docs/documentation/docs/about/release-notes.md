@@ -1,5 +1,22 @@
 # Releases
 
+## 1.16.0
+
+### Enhancements
+
+- `PropertyFieldCollectionData`: Add the ability for field validation to the custom fields [#187](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/190)
+- `PropertyFieldCollectionData`: Ability to provide custom labels for the save and cancel buttons [#187](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/187)
+- `PropertyFieldListPicker`: add ability to filter the control via OData [#184](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/184)
+
+### Fixes
+
+- Documentation getting started links fixed [#191](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/191)
+- Fix for callout controls missing icon since SPFx `1.8.2` [#182](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/182)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [araver](https://github.com/araver), [Chad Eiserloh](https://github.com/c-eiser13).
+
 ## 1.15.0
 
 ### Enhancements
@@ -147,7 +164,7 @@ Special thanks to our contributors (in alphabetical order): [Paul Bullock](https
 ### Enhancements
 
 - New telemetry approach which allows you to use Application Insights instance [#79](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/79)
-- `PropertyFieldListPicker` add optional property for target site [#21](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/21)
+- `PropertyFieldListPicker`: add optional property for target site [#21](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/21)
 
 ### Contributors
 

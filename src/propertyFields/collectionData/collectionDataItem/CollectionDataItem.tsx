@@ -208,6 +208,18 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   }
 
   /**
+   * Custom field validation
+   */
+  private onCustomFieldValidation = (fieldId: string, errorMsg: string) => {
+    console.log(fieldId, errorMsg);
+    if (fieldId) {
+      this.validation[fieldId] = errorMsg === "";
+      this.errorCalloutHandler(fieldId, errorMsg);
+      this.doAllFieldChecks();
+    }
+  }
+
+  /**
    * URL field validation
    *
    * @param field
@@ -363,7 +375,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           inputClassName="PropertyFieldCollectionData__panel__url-field" />;
       case CustomCollectionFieldType.custom:
           if (field.onCustomRender) {
-            return field.onCustomRender(field, item[field.id], this.onValueChanged, item, item.uniqueId);
+            return field.onCustomRender(field, item[field.id], this.onValueChanged, item, item.uniqueId, this.onCustomFieldValidation);
           }
           return null;
       case CustomCollectionFieldType.string:

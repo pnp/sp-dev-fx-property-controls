@@ -10,6 +10,7 @@
 
 ### Fixes
 
+- Documentation getting started links fixed [#191](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/191)
 - Fix for callout controls missing icon since SPFx `1.8.2` [#182](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/182)
 
 ### Contributors

@@ -8,7 +8,7 @@ This control generates an input field for numbers. Text is not allowed as this w
 
 ## How to use this control in your solutions
 
-- Check that you installed the `@pnp/spfx-property-controls` dependency. Check out The [getting started](../#getting-started) page for more information about installing the dependency.
+- Check that you installed the `@pnp/spfx-property-controls` dependency. Check out The [getting started](../../#getting-started) page for more information about installing the dependency.
 - Import the following modules to your component:
 
 ```TypeScript

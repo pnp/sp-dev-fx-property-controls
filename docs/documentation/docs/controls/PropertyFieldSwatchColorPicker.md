@@ -12,7 +12,7 @@ This control generates a swatch color picker that you can use inside the propert
 
 ## How to use this control in your solutions
 
-1. Check that you installed the `@pnp/spfx-property-controls` dependency. Check out The [getting started](../#getting-started) page for more information about installing the dependency.
+1. Check that you installed the `@pnp/spfx-property-controls` dependency. Check out The [getting started](../../#getting-started) page for more information about installing the dependency.
 2. Import the following modules to your component:
 
 ```TypeScript

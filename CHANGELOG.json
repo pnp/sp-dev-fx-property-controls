@@ -1,6 +1,17 @@
 {
   "versions": [
     {
+      "version": "1.16.1",
+      "changes": {
+        "new": [],
+        "enhancements": [],
+        "fixes": [
+          "`PropertyFieldTermPicker`: Tags icon styling issue on IE11 [#193](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/193)"
+        ]
+      },
+      "contributions": []
+    },
+    {
       "version": "1.16.0",
       "changes": {
         "new": [],

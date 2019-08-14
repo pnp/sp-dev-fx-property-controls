@@ -1,5 +1,11 @@
 # Releases
 
+## 1.16.1
+
+### Fixes
+
+- `PropertyFieldTermPicker`: Tags icon styling issue on IE11 [#193](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/193)
+
 ## 1.16.0
 
 ### Enhancements

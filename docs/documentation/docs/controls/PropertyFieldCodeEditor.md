@@ -44,7 +44,7 @@ PropertyFieldCodeEditor('htmlCode', {
 
 ## Implementation
 
-The `PropertyFieldColorPicker` control can be configured with the following properties:
+The `PropertyFieldCodeEditor` control can be configured with the following properties:
 
 | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- |

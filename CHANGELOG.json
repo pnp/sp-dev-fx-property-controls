@@ -8,10 +8,12 @@
           "Add norwegian language file [#125](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/125)"
         ],
         "fixes": [
+          "Documentation update for `PropertyFieldCodeEditor` [#194](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/194)"
           "`PropertyFieldTermPicker`: Tags icon styling issue on IE11 [#193](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/193)"
         ]
       },
       "contributions": [
+        "[Antonio Monserrate](https://github.com/antoniomonserrate)",
         "[rocketboy1908](https://github.com/rocketboy1908)"
       ]
     },

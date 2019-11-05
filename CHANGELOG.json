@@ -6,7 +6,8 @@
         "new": [],
         "enhancements": [],
         "fixes": [
-          "Documentation update for `PropertyFieldCollectionData` [#196](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/196)"
+          "Documentation update for `PropertyFieldCollectionData` [#196](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/196)",
+          "`PropertyFieldOrder`: When items is an empty array, component renders the text '0' [#152](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/152)"
         ]
       },
       "contributions": []

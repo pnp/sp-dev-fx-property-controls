@@ -44,13 +44,16 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
   }
 
 	public render(): JSX.Element {
+    const {
+      items
+    } = this.state;
 		return (
 			<div className={styles.propertyFieldOrder}>
 				{this.props.label && <Label>{this.props.label}</Label>}
 				<ul style={{maxHeight: this.props.maxHeight ? this.props.maxHeight + 'px' : '100%'}} className={!this.props.disabled ? styles.enabled : styles.disabled}>
           {
-            (this.state.items && this.state.items.length > 0) && (
-              this.state.items.map((value:any, index:number) => {
+            (items && items.length > 0) && (
+              items.map((value:any, index:number) => {
                 return (
                   <li
                     ref={this.registerRef}
@@ -63,7 +66,7 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
             )
           }
 					{
-            (this.state.items && this.state.items.length) && <div className={styles.lastBox} ref={(ref:HTMLElement) => {this._lastBox = ref;}}/>
+            (items && items.length > 0) && <div className={styles.lastBox} ref={(ref:HTMLElement) => {this._lastBox = ref;}}/>
 					}
 				</ul>
 			</div>

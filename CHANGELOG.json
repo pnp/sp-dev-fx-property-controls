@@ -1,6 +1,17 @@
 {
   "versions": [
     {
+      "version": "1.16.2",
+      "changes": {
+        "new": [],
+        "enhancements": [],
+        "fixes": [
+          "Documentation update for `PropertyFieldCollectionData` [#196](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/196)"
+        ]
+      },
+      "contributions": []
+    },
+    {
       "version": "1.16.1",
       "changes": {
         "new": [],

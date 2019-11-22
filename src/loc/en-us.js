@@ -1,4 +1,4 @@
-define([], function() {
+define([], function () {
   return {
     ApplyButtonLabel: "Apply",
     ImportButtonLabel: "Import",
@@ -74,6 +74,9 @@ define([], function() {
     InvalidUrlError: "The provided URL is not valid",
     DescriptionLabel: "Description",
     MoreInfoLabel: "More info",
-    AboutGroupLabel: "About"
+    AboutGroupLabel: "About",
+    SitePickerSearchBoxPlaceholder: "Search...",
+    SitePickerNoResults: "No search results",
+    SitePickerSitesChosen: "Website(s) selected"
   }
 });

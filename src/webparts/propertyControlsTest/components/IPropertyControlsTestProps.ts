@@ -4,6 +4,7 @@ import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
 import { IDateTimeFieldValue } from '../../../PropertyFieldDateTimePicker';
 import { IPropertyFieldGroupOrPerson } from '../../../PropertyFieldPeoplePicker';
 import { IPickerTerms } from '../../../PropertyFieldTermPicker';
+import { IPropertyFieldSite } from '../../../propertyFields/sitePicker';
 
 export interface IPropertyControlsTestProps {
 
@@ -27,9 +28,10 @@ export interface IPropertyControlsTestProps {
   textInfoHeaderValue: string;
   toggleInfoHeaderValue: boolean;
   checkboxWithCalloutValue: boolean;
-  htmlCode:string;
+  htmlCode: string;
   collectionData: any[];
   orderedItems: any[];
   swatchColor: string;
   enterpriseTerms: IPickerTerms;
+  sites: IPropertyFieldSite[];
 }

@@ -533,6 +533,19 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   showValue: true,
                   value: this.properties.sliderWithCalloutValue
                 }),
+                PropertyFieldSliderWithCallout('sliderWithCalloutValue', {
+                  calloutContent: React.createElement('div', {}, 'Enter value for the item'),
+                  calloutTrigger: CalloutTriggers.Click,
+                  calloutWidth: 200,
+                  key: 'sliderWithCalloutFieldId',
+                  label: 'Slide to select the value with debounce 1000',
+                  max: 100,
+                  min: 0,
+                  step: 1,
+                  showValue: true,
+                  value: this.properties.sliderWithCalloutValue,
+                  debounce: 1000
+                }),
                 PropertyFieldChoiceGroupWithCallout('choiceGroupWithCalloutValue', {
                   calloutContent: React.createElement('div', {}, 'Select preferrable mobile platform'),
                   calloutTrigger: CalloutTriggers.Hover,

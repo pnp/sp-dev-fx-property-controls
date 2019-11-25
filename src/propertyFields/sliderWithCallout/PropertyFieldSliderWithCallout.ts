@@ -8,6 +8,7 @@ import {
 import PropertyFieldSliderWithCalloutHost from './PropertyFieldSliderWithCalloutHost';
 
 import {IPropertyFieldSliderWithCalloutPropsInternal, IPropertyFieldSliderWithCalloutProps} from './IPropertyFieldSliderWithCallout';
+import { debounce } from '../../common/util/Util';
 
 class PropertyFieldSliderWithCalloutBuilder implements IPropertyPaneField<IPropertyFieldSliderWithCalloutPropsInternal> {
     public targetProperty: string;
@@ -15,6 +16,7 @@ class PropertyFieldSliderWithCalloutBuilder implements IPropertyPaneField<IPrope
     public properties: IPropertyFieldSliderWithCalloutPropsInternal;
 
     private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
+    private _debounce: (fnc: any, timeout:number) => void = debounce();
 
     public constructor(_targetProperty: string, _properties: IPropertyFieldSliderWithCalloutPropsInternal) {
         this.targetProperty = _targetProperty;
@@ -45,7 +47,10 @@ class PropertyFieldSliderWithCalloutBuilder implements IPropertyPaneField<IPrope
     }
 
     private _onChanged(value: number): void {
+        const props: IPropertyFieldSliderWithCalloutProps = <IPropertyFieldSliderWithCalloutProps>this.properties;
         if (this._onChangeCallback) {
+          props.debounce ?
+            this._debounce(() => { console.log(`Debounced after ${props.debounce}`) ;this._onChangeCallback(this.targetProperty, value); }, props.debounce):
             this._onChangeCallback(this.targetProperty, value);
         }
     }

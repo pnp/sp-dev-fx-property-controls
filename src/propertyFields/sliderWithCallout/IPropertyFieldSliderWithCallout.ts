@@ -8,6 +8,7 @@ import { IPropertyFieldHeaderCalloutProps } from '../../common/propertyFieldHead
 export interface IPropertyFieldSliderWithCalloutPropsInternal
     extends IPropertyPaneCustomFieldProps, IPropertyPaneSliderProps, IPropertyFieldHeaderCalloutProps {
         key: string;
+        debounce?: number;
     }
 
 /**
@@ -15,4 +16,5 @@ export interface IPropertyFieldSliderWithCalloutPropsInternal
  */
 export interface IPropertyFieldSliderWithCalloutProps extends IPropertyPaneSliderProps, IPropertyFieldHeaderCalloutProps {
     key: string;
+    debounce?: number;
 }

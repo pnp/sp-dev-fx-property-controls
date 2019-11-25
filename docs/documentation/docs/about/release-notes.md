@@ -1,10 +1,22 @@
 # Releases
 
-## 1.16.1
+## 1.17.0
+
+### Enhancements
+
+- Add norwegian language file [#125](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/125)
+- `PropertyFieldSliderWithCallout`: debounce property added [#209](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/209)
 
 ### Fixes
 
+- Documentation update for `PropertyFieldCollectionData` [#196](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/196)
+- `PropertyFieldOrder`: When items is an empty array, component renders the text '0' [#152](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/152)
+- Documentation update for `PropertyFieldCodeEditor` [#194](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/194)
 - `PropertyFieldTermPicker`: Tags icon styling issue on IE11 [#193](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/193)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Antonio Monserrate](https://github.com/antoniomonserrate), [rocketboy1908](https://github.com/rocketboy1908), [Piotr Siatka](https://github.com/siata13).
 
 ## 1.16.0
 

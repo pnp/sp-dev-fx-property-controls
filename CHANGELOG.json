@@ -12,13 +12,15 @@
           "Documentation update for `PropertyFieldCollectionData` [#196](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/196)",
           "`PropertyFieldOrder`: When items is an empty array, component renders the text '0' [#152](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/152)",
           "Documentation update for `PropertyFieldCodeEditor` [#194](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/194)",
-          "`PropertyFieldTermPicker`: Tags icon styling issue on IE11 [#193](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/193)"
+          "`PropertyFieldTermPicker`: Tags icon styling issue on IE11 [#193](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/193)",
+          "`PropertyPanePropertyEditor`: Unable to download json export [#210](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/210)"
         ]
       },
       "contributions": [
         "[Antonio Monserrate](https://github.com/antoniomonserrate)",
         "[rocketboy1908](https://github.com/rocketboy1908)",
-        "[Piotr Siatka](https://github.com/siata13)"
+        "[Piotr Siatka](https://github.com/siata13)",
+        "[Ben](https://github.com/benkenawell)"
       ]
     },
     {

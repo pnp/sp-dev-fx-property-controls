@@ -100,6 +100,7 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
         const a = document.createElement("a");
         document.body.appendChild(a);
         a.setAttribute("style", "display: none");
+        a.setAttribute("data-interception", "off");
         const json = JSON.stringify(JSON.parse(this.state.propertiesJson), null, '\t'); // remove indentation
         const blob = new Blob([json], { type: "octet/stream" });
         const url = window.URL.createObjectURL(blob);

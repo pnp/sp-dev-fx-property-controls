@@ -3,7 +3,9 @@
     {
       "version": "1.17.0",
       "changes": {
-        "new": [],
+        "new": [
+          "`PropertyFieldSitePicker`: New control that allows the user to select one or multiple sites from the SharePoint Search API. Similar to the SitePicker in the official \"News\" Web Part [#208](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/208)"
+        ],
         "enhancements": [
           "Add norwegian language file [#125](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/125)",
           "`PropertyFieldSliderWithCallout`: debounce property added [#209](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/209)"
@@ -20,7 +22,8 @@
         "[Antonio Monserrate](https://github.com/antoniomonserrate)",
         "[rocketboy1908](https://github.com/rocketboy1908)",
         "[Piotr Siatka](https://github.com/siata13)",
-        "[Ben](https://github.com/benkenawell)"
+        "[Ben](https://github.com/benkenawell)",
+        "[Niels Söth](https://github.com/nsoeth)"
       ]
     },
     {

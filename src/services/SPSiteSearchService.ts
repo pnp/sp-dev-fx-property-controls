@@ -15,10 +15,11 @@ export default class SPSiteSearchService implements ISPSiteSearchService {
   public searchSites(ctx: IWebPartContext, query: string): Promise<IPropertyFieldSite[]> {
     if (Environment.type === EnvironmentType.Local) {
       // If the running environment is local, load the data from the mock
-      return this.searchPeopleFromMock(ctx, query);
+      return this.searchSitesFromMock(ctx, query);
     } else {
+      const rootUrl = ctx.pageContext.web.absoluteUrl.replace(ctx.pageContext.web.serverRelativeUrl, '');
       // If the running env is SharePoint, loads from the search
-      const userRequestUrl: string = `${ctx.pageContext.web.absoluteUrl}/_api/search/query?querytext='contentclass:STS_Site contentclass:STS_Web Title:${query}*'&selectproperties='SiteId,Title,Path'&rowlimit=5`;
+      const userRequestUrl: string = `${ctx.pageContext.web.absoluteUrl}/_api/search/query?querytext='contentclass:STS_Site contentclass:STS_Web Title:*${query}* Path:${rootUrl}*'&selectproperties='SiteId,Title,Path'&rowlimit=5`;
 
       // Do the call against the SP REST API search endpoint
       return ctx.spHttpClient.get(userRequestUrl, SPHttpClient.configurations.v1).then((searchResponse: SPHttpClientResponse) => {
@@ -52,7 +53,7 @@ export default class SPSiteSearchService implements ISPSiteSearchService {
   /**
    * Returns fake sites results for the Mock mode
    */
-  private searchPeopleFromMock(ctx: IWebPartContext, query: string): Promise<Array<IPropertyFieldSite>> {
+  private searchSitesFromMock(ctx: IWebPartContext, query: string): Promise<Array<IPropertyFieldSite>> {
     return SPPeoplePickerMockHttpClient.searchPeople(ctx.pageContext.web.absoluteUrl).then(() => {
       const results: IPropertyFieldSite[] = [
         { title: 'Contoso Site', id: '611453e1-5b5d-45ec-94aa-a180a02df897', url: ctx.pageContext.web.absoluteUrl }

@@ -17,6 +17,7 @@ nav:
     - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
     - PropertyPanePropertyEditor: 'controls/PropertyPanePropertyEditor.md'
     - PropertyPaneWebPartInformation: 'controls/PropertyPaneWebPartInformation.md'
+    - PropertyFieldSitePicker: 'controls/PropertyFieldSitePicker.md'
   - 'Controls with callout':
     - PropertyFieldButtonWithCallout: 'controls/PropertyFieldButtonWithCallout.md'
     - PropertyFieldCheckboxWithCallout: 'controls/PropertyFieldCheckboxWithCallout.md'

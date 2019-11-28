@@ -9,7 +9,7 @@ import {
   PropertyPaneTextField,
   PropertyPaneToggle
 } from '@microsoft/sp-webpart-base';
-import { PropertyFieldCodeEditor,PropertyFieldCodeEditorLanguages } from '../../PropertyFieldCodeEditor';
+import { PropertyFieldCodeEditor, PropertyFieldCodeEditorLanguages } from '../../PropertyFieldCodeEditor';
 import * as strings from 'PropertyControlsTestWebPartStrings';
 import PropertyControlsTest from './components/PropertyControlsTest';
 import { IPropertyControlsTestProps } from './components/IPropertyControlsTestProps';
@@ -40,6 +40,7 @@ import { PropertyPaneWebPartInformation } from '../../propertyFields/webPartInfo
 import { PropertyPanePropertyEditor } from '../../propertyFields/propertyEditor/PropertyPanePropertyEditor';
 import { PropertyFieldEnterpriseTermPicker } from '../../propertyFields/termPicker/PropertyFieldEnterpriseTermPicker';
 import { ISPList } from '../../propertyFields/listPicker';
+import { PropertyFieldSitePicker } from '../../PropertyFieldSitePicker';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -75,7 +76,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         collectionData: this.properties.collectionData,
         orderedItems: this.properties.orderedItems,
         swatchColor: this.properties.swatchColor,
-        enterpriseTerms: this.properties.enterpriseTerms || []
+        enterpriseTerms: this.properties.enterpriseTerms || [],
+        sites: this.properties.sites || []
       }
     );
 
@@ -90,7 +92,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     return true;
   }
 
-  private minLengthValidation (value: string, index: number, item: any): Promise<string> {
+  private minLengthValidation(value: string, index: number, item: any): Promise<string> {
     return new Promise(resolve => {
       setTimeout(() => {
         console.log(`Currently editing item nr: ${index === null ? "new item" : index}. It contains the following properties:`, item);
@@ -99,7 +101,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     });
   }
 
-  private ageValidation (value: number) {
+  private ageValidation(value: number) {
     console.log(value);
     return value >= 18 ? "" : "Person should be at least 18 years old";
   }
@@ -144,7 +146,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   moreInfoLink: `https://sharepoint.github.io/sp-dev-fx-property-controls/`,
                   videoProperties: {
                     embedLink: `https://www.youtube.com/embed/d_9o3tQ90zo`,
-                    properties: { allowFullScreen: true}
+                    properties: { allowFullScreen: true }
                   },
                   key: 'webPartInfoId'
                 })
@@ -250,14 +252,16 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
                         return (
                           React.createElement("div", null,
-                            React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
-                              if (event.currentTarget.value === "error") {
-                                onError(field.id, "Value shouldn't be equal to error");
-                              } else {
-                                onError(field.id, "");
+                            React.createElement("input", {
+                              key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+                                if (event.currentTarget.value === "error") {
+                                  onError(field.id, "Value shouldn't be equal to error");
+                                } else {
+                                  onError(field.id, "");
+                                }
+                                onUpdate(field.id, event.currentTarget.value);
                               }
-                              onUpdate(field.id, event.currentTarget.value);
-                            }}), " 🎉"
+                            }), " 🎉"
                           )
                         );
                       }
@@ -337,7 +341,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   properties: this.properties,
                   disabled: false,
                   key: 'codeEditorFieldId',
-                  language:PropertyFieldCodeEditorLanguages.HTML
+                  language: PropertyFieldCodeEditorLanguages.HTML
                 }),
                 PropertyPaneTextField("siteUrl", {
                   label: "Site URL"
@@ -458,7 +462,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   //alphaSliderHidden: true,
                   //style: PropertyFieldColorPickerStyle.Full,
                   //iconName: 'Precipitation',
-                  isHidden: this.properties.isColorFieldVisible===false,
+                  isHidden: this.properties.isColorFieldVisible === false,
                   key: 'colorFieldId'
                 }),
                 PropertyFieldColorPicker('colorObj', {
@@ -625,20 +629,20 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   colors: [
                     { color: '#ffb900', label: 'Yellow' },
                     { color: '#fff100', label: 'Light Yellow' },
-                    { color: '#d83b01', label: 'Orange'},
+                    { color: '#d83b01', label: 'Orange' },
                     { color: '#e81123', label: 'Red' },
-                    { color: '#a80000', label: 'Dark Red'},
+                    { color: '#a80000', label: 'Dark Red' },
                     { color: '#5c005c', label: 'Dark Magenta' },
-                    { color: '#e3008c', label: 'Light Magenta'},
-                    { color: '#5c2d91', label: 'Purple'},
-                    { color: '#0078d4', label: 'Blue'},
+                    { color: '#e3008c', label: 'Light Magenta' },
+                    { color: '#5c2d91', label: 'Purple' },
+                    { color: '#0078d4', label: 'Blue' },
                     { color: '#00bcf2', label: 'Light Blue' },
-                    { color: '#008272', label: 'Teal'},
-                    { color: '#107c10', label: 'Green'},
+                    { color: '#008272', label: 'Teal' },
+                    { color: '#107c10', label: 'Green' },
                     { color: '#bad80a', label: 'Light Green' },
-                    { color: '#eaeaea'},
-                    { color: 'black', label: 'Black'},
-                    { color: '#333333', label: 'Neutral'},
+                    { color: '#eaeaea' },
+                    { color: 'black', label: 'Black' },
+                    { color: '#333333', label: 'Neutral' },
                     { color: 'rgba(102, 102, 102, 0.5)', label: 'Half Gray' }
                   ],
                   onPropertyChange: this.onPropertyPaneFieldChanged,
@@ -671,6 +675,16 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'enterpriseTermSetsPickerFieldId',
                   hideTermStoreName: true,
                   includeLabels: false
+                }),
+                PropertyFieldSitePicker('sites', {
+                  label: 'Select sites',
+                  initialSites: this.properties.sites,
+                  context: this.context,
+                  deferredValidationTime: 500,
+                  multiSelect: true,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  key: 'sitesFieldId'
                 })
               ]
             },

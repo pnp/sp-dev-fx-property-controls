@@ -3,6 +3,7 @@ import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
 import { IDateTimeFieldValue } from '../../PropertyFieldDateTimePicker';
 import { IPropertyFieldGroupOrPerson } from '../../PropertyFieldPeoplePicker';
 import { IPickerTerms } from '../../PropertyFieldTermPicker';
+import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
 
 export interface IPropertyControlsTestWebPartProps {
   siteUrl: string;
@@ -16,7 +17,7 @@ export interface IPropertyControlsTestWebPartProps {
   terms: IPickerTerms;
   datetime: IDateTimeFieldValue;
   fileUrl: string;
-  isColorFieldVisible:boolean;
+  isColorFieldVisible: boolean;
   color: string;
   colorObj: IColor;
   spinValue: number;
@@ -27,9 +28,10 @@ export interface IPropertyControlsTestWebPartProps {
   textInfoHeaderValue: string;
   toggleInfoHeaderValue: boolean;
   checkboxWithCalloutValue: boolean;
-  htmlCode:string;
+  htmlCode: string;
   collectionData: any[];
   orderedItems: any[];
   swatchColor: string;
   enterpriseTerms: IPickerTerms;
+  sites: IPropertyFieldSite[];
 }

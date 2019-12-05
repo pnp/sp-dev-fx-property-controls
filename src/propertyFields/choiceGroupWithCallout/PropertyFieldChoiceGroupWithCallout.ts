@@ -4,7 +4,7 @@ import {
     IPropertyPaneField,
     PropertyPaneFieldType
 } from '@microsoft/sp-webpart-base';
-import * as _ from 'lodash';
+const omit: any = require('lodash/omit');
 
 import PropertyFieldToggleWithCalloutHost from './PropertyFieldChoiceGroupWithCalloutHost';
 
@@ -30,11 +30,11 @@ class PropertyFieldChoiceGroupWithCalloutBuilder implements IPropertyPaneField<I
         // IPropertyPaneChoiceGroupOption should be manually converted to IChoiceGroupOption
         const options: IChoiceGroupOption[] = this.properties.options.map<IChoiceGroupOption>(o => {
             return {
-                ..._.omit(o, ['key']),
+                ...omit(o, ['key']),
                 key: o.key.toString()
             };
         });
-        const props: IPropertyFieldChoiceGroupWithCalloutProps = <IPropertyFieldChoiceGroupWithCalloutProps>_.omit(this.properties, ['options']);
+        const props: IPropertyFieldChoiceGroupWithCalloutProps = <IPropertyFieldChoiceGroupWithCalloutProps>omit(this.properties, ['options']);
 
         const element = React.createElement(PropertyFieldToggleWithCalloutHost, {
             ...props,

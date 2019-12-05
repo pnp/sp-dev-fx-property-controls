@@ -8,7 +8,6 @@ import {
 import PropertyFieldLabelHost from './PropertyFieldLabelWithCalloutHost';
 
 import { IPropertyFieldLabelWithCalloutPropsInternal, IPropertyFieldLabelWithCalloutProps } from './IPropertyFieldLabelWithCallout';
-import * as _ from 'lodash';
 
 /**
  * Represents a PropertyFieldLabelWithCallout object

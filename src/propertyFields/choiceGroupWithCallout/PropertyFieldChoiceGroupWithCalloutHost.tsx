@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as _ from 'lodash';
+const omit: any = require('lodash/omit');
 
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 
@@ -17,7 +17,7 @@ export default class PropertyFieldToggleWithCalloutHost extends React.Component<
     }
 
     public render(): JSX.Element {
-        const choiceGroupProps: IChoiceGroupProps = _.omit(this.props, ['label']);
+        const choiceGroupProps: IChoiceGroupProps = omit(this.props, ['label']);
         choiceGroupProps.options.forEach(option => {
             if (option.iconProps) {
                 const iconPropsAny: any = option.iconProps as any;
@@ -27,7 +27,7 @@ export default class PropertyFieldToggleWithCalloutHost extends React.Component<
         return (
             <div>
                 <PropertyFieldHeader {...this.props} />
-                <ChoiceGroup {..._.omit(this.props, ['label'])} />
+                <ChoiceGroup {...omit(this.props, ['label'])} />
             </div>
         );
     }

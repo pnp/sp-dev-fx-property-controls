@@ -10,7 +10,7 @@ import {
 import PropertyFieldMultiSelectHost from './PropertyFieldMultiSelectHost';
 
 import { IPropertyFieldMultiSelectPropsInternal, IPropertyFieldMultiSelectProps } from './IPropertyFieldMultiSelect';
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from '@microsoft/sp-lodash-subset';
 
 class PropertyFieldMultiSelectBuilder implements IPropertyPaneField<IPropertyFieldMultiSelectPropsInternal> {
   public targetProperty: string;

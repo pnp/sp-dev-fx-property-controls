@@ -1,12 +1,11 @@
 import * as React from 'react';
 
-import * as _ from 'lodash';
-
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 
 import {IPropertyFieldTextWithCalloutHostProps} from './IPropertyFieldTextWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
 import { TextField } from 'office-ui-fabric-react/lib/components/TextField';
+const omit: any = require('lodash/omit');
 
 export default class PropertyFieldTextWithCalloutHost extends React.Component<IPropertyFieldTextWithCalloutHostProps, null> {
   constructor(props: IPropertyFieldTextWithCalloutHostProps) {
@@ -21,7 +20,7 @@ export default class PropertyFieldTextWithCalloutHost extends React.Component<IP
     return (
       <div>
         <PropertyFieldHeader {...this.props} />
-        <TextField { ..._.omit(this.props, ['label']) } />
+        <TextField { ...omit(this.props, ['label']) } />
       </div>
     );
   }

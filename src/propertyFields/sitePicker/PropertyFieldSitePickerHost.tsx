@@ -27,7 +27,7 @@ export default class PropertyFieldSitePickerHost extends React.Component<IProper
 
     this.state = {
       isLoading: false,
-      selectedSites: [],
+      selectedSites: props.initialSites || [],
       siteSearchResults: [],
       errorMessage: null
     };

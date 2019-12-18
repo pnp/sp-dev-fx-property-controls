@@ -101,7 +101,7 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 			root: {
 				width: '14px',
 				height: '100%',
-				display: 'inline-block !important'
+				display: 'inline-block'
 			},
 			rootDisabled: {
 				backgroundColor: 'transparent'

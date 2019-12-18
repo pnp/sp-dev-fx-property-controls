@@ -11,6 +11,7 @@ import PropertyFieldMultiSelectHost from './PropertyFieldMultiSelectHost';
 
 import { IPropertyFieldMultiSelectPropsInternal, IPropertyFieldMultiSelectProps } from './IPropertyFieldMultiSelect';
 import { cloneDeep } from '@microsoft/sp-lodash-subset';
+import omit from 'lodash/omit';
 
 class PropertyFieldMultiSelectBuilder implements IPropertyPaneField<IPropertyFieldMultiSelectPropsInternal> {
   public targetProperty: string;
@@ -33,7 +34,8 @@ class PropertyFieldMultiSelectBuilder implements IPropertyPaneField<IPropertyFie
     const props: IPropertyFieldMultiSelectProps = <IPropertyFieldMultiSelectProps>this.properties;
 
     const element = React.createElement(PropertyFieldMultiSelectHost, {
-      ...props,
+      ...omit(props, ['options', 'ariaPositionInSet', 'ariaSetSize']),
+      options: props.options as IDropdownOption[] || [],
       onChanged: this._onChanged.bind(this)
     });
 

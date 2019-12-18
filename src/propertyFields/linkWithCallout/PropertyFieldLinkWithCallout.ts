@@ -8,8 +8,7 @@ import {
 import PropertyFieldLinkHost from './PropertyFieldLinkWithCalloutHost';
 
 import { IPropertyFieldLinkWithCalloutPropsInternal, IPropertyFieldLinkWithCalloutProps } from './IPropertyFieldLinkWithCallout';
-
-const omit: any = require('lodash/omit');
+import omit from 'lodash/omit';
 
 /**
  * Represents a PropertyFieldLinkWithCallout object

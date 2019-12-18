@@ -1,8 +1,12 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.2.0",
+    "version": "1.9.1",
     "libraryName": "sp-dev-fx-property-controls",
     "libraryId": "0253ef52-be23-4282-b00f-e5a9350eb408",
-    "environment": "spo"
+    "environment": "spo",
+    "isDomainIsolated": false,
+    "isCreatingSolution": true,
+    "packageManager": "npm",
+    "componentType": "webpart"
   }
 }

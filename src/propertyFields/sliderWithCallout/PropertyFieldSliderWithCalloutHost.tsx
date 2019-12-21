@@ -6,7 +6,7 @@ import { IPropertyFieldSliderWithCalloutHostProps } from './IPropertyFieldSlider
 import * as telemetry from '../../common/telemetry';
 import { Slider } from 'office-ui-fabric-react/lib/components/Slider';
 
-const omit: any = require('lodash/omit');
+import omit from 'lodash/omit';
 
 export default class PropertyFieldSliderWithCalloutHost extends React.Component<IPropertyFieldSliderWithCalloutHostProps, null> {
   constructor(props: IPropertyFieldSliderWithCalloutHostProps) {
@@ -18,10 +18,18 @@ export default class PropertyFieldSliderWithCalloutHost extends React.Component<
   }
 
   public render(): JSX.Element {
+    const props = this.props;
     return (
       <div>
-        <PropertyFieldHeader {...omit(this.props, "ref")} />
-        <Slider {...omit(this.props, ['label'])} />
+        <PropertyFieldHeader
+          label={props.label}
+          calloutContent={props.calloutContent}
+          calloutTrigger={props.calloutTrigger}
+          calloutWidth={props.calloutWidth}
+          gapSpace={props.gapSpace} />
+        <Slider
+          {...omit(props, ['label'])}
+          />
       </div>
     );
   }

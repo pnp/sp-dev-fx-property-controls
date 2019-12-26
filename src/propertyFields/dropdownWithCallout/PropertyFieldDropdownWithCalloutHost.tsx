@@ -7,7 +7,7 @@ import { Dropdown, IDropdownProps, IDropdownOption } from 'office-ui-fabric-reac
 import { IPropertyPaneDropdownOption } from '@microsoft/sp-webpart-base';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 
-const omit: any = require('lodash/omit');
+const omit: any = require('lodash.omit');
 
 export default class PropertyFieldDropdownHost extends React.Component<IPropertyFieldDropdownWithCalloutHostProps, null> {
     constructor(props: IPropertyFieldDropdownWithCalloutHostProps) {

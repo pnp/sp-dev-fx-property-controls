@@ -4,7 +4,7 @@ import {
     IPropertyPaneField,
     PropertyPaneFieldType
 } from '@microsoft/sp-webpart-base';
-const omit: any = require('lodash/omit');
+const omit: any = require('lodash.omit');
 
 import PropertyFieldToggleWithCalloutHost from './PropertyFieldChoiceGroupWithCalloutHost';
 

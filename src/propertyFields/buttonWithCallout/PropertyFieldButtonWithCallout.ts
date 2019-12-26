@@ -11,7 +11,7 @@ import PropertyFieldButtonHost from './PropertyFieldButtonWithCalloutHost';
 import { IPropertyFieldButtonWithCalloutPropsInternal, IPropertyFieldButtonWithCalloutProps } from './IPropertyFieldButtonWithCallout';
 import { ButtonType } from 'office-ui-fabric-react/lib/components/Button';
 
-const omit: any = require('lodash/omit');
+const omit: any = require('lodash.omit');
 
 /**
  * Represents a PropertyFieldButtonWithCallout object

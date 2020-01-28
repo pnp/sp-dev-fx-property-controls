@@ -55,7 +55,7 @@ export class PropertyPaneHelpers {
    */
   private static waitForElement(selector: string): Promise<HTMLElement | null> {
     return new Promise((resolve, reject) => {
-      const element = document.querySelector(selector);
+      const element = document.querySelector(selector) as HTMLElement;
 
       if (element) {
         resolve(element);

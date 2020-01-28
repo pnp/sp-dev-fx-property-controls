@@ -48,14 +48,14 @@ export class PropertyPaneHelpers {
    */
   private static waitForElement(selector): Promise<HTMLElement | null> {
     return new Promise((resolve, reject) => {
-      var element = document.querySelector(selector);
+      const element = document.querySelector(selector);
 
       if (element) {
         resolve(element);
         return;
       }
 
-      var observer = new MutationObserver((mutations) => {
+      const observer = new MutationObserver((mutations) => {
         // Timeout
         const timer = setTimeout(() => {
           observer.disconnect();
@@ -64,8 +64,8 @@ export class PropertyPaneHelpers {
         }, 5000);
 
         mutations.forEach((mutation) => {
-          var nodes = [].slice.call(mutation.addedNodes);
-          for (var node of nodes) {
+          const nodes = [].slice.call(mutation.addedNodes);
+          for (const node of nodes) {
             if (node.matches && node.matches(selector)) {
               clearTimeout(timer);
               observer.disconnect();

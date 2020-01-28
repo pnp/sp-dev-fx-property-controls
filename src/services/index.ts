@@ -1,4 +1,3 @@
-export * from './ISPListPickerService';
 export * from './ISPPeopleSearchService';
 export * from './ISPSiteSearchService';
 export * from './ISPTermStorePickerService';

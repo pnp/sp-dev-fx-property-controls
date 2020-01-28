@@ -17,15 +17,12 @@ export class PropertyPaneHelpers {
       if (propPanelElm) {
         this.propertyPaneElm = propPanelElm;
         const spinnerElm = document.createElement("div");
+        spinnerElm.style.display = "flex";
+        spinnerElm.style.height = "100%";
+        spinnerElm.style.alignItems = "center";
+        spinnerElm.style.justifyContent = "center";
         this.spinnerElm = propPanelElm.appendChild(spinnerElm);
         const element: React.ReactElement<ISpinnerProps> = React.createElement(Spinner, {
-          style: {
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            position: "absolute"
-          },
           ...props
         });
         ReactDom.render(element, this.spinnerElm);

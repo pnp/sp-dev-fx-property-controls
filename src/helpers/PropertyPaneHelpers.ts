@@ -19,6 +19,13 @@ export class PropertyPaneHelpers {
         const spinnerElm = document.createElement("div");
         this.spinnerElm = propPanelElm.appendChild(spinnerElm);
         const element: React.ReactElement<ISpinnerProps> = React.createElement(Spinner, {
+          style: {
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            position: "absolute"
+          },
           ...props
         });
         ReactDom.render(element, this.spinnerElm);

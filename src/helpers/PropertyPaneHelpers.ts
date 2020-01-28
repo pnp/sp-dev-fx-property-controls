@@ -9,7 +9,7 @@ export class PropertyPaneHelpers {
   /**
    * Add a spinner for the `loadPropertyPaneResources` method
    */
-  public static setSpinner(props: ISpinnerProps) {
+  public static setSpinner(props?: ISpinnerProps): void {
     this.clearSpinner();
     const className = `.spPropertyPaneContainer`;
 
@@ -29,7 +29,7 @@ export class PropertyPaneHelpers {
   /**
    * Clear the spinner from the property pane
    */
-  public static clearSpinner() {
+  public static clearSpinner(): void {
     // Check if the property pane element exists and remove the styling
     if (this.propertyPaneElm) {
       this.propertyPaneElm = null;
@@ -46,7 +46,7 @@ export class PropertyPaneHelpers {
    *
    * @param selector
    */
-  private static waitForElement(selector): Promise<HTMLElement | null> {
+  private static waitForElement(selector: string): Promise<HTMLElement | null> {
     return new Promise((resolve, reject) => {
       const element = document.querySelector(selector);
 

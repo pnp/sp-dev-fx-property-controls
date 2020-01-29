@@ -23,7 +23,7 @@
     "@pnp/sp": "^1.2.8",
     "@pnp/sp-clientsvc": "^1.2.8",
     "@pnp/sp-taxonomy": "^1.2.8",
-    "@pnp/telemetry-js": "1.0.0",
+    "@pnp/telemetry-js": "2.0.0-beta.e06611f",
     "lodash.omit": "^4.5.0",
     "office-ui-fabric-react": "5.131.0",
     "react-ace": "5.8.0"

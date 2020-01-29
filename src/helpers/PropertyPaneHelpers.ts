@@ -1,15 +1,27 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Spinner, ISpinnerProps } from 'office-ui-fabric-react/lib/Spinner';
+import { PropertyPaneSpinner } from '../common/propertyPaneSpinner';
+import { ISpinnerProps } from 'office-ui-fabric-react/lib/Spinner';
+
+export interface IPropertyPaneSpinner {
+  /**
+   * Spinner background color
+   */
+  bgColor?: string;
+  /**
+   * Office UI Fabric spinner properties
+   */
+  spinnerProps?: ISpinnerProps;
+}
 
 export class PropertyPaneHelpers {
   private static propertyPaneElm: HTMLElement = null;
-  private static spinnerElm: HTMLElement = null;
+  private static spinnerElm: Element = null;
 
   /**
    * Add a spinner for the `loadPropertyPaneResources` method
    */
-  public static setSpinner(props?: ISpinnerProps): void {
+  public static setSpinner(props?: IPropertyPaneSpinner): void {
     this.clearSpinner();
     const className = `.spPropertyPaneContainer`;
 
@@ -17,14 +29,12 @@ export class PropertyPaneHelpers {
       if (propPanelElm) {
         this.propertyPaneElm = propPanelElm;
         const spinnerElm = document.createElement("div");
-        spinnerElm.style.display = "flex";
         spinnerElm.style.height = "100%";
-        spinnerElm.style.alignItems = "center";
-        spinnerElm.style.justifyContent = "center";
+        spinnerElm.style.backgroundColor = props && props.bgColor ? props.bgColor : "rgba(255, 255, 255, 0.8)";
+        spinnerElm.style.zIndex = "99";
+        spinnerElm.style.position = "relative";
         this.spinnerElm = propPanelElm.appendChild(spinnerElm);
-        const element: React.ReactElement<ISpinnerProps> = React.createElement(Spinner, {
-          ...props
-        });
+        const element: React.ReactElement<ISpinnerProps> = React.createElement(PropertyPaneSpinner, props && props.spinnerProps);
         ReactDom.render(element, this.spinnerElm);
       }
     });
@@ -39,7 +49,7 @@ export class PropertyPaneHelpers {
       this.propertyPaneElm = null;
     }
     if (this.spinnerElm) {
-      ReactDom.unmountComponentAtNode(this.spinnerElm);
+      this.spinnerElm.remove();
       this.spinnerElm = null;
     }
   }

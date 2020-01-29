@@ -41,6 +41,8 @@ import { PropertyPanePropertyEditor } from '../../propertyFields/propertyEditor/
 import { PropertyFieldEnterpriseTermPicker } from '../../propertyFields/termPicker/PropertyFieldEnterpriseTermPicker';
 import { ISPList } from '../../propertyFields/listPicker';
 import { PropertyFieldSitePicker } from '../../PropertyFieldSitePicker';
+import { PropertyPaneHelpers } from '../../helpers';
+import { SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -82,6 +84,38 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  private wait() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+        return;
+      }, 1000);
+    });
+  }
+
+  /**
+   * Load property pane resources
+   */
+  protected async loadPropertyPaneResources(): Promise<void> {
+    PropertyPaneHelpers.setSpinner({
+      spinnerProps: {
+        size: SpinnerSize.large,
+        getStyles: () => {
+          return {
+            circle: {
+              height: 80,
+              width: 80
+            }
+          };
+        }
+      }
+    });
+
+    await this.wait();
+
+    PropertyPaneHelpers.clearSpinner();
   }
 
   protected get dataVersion(): Version {

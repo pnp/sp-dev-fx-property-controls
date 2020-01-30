@@ -9,6 +9,10 @@ export interface IPropertyPaneSpinner {
    */
   bgColor?: string;
   /**
+   * Class name
+   */
+  className?: string;
+  /**
    * Office UI Fabric spinner properties
    */
   spinnerProps?: ISpinnerProps;
@@ -31,8 +35,11 @@ export class PropertyPaneHelpers {
         const spinnerElm = document.createElement("div");
         spinnerElm.style.height = "100%";
         spinnerElm.style.backgroundColor = props && props.bgColor ? props.bgColor : "rgba(255, 255, 255, 0.8)";
-        spinnerElm.style.zIndex = "99";
+        spinnerElm.style.zIndex = "999";
         spinnerElm.style.position = "relative";
+        if (props && props.className) {
+          spinnerElm.classList.add(className);
+        }
         this.spinnerElm = propPanelElm.appendChild(spinnerElm);
         const element: React.ReactElement<ISpinnerProps> = React.createElement(PropertyPaneSpinner, props && props.spinnerProps);
         ReactDom.render(element, this.spinnerElm);

@@ -43,15 +43,17 @@ export class PropertyPaneHelpers {
   /**
    * Clear the spinner from the property pane
    */
-  public static clearSpinner(): void {
-    // Check if the property pane element exists and remove the styling
-    if (this.propertyPaneElm) {
-      this.propertyPaneElm = null;
-    }
-    if (this.spinnerElm) {
-      this.spinnerElm.remove();
-      this.spinnerElm = null;
-    }
+  public static clearSpinner(delay: number = 0): void {
+    setTimeout(() => {
+      // Check if the property pane element exists and remove the styling
+      if (this.propertyPaneElm) {
+        this.propertyPaneElm = null;
+      }
+      if (this.spinnerElm) {
+        this.spinnerElm.remove();
+        this.spinnerElm = null;
+      }
+    }, delay);
   }
 
 

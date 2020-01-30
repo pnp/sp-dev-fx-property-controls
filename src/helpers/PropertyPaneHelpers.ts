@@ -35,7 +35,7 @@ export class PropertyPaneHelpers {
         const spinnerElm = document.createElement("div");
         spinnerElm.style.height = "100%";
         spinnerElm.style.backgroundColor = props && props.bgColor ? props.bgColor : "rgba(255, 255, 255, 0.8)";
-        spinnerElm.style.zIndex = "999";
+        spinnerElm.style.zIndex = "99";
         spinnerElm.style.position = "relative";
         if (props && props.className) {
           spinnerElm.classList.add(className);
@@ -51,7 +51,7 @@ export class PropertyPaneHelpers {
    * Clear the spinner from the property pane
    */
   public static clearSpinner(delay: number = 0): void {
-    setTimeout(() => {
+    if (delay <= 0) {
       // Check if the property pane element exists and remove the styling
       if (this.propertyPaneElm) {
         this.propertyPaneElm = null;
@@ -60,7 +60,11 @@ export class PropertyPaneHelpers {
         this.spinnerElm.remove();
         this.spinnerElm = null;
       }
-    }, delay);
+    } else {
+      setTimeout(() => {
+        this.clearSpinner();
+      }, delay);
+    }
   }
 
 

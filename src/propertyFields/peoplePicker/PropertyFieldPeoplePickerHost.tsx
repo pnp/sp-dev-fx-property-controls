@@ -68,15 +68,20 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
         if (this.props.allowDuplicate === false) {
           response = this.removeDuplicates(response);
         }
-        response.forEach((element: IPropertyFieldGroupOrPerson, index: number) => {
-          // Fill the results Array
-          this.resultsPeople.push(element);
-          // Transform the response in IPersonaProps object
-          this.resultsPersonas.push(this.getPersonaFromPeople(element, index));
-        });
-        // Refresh the component's state
-        this.setState({ resultsPeople: this.resultsPeople, resultsPersonas: this.resultsPersonas });
-        return this.resultsPersonas;
+        if(response && response.length > 0) {
+          response.forEach((element: IPropertyFieldGroupOrPerson, index: number) => {
+            // Fill the results Array
+            this.resultsPeople.push(element);
+            // Transform the response in IPersonaProps object
+            this.resultsPersonas.push(this.getPersonaFromPeople(element, index));
+          });
+          // Refresh the component's state
+          this.setState({ resultsPeople: this.resultsPeople, resultsPersonas: this.resultsPersonas });
+          return this.resultsPersonas;
+        }
+        else {
+          return [];
+        }
       });
       return result;
     } else {

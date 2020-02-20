@@ -5,6 +5,7 @@ import { ISPPeopleSearchService } from './ISPPeopleSearchService';
 import SPPeoplePickerMockHttpClient from './SPPeopleSearchMockService';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { IUsers } from './IUsers';
+import { IGroups } from './IGroups';
 
 /**
  * Service implementation to search people in SharePoint
@@ -18,39 +19,43 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
       // If the running environment is local, load the data from the mock
       return this.searchPeopleFromMock(ctx, query);
     } else {
-      // Check the type of action to perform (gobal or local)
+      // Check the type of action to perform (global or local)
       if (siteUrl) {
-        let userRequestUrl = `${siteUrl}/_api/web/siteusers`;
+        let result: Promise<IPropertyFieldGroupOrPerson[]>;
+        const apiUrlPart = "/_api/web/";
+        
         // filter for principal Type
         let filterVal: string = "";
         if (principalType) {
           filterVal = `?$filter=(${principalType.map(type => `(PrincipalType eq ${type})`).join(" or ")})`;
         }
+
         // Filter for hidden values
         filterVal = filterVal ? `${filterVal} and (IsHiddenInUI eq false)` : `?$filter=(IsHiddenInUI eq false)`;
-        userRequestUrl = `${userRequestUrl}${filterVal}`;
 
-        return ctx.spHttpClient.get(userRequestUrl, SPHttpClient.configurations.v1, {
-          headers: {
-            'Accept': 'application/json;odata.metadata=none'
-          }
-        })
-        .then(data => data.json())
-        .then((usersData: IUsers) => {
-          let res: IPropertyFieldGroupOrPerson[] = [];
+        // Get the SharePoint groups if principal type is specified
+        if(principalType.indexOf(PrincipalType.SharePoint) > -1) {
+          const sharePointRequestUrl = `${siteUrl}${apiUrlPart}sitegroups`;
 
-          if (usersData && usersData.value && usersData.value.length > 0) {
-            res = usersData.value.filter(element => element.Title.toLowerCase().indexOf(query.toLowerCase()) !== -1 || element.LoginName.toLowerCase().indexOf(query.toLowerCase()) !== -1).map(element => ({
-              fullName: element.Title,
-              id: element.Id.toString(),
-              login: element.LoginName,
-              email: element.Email,
-              imageUrl: this.getUserPhotoUrl(element.Email, siteUrl),
-              initials: this.getFullNameInitials(element.Title)
-            } as IPropertyFieldGroupOrPerson));
+          result = this.getSharePointGroups(sharePointRequestUrl, ctx, query);
+        }
+        
+        // Get the users or security groups if specified
+        if(principalType.indexOf(PrincipalType.Users) > -1 || principalType.indexOf(PrincipalType.Security) > -1) {
+          const userRequestUrl = `${siteUrl}${apiUrlPart}siteusers`;
+
+          if(result) {
+            result.then((oldResults) => this.getSiteUsers(userRequestUrl, ctx, query, siteUrl)
+            .then((results) => {
+              return oldResults.concat(results);
+            }));
           }
-          return res;
-        });
+          else {
+            result = this.getSiteUsers(userRequestUrl, ctx, query, siteUrl);
+          }
+        }
+        
+        return result;
       } else {
         // If the running env is SharePoint, loads from the peoplepicker web service
         const userRequestUrl: string = `${ctx.pageContext.web.absoluteUrl}/_api/SP.UI.ApplicationPages.ClientPeoplePickerWebServiceInterface.clientPeoplePickerSearchUser`;
@@ -84,20 +89,22 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
             res = values.map(element => {
               switch (element.EntityType) {
                 case 'User':
-                  const groupOrPerson: IPropertyFieldGroupOrPerson = { fullName: element.DisplayText, login: element.Description };
-                  groupOrPerson.email = element.EntityData.Email;
-                  groupOrPerson.jobTitle = element.EntityData.Title;
-                  groupOrPerson.initials = this.getFullNameInitials(groupOrPerson.fullName);
-                  groupOrPerson.imageUrl = this.getUserPhotoUrl(groupOrPerson.email, ctx.pageContext.web.absoluteUrl);
-                  return groupOrPerson;
+                  const user: IPropertyFieldGroupOrPerson = { fullName: element.DisplayText, login: element.Description };
+                  user.email = element.EntityData.Email;
+                  user.jobTitle = element.EntityData.Title;
+                  user.initials = this.getFullNameInitials(user.fullName);
+                  user.imageUrl = this.getUserPhotoUrl(user.email, ctx.pageContext.web.absoluteUrl);
+                  return user;
                 case 'SecGroup':
-                  const group: IPropertyFieldGroupOrPerson = {
+                  const securityGroup: IPropertyFieldGroupOrPerson = {
                     fullName: element.DisplayText,
                     login: element.ProviderName,
                     id: element.Key,
                     description: element.Description
                   };
-                  return group;
+                  securityGroup.email = element.EntityData.Email;
+                  securityGroup.initials = this.getFullNameInitials(securityGroup.fullName);
+                  return securityGroup;
                 case 'FormsRole':
                   const formsRole: IPropertyFieldGroupOrPerson = {
                     fullName: element.DisplayText,
@@ -105,14 +112,25 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
                     id: element.Key,
                     description: element.Description
                   };
+                  formsRole.initials = this.getFullNameInitials(formsRole.fullName);
                   return formsRole;
-                default:
-                  const persona: IPropertyFieldGroupOrPerson = {
+                case 'SPGroup':
+                  const spGroupRole: IPropertyFieldGroupOrPerson = {
                     fullName: element.DisplayText,
                     login: element.EntityData.AccountName,
                     id: element.EntityData.SPGroupID,
                     description: element.Description
                   };
+                  spGroupRole.initials = this.getFullNameInitials(spGroupRole.fullName);
+                  return spGroupRole;
+                default:
+                  const persona: IPropertyFieldGroupOrPerson = {
+                    fullName: element.DisplayText,
+                    login: element.ProviderName,
+                    id: element.Key,
+                    description: element.Description
+                  };
+                  persona.initials = this.getFullNameInitials(persona.fullName);
                   return persona;
               }
             });
@@ -121,6 +139,55 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
         });
       }
     }
+  }
+
+  private getSiteUsers(userRequestUrl: string, ctx: IWebPartContext, query: string, siteUrl: string = null): Promise<IPropertyFieldGroupOrPerson[]> {
+    userRequestUrl = `${userRequestUrl}?$filter=substringof(%27${query}%27,Title)%20or%20substringof(%27${query}%27,LoginName)`;
+    return ctx.spHttpClient.get(userRequestUrl, SPHttpClient.configurations.v1, {
+      headers: {
+        'Accept': 'application/json;odata.metadata=none'
+      }
+    })
+    .then(data => data.json())
+    .then((usersData: IUsers) => {
+      let res: IPropertyFieldGroupOrPerson[] = [];
+
+      if (usersData && usersData.value && usersData.value.length > 0) {
+        res = usersData.value.map(element => ({
+          fullName: element.Title,
+          id: element.Id.toString(),
+          login: element.LoginName,
+          email: element.Email,
+          imageUrl: this.getUserPhotoUrl(element.Email, siteUrl),
+          initials: this.getFullNameInitials(element.Title)
+        } as IPropertyFieldGroupOrPerson));
+      }
+      return res;
+    });
+  }
+
+  private getSharePointGroups(requestUrl: string, ctx: IWebPartContext, query: string): Promise<IPropertyFieldGroupOrPerson[]> {
+    requestUrl = `${requestUrl}?$filter=substringof(%27${query}%27,Title)`;
+    return ctx.spHttpClient.get(requestUrl, SPHttpClient.configurations.v1, {
+      headers: {
+        'Accept': 'application/json;odata.metadata=none'
+      }
+    })
+    .then(data => data.json())
+    .then((sharePointData: IGroups) => {
+      if(sharePointData && sharePointData.value && sharePointData.value.length > 0) {
+        let res: IPropertyFieldGroupOrPerson[] = [];
+
+        res = sharePointData.value.map(element => ({
+          fullName: element.Title,
+          id: element.Id.toString(),
+          login: element.LoginName,
+          initials: this.getFullNameInitials(element.Title)
+        } as IPropertyFieldGroupOrPerson));
+
+        return res;
+      }
+    });
   }
 
   /**

@@ -19,7 +19,7 @@ import { PropertyFieldPeoplePicker, PrincipalType } from '../../PropertyFieldPeo
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '../../PropertyFieldListPicker';
 import { PropertyFieldTermPicker } from '../../PropertyFieldTermPicker';
 import { PropertyFieldDateTimePicker, DateConvention, TimeConvention } from '../../PropertyFieldDateTimePicker';
-import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '../../PropertyFieldColorPicker';
+import { PropertyFieldColorPicker } from '../../PropertyFieldColorPicker';
 import { PropertyFieldSpinButton } from '../../PropertyFieldSpinButton';
 import { PropertyFieldDropdownWithCallout } from '../../PropertyFieldDropdownWithCallout';
 import { PropertyFieldTextWithCallout } from '../../PropertyFieldTextWithCallout';
@@ -34,8 +34,7 @@ import { PropertyFieldMultiSelect } from '../../PropertyFieldMultiSelect';
 import { PropertyFieldNumber } from '../../PropertyFieldNumber';
 import { PropertyFieldCollectionData, CustomCollectionFieldType } from '../../PropertyFieldCollectionData';
 import { PropertyFieldOrder } from '../../PropertyFieldOrder';
-import { orderedItem } from './components/OrderedItem';
-import { PropertyFieldSwatchColorPicker, PropertyFieldSwatchColorPickerStyle } from '../../PropertyFieldSwatchColorPicker';
+import { PropertyFieldSwatchColorPicker } from '../../PropertyFieldSwatchColorPicker';
 import { PropertyPaneWebPartInformation } from '../../propertyFields/webPartInformation';
 import { PropertyPanePropertyEditor } from '../../propertyFields/propertyEditor/PropertyPanePropertyEditor';
 import { PropertyFieldEnterpriseTermPicker } from '../../propertyFields/termPicker/PropertyFieldEnterpriseTermPicker';

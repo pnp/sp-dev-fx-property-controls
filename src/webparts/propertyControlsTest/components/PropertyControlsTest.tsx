@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styles from './PropertyControlsTest.module.scss';
 import { IPropertyControlsTestProps } from './IPropertyControlsTestProps';
-import { escape } from '@microsoft/sp-lodash-subset';
 
 /**
  * Property control test component that renders the property control values

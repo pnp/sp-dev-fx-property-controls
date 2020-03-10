@@ -19,8 +19,7 @@ import {
     ITermGroupData,
     ITermGroup as PnPTermGroup,
     ITermData,
-    ITerm as PnPTerm,
-    Terms
+    ITerm as PnPTerm
 } from "@pnp/sp-taxonomy";
 import { IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
 import { Environment, EnvironmentType } from "@microsoft/sp-core-library";

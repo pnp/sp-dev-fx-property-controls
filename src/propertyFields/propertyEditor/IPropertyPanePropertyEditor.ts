@@ -1,4 +1,4 @@
-import { IPropertyPaneCustomFieldProps, BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
 
 /**
  * Public properties of the PropertyFieldSpinButton custom field

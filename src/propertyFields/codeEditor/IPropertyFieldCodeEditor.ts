@@ -1,6 +1,3 @@
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
-
-
 export enum PropertyFieldCodeEditorLanguages {
   "JSON" = "json",
   "JavaScript" = "javascript",

@@ -1,7 +1,6 @@
 import * as strings from 'PropertyControlStrings';
 import * as React from 'react';
 import { Dropdown } from 'office-ui-fabric-react/lib/components/Dropdown';
-import { Label } from 'office-ui-fabric-react/lib/components/Label';
 import { IPropertyFieldMultiSelectHostProps } from './IPropertyFieldMultiSelectHost';
 import * as telemetry from '../../common/telemetry';
 

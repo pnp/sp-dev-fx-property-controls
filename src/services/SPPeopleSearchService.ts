@@ -47,7 +47,11 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
           if(result) {
             result.then((oldResults) => this.getSiteUsers(userRequestUrl, ctx, query, siteUrl)
             .then((results) => {
-              return oldResults.concat(results);
+              if(oldResults) {
+                return oldResults.concat(results);
+              }
+
+              return results;
             }));
           }
           else {

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { IPropertyFieldDateTimePickerPropsInternal, TimeConvention, DateConvention, IDateTimeFieldValue } from './IPropertyFieldDateTimePicker';
+import { TimeConvention, DateConvention, IDateTimeFieldValue } from './IPropertyFieldDateTimePicker';
 import { DatePicker, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import * as strings from 'PropertyControlStrings';
-import { IPropertyFieldDateTimePickerHostProps, IPropertyFieldDateTimePickerHostState, ITimeComponentProps, IHoursComponentProps } from './IPropertyFieldDateTimePickerHost';
+import { IPropertyFieldDateTimePickerHostProps, IPropertyFieldDateTimePickerHostState } from './IPropertyFieldDateTimePickerHost';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import styles from './PropertyFieldDateTimePickerHost.module.scss';
 import HoursComponent from './HoursComponent';

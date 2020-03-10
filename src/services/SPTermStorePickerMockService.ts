@@ -1,5 +1,5 @@
 import { ITermStore, ITerm  } from './ISPTermStorePickerService';
-import {IPickerTerms, IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
+import { IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
 /**
  * Defines a http client to request mock data to use the web part with the local workbench
  */

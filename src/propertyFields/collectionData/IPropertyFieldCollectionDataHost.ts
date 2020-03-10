@@ -1,4 +1,4 @@
-import { ICustomCollectionField, IPropertyFieldCollectionDataProps } from '.';
+import { IPropertyFieldCollectionDataProps } from '.';
 
 /**
  * PropertyFieldCollectionDataHost properties interface

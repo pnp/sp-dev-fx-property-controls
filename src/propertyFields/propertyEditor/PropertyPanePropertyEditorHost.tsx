@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IPropertyPanePropertyEditorHostProps, IPropertyPanePropertyEditorHostState } from './IPropertyPanePropertyEditorHost';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { PrimaryButton, DefaultButton, IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import AceEditor from 'react-ace';
 import { set } from '@microsoft/sp-lodash-subset';
 import * as telemetry from '../../common/telemetry';

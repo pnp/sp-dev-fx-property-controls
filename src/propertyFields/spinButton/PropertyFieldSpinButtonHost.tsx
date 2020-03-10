@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import {
 	IPropertyFieldSpinButtonHostProps,
 	IPropertyFieldSpinButtonHostState
 } from './IPropertyFieldSpinButtonHost';
-import * as strings from 'PropertyControlStrings';
 import * as telemetry from '../../common/telemetry';
 
 export default class PropertyFieldSpinButtonHost extends React.Component<IPropertyFieldSpinButtonHostProps, IPropertyFieldSpinButtonHostState> {

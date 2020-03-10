@@ -2,8 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
     IPropertyPaneField,
-    PropertyPaneFieldType,
-    PropertyPaneButtonType
+    PropertyPaneFieldType
 } from '@microsoft/sp-webpart-base';
 
 import PropertyFieldButtonHost from './PropertyFieldButtonWithCalloutHost';

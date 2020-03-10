@@ -3,8 +3,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   IPropertyPaneField,
-  PropertyPaneFieldType,
-  IPropertyPaneCustomFieldProps
+  PropertyPaneFieldType
 } from '@microsoft/sp-webpart-base';
 import { IPropertyFieldDateTimePickerHostProps } from './IPropertyFieldDateTimePickerHost';
 import PropertyFieldDateTimePickerHost from './PropertyFieldDateTimePickerHost';

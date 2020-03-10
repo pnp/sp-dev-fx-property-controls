@@ -100,7 +100,7 @@ Here is an example of how you can render your own controls in the `PropertyField
   id: "customFieldId",
   title: "Custom Field",
   type: CustomCollectionFieldType.custom,
-  onCustomRender: (field, value, onUpdate, item, itemId) => {
+  onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
     return (
       React.createElement("div", null,
         React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {

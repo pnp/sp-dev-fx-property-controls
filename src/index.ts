@@ -19,3 +19,4 @@ export * from './PropertyFieldTextWithCallout';
 export * from './PropertyFieldToggleWithCallout';
 export * from './PropertyPaneWebPartInformation';
 export * from './PropertyPanePropertyEditor';
+export * from './PropertyFieldSitePicker';

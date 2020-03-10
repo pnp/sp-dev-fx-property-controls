@@ -8,7 +8,8 @@ import {
 import PropertyFieldLinkHost from './PropertyFieldLinkWithCalloutHost';
 
 import { IPropertyFieldLinkWithCalloutPropsInternal, IPropertyFieldLinkWithCalloutProps } from './IPropertyFieldLinkWithCallout';
-import * as _ from 'lodash';
+
+const omit: any = require('lodash.omit');
 
 /**
  * Represents a PropertyFieldLinkWithCallout object
@@ -29,7 +30,7 @@ class PropertyFieldLinkWithCalloutBuilder implements IPropertyPaneField<IPropert
 
     private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
 
-        const props: IPropertyFieldLinkWithCalloutProps = <IPropertyFieldLinkWithCalloutProps>_.omit(this.properties);
+        const props: IPropertyFieldLinkWithCalloutProps = <IPropertyFieldLinkWithCalloutProps>omit(this.properties);
 
         const element = React.createElement(PropertyFieldLinkHost, {
             ...props

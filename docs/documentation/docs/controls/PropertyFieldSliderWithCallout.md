@@ -42,7 +42,8 @@ PropertyFieldSliderWithCallout('sliderWithCalloutValue', {
   min: 0,
   step: 1,
   showValue: true,
-  value: this.properties.sliderWithCalloutValue
+  value: this.properties.sliderWithCalloutValue,
+  debounce: 1000
 })
 ```
 
@@ -56,6 +57,7 @@ The `PropertyFieldSliderWithCallout` control uses the same implementation as the
 | calloutWidth | number | no | Custom width for callout including borders. If value is 0, no width is applied. |
 | calloutTrigger | CalloutTriggers | no | Event to show the callout |
 | gapSpace | number | no | The gap between the callout and the target |
+| debounce | number | no | Time specified in miliseconds after which the onChanged handler is going to be called. |
 
 Enum `CalloutTriggers`
 

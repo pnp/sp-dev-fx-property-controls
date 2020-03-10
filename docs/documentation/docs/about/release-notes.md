@@ -1,5 +1,32 @@
 # Releases
 
+## 1.17.0
+
+### New control(s)
+
+- `PropertyFieldSitePicker`: New control that allows the user to select one or multiple sites from the SharePoint Search API. Similar to the SitePicker in the official "News" Web Part [#208](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/208), [#215](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/215)
+- `Telemetry`: Provide a way to opt-out for PnP Telemetry [#222](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/222)
+- `PropertyPaneHelpers`: Allows to show a spinner while loading resources
+
+### Enhancements
+
+- Add norwegian language file [#125](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/125)
+- `PropertyFieldSliderWithCallout`: debounce property added [#209](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/209)
+- Replace full lodash with only used functions. [#213](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/213)
+
+### Fixes
+
+- Documentation update for `PropertyFieldCollectionData` [#196](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/196)
+- `PropertyFieldOrder`: When items is an empty array, component renders the text '0' [#152](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/152)
+- Documentation update for `PropertyFieldCodeEditor` [#194](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/194)
+- `PropertyFieldTermPicker`: Tags icon styling issue on IE11 [#193](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/193)
+- `PropertyPanePropertyEditor`: Unable to download json export [#210](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/210)
+- `PropertyFieldCollectionData`: Fix Data Grid Dragging Issues [#217](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/217)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Antonio Monserrate](https://github.com/antoniomonserrate), [rocketboy1908](https://github.com/rocketboy1908), [Piotr Siatka](https://github.com/siata13), [Ben](https://github.com/benkenawell), [Niels Söth](https://github.com/nsoeth), [araver](https://github.com/araver).
+
 ## 1.16.0
 
 ### Enhancements

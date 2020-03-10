@@ -1,10 +1,8 @@
 declare interface IPropertyControlStrings {
 
-
-
   DescriptionLabel: string;
   MoreInfoLabel: string;
-  
+
   // PeoplePicker labels
   PeoplePickerSuggestedContacts: string;
   PeoplePickerSuggestedGroups: string;
@@ -95,6 +93,11 @@ declare interface IPropertyControlStrings {
   ImportButtonLabel: string;
   ExportButtonLabel: string;
   JsonFileRequiredMessage: string;
+
+  // Site Picker labels
+  SitePickerSearchBoxPlaceholder: string;
+  SitePickerNoResults: string;
+  SitePickerSitesChosen: string;
 }
 
 declare module 'PropertyControlStrings' {

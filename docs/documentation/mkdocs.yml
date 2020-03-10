@@ -12,6 +12,7 @@ nav:
     - PropertyFieldNumber: 'controls/PropertyFieldNumber.md'
     - PropertyFieldOrder: 'controls/PropertyFieldOrder.md'
     - PropertyFieldPeoplePicker: 'controls/PropertyFieldPeoplePicker.md'
+    - PropertyFieldSitePicker: 'controls/PropertyFieldSitePicker.md'
     - PropertyFieldSpinButton: 'controls/PropertyFieldSpinButton.md'
     - PropertyFieldSwatchColorPicker: 'controls/PropertyFieldSwatchColorPicker.md'
     - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
@@ -27,6 +28,8 @@ nav:
     - PropertyFieldSliderWithCallout: 'controls/PropertyFieldSliderWithCallout.md'
     - PropertyFieldTextWithCallout: 'controls/PropertyFieldTextWithCallout.md'
     - PropertyFieldToggleWithCallout: 'controls/PropertyFieldToggleWithCallout.md'
+  - Helpers:
+    - PropertyPaneHelpers: 'helpers/PropertyPaneHelpers.md'
   - 'Beta testing': 'beta.md'
   - About:
     - 'Release notes': 'about/release-notes.md'
@@ -49,7 +52,7 @@ markdown_extensions:
 extra:
   social:
     - type: 'twitter'
-      link: 'https://twitter.com/officedevpnp'
+      link: 'https://twitter.com/m365pnp'
     - type: 'youtube'
       link: 'http://aka.ms/sppnp-videos'
     - type: 'link'

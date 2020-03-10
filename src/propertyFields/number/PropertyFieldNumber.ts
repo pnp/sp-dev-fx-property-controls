@@ -10,7 +10,6 @@ import {
 import PropertyFieldNumberHost from './PropertyFieldNumberHost';
 
 import { IPropertyFieldNumberPropsInternal, IPropertyFieldNumberProps } from './IPropertyFieldNumber';
-import { cloneDeep } from 'lodash';
 
 class PropertyFieldNumberBuilder implements IPropertyPaneField<IPropertyFieldNumberPropsInternal> {
   public targetProperty: string;

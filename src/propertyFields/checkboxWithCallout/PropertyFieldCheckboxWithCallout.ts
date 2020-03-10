@@ -8,8 +8,6 @@ import {
 import PropertyFieldCheckboxHost from './PropertyFieldCheckboxWithCalloutHost';
 
 import { IPropertyFieldCheckboxWithCalloutPropsInternal, IPropertyFieldCheckboxWithCalloutProps } from './IPropertyFieldCheckboxWithCallout';
-import * as _ from 'lodash';
-
 
 /**
  * Represents a PropertyFieldCheckboxWithCallout object

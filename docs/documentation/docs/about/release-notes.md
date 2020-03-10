@@ -6,6 +6,7 @@
 
 - `PropertyFieldSitePicker`: New control that allows the user to select one or multiple sites from the SharePoint Search API. Similar to the SitePicker in the official "News" Web Part [#208](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/208), [#215](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/215)
 - `Telemetry`: Provide a way to opt-out for PnP Telemetry [#222](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/222)
+- `PropertyPaneHelpers`: Allows to show a spinner while loading resources
 
 ### Enhancements
 

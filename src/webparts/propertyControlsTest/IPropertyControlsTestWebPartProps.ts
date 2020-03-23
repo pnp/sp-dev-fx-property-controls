@@ -14,6 +14,7 @@ export interface IPropertyControlsTestWebPartProps {
   multiList: string | string[];
   singleListFiltered: string;
   multiListFiltered: string[];
+  view: string;
   terms: IPickerTerms;
   datetime: IDateTimeFieldValue;
   fileUrl: string;

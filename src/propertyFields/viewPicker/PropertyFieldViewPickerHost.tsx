@@ -54,12 +54,10 @@ export default class PropertyFieldViewPickerHost extends React.Component<IProper
    * Loads the views from a SharePoint list
    */
   private loadViews(): void {
-    console.log("Load views");
     const viewService: SPViewPickerService = new SPViewPickerService(this.props, this.props.context);
     const viewsToExclude: string[] = this.props.viewsToExclude || [];
     this.options = [];
     viewService.getViews().then((response: ISPViews) => {
-      console.log("Loaded views", response);
       // Start mapping the views that are selected
       response.value.forEach((view: ISPView) => {
         if (this.props.selectedView === view.Id) {

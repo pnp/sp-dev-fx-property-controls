@@ -55,6 +55,7 @@ class PropertyFieldPasswordBuilder implements IPropertyPaneField<IPropertyFieldP
 export function PropertyFieldPassword(targetProperty: string, properties: IPropertyFieldPasswordProps): IPropertyPaneField<IPropertyFieldPasswordPropsInternal> {
   return new PropertyFieldPasswordBuilder(targetProperty, {
     ...properties,
+    onChanged: properties.onChanged,
     onRender: null,
     onDispose: null
   });

@@ -43,6 +43,7 @@ import { ISPList } from '../../propertyFields/listPicker';
 import { PropertyFieldSitePicker } from '../../PropertyFieldSitePicker';
 import { PropertyPaneHelpers } from '../../helpers';
 import { SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+import { PropertyFieldPassword } from '../../PropertyFieldPassword';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -79,7 +80,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         orderedItems: this.properties.orderedItems,
         swatchColor: this.properties.swatchColor,
         enterpriseTerms: this.properties.enterpriseTerms || [],
-        sites: this.properties.sites || []
+        sites: this.properties.sites || [],
+        password: this.properties.password
       }
     );
 
@@ -140,6 +142,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     return value >= 18 ? "" : "Person should be at least 18 years old";
   }
 
+
+  private _onChangedPassword(value:string){
+    console.log(value);
+  }
+
   protected onPropertyPaneConfigurationStart(): void {
     setTimeout(() => {
       this.multiSelectProps = [
@@ -175,6 +182,12 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
             {
               groupName: strings.AboutGroupName,
               groupFields: [
+                PropertyFieldPassword('password', {
+                  key: 'password',
+                  label:  "Password",
+                  value: this.properties.password,
+                  onChanged :  this._onChangedPassword
+                }),
                 PropertyPaneWebPartInformation({
                   description: `This is a <strong>demo webpart</strong>, used to demonstrate all the <a href="https://aka.ms/sppnp">PnP</a> property controls`,
                   moreInfoLink: `https://sharepoint.github.io/sp-dev-fx-property-controls/`,
@@ -189,6 +202,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
             {
               groupName: '', //strings.BasicGroupName,
               groupFields: [
+
                 PropertyFieldCollectionData("collectionData", {
                   key: "collectionData",
                   label: "Collection data",

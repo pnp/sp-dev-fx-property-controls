@@ -7,7 +7,7 @@ import { IPickerTerms } from '../../../PropertyFieldTermPicker';
 import { IPropertyFieldSite } from '../../../propertyFields/sitePicker';
 
 export interface IPropertyControlsTestProps {
-
+  password:string;
   context: WebPartContext;
   numberValue: number;
   multiSelect: string[];

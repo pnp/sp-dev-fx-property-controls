@@ -17,7 +17,12 @@ export default class SPSiteSearchService implements ISPSiteSearchService {
       // If the running environment is local, load the data from the mock
       return this.searchSitesFromMock(ctx, query);
     } else {
-      const rootUrl = ctx.pageContext.web.absoluteUrl.replace(ctx.pageContext.web.serverRelativeUrl, '');
+
+      let rootUrl: string = ctx.pageContext.web.absoluteUrl;
+      if (ctx.pageContext.web.serverRelativeUrl != "/") {
+        rootUrl = ctx.pageContext.web.absoluteUrl.replace(ctx.pageContext.web.serverRelativeUrl, '');
+      }
+
       // If the running env is SharePoint, loads from the search
       const userRequestUrl: string = `${ctx.pageContext.web.absoluteUrl}/_api/search/query?querytext='contentclass:STS_Site contentclass:STS_Web Title:*${query}* Path:${rootUrl}*'&selectproperties='SiteId,Title,Path'&rowlimit=5`;
 

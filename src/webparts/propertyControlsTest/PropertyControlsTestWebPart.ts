@@ -43,6 +43,7 @@ import { ISPList } from '../../propertyFields/listPicker';
 import { PropertyFieldSitePicker } from '../../PropertyFieldSitePicker';
 import { PropertyPaneHelpers } from '../../helpers';
 import { SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+import { PropertyFieldPassword } from '../../PropertyFieldPassword';
 import { PropertyFieldViewPickerOrderBy, PropertyFieldViewPicker, ISPView } from '../../PropertyFieldViewPicker';
 
 /**
@@ -81,7 +82,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         orderedItems: this.properties.orderedItems,
         swatchColor: this.properties.swatchColor,
         enterpriseTerms: this.properties.enterpriseTerms || [],
-        sites: this.properties.sites || []
+        sites: this.properties.sites || [],
+        password: this.properties.password
       }
     );
 
@@ -142,6 +144,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     return value >= 18 ? "" : "Person should be at least 18 years old";
   }
 
+
+  private _onChangedPassword(value:string){
+    console.log(value);
+  }
+
   protected onPropertyPaneConfigurationStart(): void {
     setTimeout(() => {
       this.multiSelectProps = [
@@ -179,6 +186,12 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
               groupName: strings.AboutGroupName,
               isCollapsed: false,
               groupFields: [
+                PropertyFieldPassword('password', {
+                  key: 'password',
+                  label:  "Password",
+                  value: this.properties.password,
+                  onChanged :  this._onChangedPassword
+                }),
                 PropertyPaneWebPartInformation({
                   description: `This is a <strong>demo webpart</strong>, used to demonstrate all the <a href="https://aka.ms/sppnp">PnP</a> property controls`,
                   moreInfoLink: `https://sharepoint.github.io/sp-dev-fx-property-controls/`,
@@ -194,6 +207,161 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
               groupName: 'Inputs',
               isCollapsed: true,
               groupFields: [
+                PropertyFieldCollectionData("collectionData", {
+                  key: "collectionData",
+                  label: "Collection data",
+                  panelHeader: "Collection data panel header",
+                  manageBtnLabel: "Manage collection data",
+                  saveBtnLabel: "Save button",
+                  saveAndAddBtnLabel: "Save + Add button",
+                  cancelBtnLabel: "Cancel button",
+                  panelDescription: "This is the description which appears in the panel.",
+                  value: this.properties.collectionData,
+                  enableSorting: true,
+                  disableItemDeletion: false,
+                  disableItemCreation: false,
+                  panelClassName: "MyAwesomePanelClassName",
+                  tableClassName: "MyAwesomeTableClassName",
+                  fields: [
+                    {
+                      id: "Title",
+                      title: "Firstname",
+                      type: CustomCollectionFieldType.string,
+                      required: true,
+                      placeholder: "Enter the firstname",
+                      onGetErrorMessage: this.minLengthValidation,
+                      deferredValidationTime: 500,
+                      disableEdit: true
+                    },
+                    {
+                      id: "Lastname",
+                      title: "Lastname",
+                      type: CustomCollectionFieldType.string
+                    },
+                    {
+                      id: "Age",
+                      title: "Age",
+                      type: CustomCollectionFieldType.number,
+                      required: true,
+                      placeholder: "Enter the age",
+                      onGetErrorMessage: this.ageValidation,
+                      deferredValidationTime: 0
+                    },
+                    {
+                      id: "City",
+                      title: "Favorite city",
+                      type: CustomCollectionFieldType.dropdown,
+                      options: [
+                        {
+                          key: "antwerp",
+                          text: "Antwerp"
+                        },
+                        {
+                          key: "helsinki",
+                          text: "Helsinki"
+                        },
+                        {
+                          key: "montreal",
+                          text: "Montreal"
+                        }
+                      ],
+                      required: true,
+                      placeholder: "Favorite city of the person",
+                      defaultValue: "antwerp",
+                      onRenderOption: (props, defaultRenderer) => {
+                        if (props.text.toLowerCase() === "antwerp") {
+                          return React.createElement("b", { className: "Testing" }, `${props.text.toUpperCase()} 🎉`);
+                        } else {
+                          return defaultRenderer(props);
+                        }
+                      }
+                    },
+                    {
+                      id: "Sign",
+                      title: "Signed",
+                      type: CustomCollectionFieldType.boolean,
+                      defaultValue: true
+                    },
+                    {
+                      id: "IconName",
+                      title: "Icon Name",
+                      type: CustomCollectionFieldType.fabricIcon,
+                      placeholder: "Enter the name of the icon",
+                      defaultValue: "website",
+                      onGetErrorMessage: this.minLengthValidation
+                    },
+                    {
+                      id: "URL",
+                      title: "URL",
+                      type: CustomCollectionFieldType.url,
+                      required: true,
+                      placeholder: "Enter a URL"
+                    },
+                    {
+                      id: "custom",
+                      title: "Custom Field",
+                      type: CustomCollectionFieldType.custom,
+                      onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
+                        return (
+                          React.createElement("div", null,
+                            React.createElement("input", {
+                              key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+                                if (event.currentTarget.value === "error") {
+                                  onError(field.id, "Value shouldn't be equal to error");
+                                } else {
+                                  onError(field.id, "");
+                                }
+                                onUpdate(field.id, event.currentTarget.value);
+                              }
+                            }), " 🎉"
+                          )
+                        );
+                      }
+                    }
+                  ],
+                  disabled: false
+                }),
+                PropertyFieldPeoplePicker('people', {
+                  label: 'PropertyFieldPeoplePicker',
+                  initialData: this.properties.people,
+                  allowDuplicate: false,
+                  // principalType: [PrincipalType.Security],
+                  principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
+                  // principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
+                  // principalType: [IPrincipalType.SharePoint],
+                  multiSelect: true,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  context: this.context,
+                  properties: this.properties,
+                  onGetErrorMessage: (value: IPropertyFieldGroupOrPerson[]) => {
+                    const users = value.filter(u => u.fullName.toLowerCase().indexOf("elio") !== -1);
+                    return users.length === 0 ? 'Please use a person with "Elio" in its name' : "";
+                  },
+                  deferredValidationTime: 0,
+                  key: 'peopleFieldId',
+                  targetSiteUrl: this.context.pageContext.site.absoluteUrl
+                }),
+                PropertyFieldTermPicker('terms', {
+                  label: 'Select terms',
+                  panelTitle: 'Select terms',
+                  initialValues: this.properties.terms,
+                  allowMultipleSelections: true,
+                  excludeSystemGroup: false,
+                  disabledTermIds: ["943fd9f0-3d7c-415c-9192-93c0e54573fb", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
+                  // disabledTermIds: ["943fd9f0-3d7c-415c-9192-93c0e54573fb", "73d18756-20af-41de-808c-2a1e21851e44", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
+                  // disabledTermIds: ["cd6f6d3c-672d-4244-9320-c1e64cc0626f", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  context: this.context,
+                  disabled: false,
+                  onGetErrorMessage: null,
+                  deferredValidationTime: 0,
+                  //limitByGroupNameOrID: 'Test',
+                  limitByTermsetNameOrID: '7276c08b-58c1-4fcd-812e-f21299a06b85',
+                  isTermSetSelectable: true,
+                  key: 'termSetsPickerFieldId',
+                  hideTermStoreName: true
+                }),
                 PropertyFieldNumber("numberValue", {
                   key: "numberValue",
                   label: "Number value only",

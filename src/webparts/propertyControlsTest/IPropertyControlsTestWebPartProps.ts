@@ -35,4 +35,5 @@ export interface IPropertyControlsTestWebPartProps {
   swatchColor: string;
   enterpriseTerms: IPickerTerms;
   sites: IPropertyFieldSite[];
+  password: string;
 }

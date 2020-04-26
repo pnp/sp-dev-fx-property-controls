@@ -19,6 +19,7 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
               <h2 className="ms-font-xxl ms-fontColor-neutralDark">Property pane control values</h2>
 
               <h3 className="ms-font-xl ms-fontColor-neutralDark">Inputs</h3>
+                <p className="ms-font-m ms-fontColor-neutralDark">password: {this.props.password}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Number value: {this.props.numberValue}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Multi-select: {this.props.multiSelect.toString()}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Date: {this.props.datetime.displayValue}</p>

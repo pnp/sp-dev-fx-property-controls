@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "1.18.0",
+      "changes": {
+        "new": [
+          "`PropertyPaneViewPicker`: View picker control [#230](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/230)"
+        ],
+        "enhancements": [],
+        "fixes": [
+          "`PropertyFieldSitePicker` documentation title fix [#229](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/229)",
+          "`PropertyFieldSitePicker`: doesn't work at root site [#231](https://github.com/SharePoint/sp-dev-fx-property-controls/issues/231)"
+        ]
+      },
+      "contributions": [
+        "[Ari Gunawan](https://github.com/AriGunawan)",
+        "[Gautam Sheth](https://github.com/gautamdsheth)",
+        "[Hugo Bernier](https://github.com/hugoabernier)"
+      ]
+    },
+    {
       "version": "1.17.0",
       "changes": {
         "new": [

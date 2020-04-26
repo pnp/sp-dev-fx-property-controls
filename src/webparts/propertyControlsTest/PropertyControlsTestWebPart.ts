@@ -186,12 +186,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
               groupName: strings.AboutGroupName,
               isCollapsed: false,
               groupFields: [
-                PropertyFieldPassword('password', {
-                  key: 'password',
-                  label:  "Password",
-                  value: this.properties.password,
-                  onChanged :  this._onChangedPassword
-                }),
                 PropertyPaneWebPartInformation({
                   description: `This is a <strong>demo webpart</strong>, used to demonstrate all the <a href="https://aka.ms/sppnp">PnP</a> property controls`,
                   moreInfoLink: `https://sharepoint.github.io/sp-dev-fx-property-controls/`,
@@ -207,6 +201,12 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
               groupName: 'Inputs',
               isCollapsed: true,
               groupFields: [
+                PropertyFieldPassword('password', {
+                  key: 'password',
+                  label:  "Password",
+                  value: this.properties.password,
+                  onChanged :  this._onChangedPassword
+                }),
                 PropertyFieldCollectionData("collectionData", {
                   key: "collectionData",
                   label: "Collection data",

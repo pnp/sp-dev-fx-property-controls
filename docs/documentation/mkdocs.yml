@@ -11,6 +11,7 @@ nav:
     - PropertyFieldMultiSelect: 'controls/PropertyFieldMultiSelect.md'
     - PropertyFieldNumber: 'controls/PropertyFieldNumber.md'
     - PropertyFieldOrder: 'controls/PropertyFieldOrder.md'
+    - PropertyFieldPassword: 'controls/PropertyFieldPassword.md'
     - PropertyFieldPeoplePicker: 'controls/PropertyFieldPeoplePicker.md'
     - PropertyFieldSitePicker: 'controls/PropertyFieldSitePicker.md'
     - PropertyFieldSpinButton: 'controls/PropertyFieldSpinButton.md'

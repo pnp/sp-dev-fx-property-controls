@@ -19,7 +19,7 @@ export default class SPSiteSearchService implements ISPSiteSearchService {
     } else {
 
       let rootUrl: string = ctx.pageContext.web.absoluteUrl;
-      if (ctx.pageContext.web.serverRelativeUrl != "/") {
+      if (ctx.pageContext.web.serverRelativeUrl !== "/") {
         rootUrl = ctx.pageContext.web.absoluteUrl.replace(ctx.pageContext.web.serverRelativeUrl, '');
       }
 

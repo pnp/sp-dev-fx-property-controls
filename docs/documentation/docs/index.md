@@ -52,6 +52,7 @@ The following controls are currently available:
 - [PropertyFieldMultiSelect](./controls/PropertyFieldMultiSelect) (Property pane multi select dropdown)
 - [PropertyFieldNumber](./controls/PropertyFieldNumber) (Property pane number editor)
 - [PropertyFieldOrder](./controls/PropertyFieldOrder) (Property pane ordered list editor)
+- [PropertyFieldPassword](./controls/PropertyFieldPassword) (Property pane password editor)
 - [PropertyFieldPeoplePicker](./controls/PropertyFieldPeoplePicker) (Property pane people / group selector)
 - [PropertyFieldSitePicker](./controls/PropertyFieldSitePicker) (Property pane site selector)
 - [PropertyFieldSpinButton](./controls/PropertyFieldSpinButton) (Property pane spin button)

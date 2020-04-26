@@ -3,7 +3,9 @@
     {
       "version": "1.18.0",
       "changes": {
-        "new": [],
+        "new": [
+          "`PropertyPaneViewPicker`: View picker control [#230](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/230)"
+        ],
         "enhancements": [],
         "fixes": [
           "`PropertyFieldSitePicker` documentation title fix [#229](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/229)"

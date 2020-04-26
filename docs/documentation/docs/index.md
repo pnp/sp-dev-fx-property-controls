@@ -44,20 +44,25 @@ telemetry.optOut();
 ## Controls
 
 The following controls are currently available:
-
+- [PropertyFieldCodeEditor](./controls/PropertyFieldCodeEditor) (Property pane code editor)
+- [PropertyFieldCollectionData](./controls/PropertyFieldCollectionData) (Property pane collection data editor)
 - [PropertyFieldColorPicker](./controls/PropertyFieldColorPicker) (Property pane color picker)
 - [PropertyFieldDateTimePicker](./controls/PropertyFieldDateTimePicker) (Property pane date and time selector)
 - [PropertyFieldListPicker](./controls/PropertyFieldListPicker) (Property pane list selector)
+- [PropertyFieldMultiSelect](./controls/PropertyFieldMultiSelect) (Property pane multi select dropdown)
+- [PropertyFieldNumber](./controls/PropertyFieldNumber) (Property pane number editor)
+- [PropertyFieldOrder](./controls/PropertyFieldOrder) (Property pane ordered list editor)
 - [PropertyFieldPeoplePicker](./controls/PropertyFieldPeoplePicker) (Property pane people / group selector)
+- [PropertyFieldSitePicker](./controls/PropertyFieldSitePicker) (Property pane site selector)
 - [PropertyFieldSpinButton](./controls/PropertyFieldSpinButton) (Property pane spin button)
+- [PropertyFieldSwatchColorPicker](./controls/PropertyFieldSwatchColorPicker) (Property pane color selector)
 - [PropertyFieldTermPicker](./controls/PropertyFieldTermPicker) (Property pane managed metadata term selector)
 - [PropertyFieldEnterpriseTermPicker](./controls/PropertyFieldEnterpriseTermPicker) (Property pane managed metadata term selector for enterprise scenarios)
-- [PropertyFieldMultiSelect](./controls/PropertyFieldMultiSelect) (Property pane field which allows multi-value selection)
-- [PropertyFieldNumber](./controls/PropertyFieldNumber) (Property pane field which allows only number values)
-- [PropertyPaneWebPartInformation](./controls/PropertyPaneWebPartInformation) (Property pane webpart information panel)
+- [PropertyFieldViewPicker](./controls/PropertyFIeldViewPicker) (Property pane view selector)
 - [PropertyPanePropertyEditor](./controls/PropertyPanePropertyEditor) (Property pane control that allows raw editing, export and import of webpart properties)
-The following controls are extended controls that show a callout next to the label
+- [PropertyPaneWebPartInformation](./controls/PropertyPaneWebPartInformation) (Property pane webpart information panel)
 
+The following controls are extended controls that show a callout next to the label
 - [PropertyFieldButtonWithCallout](./controls/PropertyFieldButtonWithCallout) (Property button field with callout)
 - [PropertyFieldCheckboxWithCallout](./controls/PropertyFieldCheckboxWithCallout) (Property checkbox field with callout)
 - [PropertyFieldChoiceGroupWithCallout](./controls/PropertyFieldChoiceGroupWithCallout) (Property choice group field with callout)

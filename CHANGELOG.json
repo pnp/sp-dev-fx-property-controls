@@ -4,7 +4,8 @@
       "version": "1.18.0",
       "changes": {
         "new": [
-          "`PropertyPaneViewPicker`: View picker control [#230](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/230)"
+          "`PropertyFieldViewPicker`: View picker control [#230](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/230)",
+          "`PropertyFieldPassword`: password editor control [#237](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/237)"
         ],
         "enhancements": [],
         "fixes": [
@@ -15,7 +16,8 @@
       "contributions": [
         "[Ari Gunawan](https://github.com/AriGunawan)",
         "[Gautam Sheth](https://github.com/gautamdsheth)",
-        "[Hugo Bernier](https://github.com/hugoabernier)"
+        "[Hugo Bernier](https://github.com/hugoabernier)",
+        "[João Mendes](https://github.com/joaojmendes)"
       ]
     },
     {

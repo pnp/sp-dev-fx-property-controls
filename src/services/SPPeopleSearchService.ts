@@ -146,7 +146,7 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
   }
 
   private getSiteUsers(userRequestUrl: string, ctx: IWebPartContext, query: string, siteUrl: string = null): Promise<IPropertyFieldGroupOrPerson[]> {
-    userRequestUrl = `${userRequestUrl}?$filter=substringof(%27${query}%27,Title)%20or%20substringof(%27${query}%27,LoginName)`;
+    userRequestUrl = `${userRequestUrl}?$filter=substringof(%27${query}%27,Title)%20or%20(substringof(%27${query}%27,LoginName)%20or%20substringof(%27${query.toLowerCase()}%27,LoginName)%20or%20substringof(%27${query.toLowerCase().replace(" ", "")}%27,LoginName))`;
     return ctx.spHttpClient.get(userRequestUrl, SPHttpClient.configurations.v1, {
       headers: {
         'Accept': 'application/json;odata.metadata=none'

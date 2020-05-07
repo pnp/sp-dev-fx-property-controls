@@ -188,7 +188,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
               groupFields: [
                 PropertyPaneWebPartInformation({
                   description: `This is a <strong>demo webpart</strong>, used to demonstrate all the <a href="https://aka.ms/sppnp">PnP</a> property controls`,
-                  moreInfoLink: `https://sharepoint.github.io/sp-dev-fx-property-controls/`,
+                  moreInfoLink: `https://pnp.github.io/sp-dev-fx-property-controls/`,
                   videoProperties: {
                     embedLink: `https://www.youtube.com/embed/d_9o3tQ90zo`,
                     properties: { allowFullScreen: true }
@@ -722,7 +722,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   calloutContent: React.createElement('p', {}, 'Click the link to open a new page with Application Terms & Conditions'),
                   calloutWidth: 200,
                   text: 'Terms & Conditions',
-                  href: 'https://github.com/SharePoint/sp-dev-fx-property-controls',
+                  href: 'https://github.com/pnp/sp-dev-fx-property-controls',
                   target: '_blank'
                 }),
               ]

@@ -29,7 +29,7 @@ export interface IPropertyControlsTestWebPartProps {
 ```TypeScript
 PropertyPaneWebPartInformation({
   description: `This is a <strong>demo webpart</strong>, used to demonstrate all the <a href="https://aka.ms/sppnp">PnP</a> property controls`,
-  moreInfoLink: `https://sharepoint.github.io/sp-dev-fx-property-controls/`,
+  moreInfoLink: `https://pnp.github.io/sp-dev-fx-property-controls/`,
   videoProperties: {
     embedLink: `https://www.youtube.com/embed/d_9o3tQ90zo`,
     properties: { allowFullScreen: true}

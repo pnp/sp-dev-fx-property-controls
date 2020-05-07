@@ -7,7 +7,7 @@ import { IPickerTerms } from '../../../PropertyFieldTermPicker';
 import { IPropertyFieldSite } from '../../../propertyFields/sitePicker';
 
 export interface IPropertyControlsTestProps {
-
+  password:string;
   context: WebPartContext;
   numberValue: number;
   multiSelect: string[];
@@ -16,6 +16,7 @@ export interface IPropertyControlsTestProps {
   listFiltered: string;
   multiList: string[];
   multiListFiltered: string[];
+  view: string;
   terms: IPickerTerms;
   datetime: IDateTimeFieldValue;
   color: string;

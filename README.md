@@ -4,18 +4,18 @@
 
 Property controls for the SharePoint Framework solutions.
 
-> If you are looking for content controls, please check following repository for those - [https://github.com/SharePoint/sp-dev-fx-controls-react](https://github.com/SharePoint/sp-dev-fx-controls-react)
+> If you are looking for content controls, please check following repository for those - [https://github.com/pnp/sp-dev-fx-controls-react](https://github.com/pnp/sp-dev-fx-controls-react)
 
 ## Get Started
 
-More information to get started can be found documentation of this repository: [documentation](https://sharepoint.github.io/sp-dev-fx-property-controls/).
+More information to get started can be found documentation of this repository: [documentation](https://pnp.github.io/sp-dev-fx-property-controls/).
 
 # Have issues or questions?
 
 Please use following logic on submitting your questions or issues to right location to ensure that they are noticed and addressed as soon as possible.
 
-* You have general question or challenge with SPFx - use [sp-dev-docs repository issue list](https://github.com/SharePoint/sp-dev-docs/issues).
-* You have issue on specific controls in this package - use [issue list in this repository](https://github.com/SharePoint/sp-dev-fx-property-controls/issues).
+* You have general question or challenge with SPFx - use [sp-dev-docs repository issue list](https://github.com/sharepoint/sp-dev-docs/issues).
+* You have issue on specific controls in this package - use [issue list in this repository](https://github.com/pnp/sp-dev-fx-property-controls/issues).
 
 ## Contributing
 
@@ -23,7 +23,7 @@ This project welcomes contributions and suggestions.  Most contributions require
 
 When you submit a pull request, a CLA-bot will automatically determine whether you need to provide a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions provided by the bot. You will only need to do this once across all repos using our CLA.
 
-If you have ideas for new features or feedback, let us know by creating an issue in the [issues list](https://github.com/SharePoint/sp-dev-fx-property-controls/issues). Before you submit a PR with your improvements, please review our [project guides](./docs/guides/index.md).
+If you have ideas for new features or feedback, let us know by creating an issue in the [issues list](https://github.com/pnp/sp-dev-fx-property-controls/issues). Before you submit a PR with your improvements, please review our [project guides](./docs/guides/index.md).
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.

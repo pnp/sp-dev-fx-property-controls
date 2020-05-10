@@ -6,7 +6,7 @@ import {
   IPropertyFieldMessageHostProps,
   IPropertyFieldMessageHostState
 } from "./IPropertyFieldMessageHost";
-import { MessageType } from "./IPropertyFieldMessage";
+
 
 export default class PropertyFieldPasswordHost extends React.Component<
   IPropertyFieldMessageHostProps,

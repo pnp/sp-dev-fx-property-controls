@@ -45,7 +45,10 @@ import { PropertyPaneHelpers } from '../../helpers';
 import { SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { PropertyFieldPassword } from '../../PropertyFieldPassword';
 import { PropertyFieldViewPickerOrderBy, PropertyFieldViewPicker, ISPView } from '../../PropertyFieldViewPicker';
-
+import { PropertyFieldMessage } from '../../PropertyFieldMessage';
+import { MessageBarType } from 'office-ui-fabric-react/lib-es2015/MessageBar';
+import { PropertyFieldSearch } from '../../PropertyFieldSearch';
+import { PropertyFieldSpinner} from '../../PropertyFieldSpinner';
 /**
  * Web part that can be used to test out the various property controls
  */
@@ -83,7 +86,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         swatchColor: this.properties.swatchColor,
         enterpriseTerms: this.properties.enterpriseTerms || [],
         sites: this.properties.sites || [],
-        password: this.properties.password
+        password: this.properties.password,
+        searchLibrary: this.properties.searchLibrary,
+        message: this.properties.message,
       }
     );
 
@@ -201,6 +206,54 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
               groupName: 'Inputs',
               isCollapsed: true,
               groupFields: [
+                PropertyFieldSearch("searchLibrary", {
+                  key: "search",
+                  placeholder: 'Search libraries',
+                  value: this.properties.searchLibrary,
+                  onSearch: (newValue)=> { console.log(newValue)},
+                  styles: { root: { margin: 10 } }
+                }),
+                 PropertyFieldMessage("message", {
+                  key: "0",
+                  text: "Something went wrong, try later...",
+                  messageType:
+                      MessageBarType.error,
+                  isVisible: true
+                }),
+                PropertyFieldMessage("message", {
+                  key: "0",
+                  text: "Completed!",
+                  messageType:
+                      MessageBarType.success,
+                  isVisible: true
+                }),
+                PropertyFieldMessage("message", {
+                  key: "0",
+                  text: "long teste linne ,long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , ",
+                  multiline: true,
+                  messageType:
+                      MessageBarType.info,
+                  isVisible: true
+                }),
+                PropertyFieldSpinner("", {
+                  key: "sp3",
+                  size: SpinnerSize.small,
+                  isVisible: true,
+                }),
+
+                PropertyFieldSpinner("", {
+                  key: "sp1",
+                  size: SpinnerSize.medium,
+                  isVisible: true,
+                  label: "loading libraries..."
+                }),
+                PropertyFieldSpinner("", {
+                  key: "sp2",
+                  size: SpinnerSize.large,
+                  isVisible: true,
+                  label: "loading libraries large ..."
+                }),
+
                 PropertyFieldPassword('password', {
                   key: 'password',
                   label:  "Password",

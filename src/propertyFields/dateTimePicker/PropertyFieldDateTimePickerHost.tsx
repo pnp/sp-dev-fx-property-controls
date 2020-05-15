@@ -185,13 +185,6 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
    * Save the new date
    */
   private _saveDate(): void {
-    const { dateConvention } = this.props;
-
-    // If the DateConvention is Time, set the Date as today
-    if (dateConvention === DateConvention.Time) {
-      this._crntDate = new Date();
-    }
-
     // Check if the current date object exists
     if (this._crntDate === null) {
       return;
@@ -213,14 +206,11 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
 
     if (finalDate !== null) {
       let finalDateAsString: string = '';
-
       if (this.props.formatDate) {
         finalDateAsString = this.props.formatDate(finalDate);
+      } else {
+        finalDateAsString = finalDate.toString();
       }
-      else {
-        finalDateAsString = dateConvention === DateConvention.Time ? finalDate.toTimeString() : finalDate.toString();
-      }
-
       this.delayedValidate({
         value: finalDate,
         displayValue: finalDateAsString
@@ -307,7 +297,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
 
     // Check if the time element needs to be rendered
     let timeElm: JSX.Element = <tr />;
-    if (dateConvention === DateConvention.DateTime || dateConvention === DateConvention.Time) {
+    if (dateConvention === DateConvention.DateTime) {
       timeElm = (
         <tr>
           {showLabels && <td className={styles.labelCell}>
@@ -351,23 +341,21 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
         {label && <Label>{label}</Label>}
         <table cellPadding='0' cellSpacing='0'>
           <tbody>
-            {dateConvention !== DateConvention.Time &&
-              <tr>
-                {showLabels && <td className={styles.labelCell}>
-                  <Label className={styles.fieldLabel}>{strings.DateTimePickerDate}</Label>
-                </td>}
-                <td>
-                  <DatePicker
-                    disabled={disabled}
-                    value={this.state.day}
-                    strings={dateStrings}
-                    isMonthPickerVisible={true}
-                    onSelectDate={this._onSelectDate}
-                    allowTextInput={false}
-                    firstDayOfWeek={this.props.firstDayOfWeek} />
-                </td>
-              </tr>
-            }
+            <tr>
+              {showLabels && <td className={styles.labelCell}>
+                <Label className={styles.fieldLabel}>{strings.DateTimePickerDate}</Label>
+              </td>}
+              <td>
+                <DatePicker
+                  disabled={disabled}
+                  value={this.state.day}
+                  strings={dateStrings}
+                  isMonthPickerVisible={true}
+                  onSelectDate={this._onSelectDate}
+                  allowTextInput={false}
+                  firstDayOfWeek={this.props.firstDayOfWeek} />
+              </td>
+            </tr>
             {!!timeElm &&
               <tr>
                 <td className={styles.spacerRow} colSpan={showLabels ? 2 : 1}></td>
@@ -375,6 +363,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
             {timeElm}
           </tbody>
         </table>
+
 
         <FieldErrorMessage errorMessage={this.state.errorMessage} />
       </div >

@@ -34,7 +34,8 @@ export enum TimeConvention {
 export enum DateConvention {
 
   DateTime = 1,
-  Date
+  Date,
+  Time
 }
 
 /**

@@ -36,4 +36,6 @@ export interface IPropertyControlsTestWebPartProps {
   enterpriseTerms: IPickerTerms;
   sites: IPropertyFieldSite[];
   password: string;
+  searchLibrary:string;
+  message:string,
 }

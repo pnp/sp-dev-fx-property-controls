@@ -35,4 +35,6 @@ export interface IPropertyControlsTestProps {
   swatchColor: string;
   enterpriseTerms: IPickerTerms;
   sites: IPropertyFieldSite[];
+  searchLibrary: string;
+  message:string;
 }

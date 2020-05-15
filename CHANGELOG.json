@@ -5,12 +5,15 @@
       "changes": {
         "new": [
           ],
-        "enhancements": [],
+        "enhancements": [
+          "`PropertyFieldDateTimePicker`: Add ability to hide Date and show only Time field [#195](https://github.com/pnp/sp-dev-fx-property-controls/issues/195)"
+        ],
         "fixes": [
           "Documentation fix for `PropertyFieldDateTimePicker`: The link for `OnGetErrorMessage` documentation is broken in this page"
           ]
       },
       "contributions": [
+        "[Nanddeep Nachan](https://github.com/nanddeepn)",
         "[Ram](https://github.com/RamPrasadMeenavalli)"
       ]
     },

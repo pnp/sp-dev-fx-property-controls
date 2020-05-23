@@ -3,6 +3,7 @@ define([], function () {
     ApplyButtonLabel: "应用",
     ImportButtonLabel: "导入",
     ExportButtonLabel: "导出",
+    FormatCodeButtonLabel: "Format Code",
     JsonFileRequiredMessage: "请上传Json文件",
     SaveButtonLabel: "保存",
     CancelButtonLabel: "取消",

@@ -731,6 +731,24 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                 })
               ]
             },
+            {
+              groupName: "Code Editor",
+              groupFields: [
+                PropertyFieldCodeEditor(
+                  'targetProperty',
+                   {
+                    label: 'Edit HTML Code',
+                    panelTitle: 'Edit HTML Code',
+                    initialValue: this.properties.htmlCode,
+                    onPropertyChange: this.onPropertyPaneFieldChanged,
+                    properties: this.properties,
+                    disabled: false,
+                    key: 'codeEditorFieldId',
+                    language: PropertyFieldCodeEditorLanguages.HTML
+                  }
+                )
+              ]
+            }
           ]
         }
       ]

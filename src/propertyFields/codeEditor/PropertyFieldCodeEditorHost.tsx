@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { PrimaryButton, DefaultButton, IButtonProps,IconButton } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton, IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { IPropertyFieldCodeEditorPropsInternal } from './IPropertyFieldCodeEditor';
 import { Label } from 'office-ui-fabric-react/lib/Label';
@@ -11,6 +11,7 @@ import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as telemetry from '../../common/telemetry';
 import * as strings from 'PropertyControlStrings';
 import * as brace from 'brace';
+import * as beautify from 'beautify';
 import AceEditor from 'react-ace';
 import 'brace/mode/json';
 import 'brace/mode/javascript';
@@ -20,6 +21,7 @@ import 'brace/mode/html';
 import 'brace/mode/handlebars';
 import 'brace/mode/xml';
 import 'brace/theme/monokai';
+import { PropertyFieldCodeEditorLanguages } from '../../../lib/PropertyFieldCodeEditor';
 
 /**
  * Renders the controls for PropertyFieldCodeEditor component
@@ -49,6 +51,7 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
 
     this.onOpenPanel = this.onOpenPanel.bind(this);
     this.onClosePanel = this.onClosePanel.bind(this);
+    this.onFormatCode = this.onFormatCode.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
     this.async = new Async(this);
@@ -105,6 +108,43 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
     });
   }
 
+  /**
+   * Format the code
+   */
+  private onFormatCode(): void {
+    let codeLanguage: string = "";
+
+    switch (this.props.language) {
+      case PropertyFieldCodeEditorLanguages.JSON: {
+        codeLanguage = "json";
+        break;
+      }
+      case PropertyFieldCodeEditorLanguages.HTML: {
+        codeLanguage = "html";
+        break;
+      }
+      case PropertyFieldCodeEditorLanguages.XML: {
+        codeLanguage = "xml";
+        break;
+      }
+      case PropertyFieldCodeEditorLanguages.Sass:
+      case PropertyFieldCodeEditorLanguages.css: {
+        codeLanguage = "css";
+        break;
+      }
+      case PropertyFieldCodeEditorLanguages.JavaScript:
+      case PropertyFieldCodeEditorLanguages.TypeScript:
+      case PropertyFieldCodeEditorLanguages.Handlebars: {
+        codeLanguage = "js";
+        break;
+      }
+    }
+
+    const beautify = require('beautify');
+    var formattedCode: any = beautify(this.state.code.trim(), { format: codeLanguage });
+
+    this.setState({ code: formattedCode });
+  }
 
   /**
    * Called when the component will unmount
@@ -114,7 +154,6 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
       this.async.dispose();
     }
   }
-
 
   /**
    * Called when the save button  gets clicked
@@ -127,7 +166,7 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
     if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
       this.props.onChange(this.props.targetProperty, this.state.code);
     }
-    this.setState((current)=>({ ...current, openPanel: false }));
+    this.setState((current) => ({ ...current, openPanel: false }));
   }
 
   /**
@@ -174,9 +213,21 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
           headerText={this.props.panelTitle}
           onRenderFooterContent={() => (
             <div className={styles.actions}>
-              <PrimaryButton iconProps={{ iconName: 'Save' }} text={strings.SaveButtonLabel} value={strings.SaveButtonLabel} onClick={this.onSave} />
+              <div className="ms-Grid" dir="ltr">
+                <div className="ms-Grid-row">
+                  <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6 ms-textAlignLeft">
+                    <PrimaryButton iconProps={{ iconName: 'Save' }} text={strings.SaveButtonLabel} value={strings.SaveButtonLabel} onClick={this.onSave} />
 
-              <DefaultButton iconProps={{ iconName: 'Cancel' }} text={strings.CancelButtonLabel} value={strings.CancelButtonLabel} onClick={this.onClosePanel} />
+                    <DefaultButton iconProps={{ iconName: 'Cancel' }} text={strings.CancelButtonLabel} value={strings.CancelButtonLabel} onClick={this.onClosePanel} />
+                  </div>
+                  {
+                    this.props.language !== PropertyFieldCodeEditorLanguages["Plain Text"] &&
+                    <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6 ms-textAlignRight">
+                      <DefaultButton color="ms-bgColor-themeLight" iconProps={{ iconName: 'ClearFormatting' }} text={strings.FormatCodeButtonLabel} value={strings.ExportButtonLabel} onClick={this.onFormatCode} />
+                    </div>
+                  }
+                </div>
+              </div>
             </div>
           )}>
 

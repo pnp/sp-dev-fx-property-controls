@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton, DefaultButton, IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { IPropertyFieldCodeEditorPropsInternal } from './IPropertyFieldCodeEditor';
+import { IPropertyFieldCodeEditorPropsInternal, PropertyFieldCodeEditorLanguages } from './IPropertyFieldCodeEditor';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { IPropertyFieldCodeEditorHostProps, IPropertyFieldCodeEditorHostState } from './IPropertyFieldCodeEditorHost';
@@ -11,7 +11,6 @@ import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as telemetry from '../../common/telemetry';
 import * as strings from 'PropertyControlStrings';
 import * as brace from 'brace';
-import * as beautify from 'beautify';
 import AceEditor from 'react-ace';
 import 'brace/mode/json';
 import 'brace/mode/javascript';
@@ -21,7 +20,6 @@ import 'brace/mode/html';
 import 'brace/mode/handlebars';
 import 'brace/mode/xml';
 import 'brace/theme/monokai';
-import { PropertyFieldCodeEditorLanguages } from '../../../lib/PropertyFieldCodeEditor';
 
 /**
  * Renders the controls for PropertyFieldCodeEditor component
@@ -141,7 +139,7 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
     }
 
     const beautify = require('beautify');
-    var formattedCode: any = beautify(this.state.code.trim(), { format: codeLanguage });
+    let formattedCode: any = beautify(this.state.code.trim(), { format: codeLanguage });
 
     this.setState({ code: formattedCode });
   }

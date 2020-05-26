@@ -48,7 +48,7 @@ import { PropertyFieldViewPickerOrderBy, PropertyFieldViewPicker, ISPView } from
 import { PropertyFieldMessage } from '../../PropertyFieldMessage';
 import { MessageBarType } from 'office-ui-fabric-react/lib-es2015/MessageBar';
 import { PropertyFieldSearch } from '../../PropertyFieldSearch';
-import { PropertyFieldSpinner} from '../../PropertyFieldSpinner';
+import { PropertyFieldSpinner } from '../../PropertyFieldSpinner';
 /**
  * Web part that can be used to test out the various property controls
  */
@@ -150,7 +150,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
   }
 
 
-  private _onChangedPassword(value:string){
+  private _onChangedPassword(value: string) {
     console.log(value);
   }
 
@@ -210,21 +210,21 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: "search",
                   placeholder: 'Search libraries',
                   value: this.properties.searchLibrary,
-                  onSearch: (newValue)=> { console.log(newValue)},
+                  onSearch: (newValue) => { console.log(newValue); },
                   styles: { root: { margin: 10 } }
                 }),
-                 PropertyFieldMessage("message", {
+                PropertyFieldMessage("message", {
                   key: "0",
                   text: "Something went wrong, try later...",
                   messageType:
-                      MessageBarType.error,
+                    MessageBarType.error,
                   isVisible: true
                 }),
                 PropertyFieldMessage("message", {
                   key: "0",
                   text: "Completed!",
                   messageType:
-                      MessageBarType.success,
+                    MessageBarType.success,
                   isVisible: true
                 }),
                 PropertyFieldMessage("message", {
@@ -232,7 +232,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   text: "long teste linne ,long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , long teste linne , ",
                   multiline: true,
                   messageType:
-                      MessageBarType.info,
+                    MessageBarType.info,
                   isVisible: true
                 }),
                 PropertyFieldSpinner("", {
@@ -256,9 +256,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
 
                 PropertyFieldPassword('password', {
                   key: 'password',
-                  label:  "Password",
+                  label: "Password",
                   value: this.properties.password,
-                  onChanged :  this._onChangedPassword
+                  onChanged: this._onChangedPassword
                 }),
                 PropertyFieldCollectionData("collectionData", {
                   key: "collectionData",
@@ -691,7 +691,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   calloutContent: React.createElement('p', {}, 'Select one of two universes of super heroes: DC comics with Superman, Batman, Wonder Woman, etc.; or Marvel with X-Men, Spider-Man, Avengers, etc.'),
                   onText: 'Marvel',
                   offText: 'DC Comics',
-                  checked: this.properties.toggleInfoHeaderValue
+                  checked: this.properties.toggleInfoHeaderValue,
+                  disabled: true
                 }),
                 PropertyFieldSliderWithCallout('sliderWithCalloutValue', {
                   calloutContent: React.createElement('div', {}, 'Enter value for the item'),

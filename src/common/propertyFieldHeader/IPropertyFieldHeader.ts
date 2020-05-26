@@ -40,6 +40,7 @@ export interface IPropertyFieldHeaderProps extends IPropertyFieldHeaderCalloutPr
      * The label to be shown in the header
      */
     label?: string;
+    disabled?: boolean;
 }
 
 /**

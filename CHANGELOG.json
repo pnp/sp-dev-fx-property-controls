@@ -12,10 +12,12 @@
           "`PropertyFieldDateTimePicker`: Add ability to hide Date and show only Time field [#195](https://github.com/pnp/sp-dev-fx-property-controls/issues/195)"
         ],
         "fixes": [
-          "Documentation fix for `PropertyFieldDateTimePicker`: The link for `OnGetErrorMessage` documentation is broken in this page"
+          "Documentation fix for `PropertyFieldDateTimePicker`: The link for `OnGetErrorMessage` documentation is broken in this page",
+          "`PropertyFieldPeoplePicker`: People Picker doesn't search for groups [#239](https://github.com/pnp/sp-dev-fx-property-controls/issues/239)"
           ]
       },
       "contributions": [
+        "[Gautam Sheth](https://github.com/gautamdsheth)",
         "[João Mendes](https://github.com/joaojmendes)",
         "[Nanddeep Nachan](https://github.com/nanddeepn)",
         "[Ram](https://github.com/RamPrasadMeenavalli)"

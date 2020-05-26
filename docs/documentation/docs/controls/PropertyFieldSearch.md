@@ -1,4 +1,4 @@
-# PropertyFieldPassword control
+# PropertyFieldSearch control
 
 This control generates an input field for Search. 
 

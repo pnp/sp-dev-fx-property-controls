@@ -4,6 +4,7 @@ import { IDateTimeFieldValue } from '../../PropertyFieldDateTimePicker';
 import { IPropertyFieldGroupOrPerson } from '../../PropertyFieldPeoplePicker';
 import { IPickerTerms } from '../../PropertyFieldTermPicker';
 import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
+import { IFilePickerResult } from '../../../lib/propertyFields/filePicker/filePickerControls';
 
 export interface IPropertyControlsTestWebPartProps {
   siteUrl: string;
@@ -38,4 +39,5 @@ export interface IPropertyControlsTestWebPartProps {
   password: string;
   searchLibrary: string;
   message: string;
+  filePickerResult: IFilePickerResult;
 }

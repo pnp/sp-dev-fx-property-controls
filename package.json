@@ -9,6 +9,7 @@
     "build": "gulp build",
     "clean": "gulp clean",
     "test": "gulp test",
+    "serve": "gulp serve",
     "versionUpdater": "gulp versionUpdater",
     "prepublishOnly": "gulp",
     "changelog": "node scripts/create-changelog.js && node scripts/sync-changelogs.js && gulp versionUpdater",

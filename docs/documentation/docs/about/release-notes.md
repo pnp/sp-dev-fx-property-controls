@@ -1,5 +1,29 @@
 # Releases
 
+## 1.19.0
+
+### New control(s)
+
+- `PropertyFieldMessage`: new Message control [#248](https://github.com/pnp/sp-dev-fx-property-controls/pull/248)
+- `PropertyFieldSearch`: new Search control [#248](https://github.com/pnp/sp-dev-fx-property-controls/pull/248)
+- `PropertyFieldSpinner`: new Spinner control [#248](https://github.com/pnp/sp-dev-fx-property-controls/pull/248)
+
+### Enhancements
+
+- `PropertyFieldDateTimePicker`: Add ability to hide Date and show only Time field [#195](https://github.com/pnp/sp-dev-fx-property-controls/issues/195)
+
+### Fixes
+
+- Documentation fix for `PropertyFieldDateTimePicker`: The link for `OnGetErrorMessage` documentation is broken in this page
+- Documentation: Added `PnPTelemetry` import example [#259](https://github.com/pnp/sp-dev-fx-property-controls/pull/259)
+- `PropertyPanePropertyEditor`:Fix for dynamic data properties [#200](https://github.com/pnp/sp-dev-fx-property-controls/issues/200)
+- `PropertyFieldPeoplePicker`: People Picker doesn't search for groups [#239](https://github.com/pnp/sp-dev-fx-property-controls/issues/239)
+- Controls with callout: control's label should be disabled if the `disabled` prop is set to `true`
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Lars Fernhomberg](https://github.com/lafe), [João Mendes](https://github.com/joaojmendes), [Nanddeep Nachan](https://github.com/nanddeepn), [Ram](https://github.com/RamPrasadMeenavalli), [Gautam Sheth](https://github.com/gautamdsheth).
+
 ## 1.18.0
 
 ### New control(s)

@@ -32,7 +32,7 @@
       "valid-typeof": true,
       "variable-name": false,
       "whitespace": false,
-      "triple-equals": true,
+      "triple-equals": false,
       "no-var-keyword": true,
       "no-debugger": true
     }

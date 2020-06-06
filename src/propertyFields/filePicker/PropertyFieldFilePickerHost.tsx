@@ -1,49 +1,25 @@
 import * as React from 'react';
-
 import { FilePicker, IFilePickerResult } from './filePickerControls';
-
 import styles from './PropertyFieldFilePickerHost.module.scss';
-
-import {
-  IPropertyFieldFilePickerHostProps,
-} from './IPropertyFieldFilePickerHost';
+import { IPropertyFieldFilePickerHostProps } from './IPropertyFieldFilePickerHost';
 import { GeneralHelper } from '../../../lib/helpers/GeneralHelper';
 
-/**
- * Renders the controls for PropertyFieldImagePicker component
- */
-export default class PropertyFieldFilePickerHost extends React.Component<IPropertyFieldFilePickerHostProps, { filePickerResult: IFilePickerResult }> {
-  /**
-   * Constructor method
-   */
+export default class PropertyFieldFilePickerHost extends React.Component<IPropertyFieldFilePickerHostProps> {
+
   constructor(props: IPropertyFieldFilePickerHostProps) {
     super(props);
-    this.state = {
-      filePickerResult: props.filePickerResult ? props.filePickerResult : null
-    }
   }
 
-  public componentWillReceiveProps(nextProps: IPropertyFieldFilePickerHostProps) {
-    if (nextProps !== this.props) {
-      this.setState({
-        filePickerResult: nextProps.filePickerResult
-      });
-    }
-  }
-
-  /**
-   * Renders the FilePicker control
-   */
   public render(): JSX.Element {
     return (
       <div>
-        {this.state.filePickerResult && this.state.filePickerResult.fileAbsoluteUrl && (
+        {this.props.filePickerResult && this.props.filePickerResult.fileAbsoluteUrl && (
           <div className={styles.singlePreview}>
-            {GeneralHelper.isImage(this.state.filePickerResult.fileName) &&
-              <img className={styles.singlePreviewImage} src={this.state.filePickerResult.fileAbsoluteUrl} alt={this.state.filePickerResult.fileName} />
+            {GeneralHelper.isImage(this.props.filePickerResult.fileName) &&
+              <img className={styles.singlePreviewImage} src={this.props.filePickerResult.fileAbsoluteUrl} alt={this.props.filePickerResult.fileName} />
             }
             <div>
-              {this.state.filePickerResult.fileName}
+              {this.props.filePickerResult.fileName}
             </div>
           </div>
         )}
@@ -53,15 +29,14 @@ export default class PropertyFieldFilePickerHost extends React.Component<IProper
           disabled={this.props.disabled}
           bingAPIKey={this.props.bingAPIKey}
           accepts={this.props.accepts ? this.props.accepts : []}
-          buttonIcon="FileImage"
-          onSave={(filePickerResult: IFilePickerResult) => { this.setState({ filePickerResult: filePickerResult }); this.props.onSave(filePickerResult); }}
-          onChanged={(filePickerResult: IFilePickerResult) => { this.setState({ filePickerResult: filePickerResult }); this.props.onChanged(filePickerResult); }}
+          buttonIcon={this.props.buttonIcon ? this.props.buttonIcon : "FileImage"}
+          onSave={(filePickerResult: IFilePickerResult) => { this.handleFileSave(filePickerResult); }}
+          onChanged={(filePickerResult: IFilePickerResult) => { this.handleFileChange(filePickerResult); }}
           context={this.props.context}
           filePickerResult={this.props.filePickerResult}
           buttonClassName={this.props.buttonClassName}
           buttonLabel={this.props.buttonLabel}
           label={this.props.label}
-          //existing filePickerResult absolute url for inline editing of url          
           key={this.props.key}
           itemsCountQueryLimit={this.props.itemsCountQueryLimit !== undefined ? this.props.itemsCountQueryLimit : 100}
           hideWebSearchTab={this.props.hideWebSearchTab !== undefined ? this.props.hideWebSearchTab : true}
@@ -76,6 +51,27 @@ export default class PropertyFieldFilePickerHost extends React.Component<IProper
         />
       </div>
     );
+  }
+
+  private handleFileSave = async (filePickerResult: IFilePickerResult): Promise<void> => {
+
+    this.props.onSave(filePickerResult);
+
+    this.props.properties[this.props.targetProperty] = filePickerResult;
+    this.props.onPropertyChange(this.props.targetProperty, this.props.filePickerResult, filePickerResult);
+
+    if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
+      this.props.onChange(this.props.targetProperty, filePickerResult);
+    }
+  }
+
+  private handleFileChange = async (filePickerResult: IFilePickerResult): Promise<void> => {
+
+    this.props.onChanged(filePickerResult);
+
+    if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
+      this.props.onChange(this.props.targetProperty, filePickerResult);
+    }
   }
 
 }

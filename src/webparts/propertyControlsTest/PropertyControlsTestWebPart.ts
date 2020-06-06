@@ -208,11 +208,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   filePickerResult: this.properties.filePickerResult,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
-                  onSave: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult = e; },
+                  onSave: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult = e;  },
                   onChanged: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult = e; },
                   key: "filePicker",
                   buttonLabel: "File Picker",
-                  label: "File Picker"
+                  label: "File Picker",                  
                 })
               ]
             },

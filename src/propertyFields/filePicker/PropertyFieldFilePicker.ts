@@ -11,10 +11,7 @@ import PropertyPaneFilePickerHost from './PropertyFieldFilePickerHost';
 
 import { IFilePickerResult } from './filePickerControls';
 import { IPropertyFieldFilePickerHostProps } from './IPropertyFieldFilePickerHost';
-import {
-  IPropertyFieldFilePickerPropsInternal,
-  IPropertyFieldFilePickerProps
-} from './IPropertyFieldFilePicker';
+import { IPropertyFieldFilePickerPropsInternal, IPropertyFieldFilePickerProps } from './IPropertyFieldFilePicker';
 
 /**
  * Represents a PropertyFieldImagePicker object, which will cause to render the PropertyFieldImagePickerHost React Component
@@ -96,6 +93,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.hideOneDriveTab = _properties.hideOneDriveTab !== undefined ? _properties.hideOneDriveTab : false;
     this.storeLastActiveTab = _properties.storeLastActiveTab !== undefined ? _properties.storeLastActiveTab : true;
     this.onPropertyChange = _properties.onPropertyChange;
+    this.customProperties = _properties.properties;
     this.key = _properties.key;
 
     //the context of SharePoint webpart so as to be able to make requests back into SP
@@ -170,19 +168,8 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
    *
    * @returns - void
    */
-  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void {
-    
-  }
-
-  /**
-   * On field change event handler
-   * @param value
-   */
-  private onChange(value: any[]): void {
-    if (this._onChangeCallback) {
-      this._onChangeCallback(this.targetProperty, value);
-    }
-  }
+  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void {    
+  }  
 
 }
 

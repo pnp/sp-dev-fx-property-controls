@@ -17,7 +17,7 @@ nav:
     - PropertyFieldSpinButton: 'controls/PropertyFieldSpinButton.md'
     - PropertyFieldSwatchColorPicker: 'controls/PropertyFieldSwatchColorPicker.md'
     - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
-    - PropertyFieldViewPicker: 'controls/PropertyFIeldViewPicker.md'
+    - PropertyFieldViewPicker: 'controls/PropertyFieldViewPicker.md'
     - PropertyPanePropertyEditor: 'controls/PropertyPanePropertyEditor.md'
     - PropertyPaneWebPartInformation: 'controls/PropertyPaneWebPartInformation.md'
   - 'Controls with callout':

@@ -72,10 +72,10 @@ The `PropertyFieldFilePicker` control can be configured with the following prope
 
 | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- |
-| properties | any | yes | Parent web part properties, this object is use to update the property value.  |
-| key | string | yes | An unique key that indicates the identity of this control. |
-| context | WebPartContext | yes | Current context. |
-| onPropertyChange | function | yes | Defines a onPropertyChange function to raise when the date gets changed. |
+| properties | any | yes | Parent web part properties, this object is used to update the property value.  |
+| key | string | yes | A unique key that indicates the identity of this control. |
+| context | WebPartContext | yes | Current webpart context. |
+| onPropertyChange | function | yes | Defines a onPropertyChange function to raise when the data gets changed. |
 | label | string | no | Specifies the text describing the file picker. |
 | buttonLabel | string | no | Specifies the label of the file picker button. |
 | buttonIcon | string | no | In case it is provided the file picker will be rendered as an action button. |

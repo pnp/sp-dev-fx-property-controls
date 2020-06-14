@@ -284,8 +284,7 @@ export class GeneralHelper {
 
     public static isImage(fileName: string): boolean {
         const acceptableExtensions: string[] = IMG_SUPPORTED_EXTENSIONS.split(",");
-        // const IMG_SUPPORTED_EXTENSIONS = ".gif,.jpg,.jpeg,.bmp,.dib,.tif,.tiff,.ico,.png,.jxr,.svg"
-
+        
         const thisExtension: string = GeneralHelper.getFileExtension(fileName);
         return acceptableExtensions.indexOf(thisExtension) > -1;
     }

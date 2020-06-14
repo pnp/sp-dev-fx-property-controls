@@ -1,7 +1,7 @@
 import { IFilePickerResult } from "./filePickerControls/FilePicker.types";
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 /**
- * Public properties of the PropertyFieldSpinButton custom field
+ * Public properties of the PropertyFieldFilePicker custom field
  */
 export interface IPropertyFieldFilePickerProps {
 
@@ -117,7 +117,7 @@ export interface IPropertyFieldFilePickerProps {
    */
   properties: any;
   /**
-   * An UNIQUE key indicates the identity of this control
+   * An unique key to identity this file picker control
    */
   key: string;
 
@@ -126,6 +126,9 @@ export interface IPropertyFieldFilePickerProps {
    */
   context: WebPartContext;
 
+  /**
+   * The data associated with the selected file
+   */
   filePickerResult: IFilePickerResult;  
 }
 

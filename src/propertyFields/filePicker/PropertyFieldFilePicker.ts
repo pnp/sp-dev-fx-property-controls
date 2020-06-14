@@ -13,9 +13,6 @@ import { IFilePickerResult } from './filePickerControls';
 import { IPropertyFieldFilePickerHostProps } from './IPropertyFieldFilePickerHost';
 import { IPropertyFieldFilePickerPropsInternal, IPropertyFieldFilePickerProps } from './IPropertyFieldFilePicker';
 
-/**
- * Represents a PropertyFieldImagePicker object, which will cause to render the PropertyFieldImagePickerHost React Component
- */
 class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFieldFilePickerPropsInternal> {
   // Properties defined by IPropertyPaneField
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
@@ -57,15 +54,10 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
    */
   public constructor(_targetProperty: string, _properties: IPropertyFieldFilePickerPropsInternal) {
 
-    //this.render = this.render.bind(this);
     this.targetProperty = _targetProperty;
-
-    //catchall of all of this field's properties
     this.properties = _properties;
     this.properties.onDispose = this.dispose;
     this.properties.onRender = this.render;
-
-    //the specific image picked in question
 
     this.label = _properties.label;
     this.buttonLabel = _properties.buttonLabel;
@@ -95,8 +87,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.onPropertyChange = _properties.onPropertyChange;
     this.customProperties = _properties.properties;
     this.key = _properties.key;
-
-    //the context of SharePoint webpart so as to be able to make requests back into SP
+    
     this.context = _properties.context;
 
     if (_properties.disabled === true) {
@@ -104,12 +95,9 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
     }
 
   }
-
-  /**
-   * Renders the ImagePicker field content via the PropertyFieldImagePickerHost component
-   */
+  
   private render = (elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void => {
-    // Construct the JSX properties
+
     const element: React.ReactElement<IPropertyFieldFilePickerHostProps> = React.createElement(PropertyPaneFilePickerHost, {
 
       label: this.label,
@@ -147,42 +135,21 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
       onChange: changeCallback,
       onPropertyChange: this.onPropertyChange
     });
-
-    // Calls the REACT content generator
+    
     ReactDom.render(element, elem);
     
   }
-
-  /**
-   * Disposes the current object
-   */
-  private dispose(elem: HTMLElement): void {
-    //ReactDOM.unmountComponentAtNode(elem);
+  
+  private dispose(elem: HTMLElement): void {    
   }
-
-  /**
-   * An override callback for property change event - appears depricated
-   * @param propertyPath - the path to a given property that was changed
-   * @param oldValue - the previous value of the changed property
-   * @param newValue - the value that the property was changed to
-   *
-   * @returns - void
-   */
+  
   public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void {    
   }  
 
 }
 
-/**
- * Helper method to create a Image Picker on the PropertyPane.
- *
- * @param targetProperty - Target property the Image picker is associated to.
- * @param properties - Strongly typed Image Picker properties.
- */
 export function PropertyFieldFilePicker(targetProperty: string, properties: IPropertyFieldFilePickerProps): IPropertyPaneField<IPropertyFieldFilePickerPropsInternal> {
-
-  // Calls the PropertyFieldImagePicker builder object
-  // This object will simulate a PropertyFieldCustom to manage this rendering process
+  
   return new PropertyFieldFilePickerBuilder(targetProperty, {
     ...properties,
     targetProperty: targetProperty,

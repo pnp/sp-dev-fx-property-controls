@@ -1,4 +1,4 @@
-import { WebPartContext, IWebPartContext } from "@microsoft/sp-webpart-base";
+import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { IFilePickerResult } from "./FilePicker.types";
 
 export interface IFilePickerProps {

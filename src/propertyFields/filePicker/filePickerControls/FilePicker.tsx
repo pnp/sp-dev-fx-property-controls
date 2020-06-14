@@ -25,8 +25,6 @@ import { OrgAssetsService } from '../../../services/OrgAssetsService';
 import { IFilePickerResult } from './FilePicker.types';
 import { FilesSearchService } from '../../../services/FilesSearchService';
 
-import * as telemetry from '../../../common/telemetry';
-
 export class FilePicker extends React.Component<IFilePickerProps, IFilePickerState> {
   private fileBrowserService: FileBrowserService;
   private oneDriveService: OneDriveService;
@@ -35,8 +33,6 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
 
   constructor(props: IFilePickerProps) {
     super(props);
-
-    telemetry.track('ReactFilePicker', {});
 
     // Initialize file browser services
     this.fileBrowserService = new FileBrowserService(props.context, this.props.itemsCountQueryLimit);

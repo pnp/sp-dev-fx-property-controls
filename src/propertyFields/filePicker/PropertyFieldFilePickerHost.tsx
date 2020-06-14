@@ -3,11 +3,17 @@ import { FilePicker, IFilePickerResult } from './filePickerControls';
 import styles from './PropertyFieldFilePickerHost.module.scss';
 import { IPropertyFieldFilePickerHostProps } from './IPropertyFieldFilePickerHost';
 import { GeneralHelper } from '../../../lib/helpers/GeneralHelper';
+import * as telemetry from '../../common/telemetry';
 
 export default class PropertyFieldFilePickerHost extends React.Component<IPropertyFieldFilePickerHostProps> {
 
   constructor(props: IPropertyFieldFilePickerHostProps) {
     super(props);
+
+    telemetry.track('PropertyFieldFilePicker', {
+      disabled: props.disabled
+    });
+
   }
 
   public render(): JSX.Element {

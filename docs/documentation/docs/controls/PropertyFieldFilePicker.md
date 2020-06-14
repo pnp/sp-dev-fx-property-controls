@@ -1,6 +1,6 @@
 # PropertyFieldFilePicker control
 
-File picker control allows to browse and select a file from various places.
+File picker control allows to browse and select a file from various places via the property pane.
 Currently supported locations
 - Recent files - tab allows to select a file from recently modified files based on the search results.
 - Web search - tab uses Bing cognitive services to look for a file. (Only images)
@@ -34,17 +34,15 @@ File picker doesn't load all the files that exist in the folder. Instead, it all
 ## How to use this control in your solutions
 
 - Check that you installed the `@pnp/spfx-property-controls` dependency. Check out The [getting started](../../#getting-started) page for more information about installing the dependency.
-- Import the following modules to your component:
+- Import the following modules to your webpart:
 
 ```TypeScript
-import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResult } from "../../PropertyFieldFilePicker";
+import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResult } from "@pnp/spfx-property-controls/lib/PropertyFieldFilePicker";
 ```
 
 Create a new property for your web part, for example:
 
 ```TypeScript
-import { IFilePickerResult } from "@pnp/spfx-property-controls/lib/PropertyFieldDateTimePicker";
-
 export interface IPropertyControlsTestWebPartProps {
   filePickerResult: IFilePickerResult;
 }

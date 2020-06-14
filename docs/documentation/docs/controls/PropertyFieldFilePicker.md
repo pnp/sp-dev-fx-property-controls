@@ -1,8 +1,33 @@
-# PropertyFieldSpinner control
+# PropertyFieldFilePicker control
 
-This control allows you load the file from a File Picker interface in the property pane.
+File picker control allows to browse and select a file from various places.
+Currently supported locations
+- Recent files - tab allows to select a file from recently modified files based on the search results.
+- Web search - tab uses Bing cognitive services to look for a file. (Only images)
+- OneDrive - tab allows to select a file from the user's One Drive.
+- Site document libraries - tab allows to select a file from the existing site document libraries.
+- Upload - tab allows to upload a file from local drive.
+- From a link - tab allows to paste a link to the document.
 
-**PropertyFieldSpinner example usage**
+## Overview
+The control supports all types of file, however it also allows to specify list of extensions for the files that are going to be looked displayed. Currently, only single file selection is supported. 
+![File Picker overview](../assets/FilePickerOverview.png)
+
+
+## Different display types
+File picker support 3 types of views : List, Compact list and Tiles. In case Tiles view is selected, the control shows the thumbnail of the file.
+![File Picker views](../assets/FilePickerViews.gif)
+
+
+## Breadcrumb support
+The control displays breadcrumb navigation that allows to easily switch folders or document libraries.
+![File Picker breadcrumb](../assets/FilePickerBreadcrumb.gif)
+
+## Paged data load
+File picker doesn't load all the files that exist in the folder. Instead, it allows to specify how many results are loaded in a batch, and executes paged requests when new data is required.
+![File Picker paged data load](../assets/FilePickerPaging.gif)
+
+**PropertyFieldFilePicker example usage**
 
 ![PropertyFieldFilePicker example](../assets/filePicker.gif)
 
@@ -72,7 +97,7 @@ The `PropertyFieldFilePicker` control can be configured with the following prope
 
 interface `IFilePickerResult`
 
-Provides options for carousel buttons location.
+The value returned from the selected file object.
 
 | Value | Type | Description |
 | ---- | ---- | ---- |

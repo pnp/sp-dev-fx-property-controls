@@ -1,7 +1,8 @@
 import { IFilePickerResult } from "./filePickerControls/FilePicker.types";
 import { WebPartContext } from "@microsoft/sp-webpart-base";
+
 /**
- * Public properties of the PropertyFieldFilePicker custom field
+ * Public properties of PropertyFieldFilePicker custom field
  */
 export interface IPropertyFieldFilePickerProps {
 

@@ -5,24 +5,25 @@ import { IPropertyFieldFilePickerHostProps } from './IPropertyFieldFilePickerHos
 import { GeneralHelper } from '../../../lib/helpers/GeneralHelper';
 import * as telemetry from '../../common/telemetry';
 
+/**
+* Renders the control for PropertyFieldFilePicker component
+*/
 export default class PropertyFieldFilePickerHost extends React.Component<IPropertyFieldFilePickerHostProps> {
 
   constructor(props: IPropertyFieldFilePickerHostProps) {
     super(props);
-
     telemetry.track('PropertyFieldFilePicker', {
       disabled: props.disabled
     });
-
   }
 
   public render(): JSX.Element {
     return (
       <div>
         {this.props.filePickerResult && this.props.filePickerResult.fileAbsoluteUrl && (
-          <div className={styles.singlePreview}>
+          <div className={styles.filePreview}>
             {GeneralHelper.isImage(this.props.filePickerResult.fileName) &&
-              <img className={styles.singlePreviewImage} src={this.props.filePickerResult.fileAbsoluteUrl} alt={this.props.filePickerResult.fileName} />
+              <img className={styles.filePreviewImage} src={this.props.filePickerResult.fileAbsoluteUrl} alt={this.props.filePickerResult.fileName} />
             }
             <div>
               {this.props.filePickerResult.fileName}

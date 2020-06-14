@@ -13,13 +13,15 @@ import { IFilePickerResult } from './filePickerControls';
 import { IPropertyFieldFilePickerHostProps } from './IPropertyFieldFilePickerHost';
 import { IPropertyFieldFilePickerPropsInternal, IPropertyFieldFilePickerProps } from './IPropertyFieldFilePicker';
 
+/**
+ * Represents a PropertyFieldFilePicker object
+ */
 class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFieldFilePickerPropsInternal> {
-  // Properties defined by IPropertyPaneField
+  
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public targetProperty: string;
   public properties: IPropertyFieldFilePickerPropsInternal;
-
-  // Custom properties label: string;  
+ 
 
   private itemsCountQueryLimit: number;
 
@@ -49,9 +51,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
   private bingAPIKey: string;
 
   private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
-  /**
-   * Constructor method
-   */
+  
   public constructor(_targetProperty: string, _properties: IPropertyFieldFilePickerPropsInternal) {
 
     this.targetProperty = _targetProperty;
@@ -148,6 +148,11 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
 
 }
 
+/**
+ * Helper method to create a File Picker component on the PropertyPane.
+ * @param targetProperty - Target property the File Picker component is associated to.
+ * @param properties - Strongly typed File Picker component properties.
+ */
 export function PropertyFieldFilePicker(targetProperty: string, properties: IPropertyFieldFilePickerProps): IPropertyPaneField<IPropertyFieldFilePickerPropsInternal> {
   
   return new PropertyFieldFilePickerBuilder(targetProperty, {

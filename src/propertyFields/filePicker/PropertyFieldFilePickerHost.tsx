@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FilePicker, IFilePickerResult } from './filePickerControls';
 import styles from './PropertyFieldFilePickerHost.module.scss';
 import { IPropertyFieldFilePickerHostProps } from './IPropertyFieldFilePickerHost';
-import { GeneralHelper } from '../../../lib/helpers/GeneralHelper';
+import { GeneralHelper } from '../../helpers/GeneralHelper';
 import * as telemetry from '../../common/telemetry';
 
 /**

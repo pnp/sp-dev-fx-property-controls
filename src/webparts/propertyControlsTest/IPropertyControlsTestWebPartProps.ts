@@ -4,7 +4,7 @@ import { IDateTimeFieldValue } from '../../PropertyFieldDateTimePicker';
 import { IPropertyFieldGroupOrPerson } from '../../PropertyFieldPeoplePicker';
 import { IPickerTerms } from '../../PropertyFieldTermPicker';
 import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
-import { IFilePickerResult } from '../../../lib/propertyFields/filePicker/filePickerControls';
+import { IFilePickerResult } from '../../PropertyFieldFilePicker';
 
 export interface IPropertyControlsTestWebPartProps {
   siteUrl: string;

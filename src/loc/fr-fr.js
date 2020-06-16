@@ -3,7 +3,6 @@ define([], function() {
     ApplyButtonLabel: "Apply",
     ImportButtonLabel: "Import",
     ExportButtonLabel: "Export",
-    FormatCodeButtonLabel: "Format Code",
     JsonFileRequiredMessage: "Please upload a json file",
     SaveButtonLabel: "Sauvegarder",
     CancelButtonLabel: "Annuler",

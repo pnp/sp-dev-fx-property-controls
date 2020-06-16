@@ -9,7 +9,8 @@
           "`PropertyFieldSpinner`: new Spinner control [#248](https://github.com/pnp/sp-dev-fx-property-controls/pull/248)"
           ],
         "enhancements": [
-          "`PropertyFieldDateTimePicker`: Add ability to hide Date and show only Time field [#195](https://github.com/pnp/sp-dev-fx-property-controls/issues/195)"
+          "`PropertyFieldDateTimePicker`: Add ability to hide Date and show only Time field [#195](https://github.com/pnp/sp-dev-fx-property-controls/issues/195)",
+          "`PropertyFieldCodeEditor`: Format code [#165](https://github.com/pnp/sp-dev-fx-property-controls/issues/165)"
         ],
         "fixes": [
           "Documentation fix for `PropertyFieldDateTimePicker`: The link for `OnGetErrorMessage` documentation is broken in this page",

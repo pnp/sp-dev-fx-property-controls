@@ -49,6 +49,7 @@ import { PropertyFieldMessage } from '../../PropertyFieldMessage';
 import { MessageBarType } from 'office-ui-fabric-react/lib-es2015/MessageBar';
 import { PropertyFieldSearch } from '../../PropertyFieldSearch';
 import { PropertyFieldSpinner } from '../../PropertyFieldSpinner';
+import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResult } from "../../PropertyFieldFilePicker";
 /**
  * Web part that can be used to test out the various property controls
  */
@@ -89,6 +90,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         password: this.properties.password,
         searchLibrary: this.properties.searchLibrary,
         message: this.properties.message,
+        filePickerResult: this.properties.filePickerResult
       }
     );
 
@@ -782,7 +784,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
               ]
             },
             {
-              groupName: 'People and Terms',
+              groupName: 'People, Terms and Files',
               isCollapsed: true,
               groupFields: [
                 PropertyFieldPeoplePicker('people', {
@@ -848,6 +850,17 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   hideTermStoreName: true,
                   includeLabels: false
                 }),
+                PropertyFieldFilePicker('filePicker', {
+                  context: this.context,
+                  filePickerResult: this.properties.filePickerResult,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  onSave: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult = e;  },
+                  onChanged: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult = e; },
+                  key: "filePickerId",
+                  buttonLabel: "File Picker",
+                  label: "File Picker",                  
+                })
               ]
             },
             {

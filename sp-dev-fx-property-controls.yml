@@ -5,6 +5,6 @@ languages:
   - typescript
 extensions:
   contentType: tools
-  createdDate: '9/11/2017 4:18:24 AM'
+  createdDate: "9/11/2017 4:18:24 AM"
 title: SPFx Property Controls
 description: Reusable SPFx property pane controls - Open source initiative

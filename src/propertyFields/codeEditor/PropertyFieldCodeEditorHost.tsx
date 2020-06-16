@@ -212,16 +212,13 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
             <div className={styles.actions}>
               <div className="ms-Grid" dir="ltr">
                 <div className="ms-Grid-row">
-                  <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6 ms-textAlignLeft">
-                    <PrimaryButton iconProps={{ iconName: 'Save' }} text={strings.SaveButtonLabel} value={strings.SaveButtonLabel} onClick={this.onSave} />
+                  <PrimaryButton iconProps={{ iconName: 'Save' }} text={strings.SaveButtonLabel} value={strings.SaveButtonLabel} onClick={this.onSave} />
 
-                    <DefaultButton iconProps={{ iconName: 'Cancel' }} text={strings.CancelButtonLabel} value={strings.CancelButtonLabel} onClick={this.onClosePanel} />
-                  </div>
+                  <DefaultButton iconProps={{ iconName: 'Cancel' }} text={strings.CancelButtonLabel} value={strings.CancelButtonLabel} onClick={this.onClosePanel} />
+
                   {
                     this.props.language !== PropertyFieldCodeEditorLanguages["Plain Text"] &&
-                    <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6 ms-textAlignRight">
-                      <DefaultButton color="ms-bgColor-themeLight" iconProps={{ iconName: 'ClearFormatting' }} text={strings.FormatCodeButtonLabel} value={strings.ExportButtonLabel} onClick={this.onFormatCode} />
-                    </div>
+                    <DefaultButton color="ms-bgColor-themeLight" iconProps={{ iconName: 'ClearFormatting' }} text={strings.FormatCodeButtonLabel} value={strings.ExportButtonLabel} onClick={this.onFormatCode} />
                   }
                 </div>
               </div>

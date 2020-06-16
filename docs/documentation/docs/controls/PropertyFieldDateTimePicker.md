@@ -85,7 +85,6 @@ Enum `DateConvention`
 | ---- | ---- |
 | DateTime | Shows the date and time picker |
 | Date | Shows only the date picker |
-| Time | Shows only the time picker |
 
 Enum `TimeConvention`
 

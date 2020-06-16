@@ -152,7 +152,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
     return (
       <div>
         {
-          (this.state.items && this.state.items.length > 0 && this.state.loadingState != LoadingState.loading) &&
+          (this.state.items && this.state.items.length > 0 && this.state.loadingState !== LoadingState.loading) &&
           <div>
             <div className={styles.itemPickerTopBar}>
               <CommandBar
@@ -418,7 +418,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
   private _itemSelectionChanged = (item?: IFile) => {
     let selectedItem: IFile = null;
     // Deselect item
-    if (item && this.state.filePickerResult && item.absoluteUrl == this.state.filePickerResult.fileAbsoluteUrl) {
+    if (item && this.state.filePickerResult && item.absoluteUrl === this.state.filePickerResult.fileAbsoluteUrl) {
       this._selection.setAllSelected(false);
       selectedItem = null;
     }
@@ -483,7 +483,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
 
 
       // Remove the null mark from the end of the items array
-      if (concatenateResults && items && items.length > 0 && items.length[items.length - 1] == null) {
+      if (concatenateResults && items && items.length > 0 && items.length[items.length - 1] === null) {
         // Remove the null mark
         items.splice(items.length - 1, 1);
       }
@@ -491,7 +491,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
       const newItems = concatenateResults ? items.concat(filesQueryResult.items) : filesQueryResult.items;
 
       // If there are more items to load -> add null mark at the end of the array
-      if (filesQueryResult.nextHref != null) {
+      if (filesQueryResult.nextHref) {
         newItems.push(null);
       }
 

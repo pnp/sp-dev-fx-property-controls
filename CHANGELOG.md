@@ -7,10 +7,12 @@
 - `PropertyFieldMessage`: new Message control [#248](https://github.com/pnp/sp-dev-fx-property-controls/pull/248)
 - `PropertyFieldSearch`: new Search control [#248](https://github.com/pnp/sp-dev-fx-property-controls/pull/248)
 - `PropertyFieldSpinner`: new Spinner control [#248](https://github.com/pnp/sp-dev-fx-property-controls/pull/248)
+- `PropertyFieldFilePicker`: new File Picker control [#265](https://github.com/pnp/sp-dev-fx-property-controls/pull/265)
 
 ### Enhancements
 
 - `PropertyFieldDateTimePicker`: Add ability to hide Date and show only Time field [#195](https://github.com/pnp/sp-dev-fx-property-controls/issues/195)
+- `PropertyFieldCodeEditor`: Format code [#165](https://github.com/pnp/sp-dev-fx-property-controls/issues/165)
 
 ### Fixes
 

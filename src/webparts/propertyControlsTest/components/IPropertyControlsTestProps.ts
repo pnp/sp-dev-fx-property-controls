@@ -5,9 +5,10 @@ import { IDateTimeFieldValue } from '../../../PropertyFieldDateTimePicker';
 import { IPropertyFieldGroupOrPerson } from '../../../PropertyFieldPeoplePicker';
 import { IPickerTerms } from '../../../PropertyFieldTermPicker';
 import { IPropertyFieldSite } from '../../../propertyFields/sitePicker';
+import { IFilePickerResult } from '../../../PropertyFieldFilePicker';
 
 export interface IPropertyControlsTestProps {
-
+  password:string;
   context: WebPartContext;
   numberValue: number;
   multiSelect: string[];
@@ -16,6 +17,7 @@ export interface IPropertyControlsTestProps {
   listFiltered: string;
   multiList: string[];
   multiListFiltered: string[];
+  view: string;
   terms: IPickerTerms;
   datetime: IDateTimeFieldValue;
   color: string;
@@ -34,4 +36,7 @@ export interface IPropertyControlsTestProps {
   swatchColor: string;
   enterpriseTerms: IPickerTerms;
   sites: IPropertyFieldSite[];
+  searchLibrary: string;
+  message:string;
+  filePickerResult: IFilePickerResult;
 }

@@ -30,7 +30,7 @@ PropertyFieldLinkWithCallout('fakeProp', {
   calloutContent: React.createElement('p', {}, 'Click the link to open a new page with Application Terms & Conditions'),
   calloutWidth: 200,
   text: 'Terms & Conditions',
-  href: 'https://github.com/SharePoint/sp-dev-fx-property-controls',
+  href: 'https://github.com/pnp/sp-dev-fx-property-controls',
   target: '_blank'
 })
 ```

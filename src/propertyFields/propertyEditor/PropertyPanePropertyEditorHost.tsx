@@ -42,9 +42,12 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
     private onSave = (): void => {
         const newProperties = JSON.parse(this.state.propertiesJson);
         for (let propName in newProperties) {
-            set(this.props.webpart.properties, propName, newProperties[propName]);
-            if (typeof this.props.webpart.properties[propName].onChange !== 'undefined' && this.props.webpart.properties[propName].onChange !== null) {
-                this.props.webpart.properties[propName].onChange(propName, newProperties[propName]);
+            // Do not update dynamic data properties
+            if(!(this.props.webpart.properties[propName] && this.props.webpart.properties[propName].__type === "DynamicProperty")) {
+                set(this.props.webpart.properties, propName, newProperties[propName]);
+                if (typeof this.props.webpart.properties[propName].onChange !== 'undefined' && this.props.webpart.properties[propName].onChange !== null) {
+                    this.props.webpart.properties[propName].onChange(propName, newProperties[propName]);
+                }
             }
         }
         this.props.webpart.render();

@@ -1,4 +1,4 @@
-# PropertyFieldPeoplePicker control
+# PropertyFieldSitePicker control
 
 This control generates a site picker that can be used in the property pane of your SharePoint Framework web parts.
 

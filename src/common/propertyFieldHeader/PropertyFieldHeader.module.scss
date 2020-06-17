@@ -1,6 +1,17 @@
+$ms-disabled-text: "[theme:disabledText, default:#a19f9d]";
+
 .headerBar {
     position: relative;
     margin-bottom: 5px;
+
+    &.isDisabled {
+      color: $ms-disabled-text;
+
+      .info {
+        cursor: default;
+      }
+    }
+
     .header {
         margin-right: 24px;
     }

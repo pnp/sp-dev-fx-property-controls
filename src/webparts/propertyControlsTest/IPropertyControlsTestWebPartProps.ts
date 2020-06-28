@@ -5,6 +5,7 @@ import { IPropertyFieldGroupOrPerson } from '../../PropertyFieldPeoplePicker';
 import { IPickerTerms } from '../../PropertyFieldTermPicker';
 import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
 import { IFilePickerResult } from '../../PropertyFieldFilePicker';
+import { IRoleDefinitionInformation  } from "../../PropertyFieldRoleDefinitionPicker";
 
 export interface IPropertyControlsTestWebPartProps {
   siteUrl: string;
@@ -40,4 +41,5 @@ export interface IPropertyControlsTestWebPartProps {
   searchLibrary: string;
   message: string;
   filePickerResult: IFilePickerResult;
+  roleDefinitions: IRoleDefinitionInformation[];
 }

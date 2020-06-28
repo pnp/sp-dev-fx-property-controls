@@ -55,11 +55,15 @@ The `PropertyFieldRoleDefinitionPicker` control can be configured with the follo
 | context | WebPartContext | yes | Current webpart context. |
 | onPropertyChange | function | yes | Defines a onPropertyChange function to raise when the data gets changed. |
 | label | string | no | Specifies the text describing the role definition picker. |
+| webAbsoluteUrl | string | no | Absolute Web Url of target site (user requires permissions) |
 | required | boolean | no | Sets the label to inform that the value is required. |
 | disabled | boolean | no | Specifies if the picker button is disabled |
 | roleDefinitions | IRoleDefinitionInformation[] | yes | The value of selected role defintions
 | selectedRoleDefinition | string[] | no | Pre-selected role definitions for the picker control
 | roleDefinitionsToExclude | string[] | no | Role definitions to be excluded from the picker control
+| onRoleDefinitionsRetrieved | (roleDefinitions: IRoleDefinitionInformation[]) => PromiseLike<IRoleDefinitionInformation[]> | IRoleDefinitionInformation[] | no | Callback that is called before the dropdown is populated. |
+| onGetErrorMessage | function | no | The method is used to get the validation error message and determine whether the input value is valid or not. See [this documentation](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/validate-web-part-property-values) to learn how to use it. |
+
 
 interface `IRoleDefinitionInformation`
 

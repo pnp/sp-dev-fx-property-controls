@@ -50,7 +50,7 @@ import { MessageBarType } from 'office-ui-fabric-react/lib-es2015/MessageBar';
 import { PropertyFieldSearch } from '../../PropertyFieldSearch';
 import { PropertyFieldSpinner } from '../../PropertyFieldSpinner';
 import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResult } from "../../PropertyFieldFilePicker";
-import { IBasePermissions, IPropertyFieldRoleDefinitionPickerProps , PropertyFieldRoleDefinitionPicker, RoleTypeKind , IRoleDefinitionInformation  } from "../../PropertyFieldRoleDefinitionPicker";
+import { IBasePermissions, IPropertyFieldRoleDefinitionPickerProps, PropertyFieldRoleDefinitionPicker, RoleTypeKind, IRoleDefinitionInformation } from "../../PropertyFieldRoleDefinitionPicker";
 /**
  * Web part that can be used to test out the various property controls
  */
@@ -857,11 +857,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   filePickerResult: this.properties.filePickerResult,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
-                  onSave: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult = e;  },
+                  onSave: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult = e; },
                   onChanged: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult = e; },
                   key: "filePickerId",
                   buttonLabel: "File Picker",
-                  label: "File Picker",                  
+                  label: "File Picker",
                 }),
                 PropertyFieldRoleDefinitionPicker('roleDefinitions', {
                   context: this.context,
@@ -869,9 +869,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   roleDefinitions: this.properties.roleDefinitions,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
-                  key: "roleDefinitionPickerId",                  
-                  selectedRoleDefinition:["Full Control"],
-                  roleDefinitionsToExclude: ["System.LimitedView"],                                    
+                  key: "roleDefinitionPickerId",
+                  selectedRoleDefinition: ["Full Control"],
+                  roleDefinitionsToExclude: ["System.LimitedView"],                  
                 })
               ]
             },

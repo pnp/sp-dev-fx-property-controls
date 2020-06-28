@@ -33,11 +33,7 @@ export interface IPropertyFieldRoleDefinitionPickerProps {
   /**
    * Parent Web Part properties
    */
-  properties: any;
-  /**
-   * Define if you want to allow multiple role definition selection. True by default.
-   */
-  multiSelect?: boolean;
+  properties: any;  
   /**
    * Initial selected role definition of the control
    */
@@ -86,8 +82,7 @@ export interface IPropertyFieldRoleDefinitionPickerProps {
  * the PropertyFieldRoleDefinitionPicker.
  */
 export interface IPropertyFieldRoleDefinitionPickerPropsInternal extends IPropertyFieldRoleDefinitionPickerProps, IPropertyPaneCustomFieldProps {
-  context: IWebPartContext;
-  deferredValidationTime?: number;
+  context: IWebPartContext;  
   disabled?: boolean;
   key: string;
   label: string;

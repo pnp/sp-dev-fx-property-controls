@@ -63,10 +63,6 @@ class PropertyFieldRoleDefinitionPickerBuilder implements IPropertyPaneField<IPr
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
     }
-
-    if (typeof _properties.multiSelect !== "undefined") {
-      this.multiSelect = _properties.multiSelect;
-    }
   }
 
   /**
@@ -127,9 +123,8 @@ export function PropertyFieldRoleDefinitionPicker(targetProperty: string, proper
     key: properties.key,
     roleDefinitions: properties.roleDefinitions,
     disabled: properties.disabled,
-    roleDefinitionsToExclude: properties.roleDefinitionsToExclude, 
-    multiSelect: properties.multiSelect,
-    webAbsoluteUrl: properties.webAbsoluteUrl,   
+    roleDefinitionsToExclude: properties.roleDefinitionsToExclude,     
+    webAbsoluteUrl: properties.webAbsoluteUrl,  
     onGetErrorMessage: properties.onGetErrorMessage,
     onRoleDefinitionsRetrieved: properties.onRoleDefinitionsRetrieved    
   };

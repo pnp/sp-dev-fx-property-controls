@@ -869,8 +869,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   roleDefinitions: this.properties.roleDefinitions,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
-                  key: "roleDefinitionPickerId",
-                  multiSelect: true,
+                  key: "roleDefinitionPickerId",                  
                   selectedRoleDefinition:["Full Control"],
                   roleDefinitionsToExclude: ["System.LimitedView"],                                    
                 })

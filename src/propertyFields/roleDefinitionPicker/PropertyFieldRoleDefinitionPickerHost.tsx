@@ -63,6 +63,7 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
     const roleDefinitionService: SPRoleDefinitionPickerService = new SPRoleDefinitionPickerService(this.props, this.props.context);
     const roleDefinitionsToExclude: string[] = this.props.roleDefinitionsToExclude ? this.props.roleDefinitionsToExclude : [];
     let selectedRoleDefinitions: string[] = this.props.selectedRoleDefinition ? this.props.selectedRoleDefinition : [];
+
     if (this.props.roleDefinitions && this.props.roleDefinitions.length > 0) {
       this.props.roleDefinitions.forEach(i => {
         if (selectedRoleDefinitions.indexOf(i.Name) === -1) {
@@ -87,7 +88,17 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
       });
 
       this.selectedOptions = this.options.filter(o => o.selected === true);
+      let selectedRoleDefinitionInformation: IRoleDefinitionInformation[] = [];
+      this.resultsRoleDefinition.forEach(value => {
+        this.selectedOptions.forEach(i => {
+          if (value.Id === i.key) {
+            selectedRoleDefinitionInformation.push(value);
+          }
+        });
+      });
 
+      this.props.properties[this.props.targetProperty] = selectedRoleDefinitionInformation;
+      
       // Update the current component state
       this.setState({
         results: this.options,
@@ -108,35 +119,24 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
   private onChanged(option: IDropdownOption, _index?: number): void {
 
     let selectedRoleDefinitionInformation: IRoleDefinitionInformation[] = [];
-    if (this.props.multiSelect) {
-      if (option && option.selected) {
 
-        this.selectedOptions.push({
-          key: option.key,
-          text: option.text,
-          selected: option.selected
-        });
-      } else {
-        this.selectedOptions = this.selectedOptions.filter(o => o.key !== option.key);
-      }
-
-      this.state.roleDefinitionInformationResult.forEach(value => {
-        this.selectedOptions.forEach(i => {
-          if (value.Id === i.key) {
-            selectedRoleDefinitionInformation.push(value);
-          }
-        });
-      });
-    }
-    else {
-
+    if (option && option.selected) {
       this.selectedOptions.push({
         key: option.key,
-        text: option.text
+        text: option.text,
+        selected: option.selected
       });
-
-      selectedRoleDefinitionInformation = this.state.roleDefinitionInformationResult.filter(i => i.Id === option.key);
+    } else {
+      this.selectedOptions = this.selectedOptions.filter(o => o.key !== option.key);
     }
+
+    this.state.roleDefinitionInformationResult.forEach(value => {
+      this.selectedOptions.forEach(i => {
+        if (value.Id === i.key) {
+          selectedRoleDefinitionInformation.push(value);
+        }
+      });
+    });
 
 
     this.props.onPropertyChange(this.props.targetProperty, this.props.roleDefinitions, selectedRoleDefinitionInformation);
@@ -169,23 +169,12 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
     return (
       <div>
         {this.props.label && <Label>{this.props.label}</Label>}
-        { // need to do this due to a Fabric v5 bug where the default selected key doesn't persist
-          this.props.multiSelect &&
-          <Dropdown options={this.state.results}
-            onChanged={this.onChanged}
-            multiSelect={this.props.multiSelect}
-            selectedKeys={this.selectedOptions.map(item => item.key) || []}
-            key={this.props.key}
-            disabled={this.props.disabled || false} />
-        }
-        {!this.props.multiSelect &&
-          <Dropdown options={this.state.results}
-            onChanged={this.onChanged}
-            multiSelect={this.props.multiSelect}
-            selectedKey={this.selectedOptions.map(item => item.key) || []}
-            key={this.props.key}
-            disabled={this.props.disabled || false} />
-        }
+        <Dropdown options={this.state.results}
+          onChanged={this.onChanged}
+          multiSelect={true}
+          selectedKeys={this.selectedOptions.map(item => item.key) || []}
+          key={this.props.key}
+          disabled={this.props.disabled || false} />
         <FieldErrorMessage errorMessage={this.state.errorMessage} />
       </div>
     );

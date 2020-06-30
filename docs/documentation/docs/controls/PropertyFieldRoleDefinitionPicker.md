@@ -1,10 +1,10 @@
 # PropertyFieldRoleDefinitionPicker control
 
-Role Defintion picker control allows to select role definition(s) of a specific web via the property pane.
+Role Definition picker control allows to select role definitions of a specific web via the property pane.
 
 
 ## Overview
-The control allows a you to pick role definitions from a dropdown control. It supports single and multiple role definition selection using the comboBox control of Office fabric UI. 
+The control allows a you to pick role definitions from a dropdown control. It supports role definition selection using the dropdown control of Office fabric UI with multi-select enabled. 
 ![Role Definition Picker overview](../assets/roleDef1.png)
 
 
@@ -61,7 +61,7 @@ The `PropertyFieldRoleDefinitionPicker` control can be configured with the follo
 | roleDefinitions | IRoleDefinitionInformation[] | yes | The value of selected role defintions
 | selectedRoleDefinition | string[] | no | Pre-selected role definitions for the picker control
 | roleDefinitionsToExclude | string[] | no | Role definitions to be excluded from the picker control
-| onRoleDefinitionsRetrieved | (roleDefinitions: IRoleDefinitionInformation[]) => PromiseLike<IRoleDefinitionInformation[]> | IRoleDefinitionInformation[] | no | Callback that is called before the dropdown is populated. |
+| onRoleDefinitionsRetrieved | `(roleDefinitions: IRoleDefinitionInformation[]) => PromiseLike<IRoleDefinitionInformation[]> | IRoleDefinitionInformation[]` | no | Callback that is called before the dropdown is populated. |
 | onGetErrorMessage | function | no | The method is used to get the validation error message and determine whether the input value is valid or not. See [this documentation](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/validate-web-part-property-values) to learn how to use it. |
 
 

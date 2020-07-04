@@ -39,7 +39,7 @@ nav:
   - About:
     - 'Release notes': 'about/release-notes.md'
     - License: 'about/license.md'
-    - 'Project Guides': 'guides'
+  - 'Project Guides': 'guides'
 theme:
   name: 'material'
   palette:

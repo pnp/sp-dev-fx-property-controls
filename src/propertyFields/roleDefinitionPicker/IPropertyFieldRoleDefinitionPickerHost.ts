@@ -14,8 +14,7 @@ export interface IPropertyFieldRoleDefinitionPickerHostProps extends IPropertyFi
  */
 export interface IPropertyFieldRoleDefinitionPickerHostState {
 
-  results: IDropdownOption[];
-  selectedKeys?: any[];
+  results: IDropdownOption[];  
   errorMessage?: string;
   roleDefinitionInformationResult?: IRoleDefinitionInformation[];
   loading: boolean;

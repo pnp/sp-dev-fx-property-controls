@@ -59,6 +59,7 @@ The `PropertyFieldRoleDefinitionPicker` control can be configured with the follo
 | required | boolean | no | Sets the label to inform that the value is required. |
 | disabled | boolean | no | Specifies if the picker button is disabled |
 | roleDefinitions | IRoleDefinitionInformation[] | yes | The value of selected role defintions
+| multiSelect | boolean | no | Specify if you want to have a single or multi-select role definition picker. By default this is set to `true` (multi-select role picker). |
 | selectedRoleDefinition | string[] | no | Pre-selected role definitions for the picker control
 | roleDefinitionsToExclude | string[] | no | Role definitions to be excluded from the picker control
 | onRoleDefinitionsRetrieved | `(roleDefinitions: IRoleDefinitionInformation[]) => PromiseLike<IRoleDefinitionInformation[]> | IRoleDefinitionInformation[]` | no | Callback that is called before the dropdown is populated. |

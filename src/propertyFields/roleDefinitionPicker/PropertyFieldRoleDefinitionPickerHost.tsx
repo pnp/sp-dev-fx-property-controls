@@ -97,12 +97,17 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
         });
       });
 
-      this.props.properties[this.props.targetProperty] = selectedRoleDefinitionInformation;
+      if(this.props.multiSelect === true){
+        this.props.properties[this.props.targetProperty] = selectedRoleDefinitionInformation;
+      }
+      else{
+        this.props.properties[this.props.targetProperty] = selectedRoleDefinitionInformation[0];
+      }
       
+
       // Update the current component state
       this.setState({
-        results: this.options,
-        selectedKeys: this.selectedOptions,
+        results: this.options,        
         roleDefinitionInformationResult: this.resultsRoleDefinition
       });
     }).catch(error => {
@@ -120,23 +125,36 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
 
     let selectedRoleDefinitionInformation: IRoleDefinitionInformation[] = [];
 
-    if (option && option.selected) {
+    if(this.props.multiSelect){
+      if (option && option.selected) {
+        this.selectedOptions.push({
+          key: option.key,
+          text: option.text,
+          selected: option.selected
+        });
+      } else {
+        this.selectedOptions = this.selectedOptions.filter(o => o.key !== option.key);
+      }
+  
+      this.state.roleDefinitionInformationResult.forEach(value => {
+        this.selectedOptions.forEach(i => {
+          if (value.Id === i.key) {
+            selectedRoleDefinitionInformation.push(value);
+          }
+        });
+      });
+    }
+    else{
       this.selectedOptions.push({
         key: option.key,
-        text: option.text,
-        selected: option.selected
+        text: option.text
       });
-    } else {
-      this.selectedOptions = this.selectedOptions.filter(o => o.key !== option.key);
-    }
 
-    this.state.roleDefinitionInformationResult.forEach(value => {
-      this.selectedOptions.forEach(i => {
-        if (value.Id === i.key) {
-          selectedRoleDefinitionInformation.push(value);
-        }
-      });
-    });
+      this.selectedOptions = this.selectedOptions.filter(o => o.key === option.key);
+      
+      selectedRoleDefinitionInformation = this.state.roleDefinitionInformationResult.filter(i => i.Id === this.selectedOptions[0].key);
+
+    }
 
 
     this.props.onPropertyChange(this.props.targetProperty, this.props.roleDefinitions, selectedRoleDefinitionInformation);
@@ -146,8 +164,7 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
     }
 
     this.setState({
-      results: this.options,
-      selectedKeys: this.selectedOptions
+      results: this.options,      
     });
 
   }
@@ -166,15 +183,29 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
    */
   public render(): JSX.Element {
     // Renders content
+    let multiSelectAllowed = true;
+    if(this.props.multiSelect !== undefined){
+      multiSelectAllowed = this.props.multiSelect;
+    }
     return (
       <div>
         {this.props.label && <Label>{this.props.label}</Label>}
-        <Dropdown options={this.state.results}
-          onChanged={this.onChanged}
-          multiSelect={true}
-          selectedKeys={this.selectedOptions.map(item => item.key) || []}
-          key={this.props.key}
-          disabled={this.props.disabled || false} />
+        {multiSelectAllowed &&
+          <Dropdown options={this.state.results}
+            onChanged={this.onChanged}
+            multiSelect={true}
+            selectedKeys={this.selectedOptions.map(item => item.key) || []}
+            key={this.props.key}
+            disabled={this.props.disabled || false} />
+        }
+        {!multiSelectAllowed &&
+          <Dropdown options={this.state.results}
+            onChanged={this.onChanged}
+            multiSelect={false}
+            selectedKey={this.selectedOptions.map(item => item.key) || []}
+            key={this.props.key}
+            disabled={this.props.disabled || false} />
+        }
         <FieldErrorMessage errorMessage={this.state.errorMessage} />
       </div>
     );

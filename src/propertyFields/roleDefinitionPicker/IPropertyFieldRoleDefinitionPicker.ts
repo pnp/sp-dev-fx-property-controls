@@ -31,6 +31,10 @@ export interface IPropertyFieldRoleDefinitionPickerProps {
   roleDefinitions?: IRoleDefinitionInformation[];
 
   /**
+   * 
+   */
+  multiSelect?: boolean;
+  /**
    * Parent Web Part properties
    */
   properties: any;  
@@ -91,6 +95,7 @@ export interface IPropertyFieldRoleDefinitionPickerPropsInternal extends IProper
   selectedRoleDefinition?: string[];
   roleDefinitionsToExclude?: string[];
   webAbsoluteUrl?: string;
+  multiSelect?: boolean;
   roleDefinitions: IRoleDefinitionInformation[];
   onGetErrorMessage?: (value: IRoleDefinitionInformation[]) => string | Promise<string>;
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;

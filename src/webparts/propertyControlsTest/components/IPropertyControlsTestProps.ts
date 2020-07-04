@@ -6,6 +6,7 @@ import { IPropertyFieldGroupOrPerson } from '../../../PropertyFieldPeoplePicker'
 import { IPickerTerms } from '../../../PropertyFieldTermPicker';
 import { IPropertyFieldSite } from '../../../propertyFields/sitePicker';
 import { IFilePickerResult } from '../../../PropertyFieldFilePicker';
+import { IRoleDefinitionInformation  } from "../../../PropertyFieldRoleDefinitionPicker";
 
 export interface IPropertyControlsTestProps {
   password:string;
@@ -39,4 +40,5 @@ export interface IPropertyControlsTestProps {
   searchLibrary: string;
   message:string;
   filePickerResult: IFilePickerResult;
+  roleDefinitions: IRoleDefinitionInformation[];
 }

@@ -18,7 +18,7 @@ The control allows a you to pick role definitions from a dropdown control. It su
 - Import the following modules to your webpart:
 
 ```TypeScript
-import { IBasePermissions, IPropertyFieldRoleDefinitionPickerProps , PropertyFieldRoleDefinitionPicker, RoleTypeKind , IRoleDefinitionInformation  } from "../../PropertyFieldRoleDefinitionPicker";
+import { IBasePermissions, IPropertyFieldRoleDefinitionPickerProps , PropertyFieldRoleDefinitionPicker, RoleTypeKind , IRoleDefinitionInformation  } from "@pnp/spfx-property-controls/lib/PropertyFieldRoleDefinitionPicker";
 ```
 
 Create a new property for your web part, for example:

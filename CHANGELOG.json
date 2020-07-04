@@ -7,7 +7,9 @@
           "`PropertyFieldRoleDefinitionPicker`: new Role Definition Picker control [#268](https://github.com/pnp/sp-dev-fx-property-controls/pull/268)"
         ],
         "enhancements": [],
-        "fixes": []
+        "fixes": [
+          "Documentation fix: Link to `PropertyFieldListPicker` control points to `PropertyFieldMessage` [#269](https://github.com/pnp/sp-dev-fx-property-controls/issues/269)"
+        ]
       },
       "contributions": [
         "[Gautam Sheth](https://github.com/gautamdsheth)"

@@ -25,8 +25,9 @@ export interface ICustomCollectionField {
   required?: boolean;
   /**
    * Dropdown options. Only nescessary when dropdown type is used.
+   * Options can be either a static array or a function that will calculate the values dynamically and can react to the current item.
    */
-  options?: IDropdownOption[];
+  options?: IDropdownOption[] | ((fieldId: string, item: any) => IDropdownOption[]);
   /**
    * Dropdown custom options render method.
    */

@@ -149,7 +149,7 @@ Interface `ICustomCollectionField`
 | type | CustomCollectionFieldType | yes | Specifies the type of field to render. |
 | disableEdit | boolean | no | Allows you to specify if a field is disabled for editing. |
 | required | boolean | no | Specify if the field is required. |
-| options | [IDropdownOption[]](https://developer.microsoft.com/en-us/fabric#/components/dropdown) | no | Dropdown options. Only necessary when dropdown type is used. |
+| options | [IDropdownOption[]](https://developer.microsoft.com/en-us/fabric#/components/dropdown) \| (fieldId: string, item: any) => IDropdownOption[] | no | Dropdown options. Only necessary when dropdown type is used. Options can be either a static array or a function that will calculate the values dynamically and can react to the current item. |
 | onRenderOption | IRenderFunction<ISelectableOption> | no | Dropdown custom options render method. Only for the **dropdown** field type. |
 | placeholder | string | no | Placehoder text which will be used for the input field. If not provided the input title will be used. |
 | defaultValue | any | no | Specify a default value for the input field. |

@@ -18,108 +18,81 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
       // If the running environment is local, load the data from the mock
       return this.searchPeopleFromMock(ctx, query);
     } else {
-      // Check the type of action to perform (gobal or local)
-      if (siteUrl) {
-        let userRequestUrl = `${siteUrl}/_api/web/siteusers`;
-        // filter for principal Type
-        let filterVal: string = "";
-        if (principalType) {
-          filterVal = `?$filter=(${principalType.map(type => `(PrincipalType eq ${type})`).join(" or ")})`;
+      // If the running env is SharePoint, loads from the peoplepicker web service
+      const userRequestUrl: string = `${siteUrl ? siteUrl : ctx.pageContext.web.absoluteUrl}/_api/SP.UI.ApplicationPages.ClientPeoplePickerWebServiceInterface.clientPeoplePickerSearchUser`;
+      const data = {
+        'queryParams': {
+          'AllowEmailAddresses': true,
+          'AllowMultipleEntities': false,
+          'AllUrlZones': false,
+          'MaximumEntitySuggestions': 20,
+          'PrincipalSource': 15,
+          // PrincipalType controls the type of entities that are returned in the results.
+          // Choices are All - 15, Distribution List - 2 , Security Groups - 4, SharePoint Groups - 8, User - 1.
+          // These values can be combined (example: 13 is security + SP groups + users)
+          'PrincipalType': !!principalType && principalType.length > 0 ? principalType.reduce((a, b) => a + b, 0) : 1,
+          'QueryString': query
         }
-        // Filter for hidden values
-        filterVal = filterVal ? `${filterVal} and (IsHiddenInUI eq false)` : `?$filter=(IsHiddenInUI eq false)`;
-        userRequestUrl = `${userRequestUrl}${filterVal}`;
+      };
 
-        return ctx.spHttpClient.get(userRequestUrl, SPHttpClient.configurations.v1, {
-          headers: {
-            'Accept': 'application/json;odata.metadata=none'
-          }
-        })
-        .then(data => data.json())
-        .then((usersData: IUsers) => {
+      let httpPostOptions: ISPHttpClientOptions = {
+        headers: {
+          'accept': 'application/json',
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      };
+
+      // Do the call against the People REST API endpoint
+      return ctx.spHttpClient.post(userRequestUrl, SPHttpClient.configurations.v1, httpPostOptions).then((searchResponse: SPHttpClientResponse) => {
+        return searchResponse.json().then((usersResponse: any) => {
           let res: IPropertyFieldGroupOrPerson[] = [];
+          let values: any = JSON.parse(usersResponse.value);
 
-          if (usersData && usersData.value && usersData.value.length > 0) {
-            res = usersData.value.filter(element => element.Title.toLowerCase().indexOf(query.toLowerCase()) !== -1 || element.LoginName.toLowerCase().indexOf(query.toLowerCase()) !== -1).map(element => ({
-              fullName: element.Title,
-              id: element.Id.toString(),
-              login: element.LoginName,
-              email: element.Email,
-              imageUrl: this.getUserPhotoUrl(element.Email, siteUrl),
-              initials: this.getFullNameInitials(element.Title)
-            } as IPropertyFieldGroupOrPerson));
-          }
+          // Filter out "UNVALIDATED_EMAIL_ADDRESS"
+          values = values.filter(v => !(v.EntityData && v.EntityData.PrincipalType && v.EntityData.PrincipalType === "UNVALIDATED_EMAIL_ADDRESS"));
+          // Filter out NULL keys
+          values = values.filter(v => v.Key !== null);
+          res = values.map(element => {
+            switch (element.EntityType) {
+              case 'User':
+                let email: string = element.EntityData.Email !== null ? element.EntityData.Email : element.Description;
+                const groupOrPerson: IPropertyFieldGroupOrPerson = { fullName: element.DisplayText, login: element.Description };
+                groupOrPerson.id = element.Key;
+                groupOrPerson.email = email;
+                groupOrPerson.jobTitle = element.EntityData.Title;
+                groupOrPerson.initials = this.getFullNameInitials(groupOrPerson.fullName);
+                groupOrPerson.imageUrl = this.getUserPhotoUrl(groupOrPerson.email, siteUrl ? siteUrl : ctx.pageContext.web.absoluteUrl);
+                return groupOrPerson;
+              case 'SecGroup':
+                const group: IPropertyFieldGroupOrPerson = {
+                  fullName: element.DisplayText,
+                  login: element.ProviderName,
+                  id: element.Key,
+                  description: element.Description,
+                };
+                return group;
+              case 'FormsRole':
+                const formsRole: IPropertyFieldGroupOrPerson = {
+                  fullName: element.DisplayText,
+                  login: element.ProviderName,
+                  id: element.Key,
+                  description: element.Description
+                };
+                return formsRole;
+              default:
+                const persona: IPropertyFieldGroupOrPerson = {
+                  fullName: element.DisplayText,
+                  login: element.EntityData.AccountName,
+                  id: element.EntityData.SPGroupID,
+                  description: element.Description
+                };
+                return persona;
+            }
+          });
           return res;
         });
-      } else {
-        // If the running env is SharePoint, loads from the peoplepicker web service
-        const userRequestUrl: string = `${ctx.pageContext.web.absoluteUrl}/_api/SP.UI.ApplicationPages.ClientPeoplePickerWebServiceInterface.clientPeoplePickerSearchUser`;
-        const data = {
-          'queryParams': {
-            'AllowEmailAddresses': true,
-            'AllowMultipleEntities': false,
-            'AllUrlZones': false,
-            'MaximumEntitySuggestions': 20,
-            'PrincipalSource': 15,
-            // PrincipalType controls the type of entities that are returned in the results.
-            // Choices are All - 15, Distribution List - 2 , Security Groups - 4, SharePoint Groups - 8, User - 1.
-            // These values can be combined (example: 13 is security + SP groups + users)
-            'PrincipalType': !!principalType && principalType.length > 0 ? principalType.reduce((a, b) => a + b, 0) : 1,
-            'QueryString': query
-          }
-        };
-        let httpPostOptions: ISPHttpClientOptions = {
-          headers: {
-            'accept': 'application/json',
-            'content-type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        };
-
-        // Do the call against the People REST API endpoint
-        return ctx.spHttpClient.post(userRequestUrl, SPHttpClient.configurations.v1, httpPostOptions).then((searchResponse: SPHttpClientResponse) => {
-          return searchResponse.json().then((usersResponse: any) => {
-            let res: IPropertyFieldGroupOrPerson[] = [];
-            const values: any = JSON.parse(usersResponse.value);
-            res = values.map(element => {
-              switch (element.EntityType) {
-                case 'User':
-                  const groupOrPerson: IPropertyFieldGroupOrPerson = { fullName: element.DisplayText, login: element.Description };
-                  groupOrPerson.email = element.EntityData.Email;
-                  groupOrPerson.jobTitle = element.EntityData.Title;
-                  groupOrPerson.initials = this.getFullNameInitials(groupOrPerson.fullName);
-                  groupOrPerson.imageUrl = this.getUserPhotoUrl(groupOrPerson.email, ctx.pageContext.web.absoluteUrl);
-                  return groupOrPerson;
-                case 'SecGroup':
-                  const group: IPropertyFieldGroupOrPerson = {
-                    fullName: element.DisplayText,
-                    login: element.ProviderName,
-                    id: element.Key,
-                    description: element.Description
-                  };
-                  return group;
-                case 'FormsRole':
-                  const formsRole: IPropertyFieldGroupOrPerson = {
-                    fullName: element.DisplayText,
-                    login: element.ProviderName,
-                    id: element.Key,
-                    description: element.Description
-                  };
-                  return formsRole;
-                default:
-                  const persona: IPropertyFieldGroupOrPerson = {
-                    fullName: element.DisplayText,
-                    login: element.EntityData.AccountName,
-                    id: element.EntityData.SPGroupID,
-                    description: element.Description
-                  };
-                  return persona;
-              }
-            });
-            return res;
-          });
-        });
-      }
+      });
     }
   }
 
@@ -146,7 +119,7 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
    */
   private getUserPhotoUrl(userEmail: string, siteUrl: string): string {
     if (userEmail) {
-      return `${siteUrl}/_layouts/15/userphoto.aspx?size=S&accountname=${userEmail}`;
+      return `${siteUrl}/_layouts/15/userphoto.aspx?size=S&accountname=${encodeURIComponent(userEmail)}`;
     }
     return null;
   }

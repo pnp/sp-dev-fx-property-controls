@@ -3,14 +3,8 @@
   "id": "bd19c378-ab07-4eaa-9bb6-0e329932d8bf",
   "alias": "PropertyControlsTestWebPart",
   "componentType": "WebPart",
-
-  // The "*" signifies that the version should be taken from the package.json
   "version": "*",
   "manifestVersion": 2,
-
-  // If true, the component can only be installed on sites where Custom Script is allowed.
-  // Components that allow authors to embed arbitrary script code should set this to true.
-  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
   "requiresCustomScript": false,
   "supportedHosts": ["SharePointWebPart"],
 
@@ -25,7 +19,7 @@
     "description": {
       "default": "PropertyControlsTest description"
     },
-    "officeFabricIconFontName": "Settings",
+    "officeFabricIconFontName": "Share",
     "properties": {
       "description": "PropertyControlsTest",
       "dropdownInfoHeaderKey": "gryffindor",

@@ -4,6 +4,8 @@ import { IDateTimeFieldValue } from '../../PropertyFieldDateTimePicker';
 import { IPropertyFieldGroupOrPerson } from '../../PropertyFieldPeoplePicker';
 import { IPickerTerms } from '../../PropertyFieldTermPicker';
 import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
+import { IFilePickerResult } from '../../PropertyFieldFilePicker';
+import { IRoleDefinitionInformation  } from "../../PropertyFieldRoleDefinitionPicker";
 
 export interface IPropertyControlsTestWebPartProps {
   siteUrl: string;
@@ -14,6 +16,7 @@ export interface IPropertyControlsTestWebPartProps {
   multiList: string | string[];
   singleListFiltered: string;
   multiListFiltered: string[];
+  view: string;
   terms: IPickerTerms;
   datetime: IDateTimeFieldValue;
   fileUrl: string;
@@ -34,4 +37,9 @@ export interface IPropertyControlsTestWebPartProps {
   swatchColor: string;
   enterpriseTerms: IPickerTerms;
   sites: IPropertyFieldSite[];
+  password: string;
+  searchLibrary: string;
+  message: string;
+  filePickerResult: IFilePickerResult;
+  roleDefinitions: IRoleDefinitionInformation[];
 }

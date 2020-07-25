@@ -51,6 +51,8 @@ import { PropertyFieldSearch } from '../../PropertyFieldSearch';
 import { PropertyFieldSpinner } from '../../PropertyFieldSpinner';
 import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResult } from "../../PropertyFieldFilePicker";
 import { IBasePermissions, IPropertyFieldRoleDefinitionPickerProps, PropertyFieldRoleDefinitionPicker, RoleTypeKind, IRoleDefinitionInformation } from "../../PropertyFieldRoleDefinitionPicker";
+import { IFolder, IPropertyFieldFolderPickerProps , PropertyFieldFolderPicker } from "../../PropertyFieldFolderPicker";
+
 /**
  * Web part that can be used to test out the various property controls
  */
@@ -92,7 +94,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         searchLibrary: this.properties.searchLibrary,
         message: this.properties.message,
         filePickerResult: this.properties.filePickerResult,
-        roleDefinitions: this.properties.roleDefinitions || []
+        roleDefinitions: this.properties.roleDefinitions || [],
+        folderPicker: this.properties.folderPicker
       }
     );
 
@@ -873,7 +876,21 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   multiSelect: false,
                   selectedRoleDefinition: ["Full Control"],
                   roleDefinitionsToExclude: ["System.LimitedView"],                  
-                })
+                }),
+                PropertyFieldFolderPicker('folderPicker', {
+                  context: this.context,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  key: "folderPickerId",
+                  label: "Folder Picker",
+                  selectedFolder: this.properties.folderPicker,
+                  canCreateFolders: true,
+                  onSelect: ((folder: IFolder) => { console.log(folder); this.properties.folderPicker = folder; }),
+                  rootFolder: {
+                    Name: "Documents",
+                    ServerRelativeUrl: "/sites/gautamdev/Shared Documents"
+                  },
+                }),
               ]
             },
             {

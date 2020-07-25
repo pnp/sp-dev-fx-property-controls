@@ -73,9 +73,10 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
               </p>
               <p className="ms-font-m ms-fontColor-neutralDark" style={{ wordBreak: "break-all" }}>Collection data: {JSON.stringify(this.props.collectionData)}</p>
               <p>File Picker: {this.props.filePickerResult ?  this.props.filePickerResult.fileAbsoluteUrl : ""}</p>
-              <p className="ms-font-m ms-fontColor-neutralDark">Role Definitions: {this.props.roleDefinitions.map(p => {
+              <p className="ms-font-m ms-fontColor-neutralDark">Role Definitions: {this.props.roleDefinitions && this.props.roleDefinitions.length > 0 ? this.props.roleDefinitions.map(p => {
                 return p.Name;
-              }).join(', ')} </p>
+              }).join(', ') : this.props.roleDefinitions[0] ? this.props.roleDefinitions[0].Name : ""} </p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Folder Picker: {this.props.folderPicker ? this.props.folderPicker.Name : ""} </p>
             </div>
           </div>
         </div>

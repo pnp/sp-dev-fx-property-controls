@@ -6,6 +6,7 @@ import { IPickerTerms } from '../../PropertyFieldTermPicker';
 import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
 import { IFilePickerResult } from '../../PropertyFieldFilePicker';
 import { IRoleDefinitionInformation  } from "../../PropertyFieldRoleDefinitionPicker";
+import { IFolder } from "../../PropertyFieldFolderPicker";
 
 export interface IPropertyControlsTestWebPartProps {
   siteUrl: string;
@@ -42,4 +43,5 @@ export interface IPropertyControlsTestWebPartProps {
   message: string;
   filePickerResult: IFilePickerResult;
   roleDefinitions: IRoleDefinitionInformation[];
+  folderPicker: IFolder;
 }

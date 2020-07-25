@@ -217,7 +217,12 @@ define([], function () {
       "L_RelativeDateTime_XDaysFutureIntervals": "1||2-",
       "L_RelativeDateTime_XDaysIntervals": "1||2-",
       "L_RelativeDateTime_Today": "Today"
-    }
+    },
+
+    NewFolderNamePlaceholder: "Enter your folder name",
+    FolderFilterBoxPlaceholder: "Filter folders by name",
+    FolderExplorerLoading: "Loading folders...",
+    FolderExplorerNoItems: "This folder doesn't have any subfolders."    
     
   }
 });

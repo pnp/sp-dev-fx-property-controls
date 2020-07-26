@@ -204,6 +204,13 @@ declare interface IPropertyControlStrings {
   WebSearchLinkLabel: string;
   Yes: string;
   DateTime: IDateTimeStrings;
+
+  // folder explorer
+  NewFolderNamePlaceholder: string;
+  FolderFilterBoxPlaceholder: string;
+  FolderExplorerLoading: string;
+  FolderExplorerNoItems: string;
+
 }
 
 declare interface IDateTimeStrings {

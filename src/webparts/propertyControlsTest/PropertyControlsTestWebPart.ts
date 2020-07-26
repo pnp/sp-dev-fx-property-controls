@@ -305,26 +305,51 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       deferredValidationTime: 0
                     },
                     {
-                      id: "City",
-                      title: "Favorite city",
+                      id: "Country",
+                      title: "Favorite country",
                       type: CustomCollectionFieldType.dropdown,
                       options: [
                         {
-                          key: "antwerp",
-                          text: "Antwerp"
+                          key: "netherlands",
+                          text: "Netherlands"
                         },
                         {
-                          key: "helsinki",
-                          text: "Helsinki"
+                          key: "finland",
+                          text: "Finland"
                         },
                         {
-                          key: "montreal",
-                          text: "Montreal"
+                          key: "canada",
+                          text: "Canada"
+                        },
+                        {
+                          key: "germany",
+                          text: "Germany"
                         }
                       ],
                       required: true,
+                      placeholder: "Favorite country of the person",
+                      defaultValue: "netherlands"
+                    },
+                    {
+                      id: "City",
+                      title: "Favorite city",
+                      type: CustomCollectionFieldType.dropdown,
+                      options: (fieldId, item) => {
+                        let options = [];
+                        if (item["Country"] === "netherlands") {
+                          options.push({ key: "antwerp", text: "Antwerp" });
+                        } else if (item["Country"] === "finland") {
+                          options.push({ key: "helsinki", text: "Helsinki" });
+                        } else if (item["Country"] === "canada") {
+                          options.push({ key: "montreal", text: "Montreal" });
+                        } else if (item["Country"] === "germany") {
+                          options.push({ key: "paderborn", text: "Paderborn" });
+                          options.push({ key: "berlin", text: "Berlin" });
+                        }
+                        return options;
+                      },
+                      required: true,
                       placeholder: "Favorite city of the person",
-                      defaultValue: "antwerp",
                       onRenderOption: (props, defaultRenderer) => {
                         if (props.text.toLowerCase() === "antwerp") {
                           return React.createElement("b", { className: "Testing" }, `${props.text.toUpperCase()} 🎉`);

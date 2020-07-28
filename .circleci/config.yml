@@ -104,7 +104,7 @@ workflows:
       - build:
           filters:
             branches:
-              ignore: /^(dev|master)/
+              ignore: /^(dev|master|v2)/
   release_next:
     jobs:
       - build:

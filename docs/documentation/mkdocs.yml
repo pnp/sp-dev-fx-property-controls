@@ -7,7 +7,7 @@ nav:
     - PropertyFieldColorPicker: 'controls/PropertyFieldColorPicker.md'
     - PropertyFieldDateTimePicker: 'controls/PropertyFieldDateTimePicker.md'
     - PropertyFieldEnterpriseTermPicker: 'controls/PropertyFieldEnterpriseTermPicker.md'
-    - PropertyFieldListPicker: 'controls/PropertyFieldMessage.md'
+    - PropertyFieldListPicker: 'controls/PropertyFieldListPicker.md'
     - PropertyFieldMessage: 'controls/PropertyFieldMessage.md'
     - PropertyFieldMultiSelect: 'controls/PropertyFieldMultiSelect.md'
     - PropertyFieldNumber: 'controls/PropertyFieldNumber.md'

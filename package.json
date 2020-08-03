@@ -26,6 +26,7 @@
     "@pnp/sp-taxonomy": "^1.2.8",
     "@pnp/telemetry-js": "2.0.0",
     "lodash.omit": "^4.5.0",
+    "markdown-to-jsx": "^6.11.4",
     "office-ui-fabric-react": "5.131.0",
     "react-ace": "5.8.0"
   },

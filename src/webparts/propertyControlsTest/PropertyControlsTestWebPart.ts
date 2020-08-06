@@ -52,6 +52,8 @@ import { PropertyFieldSpinner } from '../../PropertyFieldSpinner';
 import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResult } from "../../PropertyFieldFilePicker";
 import { IBasePermissions, IPropertyFieldRoleDefinitionPickerProps, PropertyFieldRoleDefinitionPicker, RoleTypeKind, IRoleDefinitionInformation } from "../../PropertyFieldRoleDefinitionPicker";
 import { IFolder, IPropertyFieldFolderPickerProps , PropertyFieldFolderPicker } from "../../PropertyFieldFolderPicker";
+import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
+import FieldErrorMessage from '../../propertyFields/errorMessage/FieldErrorMessage';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -900,7 +902,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: "roleDefinitionPickerId",
                   multiSelect: false,
                   selectedRoleDefinition: ["Full Control"],
-                  roleDefinitionsToExclude: ["System.LimitedView"],                  
+                  roleDefinitionsToExclude: ["System.LimitedView"],
                 }),
                 PropertyFieldFolderPicker('folderPicker', {
                   context: this.context,
@@ -1065,6 +1067,45 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                 }),
               ]
             },
+            {
+              groupName: "Content",
+              isCollapsed: true,
+              groupFields: [
+                PropertyPaneMarkdownContent({
+                  markdown: `
+### This is Markdown
+
+[Markdown](http://daringfireball.net/projects/markdown/) lets you write content in a really natural way.
+
+  * You can have lists, like this one
+  * Make things **bold** or *italic*
+  * Embed snippets of \`code\`
+  * Create [links](/)
+  * ...
+
+Also supports GitHub-flavored Markdown checklists:
+
+- [x] Checklist item 1
+- [x] Checklist item 2
+- [ ] Checklist item 3
+
+<small>Sample content borrowed with thanks from [markdown-to-jsx](https://probablyup.com/markdown-to-jsx/) ❤️</small>
+
+<FieldErrorMessage errorMessage='This is a sample FieldErrorMessage React component rendered from Markdown'/>
+`,
+                  key: 'markdownSample',
+                  options: {
+                    overrides: {
+                      h3: {
+                        props: {
+                          className: "ms-font-xl ms-fontColor-neutralDark",
+                        },
+                      },
+                      FieldErrorMessage: FieldErrorMessage
+                    }
+                  }}),
+              ]
+            }
           ]
         }
       ]
@@ -1078,7 +1119,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
       return React.createElement('div', {}, `you have selected ${selectedKey}`);
     }
     else {
-      return React.createElement('div', {}, `you haven't selecte any house`);
+      return React.createElement('div', {}, `you haven't selected any house`);
     }
   }
 }

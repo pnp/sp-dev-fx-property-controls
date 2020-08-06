@@ -53,7 +53,7 @@ import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResu
 import { IBasePermissions, IPropertyFieldRoleDefinitionPickerProps, PropertyFieldRoleDefinitionPicker, RoleTypeKind, IRoleDefinitionInformation } from "../../PropertyFieldRoleDefinitionPicker";
 import { IFolder, IPropertyFieldFolderPickerProps , PropertyFieldFolderPicker } from "../../PropertyFieldFolderPicker";
 import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
-import FieldErrorMessage from '../../../lib/propertyFields/errorMessage/FieldErrorMessage';
+import FieldErrorMessage from '../../propertyFields/errorMessage/FieldErrorMessage';
 
 /**
  * Web part that can be used to test out the various property controls

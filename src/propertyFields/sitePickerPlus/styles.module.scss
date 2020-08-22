@@ -1,0 +1,33 @@
+.sitePicker {}
+
+.image {
+    background-color: #ffffff;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.bannerImage {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.acronym {
+    font-family: "Segoe UI Web (West European)", Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    font-weight: 100;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    font-size: 14;
+}

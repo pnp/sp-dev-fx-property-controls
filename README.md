@@ -25,6 +25,8 @@ When you submit a pull request, a CLA-bot will automatically determine whether y
 
 If you have ideas for new features or feedback, let us know by creating an issue in the [issues list](https://github.com/pnp/sp-dev-fx-property-controls/issues). Before you submit a PR with your improvements, please review our [project guides](./docs/documentation/docs/guides/index.md).
 
+## Code of Conduct
+
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 

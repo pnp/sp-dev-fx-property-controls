@@ -77,6 +77,9 @@ define([], function () {
     AboutGroupLabel: "About",
     SitePickerSearchBoxPlaceholder: "Search...",
     SitePickerNoResults: "No search results",
-    SitePickerSitesChosen: "Website(s) selected"
+    SitePickerSitesChosen: "Website(s) selected",
+    TeamPickerSearchBoxPlaceholder: "Search...",
+    TeamPickerNoResults: "No search results",
+    TeamPickerSitesChosen: "Teams(s) selected"
   }
 });

@@ -85,7 +85,7 @@ export default class PropertyFieldTeamPickerHost extends React.Component<IProper
       <div>
         {this.props.label && <Label>{this.props.label}</Label>}
         <SearchBox
-          placeholder={strings.SitePickerSearchBoxPlaceholder}
+          placeholder={strings.TeamPickerSearchBoxPlaceholder}
           onChanged={this.async.debounce(this.onSearchFieldChange, this.props.deferredValidationTime)}
         />
         {
@@ -112,14 +112,14 @@ export default class PropertyFieldTeamPickerHost extends React.Component<IProper
             }
             {
               siteSearchResults.length === 0 &&
-              <Label>{strings.SitePickerNoResults}</Label>
+              <Label>{strings.TeamPickerNoResults}</Label>
             }
           </div>
         }
         {
           selectedSites && selectedSites.length > 0 &&
           <div>
-            <Label className={styles.bold}>{selectedSites.length} {strings.SitePickerSitesChosen}</Label>
+            <Label className={styles.bold}>{selectedSites.length} {strings.TeamPickerSitesChosen}</Label>
             <ul className={styles.siteList}>
               {
                 selectedSites.map((site: IPropertyFieldTeam): JSX.Element =>

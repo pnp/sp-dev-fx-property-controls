@@ -83,8 +83,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         swatchColor: this.properties.swatchColor,
         enterpriseTerms: this.properties.enterpriseTerms || [],
         sites: this.properties.sites || [],
+        teams: this.properties.teams || [],
         password: this.properties.password
-        
+
       }
     );
 

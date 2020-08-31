@@ -4,6 +4,7 @@ import { IDateTimeFieldValue } from '../../PropertyFieldDateTimePicker';
 import { IPropertyFieldGroupOrPerson } from '../../PropertyFieldPeoplePicker';
 import { IPickerTerms } from '../../PropertyFieldTermPicker';
 import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
+import { IPropertyFieldTeam } from '../../PropertyFieldTeamPicker';
 
 export interface IPropertyControlsTestWebPartProps {
   siteUrl: string;
@@ -36,4 +37,5 @@ export interface IPropertyControlsTestWebPartProps {
   enterpriseTerms: IPickerTerms;
   sites: IPropertyFieldSite[];
   password: string;
+  teams: IPropertyFieldTeam[];
 }

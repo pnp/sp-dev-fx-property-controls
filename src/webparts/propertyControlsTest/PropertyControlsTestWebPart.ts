@@ -45,7 +45,7 @@ import { PropertyPaneHelpers } from '../../helpers';
 import { SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { PropertyFieldPassword } from '../../PropertyFieldPassword';
 import { PropertyFieldViewPickerOrderBy, PropertyFieldViewPicker, ISPView } from '../../PropertyFieldViewPicker';
-
+import { PropertyFieldTeamPicker} from '../../PropertyFieldTeamPicker';
 /**
  * Web part that can be used to test out the various property controls
  */
@@ -84,6 +84,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         enterpriseTerms: this.properties.enterpriseTerms || [],
         sites: this.properties.sites || [],
         password: this.properties.password
+        
       }
     );
 
@@ -535,6 +536,16 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
                   key: 'sitesFieldId'
+                }),
+                PropertyFieldTeamPicker('teams', {
+                  label: 'Select teams',
+                  initialSites: this.properties.teams,
+                  context: this.context,
+                  deferredValidationTime: 500,
+                  multiSelect: true,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  key: 'teamsFieldId'
                 })
               ]
             },

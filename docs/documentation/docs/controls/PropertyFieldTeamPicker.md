@@ -1,4 +1,4 @@
-# PropertyFieldSitePicker control
+# PropertyFieldTeamPicker control
 
 This control generates a MS Team picker, select O365 group with a team associated that can be used in the property pane of your SharePoint Framework web parts.
 

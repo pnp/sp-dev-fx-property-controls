@@ -51,6 +51,7 @@ The following controls are currently available:
 - [PropertyFieldColorPicker](./controls/PropertyFieldColorPicker) (Property pane color picker)
 - [PropertyFieldDateTimePicker](./controls/PropertyFieldDateTimePicker) (Property pane date and time selector)
 - [PropertyFieldFilePicker](./controls/PropertyFieldFilePicker) (Property pane file picker)
+- [PropertyFieldFolderPicker](./controls/PropertyFieldFolderPicker) (Property pane folder picker)
 - [PropertyFieldListPicker](./controls/PropertyFieldListPicker) (Property pane list selector)
 - [PropertyFieldMessage](./controls/PropertyFieldMessage) (Property pane message)
 - [PropertyFieldMultiSelect](./controls/PropertyFieldMultiSelect) (Property pane multi select dropdown)
@@ -67,6 +68,7 @@ The following controls are currently available:
 - [PropertyFieldTermPicker](./controls/PropertyFieldTermPicker) (Property pane managed metadata term selector)
 - [PropertyFieldEnterpriseTermPicker](./controls/PropertyFieldEnterpriseTermPicker) (Property pane managed metadata term selector for enterprise scenarios)
 - [PropertyFieldViewPicker](./controls/PropertyFIeldViewPicker) (Property pane view selector)
+- [PropertyPaneMarkdownContent](./controls/PropertyPaneMarkdownContent) (Property pane markdown content)
 - [PropertyPanePropertyEditor](./controls/PropertyPanePropertyEditor) (Property pane control that allows raw editing, export and import of webpart properties)
 - [PropertyPaneWebPartInformation](./controls/PropertyPaneWebPartInformation) (Property pane webpart information panel)
 

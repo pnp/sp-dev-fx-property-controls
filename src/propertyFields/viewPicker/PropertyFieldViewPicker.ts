@@ -133,6 +133,7 @@ export function PropertyFieldViewPicker(targetProperty: string, properties: IPro
     key: properties.key,
     disabled: properties.disabled,
     viewsToExclude: properties.viewsToExclude,
+    webAbsoluteUrl: properties.webAbsoluteUrl,
     filter: properties.filter,
     onGetErrorMessage: properties.onGetErrorMessage,
     deferredValidationTime: properties.deferredValidationTime,

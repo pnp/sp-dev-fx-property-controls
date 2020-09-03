@@ -53,6 +53,10 @@ import { PropertyFieldSearch } from '../../PropertyFieldSearch';
 import { PropertyFieldSpinner } from '../../PropertyFieldSpinner';
 import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResult } from "../../PropertyFieldFilePicker";
 import { IBasePermissions, IPropertyFieldRoleDefinitionPickerProps, PropertyFieldRoleDefinitionPicker, RoleTypeKind, IRoleDefinitionInformation } from "../../PropertyFieldRoleDefinitionPicker";
+import { IFolder, IPropertyFieldFolderPickerProps , PropertyFieldFolderPicker } from "../../PropertyFieldFolderPicker";
+import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
+import FieldErrorMessage from '../../propertyFields/errorMessage/FieldErrorMessage';
+
 /**
  * Web part that can be used to test out the various property controls
  */
@@ -94,7 +98,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         searchLibrary: this.properties.searchLibrary,
         message: this.properties.message,
         filePickerResult: this.properties.filePickerResult,
-        roleDefinitions: this.properties.roleDefinitions || []
+        roleDefinitions: this.properties.roleDefinitions || [],
+        folderPicker: this.properties.folderPicker
       }
     );
 
@@ -305,26 +310,51 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       deferredValidationTime: 0
                     },
                     {
-                      id: "City",
-                      title: "Favorite city",
+                      id: "Country",
+                      title: "Favorite country",
                       type: CustomCollectionFieldType.dropdown,
                       options: [
                         {
-                          key: "antwerp",
-                          text: "Antwerp"
+                          key: "netherlands",
+                          text: "Netherlands"
                         },
                         {
-                          key: "helsinki",
-                          text: "Helsinki"
+                          key: "finland",
+                          text: "Finland"
                         },
                         {
-                          key: "montreal",
-                          text: "Montreal"
+                          key: "canada",
+                          text: "Canada"
+                        },
+                        {
+                          key: "germany",
+                          text: "Germany"
                         }
                       ],
                       required: true,
+                      placeholder: "Favorite country of the person",
+                      defaultValue: "netherlands"
+                    },
+                    {
+                      id: "City",
+                      title: "Favorite city",
+                      type: CustomCollectionFieldType.dropdown,
+                      options: (fieldId, item) => {
+                        let options = [];
+                        if (item["Country"] === "netherlands") {
+                          options.push({ key: "antwerp", text: "Antwerp" });
+                        } else if (item["Country"] === "finland") {
+                          options.push({ key: "helsinki", text: "Helsinki" });
+                        } else if (item["Country"] === "canada") {
+                          options.push({ key: "montreal", text: "Montreal" });
+                        } else if (item["Country"] === "germany") {
+                          options.push({ key: "paderborn", text: "Paderborn" });
+                          options.push({ key: "berlin", text: "Berlin" });
+                        }
+                        return options;
+                      },
+                      required: true,
                       placeholder: "Favorite city of the person",
-                      defaultValue: "antwerp",
                       onRenderOption: (props, defaultRenderer) => {
                         if (props.text.toLowerCase() === "antwerp") {
                           return React.createElement("b", { className: "Testing" }, `${props.text.toUpperCase()} 🎉`);
@@ -873,7 +903,21 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   multiSelect: false,
                   selectedRoleDefinition: ["Full Control"],
                   roleDefinitionsToExclude: ["System.LimitedView"],
-                })
+                }),
+                PropertyFieldFolderPicker('folderPicker', {
+                  context: this.context,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  key: "folderPickerId",
+                  label: "Folder Picker",
+                  selectedFolder: this.properties.folderPicker,
+                  canCreateFolders: true,
+                  onSelect: ((folder: IFolder) => { console.log(folder); this.properties.folderPicker = folder; }),
+                  rootFolder: {
+                    Name: "Documents",
+                    ServerRelativeUrl: "/sites/gautamdev/Shared Documents"
+                  },
+                }),
               ]
             },
             {
@@ -1023,6 +1067,45 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                 }),
               ]
             },
+            {
+              groupName: "Content",
+              isCollapsed: true,
+              groupFields: [
+                PropertyPaneMarkdownContent({
+                  markdown: `
+### This is Markdown
+
+[Markdown](http://daringfireball.net/projects/markdown/) lets you write content in a really natural way.
+
+  * You can have lists, like this one
+  * Make things **bold** or *italic*
+  * Embed snippets of \`code\`
+  * Create [links](/)
+  * ...
+
+Also supports GitHub-flavored Markdown checklists:
+
+- [x] Checklist item 1
+- [x] Checklist item 2
+- [ ] Checklist item 3
+
+<small>Sample content borrowed with thanks from [markdown-to-jsx](https://probablyup.com/markdown-to-jsx/) ❤️</small>
+
+<FieldErrorMessage errorMessage='This is a sample FieldErrorMessage React component rendered from Markdown'/>
+`,
+                  key: 'markdownSample',
+                  options: {
+                    overrides: {
+                      h3: {
+                        props: {
+                          className: "ms-font-xl ms-fontColor-neutralDark",
+                        },
+                      },
+                      FieldErrorMessage: FieldErrorMessage
+                    }
+                  }}),
+              ]
+            }
           ]
         }
       ]
@@ -1036,7 +1119,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
       return React.createElement('div', {}, `you have selected ${selectedKey}`);
     }
     else {
-      return React.createElement('div', {}, `you haven't selecte any house`);
+      return React.createElement('div', {}, `you haven't selected any house`);
     }
   }
 }

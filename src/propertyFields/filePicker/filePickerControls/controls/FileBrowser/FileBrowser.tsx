@@ -204,7 +204,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
         }
 
         {
-          this.state.loadingState != LoadingState.idle &&
+          this.state.loadingState !== LoadingState.idle &&
           <Spinner label={strings.Loading} />
         }
       </div>
@@ -215,7 +215,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
    * Triggers paged data load
    */
   private _loadNextDataRequest = async () => {
-    if (this.state.loadingState == LoadingState.idle) {
+    if (this.state.loadingState === LoadingState.idle) {
       // Load next list items from next page
       await this._getListItems(true);
     }

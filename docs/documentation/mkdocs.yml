@@ -7,7 +7,7 @@ nav:
     - PropertyFieldColorPicker: 'controls/PropertyFieldColorPicker.md'
     - PropertyFieldDateTimePicker: 'controls/PropertyFieldDateTimePicker.md'
     - PropertyFieldEnterpriseTermPicker: 'controls/PropertyFieldEnterpriseTermPicker.md'
-    - PropertyFieldListPicker: 'controls/PropertyFieldMessage.md'
+    - PropertyFieldListPicker: 'controls/PropertyFieldListPicker.md'
     - PropertyFieldMessage: 'controls/PropertyFieldMessage.md'
     - PropertyFieldMultiSelect: 'controls/PropertyFieldMultiSelect.md'
     - PropertyFieldNumber: 'controls/PropertyFieldNumber.md'
@@ -21,6 +21,7 @@ nav:
     - PropertyFieldSwatchColorPicker: 'controls/PropertyFieldSwatchColorPicker.md'
     - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
     - PropertyFieldViewPicker: 'controls/PropertyFieldViewPicker.md'
+    - PropertyPaneMarkdownContent: 'controls/PropertyPaneMarkdownContent.md'
     - PropertyPanePropertyEditor: 'controls/PropertyPanePropertyEditor.md'
     - PropertyPaneWebPartInformation: 'controls/PropertyPaneWebPartInformation.md'
   - 'Controls with callout':
@@ -39,7 +40,7 @@ nav:
   - About:
     - 'Release notes': 'about/release-notes.md'
     - License: 'about/license.md'
-    - 'Project Guides': 'guides'
+  - 'Project Guides': 'guides'
 theme:
   name: 'material'
   palette:

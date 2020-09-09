@@ -20,3 +20,6 @@ export * from './PropertyFieldToggleWithCallout';
 export * from './PropertyPaneWebPartInformation';
 export * from './PropertyPanePropertyEditor';
 export * from './PropertyFieldSitePicker';
+export * from './PropertyFieldFilePicker';
+export * from './PropertyFieldRoleDefinitionPicker';
+export * from './PropertyFieldFolderPicker';

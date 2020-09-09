@@ -347,8 +347,11 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                          disabled={disableFieldOnEdit}
                          className="PropertyFieldCollectionData__panel__boolean-field" />;
       case CustomCollectionFieldType.dropdown:
+        const dropdownOptions = (typeof(field.options) === "function") ?
+                                  field.options(field.id, item) :
+                                  field.options;
         return <Dropdown placeHolder={field.placeholder || field.title}
-                         options={field.options}
+                         options={dropdownOptions}
                          selectedKey={item[field.id] || null}
                          required={field.required}
                          disabled={disableFieldOnEdit}

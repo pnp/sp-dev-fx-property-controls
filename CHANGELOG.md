@@ -1,5 +1,27 @@
 # Releases
 
+## 1.20.0
+
+### New control(s)
+
+- `PropertyFieldRoleDefinitionPicker`: new Role Definition Picker control [#268](https://github.com/pnp/sp-dev-fx-property-controls/pull/268)
+- `PropertyFieldFolderPicker`: new Folder Picker control [#272](https://github.com/pnp/sp-dev-fx-property-controls/issues/272)
+- `PropertyPaneMarkdownContent`: new Markdown Content control [#162](https://github.com/pnp/sp-dev-fx-property-controls/issues/162)
+
+### Enhancements
+
+- `PropertyFieldCollectionData`: Dynamic options [#260](https://github.com/pnp/sp-dev-fx-property-controls/issues/260)
+
+### Fixes
+
+- Documentation fix: Link to `PropertyFieldListPicker` control points to `PropertyFieldMessage` [#269](https://github.com/pnp/sp-dev-fx-property-controls/issues/269)
+- Readme fix: fixed link to project guides [#271](https://github.com/pnp/sp-dev-fx-property-controls/pull/271)
+- `PropertyFieldViewPicker`: Unable to load Views from another site [#263](https://github.com/pnp/sp-dev-fx-property-controls/issues/263)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Gautam Sheth](https://github.com/gautamdsheth), [Hugo Bernier](https://github.com/hugoabernier), [Lars Fernhomberg](https://github.com/lafe).
+
 ## 1.19.0
 
 ### New control(s)

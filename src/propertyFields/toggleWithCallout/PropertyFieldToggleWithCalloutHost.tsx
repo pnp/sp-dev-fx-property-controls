@@ -6,7 +6,7 @@ import { IPropertyFieldToggleWithCalloutHostProps } from './IPropertyFieldToggle
 import * as telemetry from '../../common/telemetry';
 import { Toggle } from 'office-ui-fabric-react/lib/components/Toggle';
 
-const omit: any = require('lodash.omit');
+import omit from 'lodash/omit';
 
 export default class PropertyFieldToggleWithCalloutHost extends React.Component<IPropertyFieldToggleWithCalloutHostProps, null> {
   constructor(props: IPropertyFieldToggleWithCalloutHostProps) {
@@ -20,8 +20,10 @@ export default class PropertyFieldToggleWithCalloutHost extends React.Component<
   public render(): JSX.Element {
     return (
       <div>
-      <PropertyFieldHeader {...this.props} />
-      <Toggle {...omit(this.props, ['label'])} />
+        <PropertyFieldHeader
+          {...this.props}
+          label={this.props.label.toString()} />
+        <Toggle {...omit(this.props, ['label'])} />
       </div>
     );
   }

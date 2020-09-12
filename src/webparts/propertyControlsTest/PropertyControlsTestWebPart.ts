@@ -5,10 +5,12 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
+} from '@microsoft/sp-webpart-base';
+import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
   PropertyPaneToggle
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 import { PropertyFieldCodeEditor, PropertyFieldCodeEditorLanguages } from '../../PropertyFieldCodeEditor';
 import * as strings from 'PropertyControlsTestWebPartStrings';
 import PropertyControlsTest from './components/PropertyControlsTest';
@@ -46,7 +48,7 @@ import { SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { PropertyFieldPassword } from '../../PropertyFieldPassword';
 import { PropertyFieldViewPickerOrderBy, PropertyFieldViewPicker, ISPView } from '../../PropertyFieldViewPicker';
 import { PropertyFieldMessage } from '../../PropertyFieldMessage';
-import { MessageBarType } from 'office-ui-fabric-react/lib-es2015/MessageBar';
+import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import { PropertyFieldSearch } from '../../PropertyFieldSearch';
 import { PropertyFieldSpinner } from '../../PropertyFieldSpinner';
 import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResult } from "../../PropertyFieldFilePicker";
@@ -120,13 +122,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     PropertyPaneHelpers.setSpinner({
       spinnerProps: {
         size: SpinnerSize.large,
-        getStyles: () => {
-          return {
-            circle: {
-              height: 80,
-              width: 80
-            }
-          };
+        styles: {
+          circle: {
+            height: 80,
+            width: 80
+          }
         }
       }
     });

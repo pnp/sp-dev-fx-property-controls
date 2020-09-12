@@ -11,7 +11,7 @@ import PropertyFieldButtonHost from './PropertyFieldButtonWithCalloutHost';
 import { IPropertyFieldButtonWithCalloutPropsInternal, IPropertyFieldButtonWithCalloutProps } from './IPropertyFieldButtonWithCallout';
 import { ButtonType } from 'office-ui-fabric-react/lib/components/Button';
 
-const omit: any = require('lodash.omit');
+import omit from 'lodash/omit';
 
 /**
  * Represents a PropertyFieldButtonWithCallout object
@@ -32,16 +32,15 @@ class PropertyFieldButtonWithCalloutBuilder implements IPropertyPaneField<IPrope
 
     private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
 
-        const props: IPropertyFieldButtonWithCalloutProps = <IPropertyFieldButtonWithCalloutProps>omit(this.properties, ['buttonType']);
+        const props = this.properties as IPropertyFieldButtonWithCalloutProps;
 
         //
         // PropertyPaneButtonType is not assignable to ButtonType
         //
         const buttonTypeString: string = ButtonType[this.properties.buttonType];
         const buttonType: ButtonType = ButtonType[buttonTypeString];
-        const propsWithoutRef = omit(props, "ref");
         const element = React.createElement(PropertyFieldButtonHost, {
-            ...propsWithoutRef,
+            ...omit(props, ['icon', 'buttonType']),
             buttonType: buttonType
         });
 

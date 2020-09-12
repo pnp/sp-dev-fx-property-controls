@@ -1,7 +1,7 @@
 defaults: &defaults
   working_directory: ~/sp-dev-fx-property-controls
   docker:
-    - image: circleci/node:6.11.5
+    - image: circleci/node:10.22.0
 
 version: 2
 jobs:
@@ -104,25 +104,31 @@ workflows:
       - build:
           filters:
             branches:
-              ignore: /^(dev|master)/
+              ignore: /^(dev|master|v2)/
   release_next:
     jobs:
       - build:
           filters:
             branches:
-              only: dev
+              only:
+                - dev
+                - v2
       - build_next:
           requires:
             - build
           filters:
             branches:
-              only: dev
+              only:
+                - dev
+                - v2
       - publish_next:
           requires:
             - build_next
           filters:
             branches:
-              only: dev
+              only:
+                - dev
+                - v2
   release:
     jobs:
       - build:

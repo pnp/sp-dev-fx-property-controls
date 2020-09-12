@@ -7,8 +7,9 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import PropertyFieldDropdownHost from './PropertyFieldDropdownWithCalloutHost';
-
+import omit from 'lodash/omit';
 import { IPropertyFieldDropdownWithCalloutPropsInternal, IPropertyFieldDropdownWithCalloutProps } from './IPropertyFieldDropdownWithCallout';
+import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
 
 class PropertyFieldDropdownWithCalloutBuilder implements IPropertyPaneField<IPropertyFieldDropdownWithCalloutPropsInternal> {
     public targetProperty: string;
@@ -31,7 +32,8 @@ class PropertyFieldDropdownWithCalloutBuilder implements IPropertyPaneField<IPro
         const props: IPropertyFieldDropdownWithCalloutProps = <IPropertyFieldDropdownWithCalloutProps>this.properties;
 
         const element = React.createElement(PropertyFieldDropdownHost, {
-            ...props,
+            ...omit(props, ['options', 'ariaPositionInSet', 'ariaSetSize']),
+            options: props.options as IDropdownOption[] || [],
             onChanged: this._onChanged.bind(this)
         });
 

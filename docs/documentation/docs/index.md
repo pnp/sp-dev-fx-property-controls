@@ -49,6 +49,7 @@ telemetry.optOut();
 ## Controls
 
 The following controls are currently available:
+
 - [PropertyFieldCodeEditor](./controls/PropertyFieldCodeEditor) (Property pane code editor)
 - [PropertyFieldCollectionData](./controls/PropertyFieldCollectionData) (Property pane collection data editor)
 - [PropertyFieldColorPicker](./controls/PropertyFieldColorPicker) (Property pane color picker)
@@ -76,6 +77,7 @@ The following controls are currently available:
 - [PropertyPaneWebPartInformation](./controls/PropertyPaneWebPartInformation) (Property pane webpart information panel)
 
 The following controls are extended controls that show a callout next to the label
+
 - [PropertyFieldButtonWithCallout](./controls/PropertyFieldButtonWithCallout) (Property button field with callout)
 - [PropertyFieldCheckboxWithCallout](./controls/PropertyFieldCheckboxWithCallout) (Property checkbox field with callout)
 - [PropertyFieldChoiceGroupWithCallout](./controls/PropertyFieldChoiceGroupWithCallout) (Property choice group field with callout)

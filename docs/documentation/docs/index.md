@@ -3,6 +3,9 @@
 This repository provides developers with a set of reusable property pane controls that can be used in their SharePoint Framework (SPFx) solutions.
 
 !!! attention
+    In order to migrate to `v2` it is advicded to follow this guide: [Migrating from V1](./guides/migrate-from-v1).
+
+!!! attention
     The controls project has a minimal dependency on SharePoint Framework version `1.3.0`. Be aware that the controls might not work in solutions your building for on-premises. As for on-premises solutions version `1.1.0` will get used.
 
 ## Getting started

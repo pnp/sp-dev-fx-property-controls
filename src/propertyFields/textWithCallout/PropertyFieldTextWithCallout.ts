@@ -9,6 +9,8 @@ import PropertyFieldTextWithCalloutHost from './PropertyFieldTextWithCalloutHost
 
 import { IPropertyFieldTextWithCalloutPropsInternal, IPropertyFieldTextWithCalloutProps } from './IPropertyFieldTextWithCallout';
 
+import omit from 'lodash/omit';
+
 class PropertyFieldTextWithCalloutBuilder implements IPropertyPaneField<IPropertyFieldTextWithCalloutPropsInternal> {
     public targetProperty: string;
     public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
@@ -29,7 +31,7 @@ class PropertyFieldTextWithCalloutBuilder implements IPropertyPaneField<IPropert
         const props: IPropertyFieldTextWithCalloutProps = <IPropertyFieldTextWithCalloutPropsInternal>this.properties;
 
         const element = React.createElement(PropertyFieldTextWithCalloutHost, {
-            ...props,
+            ...omit(props, ['logName']),
             onNotifyValidationResult: this._onValidated.bind(this)
         });
 

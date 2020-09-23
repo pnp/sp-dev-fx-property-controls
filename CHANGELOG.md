@@ -1,5 +1,11 @@
 # Releases
 
+## 2.0.0
+
+### New control(s)
+
+- `Office UI Fabric` version 6 support
+
 ## 1.20.0
 
 ### New control(s)

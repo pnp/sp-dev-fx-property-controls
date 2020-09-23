@@ -6,8 +6,7 @@ import * as telemetry from '../../common/telemetry';
 import { Dropdown, IDropdownProps, IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
 import { IPropertyPaneDropdownOption } from '@microsoft/sp-webpart-base';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
-
-const omit: any = require('lodash.omit');
+import omit from 'lodash/omit';
 
 export default class PropertyFieldDropdownHost extends React.Component<IPropertyFieldDropdownWithCalloutHostProps, null> {
     constructor(props: IPropertyFieldDropdownWithCalloutHostProps) {

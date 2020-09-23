@@ -6,6 +6,8 @@
   "version": "*",
   "manifestVersion": 2,
   "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
   "preconfiguredEntries": [{
     "groupId": "bd19c378-ab07-4eaa-9bb6-0e329932d8bf",
     "group": {

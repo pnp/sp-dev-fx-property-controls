@@ -9,7 +9,7 @@ import * as telemetry from '../../common/telemetry';
 import { IPropertyFieldOrderHostProps, IPropertyFieldOrderHostState } from './IPropertyFieldOrderHost';
 import styles from './PropertyFieldOrderHost.module.scss';
 import { isEqual } from '@microsoft/sp-lodash-subset';
-import { EventGroup } from '@uifabric/utilities/lib/EventGroup';
+import { EventGroup } from 'office-ui-fabric-react/lib/Utilities'; //'@uifabric/utilities/lib/EventGroup';
 
 export default class PropertyFieldOrderHost extends React.Component<IPropertyFieldOrderHostProps, IPropertyFieldOrderHostState> {
 
@@ -101,7 +101,7 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 			root: {
 				width: '14px',
 				height: '100%',
-				display: 'inline-block !important'
+				display: 'inline-block'
 			},
 			rootDisabled: {
 				backgroundColor: 'transparent'

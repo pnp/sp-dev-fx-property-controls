@@ -1,5 +1,5 @@
 import * as React from 'react';
-const omit: any = require('lodash.omit');
+import omit from 'lodash/omit';
 
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 

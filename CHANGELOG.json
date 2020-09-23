@@ -1,6 +1,17 @@
 {
   "versions": [
     {
+      "version": "2.0.0",
+      "changes": {
+        "new": [
+          "`Office UI Fabric` version 6 support"
+        ],
+        "enhancements": [],
+        "fixes": []
+      },
+      "contributions": []
+    },
+    {
       "version": "1.20.0",
       "changes": {
         "new": [

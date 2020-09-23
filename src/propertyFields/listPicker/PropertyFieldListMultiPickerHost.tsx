@@ -229,12 +229,6 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
                   checkbox: {
                     backgroundColor: (this.state.selectedKeys.length > 0 ? '#f4f4f4' : 'inherit'),
                     visibility: (this.props.selectAllInList === false ? 'hidden' : 'visible')
-                  },
-                  checkboxHovered: {
-                    visibility: 'visible'
-                  },
-                  checkboxChecked: {
-                    visibility: 'visible'
                   }
                 }}
               />

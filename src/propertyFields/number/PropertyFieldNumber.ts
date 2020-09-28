@@ -47,7 +47,7 @@ class PropertyFieldNumberBuilder implements IPropertyPaneField<IPropertyFieldNum
     ReactDOM.unmountComponentAtNode(elem);
   }
 
-  private _onChanged(value: number): void {
+  private _onChanged(value: number | undefined): void {
     if (this._onChangeCallback) {
       this._onChangeCallback(this.targetProperty, value);
     }

@@ -73,12 +73,15 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
       value
     });
 
-    if (!isNaN(Number(value))) {
-      const nrValue = parseInt(value);
+    const nrValue = parseInt(value);
+    if (!isNaN(nrValue)) {
       if ((!this.props.minValue || nrValue >= this.props.minValue) && (!this.props.maxValue || nrValue <= this.props.maxValue)) {
         // Trigger change for the web part
         this.props.onChanged(nrValue);
       }
+    }
+    else {
+      this.props.onChanged(undefined);
     }
   }
 

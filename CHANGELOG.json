@@ -8,7 +8,8 @@
         "enhancements": [],
         "fixes": [
           "Documentation: Fixed formatting of list of Controls [#298](https://github.com/pnp/sp-dev-fx-property-controls/pull/298)",
-          "`PropertyFieldNumber`: gives \"Maximum update depth exceeded\" error [#282](https://github.com/pnp/sp-dev-fx-property-controls/issues/282)"
+          "`PropertyFieldNumber`: gives \"Maximum update depth exceeded\" error [#282](https://github.com/pnp/sp-dev-fx-property-controls/issues/282)",
+          "Documentation fix: `PropertyFieldCollectionData` - required custom field should call `onUpdate` before `onError` to correctly display required error message [#284](https://github.com/pnp/sp-dev-fx-property-controls/issues/284)"
         ]
       },
       "contributions": [

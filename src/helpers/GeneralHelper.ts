@@ -204,7 +204,7 @@ export class GeneralHelper {
      * @param value value
      */
     public static isDefined(value): boolean {
-        return value !== null;
+      return typeof value !== 'undefined' && value !== null;
     }
 
     /**
@@ -284,7 +284,7 @@ export class GeneralHelper {
 
     public static isImage(fileName: string): boolean {
         const acceptableExtensions: string[] = IMG_SUPPORTED_EXTENSIONS.split(",");
-        
+
         const thisExtension: string = GeneralHelper.getFileExtension(fileName);
         return acceptableExtensions.indexOf(thisExtension) > -1;
     }

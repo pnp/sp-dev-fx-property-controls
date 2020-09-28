@@ -5,7 +5,9 @@
       "changes": {
         "new": [
         ],
-        "enhancements": [],
+        "enhancements": [
+          "Auto-generated localizations"
+        ],
         "fixes": [
           "Documentation: Fixed formatting of list of Controls [#298](https://github.com/pnp/sp-dev-fx-property-controls/pull/298)",
           "`PropertyFieldNumber`: gives \"Maximum update depth exceeded\" error [#282](https://github.com/pnp/sp-dev-fx-property-controls/issues/282)",

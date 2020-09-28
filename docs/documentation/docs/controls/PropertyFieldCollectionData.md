@@ -104,12 +104,12 @@ Here is an example of how you can render your own controls in the `PropertyField
     return (
       React.createElement("div", null,
         React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+          onUpdate(field.id, event.currentTarget.value);
           if (event.currentTarget.value === "error") {
             onError(field.id, "Value shouldn't be equal to error");
           } else {
             onError(field.id, "");
           }
-          onUpdate(field.id, event.currentTarget.value);
         }}), " 🎉"
       )
     );

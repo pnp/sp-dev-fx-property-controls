@@ -457,7 +457,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   value: this.properties.numberValue,
                   maxValue: 10,
                   minValue: 0,
-                  disabled: false
+                  disabled: false,
+                  precision: 2
                 }),
                 PropertyFieldMultiSelect('multiSelect', {
                   key: 'multiSelect',

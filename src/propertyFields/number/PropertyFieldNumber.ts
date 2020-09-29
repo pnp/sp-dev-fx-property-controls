@@ -5,7 +5,7 @@ import {
   IPropertyPaneField,
   PropertyPaneFieldType,
   IPropertyPaneDropdownOption
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 
 import PropertyFieldNumberHost from './PropertyFieldNumberHost';
 

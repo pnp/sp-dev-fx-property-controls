@@ -18,7 +18,8 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
     });
 
     this.state = {
-      value: this.props.value ? this.props.value.toString() : null
+      value: this.props.value ? this.props.value.toFixed(props.precision || 0) : null,
+      roundedValue: props.value
     };
 
     this._async = new Async(this);
@@ -32,7 +33,7 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
    * @param prevState
    */
   public componentDidUpdate(prevProps: IPropertyFieldNumberHostProps, prevState: IPropertyFieldNumberHostState): void {
-    if (prevProps.value !== this.props.value) {
+    if (prevProps.value !== this.props.value && this.props.value !== this.state.roundedValue) {
       this.setState({
         value: GeneralHelper.isDefined(this.props.value) ? this.props.value.toString() : null
       });
@@ -44,7 +45,7 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
    * @param value
    */
   private _validateNumber = (value: string): string | Promise<string> => {
-    const nrValue = parseInt(value);
+    const nrValue = !GeneralHelper.isDefined(this.props.precision) || this.props.precision === 0 ? parseInt(value) : parseFloat(value);
 
     if (isNaN(nrValue)) {
       return `${strings.NotNumberValidationMessage} ${value}.`;
@@ -75,9 +76,25 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
    * On field change event handler
    */
   private _onChanged = (value: string): void => {
+    let nrValue: number;
+    const {
+      precision
+    } = this.props;
+    if (!GeneralHelper.isDefined(precision)) {
+      nrValue = parseFloat(value);
+    }
+    else if (precision === 0) {
+      nrValue = parseInt(value)
+    }
+    else {
+      const multiplier = Math.pow(10, precision);
+      nrValue = Math.round((parseFloat(value) + 0.000000000000001) * multiplier) / multiplier;
+    }
+
     // Update state
     this.setState({
-      value
+      value,
+      roundedValue: nrValue
     });
 
     const {
@@ -85,7 +102,6 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
       maxValue
     } = this.props;
 
-    const nrValue = parseInt(value);
     if (!isNaN(nrValue)) {
       if ((!GeneralHelper.isDefined(minValue) || nrValue >= minValue) && (!GeneralHelper.isDefined(maxValue) || nrValue <= maxValue)) {
         // Trigger change for the web part

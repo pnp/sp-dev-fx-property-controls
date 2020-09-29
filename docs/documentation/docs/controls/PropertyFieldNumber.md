@@ -75,6 +75,7 @@ The `PropertyFieldNumber` control can be configured with the following propertie
 | errorMessage | string | no | If set, this will be displayed as an error message. |
 | onGetErrorMessage | (value: number) => string | no | If set, this method is used to get the validation error message and determine whether the input value is valid or not. |
 | deferredValidationTime | number | no | Number field will start to validate after users stop typing for `deferredValidationTime` milliseconds. |
+| precision | number | no | Precision to round the value to. If the precision is not defined the value is not rounded. |
 
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldNumber)

@@ -67,6 +67,12 @@ export interface IPropertyFieldNumberProps {
    * The aria label for the number field.
    */
   ariaLabel?: string;
+
+  /**
+   * Precision to round the value to.
+   * If the precision is not defined the value is not rounded
+   */
+  precision?: number;
 }
 
 /**

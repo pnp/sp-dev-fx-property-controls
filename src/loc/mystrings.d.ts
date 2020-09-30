@@ -211,6 +211,9 @@ declare interface IPropertyControlStrings {
   FolderExplorerLoading: string;
   FolderExplorerNoItems: string;
 
+  // guid field
+  IncorrectGuidValidationMessage: string;
+
 }
 
 declare interface IDateTimeStrings {

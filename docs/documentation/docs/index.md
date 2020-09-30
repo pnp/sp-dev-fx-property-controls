@@ -56,6 +56,7 @@ The following controls are currently available:
 - [PropertyFieldDateTimePicker](./controls/PropertyFieldDateTimePicker) (Property pane date and time selector)
 - [PropertyFieldFilePicker](./controls/PropertyFieldFilePicker) (Property pane file picker)
 - [PropertyFieldFolderPicker](./controls/PropertyFieldFolderPicker) (Property pane folder picker)
+- [PropertyFieldGuid](./controls/PropertyFieldGuid) (Property pane GUID editor)
 - [PropertyFieldListPicker](./controls/PropertyFieldListPicker) (Property pane list selector)
 - [PropertyFieldMessage](./controls/PropertyFieldMessage) (Property pane message)
 - [PropertyFieldMultiSelect](./controls/PropertyFieldMultiSelect) (Property pane multi select dropdown)

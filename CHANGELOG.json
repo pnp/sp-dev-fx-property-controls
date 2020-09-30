@@ -7,7 +7,8 @@
         ],
         "enhancements": [
           "Auto-generated localizations",
-          "`PropertyFieldNumber`: ability to set float values [#299](https://github.com/pnp/sp-dev-fx-property-controls/pull/299)"
+          "`PropertyFieldNumber`: ability to set float values [#299](https://github.com/pnp/sp-dev-fx-property-controls/pull/299)",
+          "`PropertyFieldGuid`: new GUID editor control [#300](https://github.com/pnp/sp-dev-fx-property-controls/pull/300)"
         ],
         "fixes": [
           "Documentation: Fixed formatting of list of Controls [#298](https://github.com/pnp/sp-dev-fx-property-controls/pull/298)",
@@ -17,6 +18,7 @@
         ]
       },
       "contributions": [
+        "[Anoop Tatti](https://github.com/anoopt)",
         "[Jim Love](https://github.com/jimmywim)"
       ]
     },

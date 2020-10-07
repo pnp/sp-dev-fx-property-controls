@@ -88,7 +88,7 @@ declare interface IPropertyControlStrings {
   CollectionDataItemFieldRequiredLabel: string;
   InvalidUrlError: string;
 
-  // Property Editor 
+  // Property Editor
   ApplyButtonLabel: string;
   ImportButtonLabel: string;
   ExportButtonLabel: string;
@@ -99,6 +99,11 @@ declare interface IPropertyControlStrings {
   SitePickerSearchBoxPlaceholder: string;
   SitePickerNoResults: string;
   SitePickerSitesChosen: string;
+
+  // team Picker labels
+  TeamPickerSearchBoxPlaceholder: string;
+  TeamPickerNoResults: string;
+  TeamPickerSitesChosen: string;
 
   //FilePicker
   // File picker

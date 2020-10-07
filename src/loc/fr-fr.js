@@ -74,6 +74,7 @@ define([], function() {
     InvalidUrlError: "L'URL fournie n'est pas valide",
     DescriptionLabel: "La description",
     MoreInfoLabel: "Plus d'informations",
-    AboutGroupLabel: "Sur"    
+    AboutGroupLabel: "Sur"  ,
+
   }
 });

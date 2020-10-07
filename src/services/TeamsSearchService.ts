@@ -1,12 +1,19 @@
-import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import SPPeoplePickerMockHttpClient from './SPPeopleSearchMockService';
-import { WebPartContext, IWebPartContext } from "@microsoft/sp-webpart-base";
-import { ITeamsSearchService } from './ITeamsSearchService';
-import { IPropertyFieldTeam } from '../propertyFields/teamPicker/IPropertyFieldTeamPicker';
-import { GraphHttpClient, HttpClientResponse } from '@microsoft/sp-http';
-import { getCtxCallback } from '@pnp/common';
-import { CheckboxVisibility } from 'office-ui-fabric-react/lib/DetailsList';
-import { dateAdd, PnPClientStorage } from "@pnp/common";
+import {
+  Environment,
+  EnvironmentType
+} from "@microsoft/sp-core-library";
+import { IWebPartContext } from "@microsoft/sp-webpart-base";
+import {
+  dateAdd,
+  PnPClientStorage
+} from "@pnp/common";
+
+import {
+  IPropertyFieldTeam
+} from "../propertyFields/teamPicker/IPropertyFieldTeamPicker";
+import { ITeamsSearchService } from "./ITeamsSearchService";
+import SPPeoplePickerMockHttpClient from "./SPPeopleSearchMockService";
+
 /**
  * Service implementation to search sites in SharePoint
  */

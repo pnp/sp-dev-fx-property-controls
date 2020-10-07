@@ -74,6 +74,7 @@ define([], function() {
       InvalidUrlError: "Заданное значение не является корректной ссылкой",
       DescriptionLabel: "Описание",
       MoreInfoLabel: "Подробнее",
-      AboutGroupLabel: "Справка"
+      AboutGroupLabel: "Справка",
+
     }
   });

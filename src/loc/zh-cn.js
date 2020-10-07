@@ -74,6 +74,7 @@ define([], function () {
     InvalidUrlError: "链接地址不正确",
     DescriptionLabel: "简介",
     MoreInfoLabel: "更多信息",
-    AboutGroupLabel: "关于"
+    AboutGroupLabel: "关于",
+
   }
 });

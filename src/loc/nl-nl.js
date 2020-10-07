@@ -74,6 +74,7 @@ define([], function () {
     InvalidUrlError: "De huidige URL is niet geldig",
     DescriptionLabel: "Beschrijving",
     MoreInfoLabel: "Meer info",
-    AboutGroupLabel: "Over"    
+    AboutGroupLabel: "Over" ,
+
   }
 });

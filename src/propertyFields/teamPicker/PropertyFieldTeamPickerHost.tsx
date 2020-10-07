@@ -1,17 +1,28 @@
-import * as React from 'react';
-import { IPropertyFieldTeamPickerHostProps, ITeamPickerState } from './IPropertyFieldTeamPickerHost';
-import TeamsSearchService from '../../services/TeamsSearchService';
-import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
-import * as telemetry from '../../common/telemetry';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-import * as strings from 'PropertyControlStrings';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
-import { IPropertyFieldTeam } from './IPropertyFieldTeamPicker';
-import { PropertyFieldTeamPickerListItem } from './PropertyFieldTeamPickerListItem/PropertyFieldSitePickerListItem';
-import styles from './PropertyFieldTeamPickerHost.module.scss';
-import { initializeIcons } from '@uifabric/icons';
-import { Async } from '@uifabric/utilities/lib';
+import * as React from "react";
+
+import { Label } from "office-ui-fabric-react/lib/Label";
+import { SearchBox } from "office-ui-fabric-react/lib/SearchBox";
+import {
+  Spinner,
+  SpinnerSize
+} from "office-ui-fabric-react/lib/Spinner";
+import * as strings from "PropertyControlStrings";
+
+import { initializeIcons } from "@uifabric/icons";
+import { Async } from "@uifabric/utilities/lib";
+
+import * as telemetry from "../../common/telemetry";
+import TeamsSearchService from "../../services/TeamsSearchService";
+import FieldErrorMessage from "../errorMessage/FieldErrorMessage";
+import { IPropertyFieldTeam } from "./IPropertyFieldTeamPicker";
+import {
+  IPropertyFieldTeamPickerHostProps,
+  ITeamPickerState
+} from "./IPropertyFieldTeamPickerHost";
+import styles from "./PropertyFieldTeamPickerHost.module.scss";
+import {
+  PropertyFieldTeamPickerListItem
+} from "./PropertyFieldTeamPickerListItem/PropertyFieldSitePickerListItem";
 
 export default class PropertyFieldTeamPickerHost extends React.Component<IPropertyFieldTeamPickerHostProps, ITeamPickerState> {
   private teamsService: TeamsSearchService;

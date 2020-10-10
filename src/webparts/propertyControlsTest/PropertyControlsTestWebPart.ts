@@ -923,8 +923,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   canCreateFolders: true,
                   onSelect: ((folder: IFolder) => { console.log(folder); this.properties.folderPicker = folder; }),
                   rootFolder: {
-                    Name: "Documents",
-                    ServerRelativeUrl: "/sites/gautamdev/Shared Documents"
+                    Name: "GOBCPPT",
+                    ServerRelativeUrl: "/GOBCPPT"
                   },
                 }),
               ]

@@ -130,7 +130,11 @@ export interface IPropertyFieldFilePickerProps {
   /**
    * The data associated with the selected file
    */
-  filePickerResult: IFilePickerResult;  
+  filePickerResult: IFilePickerResult;
+  /**
+   * Specifies if StockImagesTab should be hidden.
+   */
+  hideStockImages?: boolean;  
 }
 
 export interface IPropertyFieldFilePickerPropsInternal extends IPropertyFieldFilePickerProps {

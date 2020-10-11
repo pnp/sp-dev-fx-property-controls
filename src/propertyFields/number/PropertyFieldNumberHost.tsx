@@ -84,7 +84,7 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
       nrValue = parseFloat(value);
     }
     else if (precision === 0) {
-      nrValue = parseInt(value)
+      nrValue = parseInt(value);
     }
     else {
       const multiplier = Math.pow(10, precision);

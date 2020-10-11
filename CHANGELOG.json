@@ -8,7 +8,8 @@
         "enhancements": [
           "Auto-generated localizations",
           "`PropertyFieldNumber`: ability to set float values [#299](https://github.com/pnp/sp-dev-fx-property-controls/pull/299)",
-          "`PropertyFieldGuid`: new GUID editor control [#300](https://github.com/pnp/sp-dev-fx-property-controls/pull/300)"
+          "`PropertyFieldGuid`: new GUID editor control [#300](https://github.com/pnp/sp-dev-fx-property-controls/pull/300)",
+          "`FolderExplorerService`: support special characters if folder name [#305](https://github.com/pnp/sp-dev-fx-property-controls/pull/305)"
         ],
         "fixes": [
           "Documentation: Fixed formatting of list of Controls [#298](https://github.com/pnp/sp-dev-fx-property-controls/pull/298)",

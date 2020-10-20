@@ -26,7 +26,8 @@ Typos are embarrassing! Most PR's that fix typos will be accepted immediately. I
 
 Before contributing:
 
-- ensure that the **dev** branch on your fork is in sync with the original **sp-dev-fx-property-controls** repository
+- Ensure that the **dev** branch on your fork is in sync with the original **sp-dev-fx-property-controls** repository
+
     ```sh
     # assuming you are in the folder of your locally cloned fork....
     git checkout dev
@@ -38,17 +39,18 @@ Before contributing:
     git pull --rebase upstream dev
     ```
 
-- create a feature branch for your change. If you'll get stuck on an issue or merging your PR will take a while, this will allow you to have a clean dev branch that you can use for contributing other changes
+- Create a feature branch for your change. If you'll get stuck on an issue or merging your PR will take a while, this will allow you to have a clean dev branch that you can use for contributing other changes.
+
     ```sh
     git checkout -b my-contribution
     ```
 
-## DO's & DON'Ts
+## Dos and don'ts
 
 - **DO** follow the same project and test structure as the existing project.
 - **DO** include tests when adding new functionality and features. When fixing bugs, start with adding a test that highlights how the current behavior is broken.
 - **DO** keep discussions focused. When a new or related topic comes up it's often better to create new issue than to side track the conversation.
 - **DO NOT** submit PR's for coding style changes.
-- **DO NOT** surprise us with big PR's. Instead file an issue & start a discussion so we can agree on a direction before you invest a large amount of time.
+- **DO NOT** surprise us with big PR's. Instead, file an issue & start a discussion, so we can agree on a direction before you invest a large amount of time.
 - **DO NOT** commit code you didn't write.
 - **DO NOT** submit PR's that refactor existing code without a discussion first.

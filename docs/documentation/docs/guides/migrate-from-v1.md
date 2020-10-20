@@ -4,7 +4,7 @@ Most of the controls have no breaking changes when moving from v1 to v2. However
 
 Also, we've bumped up React and Fluent UI versions used in the library. It means you will need to update `package.json` file in your SPFx projects.
 
-The below guide is an overview of what it takes to migrate from v1 to v2.  If we missed something, please let us know in the issues list so we can update the guide. Thanks!
+The below guide is an overview of what it takes to migrate from v1 to v2.  If we missed something, please let us know in the issues list, so we can update the guide. Thanks!
 
 ## v2 Supports SharePoint Online Only
 
@@ -33,6 +33,6 @@ Although it is not necessary to use the same modules' versions in your project, 
 
 The easiest way to upgrade SharePoint Framework solution is to use [Office365 CLI](https://pnp.github.io/office365-cli/cmd/spfx/project/project-upgrade/#spfx-project-upgrade) `spfx project upgrade` command.
 
-## APIs Changes
+## API Changes
 
 ...

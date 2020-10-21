@@ -202,6 +202,8 @@ declare interface IPropertyControlStrings {
   UploadImageHeader: string;
   UploadLinkLabel: string;
   WebSearchLinkLabel: string;
+  StockImagesLinkLabel: string;
+  StockImagesHeader: string;
   Yes: string;
   DateTime: IDateTimeStrings;
 

@@ -4,7 +4,7 @@ import { IUploadFilePickerTabProps, IUploadFilePickerTabState } from '.';
 import { IFilePickerResult } from '../FilePicker.types';
 import { GeneralHelper } from '../../../../helpers/GeneralHelper';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
-
+import { css } from '@uifabric/utilities/lib/css';
 import * as strings from 'PropertyControlStrings';
 import styles from './UploadFilePickerTab.module.scss';
 
@@ -26,7 +26,7 @@ export default class UploadFilePickerTab extends React.Component<IUploadFilePick
         <div className={styles.tabHeaderContainer}>
           <h2 className={styles.tabHeader}>{strings.UploadFileHeader}</h2>
         </div>
-        <div className={styles.tab}>
+        <div className={css(styles.tab, styles.tabOffset)}>
           <input
             className={styles.localTabInput}
             type="file" id="fileInput"

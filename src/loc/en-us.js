@@ -191,6 +191,8 @@ define([], function () {
     UploadLinkLabel: "Upload",
     WebSearchLinkLabel: "Web search",
     Yes: "Yes",
+    StockImagesLinkLabel: "Stock images",
+    StockImagesHeader: "Stock Images",
 
     DateTime: {
       "L_RelativeDateTime_AFewSecondsFuture": "In a few seconds",

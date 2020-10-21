@@ -53,6 +53,7 @@ export default class PropertyFieldFilePickerHost extends React.Component<IProper
           hideLinkUploadTab={this.props.hideLinkUploadTab !== undefined ? this.props.hideLinkUploadTab : false}
           hideOneDriveTab={this.props.hideOneDriveTab !== undefined ? this.props.hideOneDriveTab : false}
           hideOrganisationalAssetTab={this.props.hideOrganisationalAssetTab !== undefined ? this.props.hideOrganisationalAssetTab : false}
+          hideStockImages={this.props.hideStockImages !== undefined ? this.props.hideStockImages : false}
           panelClassName={this.props.panelClassName}
           storeLastActiveTab={this.props.storeLastActiveTab}
         />

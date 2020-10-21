@@ -5,6 +5,7 @@ import { GeneralHelper } from '../../../../helpers/GeneralHelper';
 import { IFilePickerResult } from '../FilePicker.types';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { css } from '@uifabric/utilities/lib/css';
 
 import * as strings from 'PropertyControlStrings';
 import styles from './LinkFilePickerTab.module.scss';
@@ -23,7 +24,7 @@ export default class LinkFilePickerTab extends React.Component<ILinkFilePickerTa
         <div className={styles.tabHeaderContainer}>
           <h2 className={styles.tabHeader}>{strings.LinkHeader}</h2>
         </div>
-        <div className={styles.tab}>
+        <div className={css(styles.tab, styles.tabOffset)}>
           <TextField
             multiline={true}
             required={true}

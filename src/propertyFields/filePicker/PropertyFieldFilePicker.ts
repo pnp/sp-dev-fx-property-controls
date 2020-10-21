@@ -32,6 +32,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
   private hideLinkUploadTab: boolean;
   private hideOrganisationalAssetTab: boolean;
   private hideOneDriveTab: boolean;
+  private hideStockImages: boolean;
   
   private customProperties: any;
   private key: string;
@@ -84,6 +85,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.hideOrganisationalAssetTab = _properties.hideOrganisationalAssetTab !== undefined ? _properties.hideOrganisationalAssetTab : false;
     this.hideOneDriveTab = _properties.hideOneDriveTab !== undefined ? _properties.hideOneDriveTab : false;
     this.storeLastActiveTab = _properties.storeLastActiveTab !== undefined ? _properties.storeLastActiveTab : true;
+    this.hideStockImages = _properties.hideStockImages !== undefined ? _properties.hideStockImages : false;
     this.onPropertyChange = _properties.onPropertyChange;
     this.customProperties = _properties.properties;
     this.key = _properties.key;
@@ -123,7 +125,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
       hideOrganisationalAssetTab: this.hideOrganisationalAssetTab,
       hideOneDriveTab: this.hideOneDriveTab,
       storeLastActiveTab: this.storeLastActiveTab,
-
+      hideStockImages: this.hideStockImages,
       targetProperty: this.targetProperty,
 
       properties: this.customProperties,

@@ -4,6 +4,7 @@ import { IPropertyFieldNumberHostProps, IPropertyFieldNumberHostState } from './
 import * as telemetry from '../../common/telemetry';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import * as strings from 'PropertyControlStrings';
+import { GeneralHelper } from '../../helpers/GeneralHelper';
 
 export default class PropertyFieldNumberHost extends React.Component<IPropertyFieldNumberHostProps, IPropertyFieldNumberHostState> {
   private _async: Async;
@@ -17,7 +18,8 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
     });
 
     this.state = {
-      value: this.props.value ? this.props.value.toString() : null
+      value: this.props.value ? this.props.value.toFixed(props.precision || 0) : null,
+      roundedValue: props.value
     };
 
     this._async = new Async(this);
@@ -31,9 +33,9 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
    * @param prevState
    */
   public componentDidUpdate(prevProps: IPropertyFieldNumberHostProps, prevState: IPropertyFieldNumberHostState): void {
-    if (prevProps.value !== this.props.value) {
+    if (prevProps.value !== this.props.value && this.props.value !== this.state.roundedValue) {
       this.setState({
-        value: this.props.value ? this.props.value.toString() : null
+        value: GeneralHelper.isDefined(this.props.value) ? this.props.value.toString() : null
       });
     }
   }
@@ -43,18 +45,24 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
    * @param value
    */
   private _validateNumber = (value: string): string | Promise<string> => {
-    if (isNaN(Number(value))) {
+    const nrValue = !GeneralHelper.isDefined(this.props.precision) || this.props.precision === 0 ? parseInt(value) : parseFloat(value);
+
+    if (isNaN(nrValue)) {
       return `${strings.NotNumberValidationMessage} ${value}.`;
     }
 
-    const nrValue = parseInt(value);
+    const {
+      minValue,
+      maxValue
+    } = this.props;
+
     // Check if number is lower or equal to minimum value
-    if (this.props.minValue && nrValue < this.props.minValue) {
-      return `${strings.MinimumNumberValidationMessage} ${this.props.minValue}`;
+    if (GeneralHelper.isDefined(minValue) && nrValue < minValue) {
+      return `${strings.MinimumNumberValidationMessage} ${minValue}`;
     }
     // Check if the number is greater than the maximum value
-    if (this.props.maxValue && nrValue > this.props.maxValue) {
-      return `${strings.MaximumNumberValidationMessage} ${this.props.maxValue}`;
+    if (GeneralHelper.isDefined(maxValue) && nrValue > maxValue) {
+      return `${strings.MaximumNumberValidationMessage} ${maxValue}`;
     }
 
     if (this.props.onGetErrorMessage) {
@@ -68,17 +76,40 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
    * On field change event handler
    */
   private _onChanged = (value: string): void => {
+    let nrValue: number;
+    const {
+      precision
+    } = this.props;
+    if (!GeneralHelper.isDefined(precision)) {
+      nrValue = parseFloat(value);
+    }
+    else if (precision === 0) {
+      nrValue = parseInt(value);
+    }
+    else {
+      const multiplier = Math.pow(10, precision);
+      nrValue = Math.round((parseFloat(value) + 0.000000000000001) * multiplier) / multiplier;
+    }
+
     // Update state
     this.setState({
-      value
+      value,
+      roundedValue: nrValue
     });
 
-    if (!isNaN(Number(value))) {
-      const nrValue = parseInt(value);
-      if ((!this.props.minValue || nrValue >= this.props.minValue) && (!this.props.maxValue || nrValue <= this.props.maxValue)) {
+    const {
+      minValue,
+      maxValue
+    } = this.props;
+
+    if (!isNaN(nrValue)) {
+      if ((!GeneralHelper.isDefined(minValue) || nrValue >= minValue) && (!GeneralHelper.isDefined(maxValue) || nrValue <= maxValue)) {
         // Trigger change for the web part
         this.props.onChanged(nrValue);
       }
+    }
+    else {
+      this.props.onChanged(undefined);
     }
   }
 

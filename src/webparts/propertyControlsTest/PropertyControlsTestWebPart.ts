@@ -55,6 +55,7 @@ import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResu
 import { IBasePermissions, IPropertyFieldRoleDefinitionPickerProps, PropertyFieldRoleDefinitionPicker, RoleTypeKind, IRoleDefinitionInformation } from "../../PropertyFieldRoleDefinitionPicker";
 import { IFolder, IPropertyFieldFolderPickerProps , PropertyFieldFolderPicker } from "../../PropertyFieldFolderPicker";
 import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
+import { PropertyFieldGuid } from '../../PropertyFieldGuid';
 import FieldErrorMessage from '../../propertyFields/errorMessage/FieldErrorMessage';
 
 /**
@@ -99,7 +100,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         message: this.properties.message,
         filePickerResult: this.properties.filePickerResult,
         roleDefinitions: this.properties.roleDefinitions || [],
-        folderPicker: this.properties.folderPicker
+        folderPicker: this.properties.folderPicker,
+        guid: this.properties.guid
       }
     );
 
@@ -456,8 +458,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   placeholder: "Please insert a number",
                   value: this.properties.numberValue,
                   maxValue: 10,
-                  minValue: 1,
-                  disabled: false
+                  minValue: 0,
+                  disabled: false,
+                  precision: 2
                 }),
                 PropertyFieldMultiSelect('multiSelect', {
                   key: 'multiSelect',
@@ -501,6 +504,12 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   //incrementIconName: 'CalculatorAddition',
                   //decrementIconName: 'CalculatorSubtract',
                   key: 'spinButtonFieldId'
+                }),
+                PropertyFieldGuid('guid', {
+                  key: 'guid',
+                  label: "GUID",
+                  value: this.properties.guid,
+                  errorMessage: "Please enter a correct GUID."
                 })
               ]
             },
@@ -915,7 +924,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onSelect: ((folder: IFolder) => { console.log(folder); this.properties.folderPicker = folder; }),
                   rootFolder: {
                     Name: "Documents",
-                    ServerRelativeUrl: "/sites/gautamdev/Shared Documents"
+                    ServerRelativeUrl: "/Shared Documents"
                   },
                 }),
               ]
@@ -1050,12 +1059,12 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                           React.createElement("div", null,
                             React.createElement("input", {
                               key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+                                onUpdate(field.id, event.currentTarget.value);
                                 if (event.currentTarget.value === "error") {
                                   onError(field.id, "Value shouldn't be equal to error");
                                 } else {
                                   onError(field.id, "");
                                 }
-                                onUpdate(field.id, event.currentTarget.value);
                               }
                             }), " 🎉"
                           )

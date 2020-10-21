@@ -191,6 +191,8 @@ define([], function () {
     UploadLinkLabel: "Upload",
     WebSearchLinkLabel: "Web search",
     Yes: "Yes",
+    StockImagesLinkLabel: "Stock images",
+    StockImagesHeader: "Stock Images",
 
     DateTime: {
       "L_RelativeDateTime_AFewSecondsFuture": "In a few seconds",
@@ -222,7 +224,8 @@ define([], function () {
     NewFolderNamePlaceholder: "Enter your folder name",
     FolderFilterBoxPlaceholder: "Filter folders by name",
     FolderExplorerLoading: "Loading folders...",
-    FolderExplorerNoItems: "This folder doesn't have any subfolders."    
+    FolderExplorerNoItems: "This folder doesn't have any subfolders.",    
     
+    IncorrectGuidValidationMessage: "Please enter a valid GUID"
   }
 });

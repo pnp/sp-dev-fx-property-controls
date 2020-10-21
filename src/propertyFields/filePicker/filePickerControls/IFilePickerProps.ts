@@ -106,4 +106,9 @@ export interface IFilePickerProps {
   filePickerResult: IFilePickerResult;
   
   context: WebPartContext;
+
+  /**
+   * Specifies if StockImagesTab should be hidden.
+   */
+  hideStockImages?: boolean;
 }

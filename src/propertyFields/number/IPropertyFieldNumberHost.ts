@@ -12,4 +12,5 @@ export interface IPropertyFieldNumberHostProps extends IPropertyFieldNumberProps
 
 export interface IPropertyFieldNumberHostState {
   value: string;
+  roundedValue?: number;
 }

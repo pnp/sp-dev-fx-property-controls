@@ -202,6 +202,8 @@ declare interface IPropertyControlStrings {
   UploadImageHeader: string;
   UploadLinkLabel: string;
   WebSearchLinkLabel: string;
+  StockImagesLinkLabel: string;
+  StockImagesHeader: string;
   Yes: string;
   DateTime: IDateTimeStrings;
 
@@ -210,6 +212,9 @@ declare interface IPropertyControlStrings {
   FolderFilterBoxPlaceholder: string;
   FolderExplorerLoading: string;
   FolderExplorerNoItems: string;
+
+  // guid field
+  IncorrectGuidValidationMessage: string;
 
 }
 

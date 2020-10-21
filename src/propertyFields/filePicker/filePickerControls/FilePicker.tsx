@@ -24,6 +24,7 @@ import { OneDriveService } from '../../../services/OneDriveService';
 import { OrgAssetsService } from '../../../services/OrgAssetsService';
 import { IFilePickerResult } from './FilePicker.types';
 import { FilesSearchService } from '../../../services/FilesSearchService';
+import { StockImages } from './StockImagesTab';
 
 export class FilePicker extends React.Component<IFilePickerProps, IFilePickerState> {
   private fileBrowserService: FileBrowserService;
@@ -51,7 +52,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
   public async componentDidMount() {
     // Load information about Organisation Assets Library
     let orgAssetsEnabled: boolean = false;
-    if (this.props.hideOrganisationalAssetTab !== undefined && !this.props.hideOrganisationalAssetTab) {
+    if (!this.props.hideOrganisationalAssetTab) {
       const orgAssetsLibraries = await this.orgAssetsService.getSiteMediaLibraries();
       orgAssetsEnabled = orgAssetsLibraries ? true : false;
     }
@@ -117,6 +118,14 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
               <LinkFilePickerTab
                 fileSearchService={this.fileSearchService}
                 allowExternalTenantLinks={true}
+                {...linkTabProps}
+              />
+            }
+            {
+              this.state.selectedTab === "keyStockImages" &&
+              <StockImages
+                language={this.props.context.pageContext.cultureInfo.currentCultureName}
+                fileSearchService={this.fileSearchService}
                 {...linkTabProps}
               />
             }
@@ -229,6 +238,14 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
         url: addUrl ? '#recent' : undefined,
         icon: 'Recent',
         key: 'keyRecent',
+      });
+    }
+    if (!this.props.hideStockImages) {
+      links.push({
+        name: strings.StockImagesLinkLabel,
+        url: addUrl ? '#stockImages' : undefined,
+        key: 'keyStockImages',
+        icon: 'ImageSearch',
       });
     }
     if (this.props.bingAPIKey && !this.props.hideWebSearchTab) {

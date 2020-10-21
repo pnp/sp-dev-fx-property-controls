@@ -1,5 +1,27 @@
 # Releases
 
+## 2.1.0
+
+### Enhancements
+
+- Auto-generated localizations
+- `PropertyFieldNumber`: ability to set float values [#299](https://github.com/pnp/sp-dev-fx-property-controls/pull/299)
+- `PropertyFieldGuid`: new GUID editor control [#300](https://github.com/pnp/sp-dev-fx-property-controls/pull/300)
+- `FolderExplorerService`: support special characters if folder name [#305](https://github.com/pnp/sp-dev-fx-property-controls/pull/305)
+- `FilePicker`: Stock Images support [#306](https://github.com/pnp/sp-dev-fx-property-controls/pull/306)
+
+### Fixes
+
+- Documentation: Fixed formatting of list of Controls [#298](https://github.com/pnp/sp-dev-fx-property-controls/pull/298)
+- `PropertyFieldNumber`: gives "Maximum update depth exceeded" error [#282](https://github.com/pnp/sp-dev-fx-property-controls/issues/282)
+- Documentation fix: `PropertyFieldCollectionData` - required custom field should call `onUpdate` before `onError` to correctly display required error message [#284](https://github.com/pnp/sp-dev-fx-property-controls/issues/284)
+- `PropertyFieldNumber`: Improper handling of falsey minValue or maxValue [#150](https://github.com/pnp/sp-dev-fx-property-controls/issues/150)
+- `PropertyFieldFilePicker`: Org Assets library is not displayed [#295](https://github.com/pnp/sp-dev-fx-property-controls/issues/295)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Anoop Tatti](https://github.com/anoopt), [Gautam Sheth](https://github.com/gautamdsheth), [Jim Love](https://github.com/jimmywim).
+
 ## 2.0.0
 
 ### New control(s)

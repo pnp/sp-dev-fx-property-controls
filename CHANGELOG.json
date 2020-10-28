@@ -1,6 +1,17 @@
 {
   "versions": [
     {
+      "version": "2.1.1",
+      "changes": {
+        "new": [],
+        "enhancements": [],
+        "fixes": [
+          "Localizations fix [#311](https://github.com/pnp/sp-dev-fx-property-controls/issues/311)"
+        ]
+      },
+      "contributions": []
+    },
+    {
       "version": "2.1.0",
       "changes": {
         "new": [

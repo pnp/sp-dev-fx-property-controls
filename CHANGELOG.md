@@ -1,5 +1,11 @@
 # Releases
 
+## 2.1.1
+
+### Fixes
+
+- Localizations fix [#311](https://github.com/pnp/sp-dev-fx-property-controls/issues/311)
+
 ## 2.1.0
 
 ### Enhancements

@@ -8,9 +8,7 @@ const ts =  require("typescript");
 require('amd-loader');
 
 const jsPlaceholder =
-`declare var define: any;
-
-define([], () => {
+`define([], () => {
   return {0};
 });`;
 

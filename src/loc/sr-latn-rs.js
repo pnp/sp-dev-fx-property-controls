@@ -1,5 +1,3 @@
-declare var define: any;
-
 define([], () => {
   return {
   "ApplyButtonLabel": "Primenite",

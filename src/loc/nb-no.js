@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Søk...",
   "SitePickerNoResults": "Ingen søkeresultater",
   "SitePickerSitesChosen": "Nettsted(er) valgt",
+  "TeamPickerSearchBoxPlaceholder": "Søk...",
+  "TeamPickerNoResults": "Ingen søkeresultater",
+  "TeamPickerSitesChosen": "Lag(er) valgt",
   "AddFileButtonLabel": "Legg til fil",
   "AddImageButtonLabel": "Legg til bilde",
   "AriaCellValue": "{0} kolonne, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Laste opp",
   "WebSearchLinkLabel": "Nettsøk",
   "Yes": "ja",
+  "StockImagesLinkLabel": "Arkivbilder",
+  "StockImagesHeader": "Arkivbilder",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "I løpet av sekunder",
     "L_RelativeDateTime_AFewSeconds": "For noen sekunder siden",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Skriv inn mappenavnet ditt",
   "FolderFilterBoxPlaceholder": "Filtrere mapper etter navn",
   "FolderExplorerLoading": "Laster inn mapper...",
-  "FolderExplorerNoItems": "Denne mappen har ingen undermapper."
+  "FolderExplorerNoItems": "Denne mappen har ingen undermapper.",
+  "IncorrectGuidValidationMessage": "Angi en gyldig GUID"
 };
 });

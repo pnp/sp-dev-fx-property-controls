@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Търсене...",
   "SitePickerNoResults": "Няма резултати от търсенето",
   "SitePickerSitesChosen": "Избран(и) уебсайт(и)",
+  "TeamPickerSearchBoxPlaceholder": "Търсене...",
+  "TeamPickerNoResults": "Няма резултати от търсенето",
+  "TeamPickerSitesChosen": "Избрани екипи",
   "AddFileButtonLabel": "Добавяне на файл",
   "AddImageButtonLabel": "Добавяне на изображение",
   "AriaCellValue": "{0} колона {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Качите",
   "WebSearchLinkLabel": "Търсене в уеб",
   "Yes": "Да",
+  "StockImagesLinkLabel": "Изображения на склад",
+  "StockImagesHeader": "Изображения на склад",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "След няколко секунди",
     "L_RelativeDateTime_AFewSeconds": "Преди няколко секунди",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Въведете името на вашата папка",
   "FolderFilterBoxPlaceholder": "Филтриране на папки по име",
   "FolderExplorerLoading": "Зареждане на папки...",
-  "FolderExplorerNoItems": "Тази папка няма никакви подпапки."
+  "FolderExplorerNoItems": "Тази папка няма никакви подпапки.",
+  "IncorrectGuidValidationMessage": "Въведете валиден GUID"
 };
 });

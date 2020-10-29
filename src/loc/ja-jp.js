@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "検索。。。",
   "SitePickerNoResults": "検索結果なし",
   "SitePickerSitesChosen": "選択したウェブサイト",
+  "TeamPickerSearchBoxPlaceholder": "検索。。。",
+  "TeamPickerNoResults": "検索結果なし",
+  "TeamPickerSitesChosen": "選択されたチーム",
   "AddFileButtonLabel": "ファイルの追加",
   "AddImageButtonLabel": "画像を追加する",
   "AriaCellValue": "{0}列、{1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "アップロード",
   "WebSearchLinkLabel": "ウェブ検索",
   "Yes": "はい",
+  "StockImagesLinkLabel": "ストック画像",
+  "StockImagesHeader": "ストック画像",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "秒単位",
     "L_RelativeDateTime_AFewSeconds": "数秒前",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "フォルダ名を入力してください",
   "FolderFilterBoxPlaceholder": "フォルダを名前でフィルタする",
   "FolderExplorerLoading": "フォルダーを読み込んでいます。",
-  "FolderExplorerNoItems": "このフォルダにはサブフォルダがありません。"
+  "FolderExplorerNoItems": "このフォルダにはサブフォルダがありません。",
+  "IncorrectGuidValidationMessage": "有効な GUID を入力してください"
 };
 });

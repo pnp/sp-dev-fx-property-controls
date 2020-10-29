@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Sök...",
   "SitePickerNoResults": "Inga sökresultat",
   "SitePickerSitesChosen": "Webbplats(er) vald",
+  "TeamPickerSearchBoxPlaceholder": "Sök...",
+  "TeamPickerNoResults": "Inga sökresultat",
+  "TeamPickerSitesChosen": "Lag(er) utvalda",
   "AddFileButtonLabel": "Lägg till fil",
   "AddImageButtonLabel": "Lägg till bild",
   "AriaCellValue": "{0}, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Uppladdning",
   "WebSearchLinkLabel": "Webbsökning",
   "Yes": "Ja",
+  "StockImagesLinkLabel": "Arkivbilder",
+  "StockImagesHeader": "Lager Bilder",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "På några sekunder",
     "L_RelativeDateTime_AFewSeconds": "För några sekunder sedan",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Ange ditt mappnamn",
   "FolderFilterBoxPlaceholder": "Filtrera mappar efter namn",
   "FolderExplorerLoading": "Läser in mappar...",
-  "FolderExplorerNoItems": "Den här mappen har inga undermappar."
+  "FolderExplorerNoItems": "Den här mappen har inga undermappar.",
+  "IncorrectGuidValidationMessage": "Ange ett giltigt GUID"
 };
 });

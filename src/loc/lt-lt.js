@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Paieškos...",
   "SitePickerNoResults": "Nėra ieškos rezultatų",
   "SitePickerSitesChosen": "Pasirinkta (-os) interneto svetainė (-ės)",
+  "TeamPickerSearchBoxPlaceholder": "Paieškos...",
+  "TeamPickerNoResults": "Nėra ieškos rezultatų",
+  "TeamPickerSitesChosen": "Atrinktos (-os) komandos (-os)",
   "AddFileButtonLabel": "Pridėti failą",
   "AddImageButtonLabel": "Pridėti vaizdą",
   "AriaCellValue": "{0} stulpelis {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Įkelti",
   "WebSearchLinkLabel": "Žiniatinklio ieška",
   "Yes": "taip",
+  "StockImagesLinkLabel": "Išteklių vaizdai",
+  "StockImagesHeader": "Ištekliai Vaizdai",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "Per kelias sekundes",
     "L_RelativeDateTime_AFewSeconds": "Prieš kelias sekundes",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Įveskite aplanko pavadinimą",
   "FolderFilterBoxPlaceholder": "Filtruokite aplankus pagal pavadinimą",
   "FolderExplorerLoading": "Įkeliami aplankai...",
-  "FolderExplorerNoItems": "Šiame aplanke nėra poaplankių."
+  "FolderExplorerNoItems": "Šiame aplanke nėra poaplankių.",
+  "IncorrectGuidValidationMessage": "Įveskite tinkamą GUID"
 };
 });

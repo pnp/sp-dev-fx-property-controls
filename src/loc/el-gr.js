@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Αναζήτηση...",
   "SitePickerNoResults": "Δεν υπάρχουν αποτελέσματα αναζήτησης",
   "SitePickerSitesChosen": "Επιλεγμένοι ιστότοποι",
+  "TeamPickerSearchBoxPlaceholder": "Αναζήτηση...",
+  "TeamPickerNoResults": "Δεν υπάρχουν αποτελέσματα αναζήτησης",
+  "TeamPickerSitesChosen": "Επιλεγμένες ομάδες",
   "AddFileButtonLabel": "Προσθήκη αρχείου",
   "AddImageButtonLabel": "Προσθήκη εικόνας",
   "AriaCellValue": "{0} στήλη, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Φορτώσετε",
   "WebSearchLinkLabel": "Αναζήτηση στο Web",
   "Yes": "Ναι",
+  "StockImagesLinkLabel": "Στοκ εικόνες",
+  "StockImagesHeader": "Στοκ Εικόνες",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "Σε λίγα δευτερόλεπτα.",
     "L_RelativeDateTime_AFewSeconds": "Πριν από λίγα δευτερόλεπτα.",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Πληκτρολογήστε το όνομα του φακέλου σας",
   "FolderFilterBoxPlaceholder": "Φιλτράρισμα φακέλων με βάση το όνομα",
   "FolderExplorerLoading": "Φόρτωση φακέλων...",
-  "FolderExplorerNoItems": "Αυτός ο φάκελος δεν έχει υποφακέλους."
+  "FolderExplorerNoItems": "Αυτός ο φάκελος δεν έχει υποφακέλους.",
+  "IncorrectGuidValidationMessage": "Πληκτρολογήστε ένα έγκυρο GUID"
 };
 });

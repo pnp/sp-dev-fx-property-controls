@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Zoek...",
   "SitePickerNoResults": "Geen zoekresultaten",
   "SitePickerSitesChosen": "Website(s) geselecteerd",
+  "TeamPickerSearchBoxPlaceholder": "Zoek...",
+  "TeamPickerNoResults": "Geen zoekresultaten",
+  "TeamPickerSitesChosen": "Teams(en) geselecteerd",
   "AddFileButtonLabel": "Bestand toevoegen",
   "AddImageButtonLabel": "Afbeelding toevoegen",
   "AriaCellValue": "{0} column, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Uploaden",
   "WebSearchLinkLabel": "Zoeken op het web",
   "Yes": "Ja",
+  "StockImagesLinkLabel": "Stockafbeeldingen",
+  "StockImagesHeader": "Stockafbeeldingen",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "In enkele seconden",
     "L_RelativeDateTime_AFewSeconds": "Een paar seconden geleden",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Voer de naam van uw map in",
   "FolderFilterBoxPlaceholder": "Mappen filteren op naam",
   "FolderExplorerLoading": "Mappen laden...",
-  "FolderExplorerNoItems": "Deze map heeft geen submappen."
+  "FolderExplorerNoItems": "Deze map heeft geen submappen.",
+  "IncorrectGuidValidationMessage": "Voer een geldige GUID in"
 };
 });

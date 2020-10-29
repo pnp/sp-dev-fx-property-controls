@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Etsi...",
   "SitePickerNoResults": "Ei hakutuloksia",
   "SitePickerSitesChosen": "Valitut verkkosivustot",
+  "TeamPickerSearchBoxPlaceholder": "Etsi...",
+  "TeamPickerNoResults": "Ei hakutuloksia",
+  "TeamPickerSitesChosen": "Valitut ryhmät",
   "AddFileButtonLabel": "Lisää tiedosto",
   "AddImageButtonLabel": "Lisää kuva",
   "AriaCellValue": "{0} sarake, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Ladata",
   "WebSearchLinkLabel": "Web-haku",
   "Yes": "Kyllä",
+  "StockImagesLinkLabel": "Arkistokuvat",
+  "StockImagesHeader": "Arkistokuvat",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "Muutamassa sekunnissa",
     "L_RelativeDateTime_AFewSeconds": "Muutama sekunti sitten.",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Kirjoita kansion nimi",
   "FolderFilterBoxPlaceholder": "Kansioiden suodattaminen nimen mukaan",
   "FolderExplorerLoading": "Ladataan kansioita...",
-  "FolderExplorerNoItems": "Tässä kansiossa ei ole alikansioita."
+  "FolderExplorerNoItems": "Tässä kansiossa ei ole alikansioita.",
+  "IncorrectGuidValidationMessage": "Anna kelvollinen GUID-tunnus"
 };
 });

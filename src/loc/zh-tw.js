@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "搜索。。。",
   "SitePickerNoResults": "無搜尋結果。",
   "SitePickerSitesChosen": "已選擇網站。",
+  "TeamPickerSearchBoxPlaceholder": "搜索。。。",
+  "TeamPickerNoResults": "無搜尋結果",
+  "TeamPickerSitesChosen": "所選團隊",
   "AddFileButtonLabel": "添加檔。",
   "AddImageButtonLabel": "添加圖像。",
   "AriaCellValue": "{0}列, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "上傳。",
   "WebSearchLinkLabel": "網路搜索。",
   "Yes": "是的。",
+  "StockImagesLinkLabel": "庫存圖像",
+  "StockImagesHeader": "庫存圖片",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "在幾秒鐘內。",
     "L_RelativeDateTime_AFewSeconds": "幾秒鐘前。",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "輸入資料夾名稱。",
   "FolderFilterBoxPlaceholder": "按名稱篩選資料夾。",
   "FolderExplorerLoading": "載入資料夾中...",
-  "FolderExplorerNoItems": "此文件無子資料夾。"
+  "FolderExplorerNoItems": "此文件無子資料夾。",
+  "IncorrectGuidValidationMessage": "請輸入有效的 GUID"
 };
 });

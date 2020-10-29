@@ -7,6 +7,7 @@ import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
 import { IFilePickerResult } from '../../PropertyFieldFilePicker';
 import { IRoleDefinitionInformation  } from "../../PropertyFieldRoleDefinitionPicker";
 import { IFolder } from "../../PropertyFieldFolderPicker";
+import { IPropertyFieldTeam } from '../../PropertyFieldTeamPicker';
 
 export interface IPropertyControlsTestWebPartProps {
   siteUrl: string;
@@ -45,4 +46,5 @@ export interface IPropertyControlsTestWebPartProps {
   roleDefinitions: IRoleDefinitionInformation[];
   folderPicker: IFolder;
   guid: string;
+  teams: IPropertyFieldTeam[];
 }

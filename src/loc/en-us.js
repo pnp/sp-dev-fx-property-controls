@@ -79,6 +79,9 @@ define([], function () {
     SitePickerSearchBoxPlaceholder: "Search...",
     SitePickerNoResults: "No search results",
     SitePickerSitesChosen: "Website(s) selected",
+    TeamPickerSearchBoxPlaceholder: "Search...",
+    TeamPickerNoResults: "No search results",
+    TeamPickerSitesChosen: "Teams(s) selected",
 
     AddFileButtonLabel: "Add file",
     AddImageButtonLabel: "Add image",
@@ -224,8 +227,8 @@ define([], function () {
     NewFolderNamePlaceholder: "Enter your folder name",
     FolderFilterBoxPlaceholder: "Filter folders by name",
     FolderExplorerLoading: "Loading folders...",
-    FolderExplorerNoItems: "This folder doesn't have any subfolders.",    
-    
+    FolderExplorerNoItems: "This folder doesn't have any subfolders.",
+
     IncorrectGuidValidationMessage: "Please enter a valid GUID"
   }
 });

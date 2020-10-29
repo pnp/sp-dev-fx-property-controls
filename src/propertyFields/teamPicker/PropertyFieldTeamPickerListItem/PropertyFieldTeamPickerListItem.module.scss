@@ -1,0 +1,15 @@
+.teamListItem {
+  display: flex;
+  white-space: nowrap;
+  
+  .checkbox {
+    display: inline-block !important;
+    margin-right: 10px;
+  }
+
+  .title {
+    line-height: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

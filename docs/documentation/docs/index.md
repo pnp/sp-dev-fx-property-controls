@@ -70,6 +70,7 @@ The following controls are currently available:
 - [PropertyFieldSpinButton](./controls/PropertyFieldSpinButton) (Property pane spin button)
 - [PropertyFieldSpinner](./controls/PropertyFieldSpinButton) (Property pane spinner)
 - [PropertyFieldSwatchColorPicker](./controls/PropertyFieldSwatchColorPicker) (Property pane color selector)
+- [PropertyFieldTeamPicker](./controls/PropertyFieldTeamPicker) (Property pane team selector)
 - [PropertyFieldTermPicker](./controls/PropertyFieldTermPicker) (Property pane managed metadata term selector)
 - [PropertyFieldEnterpriseTermPicker](./controls/PropertyFieldEnterpriseTermPicker) (Property pane managed metadata term selector for enterprise scenarios)
 - [PropertyFieldViewPicker](./controls/PropertyFIeldViewPicker) (Property pane view selector)

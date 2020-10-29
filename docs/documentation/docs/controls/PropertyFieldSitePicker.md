@@ -53,9 +53,9 @@ The `PropertyFieldSitePicker` control can be configured with the following prope
 | label | string | yes | Property field label displayed on top. |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
 | context | WebPartContext | yes | Context of the current web part. |
-| initialSites | IPropertyFieldGroupOrPerson[] | no | Intial sites to load in the site picker (optional). |
-| multiSelect | boolean | no | Define if you want to allow multi sites selection. (optional, false by default). |
-| onPropertyChange | function | yes | Defines a onPropertyChange function to raise when the sites get changed. |
+| initialSites | IPropertyFieldSite[] | no | Intial sites to load in the site picker (optional). |
+| multiSelect | boolean | no | Define if you want to allow multiple sites selection. (optional, false by default). |
+| onPropertyChange | function | yes | Defines a `onPropertyChange` function to raise when the sites get changed. |
 | properties | any | yes | Parent web part properties, this object is use to update the property value. |
 | key | string | yes | An unique key that indicates the identity of this control. |
 | onGetErrorMessage | function | no | The method is used to get the validation error message and determine whether the input value is valid or not. See [this documentation](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/validate-web-part-property-values) to learn how to use it. |

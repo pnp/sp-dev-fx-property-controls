@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Căutaţi...",
   "SitePickerNoResults": "Fără rezultate ale căutării",
   "SitePickerSitesChosen": "Site-uri web selectate",
+  "TeamPickerSearchBoxPlaceholder": "Căutaţi...",
+  "TeamPickerNoResults": "Fără rezultate ale căutării",
+  "TeamPickerSitesChosen": "Echipe selectate",
   "AddFileButtonLabel": "Adăugare fișier",
   "AddImageButtonLabel": "Adăugare imagine",
   "AriaCellValue": "coloana {0}, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Încărcaţi",
   "WebSearchLinkLabel": "Căutare pe Web",
   "Yes": "da",
+  "StockImagesLinkLabel": "Imagini de stoc",
+  "StockImagesHeader": "Imagini stoc",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "În câteva secunde",
     "L_RelativeDateTime_AFewSeconds": "Acum câteva secunde.",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Introduceți numele folderului",
   "FolderFilterBoxPlaceholder": "Filtrarea folderelor după nume",
   "FolderExplorerLoading": "Se încarcă folderele...",
-  "FolderExplorerNoItems": "Acest folder nu are subfoldere."
+  "FolderExplorerNoItems": "Acest folder nu are subfoldere.",
+  "IncorrectGuidValidationMessage": "Introduceți un GUID valid"
 };
 });

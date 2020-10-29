@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Meklēšanas...",
   "SitePickerNoResults": "Nav meklēšanas rezultātu",
   "SitePickerSitesChosen": "Atlasītā(-ās) tīmekļa vietne(-as)",
+  "TeamPickerSearchBoxPlaceholder": "Meklēšanas...",
+  "TeamPickerNoResults": "Nav meklēšanas rezultātu",
+  "TeamPickerSitesChosen": "Atlasītās komandas",
   "AddFileButtonLabel": "Pievienot failu",
   "AddImageButtonLabel": "Pievienot attēlu",
   "AriaCellValue": "{0} kolonna, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Augšupielādēt",
   "WebSearchLinkLabel": "Meklēšana tīmeklī",
   "Yes": "jā",
+  "StockImagesLinkLabel": "Akciju attēli",
+  "StockImagesHeader": "Akciju attēli",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "Sekundēs",
     "L_RelativeDateTime_AFewSeconds": "1hour ago",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Ievadiet mapes nosaukumu",
   "FolderFilterBoxPlaceholder": "Filtrēt mapes pēc nosaukuma",
   "FolderExplorerLoading": "Notiek mapju ielāde...",
-  "FolderExplorerNoItems": "Šai mapei nav apakšmapes."
+  "FolderExplorerNoItems": "Šai mapei nav apakšmapes.",
+  "IncorrectGuidValidationMessage": "Lūdzu , ievadiet derīgu GUID"
 };
 });

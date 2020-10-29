@@ -1,4 +1,4 @@
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 export interface IPropertyFieldTeam {
   /**
@@ -31,11 +31,11 @@ export interface IPropertyFieldTeamPickerProps {
   /**
    * Web Part context
    */
-  context: IWebPartContext;
+  context: WebPartContext;
   /**
-   * Intial data to load in the 'Selected sites' area (optional)
+   * Intial data to load in the 'Selected teams' area (optional)
    */
-  initialSites: IPropertyFieldTeam[];
+  initialTeams?: IPropertyFieldTeam[];
   /**
    * Define if you want to allow multi site selection. True by default.
    */

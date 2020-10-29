@@ -7,12 +7,12 @@ import {
   dateAdd,
   PnPClientStorage
 } from "@pnp/common";
+import { batch, IGraphBatchRequestItem } from "../helpers/GraphHelper";
 
 import {
   IPropertyFieldTeam
 } from "../propertyFields/teamPicker/IPropertyFieldTeamPicker";
 import { ITeamsSearchService } from "./ITeamsSearchService";
-import SPPeoplePickerMockHttpClient from "./SPPeopleSearchMockService";
 
 /**
  * Service implementation to search sites in SharePoint
@@ -21,60 +21,50 @@ export default class TeamsSearchService implements ITeamsSearchService {
   /**
    * Search sites from the SharePoint
    */
- private  storage = new PnPClientStorage();
+  private storage = new PnPClientStorage();
   public async searchTeams(ctx: any, query: string): Promise<IPropertyFieldTeam[]> {
     if (Environment.type === EnvironmentType.Local) {
       // If the running environment is local, load the data from the mock
       return this.searchSitesFromMock(ctx, query);
     } else {
 
-      const _msGraphClient = await ctx.msGraphClientFactory.getClient();
-      const _listOfTeamsResults: any = await _msGraphClient
-        .api(`/groups?$filter=startswith(displayName,'${query}') AND resourceProvisioningOptions/Any(x:x eq 'Team')`)
-        .version("beta")
+      const msGraphClient = await ctx.msGraphClientFactory.getClient();
+      const listOfTeamsResults: any = await msGraphClient
+        .api(`/me/joinedTeams?$filter=startswith(displayName,'${query}')&$select=id,displayName`)
+        .version("v1.0")
         .get();
 
-      const _listOfTeams: any[] = _listOfTeamsResults.value;
+      const listOfTeams: any[] = listOfTeamsResults.value;
 
-      let _res: IPropertyFieldTeam[] = [];
-      if (_listOfTeams && _listOfTeams.length > 0) {
-        for (const _team of _listOfTeams) {
-          const _webUrl = await this.getGroupUrl(ctx,_team.id);
-          _res.push({ id: _team.id, title: _team.displayName, url: _webUrl});
+      const res: IPropertyFieldTeam[] = [];
+      if (listOfTeams && listOfTeams.length > 0) {
+
+        const batchRequests: IGraphBatchRequestItem[] = [];
+        listOfTeams.forEach((t) => {
+          batchRequests.push({
+            id: t.id,
+            method: 'GET',
+            url: `/groups/${t.id}/drive/root?$select=webUrl`
+          });
+        });
+
+        const batchResponses = await batch(batchRequests, 'v1.0', ctx);
+
+        for (const team of listOfTeams) {
+          const webUrl = batchResponses.filter(br => br.id === team.id)[0].body.webUrl;
+          res.push({ id: team.id, title: team.displayName, url: webUrl });
         }
       }
-      return _res;
-    }
-  }
-
-  private async  getGroupUrl(ctx:any, groupId:string):Promise<string>{
-    const cachedGroupUrl:string = this.storage.local.get(`${groupId}WebUrl`);
-    if (!cachedGroupUrl){
-      const _msGraphClient = await ctx.msGraphClientFactory.getClient();
-      const _groupInfo: any = await _msGraphClient
-      .api(`/groups/${groupId}/drive/root/webUrl`)
-      .version("beta")
-      .get();
-
-      let _webUrl:string = _groupInfo.value;
-      const _lastSlash = _webUrl.lastIndexOf('/');
-       _webUrl = _webUrl.substring(0, _lastSlash);
-       this.storage.local.put(`${groupId}WebUrl`, _webUrl, dateAdd(new Date(), "day", 5));
-      return _webUrl;
-    }else{
-       return  cachedGroupUrl;
+      return res;
     }
   }
 
   /**
    * Returns fake sites results for the Mock mode
    */
-  private searchSitesFromMock(ctx: IWebPartContext, query: string): Promise<Array<IPropertyFieldTeam>> {
-    return SPPeoplePickerMockHttpClient.searchPeople(ctx.pageContext.web.absoluteUrl).then(() => {
-      const results: IPropertyFieldTeam[] = [
-        { title: 'Contoso Team', id: '611453e1-5b5d-45ec-94aa-a180a02df897', url: ctx.pageContext.web.absoluteUrl }
-      ];
-      return results;
-    }) as Promise<Array<IPropertyFieldTeam>>;
+  private async searchSitesFromMock(ctx: IWebPartContext, query: string): Promise<Array<IPropertyFieldTeam>> {
+    return [
+      { title: 'Contoso Team', id: '611453e1-5b5d-45ec-94aa-a180a02df897', url: ctx.pageContext.web.absoluteUrl }
+    ];
   }
 }

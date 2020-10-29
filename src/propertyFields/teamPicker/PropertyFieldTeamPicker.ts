@@ -1,10 +1,12 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
-  IPropertyPaneField,
-  PropertyPaneFieldType,
-  IWebPartContext
+  WebPartContext
 } from '@microsoft/sp-webpart-base';
+import {
+  IPropertyPaneField,
+  PropertyPaneFieldType
+} from '@microsoft/sp-property-pane';
 import { IPropertyFieldTeamPickerPropsInternal, IPropertyFieldTeam, IPropertyFieldTeamPickerProps } from './IPropertyFieldTeamPicker';
 import { IPropertyFieldTeamPickerHostProps } from './IPropertyFieldTeamPickerHost';
 import PropertyFieldTeamPickerHost from './PropertyFieldTeamPickerHost';
@@ -23,8 +25,8 @@ class PropertyFieldTeamPickerBuilder implements IPropertyPaneField<IPropertyFiel
   // Custom properties
   private label: string;
   private disabled: boolean = false;
-  private context: IWebPartContext;
-  private initialSites: IPropertyFieldTeam[];
+  private context: WebPartContext;
+  private initialTeams: IPropertyFieldTeam[];
   private multiSelect: boolean = false;
   private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
   private customProperties: any;
@@ -44,7 +46,7 @@ class PropertyFieldTeamPickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.properties.onRender = this.render;
     this.onPropertyChange = _properties.onPropertyChange;
     this.context = _properties.context;
-    this.initialSites = _properties.initialSites;
+    this.initialTeams = _properties.initialTeams;
     this.customProperties = _properties.properties;
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
@@ -71,7 +73,7 @@ class PropertyFieldTeamPickerBuilder implements IPropertyPaneField<IPropertyFiel
       label: this.label,
       disabled: this.disabled,
       targetProperty: this.targetProperty,
-      initialSites: this.initialSites,
+      initialTeams: this.initialTeams,
       multiSelect: this.multiSelect,
       onDispose: this.dispose,
       onRender: this.render,

@@ -22,7 +22,7 @@ import {
 import styles from "./PropertyFieldTeamPickerHost.module.scss";
 import {
   PropertyFieldTeamPickerListItem
-} from "./PropertyFieldTeamPickerListItem/PropertyFieldSitePickerListItem";
+} from "./PropertyFieldTeamPickerListItem/PropertyFieldTeamPickerListItem";
 
 export default class PropertyFieldTeamPickerHost extends React.Component<IPropertyFieldTeamPickerHostProps, ITeamPickerState> {
   private teamsService: TeamsSearchService;
@@ -38,8 +38,8 @@ export default class PropertyFieldTeamPickerHost extends React.Component<IProper
 
     this.state = {
       isLoading: false,
-      selectedSites: props.initialSites || [],
-      siteSearchResults: [],
+      selectedTeams: props.initialTeams || [],
+      teamSearchResults: [],
       errorMessage: null
     };
 
@@ -52,45 +52,45 @@ export default class PropertyFieldTeamPickerHost extends React.Component<IProper
     if (newValue && newValue.length > 2) {
       this.setState({ isLoading: true });
       try {
-        const sites = await this.teamsService.searchTeams(this.props.context, newValue);
-        this.setState({ siteSearchResults: sites });
+        const teams = await this.teamsService.searchTeams(this.props.context, newValue);
+        this.setState({ teamSearchResults: teams });
       } catch (error) {
         this.setState({ errorMessage: error.message });
       } finally {
         this.setState({ isLoading: false });
       }
     } else {
-      this.setState({ siteSearchResults: [] });
+      this.setState({ teamSearchResults: [] });
     }
   }
 
-  private handleCheckboxChange = (site: IPropertyFieldTeam, checked: boolean): void => {
-    let selectedSites = [...this.state.selectedSites];
+  private handleCheckboxChange = (team: IPropertyFieldTeam, checked: boolean): void => {
+    let selectedTeams = [...this.state.selectedTeams];
     if (checked) {
       if (this.props.multiSelect) {
-        selectedSites.push(site);
+        selectedTeams.push(team);
       } else {
-        selectedSites = [site];
+        selectedTeams = [team];
       }
     } else {
       if (this.props.multiSelect) {
-        selectedSites.splice(selectedSites.indexOf(site), 1);
+        selectedTeams.splice(selectedTeams.indexOf(team), 1);
       } else {
-        selectedSites = [];
+        selectedTeams = [];
       }
     }
 
-    this.props.onPropertyChange(this.props.targetProperty, this.state.selectedSites, selectedSites);
+    this.props.onPropertyChange(this.props.targetProperty, this.state.selectedTeams, selectedTeams);
     // Trigger the apply button
     if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
-      this.props.onChange(this.props.targetProperty, selectedSites);
+      this.props.onChange(this.props.targetProperty, selectedTeams);
     }
 
-    this.setState({ selectedSites });
+    this.setState({ selectedTeams });
   }
 
   public render(): JSX.Element {
-    const { isLoading, siteSearchResults, selectedSites } = this.state;
+    const { isLoading, teamSearchResults, selectedTeams } = this.state;
 
     return (
       <div>
@@ -104,41 +104,41 @@ export default class PropertyFieldTeamPickerHost extends React.Component<IProper
           <Spinner size={SpinnerSize.medium} />
         }
         {
-          !isLoading && siteSearchResults &&
+          !isLoading && teamSearchResults &&
           <div>
             {
-              siteSearchResults.length > 0 &&
+              teamSearchResults.length > 0 &&
               <ul className={styles.siteList}>
                 {
-                  siteSearchResults.map((site: IPropertyFieldTeam): JSX.Element =>
+                  teamSearchResults.map((team: IPropertyFieldTeam): JSX.Element =>
                     <PropertyFieldTeamPickerListItem
-                      key={site.id}
-                      checked={selectedSites.filter(s => s.id === site.id).length > 0}
+                      key={team.id}
+                      checked={selectedTeams.filter(s => s.id === team.id).length > 0}
                       handleCheckboxChange={this.handleCheckboxChange}
-                      site={site}
+                      team={team}
                     />
                   )
                 }
               </ul>
             }
             {
-              siteSearchResults.length === 0 &&
+              teamSearchResults.length === 0 &&
               <Label>{strings.TeamPickerNoResults}</Label>
             }
           </div>
         }
         {
-          selectedSites && selectedSites.length > 0 &&
+          selectedTeams && selectedTeams.length > 0 &&
           <div>
-            <Label className={styles.bold}>{selectedSites.length} {strings.TeamPickerSitesChosen}</Label>
+            <Label className={styles.bold}>{selectedTeams.length} {strings.TeamPickerSitesChosen}</Label>
             <ul className={styles.siteList}>
               {
-                selectedSites.map((site: IPropertyFieldTeam): JSX.Element =>
+                selectedTeams.map((team: IPropertyFieldTeam): JSX.Element =>
                   <PropertyFieldTeamPickerListItem
-                    key={site.id}
-                    checked={selectedSites.filter(s => s.id === site.id).length > 0}
+                    key={team.id}
+                    checked={selectedTeams.filter(s => s.id === team.id).length > 0}
                     handleCheckboxChange={this.handleCheckboxChange}
-                    site={site}
+                    team={team}
                   />
                 )
               }

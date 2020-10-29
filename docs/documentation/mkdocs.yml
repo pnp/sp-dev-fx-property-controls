@@ -23,6 +23,7 @@ nav:
     - PropertyFieldSpinButton: 'controls/PropertyFieldSpinButton.md'
     - PropertyFieldSpinner: 'controls/PropertyFieldSpinner.md'
     - PropertyFieldSwatchColorPicker: 'controls/PropertyFieldSwatchColorPicker.md'
+    - PropertyFieldTeamPicker: 'controls/PropertyFieldTeamPicker.md'
     - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
     - PropertyFieldViewPicker: 'controls/PropertyFieldViewPicker.md'
     - PropertyPaneMarkdownContent: 'controls/PropertyPaneMarkdownContent.md'

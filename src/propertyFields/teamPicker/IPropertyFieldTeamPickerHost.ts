@@ -8,8 +8,8 @@ export interface IPropertyFieldTeamPickerHostProps extends IPropertyFieldTeamPic
 }
 
 export interface ITeamPickerState {
-  siteSearchResults?: Array<IPropertyFieldTeam>;
-  selectedSites?: Array<IPropertyFieldTeam>;
+  teamSearchResults?: Array<IPropertyFieldTeam>;
+  selectedTeams?: Array<IPropertyFieldTeam>;
   isLoading: boolean;
   errorMessage?: string;
 }

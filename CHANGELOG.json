@@ -1,6 +1,19 @@
 {
   "versions": [
     {
+      "version": "2.2.0",
+      "changes": {
+        "new": [
+          "`PropertyFieldTeamPicker`: new Teams picker control [#303](https://github.com/pnp/sp-dev-fx-property-controls/pull/303)"
+        ],
+        "enhancements": [],
+        "fixes": []
+      },
+      "contributions": [
+        "[João Mendes](https://github.com/joaojmendes)"
+      ]
+    },
+    {
       "version": "2.1.1",
       "changes": {
         "new": [],

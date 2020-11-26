@@ -96,6 +96,8 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
                 changedCallback={this.props.changedCallback}
                 multiSelection={this.props.multiSelection}
                 isTermSetSelectable={this.props.isTermSetSelectable}
+                areTermsSelectable={this.props.areTermsSelectable}
+                areTermsHidden={this.props.areTermsHidden}
                 disabledTermIds={this.props.disabledTermIds} />;
             }) : <Spinner type={SpinnerType.normal} />
           }

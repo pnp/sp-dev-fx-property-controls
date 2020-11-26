@@ -70,6 +70,7 @@ declare interface IPropertyControlStrings {
   TermPickerNoTerms: string;
   TermPickerExpandTitle: string;
   TermPickerExpandNode: string;
+  TermPickerMenuTerm: string;
   TermPickerMenuTermSet: string;
   TermPickerMenuGroup: string;
   TermPickerInLabel: string;

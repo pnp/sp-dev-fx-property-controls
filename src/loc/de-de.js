@@ -61,6 +61,7 @@ define([], () => {
   "TermPickerExpandTitle": "Erweitern dieses Begriffssatzes",
   "TermPickerExpandNode": "Erweitern dieses Knotens",
   "TermPickerMenuTermSet": "Menü für Term Set",
+  "TermPickerMenuTerm": "Menü für Term",
   "TermPickerMenuGroup": "Menü für Term Group",
   "TermPickerInLabel": "In",
   "TermPickerTermSetLabel": "Begriffssatz",

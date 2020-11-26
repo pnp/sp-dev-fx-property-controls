@@ -43,6 +43,9 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
    * Handle the click event: collapse or expand
    */
   private _handleClick() {
+    if (this.props.areTermsHidden) {
+      return;
+    }
     this.setState({
       expanded: !this.state.expanded
     });
@@ -59,7 +62,9 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
     // Check if there are already terms loaded
     if (!this.state.loaded) {
       // Receive all the terms for the current term set
-      const terms: ITerm[] = await this.props.termsService.getAllTerms(this.props.termset);
+      const terms: ITerm[] = this.props.areTermsHidden
+        ? null
+        : await this.props.termsService.getAllTerms(this.props.termset);
       if (terms !== null) {
         this.setState({
           terms: terms,
@@ -122,7 +127,8 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
                     activeNodes={this.props.activeNodes}
                     changedCallback={this.props.changedCallback}
                     multiSelection={this.props.multiSelection}
-                    disabled={disabled} />;
+                    disabled={disabled}
+                    isTermSelectable={this.props.areTermsSelectable} />;
                 })
               }
             </div>
@@ -137,8 +143,8 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
 
     return (
       <div>
-        <div className={`${styles.listItem} ${styles.termset} ${this.props.isTermSetSelectable ? styles.termSetSelectable : ""}`} onClick={this._handleClick}>
-          <img src={this.state.expanded ? EXPANDED_IMG : COLLAPSED_IMG} alt={strings.TermPickerExpandTitle} title={strings.TermPickerExpandTitle} />
+        <div className={`${styles.listItem} ${styles.termset} ${this.props.isTermSetSelectable && !this.props.areTermsHidden ? styles.termSetSelectable : ""}`} onClick={this._handleClick}>
+          <img className={`${this.props.areTermsHidden ? styles.termsHidden : ""}`} src={this.state.expanded ? EXPANDED_IMG : COLLAPSED_IMG} alt={strings.TermPickerExpandTitle} title={strings.TermPickerExpandTitle} />
 
           {
             // Show the termset selection box

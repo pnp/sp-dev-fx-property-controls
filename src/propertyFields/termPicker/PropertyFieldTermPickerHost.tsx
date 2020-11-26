@@ -23,7 +23,7 @@ export const COLLAPSED_IMG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8A
 export const EXPANDED_IMG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAUCAYAAABSx2cSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABh0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjEwcrIlkgAAAFtJREFUOE9j/P//PwPZAKSZXEy2RrCLybV1CGjetWvX/46ODqBLUQOXoJ9BGtXU1MCYJM0wjZGRkaRpRtZIkmZ0jSRpBgUOzJ8wmqwAw5eICIb2qGYSkyfNAgwAasU+UQcFvD8AAAAASUVORK5CYII='; // /_layouts/15/images/MDNExpanded.png
 export const GROUP_IMG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC9SURBVDhPY2CgNXh1qEkdiJ8D8X90TNBuJM0V6IpBhoHFgIxebKYTIwYzAMNpxGhGdsFwNoBgNEFjAWsYgOSKiorMgPgbEP/Hgj8AxXpB0Yg1gQAldYuLix8/efLkzn8s4O7du9eAan7iM+DV/v37z546der/jx8/sJkBdhVOA5qbm08ePnwYrOjQoUOkGwDU+AFowLmjR4/idwGukAYaYAkMgxfPnj27h816kDg4DPABoAI/IP6DIxZA4l0AOd9H3QXl5+cAAAAASUVORK5CYII='; // /_layouts/15/Images/EMMGroup.png
 export const TERMSET_IMG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACaSURBVDhPrZLRCcAgDERdpZMIjuQA7uWH4CqdxMY0EQtNjKWB0A/77sxF55SKMTalk8a61lqCFqsLiwKac84ZRUUBi7MoYHVmAfjfjzE6vJqZQfie0AcwBQVW8ATi7AR7zGGGNSE6Q2cyLSPIjRswjO7qKhcPDN2hK46w05wZMcEUIG+HrzzcrRsQBIJ5hS8C9fGAPmRwu/9RFxW6L8CM4Ry8AAAAAElFTkSuQmCC'; // /_layouts/15/Images/EMMTermSet.png
-
+export const TERM_IMG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAZBJREFUeNqkU0trwkAQnhURBBFPKghekuJN7KW9pOCj0Agl9/4uT/6BHgXpxQfxYKltKEYhV3tXFF/4RrOdXYgkxpz8YA47O983O9+whFIKt8DvddHv9wej0UjY7/dwPB55sGaJRKImSVLxXMiSl9Hr9fRWq0WvoVKpUFVVv6xaF1nX9R+LvFqteKAgrVarVNM0fi6Xy9Sq99mfjeTv2Wz2mMvlYL1en/OGYYCiKKTT6fAzG8flQbfb1ReLxX0+n4fJZOLwQxRFKJVKNJPJwHa7dZuI5I/lcsnJrHMwGHQUpdNpHp5bGI/Hr7IsA3Pc7/dcDEynU5jP5xAIBJwCpmmeN+IF9IaT0VA20p+V5yaGQqF2s9mE3W4Hh8PBFXZyLBbTstmsaAkQqyuu7nOz2UiCIEAkEoFwOMzz6A0n44YgHo8bhULBYQaxP7vRaLyjyFsqleIiDLbOAyTfXY5GLueu1+s1XNULE2Fg5Gg0qj4jrnlDrhmHIu3hcPh0Op0gmUz+IvfBy1xy62/0wY34F2AAKtctO7g/KgIAAAAASUVORK5CYII='
 
 /**
  * Renders the controls for PropertyFieldTermPicker component
@@ -286,6 +286,8 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
                   value={this.state.activeNodes}
                   onChanged={this.termsFromPickerChanged}
                   allowMultipleSelections={this.props.allowMultipleSelections}
+                  areTermsSelectable={this.props.areTermsSelectable}
+                  areTermsHidden={this.props.areTermsHidden}
                   isTermSetSelectable={this.props.isTermSetSelectable}
                   disabledTermIds={this.props.disabledTermIds}
                   termsService={this.termsService}
@@ -343,6 +345,8 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
                         changedCallback={this.termsChanged}
                         multiSelection={this.props.allowMultipleSelections}
                         isTermSetSelectable={this.props.isTermSetSelectable}
+                        areTermsSelectable={this.props.areTermsSelectable}
+                        areTermsHidden={this.props.areTermsHidden}
                         disabledTermIds={this.props.disabledTermIds} />;
                     })
                   }

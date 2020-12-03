@@ -57,6 +57,7 @@ import { IFolder, IPropertyFieldFolderPickerProps , PropertyFieldFolderPicker } 
 import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
 import { PropertyFieldGuid } from '../../PropertyFieldGuid';
 import FieldErrorMessage from '../../propertyFields/errorMessage/FieldErrorMessage';
+import { PropertyFieldTeamPicker } from '../../propertyFields/teamPicker';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -514,7 +515,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
               ]
             },
             {
-              groupName: 'Site, Lists, and Views',
+              groupName: 'Site, Teams, Lists, and Views',
               isCollapsed: true,
               groupFields: [
                 PropertyPaneTextField("siteUrl", {
@@ -631,6 +632,15 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
                   key: 'sitesFieldId'
+                }),
+                PropertyFieldTeamPicker('teams', {
+                  key: 'teamsPicker',
+                  context: this.context,
+                  label: 'Teams',
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  initialTeams: this.properties.teams,
+                  multiSelect: true
                 })
               ]
             },
@@ -825,7 +835,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
               ]
             },
             {
-              groupName: 'People, Terms, Files and Role Definition',
+              groupName: 'People, Terms, Files, Role Definition',
               isCollapsed: true,
               groupFields: [
                 PropertyFieldPeoplePicker('people', {
@@ -926,7 +936,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                     Name: "Documents",
                     ServerRelativeUrl: "/Shared Documents"
                   },
-                }),
+                })
               ]
             },
             {

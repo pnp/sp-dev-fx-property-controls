@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Hľadať...",
   "SitePickerNoResults": "Žiadne výsledky vyhľadávania",
   "SitePickerSitesChosen": "Vybraná webová stránka (webové stránky)",
+  "TeamPickerSearchBoxPlaceholder": "Hľadať...",
+  "TeamPickerNoResults": "Žiadne výsledky vyhľadávania",
+  "TeamPickerSitesChosen": "Vybrané tímy",
   "AddFileButtonLabel": "Pridať súbor",
   "AddImageButtonLabel": "Pridať obrázok",
   "AriaCellValue": "{0} stĺpec, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Nahrať",
   "WebSearchLinkLabel": "Vyhľadávanie na webe",
   "Yes": "áno",
+  "StockImagesLinkLabel": "Obrázky akcií",
+  "StockImagesHeader": "Sklad Obrázky",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "V priebehu niekoľkých sekúnd",
     "L_RelativeDateTime_AFewSeconds": "Pred niekoľkými sekundami",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Zadajte názov priečinka",
   "FolderFilterBoxPlaceholder": "Filtrovanie priečinkov podľa názvu",
   "FolderExplorerLoading": "Načítavajú sa priečinky...",
-  "FolderExplorerNoItems": "Tento priečinok nemá žiadne podpriečinky."
+  "FolderExplorerNoItems": "Tento priečinok nemá žiadne podpriečinky.",
+  "IncorrectGuidValidationMessage": "Zadajte platný identifikátor GUID"
 };
 });

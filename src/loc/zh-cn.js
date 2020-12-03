@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "搜索。。。",
   "SitePickerNoResults": "无搜索结果",
   "SitePickerSitesChosen": "已选择网站",
+  "TeamPickerSearchBoxPlaceholder": "搜索。。。",
+  "TeamPickerNoResults": "无搜索结果",
+  "TeamPickerSitesChosen": "所选团队",
   "AddFileButtonLabel": "添加文件",
   "AddImageButtonLabel": "添加图像",
   "AriaCellValue": "{0}列， {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "上传",
   "WebSearchLinkLabel": "网络搜索",
   "Yes": "是的",
+  "StockImagesLinkLabel": "库存图像",
+  "StockImagesHeader": "库存图片",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "在几秒钟内",
     "L_RelativeDateTime_AFewSeconds": "几秒钟前",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "输入文件夹名称",
   "FolderFilterBoxPlaceholder": "按名称筛选文件夹",
   "FolderExplorerLoading": "正在加载文件夹...",
-  "FolderExplorerNoItems": "此文件夹没有任何子文件夹。"
+  "FolderExplorerNoItems": "此文件夹没有任何子文件夹。",
+  "IncorrectGuidValidationMessage": "请输入有效的 GUID"
 };
 });

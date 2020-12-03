@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Pretrage...",
   "SitePickerNoResults": "Nema rezultata pretrage",
   "SitePickerSitesChosen": "Web lokacije izabrane",
+  "TeamPickerSearchBoxPlaceholder": "Pretrage...",
+  "TeamPickerNoResults": "Nema rezultata pretrage",
+  "TeamPickerSitesChosen": "Odabrani timovi",
   "AddFileButtonLabel": "Dodaj datoteku",
   "AddImageButtonLabel": "Dodaj sliku",
   "AriaCellValue": "{0}, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Otpremanje",
   "WebSearchLinkLabel": "Web pretraga",
   "Yes": "Da",
+  "StockImagesLinkLabel": "Berzanske slike",
+  "StockImagesHeader": "Slike akcija",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "Za nekoliko sekundi",
     "L_RelativeDateTime_AFewSeconds": "Pre par sekundi",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Unesite ime fascikle",
   "FolderFilterBoxPlaceholder": "Filtriranje fascikli po imenu",
   "FolderExplorerLoading": "Učitavanje fascikli...",
-  "FolderExplorerNoItems": "Ova fascikla nema potfascikle."
+  "FolderExplorerNoItems": "Ova fascikla nema potfascikle.",
+  "IncorrectGuidValidationMessage": "Unesite važeći GUID"
 };
 });

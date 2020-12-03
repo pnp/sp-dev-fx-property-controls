@@ -74,6 +74,7 @@ define([], function() {
     InvalidUrlError: "Den angitte nettadressen er ikke gyldig",
     DescriptionLabel: "Beskrivelse",
     MoreInfoLabel: "Mer informasjon",
-    AboutGroupLabel: "Om"
+    AboutGroupLabel: "Om",
+
   }
 });

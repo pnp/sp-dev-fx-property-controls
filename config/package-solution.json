@@ -6,7 +6,15 @@
     "version": "1.0.0.0",
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
-    "includeClientSideAssets": true
+    "includeClientSideAssets": true,
+    "webApiPermissionRequests": [
+      {
+      "resource": "Microsoft Graph",
+      "scope": "Team.ReadBasic.All"
+    }, {
+      "resource": "Microsoft Graph",
+      "scope": "Files.Read"
+    }]
   },
   "paths": {
     "zippedPackage": "solution/sp-dev-fx-property-controls.sppkg"

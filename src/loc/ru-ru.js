@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Поиск...",
   "SitePickerNoResults": "Нет результатов поиска",
   "SitePickerSitesChosen": "Выбранный веб-сайт (ы)",
+  "TeamPickerSearchBoxPlaceholder": "Поиск...",
+  "TeamPickerNoResults": "Нет результатов поиска",
+  "TeamPickerSitesChosen": "Выбранные команды (ы)",
   "AddFileButtonLabel": "Добавить файл",
   "AddImageButtonLabel": "Добавить изображение",
   "AriaCellValue": "{0} колонка, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Загрузить",
   "WebSearchLinkLabel": "Веб-поиск",
   "Yes": "Да",
+  "StockImagesLinkLabel": "Сток изображения",
+  "StockImagesHeader": "Сток изображения",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "В считанные секунды",
     "L_RelativeDateTime_AFewSeconds": "Несколько секунд назад",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Введите имя папки",
   "FolderFilterBoxPlaceholder": "Фильтр папки по имени",
   "FolderExplorerLoading": "Загрузка папок...",
-  "FolderExplorerNoItems": "Эта папка не имеет субфолдеров."
+  "FolderExplorerNoItems": "Эта папка не имеет субфолдеров.",
+  "IncorrectGuidValidationMessage": "Пожалуйста, введите действительный GUID"
 };
 });

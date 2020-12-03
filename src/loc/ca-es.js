@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Cerca...",
   "SitePickerNoResults": "Sense resultats de cerca",
   "SitePickerSitesChosen": "Llocs web seleccionats",
+  "TeamPickerSearchBoxPlaceholder": "Cerca...",
+  "TeamPickerNoResults": "Sense resultats de cerca",
+  "TeamPickerSitesChosen": "Equips seleccionats",
   "AddFileButtonLabel": "Afegeix un fitxer",
   "AddImageButtonLabel": "Afegeix una imatge",
   "AriaCellValue": "{0} columna, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Carregar",
   "WebSearchLinkLabel": "Cerca web",
   "Yes": "Sí",
+  "StockImagesLinkLabel": "Imatges d'estoc",
+  "StockImagesHeader": "Imatges d'estoc",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "En pocs segons",
     "L_RelativeDateTime_AFewSeconds": "Fa uns segons",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Introduïu el nom de la carpeta",
   "FolderFilterBoxPlaceholder": "Filtra les carpetes pel seu nom",
   "FolderExplorerLoading": "S'estan carregant les carpetes...",
-  "FolderExplorerNoItems": "Aquesta carpeta no té subcarpetes."
+  "FolderExplorerNoItems": "Aquesta carpeta no té subcarpetes.",
+  "IncorrectGuidValidationMessage": "Introduïu un GUID vàlid"
 };
 });

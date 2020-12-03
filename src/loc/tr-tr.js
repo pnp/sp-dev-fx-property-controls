@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Arama...",
   "SitePickerNoResults": "Arama sonucu yok",
   "SitePickerSitesChosen": "Web sitesi(ler) seçildi",
+  "TeamPickerSearchBoxPlaceholder": "Arama...",
+  "TeamPickerNoResults": "Arama sonucu yok",
+  "TeamPickerSitesChosen": "Takımlar(lar) seçildi",
   "AddFileButtonLabel": "Dosya ekleme",
   "AddImageButtonLabel": "Resim ekleme",
   "AriaCellValue": "{0} sütun, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Yüklemek",
   "WebSearchLinkLabel": "Web arama",
   "Yes": "Evet",
+  "StockImagesLinkLabel": "Stok görüntüleri",
+  "StockImagesHeader": "Stok Görselleri",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "Saniyeler içinde",
     "L_RelativeDateTime_AFewSeconds": "Birkaç saniye önce",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Klasör adınızı girin",
   "FolderFilterBoxPlaceholder": "Klasörleri ada göre filtreleme",
   "FolderExplorerLoading": "Klasörleri yükleme...",
-  "FolderExplorerNoItems": "Bu klasörde alt klasör yok."
+  "FolderExplorerNoItems": "Bu klasörde alt klasör yok.",
+  "IncorrectGuidValidationMessage": "Lütfen geçerli bir GUID girin"
 };
 });

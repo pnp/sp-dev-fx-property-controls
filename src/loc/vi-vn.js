@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Tìm...",
   "SitePickerNoResults": "Không có kết quả tìm kiếm",
   "SitePickerSitesChosen": "(Các) trang web được chọn",
+  "TeamPickerSearchBoxPlaceholder": "Tìm...",
+  "TeamPickerNoResults": "Không có kết quả tìm kiếm",
+  "TeamPickerSitesChosen": "(Các) đội được chọn",
   "AddFileButtonLabel": "Thêm tệp",
   "AddImageButtonLabel": "Thêm ảnh",
   "AriaCellValue": "{0}, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Tải lên",
   "WebSearchLinkLabel": "Tìm kiếm trên web",
   "Yes": "Có",
+  "StockImagesLinkLabel": "Hình ảnh chứng khoán",
+  "StockImagesHeader": "Hình ảnh chứng khoán",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "Chỉ trong vài giây",
     "L_RelativeDateTime_AFewSeconds": "Một vài giây trước",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Nhập tên thư mục của bạn",
   "FolderFilterBoxPlaceholder": "Lọc thư mục theo tên",
   "FolderExplorerLoading": "Đang nạp cặp...",
-  "FolderExplorerNoItems": "Cặp này không có bất kỳ cặp con nào."
+  "FolderExplorerNoItems": "Cặp này không có bất kỳ cặp con nào.",
+  "IncorrectGuidValidationMessage": "Vui lòng nhập GUID hợp lệ"
 };
 });

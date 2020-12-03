@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Szukaj...",
   "SitePickerNoResults": "Brak wyników wyszukiwania",
   "SitePickerSitesChosen": "Wybrane strony internetowe",
+  "TeamPickerSearchBoxPlaceholder": "Szukaj...",
+  "TeamPickerNoResults": "Brak wyników wyszukiwania",
+  "TeamPickerSitesChosen": "Wybrane zespoły",
   "AddFileButtonLabel": "Dodaj plik",
   "AddImageButtonLabel": "Dodawanie obrazu",
   "AriaCellValue": "kolumna {0}, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Przesłać",
   "WebSearchLinkLabel": "Wyszukiwanie w internecie",
   "Yes": "Tak",
+  "StockImagesLinkLabel": "Obrazów",
+  "StockImagesHeader": "Obrazów",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "W kilka sekund",
     "L_RelativeDateTime_AFewSeconds": "Kilka sekund temu",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Wprowadź nazwę folderu",
   "FolderFilterBoxPlaceholder": "Filtrowanie folderów według nazwy",
   "FolderExplorerLoading": "Trwa ładowanie folderów...",
-  "FolderExplorerNoItems": "Ten folder nie ma żadnych podfolderów."
+  "FolderExplorerNoItems": "Ten folder nie ma żadnych podfolderów.",
+  "IncorrectGuidValidationMessage": "Wprowadź prawidłowy identyfikator GUID"
 };
 });

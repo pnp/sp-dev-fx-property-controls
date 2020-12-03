@@ -79,6 +79,9 @@ define([], () => {
   "SitePickerSearchBoxPlaceholder": "Otsing...",
   "SitePickerNoResults": "Otsingutulemeid pole",
   "SitePickerSitesChosen": "Valitud veebisait (veebisaidid)",
+  "TeamPickerSearchBoxPlaceholder": "Otsing...",
+  "TeamPickerNoResults": "Otsingutulemeid pole",
+  "TeamPickerSitesChosen": "Valitud meeskonnad",
   "AddFileButtonLabel": "Lisa fail",
   "AddImageButtonLabel": "Lisa pilt",
   "AriaCellValue": "{0} veerg, {1}",
@@ -190,6 +193,8 @@ define([], () => {
   "UploadLinkLabel": "Laadida",
   "WebSearchLinkLabel": "Veebiotsing",
   "Yes": "Jah",
+  "StockImagesLinkLabel": "Laospildid",
+  "StockImagesHeader": "Laos pildid",
   "DateTime": {
     "L_RelativeDateTime_AFewSecondsFuture": "Mõne sekundi pärast",
     "L_RelativeDateTime_AFewSeconds": "Paar sekundit tagasi",
@@ -219,6 +224,7 @@ define([], () => {
   "NewFolderNamePlaceholder": "Sisestage oma kausta nimi",
   "FolderFilterBoxPlaceholder": "Filtreeri kaustad nime järgi",
   "FolderExplorerLoading": "Kaustade laadimine...",
-  "FolderExplorerNoItems": "Sellel kaustal pole ühtegi alamkausta."
+  "FolderExplorerNoItems": "Sellel kaustal pole ühtegi alamkausta.",
+  "IncorrectGuidValidationMessage": "Sisestage sobiv GUID"
 };
 });

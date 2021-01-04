@@ -47,4 +47,5 @@ export interface IPropertyControlsTestWebPartProps {
   folderPicker: IFolder;
   guid: string;
   teams: IPropertyFieldTeam[];
+  iconPicker: string;
 }

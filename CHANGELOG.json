@@ -5,9 +5,13 @@
       "changes": {
         "new": [],
         "enhancements": [],
-        "fixes": []
+        "fixes": [
+          "Documentation fix: spelling fix on `index.md` [#320](https://github.com/pnp/sp-dev-fx-property-controls/pull/320)"
+        ]
       },
-      "contributions": []
+      "contributions": [
+        "[Corey Roth](https://github.com/coreyroth)"
+      ]
     },
     {
       "version": "2.2.0",

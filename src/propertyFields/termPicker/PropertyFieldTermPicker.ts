@@ -33,6 +33,8 @@ export class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPrope
   private panelTitle: string;
   private hideTermStoreName: boolean;
   private isTermSetSelectable: boolean;
+  private areTermsSelectable: boolean = true;
+  private areTermsHidden: boolean;
   private disabledTermIds: string[];
   private termService: ISPTermStorePickerService;
 
@@ -63,9 +65,10 @@ export class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPrope
     this.limitByTermsetNameOrID = _properties.limitByTermsetNameOrID;
     this.hideTermStoreName = _properties.hideTermStoreName;
     this.isTermSetSelectable = _properties.isTermSetSelectable;
+    this.areTermsHidden = _properties.areTermsHidden;
     this.disabledTermIds = _properties.disabledTermIds;
     this.termService = _properties.termService;
-
+    
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
     }
@@ -80,6 +83,9 @@ export class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPrope
     }
     if (typeof _properties.excludeSystemGroup !== 'undefined') {
       this.excludeSystemGroup = _properties.excludeSystemGroup;
+    }
+    if (typeof _properties.areTermsSelectable !== 'undefined') {
+      this.areTermsSelectable =_properties.areTermsSelectable;
     }
   }
 
@@ -99,6 +105,8 @@ export class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPrope
       limitByTermsetNameOrID: this.limitByTermsetNameOrID,
       hideTermStoreName: this.hideTermStoreName,
       isTermSetSelectable: this.isTermSetSelectable,
+      areTermsSelectable: this.areTermsSelectable,
+      areTermsHidden: this.areTermsHidden,
       disabledTermIds: this.disabledTermIds,
       context: this.context,
       onDispose: this.dispose,

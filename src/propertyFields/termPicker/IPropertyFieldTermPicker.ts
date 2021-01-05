@@ -146,6 +146,14 @@ export interface IPropertyFieldTermPickerProps {
    */
   isTermSetSelectable?: boolean;
   /**
+   * Specify if terms are selectable in the tree view
+   */
+  areTermsSelectable?: boolean;
+  /**
+   * Specify if terms are hidden from the tree view
+   */
+  areTermsHidden?: boolean;
+  /**
    * Specify which terms should be disabled in the term set so that they cannot be selected
    */
   disabledTermIds?: string[];

@@ -61,6 +61,7 @@ define([], function () {
     TermPickerExpandTitle: "Expand this Term Set",
     TermPickerExpandNode: "Expand this Node",
     TermPickerMenuTermSet: "Menu for Term Set",
+    TermPickerMenuTerm: "Menu for Term",
     TermPickerMenuGroup: "Menu for Term Group",
     TermPickerInLabel: "in",
     TermPickerTermSetLabel: "Term Set",

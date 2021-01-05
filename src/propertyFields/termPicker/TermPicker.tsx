@@ -22,6 +22,8 @@ export interface ITermPickerProps {
   disabled: boolean;
   value: IPickerTerms;
   allowMultipleSelections: boolean;
+  areTermsSelectable: boolean;
+  areTermsHidden: boolean;
   isTermSetSelectable: boolean;
   disabledTermIds: string[];
   onChanged: (items: IPickerTerm[]) => void;

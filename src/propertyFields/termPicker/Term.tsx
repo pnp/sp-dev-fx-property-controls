@@ -3,6 +3,8 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ITermProps, ITermState } from './IPropertyFieldTermPickerHost';
 
 import styles from './PropertyFieldTermPickerHost.module.scss';
+import * as strings from 'PropertyControlStrings';
+import { TERM_IMG } from './PropertyFieldTermPickerHost';
 
 
 /**
@@ -71,12 +73,18 @@ export default class Term extends React.Component<ITermProps, ITermState> {
 
     return (
       <div className={`${styles.listItem} ${styles.term}`} style={styleProps}>
-        <Checkbox
-          checked={this.state.selected}
-          disabled={this.props.term.IsDeprecated || !this.props.term.IsAvailableForTagging || this.props.disabled}
-          className={this.getClassName()}
-          label={this.props.term.Name}
-          onChange={this._handleChange} />
+        {
+          this.props.isTermSelectable ?
+          <Checkbox
+            checked={this.state.selected}
+            disabled={this.props.term.IsDeprecated || !this.props.term.IsAvailableForTagging || this.props.disabled}
+            className={this.getClassName()}
+            label={this.props.term.Name}
+            onChange={this._handleChange} /> :
+          (<div>
+            <img src={TERM_IMG} alt={strings.TermPickerMenuTerm} title={strings.TermPickerMenuTerm} /> {this.props.term.Name}
+          </div>)
+        }
       </div>
     );
   }

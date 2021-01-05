@@ -44,4 +44,5 @@ export interface IPropertyControlsTestProps {
   roleDefinitions: IRoleDefinitionInformation[];
   folderPicker: IFolder;
   guid: string;
+  iconPicker: string;
 }

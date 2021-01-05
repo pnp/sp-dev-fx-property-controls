@@ -10,6 +10,7 @@ nav:
     - PropertyFieldFilePicker: 'controls/PropertyFieldFilePicker.md'
     - PropertyFieldFolderPicker: 'controls/PropertyFieldFolderPicker.md'
     - PropertyFieldGuidPicker: 'controls/PropertyFieldGuid.md'
+    - PropertyFieldIconPicker: 'controls/PropertyFieldIconPicker.md'
     - PropertyFieldListPicker: 'controls/PropertyFieldListPicker.md'
     - PropertyFieldMessage: 'controls/PropertyFieldMessage.md'
     - PropertyFieldMultiSelect: 'controls/PropertyFieldMultiSelect.md'

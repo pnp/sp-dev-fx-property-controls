@@ -57,6 +57,7 @@ The following controls are currently available:
 - [PropertyFieldFilePicker](./controls/PropertyFieldFilePicker) (Property pane file picker)
 - [PropertyFieldFolderPicker](./controls/PropertyFieldFolderPicker) (Property pane folder picker)
 - [PropertyFieldGuid](./controls/PropertyFieldGuid) (Property pane GUID editor)
+- [PropertyFieldIconPicker](./controls/PropertyFieldIconPicker) (Property pane icon picker)
 - [PropertyFieldListPicker](./controls/PropertyFieldListPicker) (Property pane list selector)
 - [PropertyFieldMessage](./controls/PropertyFieldMessage) (Property pane message)
 - [PropertyFieldMultiSelect](./controls/PropertyFieldMultiSelect) (Property pane multi select dropdown)

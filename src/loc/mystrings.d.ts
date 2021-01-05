@@ -221,6 +221,11 @@ declare interface IPropertyControlStrings {
   // guid field
   IncorrectGuidValidationMessage: string;
 
+  //Icon picker
+  SelectedLabel: string;
+  SelectIcon: string;
+  CloseButton: string;
+
 }
 
 declare interface IDateTimeStrings {

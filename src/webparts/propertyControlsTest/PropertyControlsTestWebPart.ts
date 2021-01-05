@@ -58,6 +58,7 @@ import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
 import { PropertyFieldGuid } from '../../PropertyFieldGuid';
 import FieldErrorMessage from '../../propertyFields/errorMessage/FieldErrorMessage';
 import { PropertyFieldTeamPicker } from '../../propertyFields/teamPicker';
+import { PropertyFieldIconPicker } from "../../propertyFields/iconPicker";
 
 /**
  * Web part that can be used to test out the various property controls
@@ -102,7 +103,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         filePickerResult: this.properties.filePickerResult,
         roleDefinitions: this.properties.roleDefinitions || [],
         folderPicker: this.properties.folderPicker,
-        guid: this.properties.guid
+        guid: this.properties.guid,
+        iconPicker: this.properties.iconPicker
       }
     );
 
@@ -911,6 +913,16 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: "filePickerId",
                   buttonLabel: "File Picker",
                   label: "File Picker",
+                }),
+                PropertyFieldIconPicker('iconPicker', {
+                  currentIcon: this.properties.iconPicker,
+                  key: "iconPickerId",
+                  onSave: (icon: string) => { console.log(icon); this.properties.iconPicker = icon; },                  
+                  buttonLabel: "Icon",
+                  renderOption: "panel",
+                  properties: this.properties,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  label: "Icon Picker"             
                 }),
                 PropertyFieldRoleDefinitionPicker('roleDefinitions', {
                   context: this.context,

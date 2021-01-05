@@ -78,6 +78,7 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
                 return p.Name;
               }).join(', ') : this.props.roleDefinitions[0] ? this.props.roleDefinitions[0].Name : ""} </p>
               <p className="ms-font-m ms-fontColor-neutralDark">Folder Picker: {this.props.folderPicker ? this.props.folderPicker.Name : ""} </p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Icon Picker: {this.props.iconPicker ? this.props.iconPicker : ""} </p>
             </div>
           </div>
         </div>

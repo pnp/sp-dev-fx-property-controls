@@ -229,6 +229,10 @@ define([], function () {
     FolderExplorerLoading: "Loading folders...",
     FolderExplorerNoItems: "This folder doesn't have any subfolders.",
 
-    IncorrectGuidValidationMessage: "Please enter a valid GUID"
+    IncorrectGuidValidationMessage: "Please enter a valid GUID",
+
+    SelectedLabel: "Selected",
+    SelectIcon: "Select icon",
+    CloseButton: "Close"
   }
 });

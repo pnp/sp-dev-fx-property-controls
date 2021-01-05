@@ -6,7 +6,7 @@ This repository provides developers with a set of reusable property pane control
     In order to migrate to `v2` it is advicded to follow this guide: [Migrating from V1](./guides/migrate-from-v1).
 
 !!! attention
-    `v2` version of the controls project has a minimal dependency on SharePoint Framework version `1.11.0`. `v1` has a minimal dependency on SharePoint Framework version `1.3.0`. Be aware that the controls might not work in solutions your building for on-premises. As for on-premises solutions version `1.1.0` will get used.
+    `v2` version of the controls project has a minimal dependency on SharePoint Framework version `1.11.0`. `v1` has a minimal dependency on SharePoint Framework version `1.3.0`. Be aware that the controls might not work in solutions you're building for on-premises. As for on-premises solutions version `1.1.0` will get used.
 
 ## Getting started
 

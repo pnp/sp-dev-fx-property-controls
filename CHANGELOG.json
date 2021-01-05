@@ -3,14 +3,17 @@
     {
       "version": "2.3.0",
       "changes": {
-        "new": [],
+        "new": [
+          "`PropertyFieldIconPicker`: new icon picker control [#319](https://github.com/pnp/sp-dev-fx-property-controls/pull/319)"
+        ],
         "enhancements": [],
         "fixes": [
           "Documentation fix: spelling fix on `index.md` [#320](https://github.com/pnp/sp-dev-fx-property-controls/pull/320)"
         ]
       },
       "contributions": [
-        "[Corey Roth](https://github.com/coreyroth)"
+        "[Corey Roth](https://github.com/coreyroth)",
+        "[Gautam Sheth](https://github.com/gautamdsheth)"
       ]
     },
     {

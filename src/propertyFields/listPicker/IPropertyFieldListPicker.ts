@@ -1,6 +1,24 @@
-import { IWebPartContext, IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { ISPList } from './IPropertyFieldListPickerHost';
+import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-property-pane';
 
+/**
+ * Detailed list information
+ */
+export interface IPropertyFieldList {
+  /**
+   * List ID
+   */
+  id: string;
+  /**
+   * List Title
+   */
+  title?: string;
+  /**
+   * List server relative URL
+   */
+  url?: string;
+}
 
 /**
  * Enum for specifying how the lists should be sorted
@@ -30,7 +48,7 @@ export interface IPropertyFieldListPickerProps {
   /**
    * Initial selected list set of the control
    */
-  selectedList?: string | string[];
+  selectedList?: string | string[] | IPropertyFieldList | IPropertyFieldList[];
   /**
    * BaseTemplate ID of the lists or libaries you want to return.
    */
@@ -104,10 +122,15 @@ export interface IPropertyFieldListPickerProps {
    * Filter list from Odata query (takes precendents over Hidden and BaseTemplate Filters)
    */
   filter?: string;
-  /** 
+  /**
    * Callback that is called before the dropdown is populated
    */
   onListsRetrieved?: (lists: ISPList[]) => PromiseLike<ISPList[]> | ISPList[];
+
+  /**
+   * Specifies if the picker returns list id, title and url as an object instead on id.
+   */
+  includeListTitleAndUrl?: boolean;
 }
 
 /**
@@ -123,8 +146,8 @@ export interface IPropertyFieldListPickerPropsInternal extends IPropertyFieldLis
   targetProperty: string;
   context: IWebPartContext;
   webAbsoluteUrl?: string;
-  selectedList?: string;
-  selectedLists?: string[];
+  selectedList?: string | IPropertyFieldList;
+  selectedLists?: string[] | IPropertyFieldList[];
   baseTemplate?: number;
   orderBy?: PropertyFieldListPickerOrderBy;
   includeHidden?: boolean;

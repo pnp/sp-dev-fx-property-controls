@@ -57,7 +57,7 @@ The `PropertyFieldListPicker` control can be configured with the following prope
 | label | string | yes | Property field label displayed on top. |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
 | context | WebPartContext | yes | Context of the current web part. |
-| selectedList | string OR string[] | no | Initial selected list set of the control. |
+| selectedList | string \| string[] \| IPropertyFieldList \| IPropertyFieldList[] | no | Initial selected list set of the control. |
 | baseTemplate | number | no | BaseTemplate ID of the lists or libaries you want to return. |
 | includeHidden | boolean | no | Specify if you want to include hidden lists in the list picker. By default this is set to `true`. |
 | orderBy | PropertyFieldListPickerOrderBy | no | Specify the property on which you want to order the retrieve set of lists. |
@@ -74,6 +74,14 @@ The `PropertyFieldListPicker` control can be configured with the following prope
 | listsToExclude | string[] | no | Defines list titles which should be excluded from the list picker control (list title or ID). |
 | filter | string | no | Filter list from OData query (takes precedence over Hidden and BaseTemplate Filters). |
 | onListsRetrieved | (lists: ISPList[]) => PromiseLike<ISPList[]> \| ISPList[] | no | Callback that is called before the dropdown is populated. |
+| includeListTitleAndUrl | boolean | no | Specifies if the picker returns list id, title and url as an object instead on id. |
+
+Interface `IPropertyFieldList`
+
+| Property | Type | Required | Description |
+| id | string | yes | The ID of the list |
+| title | string | no | List's title |
+| url | string | no | List's server relative url |
 
 
 Enum `PropertyFieldListPickerOrderBy`

@@ -13,7 +13,7 @@ export interface IPropertyFieldListPickerHostProps extends IPropertyFieldListPic
  * PropertyFieldListPickerHost state interface
  */
 export interface IPropertyFieldListPickerHostState {
-
+  loadedLists: ISPLists;
   results: IDropdownOption[];
   selectedKey?: string;
   errorMessage?: string;
@@ -35,4 +35,7 @@ export interface ISPList {
   Title: string;
   Id: string;
   BaseTemplate: string;
+  RootFolder: {
+    ServerRelativeUrl: string;
+  };
 }

@@ -34,7 +34,7 @@ export default class SPListPickerService {
       // use the web relative url if provided, otherwise default to current SharePoint site
       const webAbsoluteUrl = this.props.webAbsoluteUrl ? this.props.webAbsoluteUrl : this.context.pageContext.web.absoluteUrl;
       // If the running environment is SharePoint, request the lists REST service
-      let queryUrl: string = `${webAbsoluteUrl}/_api/lists?$select=Title,id,BaseTemplate`;
+      let queryUrl: string = `${webAbsoluteUrl}/_api/lists?$select=Title,id,BaseTemplate,RootFolder/ServerRelativeUrl&$expand=RootFolder`;
       // Check if the orderBy property is provided
       if (this.props.orderBy !== null) {
         queryUrl += '&$orderby=';
@@ -100,9 +100,9 @@ export default class SPListPickerService {
       const listData: ISPLists = {
         value:
         [
-          { Title: 'Mock List One', Id: '6770c83b-29e8-494b-87b6-468a2066bcc6', BaseTemplate: '109' },
-          { Title: 'Mock List Two', Id: '2ece98f2-cc5e-48ff-8145-badf5009754c', BaseTemplate: '109' },
-          { Title: 'Mock List Three', Id: 'bd5dbd33-0e8d-4e12-b289-b276e5ef79c2', BaseTemplate: '109' }
+          { Title: 'Mock List One', Id: '6770c83b-29e8-494b-87b6-468a2066bcc6', BaseTemplate: '109', RootFolder: { ServerRelativeUrl: '/sites/test/MockListOne' } },
+          { Title: 'Mock List Two', Id: '2ece98f2-cc5e-48ff-8145-badf5009754c', BaseTemplate: '109', RootFolder: { ServerRelativeUrl: '/sites/test/MockListTwo' } },
+          { Title: 'Mock List Three', Id: 'bd5dbd33-0e8d-4e12-b289-b276e5ef79c2', BaseTemplate: '109', RootFolder: { ServerRelativeUrl: '/sites/test/MockListThree' } }
         ]
       };
       return listData;

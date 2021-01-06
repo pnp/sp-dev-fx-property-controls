@@ -8,14 +8,15 @@ import { IFilePickerResult } from '../../PropertyFieldFilePicker';
 import { IRoleDefinitionInformation  } from "../../PropertyFieldRoleDefinitionPicker";
 import { IFolder } from "../../PropertyFieldFolderPicker";
 import { IPropertyFieldTeam } from '../../PropertyFieldTeamPicker';
+import { IPropertyFieldList } from '../../propertyFields/listPicker';
 
 export interface IPropertyControlsTestWebPartProps {
   siteUrl: string;
   numberValue: number;
   multiSelect: string[];
   people: IPropertyFieldGroupOrPerson[];
-  singleList: string | string[];
-  multiList: string | string[];
+  singleList: string | string[] | IPropertyFieldList | IPropertyFieldList[];
+  multiList: string | string[] | IPropertyFieldList | IPropertyFieldList[];
   singleListFiltered: string;
   multiListFiltered: string[];
   view: string;

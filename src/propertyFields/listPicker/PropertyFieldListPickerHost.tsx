@@ -6,6 +6,7 @@ import { IPropertyFieldListPickerHostProps, IPropertyFieldListPickerHostState, I
 import SPListPickerService from '../../services/SPListPickerService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as telemetry from '../../common/telemetry';
+import { IPropertyFieldList } from './IPropertyFieldListPicker';
 
 // Empty list value, to be checked for single list selection
 const EMPTY_LIST_KEY = 'NO_LIST_SELECTED';
@@ -14,8 +15,6 @@ const EMPTY_LIST_KEY = 'NO_LIST_SELECTED';
  * Renders the controls for PropertyFieldListPicker component
  */
 export default class PropertyFieldListPickerHost extends React.Component<IPropertyFieldListPickerHostProps, IPropertyFieldListPickerHostState> {
-  private options: IDropdownOption[] = [];
-  private selectedKey: string;
 
   private latestValidateValue: string;
   private async: Async;
@@ -32,7 +31,10 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
     });
 
     this.state = {
-      results: this.options,
+      loadedLists: {
+        value: []
+      },
+      results: [],
       errorMessage: ''
     };
 
@@ -50,7 +52,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
 
   public componentDidUpdate(prevProps: IPropertyFieldListPickerHostProps, prevState: IPropertyFieldListPickerHostState): void {
     if (this.props.baseTemplate !== prevProps.baseTemplate ||
-        this.props.webAbsoluteUrl !== prevProps.webAbsoluteUrl) {
+      this.props.webAbsoluteUrl !== prevProps.webAbsoluteUrl) {
       this.loadLists();
     }
   }
@@ -58,37 +60,48 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
   /**
    * Loads the list from SharePoint current web site, or target site if specified by webRelativeUrl
    */
-  private loadLists(): void {
-    const listService: SPListPickerService = new SPListPickerService(this.props, this.props.context);
+  private async loadLists(): Promise<void> {
+
+    const {
+      context,
+      selectedList
+    } = this.props;
+
+    const listService: SPListPickerService = new SPListPickerService(this.props, context);
     const listsToExclude: string[] = this.props.listsToExclude || [];
-    this.options = [];
-    listService.getLibs().then((response: ISPLists) => {
-      // Start mapping the list that are selected
-      response.value.forEach((list: ISPList) => {
-        if (this.props.selectedList === list.Id) {
-          this.selectedKey = list.Id;
-        }
+    const options = [];
+    let selectedListKey: string = '';
+    if (selectedList) {
+      selectedListKey = typeof selectedList === 'string' ? selectedList : selectedList.id;
+    }
+    let selectedKey: string | undefined;
+    const response = await listService.getLibs();
+    // Start mapping the list that are selected
+    response.value.forEach((list: ISPList) => {
+      if (selectedListKey === list.Id) {
+        selectedKey = list.Id;
+      }
 
-        // Make sure that the current list is NOT in the 'listsToExclude' array
-        if (listsToExclude.indexOf(list.Title) === -1 && listsToExclude.indexOf(list.Id) === -1) {
-          this.options.push({
-            key: list.Id,
-            text: list.Title
-          });
-        }
-      });
+      // Make sure that the current list is NOT in the 'listsToExclude' array
+      if (listsToExclude.indexOf(list.Title) === -1 && listsToExclude.indexOf(list.Id) === -1) {
+        options.push({
+          key: list.Id,
+          text: list.Title
+        });
+      }
+    });
 
-      // Option to unselect the list
-      this.options.unshift({
-        key: EMPTY_LIST_KEY,
-        text: ''
-      });
+    // Option to unselect the list
+    options.unshift({
+      key: EMPTY_LIST_KEY,
+      text: ''
+    });
 
-      // Update the current component state
-      this.setState({
-        results: this.options,
-        selectedKey: this.selectedKey
-      });
+    // Update the current component state
+    this.setState({
+      loadedLists: response,
+      results: options,
+      selectedKey: selectedKey
     });
   }
 
@@ -105,7 +118,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
    */
   private validate(value: string): void {
     if (this.props.onGetErrorMessage === null || this.props.onGetErrorMessage === undefined) {
-      this.notifyAfterValidate(this.props.selectedList, value);
+      this.notifyAfterValidate(value);
       return;
     }
 
@@ -119,7 +132,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
     if (typeof errResult !== 'undefined') {
       if (typeof errResult === 'string') {
         if (errResult === '') {
-          this.notifyAfterValidate(this.props.selectedList, value);
+          this.notifyAfterValidate(value);
         }
         this.setState({
           errorMessage: errResult
@@ -127,7 +140,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
       } else {
         errResult.then((errorMessage: string) => {
           if (!errorMessage) {
-            this.notifyAfterValidate(this.props.selectedList, value);
+            this.notifyAfterValidate(value);
           }
           this.setState({
             errorMessage: errorMessage
@@ -135,40 +148,72 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
         });
       }
     } else {
-      this.notifyAfterValidate(this.props.selectedList, value);
+      this.notifyAfterValidate(value);
     }
   }
 
   /**
    * Notifies the parent Web Part of a property value change
    */
-  private notifyAfterValidate(oldValue: string, newValue: string) {
+  private notifyAfterValidate(newValue: string) {
+    const {
+      onPropertyChange,
+      targetProperty,
+      selectedList,
+      includeListTitleAndUrl,
+      properties,
+      onChange
+    } = this.props;
+
+    const {
+      results,
+      loadedLists
+    } = this.state;
+
     // Check if the user wanted to unselect the list
-    const propValue = newValue === EMPTY_LIST_KEY ? '' : newValue;
+    let propValue: string | IPropertyFieldList | undefined;
+
+    if (includeListTitleAndUrl) {
+      if (newValue === EMPTY_LIST_KEY) {
+        propValue = undefined;
+      }
+      else {
+        const spList = loadedLists.value.filter(l => l.Id === newValue)[0];
+        propValue = {
+          id: newValue,
+          title: spList.Title,
+          url: spList.RootFolder.ServerRelativeUrl
+        };
+      }
+    }
+    else {
+      propValue = newValue === EMPTY_LIST_KEY ? '' : newValue;
+    }
+
 
     // Deselect all options
-    this.options = this.state.results.map(option => {
+    const options = this.state.results.map(option => {
       if (option.selected) {
         option.selected = false;
       }
       return option;
     });
     // Set the current selected key
-    this.selectedKey = newValue;
+    const selectedKey = newValue;
     // Update the state
     this.setState({
-      selectedKey: this.selectedKey,
-      results: this.options
+      selectedKey: selectedKey,
+      results: options
     });
 
-    if (this.props.onPropertyChange && propValue !== null) {
+    if (onPropertyChange && propValue !== null) {
       // Store the new property value
-      this.props.properties[this.props.targetProperty] = propValue;
+      properties[targetProperty] = propValue;
       // Trigger the default onPrpertyChange event
-      this.props.onPropertyChange(this.props.targetProperty, oldValue, propValue);
+      onPropertyChange(targetProperty, selectedList, propValue);
       // Trigger the apply button
-      if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
-        this.props.onChange(this.props.targetProperty, propValue);
+      if (typeof onChange !== 'undefined' && onChange !== null) {
+        onChange(targetProperty, propValue);
       }
     }
   }

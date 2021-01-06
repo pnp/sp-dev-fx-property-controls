@@ -17,7 +17,7 @@ export default class PropertyFieldSpinnerHost extends React.Component<
   constructor(props: IPropertyFieldSpinnerHostProps) {
     super(props);
 
-    telemetry.track('PropertyFieldSpinner', {})
+    telemetry.track('PropertyFieldSpinner', {});
 
     this.state = {
       isVisible: this.props.isVisible

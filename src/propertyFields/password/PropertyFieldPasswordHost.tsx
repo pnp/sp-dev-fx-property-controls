@@ -1,5 +1,6 @@
 import * as React from "react";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
+import * as telemetry from '../../common/telemetry';
 //import styles from './Component.module.scss';
 
 import {
@@ -13,6 +14,9 @@ export default class PropertyFieldPasswordHost extends React.Component<
 > {
   constructor(props: IPropertyFieldPasswordHostProps) {
     super(props);
+
+    telemetry.track('PropertyFieldPassword', {});
+
     this.state = {
       value: this.props.value
     };

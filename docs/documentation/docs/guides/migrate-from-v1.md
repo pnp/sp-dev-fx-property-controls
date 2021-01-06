@@ -36,3 +36,6 @@ The easiest way to upgrade SharePoint Framework solution is to use [Office365 CL
 ## APIs Changes
 
 ...
+
+
+![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/MigrateFromV1)

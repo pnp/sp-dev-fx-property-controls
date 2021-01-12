@@ -9,7 +9,7 @@ import PropertyFieldListPickerHost from './PropertyFieldListPickerHost';
 import PropertyFieldListMultiPickerHost from './PropertyFieldListMultiPickerHost';
 import { IPropertyFieldListPickerHostProps, ISPList } from './IPropertyFieldListPickerHost';
 import { IPropertyFieldListMultiPickerHostProps } from './IPropertyFieldListMultiPickerHost';
-import { PropertyFieldListPickerOrderBy, IPropertyFieldListPickerProps, IPropertyFieldListPickerPropsInternal } from './IPropertyFieldListPicker';
+import { PropertyFieldListPickerOrderBy, IPropertyFieldListPickerProps, IPropertyFieldListPickerPropsInternal, IPropertyFieldList } from './IPropertyFieldListPicker';
 
 /**
  * Represents a PropertyFieldListPicker object
@@ -25,8 +25,8 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private label: string;
   private context: IWebPartContext;
   private webAbsoluteUrl?: string;
-  private selectedList: string;
-  private selectedLists: string[];
+  private selectedList: string | IPropertyFieldList;
+  private selectedLists: string[] | IPropertyFieldList[];
   private baseTemplate: number;
   private orderBy: PropertyFieldListPickerOrderBy;
   private multiSelect: boolean;
@@ -35,6 +35,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private selectAllInListLabel: string;
   private includeHidden: boolean;
   private listsToExclude: string[];
+  private includeListTitleAndUrl: boolean;
 
   public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { }
   private customProperties: any;
@@ -74,7 +75,8 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.listsToExclude = _properties.listsToExclude;
     this.filter = _properties.filter;
     this.onListsRetrieved = _properties.onListsRetrieved;
-    
+    this.includeListTitleAndUrl = _properties.includeListTitleAndUrl;
+
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
     }
@@ -107,7 +109,8 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
       deferredValidationTime: this.deferredValidationTime,
       listsToExclude: this.listsToExclude,
       filter: this.filter,
-      onListsRetrieved: this.onListsRetrieved
+      onListsRetrieved: this.onListsRetrieved,
+      includeListTitleAndUrl: this.includeListTitleAndUrl
     };
 
     // Check if the multi or single select component has to get loaded
@@ -151,8 +154,8 @@ export function PropertyFieldListPicker(targetProperty: string, properties: IPro
     targetProperty: targetProperty,
     context: properties.context,
     webAbsoluteUrl: properties.webAbsoluteUrl,
-    selectedList: typeof properties.selectedList === 'string' ? properties.selectedList : null,
-    selectedLists: typeof properties.selectedList !== 'string' ? properties.selectedList : null,
+    selectedList: !Array.isArray(properties.selectedList) ? properties.selectedList : null,
+    selectedLists: Array.isArray(properties.selectedList) ? properties.selectedList : null,
     baseTemplate: properties.baseTemplate,
     orderBy: properties.orderBy,
     multiSelect: properties.multiSelect || false,
@@ -170,7 +173,8 @@ export function PropertyFieldListPicker(targetProperty: string, properties: IPro
     deferredValidationTime: properties.deferredValidationTime,
     listsToExclude: properties.listsToExclude,
     filter: properties.filter,
-    onListsRetrieved: properties.onListsRetrieved
+    onListsRetrieved: properties.onListsRetrieved,
+    includeListTitleAndUrl: properties.includeListTitleAndUrl
   };
   //Calls the PropertyFieldListPicker builder object
   //This object will simulate a PropertyFieldCustom to manage his rendering process

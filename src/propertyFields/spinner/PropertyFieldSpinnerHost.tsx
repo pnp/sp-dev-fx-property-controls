@@ -7,13 +7,17 @@ import {
   IPropertyFieldSpinnerHostState
 } from "./IPropertyFieldSpinnerHost";
 
+import * as telemetry from '../../common/telemetry';
 
-export default class PropertyFieldPasswordHost extends React.Component<
+
+export default class PropertyFieldSpinnerHost extends React.Component<
   IPropertyFieldSpinnerHostProps,
   IPropertyFieldSpinnerHostState
 > {
   constructor(props: IPropertyFieldSpinnerHostProps) {
     super(props);
+
+    telemetry.track('PropertyFieldSpinner', {});
 
     this.state = {
       isVisible: this.props.isVisible

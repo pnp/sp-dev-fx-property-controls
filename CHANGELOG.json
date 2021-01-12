@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "2.3.0",
+      "changes": {
+        "new": [
+          "`PropertyFieldIconPicker`: new icon picker control [#319](https://github.com/pnp/sp-dev-fx-property-controls/pull/319)"
+        ],
+        "enhancements": [
+          "`PropertyFieldTermPicker`: two properties: `areTermsSelectable` and `areTermsHidden` [#313](https://github.com/pnp/sp-dev-fx-property-controls/pull/313)",
+          "`PropertyFieldListPicker`: ability to return Title and relative URL of the list [#281](https://github.com/pnp/sp-dev-fx-property-controls/issues/281)"
+        ],
+        "fixes": [
+          "Documentation fix: spelling fix on `index.md` [#320](https://github.com/pnp/sp-dev-fx-property-controls/pull/320)"
+        ]
+      },
+      "contributions": [
+        "[Corey Roth](https://github.com/coreyroth)",
+        "[Gautam Sheth](https://github.com/gautamdsheth)",
+        "[Konrad K.](https://github.com/wilecoyotegenius)"
+      ]
+    },
+    {
       "version": "2.2.0",
       "changes": {
         "new": [

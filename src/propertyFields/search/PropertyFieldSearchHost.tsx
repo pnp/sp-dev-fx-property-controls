@@ -1,6 +1,6 @@
 import * as React from "react";
 import { SearchBox } from "office-ui-fabric-react";
-//import styles from './Component.module.scss';
+import * as telemetry from '../../common/telemetry';
 
 import {
   IPropertyFieldSearchHostProps,
@@ -13,6 +13,9 @@ export default class PropertyFieldSearchHost extends React.Component<
 > {
   constructor(props: IPropertyFieldSearchHostProps) {
     super(props);
+
+    telemetry.track('PropertyFieldOrder', {});
+
     this.state = {
       value: this.props.value
     };

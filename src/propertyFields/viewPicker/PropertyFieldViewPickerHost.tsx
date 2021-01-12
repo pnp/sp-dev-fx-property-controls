@@ -7,6 +7,7 @@ import { SPViewPickerService } from '../../services/SPViewPickerService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import { ISPView } from '.';
 import { ISPViews } from './ISPViews';
+import * as telemetry from '../../common/telemetry';
 
 // Empty view value
 const EMPTY_VIEW_KEY = 'NO_VIEW_SELECTED';
@@ -26,6 +27,10 @@ export default class PropertyFieldViewPickerHost extends React.Component<IProper
    */
   constructor(props: IPropertyFieldViewPickerHostProps) {
     super(props);
+
+    telemetry.track('PropertyFieldViewPicker', {
+      disabled: props.disabled
+    });
 
     this.state = {
       results: this.options,

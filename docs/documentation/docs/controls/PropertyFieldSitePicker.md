@@ -69,4 +69,4 @@ Interface `IPropertyFieldSite`
 | title | string | no | Site's display name |
 | url | string | no | URL to the site |
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldPeoplePicker)
+![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldSitePicker)

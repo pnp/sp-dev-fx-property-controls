@@ -61,6 +61,7 @@ define([], () => {
   "TermPickerExpandTitle": "Rozwiń ten zestaw terminów",
   "TermPickerExpandNode": "Rozwiń ten węzeł",
   "TermPickerMenuTermSet": "Menu dla zestawu terminów",
+  "TermPickerMenuTerm": "Menu dla terminów",
   "TermPickerMenuGroup": "Menu dla grupy termów",
   "TermPickerInLabel": "Cala",
   "TermPickerTermSetLabel": "Zestaw terminów",

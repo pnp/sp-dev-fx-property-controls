@@ -42,4 +42,4 @@ The `PropertyFieldSpinner` control can be configured with the following properti
 | Label | string | no | Label to Show | 
 
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldMessage)
+![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldSpinner)

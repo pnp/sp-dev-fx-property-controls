@@ -31,6 +31,8 @@ export interface ITermGroupProps extends ITermChanges {
   termsService: ISPTermStorePickerService;
   multiSelection: boolean;
   isTermSetSelectable?: boolean;
+  areTermsSelectable?: boolean;
+  areTermsHidden?: boolean;
   disabledTermIds?: string[];
 }
 
@@ -47,6 +49,8 @@ export interface ITermSetProps extends ITermChanges {
   autoExpand: () => void;
   multiSelection: boolean;
   isTermSetSelectable?: boolean;
+  areTermsSelectable?: boolean;
+  areTermsHidden?: boolean;
   disabledTermIds?: string[];
 }
 
@@ -62,6 +66,7 @@ export interface ITermProps extends ITermChanges {
   term: ITerm;
   multiSelection: boolean;
   disabled: boolean;
+  isTermSelectable: boolean;
 }
 
 export interface ITermState {

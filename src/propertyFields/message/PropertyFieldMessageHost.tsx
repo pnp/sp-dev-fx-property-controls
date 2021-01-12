@@ -6,7 +6,7 @@ import {
   IPropertyFieldMessageHostProps,
   IPropertyFieldMessageHostState
 } from "./IPropertyFieldMessageHost";
-
+import * as telemetry from '../../common/telemetry';
 
 export default class PropertyFieldPasswordHost extends React.Component<
   IPropertyFieldMessageHostProps,
@@ -18,6 +18,8 @@ export default class PropertyFieldPasswordHost extends React.Component<
     this.state = {
       text: this.props.text
     };
+
+    telemetry.track('PropertyFieldPassword', {});
   }
   ///
   public componentDidUpdate(

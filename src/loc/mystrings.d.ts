@@ -70,6 +70,7 @@ declare interface IPropertyControlStrings {
   TermPickerNoTerms: string;
   TermPickerExpandTitle: string;
   TermPickerExpandNode: string;
+  TermPickerMenuTerm: string;
   TermPickerMenuTermSet: string;
   TermPickerMenuGroup: string;
   TermPickerInLabel: string;
@@ -220,6 +221,11 @@ declare interface IPropertyControlStrings {
 
   // guid field
   IncorrectGuidValidationMessage: string;
+
+  //Icon picker
+  SelectedLabel: string;
+  SelectIcon: string;
+  CloseButton: string;
 
 }
 

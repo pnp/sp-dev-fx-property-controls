@@ -8,6 +8,7 @@ import {
 } from "./IPropertyFieldGuidHost";
 import { GeneralHelper } from "../../helpers/GeneralHelper";
 import * as strings from 'PropertyControlStrings';
+import * as telemetry from '../../common/telemetry';
 
 export default class PropertyFieldGuidHost extends React.Component<
   IPropertyFieldGuidHostProps,
@@ -18,6 +19,8 @@ export default class PropertyFieldGuidHost extends React.Component<
     this.state = {
       value: this.props.value
     };
+
+    telemetry.track('PropertyFieldButton', {});
   }
   ///
   public componentDidUpdate(prevProps: IPropertyFieldGuidHostProps, prevState: IPropertyFieldGuidHostState): void {

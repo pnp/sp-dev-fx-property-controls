@@ -61,6 +61,7 @@ define([], function () {
     TermPickerExpandTitle: "Expand this Term Set",
     TermPickerExpandNode: "Expand this Node",
     TermPickerMenuTermSet: "Menu for Term Set",
+    TermPickerMenuTerm: "Menu for Term",
     TermPickerMenuGroup: "Menu for Term Group",
     TermPickerInLabel: "in",
     TermPickerTermSetLabel: "Term Set",
@@ -229,6 +230,10 @@ define([], function () {
     FolderExplorerLoading: "Loading folders...",
     FolderExplorerNoItems: "This folder doesn't have any subfolders.",
 
-    IncorrectGuidValidationMessage: "Please enter a valid GUID"
+    IncorrectGuidValidationMessage: "Please enter a valid GUID",
+
+    SelectedLabel: "Selected",
+    SelectIcon: "Select icon",
+    CloseButton: "Close"
   }
 });

@@ -25,3 +25,5 @@ Once you have MkDocs and Material theme installed on your machine, in the comman
 
 - run `cd ./docs/documentation` to change directory to where the manual pages are stored
 - run `mkdocs serve` to start the local web server with MkDocs and view the documentation in the web browser
+
+![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/mpa)

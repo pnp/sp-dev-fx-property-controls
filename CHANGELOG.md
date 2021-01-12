@@ -1,5 +1,34 @@
 # Releases
 
+## 2.3.0
+
+### New control(s)
+
+- `PropertyFieldIconPicker`: new icon picker control [#319](https://github.com/pnp/sp-dev-fx-property-controls/pull/319)
+
+### Enhancements
+
+- `PropertyFieldTermPicker`: two properties: `areTermsSelectable` and `areTermsHidden` [#313](https://github.com/pnp/sp-dev-fx-property-controls/pull/313)
+- `PropertyFieldListPicker`: ability to return Title and relative URL of the list [#281](https://github.com/pnp/sp-dev-fx-property-controls/issues/281)
+
+### Fixes
+
+- Documentation fix: spelling fix on `index.md` [#320](https://github.com/pnp/sp-dev-fx-property-controls/pull/320)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Corey Roth](https://github.com/coreyroth), [Gautam Sheth](https://github.com/gautamdsheth), [Konrad K.](https://github.com/wilecoyotegenius).
+
+## 2.2.0
+
+### New control(s)
+
+- `PropertyFieldTeamPicker`: new Teams picker control [#303](https://github.com/pnp/sp-dev-fx-property-controls/pull/303)
+
+### Contributors
+
+Special thanks to our contributor: [João Mendes](https://github.com/joaojmendes).
+
 ## 2.1.1
 
 ### Fixes

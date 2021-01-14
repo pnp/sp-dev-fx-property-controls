@@ -980,7 +980,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   properties: this.properties,
                   disabled: false,
                   key: 'codeEditorFieldId',
-                  language: PropertyFieldCodeEditorLanguages.HTML
+                  language: PropertyFieldCodeEditorLanguages.HTML,
+                  // options: {
+                  //   wrap: true,
+                  //   fontSize: 20,
+                  // }
                 }),
                 PropertyFieldCollectionData("collectionData", {
                   key: "collectionData",

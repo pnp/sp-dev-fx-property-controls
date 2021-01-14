@@ -232,6 +232,7 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
             value={this.state.code}
             name={`code-${this.props.targetProperty}`}
             editorProps={{ $blockScrolling: true }}
+            setOptions={this.props.options}
           />
         </Panel>
       </div>

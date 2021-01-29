@@ -1,5 +1,3 @@
-![SharePoint Patterns and Practices](https://devofficecdn.azureedge.net/media/Default/PnP/sppnp.png)
-
 # sp-dev-fx-property-controls
 
 Property controls for the SharePoint Framework solutions.

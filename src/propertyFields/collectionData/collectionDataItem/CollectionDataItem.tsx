@@ -13,6 +13,7 @@ import { CollectionIconField } from '../collectionIconField';
 import { clone, findIndex, sortBy } from '@microsoft/sp-lodash-subset';
 import { CollectionNumberField } from '../collectionNumberField';
 import { Guid } from '@microsoft/sp-core-library';
+import { CollectionDropdownField } from '../collectionDropdownField/CollectionDropdownField';
 
 export class CollectionDataItem extends React.Component<ICollectionDataItemProps, ICollectionDataItemState> {
   private emptyItem: any = null;
@@ -347,17 +348,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                          disabled={disableFieldOnEdit}
                          className="PropertyFieldCollectionData__panel__boolean-field" />;
       case CustomCollectionFieldType.dropdown:
-        const dropdownOptions = (typeof(field.options) === "function") ?
-                                  field.options(field.id, item) :
-                                  field.options;
-        return <Dropdown placeHolder={field.placeholder || field.title}
-                         options={dropdownOptions}
-                         selectedKey={item[field.id] || null}
-                         required={field.required}
-                         disabled={disableFieldOnEdit}
-                         onChanged={(opt) => this.onValueChanged(field.id, opt.key)}
-                         onRenderOption={field.onRenderOption}
-                         className="PropertyFieldCollectionData__panel__dropdown-field" />;
+        return <CollectionDropdownField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
       case CustomCollectionFieldType.number:
         return (
           <CollectionNumberField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />

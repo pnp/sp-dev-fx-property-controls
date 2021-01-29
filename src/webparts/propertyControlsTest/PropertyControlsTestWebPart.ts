@@ -917,12 +917,12 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                 PropertyFieldIconPicker('iconPicker', {
                   currentIcon: this.properties.iconPicker,
                   key: "iconPickerId",
-                  onSave: (icon: string) => { console.log(icon); this.properties.iconPicker = icon; },                  
+                  onSave: (icon: string) => { console.log(icon); this.properties.iconPicker = icon; },
                   buttonLabel: "Icon",
                   renderOption: "panel",
                   properties: this.properties,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
-                  label: "Icon Picker"             
+                  label: "Icon Picker"
                 }),
                 PropertyFieldRoleDefinitionPicker('roleDefinitions', {
                   context: this.context,
@@ -1046,7 +1046,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       ],
                       required: true,
                       placeholder: "Favorite city of the person",
-                      defaultValue: "antwerp",
+                      //defaultValue: "antwerp",
                       onRenderOption: (props, defaultRenderer) => {
                         if (props.text.toLowerCase() === "antwerp") {
                           return React.createElement("b", { className: "Testing" }, `${props.text.toUpperCase()} 🎉`);

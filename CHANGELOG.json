@@ -4,13 +4,16 @@
       "version": "2.4.0",
       "changes": {
         "new": [],
-        "enhancements": [],
+        "enhancements": [
+          "`PropertyFieldCodeEditor`: Added an "options" property to the CodeEditor. Allows setting of any of the Ace Editor options outlined [here](https://github.com/ajaxorg/ace/wiki/Configuring-Ace) [#322](https://github.com/pnp/sp-dev-fx-property-controls/pull/322)"
+        ],
         "fixes": [
           "Documentation fix for `PropertyFIeldPassword`: `value` is of type `string`, not `number`. [#324](https://github.com/pnp/sp-dev-fx-property-controls/pull/324)"
         ]
       },
       "contributions": [
-        "[Corey Roth](https://github.com/coreyroth)"
+        "[Corey Roth](https://github.com/coreyroth)",
+        "[kflogdev](https://github.com/kflogdev)"
       ]
     },
     {

@@ -38,7 +38,12 @@ PropertyFieldCodeEditor('htmlCode', {
   properties: this.properties,
   disabled: false,
   key: 'codeEditorFieldId',
-  language: PropertyFieldCodeEditorLanguages.HTML
+  language: PropertyFieldCodeEditorLanguages.HTML,
+  options: {
+    wrap: true,
+    fontSize: 20,
+    // more options
+  }
 })
 ```
 
@@ -56,6 +61,7 @@ The `PropertyFieldCodeEditor` control can be configured with the following prope
 | properties | any | yes | Parent web part properties, this object is use to update the property value.  |
 | onPropertyChange | function | yes | Defines a onPropertyChange function to raise when the date gets changed. |
 | key | string | yes | An unique key that indicates the identity of this control. |
+| options | AceOptions | no | [Additional properties](https://github.com/ajaxorg/ace/wiki/Configuring-Ace) available to the Ace editor. |
 
 Enum `PropertyFieldCodeEditorLanguages`
 

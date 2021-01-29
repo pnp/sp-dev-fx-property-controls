@@ -1,4 +1,5 @@
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { AceOptions } from 'react-ace';
 
 
 export enum PropertyFieldCodeEditorLanguages {
@@ -60,6 +61,10 @@ export interface IPropertyFieldCodeEditorProps {
    * Default value is 200.
    */
   deferredValidationTime?: number;
+  /**
+   * Additional properties available to the Ace editor
+   */
+  options?: AceOptions;
 }
 
 /**

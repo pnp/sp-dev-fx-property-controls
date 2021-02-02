@@ -66,5 +66,6 @@ export enum CustomCollectionFieldType {
   dropdown,
   fabricIcon,
   url,
-  custom
+  custom,
+  color
 }

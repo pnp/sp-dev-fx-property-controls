@@ -1077,6 +1077,12 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       placeholder: "Enter a URL"
                     },
                     {
+                      id: "color",
+                      title: "Color",
+                      type: CustomCollectionFieldType.color,
+                      defaultValue: "#ff0000"
+                    },
+                    {
                       id: "custom",
                       title: "Custom Field",
                       type: CustomCollectionFieldType.custom,

@@ -12,6 +12,7 @@ import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/components/
 import { CollectionIconField } from '../collectionIconField';
 import { clone, findIndex, sortBy } from '@microsoft/sp-lodash-subset';
 import { CollectionNumberField } from '../collectionNumberField';
+import { CollectionColorField } from '../collectionColorField';
 import { Guid } from '@microsoft/sp-core-library';
 import { CollectionDropdownField } from '../collectionDropdownField/CollectionDropdownField';
 
@@ -356,6 +357,10 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
       case CustomCollectionFieldType.fabricIcon:
         return (
           <CollectionIconField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
+        );
+      case CustomCollectionFieldType.color:    
+        return (
+          <CollectionColorField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} />
         );
       case CustomCollectionFieldType.url:
         return <TextField placeholder={field.placeholder || field.title}

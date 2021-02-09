@@ -7,6 +7,7 @@ import { set } from '@microsoft/sp-lodash-subset';
 import * as telemetry from '../../common/telemetry';
 import styles from './PropertyPanePropertyEditorHost.module.scss';
 import * as strings from 'PropertyControlStrings';
+import { getPropertyValue, setPropertyValue } from '../../helpers/GeneralHelper';
 
 
 export default class PropertyPanePropertyEditorHost extends React.Component<IPropertyPanePropertyEditorHostProps, IPropertyPanePropertyEditorHostState> {
@@ -43,8 +44,10 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
         const newProperties = JSON.parse(this.state.propertiesJson);
         for (let propName in newProperties) {
             // Do not update dynamic data properties
-            if(!(this.props.webpart.properties[propName] && this.props.webpart.properties[propName].__type === "DynamicProperty")) {
-                set(this.props.webpart.properties, propName, newProperties[propName]);
+            const currentValue = getPropertyValue(this.props.webpart.properties, propName);
+
+            if(!(currentValue && currentValue.__type === "DynamicProperty")) {
+                setPropertyValue(this.props.webpart.properties, propName, newProperties[propName]);
                 if (typeof this.props.webpart.properties[propName].onChange !== 'undefined' && this.props.webpart.properties[propName].onChange !== null) {
                     this.props.webpart.properties[propName].onChange(propName, newProperties[propName]);
                 }

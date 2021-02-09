@@ -16,6 +16,7 @@ import { Panel, PanelType, IPanelProps } from 'office-ui-fabric-react/lib/Panel'
 import debounce from 'lodash/debounce';
 import styles from './IconPicker.module.scss';
 import { Label } from 'office-ui-fabric-react/lib/Label';
+import { setPropertyValue } from "../../helpers/GeneralHelper";
 initializeIcons();
 
 export default class PropertyFieldIconPickerHost extends React.Component<IPropertyFieldIconPickerHostProps,IPropertyFieldIconPickerHostState> {
@@ -29,8 +30,8 @@ export default class PropertyFieldIconPickerHost extends React.Component<IProper
     super(props);
     telemetry.track('PropertyFieldIconPicker', {
       disabled: props.disabled
-    });    
-    
+    });
+
     this._fluentIconsService = new FluentIconsService();
     this.state = {
         currentIcon: this.props.currentIcon || null,
@@ -45,7 +46,7 @@ export default class PropertyFieldIconPickerHost extends React.Component<IProper
         currentIcon: this.props.currentIcon
       });
     }
-  }  
+  }
 
   public render(): React.ReactElement<IPropertyFieldIconPickerHostProps> {
     const {
@@ -53,7 +54,7 @@ export default class PropertyFieldIconPickerHost extends React.Component<IProper
       buttonClassName,
       disabled,
       panelClassName,
-      label     
+      label
     } = this.props;
 
     let renderOption = this.props.renderOption;
@@ -139,7 +140,7 @@ export default class PropertyFieldIconPickerHost extends React.Component<IProper
   }
 
   private iconOnClick = (iconName: string): void => {
-    if (this.props.onChanged) {      
+    if (this.props.onChanged) {
       if (typeof this.props.onChanged !== 'undefined' && this.props.onChanged !== null) {
         this.props.onChange(this.props.targetProperty, iconName);
       }
@@ -173,7 +174,7 @@ export default class PropertyFieldIconPickerHost extends React.Component<IProper
     if (this.props.onSave) {
       this.props.onSave(this.state.currentIcon);
 
-      this.props.properties[this.props.targetProperty] = this.state.currentIcon;
+      setPropertyValue(this.props.properties, this.props.targetProperty, this.state.currentIcon);
       this.props.onPropertyChange(this.props.targetProperty, this.props.currentIcon, this.state.currentIcon);
 
       if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {

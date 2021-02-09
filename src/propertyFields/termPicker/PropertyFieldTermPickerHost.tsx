@@ -15,6 +15,7 @@ import TermGroup from './TermGroup';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as telemetry from '../../common/telemetry';
 import * as strings from 'PropertyControlStrings';
+import { setPropertyValue } from '../../helpers/GeneralHelper';
 
 /**
  * Image URLs / Base64
@@ -129,7 +130,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
    */
   private notifyAfterValidate(oldValue: IPickerTerms, newValue: IPickerTerms) {
     if (this.props.onPropertyChange && newValue !== null) {
-      this.props.properties[this.props.targetProperty] = newValue;
+      setPropertyValue(this.props.properties, this.props.targetProperty, newValue);
       this.props.onPropertyChange(this.props.targetProperty, oldValue, newValue);
       // Trigger the apply button
       if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {

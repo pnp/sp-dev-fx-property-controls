@@ -2,6 +2,7 @@ import { IPropertyPaneField, PropertyPaneFieldType } from '@microsoft/sp-webpart
 import { getColorFromString, IColor } from 'office-ui-fabric-react/lib/utilities/color';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { setPropertyValue } from '../../helpers/GeneralHelper';
 
 import {
 	IPropertyFieldColorPickerProps,
@@ -84,7 +85,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			let oldValue: string | IColor = (this.valueAsObject ? getColorFromString(this.color) : this.color);
 			this.color = newColor;
 			this.properties.onPropertyChange(this.targetProperty, oldValue, newValue);
-			this.properties.properties[this.targetProperty] = newValue;
+      setPropertyValue(this.properties.properties, this.targetProperty, newValue);
 			if (typeof this.changeCB !== 'undefined' && this.changeCB !== null) {
 				this.changeCB(this.targetProperty, newValue);
 			}

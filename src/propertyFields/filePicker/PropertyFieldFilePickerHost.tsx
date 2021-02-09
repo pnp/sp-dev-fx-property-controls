@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FilePicker, IFilePickerResult } from './filePickerControls';
 import styles from './PropertyFieldFilePickerHost.module.scss';
 import { IPropertyFieldFilePickerHostProps } from './IPropertyFieldFilePickerHost';
-import { GeneralHelper } from '../../helpers/GeneralHelper';
+import { GeneralHelper, setPropertyValue } from '../../helpers/GeneralHelper';
 import * as telemetry from '../../common/telemetry';
 
 /**
@@ -65,7 +65,7 @@ export default class PropertyFieldFilePickerHost extends React.Component<IProper
 
     this.props.onSave(filePickerResult);
 
-    this.props.properties[this.props.targetProperty] = filePickerResult;
+    setPropertyValue(this.props.properties, this.props.targetProperty, filePickerResult);
     this.props.onPropertyChange(this.props.targetProperty, this.props.filePickerResult, filePickerResult);
 
     if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {

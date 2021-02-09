@@ -9,6 +9,7 @@ import { IPropertyFieldPeoplePickerHostProps, IPeoplePickerState } from './IProp
 import SPPeopleSearchService from '../../services/SPPeopleSearchService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as telemetry from '../../common/telemetry';
+import { setPropertyValue } from '../../helpers/GeneralHelper';
 
 /**
  * Renders the controls for PropertyFieldPeoplePicker component
@@ -191,7 +192,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
    */
   private notifyAfterValidate(oldValue: IPropertyFieldGroupOrPerson[], newValue: IPropertyFieldGroupOrPerson[]) {
     if (this.props.onPropertyChange && newValue) {
-      this.props.properties[this.props.targetProperty] = newValue;
+      setPropertyValue(this.props.properties, this.props.targetProperty, newValue);
       this.props.onPropertyChange(this.props.targetProperty, oldValue, newValue);
       // Trigger the apply button
       if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {

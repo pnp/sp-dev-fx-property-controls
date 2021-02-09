@@ -10,6 +10,7 @@ import SPListPickerService from '../../services/SPListPickerService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as telemetry from '../../common/telemetry';
 import { IPropertyFieldList } from './IPropertyFieldListPicker';
+import { setPropertyValue } from '../../helpers/GeneralHelper';
 
 /**
 * Renders the controls for PropertyFieldSPListMultiplePicker component
@@ -238,7 +239,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
     }
 
     if (onPropertyChange && newValue !== null) {
-      properties[targetProperty] = propValue;
+      setPropertyValue(properties, targetProperty, propValue);
       onPropertyChange(targetProperty, selectedLists, propValue);
       // Trigger the apply button
       if (typeof onChange !== 'undefined' && onChange !== null) {

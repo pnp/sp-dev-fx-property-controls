@@ -322,3 +322,26 @@ export class GeneralHelper {
         return o[c];
     }
 }
+
+export const setPropertyValue = (properties: any, targetProperty: string, value: any) => {
+  if (!properties) {
+    return;
+  }
+  if (targetProperty.indexOf('.') === -1) { // simple prop
+    properties[targetProperty] = value;
+  }
+  else {
+    _.set(properties, targetProperty, value);
+  }
+};
+
+export const getPropertyValue = <T = any>(properties: any, targetProperty: string): T => {
+  if (!properties) {
+    return undefined;
+  }
+  if (targetProperty.indexOf('.') === -1) {
+    return properties[targetProperty];
+  }
+
+  return _.get(properties, targetProperty);
+};

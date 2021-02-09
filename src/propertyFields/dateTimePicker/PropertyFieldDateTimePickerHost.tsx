@@ -12,6 +12,7 @@ import HoursComponent from './HoursComponent';
 import MinutesComponent from './MinutesComponent';
 import SecondsComponent from './SecondsComponent';
 import * as telemetry from '../../common/telemetry';
+import { setPropertyValue } from '../../helpers/GeneralHelper';
 
 /**
  * Defines the labels of the DatePicker control (as months, days, etc.)
@@ -264,7 +265,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
    */
   private notifyAfterValidate(oldValue: IDateTimeFieldValue, newValue: IDateTimeFieldValue) {
     if (this.props.onPropertyChange && newValue !== null) {
-      this.props.properties[this.props.targetProperty] = newValue;
+      setPropertyValue(this.props.properties, this.props.targetProperty, newValue);
       this.props.onPropertyChange(this.props.targetProperty, oldValue, newValue);
       //  Trigger the apply button
       if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {

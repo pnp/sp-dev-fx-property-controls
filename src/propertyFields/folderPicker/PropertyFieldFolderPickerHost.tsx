@@ -10,6 +10,7 @@ import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { FolderExplorer } from './controls/FolderExplorer';
 import { IPropertyFieldFolderPickerState } from './IPropertyFieldFolderPickerState';
 import * as telemetry from '../../common/telemetry';
+import { getPropertyValue, setPropertyValue } from '../../helpers/GeneralHelper';
 
 export default class PropertyFieldFolderPickerHost extends React.Component<IPropertyFieldFolderPickerHostProps, IPropertyFieldFolderPickerState> {
 
@@ -25,15 +26,17 @@ export default class PropertyFieldFolderPickerHost extends React.Component<IProp
 
     this.state = {
       showPanel: false,
-      selectedFolder: this.props.properties[this.props.targetProperty] || this.props.defaultFolder
+      selectedFolder: getPropertyValue<IFolder>(props.properties, props.targetProperty) || this.props.defaultFolder
     };
   }
 
   public componentWillReceiveProps(nextProps: IPropertyFieldFolderPickerHostProps) {
+    const currentValue = getPropertyValue(this.props.properties, this.props.targetProperty);
+    const nextValue = getPropertyValue(nextProps.properties, nextProps.targetProperty);
 
-    if(this.props.properties[this.props.targetProperty] !== nextProps.properties[nextProps.targetProperty]){
+    if(currentValue !== nextValue){
       this.setState({
-        selectedFolder: nextProps.properties[nextProps.targetProperty],
+        selectedFolder: nextValue
       });
     }
   }
@@ -127,12 +130,12 @@ export default class PropertyFieldFolderPickerHost extends React.Component<IProp
 
     this.props.onSelect(this._selectedFolder);
 
-    this.props.properties[this.props.targetProperty] = this._selectedFolder;
+    setPropertyValue(this.props.properties, this.props.targetProperty, this._selectedFolder);
     this.props.onPropertyChange(this.props.targetProperty, this.props.selectedFolder, this._selectedFolder);
 
     if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
       this.props.onChange(this.props.targetProperty, this._selectedFolder);
-    }   
+    }
 
     this.setState({
       selectedFolder: this._selectedFolder,
@@ -149,7 +152,7 @@ export default class PropertyFieldFolderPickerHost extends React.Component<IProp
     });
 
     this.props.onSelect(this._selectedFolder);
-    this.props.properties[this.props.targetProperty] = this._selectedFolder;
+    setPropertyValue(this.props.properties, this.props.targetProperty, this._selectedFolder);
     this.props.onPropertyChange(this.props.targetProperty, this.props.selectedFolder, this._selectedFolder);
 
     if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {

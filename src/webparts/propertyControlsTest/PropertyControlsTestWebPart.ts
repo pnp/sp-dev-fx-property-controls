@@ -413,47 +413,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   ],
                   disabled: false
                 }),
-                PropertyFieldPeoplePicker('people', {
-                  label: 'PropertyFieldPeoplePicker',
-                  initialData: this.properties.people,
-                  allowDuplicate: false,
-                  // principalType: [PrincipalType.Security],
-                  principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
-                  // principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
-                  // principalType: [IPrincipalType.SharePoint],
-                  multiSelect: true,
-                  onPropertyChange: this.onPropertyPaneFieldChanged,
-                  context: this.context,
-                  properties: this.properties,
-                  onGetErrorMessage: (value: IPropertyFieldGroupOrPerson[]) => {
-                    const users = value.filter(u => u.fullName.toLowerCase().indexOf("elio") !== -1);
-                    return users.length === 0 ? 'Please use a person with "Elio" in its name' : "";
-                  },
-                  deferredValidationTime: 0,
-                  key: 'peopleFieldId',
-                  targetSiteUrl: this.context.pageContext.site.absoluteUrl
-                }),
-                PropertyFieldTermPicker('terms', {
-                  label: 'Select terms',
-                  panelTitle: 'Select terms',
-                  initialValues: this.properties.terms,
-                  allowMultipleSelections: true,
-                  excludeSystemGroup: false,
-                  disabledTermIds: ["943fd9f0-3d7c-415c-9192-93c0e54573fb", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
-                  // disabledTermIds: ["943fd9f0-3d7c-415c-9192-93c0e54573fb", "73d18756-20af-41de-808c-2a1e21851e44", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
-                  // disabledTermIds: ["cd6f6d3c-672d-4244-9320-c1e64cc0626f", "0e415292-cce5-44ac-87c7-ef99dd1f01f4"],
-                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
-                  properties: this.properties,
-                  context: this.context,
-                  disabled: false,
-                  onGetErrorMessage: null,
-                  deferredValidationTime: 0,
-                  //limitByGroupNameOrID: 'Test',
-                  limitByTermsetNameOrID: '7276c08b-58c1-4fcd-812e-f21299a06b85',
-                  isTermSetSelectable: true,
-                  key: 'termSetsPickerFieldId',
-                  hideTermStoreName: true
-                }),
                 PropertyFieldNumber("numberValue", {
                   key: "numberValue",
                   label: "Number value only",

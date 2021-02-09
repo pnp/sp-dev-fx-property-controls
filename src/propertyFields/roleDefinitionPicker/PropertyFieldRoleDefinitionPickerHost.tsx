@@ -8,6 +8,7 @@ import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import { IRoleDefinitionInformation } from '.';
 import { IRoleDefinitionInformationCollection } from './IRoleDefinitionInformationCollection';
 import * as telemetry from '../../common/telemetry';
+import { setPropertyValue } from '../../helpers/GeneralHelper';
 
 /**
  * Renders the controls for PropertyFieldRoleDefinitionPicker component
@@ -97,17 +98,20 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
         });
       });
 
+      let newVlaue: IRoleDefinitionInformation | IRoleDefinitionInformation[];
       if(this.props.multiSelect === true){
-        this.props.properties[this.props.targetProperty] = selectedRoleDefinitionInformation;
+        newVlaue = selectedRoleDefinitionInformation;
       }
       else{
-        this.props.properties[this.props.targetProperty] = selectedRoleDefinitionInformation[0];
+        newVlaue = selectedRoleDefinitionInformation[0];
       }
-      
+
+      setPropertyValue(this.props.properties, this.props.targetProperty, newVlaue);
+
 
       // Update the current component state
       this.setState({
-        results: this.options,        
+        results: this.options,
         roleDefinitionInformationResult: this.resultsRoleDefinition
       });
     }).catch(error => {
@@ -135,7 +139,7 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
       } else {
         this.selectedOptions = this.selectedOptions.filter(o => o.key !== option.key);
       }
-  
+
       this.state.roleDefinitionInformationResult.forEach(value => {
         this.selectedOptions.forEach(i => {
           if (value.Id === i.key) {
@@ -151,7 +155,7 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
       });
 
       this.selectedOptions = this.selectedOptions.filter(o => o.key === option.key);
-      
+
       selectedRoleDefinitionInformation = this.state.roleDefinitionInformationResult.filter(i => i.Id === this.selectedOptions[0].key);
 
     }
@@ -164,7 +168,7 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
     }
 
     this.setState({
-      results: this.options,      
+      results: this.options,
     });
 
   }

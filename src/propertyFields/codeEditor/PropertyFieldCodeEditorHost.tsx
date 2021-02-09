@@ -21,6 +21,7 @@ import 'brace/mode/html';
 import 'brace/mode/handlebars';
 import 'brace/mode/xml';
 import 'brace/theme/monokai';
+import { setPropertyValue } from '../../helpers/GeneralHelper';
 
 /**
  * Renders the controls for PropertyFieldCodeEditor component
@@ -157,7 +158,7 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
    */
   public onSave(): void {
     this.cancel = false;
-    this.props.properties[this.props.targetProperty] = this.state.code;
+    setPropertyValue(this.props.properties, this.props.targetProperty, this.state.code);
     this.props.onPropertyChange(this.props.targetProperty, this.props.initialValue, this.state.code);
     // Trigger the apply button
     if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {

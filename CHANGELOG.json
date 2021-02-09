@@ -5,7 +5,8 @@
       "changes": {
         "new": [],
         "enhancements": [
-          "`PropertyFieldCodeEditor`: Added an `options` property to the CodeEditor. Allows setting of any of the Ace Editor options outlined [here](https://github.com/ajaxorg/ace/wiki/Configuring-Ace) [#322](https://github.com/pnp/sp-dev-fx-property-controls/pull/322)"
+          "`PropertyFieldCodeEditor`: Added an `options` property to the CodeEditor. Allows setting of any of the Ace Editor options outlined [here](https://github.com/ajaxorg/ace/wiki/Configuring-Ace) [#322](https://github.com/pnp/sp-dev-fx-property-controls/pull/322)",
+          "`PropertyFieldCollectionData`: Support for a Color Picker control [#326](https://github.com/pnp/sp-dev-fx-property-controls/issues/326)"
         ],
         "fixes": [
           "Documentation fix for `PropertyFIeldPassword`: `value` is of type `string`, not `number`. [#324](https://github.com/pnp/sp-dev-fx-property-controls/pull/324)",
@@ -34,6 +35,7 @@
       "contributions": [
         "[Corey Roth](https://github.com/coreyroth)",
         "[Gautam Sheth](https://github.com/gautamdsheth)",
+        "[Jonathan Cardy](https://github.com/johnnycardy)",
         "[Konrad K.](https://github.com/wilecoyotegenius)"
       ]
     },

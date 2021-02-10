@@ -68,5 +68,6 @@ Interface `IPropertyFieldSite`
 | id | string | no | The ID of the site |
 | title | string | no | Site's display name |
 | url | string | no | URL to the site |
+| webId | string | no | The ID of the web |
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldSitePicker)

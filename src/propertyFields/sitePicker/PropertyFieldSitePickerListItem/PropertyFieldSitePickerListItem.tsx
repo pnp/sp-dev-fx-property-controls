@@ -7,7 +7,7 @@ export const PropertyFieldSitePickerListItem = (props: IPropertyFieldSitePickerL
   const { site, checked } = props;
 
   return (
-    <li className={styles.siteListItem} key={site.id}>
+    <li className={styles.siteListItem} key={site.url}>
       <Checkbox
         className={styles.checkbox}
         checked={checked}

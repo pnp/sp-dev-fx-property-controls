@@ -345,3 +345,12 @@ export const getPropertyValue = <T = any>(properties: any, targetProperty: strin
 
   return _.get(properties, targetProperty);
 };
+
+export const toRelativeUrl = (absoluteUrl: string): string => {
+
+  if (!absoluteUrl) {
+    return '';
+  }
+
+  return absoluteUrl.replace(/^(?:\/\/|[^/]+)*\//, '/');
+};

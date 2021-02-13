@@ -8,7 +8,8 @@
           "`PropertyFieldCodeEditor`: Added an `options` property to the CodeEditor. Allows setting of any of the Ace Editor options outlined [here](https://github.com/ajaxorg/ace/wiki/Configuring-Ace) [#322](https://github.com/pnp/sp-dev-fx-property-controls/pull/322)",
           "`PropertyFieldCollectionData`: Support for a Color Picker control [#326](https://github.com/pnp/sp-dev-fx-property-controls/issues/326)",
           "Support for nested web part properties (example: `targetProperty`: 'a.b.c') in all controls",
-          "`PropertyFieldSitePicker`: display site URL [#330](https://github.com/pnp/sp-dev-fx-property-controls/issues/330)"
+          "`PropertyFieldSitePicker`: display site URL [#330](https://github.com/pnp/sp-dev-fx-property-controls/issues/330)",
+          "`PropertyPanePropertyEditor`: Support of dynamic properties (`DynamicData`) [#331](https://github.com/pnp/sp-dev-fx-property-controls/issues/331)"
         ],
         "fixes": [
           "Documentation fix for `PropertyFIeldPassword`: `value` is of type `string`, not `number`. [#324](https://github.com/pnp/sp-dev-fx-property-controls/pull/324)",

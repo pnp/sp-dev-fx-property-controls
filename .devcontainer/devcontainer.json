@@ -1,0 +1,14 @@
+{
+  "name":"SPFx",
+  "settings":{
+  },
+  "forwardPorts": [
+    4321,
+    5432,
+    35729
+  ],
+  "extensions": [
+    "editorconfig.editorconfig",
+  ],
+  "postCreateCommand": "bash .devcontainer/spfx-setup.sh"
+}

@@ -1,14 +1,20 @@
 {
-  "name":"SPFx",
-  "settings":{
-  },
-  "forwardPorts": [
-    4321,
-    5432,
-    35729
-  ],
-  "extensions": [
-    "editorconfig.editorconfig",
-  ],
-  "postCreateCommand": "bash .devcontainer/spfx-setup.sh"
+	"name": "SPFx",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"dbaeumer.vscode-eslint",
+		"ms-vscode.vscode-typescript-tslint-plugin"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [4321, 5432, 35729]
 }

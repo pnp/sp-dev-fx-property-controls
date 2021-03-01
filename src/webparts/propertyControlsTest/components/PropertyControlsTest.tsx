@@ -29,6 +29,7 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
               <p className="ms-font-m ms-fontColor-neutralDark">Date: {this.props.datetime.displayValue}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Spin Value: {this.props.spinValue}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">GUID: {this.props.guid}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Editable ComboBox: {this.props.editableComboBox}</p>
 
               <h3 className="ms-font-xl ms-fontColor-neutralDark">Sites, Lists, and Views</h3>
               <p className="ms-font-m ms-fontColor-neutralDark">List: {this.props.list}</p>

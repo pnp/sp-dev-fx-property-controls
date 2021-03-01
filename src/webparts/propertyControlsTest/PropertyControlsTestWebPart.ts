@@ -59,6 +59,7 @@ import { PropertyFieldGuid } from '../../PropertyFieldGuid';
 import FieldErrorMessage from '../../propertyFields/errorMessage/FieldErrorMessage';
 import { PropertyFieldTeamPicker } from '../../propertyFields/teamPicker';
 import { PropertyFieldIconPicker } from "../../propertyFields/iconPicker";
+import { PropertyFieldEditableComboBox } from '../../PropertyFieldEditableComboBox';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -104,7 +105,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         roleDefinitions: this.properties.roleDefinitions || [],
         folderPicker: this.properties.folderPicker,
         guid: this.properties.guid,
-        iconPicker: this.properties.iconPicker
+        iconPicker: this.properties.iconPicker,
+        editableComboBox: this.properties.editableComboBox
       }
     );
 
@@ -163,6 +165,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     return value >= 18 ? "" : "Person should be at least 18 years old";
   }
 
+  private comboBoxOptionAdded(text: string) {
+    console.log(`${text} was added to the combo box.  This is your chance to do something about it!`);
+  }
 
   private _onChangedPassword(value: string) {
     console.log(value);
@@ -513,6 +518,19 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: "GUID",
                   value: this.properties.guid,
                   errorMessage: "Please enter a correct GUID."
+                }),
+                PropertyFieldEditableComboBox('editableComboBox', {
+                  disabled: false,
+                  key: 'editableComboBox',
+                  label: 'Editable ComboBox',
+                  maxFillInLength: 50,
+                  options: [ {key: 'Apples', text: 'Apples'}, {key: 'Oranges', text: 'Oranges'}],
+                  properties: this.properties,
+                  selectedText: 'Oranges',
+                  showTooltip: false,
+                  tooltipText: 'This is what the tooltip would say if it shows. lol',
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  onOptionAdded: this.comboBoxOptionAdded
                 })
               ]
             },
@@ -917,12 +935,12 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                 PropertyFieldIconPicker('iconPicker', {
                   currentIcon: this.properties.iconPicker,
                   key: "iconPickerId",
-                  onSave: (icon: string) => { console.log(icon); this.properties.iconPicker = icon; },                  
+                  onSave: (icon: string) => { console.log(icon); this.properties.iconPicker = icon; },
                   buttonLabel: "Icon",
                   renderOption: "panel",
                   properties: this.properties,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
-                  label: "Icon Picker"             
+                  label: "Icon Picker"
                 }),
                 PropertyFieldRoleDefinitionPicker('roleDefinitions', {
                   context: this.context,

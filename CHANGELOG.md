@@ -1,5 +1,26 @@
 # Releases
 
+## 2.4.0
+
+### Enhancements
+
+- `PropertyFieldCodeEditor`: Added an `options` property to the CodeEditor. Allows setting of any of the Ace Editor options outlined [here](https://github.com/ajaxorg/ace/wiki/Configuring-Ace) [#322](https://github.com/pnp/sp-dev-fx-property-controls/pull/322)
+- `PropertyFieldCollectionData`: Support for a Color Picker control [#326](https://github.com/pnp/sp-dev-fx-property-controls/issues/326)
+- Support for nested web part properties (example: `targetProperty`: 'a.b.c') in all controls
+- `PropertyFieldSitePicker`: display site URL [#330](https://github.com/pnp/sp-dev-fx-property-controls/issues/330)
+- `PropertyPanePropertyEditor`: Support of dynamic properties (`DynamicData`) [#331](https://github.com/pnp/sp-dev-fx-property-controls/issues/331)
+
+### Fixes
+
+- Documentation fix for `PropertyFIeldPassword`: `value` is of type `string`, not `number`. [#324](https://github.com/pnp/sp-dev-fx-property-controls/pull/324)
+- `PropertyFieldCollectionData`: Dropdown validation not working as expected [#321](https://github.com/pnp/sp-dev-fx-property-controls/issues/321)
+- `PropertyFieldPeoplePicker`: targetProperty is not updated properly when using nested/complex attributes [#221](https://github.com/pnp/sp-dev-fx-property-controls/issues/221)
+- `PropertyFieldSitePicker`: if a single subsite is selected all others are selected as well [#329](https://github.com/pnp/sp-dev-fx-property-controls/issues/329)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Corey Roth](https://github.com/coreyroth), [kflogdev](https://github.com/kflogdev).
+
 ## 2.3.0
 
 ### New control(s)
@@ -17,7 +38,7 @@
 
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [Corey Roth](https://github.com/coreyroth), [Gautam Sheth](https://github.com/gautamdsheth), [Konrad K.](https://github.com/wilecoyotegenius).
+Special thanks to our contributors (in alphabetical order): [Corey Roth](https://github.com/coreyroth), [Gautam Sheth](https://github.com/gautamdsheth), [Jonathan Cardy](https://github.com/johnnycardy), [Konrad K.](https://github.com/wilecoyotegenius).
 
 ## 2.2.0
 

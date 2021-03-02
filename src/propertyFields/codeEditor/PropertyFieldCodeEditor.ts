@@ -8,6 +8,7 @@ import {
 import PropertyFieldCodeEditorHost from './PropertyFieldCodeEditorHost';
 import { IPropertyFieldCodeEditorHostProps } from './IPropertyFieldCodeEditorHost';
 import { IPropertyFieldCodeEditorPropsInternal, IPropertyFieldCodeEditorProps, PropertyFieldCodeEditorLanguages } from './IPropertyFieldCodeEditor';
+import { AceOptions } from 'react-ace';
 
 /**
  * Represents a PropertyFieldCodeEditor object
@@ -31,6 +32,7 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
   private key: string;
   private disabled: boolean = false;
   private deferredValidationTime: number = 200;
+  private options: AceOptions;
 
   /**
    * Constructor method
@@ -57,6 +59,9 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
     if (_properties.deferredValidationTime) {
       this.deferredValidationTime = _properties.deferredValidationTime;
     }
+    if (_properties.options) {
+      this.options = _properties.options;
+    }
 
   }
 
@@ -78,7 +83,8 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
       properties: this.customProperties,
       key: this.key,
       disabled: this.disabled,
-      deferredValidationTime: this.deferredValidationTime
+      deferredValidationTime: this.deferredValidationTime,
+      options: this.options,
     });
 
     // Calls the REACT content generator

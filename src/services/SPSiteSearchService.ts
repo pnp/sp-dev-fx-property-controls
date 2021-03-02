@@ -24,7 +24,7 @@ export default class SPSiteSearchService implements ISPSiteSearchService {
       }
 
       // If the running env is SharePoint, loads from the search
-      const userRequestUrl: string = `${ctx.pageContext.web.absoluteUrl}/_api/search/query?querytext='contentclass:STS_Site contentclass:STS_Web Title:*${query}* Path:${rootUrl}*'&selectproperties='SiteId,Title,Path'&rowlimit=5`;
+      const userRequestUrl: string = `${ctx.pageContext.web.absoluteUrl}/_api/search/query?querytext='contentclass:STS_Site contentclass:STS_Web Title:*${query}* Path:${rootUrl}*'&selectproperties='SiteId,SiteID,WebId,Title,Path'&rowlimit=5`;
 
       // Do the call against the SP REST API search endpoint
       return ctx.spHttpClient.get(userRequestUrl, SPHttpClient.configurations.v1).then((searchResponse: SPHttpClientResponse) => {
@@ -42,7 +42,11 @@ export default class SPSiteSearchService implements ISPSiteSearchService {
                   site.url = cell.Value;
                   break;
                 case 'SiteId':
+                case 'SiteID':
                   site.id = cell.Value;
+                  break;
+                case 'WebId':
+                  site.webId = cell.Value;
                   break;
               }
             });

@@ -1,14 +1,30 @@
 .siteListItem {
   display: flex;
   white-space: nowrap;
-  
+  align-items: center;
+
   .checkbox {
     display: inline-block !important;
-    margin-right: 10px;
+    margin-right: 4px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 4px 0;
   }
 
   .title {
-    line-height: 28px;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .url {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 300;
     overflow: hidden;
     text-overflow: ellipsis;
   }

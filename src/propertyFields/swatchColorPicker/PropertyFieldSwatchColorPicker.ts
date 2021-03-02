@@ -2,6 +2,7 @@ import { IPropertyPaneField, PropertyPaneFieldType } from '@microsoft/sp-webpart
 import { getColorFromString, IColor } from 'office-ui-fabric-react/lib/utilities/color/colors';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { setPropertyValue } from '../../helpers/GeneralHelper';
 
 import {
     IPropertyFieldSwatchColorPickerProps,
@@ -12,7 +13,7 @@ import { IPropertyFieldSwatchColorPickerHostProps } from './IPropertyFieldSwatch
 import PropertyFieldSwatchColorPickerHost from './PropertyFieldSwatchColorPickerHost';
 
 class PropertyFieldSwatchColorPickerBuilder implements IPropertyPaneField<IPropertyFieldSwatchColorPickerProps> {
-	
+
 	//Properties defined by IPropertyPaneField
 	public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
 	public targetProperty: string;
@@ -86,7 +87,7 @@ class PropertyFieldSwatchColorPickerBuilder implements IPropertyPaneField<IPrope
 			let oldValue: string | IColor = (this.valueAsObject ? getColorFromString(this.color) : this.color);
 			this.color = newColor;
 			this.properties.onPropertyChange(this.targetProperty, oldValue, newValue);
-			this.properties.properties[this.targetProperty] = newValue;
+      setPropertyValue(this.properties.properties, this.targetProperty, newValue);
 			if (typeof this.changeCB !== 'undefined' && this.changeCB !== null) {
 				this.changeCB(this.targetProperty, newValue);
 			}

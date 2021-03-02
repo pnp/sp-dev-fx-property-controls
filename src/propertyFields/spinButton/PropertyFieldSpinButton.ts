@@ -10,6 +10,7 @@ import {
 } from './IPropertyFieldSpinButton';
 import { IPropertyFieldSpinButtonHostProps } from './IPropertyFieldSpinButtonHost';
 import PropertyFieldSpinButtonHost from './PropertyFieldSpinButtonHost';
+import { setPropertyValue } from '../../helpers/GeneralHelper';
 
 class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFieldSpinButtonProps> {
 
@@ -157,7 +158,7 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 		if (this.properties.onPropertyChange && newValue !== null) {
 			this.properties.onPropertyChange(this.targetProperty, this.svalue, newValue);
 			this.svalue = newValue;
-			this.properties.properties[this.targetProperty] = newValue;
+      setPropertyValue(this.properties.properties, this.targetProperty, newValue);
 			if (typeof this.changeCB !== 'undefined' && this.changeCB !== null) {
 				this.changeCB(this.targetProperty, newValue);
 			}

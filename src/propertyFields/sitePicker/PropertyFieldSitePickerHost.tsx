@@ -101,8 +101,8 @@ export default class PropertyFieldSitePickerHost extends React.Component<IProper
                 {
                   siteSearchResults.map((site: IPropertyFieldSite): JSX.Element =>
                     <PropertyFieldSitePickerListItem
-                      key={site.id}
-                      checked={selectedSites.filter(s => s.id === site.id).length > 0}
+                      key={site.url}
+                      checked={selectedSites.filter(s => s.url === site.url).length > 0}
                       handleCheckboxChange={this.handleCheckboxChange}
                       site={site}
                     />
@@ -124,8 +124,8 @@ export default class PropertyFieldSitePickerHost extends React.Component<IProper
               {
                 selectedSites.map((site: IPropertyFieldSite): JSX.Element =>
                   <PropertyFieldSitePickerListItem
-                    key={site.id}
-                    checked={selectedSites.filter(s => s.id === site.id).length > 0}
+                    key={site.url}
+                    checked={selectedSites.filter(s => s.url === site.url).length > 0}
                     handleCheckboxChange={this.handleCheckboxChange}
                     site={site}
                   />

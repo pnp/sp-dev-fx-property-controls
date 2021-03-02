@@ -11,7 +11,6 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
     return { __html: this.props.htmlCode };
   }
   public render(): React.ReactElement<IPropertyControlsTestProps> {
-
     return (
       <div className={styles.propertyControlsTest}>
         <div className={styles.container}>

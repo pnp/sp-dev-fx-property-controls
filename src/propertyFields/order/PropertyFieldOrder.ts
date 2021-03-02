@@ -1,6 +1,7 @@
 import { IPropertyPaneField, PropertyPaneFieldType } from '@microsoft/sp-webpart-base';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { setPropertyValue } from '../../helpers/GeneralHelper';
 
 import { IPropertyFieldOrderProps, IPropertyFieldOrderPropsInternal } from './IPropertyFieldOrder';
 import { IPropertyFieldOrderHostProps } from './IPropertyFieldOrderHost';
@@ -71,7 +72,7 @@ class PropertyFieldOrderBuilder implements IPropertyPaneField<IPropertyFieldOrde
 		if (this.properties.onPropertyChange && newValue !== null) {
 			this.properties.onPropertyChange(this.targetProperty, this.items, newValue);
 			this.items = newValue;
-			this.properties.properties[this.targetProperty] = newValue;
+      setPropertyValue(this.properties.properties, this.targetProperty, newValue);
 			if (typeof this.changeCB !== 'undefined' && this.changeCB !== null) {
 				this.changeCB(this.targetProperty, newValue);
 			}

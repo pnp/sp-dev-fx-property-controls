@@ -13,6 +13,11 @@ export interface IPropertyFieldSite {
   * Base URL
   */
   url?: string;
+
+  /**
+   * ID of the web
+   */
+  webId?: string;
 }
 
 export interface IPropertyFieldSitePickerProps {

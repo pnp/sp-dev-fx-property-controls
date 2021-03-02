@@ -8,6 +8,7 @@ import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import { ISPView } from '.';
 import { ISPViews } from './ISPViews';
 import * as telemetry from '../../common/telemetry';
+import { setPropertyValue } from '../../helpers/GeneralHelper';
 
 // Empty view value
 const EMPTY_VIEW_KEY = 'NO_VIEW_SELECTED';
@@ -163,7 +164,7 @@ export default class PropertyFieldViewPickerHost extends React.Component<IProper
 
     if (this.props.onPropertyChange && propValue !== null) {
       // Store the new property value
-      this.props.properties[this.props.targetProperty] = propValue;
+      setPropertyValue(this.props.properties, this.props.targetProperty, propValue);
 
       // Trigger the default onPropertyChange event
       this.props.onPropertyChange(this.props.targetProperty, oldValue, propValue);

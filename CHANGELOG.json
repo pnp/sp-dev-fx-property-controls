@@ -1,6 +1,29 @@
 {
   "versions": [
     {
+      "version": "2.4.0",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "`PropertyFieldCodeEditor`: Added an `options` property to the CodeEditor. Allows setting of any of the Ace Editor options outlined [here](https://github.com/ajaxorg/ace/wiki/Configuring-Ace) [#322](https://github.com/pnp/sp-dev-fx-property-controls/pull/322)",
+          "`PropertyFieldCollectionData`: Support for a Color Picker control [#326](https://github.com/pnp/sp-dev-fx-property-controls/issues/326)",
+          "Support for nested web part properties (example: `targetProperty`: 'a.b.c') in all controls",
+          "`PropertyFieldSitePicker`: display site URL [#330](https://github.com/pnp/sp-dev-fx-property-controls/issues/330)",
+          "`PropertyPanePropertyEditor`: Support of dynamic properties (`DynamicData`) [#331](https://github.com/pnp/sp-dev-fx-property-controls/issues/331)"
+        ],
+        "fixes": [
+          "Documentation fix for `PropertyFIeldPassword`: `value` is of type `string`, not `number`. [#324](https://github.com/pnp/sp-dev-fx-property-controls/pull/324)",
+          "`PropertyFieldCollectionData`: Dropdown validation not working as expected [#321](https://github.com/pnp/sp-dev-fx-property-controls/issues/321)",
+          "`PropertyFieldPeoplePicker`: targetProperty is not updated properly when using nested/complex attributes [#221](https://github.com/pnp/sp-dev-fx-property-controls/issues/221)",
+          "`PropertyFieldSitePicker`: if a single subsite is selected all others are selected as well [#329](https://github.com/pnp/sp-dev-fx-property-controls/issues/329)"
+        ]
+      },
+      "contributions": [
+        "[Corey Roth](https://github.com/coreyroth)",
+        "[kflogdev](https://github.com/kflogdev)"
+      ]
+    },
+    {
       "version": "2.3.0",
       "changes": {
         "new": [
@@ -17,6 +40,7 @@
       "contributions": [
         "[Corey Roth](https://github.com/coreyroth)",
         "[Gautam Sheth](https://github.com/gautamdsheth)",
+        "[Jonathan Cardy](https://github.com/johnnycardy)",
         "[Konrad K.](https://github.com/wilecoyotegenius)"
       ]
     },
@@ -47,8 +71,7 @@
     {
       "version": "2.1.0",
       "changes": {
-        "new": [
-        ],
+        "new": [],
         "enhancements": [
           "Auto-generated localizations",
           "`PropertyFieldNumber`: ability to set float values [#299](https://github.com/pnp/sp-dev-fx-property-controls/pull/299)",
@@ -112,7 +135,7 @@
           "`PropertyFieldSearch`: new Search control [#248](https://github.com/pnp/sp-dev-fx-property-controls/pull/248)",
           "`PropertyFieldSpinner`: new Spinner control [#248](https://github.com/pnp/sp-dev-fx-property-controls/pull/248)",
           "`PropertyFieldFilePicker`: new File Picker control [#265](https://github.com/pnp/sp-dev-fx-property-controls/pull/265)"
-          ],
+        ],
         "enhancements": [
           "`PropertyFieldDateTimePicker`: Add ability to hide Date and show only Time field [#195](https://github.com/pnp/sp-dev-fx-property-controls/issues/195)",
           "`PropertyFieldCodeEditor`: Format code [#165](https://github.com/pnp/sp-dev-fx-property-controls/issues/165)"
@@ -123,7 +146,7 @@
           "`PropertyPanePropertyEditor`:Fix for dynamic data properties [#200](https://github.com/pnp/sp-dev-fx-property-controls/issues/200)",
           "`PropertyFieldPeoplePicker`: People Picker doesn't search for groups [#239](https://github.com/pnp/sp-dev-fx-property-controls/issues/239)",
           "Controls with callout: control's label should be disabled if the `disabled` prop is set to `true`"
-          ]
+        ]
       },
       "contributions": [
         "[Lars Fernhomberg](https://github.com/lafe)",
@@ -281,8 +304,7 @@
     {
       "version": "1.13.0",
       "changes": {
-        "new": [
-        ],
+        "new": [],
         "enhancements": [
           "Updated the `office-ui-fabric-react` to the same version as in SPFx 1.7.0 [#105](https://github.com/pnp/sp-dev-fx-property-controls/issues/105)",
           "`PropertyFieldPeoplePicker`: Ability to select only from a specific site [#9](https://github.com/pnp/sp-dev-fx-property-controls/issues/9)",
@@ -296,7 +318,9 @@
           "`PropertyFieldCodeEditor`: Handle initial value after updating properties [#121](https://github.com/pnp/sp-dev-fx-property-controls/issues/121)"
         ]
       },
-      "contributions": ["[Erwin van Hunen](https://github.com/erwinvanhunen)"]
+      "contributions": [
+        "[Erwin van Hunen](https://github.com/erwinvanhunen)"
+      ]
     },
     {
       "version": "1.12.0",
@@ -318,7 +342,12 @@
           "`PropertyFieldCollectionData`: Fixed catastrophic backtracking regex issue for URL validation [#99](https://github.com/pnp/sp-dev-fx-property-controls/issues/99)"
         ]
       },
-      "contributions": ["[Paul Bullock](https://github.com/pkbullock)", "[Junle Li](https://github.com/lijunle)", "[PooLP](https://github.com/PooLP)", "[Erwin van Hunen](https://github.com/erwinvanhunen)"]
+      "contributions": [
+        "[Paul Bullock](https://github.com/pkbullock)",
+        "[Junle Li](https://github.com/lijunle)",
+        "[PooLP](https://github.com/PooLP)",
+        "[Erwin van Hunen](https://github.com/erwinvanhunen)"
+      ]
     },
     {
       "version": "1.11.0",
@@ -375,7 +404,9 @@
         ],
         "fixes": []
       },
-      "contributions": ["[Joel Rodrigues](https://github.com/joelfmrodrigues)"]
+      "contributions": [
+        "[Joel Rodrigues](https://github.com/joelfmrodrigues)"
+      ]
     },
     {
       "version": "1.7.0",
@@ -512,7 +543,9 @@
       "version": "1.1.1",
       "changes": {
         "new": [],
-        "enhancements": ["Removed operation name from telemetry"],
+        "enhancements": [
+          "Removed operation name from telemetry"
+        ],
         "fixes": []
       },
       "contributions": []
@@ -564,7 +597,9 @@
     {
       "version": "1.0.0-beta.2",
       "changes": {
-        "new": ["Initial release"],
+        "new": [
+          "Initial release"
+        ],
         "enhancements": [],
         "fixes": []
       },

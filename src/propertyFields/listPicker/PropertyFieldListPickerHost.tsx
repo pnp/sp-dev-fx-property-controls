@@ -7,6 +7,7 @@ import SPListPickerService from '../../services/SPListPickerService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as telemetry from '../../common/telemetry';
 import { IPropertyFieldList } from './IPropertyFieldListPicker';
+import { setPropertyValue } from '../../helpers/GeneralHelper';
 
 // Empty list value, to be checked for single list selection
 const EMPTY_LIST_KEY = 'NO_LIST_SELECTED';
@@ -208,7 +209,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
 
     if (onPropertyChange && propValue !== null) {
       // Store the new property value
-      properties[targetProperty] = propValue;
+      setPropertyValue(properties, targetProperty, propValue);
       // Trigger the default onPrpertyChange event
       onPropertyChange(targetProperty, selectedList, propValue);
       // Trigger the apply button

@@ -1,7 +1,7 @@
 {
   "name": "@pnp/spfx-property-controls",
   "description": "Reusable property pane controls for SharePoint Framework solutions",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "engines": {
     "node": ">=0.10.0"
   },

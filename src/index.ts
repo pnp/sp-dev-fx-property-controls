@@ -24,3 +24,5 @@ export * from './PropertyFieldSitePicker';
 export * from './PropertyFieldFilePicker';
 export * from './PropertyFieldRoleDefinitionPicker';
 export * from './PropertyFieldFolderPicker';
+
+export * from './PropertyFieldColumnPicker';

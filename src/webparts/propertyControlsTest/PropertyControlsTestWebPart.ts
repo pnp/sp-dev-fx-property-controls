@@ -59,6 +59,8 @@ import { PropertyFieldGuid } from '../../PropertyFieldGuid';
 import FieldErrorMessage from '../../propertyFields/errorMessage/FieldErrorMessage';
 import { PropertyFieldTeamPicker } from '../../propertyFields/teamPicker';
 import { PropertyFieldIconPicker } from "../../propertyFields/iconPicker";
+import {PropertyFieldColumnPicker, PropertyFieldColumnPickerOrderBy, ISPColumn} from "../../PropertyFieldColumnPicker";
+import { IColumnReturnProperty } from '../../propertyFields/columnPicker';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -77,6 +79,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         list: this.properties.singleList as string || "",
         listFiltered: this.properties.singleListFiltered || "",
         view: this.properties.view,
+        column: this.properties.column,
+        multiColumn: this.properties.multiColumn,
         multiList: this.properties.multiList as string[] || [],
         multiListFiltered: this.properties.multiListFiltered || [],
         terms: this.properties.terms || [],
@@ -519,7 +523,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'listPickerFieldId',
                   webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
                   listsToExclude: ["cdn"],
-                  filter: "ItemCount gt 0",
+                  //filter: "ItemCount gt 0",
                   onListsRetrieved: (lists: ISPList[]) => {
                     console.log("Lists", lists);
                     return lists;
@@ -538,6 +542,39 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   deferredValidationTime: 0,
                   key: 'viewPickerFieldId'
                 }),
+                PropertyFieldColumnPicker('column', {
+                    label: 'Select a column',
+                    context: this.context,
+                    selectedColumn: this.properties.column,
+                    listId: this.properties.singleListFiltered,
+                    disabled: false,
+                    orderBy: PropertyFieldColumnPickerOrderBy.Title,
+                    onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                    properties: this.properties,
+                    onGetErrorMessage: null,
+                    deferredValidationTime: 0,
+                    key: 'columnPickerFieldId',
+                    displayHiddenColumns: false,
+                    columnReturnProperty: IColumnReturnProperty["Internal Name"],
+                    columnsToExclude: ['Compliance Asset Id'],
+                  }),
+                  PropertyFieldColumnPicker('multiColumn', {
+                    label: 'Select columns',
+                    context: this.context,
+                    selectedColumn: this.properties.multiColumn,
+                    listId: this.properties.singleListFiltered,
+                    disabled: false,
+                    orderBy: PropertyFieldColumnPickerOrderBy.Title,
+                    onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                    properties: this.properties,
+                    onGetErrorMessage: null,
+                    deferredValidationTime: 0,
+                    key: 'multiColumnPickerFieldId',
+                    displayHiddenColumns: false,
+                    columnReturnProperty: IColumnReturnProperty["Internal Name"],
+                    columnsToExclude: ['Compliance Asset Id'],
+                    multiSelect: true
+                  }),
 
                 PropertyFieldListPicker('multiList', {
                   label: 'Select multiple lists',

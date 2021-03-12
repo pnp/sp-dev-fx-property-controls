@@ -47,4 +47,5 @@ export interface IPropertyControlsTestProps {
   folderPicker: IFolder;
   guid: string;
   iconPicker: string;
+  editableComboBox: string;
 }

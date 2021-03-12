@@ -51,4 +51,5 @@ export interface IPropertyControlsTestWebPartProps {
   guid: string;
   teams: IPropertyFieldTeam[];
   iconPicker: string;
+  editableComboBox: string;
 }

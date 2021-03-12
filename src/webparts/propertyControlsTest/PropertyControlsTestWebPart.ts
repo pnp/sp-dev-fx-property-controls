@@ -61,6 +61,7 @@ import { PropertyFieldTeamPicker } from '../../propertyFields/teamPicker';
 import { PropertyFieldIconPicker } from "../../propertyFields/iconPicker";
 import {PropertyFieldColumnPicker, PropertyFieldColumnPickerOrderBy } from "../../PropertyFieldColumnPicker";
 import { IColumnReturnProperty } from '../../propertyFields/columnPicker';
+import { PropertyFieldEditableComboBox } from '../../PropertyFieldEditableComboBox';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -108,7 +109,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         roleDefinitions: this.properties.roleDefinitions || [],
         folderPicker: this.properties.folderPicker,
         guid: this.properties.guid,
-        iconPicker: this.properties.iconPicker
+        iconPicker: this.properties.iconPicker,
+        editableComboBox: this.properties.editableComboBox
       }
     );
 
@@ -167,6 +169,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     return value >= 18 ? "" : "Person should be at least 18 years old";
   }
 
+  private comboBoxOptionAdded(text: string) {
+    console.log(`${text} was added to the combo box.  This is your chance to do something about it!`);
+  }
 
   private _onChangedPassword(value: string) {
     console.log(value);
@@ -476,6 +481,19 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: "GUID",
                   value: this.properties.guid,
                   errorMessage: "Please enter a correct GUID."
+                }),
+                PropertyFieldEditableComboBox('editableComboBox', {
+                  disabled: false,
+                  key: 'editableComboBox',
+                  label: 'Editable ComboBox',
+                  maxFillInLength: 50,
+                  options: [ {key: 'Apples', text: 'Apples'}, {key: 'Oranges', text: 'Oranges'}],
+                  properties: this.properties,
+                  selectedText: 'Oranges',
+                  showTooltip: false,
+                  tooltipText: 'This is what the tooltip would say if it shows. lol',
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  onOptionAdded: this.comboBoxOptionAdded
                 })
               ]
             },

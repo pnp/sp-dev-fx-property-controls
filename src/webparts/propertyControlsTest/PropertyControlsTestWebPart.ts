@@ -523,7 +523,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'listPickerFieldId',
                   webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
                   listsToExclude: ["cdn"],
-                  //filter: "ItemCount gt 0",
+                  filter: "ItemCount gt 0",
                   onListsRetrieved: (lists: ISPList[]) => {
                     console.log("Lists", lists);
                     return lists;

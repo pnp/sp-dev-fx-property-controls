@@ -59,7 +59,7 @@ import { PropertyFieldGuid } from '../../PropertyFieldGuid';
 import FieldErrorMessage from '../../propertyFields/errorMessage/FieldErrorMessage';
 import { PropertyFieldTeamPicker } from '../../propertyFields/teamPicker';
 import { PropertyFieldIconPicker } from "../../propertyFields/iconPicker";
-import {PropertyFieldColumnPicker, PropertyFieldColumnPickerOrderBy, ISPColumn} from "../../PropertyFieldColumnPicker";
+import {PropertyFieldColumnPicker, PropertyFieldColumnPickerOrderBy } from "../../PropertyFieldColumnPicker";
 import { IColumnReturnProperty } from '../../propertyFields/columnPicker';
 
 /**

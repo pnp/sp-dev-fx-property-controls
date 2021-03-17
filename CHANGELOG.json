@@ -9,7 +9,8 @@
         ],
         "enhancements": [],
         "fixes": [
-          "`PropertyFieldNumber`: The property field number is loosing decimal value on futher edits of the properties. [#344](https://github.com/pnp/sp-dev-fx-property-controls/issues/344)"
+          "`PropertyFieldNumber`: The property field number is loosing decimal value on futher edits of the properties. [#344](https://github.com/pnp/sp-dev-fx-property-controls/issues/344)",
+          "`PropertyFieldCollectionData`: validation error persists after item deletion [#341](https://github.com/pnp/sp-dev-fx-property-controls/issues/341)"
         ]
       },
       "contributions": [

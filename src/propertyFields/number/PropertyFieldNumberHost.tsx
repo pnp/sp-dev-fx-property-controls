@@ -18,7 +18,7 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
     });
 
     this.state = {
-      value: this.props.value ? this.props.value.toFixed(props.precision || 0) : null,
+      value: GeneralHelper.isDefined(this.props.value) ? this.props.value.toFixed(props.precision || 0) : null,
       roundedValue: props.value
     };
 

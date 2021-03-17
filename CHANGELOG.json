@@ -8,7 +8,9 @@
           "`PropertyFieldColumnPicker`: new column picker control [#343](https://github.com/pnp/sp-dev-fx-property-controls/pull/343)"
         ],
         "enhancements": [],
-        "fixes": []
+        "fixes": [
+          "`PropertyFieldNumber`: The property field number is loosing decimal value on futher edits of the properties. [#344](https://github.com/pnp/sp-dev-fx-property-controls/issues/344)"
+        ]
       },
       "contributions": [
         "[Mike Homol](https://github.com/mhomol)",

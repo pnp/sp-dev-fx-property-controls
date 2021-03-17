@@ -20,6 +20,8 @@ export interface IPropertyControlsTestProps {
   multiList: string[];
   multiListFiltered: string[];
   view: string;
+  column: string;
+  multiColumn: string[];
   terms: IPickerTerms;
   datetime: IDateTimeFieldValue;
   color: string;

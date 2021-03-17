@@ -27,9 +27,10 @@ nav:
     - PropertyFieldTeamPicker: 'controls/PropertyFieldTeamPicker.md'
     - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
     - PropertyFieldViewPicker: 'controls/PropertyFieldViewPicker.md'
+    - PropertyFieldColumnPicker: 'controls/PropertyFieldColumnPicker.md'
     - PropertyPaneMarkdownContent: 'controls/PropertyPaneMarkdownContent.md'
     - PropertyPanePropertyEditor: 'controls/PropertyPanePropertyEditor.md'
-    - PropertyPaneWebPartInformation: 'controls/PropertyPaneWebPartInformation.md'
+    - PropertyPaneWebPartInformation: 'controls/PropertyPaneWebPartInformation.md'    
   - 'Controls with callout':
     - PropertyFieldButtonWithCallout: 'controls/PropertyFieldButtonWithCallout.md'
     - PropertyFieldCheckboxWithCallout: 'controls/PropertyFieldCheckboxWithCallout.md'

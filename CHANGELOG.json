@@ -4,13 +4,15 @@
       "version": "2.5.0",
       "changes": {
         "new": [
-          "`PropertyFieldEditableComboBox`: new editable combobox controls based on Fluent ComboBox. [#339](https://github.com/pnp/sp-dev-fx-property-controls/pull/339)"
+          "`PropertyFieldEditableComboBox`: new editable combobox control based on Fluent ComboBox. [#339](https://github.com/pnp/sp-dev-fx-property-controls/pull/339)",
+          "`PropertyFieldColumnPicker`: new column picker control [#343](https://github.com/pnp/sp-dev-fx-property-controls/pull/343)"
         ],
         "enhancements": [],
         "fixes": []
       },
       "contributions": [
-        "[Mike Homol](https://github.com/mhomol)"
+        "[Mike Homol](https://github.com/mhomol)",
+        "[Sudharsan Kesavanarayanan](https://github.com/sudharsank)"
       ]
     },
     {

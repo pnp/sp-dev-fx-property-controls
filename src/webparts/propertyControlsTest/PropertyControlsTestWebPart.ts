@@ -422,6 +422,29 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   ],
                   disabled: false
                 }),
+                PropertyFieldCollectionData('columns2', {
+                  key: 'columnsKey2',
+                  label: 'Table columns',
+                  panelHeader: 'Configure table columns',
+                  manageBtnLabel: 'Manage columns',
+                  value: [],
+                  fields: [
+                    {
+                      id: "customFieldId",
+                      title: "Custom Field",
+                      type: CustomCollectionFieldType.custom,
+                      onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
+                        return (
+                          React.createElement("div", null,
+                            React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+                                onError(field.id, "Value shouldn't be equal to error");
+                            }}), " 🎉"
+                          )
+                        );
+                      }
+                    }
+                  ],
+                }),
                 PropertyFieldNumber("numberValue", {
                   key: "numberValue",
                   label: "Number value only",

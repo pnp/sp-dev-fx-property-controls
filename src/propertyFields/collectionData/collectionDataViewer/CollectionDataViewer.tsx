@@ -69,14 +69,16 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
    */
   private deleteItem = (idx: number) => {
     this.setState((prevState: ICollectionDataViewerState): ICollectionDataViewerState => {
-      let { crntItems } = prevState;
+      let { crntItems, validation } = prevState;
       crntItems.splice(idx, 1);
+      delete validation[idx];
 
       // Update the sort propety
       crntItems = this.updateSortProperty(crntItems);
 
       return {
-        crntItems: sortBy(crntItems, this.SORT_IDX)
+        crntItems: sortBy(crntItems, this.SORT_IDX),
+        validation: validation
       };
     });
   }

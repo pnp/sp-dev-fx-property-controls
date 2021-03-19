@@ -1,4 +1,4 @@
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { IPropertyFieldSite } from '../propertyFields/sitePicker/IPropertyFieldSitePicker';
 
 /**
@@ -9,5 +9,5 @@ export interface ISPSiteSearchService {
   /**
    * Search Site from a query
    */
-  searchSites(ctx: IWebPartContext, query: string): Promise<Array<IPropertyFieldSite>>;
+  searchSites(ctx: BaseComponentContext, query: string): Promise<Array<IPropertyFieldSite>>;
 }

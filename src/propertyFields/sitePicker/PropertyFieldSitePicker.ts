@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   IPropertyPaneField,
-  PropertyPaneFieldType,
-  IWebPartContext
-} from '@microsoft/sp-webpart-base';
+  PropertyPaneFieldType
+} from '@microsoft/sp-property-pane';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { IPropertyFieldSitePickerPropsInternal, IPropertyFieldSite, IPropertyFieldSitePickerProps } from './IPropertyFieldSitePicker';
 import { IPropertyFieldSitePickerHostProps } from './IPropertyFieldSitePickerHost';
 import PropertyFieldSitePickerHost from './PropertyFieldSitePickerHost';
@@ -23,7 +23,7 @@ class PropertyFieldSitePickerBuilder implements IPropertyPaneField<IPropertyFiel
   // Custom properties
   private label: string;
   private disabled: boolean = false;
-  private context: IWebPartContext;
+  private context: BaseComponentContext;
   private initialSites: IPropertyFieldSite[];
   private multiSelect: boolean = false;
   private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;

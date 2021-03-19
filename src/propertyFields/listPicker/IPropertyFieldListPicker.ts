@@ -1,4 +1,4 @@
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { ISPList } from './IPropertyFieldListPickerHost';
 import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-property-pane';
 
@@ -40,7 +40,7 @@ export interface IPropertyFieldListPickerProps {
   /**
    * Context of the current web part
    */
-  context: IWebPartContext;
+  context: BaseComponentContext;
   /**
    * Absolute Web Url of target site (user requires permissions)
    */
@@ -144,7 +144,7 @@ export interface IPropertyFieldListPickerPropsInternal extends IPropertyFieldLis
 
   label: string;
   targetProperty: string;
-  context: IWebPartContext;
+  context: BaseComponentContext;
   webAbsoluteUrl?: string;
   selectedList?: string | IPropertyFieldList;
   selectedLists?: string[] | IPropertyFieldList[];

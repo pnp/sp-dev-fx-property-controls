@@ -1,5 +1,5 @@
 import { IFilePickerResult } from "./filePickerControls/FilePicker.types";
-import { WebPartContext } from "@microsoft/sp-webpart-base";
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 
 /**
  * Public properties of PropertyFieldFilePicker custom field
@@ -125,7 +125,7 @@ export interface IPropertyFieldFilePickerProps {
   /**
    * Web Part context
    */
-  context: WebPartContext;
+  context: BaseComponentContext;
 
   /**
    * The data associated with the selected file
@@ -134,7 +134,7 @@ export interface IPropertyFieldFilePickerProps {
   /**
    * Specifies if StockImagesTab should be hidden.
    */
-  hideStockImages?: boolean;  
+  hideStockImages?: boolean;
 }
 
 export interface IPropertyFieldFilePickerPropsInternal extends IPropertyFieldFilePickerProps {

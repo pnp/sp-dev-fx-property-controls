@@ -1,7 +1,7 @@
 import { SPHttpClientResponse } from '@microsoft/sp-http';
 import { SPHttpClient } from '@microsoft/sp-http';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { ISPColumn, IPropertyFieldColumnPickerHostProps, PropertyFieldColumnPickerOrderBy } from '../propertyFields/columnPicker';
 import { ISPColumnPickerService } from './ISPColumnPickerService';
 import { ISPColumns } from '../propertyFields/columnPicker';
@@ -10,13 +10,13 @@ import { ISPColumns } from '../propertyFields/columnPicker';
  * Service implementation to get list & list items from current SharePoint site
  */
 export class SPColumnPickerService implements ISPColumnPickerService {
-    private context: IWebPartContext;
+    private context: BaseComponentContext;
     private props: IPropertyFieldColumnPickerHostProps;
 
     /**
      * Service constructor
      */
-    constructor(_props: IPropertyFieldColumnPickerHostProps, pageContext: IWebPartContext) {
+    constructor(_props: IPropertyFieldColumnPickerHostProps, pageContext: BaseComponentContext) {
         this.props = _props;
         this.context = pageContext;
     }

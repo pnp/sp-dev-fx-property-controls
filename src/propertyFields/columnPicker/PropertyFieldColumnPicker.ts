@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
     IPropertyPaneField,
-    PropertyPaneFieldType,
-    IWebPartContext
-} from '@microsoft/sp-webpart-base';
+    PropertyPaneFieldType
+} from '@microsoft/sp-property-pane';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import PropertyFieldColumnPickerHost from './PropertyFieldColumnPickerHost';
 import { IPropertyFieldColumnPickerHostProps } from './IPropertyFieldColumnPickerHost';
 import { PropertyFieldColumnPickerOrderBy, IPropertyFieldColumnPickerProps, IPropertyFieldColumnPickerPropsInternal } from './IPropertyFieldColumnPicker';
@@ -23,7 +23,7 @@ class PropertyFieldColumnPickerBuilder implements IPropertyPaneField<IPropertyFi
     public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
 
     //Custom properties label: string;
-    private context: IWebPartContext;
+    private context: BaseComponentContext;
     private label: string;
     private listId?: string;
     private orderBy: PropertyFieldColumnPickerOrderBy;

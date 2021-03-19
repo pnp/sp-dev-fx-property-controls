@@ -1,7 +1,7 @@
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import SPPeoplePickerMockHttpClient from './SPPeopleSearchMockService';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { ISPSiteSearchService } from './ISPSiteSearchService';
 import { IPropertyFieldSite } from '../propertyFields/sitePicker/IPropertyFieldSitePicker';
 
@@ -12,7 +12,7 @@ export default class SPSiteSearchService implements ISPSiteSearchService {
   /**
    * Search sites from the SharePoint
    */
-  public searchSites(ctx: IWebPartContext, query: string): Promise<IPropertyFieldSite[]> {
+  public searchSites(ctx: BaseComponentContext, query: string): Promise<IPropertyFieldSite[]> {
     if (Environment.type === EnvironmentType.Local) {
       // If the running environment is local, load the data from the mock
       return this.searchSitesFromMock(ctx, query);
@@ -62,7 +62,7 @@ export default class SPSiteSearchService implements ISPSiteSearchService {
   /**
    * Returns fake sites results for the Mock mode
    */
-  private searchSitesFromMock(ctx: IWebPartContext, query: string): Promise<Array<IPropertyFieldSite>> {
+  private searchSitesFromMock(ctx: BaseComponentContext, query: string): Promise<Array<IPropertyFieldSite>> {
     return SPPeoplePickerMockHttpClient.searchPeople(ctx.pageContext.web.absoluteUrl).then(() => {
       const results: IPropertyFieldSite[] = [
         { title: 'Contoso Site', id: '611453e1-5b5d-45ec-94aa-a180a02df897', url: ctx.pageContext.web.absoluteUrl }

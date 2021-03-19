@@ -1,4 +1,4 @@
-import { WebPartContext } from "@microsoft/sp-webpart-base";
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { IFilePickerResult } from "./FilePicker.types";
 
 export interface IFilePickerProps {
@@ -104,8 +104,8 @@ export interface IFilePickerProps {
   storeLastActiveTab?: boolean;
 
   filePickerResult: IFilePickerResult;
-  
-  context: WebPartContext;
+
+  context: BaseComponentContext;
 
   /**
    * Specifies if StockImagesTab should be hidden.

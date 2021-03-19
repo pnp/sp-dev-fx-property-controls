@@ -3,7 +3,7 @@ import { BasePicker, IBasePickerProps, IPickerItemProps } from 'office-ui-fabric
 import { IPickerTerm, IPickerTerms } from './IPropertyFieldTermPicker';
 import styles from './PropertyFieldTermPickerHost.module.scss';
 import { IPropertyFieldTermPickerHostProps } from './IPropertyFieldTermPickerHost';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import * as strings from 'PropertyControlStrings';
 import { ISPTermStorePickerService, TermStorePickerServiceHelper } from '../../services/ISPTermStorePickerService';
 
@@ -18,7 +18,7 @@ export interface ITermPickerState {
 
 export interface ITermPickerProps {
   termPickerHostProps: IPropertyFieldTermPickerHostProps;
-  context: IWebPartContext;
+  context: BaseComponentContext;
   disabled: boolean;
   value: IPickerTerms;
   allowMultipleSelections: boolean;

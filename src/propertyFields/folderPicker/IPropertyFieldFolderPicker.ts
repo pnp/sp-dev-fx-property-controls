@@ -1,11 +1,11 @@
-import { WebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { IFolder } from '../../services/IFolderExplorerService';
 
 export interface IPropertyFieldFolderPickerProps {
     /**
    * Current context
    */
-  context: WebPartContext;
+  context: BaseComponentContext;
 
   /**
    * The label for the control
@@ -64,10 +64,9 @@ export interface IPropertyFieldFolderPickerProps {
   key: string;
 
   }
-  
+
   export interface IPropertyFieldFolderPickerPropsInternal extends IPropertyFieldFolderPickerProps {
     targetProperty: string;
     onRender(elem: HTMLElement): void;
     onDispose(elem: HTMLElement): void;
   }
-  

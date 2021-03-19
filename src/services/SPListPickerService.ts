@@ -1,7 +1,7 @@
 import { SPHttpClientResponse } from '@microsoft/sp-http';
 import { SPHttpClient } from '@microsoft/sp-http';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { ISPLists, IPropertyFieldListPickerHostProps, ISPList } from '../propertyFields/listPicker/IPropertyFieldListPickerHost';
 import { PropertyFieldListPickerOrderBy } from '../propertyFields/listPicker/IPropertyFieldListPicker';
 import SPListPickerMockHttpClient from './SPListPickerMockService';
@@ -11,13 +11,13 @@ import SPListPickerMockHttpClient from './SPListPickerMockService';
  */
 export default class SPListPickerService {
 
-  private context: IWebPartContext;
+  private context: BaseComponentContext;
   private props: IPropertyFieldListPickerHostProps;
 
   /**
    * Service constructor
    */
-  constructor(_props: IPropertyFieldListPickerHostProps, pageContext: IWebPartContext) {
+  constructor(_props: IPropertyFieldListPickerHostProps, pageContext: BaseComponentContext) {
     this.props = _props;
     this.context = pageContext;
   }

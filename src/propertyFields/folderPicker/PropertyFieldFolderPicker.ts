@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   IPropertyPaneField,
-  PropertyPaneFieldType,
-  WebPartContext
-} from '@microsoft/sp-webpart-base';
+  PropertyPaneFieldType
+} from '@microsoft/sp-property-pane';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import PropertyFieldFolderPickerHost from './PropertyFieldFolderPickerHost';
 import { IPropertyFieldFolderPickerHostProps } from './IPropertyFieldFolderPickerHost';
 import { IPropertyFieldFolderPickerProps, IPropertyFieldFolderPickerPropsInternal } from './IPropertyFieldFolderPicker';
@@ -21,20 +21,20 @@ class PropertyFieldFolderPickerBuilder implements IPropertyPaneField<IPropertyFi
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
 
   //Custom properties label: string;
-  private context: WebPartContext;
-  private label: string;  
-    
-  private customProperties: any;  
-  private disabled: boolean = false;  
+  private context: BaseComponentContext;
+  private label: string;
+
+  private customProperties: any;
+  private disabled: boolean = false;
   private key: string;
-  
+
   private rootFolder: IFolder;
   private defaultFolder: IFolder;
 
   private required: boolean = false;
   private canCreateFolders: boolean = false;
   private selectedFolder: IFolder;
-  
+
   private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
   private onSelect: (folder: IFolder) => void;
 
@@ -51,7 +51,7 @@ class PropertyFieldFolderPickerBuilder implements IPropertyPaneField<IPropertyFi
     this.properties.onRender = this.render;
     this.label = _properties.label;
     this.context = _properties.context;
-    
+
     this.onPropertyChange = _properties.onPropertyChange;
     this.customProperties = _properties.properties;
     this.key = _properties.key;
@@ -65,10 +65,10 @@ class PropertyFieldFolderPickerBuilder implements IPropertyPaneField<IPropertyFi
     if(_properties.required === true){
         this.required = _properties.required;
     }
-    
+
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
-    }    
+    }
 
     if(_properties.canCreateFolders === true){
         this.canCreateFolders = _properties.canCreateFolders;
@@ -88,7 +88,7 @@ class PropertyFieldFolderPickerBuilder implements IPropertyPaneField<IPropertyFi
         defaultFolder: this.defaultFolder,
         onSelect: this.onSelect,
         required: this.required,
-        canCreateFolders: this.canCreateFolders,  
+        canCreateFolders: this.canCreateFolders,
         onDispose: this.dispose,
         onRender: this.render,
         onChange: changeCallback,
@@ -98,7 +98,7 @@ class PropertyFieldFolderPickerBuilder implements IPropertyPaneField<IPropertyFi
         disabled: this.disabled,
         selectedFolder: this.selectedFolder
     });
-    
+
       // Calls the REACT content generator
       ReactDom.render(element, elem);
   }
@@ -123,19 +123,19 @@ export function PropertyFieldFolderPicker(targetProperty: string, properties: IP
   const newProperties: IPropertyFieldFolderPickerPropsInternal = {
     label: properties.label,
     targetProperty: targetProperty,
-    context: properties.context,        
+    context: properties.context,
     onPropertyChange: properties.onPropertyChange,
     properties: properties.properties,
     onDispose: null,
     onRender: null,
-    key: properties.key,    
+    key: properties.key,
     disabled: properties.disabled,
     onSelect: properties.onSelect,
     rootFolder: properties.rootFolder,
     canCreateFolders: properties.canCreateFolders,
     defaultFolder: properties.defaultFolder,
     required: properties.required,
-    selectedFolder: properties.selectedFolder    
+    selectedFolder: properties.selectedFolder
   };
   //Calls the PropertyFieldFolderPickerPicker builder object
   //This object will simulate a PropertyFieldCustom to manage his rendering process

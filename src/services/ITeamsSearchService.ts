@@ -1,4 +1,4 @@
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { IPropertyFieldTeam} from '../propertyFields/teamPicker/IPropertyFieldTeamPicker';
 
 /**
@@ -9,5 +9,5 @@ export interface ITeamsSearchService {
   /**
    * Search Site from a query
    */
-  searchTeams(ctx: IWebPartContext, query: string): Promise<Array<IPropertyFieldTeam>>;
+  searchTeams(ctx: BaseComponentContext, query: string): Promise<Array<IPropertyFieldTeam>>;
 }

@@ -19,10 +19,6 @@
     "localization": "node scripts/execute-translation.js"
   },
   "dependencies": {
-    "@microsoft/sp-core-library": "1.11.0",
-    "@microsoft/sp-lodash-subset": "1.11.0",
-    "@microsoft/sp-office-ui-fabric-core": "1.11.0",
-    "@microsoft/sp-webpart-base": "1.11.0",
     "@pnp/common": "1.3.11",
     "@pnp/logging": "1.3.11",
     "@pnp/odata": "1.3.11",
@@ -39,6 +35,10 @@
     "react-dom": "16.8.5"
   },
   "devDependencies": {
+    "@microsoft/sp-core-library": "1.11.0",
+    "@microsoft/sp-lodash-subset": "1.11.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.11.0",
+    "@microsoft/sp-webpart-base": "1.11.0",
     "@microsoft/rush-stack-compiler-3.3": "0.3.5",
     "@microsoft/sp-build-web": "1.11.0",
     "@microsoft/sp-module-interfaces": "1.11.0",

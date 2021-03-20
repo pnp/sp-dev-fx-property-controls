@@ -187,7 +187,6 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
               <td>
                 <TextField
                   disabled={this.props.disabled}
-                  onChanged={null}
                   readOnly={true}
                   value={this.state.code}
                   onClick={this.onOpenPanel}

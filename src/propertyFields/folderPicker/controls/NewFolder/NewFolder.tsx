@@ -44,7 +44,7 @@ export class NewFolder extends React.Component<INewFolderProps, INewFolderState>
           <TextField
             placeholder={strings.NewFolderNamePlaceholder}
             value={this.state.folderName}
-            onChanged={this._onFolderNameChange}
+            onChange={(e, value) => this._onFolderNameChange(value)}
           // styles={{ fieldGroup: { width: 300 } }}
           />
         }

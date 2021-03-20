@@ -41,7 +41,7 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 										<div className="ms-slideDownIn20">
 											<ColorPicker
 												color={this.props.selectedColor}
-												onColorChanged={this.props.onColorChanged}
+												onChange={(e, color) => this.props.onColorChanged(color.str)}
 												alphaSliderHidden={this.props.alphaSliderHidden} />
 										</div>
 									}
@@ -68,7 +68,7 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 						</div>
 						<ColorPicker
 							color={this.props.selectedColor}
-							onColorChanged={this.props.onColorChanged}
+							onChange={(e, color) => this.props.onColorChanged(color.str)}
 							alphaSliderHidden={this.props.alphaSliderHidden} />
 					</div>
 				}

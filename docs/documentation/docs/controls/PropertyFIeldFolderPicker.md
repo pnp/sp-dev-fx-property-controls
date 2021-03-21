@@ -52,7 +52,7 @@ The `PropertyFieldFolderPicker` control can be configured with the following pro
 
 | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- |
-| context | WebPartContext | yes | The context object of the SPFx loaded webpart. |
+| context | BaseComponentContext | yes | The context object of the SPFx loaded webpart. |
 | label | string | yes | The label for the control. |
 | rootFolder | IFolder | yes | The lowest level folder that can be explored. This can be the root folder of a library. |
 | selectedFolder | IFolder | yes | Store the results of the folder picker. |

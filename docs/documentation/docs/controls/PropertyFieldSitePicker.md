@@ -52,7 +52,7 @@ The `PropertyFieldSitePicker` control can be configured with the following prope
 | ---- | ---- | ---- | ---- |
 | label | string | yes | Property field label displayed on top. |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
-| context | WebPartContext | yes | Context of the current web part. |
+| context | BaseComponentContext | yes | Context of the current web part. |
 | initialSites | IPropertyFieldSite[] | no | Intial sites to load in the site picker (optional). |
 | multiSelect | boolean | no | Define if you want to allow multiple sites selection. (optional, false by default). |
 | onPropertyChange | function | yes | Defines a `onPropertyChange` function to raise when the sites get changed. |

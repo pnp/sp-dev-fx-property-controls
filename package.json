@@ -57,6 +57,12 @@
     "request-promise": "4.2.6",
     "sonarqube-scanner": "2.1.2"
   },
+  "peerDependencies": {
+    "@microsoft/sp-core-library": "^1.12.0",
+    "@microsoft/sp-lodash-subset": "^1.12.0",
+    "@microsoft/sp-office-ui-fabric-core": "^1.12.0",
+    "@microsoft/sp-webpart-base": "^1.12.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/pnp/sp-dev-fx-property-controls"

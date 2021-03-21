@@ -88,7 +88,7 @@ The `PropertyFieldColumnPicker` control can be configured with the following pro
 | label | string | yes | Property field label displayed on top. |
 | listId | string | yes | The ID of the list or library you wish to select a column(s) from. |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
-| context | WebPartContext | yes | Context of the current web part. |
+| context | BaseComponentContext | yes | Context of the current web part. |
 | selectedColumn | string \| string[] | no | Initial selected column(s) of the control. |
 | orderBy | PropertyFieldColumnPickerOrderBy | no | Specify the property on which you want to order the retrieve set of columns. |
 multiSelect | boolean | no | Specify if you want to have a single or multi-column picker. By default this is set to `false` (single column picker).

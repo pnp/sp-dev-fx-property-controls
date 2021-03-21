@@ -58,7 +58,7 @@ The `PropertyFieldPeoplePicker` control can be configured with the following pro
 | ---- | ---- | ---- | ---- |
 | label | string | yes | Property field label displayed on top. |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
-| context | WebPartContext | yes | Context of the current web part. |
+| context | BaseComponentContext | yes | Context of the current web part. |
 | initialData | IPropertyFieldGroupOrPerson[] | no | Intial data to load in the people picker (optional). |
 | allowDuplicate | boolean | no | Defines if the People Picker allows to select duplicated users (optional). |
 | multiSelect | boolean | no | Define if you want to allow multi user / group selection. (optional, true by default). |

@@ -28,11 +28,14 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
               <p className="ms-font-m ms-fontColor-neutralDark">Date: {this.props.datetime.displayValue}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Spin Value: {this.props.spinValue}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">GUID: {this.props.guid}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Editable ComboBox: {this.props.editableComboBox}</p>
 
               <h3 className="ms-font-xl ms-fontColor-neutralDark">Sites, Lists, and Views</h3>
               <p className="ms-font-m ms-fontColor-neutralDark">List: {this.props.list}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">List Filtered: {this.props.listFiltered}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">View: {this.props.view}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Column: {this.props.column}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">Multi Column: {this.props.multiColumn? this.props.multiColumn.join(', '):''}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Multi List: {this.props.multiList.join(', ')}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Multi Filtered: {this.props.multiListFiltered.join(', ')}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Site(s): {this.props.sites.map(t => t.title).join(', ')}</p>

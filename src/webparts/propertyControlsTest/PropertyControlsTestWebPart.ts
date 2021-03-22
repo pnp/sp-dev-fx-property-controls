@@ -59,6 +59,9 @@ import { PropertyFieldGuid } from '../../PropertyFieldGuid';
 import FieldErrorMessage from '../../propertyFields/errorMessage/FieldErrorMessage';
 import { PropertyFieldTeamPicker } from '../../propertyFields/teamPicker';
 import { PropertyFieldIconPicker } from "../../propertyFields/iconPicker";
+import {PropertyFieldColumnPicker, PropertyFieldColumnPickerOrderBy } from "../../PropertyFieldColumnPicker";
+import { IColumnReturnProperty } from '../../propertyFields/columnPicker';
+import { PropertyFieldEditableComboBox } from '../../PropertyFieldEditableComboBox';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -77,6 +80,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         list: this.properties.singleList as string || "",
         listFiltered: this.properties.singleListFiltered || "",
         view: this.properties.view,
+        column: this.properties.column,
+        multiColumn: this.properties.multiColumn,
         multiList: this.properties.multiList as string[] || [],
         multiListFiltered: this.properties.multiListFiltered || [],
         terms: this.properties.terms || [],
@@ -104,7 +109,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         roleDefinitions: this.properties.roleDefinitions || [],
         folderPicker: this.properties.folderPicker,
         guid: this.properties.guid,
-        iconPicker: this.properties.iconPicker
+        iconPicker: this.properties.iconPicker,
+        editableComboBox: this.properties.editableComboBox
       }
     );
 
@@ -163,6 +169,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
     return value >= 18 ? "" : "Person should be at least 18 years old";
   }
 
+  private comboBoxOptionAdded(text: string) {
+    console.log(`${text} was added to the combo box.  This is your chance to do something about it!`);
+  }
 
   private _onChangedPassword(value: string) {
     console.log(value);
@@ -413,6 +422,29 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   ],
                   disabled: false
                 }),
+                PropertyFieldCollectionData('columns2', {
+                  key: 'columnsKey2',
+                  label: 'Table columns',
+                  panelHeader: 'Configure table columns',
+                  manageBtnLabel: 'Manage columns',
+                  value: [],
+                  fields: [
+                    {
+                      id: "customFieldId",
+                      title: "Custom Field",
+                      type: CustomCollectionFieldType.custom,
+                      onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
+                        return (
+                          React.createElement("div", null,
+                            React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+                                onError(field.id, "Value shouldn't be equal to error");
+                            }}), " 🎉"
+                          )
+                        );
+                      }
+                    }
+                  ],
+                }),
                 PropertyFieldNumber("numberValue", {
                   key: "numberValue",
                   label: "Number value only",
@@ -472,6 +504,19 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: "GUID",
                   value: this.properties.guid,
                   errorMessage: "Please enter a correct GUID."
+                }),
+                PropertyFieldEditableComboBox('editableComboBox', {
+                  disabled: false,
+                  key: 'editableComboBox',
+                  label: 'Editable ComboBox',
+                  maxFillInLength: 50,
+                  options: [ {key: 'Apples', text: 'Apples'}, {key: 'Oranges', text: 'Oranges'}],
+                  properties: this.properties,
+                  selectedText: 'Oranges',
+                  showTooltip: false,
+                  tooltipText: 'This is what the tooltip would say if it shows. lol',
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  onOptionAdded: this.comboBoxOptionAdded
                 })
               ]
             },
@@ -538,6 +583,39 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   deferredValidationTime: 0,
                   key: 'viewPickerFieldId'
                 }),
+                PropertyFieldColumnPicker('column', {
+                    label: 'Select a column',
+                    context: this.context,
+                    selectedColumn: this.properties.column,
+                    listId: this.properties.singleListFiltered,
+                    disabled: false,
+                    orderBy: PropertyFieldColumnPickerOrderBy.Title,
+                    onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                    properties: this.properties,
+                    onGetErrorMessage: null,
+                    deferredValidationTime: 0,
+                    key: 'columnPickerFieldId',
+                    displayHiddenColumns: false,
+                    columnReturnProperty: IColumnReturnProperty["Internal Name"],
+                    columnsToExclude: ['Compliance Asset Id'],
+                  }),
+                  PropertyFieldColumnPicker('multiColumn', {
+                    label: 'Select columns',
+                    context: this.context,
+                    selectedColumn: this.properties.multiColumn,
+                    listId: this.properties.singleListFiltered,
+                    disabled: false,
+                    orderBy: PropertyFieldColumnPickerOrderBy.Title,
+                    onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                    properties: this.properties,
+                    onGetErrorMessage: null,
+                    deferredValidationTime: 0,
+                    key: 'multiColumnPickerFieldId',
+                    displayHiddenColumns: false,
+                    columnReturnProperty: IColumnReturnProperty["Internal Name"],
+                    columnsToExclude: ['Compliance Asset Id'],
+                    multiSelect: true
+                  }),
 
                 PropertyFieldListPicker('multiList', {
                   label: 'Select multiple lists',

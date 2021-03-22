@@ -1,5 +1,21 @@
 # Releases
 
+## 2.5.0
+
+### New control(s)
+
+- `PropertyFieldEditableComboBox`: new editable combobox control based on Fluent ComboBox. [#339](https://github.com/pnp/sp-dev-fx-property-controls/pull/339)
+- `PropertyFieldColumnPicker`: new column picker control [#343](https://github.com/pnp/sp-dev-fx-property-controls/pull/343)
+
+### Fixes
+
+- `PropertyFieldNumber`: The property field number is loosing decimal value on futher edits of the properties. [#344](https://github.com/pnp/sp-dev-fx-property-controls/issues/344)
+- `PropertyFieldCollectionData`: validation error persists after item deletion [#341](https://github.com/pnp/sp-dev-fx-property-controls/issues/341)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Mike Homol](https://github.com/mhomol), [Sudharsan Kesavanarayanan](https://github.com/sudharsank), [Victor Pollet](https://github.com/TheThor59).
+
 ## 2.4.0
 
 ### Enhancements

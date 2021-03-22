@@ -20,6 +20,8 @@ export interface IPropertyControlsTestProps {
   multiList: string[];
   multiListFiltered: string[];
   view: string;
+  column: string;
+  multiColumn: string[];
   terms: IPickerTerms;
   datetime: IDateTimeFieldValue;
   color: string;
@@ -45,4 +47,5 @@ export interface IPropertyControlsTestProps {
   folderPicker: IFolder;
   guid: string;
   iconPicker: string;
+  editableComboBox: string;
 }

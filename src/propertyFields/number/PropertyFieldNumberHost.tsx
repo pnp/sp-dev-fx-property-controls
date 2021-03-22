@@ -17,9 +17,26 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
       disabled: props.disabled
     });
 
+    let value: string | null = null;
+    let nrValue: number | undefined = undefined;
+    if (GeneralHelper.isDefined(props.value)) {
+      value = props.value.toString();
+
+      if (!GeneralHelper.isDefined(props.precision)) {
+        nrValue = props.value;
+      }
+      else if (props.precision === 0) {
+        nrValue = parseInt(value);
+      }
+      else {
+        const multiplier = Math.pow(10, props.precision);
+        nrValue = Math.round((parseFloat(value) + 0.000000000000001) * multiplier) / multiplier;
+      }
+    }
+
     this.state = {
-      value: this.props.value ? this.props.value.toFixed(props.precision || 0) : null,
-      roundedValue: props.value
+      value: value,
+      roundedValue: nrValue
     };
 
     this._async = new Async(this);
@@ -120,15 +137,15 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
     return (
       <div>
         <TextField label={this.props.label}
-                   ariaLabel={this.props.ariaLabel}
-                   onChanged={this._delayedChange}
-                   value={this.state.value}
-                   description={this.props.description}
-                   placeholder={this.props.placeholder}
-                   errorMessage={this.props.errorMessage}
-                   onGetErrorMessage={this._validateNumber}
-                   deferredValidationTime={this.props.deferredValidationTime}
-                   disabled={this.props.disabled} />
+          ariaLabel={this.props.ariaLabel}
+          onChanged={this._delayedChange}
+          value={this.state.value}
+          description={this.props.description}
+          placeholder={this.props.placeholder}
+          errorMessage={this.props.errorMessage}
+          onGetErrorMessage={this._validateNumber}
+          deferredValidationTime={this.props.deferredValidationTime}
+          disabled={this.props.disabled} />
       </div>
     );
   }

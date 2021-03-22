@@ -56,7 +56,7 @@ The `PropertyFieldListPicker` control can be configured with the following prope
 | ---- | ---- | ---- | ---- |
 | label | string | yes | Property field label displayed on top. |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
-| context | WebPartContext | yes | Context of the current web part. |
+| context | BaseComponentContext | yes | Context of the current web part. |
 | selectedList | string \| string[] \| IPropertyFieldList \| IPropertyFieldList[] | no | Initial selected list set of the control. |
 | baseTemplate | number | no | BaseTemplate ID of the lists or libaries you want to return. |
 | includeHidden | boolean | no | Specify if you want to include hidden lists in the list picker. By default this is set to `true`. |

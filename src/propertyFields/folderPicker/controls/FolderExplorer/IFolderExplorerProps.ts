@@ -1,4 +1,4 @@
-import { WebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { IBreadcrumbItem } from "office-ui-fabric-react/lib/Breadcrumb";
 import { IFolder } from '../../../../services/IFolderExplorerService';
 
@@ -7,7 +7,7 @@ export interface IFolderExplorerProps {
   /**
    * Current context
    */
-  context: WebPartContext;
+  context: BaseComponentContext;
 
   /**
    * The absolute url of the target site. Only required if not the current site

@@ -1,5 +1,6 @@
-import { IWebPartContext, IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
+import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-property-pane';
 import { IRoleDefinitionInformation } from './IRoleDefinitionInformation';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 
 /**
  * Public properties of the PropertyFieldRoleDefinitionPicker custom field
@@ -8,7 +9,7 @@ export interface IPropertyFieldRoleDefinitionPickerProps {
   /**
    * Context of the current web part
    */
-  context: IWebPartContext;
+  context: BaseComponentContext;
 
   /**
    * Whether the property pane field is enabled or not.
@@ -31,13 +32,13 @@ export interface IPropertyFieldRoleDefinitionPickerProps {
   roleDefinitions?: IRoleDefinitionInformation[];
 
   /**
-   * 
+   *
    */
   multiSelect?: boolean;
   /**
    * Parent Web Part properties
    */
-  properties: any;  
+  properties: any;
   /**
    * Initial selected role definition of the control
    */
@@ -86,7 +87,7 @@ export interface IPropertyFieldRoleDefinitionPickerProps {
  * the PropertyFieldRoleDefinitionPicker.
  */
 export interface IPropertyFieldRoleDefinitionPickerPropsInternal extends IPropertyFieldRoleDefinitionPickerProps, IPropertyPaneCustomFieldProps {
-  context: IWebPartContext;  
+  context: BaseComponentContext;
   disabled?: boolean;
   key: string;
   label: string;

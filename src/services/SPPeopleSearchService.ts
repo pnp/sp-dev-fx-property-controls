@@ -3,7 +3,7 @@ import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { PrincipalType, IPropertyFieldGroupOrPerson } from './../propertyFields/peoplePicker/IPropertyFieldPeoplePicker';
 import { ISPPeopleSearchService } from './ISPPeopleSearchService';
 import SPPeoplePickerMockHttpClient from './SPPeopleSearchMockService';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { IUsers } from './IUsers';
 
 /**
@@ -13,7 +13,7 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
   /**
    * Search people from the SharePoint People database
    */
-  public searchPeople(ctx: IWebPartContext, query: string, principalType: PrincipalType[], siteUrl: string = null): Promise<IPropertyFieldGroupOrPerson[]> {
+  public searchPeople(ctx: BaseComponentContext, query: string, principalType: PrincipalType[], siteUrl: string = null): Promise<IPropertyFieldGroupOrPerson[]> {
     if (Environment.type === EnvironmentType.Local) {
       // If the running environment is local, load the data from the mock
       return this.searchPeopleFromMock(ctx, query);
@@ -128,7 +128,7 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
   /**
    * Returns fake people results for the Mock mode
    */
-  private searchPeopleFromMock(ctx: IWebPartContext, query: string): Promise<Array<IPropertyFieldGroupOrPerson>> {
+  private searchPeopleFromMock(ctx: BaseComponentContext, query: string): Promise<Array<IPropertyFieldGroupOrPerson>> {
     return SPPeoplePickerMockHttpClient.searchPeople(ctx.pageContext.web.absoluteUrl).then(() => {
       const results: IPropertyFieldGroupOrPerson[] = [
         { fullName: 'Katie Jordan', initials: 'KJ', jobTitle: 'VIP Marketing', email: 'katiej@contoso.com', login: 'katiej@contoso.com' },

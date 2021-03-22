@@ -1,4 +1,4 @@
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 
 export interface IPropertyFieldSite {
   /**
@@ -36,7 +36,7 @@ export interface IPropertyFieldSitePickerProps {
   /**
    * Web Part context
    */
-  context: IWebPartContext;
+  context: BaseComponentContext;
   /**
    * Intial data to load in the 'Selected sites' area (optional)
    */

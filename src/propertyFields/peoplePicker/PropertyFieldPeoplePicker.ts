@@ -3,10 +3,10 @@ import * as ReactDom from 'react-dom';
 import {
   IPropertyPaneField,
   PropertyPaneFieldType
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 import PropertyFieldPeoplePickerHost from './PropertyFieldPeoplePickerHost';
 import { IPropertyFieldPeoplePickerHostProps } from './IPropertyFieldPeoplePickerHost';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { IPropertyFieldGroupOrPerson, IPropertyFieldPeoplePickerProps, IPropertyFieldPeoplePickerPropsInternal, PrincipalType } from './IPropertyFieldPeoplePicker';
 
 /**
@@ -22,7 +22,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
   // Custom properties
   private label: string;
   private disabled: boolean = false;
-  private context: IWebPartContext;
+  private context: BaseComponentContext;
   private initialData: IPropertyFieldGroupOrPerson[];
   private allowDuplicate: boolean = true;
   private multiSelect: boolean = true;

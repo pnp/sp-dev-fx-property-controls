@@ -1,4 +1,4 @@
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { ISPTermStorePickerService } from '../../services/ISPTermStorePickerService';
 
 
@@ -91,7 +91,7 @@ export interface IPropertyFieldTermPickerProps {
   /**
    * WebPart's context
    */
-  context: IWebPartContext;
+  context: BaseComponentContext;
   /**
    * Limit the term sets that can be used by the group name or ID
    */
@@ -159,7 +159,7 @@ export interface IPropertyFieldTermPickerProps {
   disabledTermIds?: string[];
 
   /**
-   * The delay time in ms before resolving suggestions, which is kicked off when input has been changed. e.g. if a second input change happens within the resolveDelay time, the timer will start over. 
+   * The delay time in ms before resolving suggestions, which is kicked off when input has been changed. e.g. if a second input change happens within the resolveDelay time, the timer will start over.
    * Only until after the timer completes will onResolveSuggestions be called.
    * Default is 500
    */

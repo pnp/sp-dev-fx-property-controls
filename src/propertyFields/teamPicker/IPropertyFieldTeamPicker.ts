@@ -1,4 +1,4 @@
-import { WebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 
 export interface IPropertyFieldTeam {
   /**
@@ -31,7 +31,7 @@ export interface IPropertyFieldTeamPickerProps {
   /**
    * Web Part context
    */
-  context: WebPartContext;
+  context: BaseComponentContext;
   /**
    * Intial data to load in the 'Selected teams' area (optional)
    */

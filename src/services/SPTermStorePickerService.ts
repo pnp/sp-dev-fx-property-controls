@@ -7,7 +7,7 @@
 
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { IPickerTerm } from './../propertyFields/termPicker/IPropertyFieldTermPicker';
 import { ITermStore, ITerms, ITerm, IGroup, ITermSet, ISPTermStorePickerServiceProps, ISPTermStorePickerService, TermStorePickerServiceHelper, ITermSets } from './ISPTermStorePickerService';
 import SPTermStoreMockHttpClient from './SPTermStorePickerMockService';
@@ -21,7 +21,7 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
   /**
    * Service constructor
    */
-  constructor(private props: ISPTermStorePickerServiceProps, private context: IWebPartContext) {
+  constructor(private props: ISPTermStorePickerServiceProps, private context: BaseComponentContext) {
     this.clientServiceUrl = this.context.pageContext.web.absoluteUrl + '/_vti_bin/client.svc/ProcessQuery';
   }
 

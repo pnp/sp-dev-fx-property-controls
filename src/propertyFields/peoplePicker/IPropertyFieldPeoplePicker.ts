@@ -1,4 +1,5 @@
-import { IWebPartContext, IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
+import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-property-pane';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 
 /**
  * PrincipalType controls the type of entities that are returned in the results.
@@ -75,7 +76,7 @@ export interface IPropertyFieldPeoplePickerProps {
   /**
    * Web Part context
    */
-  context: IWebPartContext;
+  context: BaseComponentContext;
   /**
    * Intial data to load in the people picker (optional)
    */

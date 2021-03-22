@@ -1,5 +1,5 @@
 import { MSGraphClient } from '@microsoft/sp-http';
-import { WebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 
 export interface IGraphBatchRequestItem {
   id: string;
@@ -17,7 +17,7 @@ export interface IGraphBatchResponseItem {
 
 const RequestsPerBatch = 10;
 
-export async function batch(batchRequestItems: IGraphBatchRequestItem[], version: string, context: WebPartContext): Promise<IGraphBatchResponseItem[]> {
+export async function batch(batchRequestItems: IGraphBatchRequestItem[], version: string, context: BaseComponentContext): Promise<IGraphBatchResponseItem[]> {
   const requestsCount = batchRequestItems.length;
   const batchesCount = Math.ceil(requestsCount / RequestsPerBatch);
   let batchIndex = 0;
@@ -44,7 +44,7 @@ export async function batch(batchRequestItems: IGraphBatchRequestItem[], version
   return result;
 }
 
-export async function getGraphClient(context: WebPartContext): Promise<MSGraphClient> {
+export async function getGraphClient(context: BaseComponentContext): Promise<MSGraphClient> {
   const client = await context.msGraphClientFactory.getClient();
 
   return client;

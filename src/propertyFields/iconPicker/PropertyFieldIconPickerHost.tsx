@@ -107,7 +107,7 @@ export default class PropertyFieldIconPickerHost extends React.Component<IProper
               onAbort={this.onAbort}
               data-automation-id={`icon-picker-search`}
               onSearch={debounce(this.onChange, 300)}
-              onChange={debounce(this.onChange, 300)} />
+              onChange={debounce((e, value) => this.onChange(value), 300)} />
             <div className={styles.dialogIconsContainer}>
               {this.renderPanelContent()}
             </div>
@@ -193,7 +193,7 @@ export default class PropertyFieldIconPickerHost extends React.Component<IProper
         onAbort={this.onAbort}
         data-automation-id={`icon-picker-search`}
         onSearch={debounce(this.onChange, 300)}
-        onChange={debounce(this.onChange, 300)} />
+        onChange={debounce((e, value) => this.onChange(value), 300)} />
       <div className={styles.closeBtnContainer}>{defaultRender!(props)}</div>
     </div>;
   }

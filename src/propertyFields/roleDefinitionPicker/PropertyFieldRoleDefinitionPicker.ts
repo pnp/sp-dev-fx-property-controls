@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   IPropertyPaneField,
-  PropertyPaneFieldType,
-  IWebPartContext
-} from '@microsoft/sp-webpart-base';
+  PropertyPaneFieldType
+} from '@microsoft/sp-property-pane';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import PropertyFieldRoleDefinitionPickerHost from './PropertyFieldRoleDefinitionPickerHost';
 import { IPropertyFieldRoleDefinitionPickerHostProps } from './IPropertyFieldRoleDefinitionPickerHost';
 import { IPropertyFieldRoleDefinitionPickerProps, IPropertyFieldRoleDefinitionPickerPropsInternal } from './IPropertyFieldRoleDefinitionPicker';
@@ -21,19 +21,19 @@ class PropertyFieldRoleDefinitionPickerBuilder implements IPropertyPaneField<IPr
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
 
   //Custom properties label: string;
-  private context: IWebPartContext;
-  private label: string;  
+  private context: BaseComponentContext;
+  private label: string;
   private selectedRoleDefinition: string[];
   private roleDefinitionsToExclude: string[];
-  private roleDefinitions: IRoleDefinitionInformation[];  
-  private customProperties: any;  
+  private roleDefinitions: IRoleDefinitionInformation[];
+  private customProperties: any;
   private disabled: boolean = false;
   private multiSelect: boolean = false;
   private key: string;
   private webAbsoluteUrl?: string;
   private onGetErrorMessage: (value: IRoleDefinitionInformation[]) => string | Promise<string>;
   private onRoleDefinitionsRetrieved?: (roleDefinitions: IRoleDefinitionInformation[]) => PromiseLike<IRoleDefinitionInformation[]> | IRoleDefinitionInformation[];
-  
+
   private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
 
 
@@ -50,20 +50,20 @@ class PropertyFieldRoleDefinitionPickerBuilder implements IPropertyPaneField<IPr
     this.label = _properties.label;
     this.context = _properties.context;
     this.webAbsoluteUrl = _properties.webAbsoluteUrl;
-    this.roleDefinitions = _properties.roleDefinitions;    
+    this.roleDefinitions = _properties.roleDefinitions;
     this.selectedRoleDefinition = _properties.selectedRoleDefinition;
-    
+
     this.onPropertyChange = _properties.onPropertyChange;
     this.customProperties = _properties.properties;
     this.key = _properties.key;
     this.roleDefinitionsToExclude = _properties.roleDefinitionsToExclude;
-    
-    this.onGetErrorMessage = _properties.onGetErrorMessage;    
+
+    this.onGetErrorMessage = _properties.onGetErrorMessage;
     this.onRoleDefinitionsRetrieved = _properties.onRoleDefinitionsRetrieved;
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
     }
-    this.multiSelect = _properties.multiSelect;    
+    this.multiSelect = _properties.multiSelect;
   }
 
   /**
@@ -84,12 +84,12 @@ class PropertyFieldRoleDefinitionPickerBuilder implements IPropertyPaneField<IPr
       key: this.key,
       disabled: this.disabled,
       multiSelect: this.multiSelect,
-      onGetErrorMessage: this.onGetErrorMessage,      
+      onGetErrorMessage: this.onGetErrorMessage,
       roleDefinitionsToExclude: this.roleDefinitionsToExclude,
       selectedRoleDefinition: this.selectedRoleDefinition,
-      onRoleDefinitionsRetrieved: this.onRoleDefinitionsRetrieved           
-    };      
-      
+      onRoleDefinitionsRetrieved: this.onRoleDefinitionsRetrieved
+    };
+
       const element: React.ReactElement<IPropertyFieldRoleDefinitionPickerHostProps> = React.createElement(PropertyFieldRoleDefinitionPickerHost, componentProps);
       // Calls the REACT content generator
       ReactDom.render(element, elem);
@@ -115,7 +115,7 @@ export function PropertyFieldRoleDefinitionPicker(targetProperty: string, proper
   const newProperties: IPropertyFieldRoleDefinitionPickerPropsInternal = {
     label: properties.label,
     targetProperty: targetProperty,
-    context: properties.context,    
+    context: properties.context,
     selectedRoleDefinition: properties.selectedRoleDefinition,
     onPropertyChange: properties.onPropertyChange,
     properties: properties.properties,
@@ -124,11 +124,11 @@ export function PropertyFieldRoleDefinitionPicker(targetProperty: string, proper
     key: properties.key,
     roleDefinitions: properties.roleDefinitions,
     disabled: properties.disabled,
-    roleDefinitionsToExclude: properties.roleDefinitionsToExclude,     
+    roleDefinitionsToExclude: properties.roleDefinitionsToExclude,
     webAbsoluteUrl: properties.webAbsoluteUrl,
     multiSelect: properties.multiSelect,
     onGetErrorMessage: properties.onGetErrorMessage,
-    onRoleDefinitionsRetrieved: properties.onRoleDefinitionsRetrieved    
+    onRoleDefinitionsRetrieved: properties.onRoleDefinitionsRetrieved
   };
   //Calls the PropertyFieldRoleDefinitionPicker builder object
   //This object will simulate a PropertyFieldCustom to manage his rendering process

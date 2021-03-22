@@ -1,6 +1,6 @@
 import { SPHttpClient } from '@microsoft/sp-http';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { IRoleDefinitionInformation, IPropertyFieldRoleDefinitionPickerHostProps } from '../propertyFields/roleDefinitionPicker';
 import { ISPRoleDefinitionPickerService } from './ISPRoleDefinitionPickerService';
 import { IRoleDefinitionInformationCollection } from '../propertyFields/roleDefinitionPicker';
@@ -9,13 +9,13 @@ import { IRoleDefinitionInformationCollection } from '../propertyFields/roleDefi
  * Service implementation to get list & list items from current SharePoint site
  */
 export class SPRoleDefinitionPickerService implements ISPRoleDefinitionPickerService {
-  private context: IWebPartContext;
+  private context: BaseComponentContext;
   private props: IPropertyFieldRoleDefinitionPickerHostProps;
 
   /**
    * Service constructor
    */
-  constructor(_props: IPropertyFieldRoleDefinitionPickerHostProps, pageContext: IWebPartContext) {
+  constructor(_props: IPropertyFieldRoleDefinitionPickerHostProps, pageContext: BaseComponentContext) {
     this.props = _props;
     this.context = pageContext;
   }

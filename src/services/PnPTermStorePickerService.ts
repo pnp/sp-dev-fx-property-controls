@@ -8,7 +8,7 @@ import {
     IGroup,
     ITermSets
 } from "./ISPTermStorePickerService";
-import { IWebPartContext } from "@microsoft/sp-webpart-base";
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import {
     taxonomy,
     ITermStore as PnPTermStore,
@@ -37,7 +37,7 @@ export default class PnPTermStorePickerService implements ISPTermStorePickerServ
     private _pnpTermStores: (ITermStoreData & PnPTermStore)[];
     private _pnpGroups: { [termStoreId: string]: (ITermGroupData & PnPTermGroup)[] } = {};
 
-    constructor(private props: IPnPTermStorePickerServiceProps, private context: IWebPartContext) {
+    constructor(private props: IPnPTermStorePickerServiceProps, private context: BaseComponentContext) {
         taxonomy.setup({
             spfxContext: context
             //globalCacheDisable: true // uncomment this one for debugging with no cache

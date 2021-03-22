@@ -68,7 +68,7 @@ The `PropertyFieldTeamPicker` control can be configured with the following prope
 | ---- | ---- | ---- | ---- |
 | label | string | yes | Property field label displayed on top. |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
-| context | WebPartContext | yes | Context of the current web part. |
+| context | BaseComponentContext | yes | Context of the current web part. |
 | initialTeams | IPropertyFieldTeam[] | no | Initial teams to load in the site picker (optional). |
 | multiSelect | boolean | no | Define if you want to allow multiple teams selection. (optional, false by default). |
 | onPropertyChange | function | yes | Defines a `onPropertyChange` function to raise when the teams get changed. |

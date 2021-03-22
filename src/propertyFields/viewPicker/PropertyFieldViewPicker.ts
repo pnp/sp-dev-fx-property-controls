@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   IPropertyPaneField,
-  PropertyPaneFieldType,
-  IWebPartContext
-} from '@microsoft/sp-webpart-base';
+  PropertyPaneFieldType
+} from '@microsoft/sp-property-pane';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import PropertyFieldViewPickerHost from './PropertyFieldViewPickerHost';
 import { IPropertyFieldViewPickerHostProps } from './IPropertyFieldViewPickerHost';
 import { PropertyFieldViewPickerOrderBy, IPropertyFieldViewPickerProps, IPropertyFieldViewPickerPropsInternal } from './IPropertyFieldViewPicker';
@@ -21,7 +21,7 @@ class PropertyFieldViewPickerBuilder implements IPropertyPaneField<IPropertyFiel
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
 
   //Custom properties label: string;
-  private context: IWebPartContext;
+  private context: BaseComponentContext;
   private label: string;
   private listId?: string;
   private orderBy: PropertyFieldViewPickerOrderBy;

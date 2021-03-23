@@ -2,6 +2,12 @@
 
 const fs = require('fs');
 const path = require('path');
+
+// const updateSPFxDependencies = (rootDir) => {
+//   const pnpMSNodeModulesDir = path.resolve(rootDir, 'mode_modules/@pnp/spfx-property-controls/node_modules/@microsoft');
+
+// }
+
 console.log(`
 
 

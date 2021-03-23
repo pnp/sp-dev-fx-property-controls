@@ -1,4 +1,5 @@
-import { IWebPartContext, IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
+import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-property-pane';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { ISPView } from './ISPView';
 
 
@@ -17,7 +18,7 @@ export interface IPropertyFieldViewPickerProps {
   /**
    * Context of the current web part
    */
-  context: IWebPartContext;
+  context: BaseComponentContext;
 
   /**
    * Custom Field will start to validate after users stop typing for `deferredValidationTime` milliseconds.
@@ -107,7 +108,7 @@ export interface IPropertyFieldViewPickerProps {
  * the PropertyFieldViewPicker.
  */
 export interface IPropertyFieldViewPickerPropsInternal extends IPropertyFieldViewPickerProps, IPropertyPaneCustomFieldProps {
-  context: IWebPartContext;
+  context: BaseComponentContext;
   deferredValidationTime?: number;
   disabled?: boolean;
   filter?: string;

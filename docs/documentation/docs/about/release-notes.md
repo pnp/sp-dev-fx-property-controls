@@ -1,5 +1,12 @@
 # Releases
 
+## 3.0.0
+
+### Enhancements
+
+- SharePoint Framework v1.12 support (Breaking change)
+- FLuent UI v7 support
+
 ## 2.5.0
 
 ### New control(s)
@@ -11,6 +18,7 @@
 
 - `PropertyFieldNumber`: The property field number is loosing decimal value on futher edits of the properties. [#344](https://github.com/pnp/sp-dev-fx-property-controls/issues/344)
 - `PropertyFieldCollectionData`: validation error persists after item deletion [#341](https://github.com/pnp/sp-dev-fx-property-controls/issues/341)
+- `FolderPicker`: Correct FolderPicker link alignment
 
 ### Contributors
 

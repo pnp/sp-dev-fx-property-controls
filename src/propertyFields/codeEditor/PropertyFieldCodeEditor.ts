@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
-  IPropertyPaneField,
   PropertyPaneFieldType,
-  IWebPartContext
-} from '@microsoft/sp-webpart-base';
+  IPropertyPaneField
+} from '@microsoft/sp-property-pane';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import PropertyFieldCodeEditorHost from './PropertyFieldCodeEditorHost';
 import { IPropertyFieldCodeEditorHostProps } from './IPropertyFieldCodeEditorHost';
 import { IPropertyFieldCodeEditorPropsInternal, IPropertyFieldCodeEditorProps, PropertyFieldCodeEditorLanguages } from './IPropertyFieldCodeEditor';
@@ -21,7 +21,7 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
 
   // Custom properties label: string;
   private label: string;
-  private context: IWebPartContext;
+  private context: BaseComponentContext;
 
   private initialValue: string;
   private language:PropertyFieldCodeEditorLanguages;

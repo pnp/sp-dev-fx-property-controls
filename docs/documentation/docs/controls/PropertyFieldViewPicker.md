@@ -61,7 +61,7 @@ The `PropertyFieldViewPicker` control can be configured with the following prope
 | label | string | yes | Property field label displayed on top. |
 | listId | string | yes | The ID of the list or library you wish to select a view from. |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
-| context | WebPartContext | yes | Context of the current web part. |
+| context | BaseComponentContext | yes | Context of the current web part. |
 | selectedView | string | no | Initial selected view of the control. |
 | orderBy | PropertyFieldViewPickerOrderBy | no | Specify the property on which you want to order the retrieve set of views. |
 | webAbsoluteUrl | string | no | Absolute Web Url of target site (user requires permissions) |

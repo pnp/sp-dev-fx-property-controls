@@ -35,7 +35,8 @@ export default class PropertyFieldPasswordHost extends React.Component<
           type="password"
           label={this.props.label ? this.props.label : null}
           value={this.state.value}
-          onChanged={(
+          onChange={(
+              e,
              newValue:string
           ) => {
             this.setState({ value: newValue });

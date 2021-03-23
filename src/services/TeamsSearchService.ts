@@ -2,7 +2,7 @@ import {
   Environment,
   EnvironmentType
 } from "@microsoft/sp-core-library";
-import { IWebPartContext } from "@microsoft/sp-webpart-base";
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import {
   dateAdd,
   PnPClientStorage
@@ -62,7 +62,7 @@ export default class TeamsSearchService implements ITeamsSearchService {
   /**
    * Returns fake sites results for the Mock mode
    */
-  private async searchSitesFromMock(ctx: IWebPartContext, query: string): Promise<Array<IPropertyFieldTeam>> {
+  private async searchSitesFromMock(ctx: BaseComponentContext, query: string): Promise<Array<IPropertyFieldTeam>> {
     return [
       { title: 'Contoso Team', id: '611453e1-5b5d-45ec-94aa-a180a02df897', url: ctx.pageContext.web.absoluteUrl }
     ];

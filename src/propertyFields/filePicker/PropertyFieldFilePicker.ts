@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 
 import {
   IPropertyPaneField,
-  PropertyPaneFieldType,
-  WebPartContext
-} from '@microsoft/sp-webpart-base';
+  PropertyPaneFieldType
+} from '@microsoft/sp-property-pane';
 
 import PropertyPaneFilePickerHost from './PropertyFieldFilePickerHost';
 
@@ -17,11 +17,11 @@ import { IPropertyFieldFilePickerPropsInternal, IPropertyFieldFilePickerProps } 
  * Represents a PropertyFieldFilePicker object
  */
 class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFieldFilePickerPropsInternal> {
-  
+
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public targetProperty: string;
   public properties: IPropertyFieldFilePickerPropsInternal;
- 
+
 
   private itemsCountQueryLimit: number;
 
@@ -33,13 +33,13 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
   private hideOrganisationalAssetTab: boolean;
   private hideOneDriveTab: boolean;
   private hideStockImages: boolean;
-  
+
   private customProperties: any;
   private key: string;
   private disabled: boolean = false;
   private required: boolean = false;
   private storeLastActiveTab: boolean = true;
-  private context: WebPartContext;
+  private context: BaseComponentContext;
   private label?: string;
   private buttonLabel?: string;
   private buttonIcon?: string;
@@ -52,7 +52,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
   private bingAPIKey: string;
 
   private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
-  
+
   public constructor(_targetProperty: string, _properties: IPropertyFieldFilePickerPropsInternal) {
 
     this.targetProperty = _targetProperty;
@@ -89,7 +89,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.onPropertyChange = _properties.onPropertyChange;
     this.customProperties = _properties.properties;
     this.key = _properties.key;
-    
+
     this.context = _properties.context;
 
     if (_properties.disabled === true) {
@@ -97,7 +97,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
     }
 
   }
-  
+
   private render = (elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void => {
 
     const element: React.ReactElement<IPropertyFieldFilePickerHostProps> = React.createElement(PropertyPaneFilePickerHost, {
@@ -137,16 +137,16 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
       onChange: changeCallback,
       onPropertyChange: this.onPropertyChange
     });
-    
+
     ReactDom.render(element, elem);
-    
+
   }
-  
-  private dispose(elem: HTMLElement): void {    
+
+  private dispose(elem: HTMLElement): void {
   }
-  
-  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void {    
-  }  
+
+  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void {
+  }
 
 }
 
@@ -156,11 +156,11 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
  * @param properties - Strongly typed File Picker component properties.
  */
 export function PropertyFieldFilePicker(targetProperty: string, properties: IPropertyFieldFilePickerProps): IPropertyPaneField<IPropertyFieldFilePickerPropsInternal> {
-  
+
   return new PropertyFieldFilePickerBuilder(targetProperty, {
     ...properties,
     targetProperty: targetProperty,
     onRender: null,
-    onDispose: null,    
+    onDispose: null,
   });
 }

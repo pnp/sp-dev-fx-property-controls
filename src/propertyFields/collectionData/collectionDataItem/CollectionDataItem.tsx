@@ -368,7 +368,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           required={field.required}
                           disabled={disableFieldOnEdit}
                           className={styles.collectionDataField}
-                          onChanged={(value) => this.onValueChanged(field.id, value)}
+                          onChange={(e, value) => this.onValueChanged(field.id, value)}
                           deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
                           onGetErrorMessage={async (value: string) => this.urlFieldValidation(field, value, item)}
                           inputClassName="PropertyFieldCollectionData__panel__url-field" />;
@@ -384,7 +384,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
                           disabled={disableFieldOnEdit}
-                          onChanged={(value) => this.onValueChanged(field.id, value)}
+                          onChange={(e, value) => this.onValueChanged(field.id, value)}
                           deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
                           onGetErrorMessage={async (value: string) => await this.fieldValidation(field, value)}
                           inputClassName="PropertyFieldCollectionData__panel__string-field" />;

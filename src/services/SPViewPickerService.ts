@@ -1,7 +1,7 @@
 import { SPHttpClientResponse } from '@microsoft/sp-http';
 import { SPHttpClient } from '@microsoft/sp-http';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { ISPView, IPropertyFieldViewPickerHostProps, PropertyFieldViewPickerOrderBy } from '../propertyFields/viewPicker';
 import { ISPViewPickerService } from './ISPViewPickerService';
 import { ISPViews } from '../propertyFields/viewPicker';
@@ -10,13 +10,13 @@ import { ISPViews } from '../propertyFields/viewPicker';
  * Service implementation to get list & list items from current SharePoint site
  */
 export class SPViewPickerService implements ISPViewPickerService {
-  private context: IWebPartContext;
+  private context: BaseComponentContext;
   private props: IPropertyFieldViewPickerHostProps;
 
   /**
    * Service constructor
    */
-  constructor(_props: IPropertyFieldViewPickerHostProps, pageContext: IWebPartContext) {
+  constructor(_props: IPropertyFieldViewPickerHostProps, pageContext: BaseComponentContext) {
     this.props = _props;
     this.context = pageContext;
   }

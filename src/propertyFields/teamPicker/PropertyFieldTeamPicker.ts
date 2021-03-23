@@ -1,8 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import {
-  WebPartContext
-} from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import {
   IPropertyPaneField,
   PropertyPaneFieldType
@@ -25,7 +23,7 @@ class PropertyFieldTeamPickerBuilder implements IPropertyPaneField<IPropertyFiel
   // Custom properties
   private label: string;
   private disabled: boolean = false;
-  private context: WebPartContext;
+  private context: BaseComponentContext;
   private initialTeams: IPropertyFieldTeam[];
   private multiSelect: boolean = false;
   private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;

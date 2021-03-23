@@ -41,6 +41,7 @@ export default class PropertyFieldSearchHost extends React.Component<
           onEscape={this.props.onEscape}
           value={this.state.value}
           onChange={(
+            e,
             newvalue: string
           ) => {
             this.setState({ value: newvalue });

@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   IPropertyPaneField,
-  PropertyPaneFieldType,
-  IWebPartContext
-} from '@microsoft/sp-webpart-base';
+  PropertyPaneFieldType
+} from '@microsoft/sp-property-pane';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import PropertyFieldTermPickerHost from './PropertyFieldTermPickerHost';
 import { IPropertyFieldTermPickerHostProps } from './IPropertyFieldTermPickerHost';
 import { IPropertyFieldTermPickerPropsInternal, IPropertyFieldTermPickerProps, IPickerTerms } from './IPropertyFieldTermPicker';
@@ -24,7 +24,7 @@ export class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPrope
 
   // Custom properties label: string;
   private label: string;
-  private context: IWebPartContext;
+  private context: BaseComponentContext;
   private allowMultipleSelections: boolean = false;
   private initialValues: IPickerTerms = [];
   private excludeSystemGroup: boolean = false;
@@ -68,7 +68,7 @@ export class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPrope
     this.areTermsHidden = _properties.areTermsHidden;
     this.disabledTermIds = _properties.disabledTermIds;
     this.termService = _properties.termService;
-    
+
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
     }

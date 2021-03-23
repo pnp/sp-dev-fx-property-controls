@@ -3,10 +3,16 @@
 This repository provides developers with a set of reusable property pane controls that can be used in their SharePoint Framework (SPFx) solutions.
 
 !!! attention
-    In order to migrate to `v2` it is advicded to follow this guide: [Migrating from V1](./guides/migrate-from-v1).
+    In order to migrate to `v2` and `v3` from `v1` it is advicded to follow this guide: [Migrating from V1](./guides/migrate-from-v1).
 
-!!! attention
-    `v2` version of the controls project has a minimal dependency on SharePoint Framework version `1.11.0`. `v1` has a minimal dependency on SharePoint Framework version `1.3.0`. Be aware that the controls might not work in solutions you're building for on-premises. As for on-premises solutions version `1.1.0` will get used.
+## Library Versions
+Currently there are 3 active versions of the controls. Please, reference the table below to see what version to use in your project.
+
+| Version | SPFx minimal dependency | Fluent UI (Office UI Fabric React) version | SharePoint Version | Comments |
+| ------- | ----------------------- | ------------------------------------------ | ------------------ | -------- |
+| `v3` | `1.12.0` | `7.156.0` | Online | The most current, actively maintained version of the library. |
+| `v2` | `1.11.0` | `6.214.0` | Online | The version will be deprecated in **May/June timeframe**.<br>We strongly recommend to update to SPFx `1.12` and `v3` of Controls. |
+| `v1` | `1.3.0` | `5.131.0` | On-Prem | The version is maintained for SharePoint On-Prem 2016 and 2019 implementations. Be aware that the controls might not work in solutions you're building for on-premises. As for on-premises solutions version `1.1.0` will get used. |
 
 ## Getting started
 

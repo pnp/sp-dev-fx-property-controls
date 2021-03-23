@@ -1,4 +1,4 @@
-import { WebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
 
 import { IDateTimeFieldValue } from '../../../PropertyFieldDateTimePicker';
@@ -11,7 +11,7 @@ import { IFolder } from "../../../PropertyFieldFolderPicker";
 
 export interface IPropertyControlsTestProps {
   password:string;
-  context: WebPartContext;
+  context: BaseComponentContext;
   numberValue: number;
   multiSelect: string[];
   people: IPropertyFieldGroupOrPerson[];

@@ -54,7 +54,7 @@ export default class PropertyFieldFolderPickerHost extends React.Component<IProp
             }
             {this.state.selectedFolder &&
               <div className={styles.selectFolder}>
-                <Link className={styles.selectFolder} target='_blank' data-interception="off" id={this._folderLinkId} href={this.state.selectedFolder.ServerRelativeUrl}>
+                <Link className={styles.selectedLink} target='_blank' data-interception="off" id={this._folderLinkId} href={this.state.selectedFolder.ServerRelativeUrl}>
                   <span title={this.state.selectedFolder.Name}>{this.state.selectedFolder.Name}</span>
                 </Link>
                 <IconButton

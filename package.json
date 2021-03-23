@@ -13,7 +13,8 @@
     "postinstall": "node postinstall/install.js",
     "sonarcloud:config": "node ./scripts/sonarcloud.js",
     "sonarcloud:start": "gulp sonarqube --gulpfile gulpfile.sonarqube.js",
-    "localization": "node scripts/execute-translation.js"
+    "localization": "node scripts/execute-translation.js",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@microsoft/sp-core-library": "1.12.0",
@@ -36,7 +37,6 @@
     "react-dom": "16.9.0"
   },
   "devDependencies": {
-    "@microsoft/rush-stack-compiler-3.3": "0.3.5",
     "@microsoft/rush-stack-compiler-3.7": "0.2.3",
     "@microsoft/sp-build-web": "1.12.0",
     "@microsoft/sp-module-interfaces": "1.12.0",
@@ -54,8 +54,10 @@
     "ajv": "~5.2.2",
     "amd-loader": "0.0.8",
     "gulp": "4.0.2",
+    "husky": "5.2.0",
     "request-promise": "4.2.6",
-    "sonarqube-scanner": "2.1.2"
+    "sonarqube-scanner": "2.1.2",
+    "typescript": "3.7.7"
   },
   "peerDependencies": {
     "@microsoft/sp-core-library": "^1.12.0",

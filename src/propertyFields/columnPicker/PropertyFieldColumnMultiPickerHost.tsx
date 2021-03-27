@@ -89,7 +89,7 @@ export default class PropertyFieldColumnMultiPickerHost extends React.Component<
                     isSelected = true;
                     selectedKeys.push(colPropsToCheck);
                 }
-                
+
                 // Make sure that the current column is NOT in the 'columnsToExclude' array
                 if (columnsToExclude.indexOf(column.Title) === -1 && columnsToExclude.indexOf(column.Id) === -1) {
                     options.push({
@@ -263,21 +263,28 @@ export default class PropertyFieldColumnMultiPickerHost extends React.Component<
             return (
                 <div>
                     {this.props.label && <Label>{this.props.label}</Label>}
-                    {
-                        results.map((item: IChoiceGroupOption, index: number) => {
-                            const uniqueKey = targetProperty + '-' + item.key;
-                            return (
-                                <div style={{ marginBottom: '5px' }} className='ms-ChoiceField' key={uniqueKey}>
-                                    <Checkbox
-                                        checked={selectedKeys.indexOf(item.key.toString()) >= 0}
-                                        disabled={disabled}
-                                        label={item.text}
-                                        onChange={this.onChanged}
-                                        inputProps={{ value: item.key }}
-                                    />
-                                </div>
-                            );
-                        })
+                    {results && results.length > 0 ? (
+                        <>
+                            {
+                                results.map((item: IChoiceGroupOption, index: number) => {
+                                    const uniqueKey = targetProperty + '-' + item.key;
+                                    return (
+                                        <div style={{ marginBottom: '5px' }} className='ms-ChoiceField' key={uniqueKey}>
+                                            <Checkbox
+                                                checked={selectedKeys.indexOf(item.key.toString()) >= 0}
+                                                disabled={disabled}
+                                                label={item.text}
+                                                onChange={this.onChanged}
+                                                inputProps={{ value: item.key }}
+                                            />
+                                        </div>
+                                    );
+                                })
+                            }
+                        </>
+                    ) : (
+                            <FieldErrorMessage errorMessage={"List ID not provided!"} />
+                        )
                     }
                     <FieldErrorMessage errorMessage={errorMessage} />
                 </div>

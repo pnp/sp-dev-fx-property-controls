@@ -60,7 +60,7 @@ import FieldErrorMessage from '../../propertyFields/errorMessage/FieldErrorMessa
 import { PropertyFieldTeamPicker } from '../../propertyFields/teamPicker';
 import { PropertyFieldIconPicker } from "../../propertyFields/iconPicker";
 import {PropertyFieldColumnPicker, PropertyFieldColumnPickerOrderBy } from "../../PropertyFieldColumnPicker";
-import { IColumnReturnProperty } from '../../propertyFields/columnPicker';
+import { IColumnReturnProperty, IPropertyFieldRenderOption } from '../../propertyFields/columnPicker';
 import { PropertyFieldEditableComboBox } from '../../PropertyFieldEditableComboBox';
 
 /**
@@ -566,7 +566,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   listsToExclude: ["cdn"],
                   filter: "ItemCount gt 0",
                   onListsRetrieved: (lists: ISPList[]) => {
-                    console.log("Lists", lists);
+                    //console.log("Lists", lists);
                     return lists;
                   }
                 }),
@@ -596,7 +596,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                     deferredValidationTime: 0,
                     key: 'columnPickerFieldId',
                     displayHiddenColumns: false,
-                    columnReturnProperty: IColumnReturnProperty["Internal Name"],
+                    columnReturnProperty: IColumnReturnProperty.Id,
                     columnsToExclude: ['Compliance Asset Id'],
                   }),
                   PropertyFieldColumnPicker('multiColumn', {
@@ -612,9 +612,10 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                     deferredValidationTime: 0,
                     key: 'multiColumnPickerFieldId',
                     displayHiddenColumns: false,
-                    columnReturnProperty: IColumnReturnProperty["Internal Name"],
+                    columnReturnProperty: IColumnReturnProperty.Title,
                     columnsToExclude: ['Compliance Asset Id'],
-                    multiSelect: true
+                    multiSelect: true,
+                    renderFieldAs: IPropertyFieldRenderOption["Multiselect Dropdown"]
                   }),
 
                 PropertyFieldListPicker('multiList', {
@@ -657,7 +658,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
                   filter: "ItemCount gt 0",
                   onListsRetrieved: (lists: ISPList[]) => {
-                    console.log("Lists", lists);
+                    //console.log("Lists", lists);
                     return Promise.resolve(lists);
                   },
                   listsToExclude: ["cdn"]

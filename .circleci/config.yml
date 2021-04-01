@@ -98,7 +98,7 @@ workflows:
       - build:
           filters:
             branches:
-              ignore: /^(dev|master|v2)/
+              ignore: /^(dev|master|v2|v2-dev)/
   release_next:
     jobs:
       - build:
@@ -107,6 +107,7 @@ workflows:
               only:
                 - dev
                 - v2
+                - v2-dev
       - build_next:
           requires:
             - build
@@ -115,6 +116,7 @@ workflows:
               only:
                 - dev
                 - v2
+                - v2-dev
       - publish_next:
           requires:
             - build_next
@@ -123,6 +125,7 @@ workflows:
               only:
                 - dev
                 - v2
+                - v2-dev
   release:
     jobs:
       - build:

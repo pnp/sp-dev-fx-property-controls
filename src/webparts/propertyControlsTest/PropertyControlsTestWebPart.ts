@@ -60,7 +60,7 @@ import FieldErrorMessage from '../../propertyFields/errorMessage/FieldErrorMessa
 import { PropertyFieldTeamPicker } from '../../propertyFields/teamPicker';
 import { PropertyFieldIconPicker } from "../../propertyFields/iconPicker";
 import {PropertyFieldColumnPicker, PropertyFieldColumnPickerOrderBy } from "../../PropertyFieldColumnPicker";
-import { IColumnReturnProperty } from '../../propertyFields/columnPicker';
+import { IColumnReturnProperty, IPropertyFieldRenderOption } from '../../propertyFields/columnPicker';
 import { PropertyFieldEditableComboBox } from '../../PropertyFieldEditableComboBox';
 
 /**
@@ -614,7 +614,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                     displayHiddenColumns: false,
                     columnReturnProperty: IColumnReturnProperty["Internal Name"],
                     columnsToExclude: ['Compliance Asset Id'],
-                    multiSelect: true
+                    multiSelect: true,
+                    renderFieldAs: IPropertyFieldRenderOption["Multiselect Dropdown"]
                   }),
 
                 PropertyFieldListPicker('multiList', {

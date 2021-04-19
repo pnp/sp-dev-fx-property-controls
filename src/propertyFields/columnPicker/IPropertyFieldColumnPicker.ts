@@ -15,8 +15,15 @@ export enum PropertyFieldColumnPickerOrderBy {
  */
 export enum IColumnReturnProperty {
     Id,
-    Title,
+    Title = "Title",
     "Internal Name" = "InternalName"
+}
+/**
+ * Enum for choosing the render option for multiselect
+ */
+export enum IPropertyFieldRenderOption {
+    "Choice Group",
+    "Multiselect Dropdown"
 }
 
 /**
@@ -88,6 +95,10 @@ export interface IPropertyFieldColumnPickerProps {
      */
     columnReturnProperty?: IColumnReturnProperty;
     /**
+     * 
+     */
+    renderFieldAs?: IPropertyFieldRenderOption;
+    /**
      * Specify if you want to have a single or mult column selector.
      */
     multiSelect?: boolean;
@@ -144,6 +155,7 @@ export interface IPropertyFieldColumnPickerPropsInternal extends IPropertyFieldC
     columnsToExclude?: string[];
     displayHiddenColumns?: boolean;
     columnReturnProperty?: IColumnReturnProperty;
+    renderFieldAs?: IPropertyFieldRenderOption;
     multiSelect?: boolean;
     webAbsoluteUrl?: string;
     onGetErrorMessage?: (value: string | string[]) => string | Promise<string>;

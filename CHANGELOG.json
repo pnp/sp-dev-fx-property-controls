@@ -1,6 +1,17 @@
 {
   "versions": [
     {
+      "version": "3.1.0",
+      "changes": {
+        "new": [],
+        "enhancements": [],
+        "fixes": [
+          "`PropertyFieldSitePicker`: Site Picker doesn't return sites with title starting from the typed string [#355](https://github.com/pnp/sp-dev-fx-property-controls/issues/355)"
+        ]
+      },
+      "contributions": []
+    },
+    {
       "version": "3.0.0",
       "changes": {
         "new": [],

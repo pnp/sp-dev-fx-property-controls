@@ -1,4 +1,4 @@
-import { ISPColumn } from ".";
+import { ISPColumn } from "./ISPColumn";
 
 /**
  * Defines a collection of SharePoint list views

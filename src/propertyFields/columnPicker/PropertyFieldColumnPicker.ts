@@ -7,10 +7,12 @@ import {
 import { BaseComponentContext } from '@microsoft/sp-component-base';
 import PropertyFieldColumnPickerHost from './PropertyFieldColumnPickerHost';
 import { IPropertyFieldColumnPickerHostProps } from './IPropertyFieldColumnPickerHost';
-import { PropertyFieldColumnPickerOrderBy, IPropertyFieldColumnPickerProps, IPropertyFieldColumnPickerPropsInternal } from './IPropertyFieldColumnPicker';
+import { PropertyFieldColumnPickerOrderBy, IPropertyFieldColumnPickerProps, IPropertyFieldColumnPickerPropsInternal, IPropertyFieldRenderOption } from './IPropertyFieldColumnPicker';
 import { IColumnReturnProperty, ISPColumn } from '.';
 import { IPropertyFieldColumnMultiPickerHostProps } from './IPropertyFieldColumnMultiPickerHost';
 import PropertyFieldColumnMultiPickerHost from './PropertyFieldColumnMultiPickerHost';
+import { IPropertyFieldColumnMultiPickerDropdownHostProps } from './IPropertyFieldColumnMultiPickerDropdownHost';
+import PropertyFieldColumnMultiPickerDropdownHost from './PropertyFieldColumnMultiPickerDropdownHost';
 
 /**
  * Represents a PropertyFieldColumnPicker object
@@ -33,6 +35,7 @@ class PropertyFieldColumnPickerBuilder implements IPropertyPaneField<IPropertyFi
     private displayHiddenColumns: boolean = false;
     private columnReturnProperty: IColumnReturnProperty = IColumnReturnProperty.Id;
     private multiSelect: boolean = false;
+    private renderFieldAs: IPropertyFieldRenderOption = IPropertyFieldRenderOption["Choice Group"];
 
     private customProperties: any;
     private deferredValidationTime: number = 200;
@@ -68,6 +71,7 @@ class PropertyFieldColumnPickerBuilder implements IPropertyPaneField<IPropertyFi
         this.columnsToExclude = _properties.columnsToExclude;
         this.displayHiddenColumns = _properties.displayHiddenColumns;
         this.columnReturnProperty = _properties.columnReturnProperty;
+        this.renderFieldAs = _properties.renderFieldAs;
         this.multiSelect = _properties.multiSelect;
         this.filter = _properties.filter;
         this.onGetErrorMessage = _properties.onGetErrorMessage;
@@ -104,18 +108,24 @@ class PropertyFieldColumnPickerBuilder implements IPropertyPaneField<IPropertyFi
             columnsToExclude: this.columnsToExclude,
             displayHiddenColumns: this.displayHiddenColumns,
             columnReturnProperty: this.columnReturnProperty,
+            renderFieldAs: this.renderFieldAs,
             multiSelect: this.multiSelect,
             filter: this.filter,
             onColumnsRetrieved: this.onColumnsRetrieved
         };
-        console.log("PropertyFieldColumnPicker.ts", this.selectedColumns);
         // Check if the multi or single select component has to get loaded
         if (this.multiSelect) {
-            // Single selector
+            // Multiple selector
             componentProps['selectedColumns'] = this.selectedColumns;
-            const element: React.ReactElement<IPropertyFieldColumnMultiPickerHostProps> = React.createElement(PropertyFieldColumnMultiPickerHost, componentProps);
-            // Calls the REACT content generator
-            ReactDom.render(element, elem);
+            if (this.renderFieldAs === IPropertyFieldRenderOption["Choice Group"]) {
+                const element: React.ReactElement<IPropertyFieldColumnMultiPickerHostProps> = React.createElement(PropertyFieldColumnMultiPickerHost, componentProps);
+                // Calls the REACT content generator
+                ReactDom.render(element, elem);
+            } else {
+                const element: React.ReactElement<IPropertyFieldColumnMultiPickerDropdownHostProps> = React.createElement(PropertyFieldColumnMultiPickerDropdownHost, componentProps);
+                // Calls the REACT content generator
+                ReactDom.render(element, elem);
+            }
         } else {
             // Single selector
             componentProps['selectedColumn'] = this.selectedColumn;
@@ -158,6 +168,7 @@ export function PropertyFieldColumnPicker(targetProperty: string, properties: IP
         columnsToExclude: properties.columnsToExclude,
         displayHiddenColumns: properties.displayHiddenColumns,
         columnReturnProperty: properties.columnReturnProperty,
+        renderFieldAs: properties.renderFieldAs,
         multiSelect: properties.multiSelect,
         webAbsoluteUrl: properties.webAbsoluteUrl,
         filter: properties.filter,

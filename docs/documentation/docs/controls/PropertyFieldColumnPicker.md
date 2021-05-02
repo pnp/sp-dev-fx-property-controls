@@ -8,6 +8,8 @@ The control automatically retrieves the columns for a given SharePoint list:
 
 ![MultiColumn picker](../assets/multiColumnPicker.png)
 
+![MultiColumn picker - Multiselect Dropdown](../assets/multicolumnpicker-dropdown.png)
+
 ## How to use this control in your solutions
 
 1. Check that you installed the `@pnp/spfx-property-controls` dependency. Check out The [getting started](../../#getting-started) page for more information about installing the dependency.
@@ -77,6 +79,25 @@ PropertyFieldColumnPicker('multiColumn', {
     columnReturnProperty: IColumnReturnProperty.Title,
     multiSelect: true
 })
+
+// Multi column selection returning the 'Title' of the selected columns as a multi-select dropdown
+PropertyFieldColumnPicker('multiColumn', {
+    label: 'Select columns',
+    context: this.context,
+    selectedColumn: this.properties.multiColumn,
+    listId: this.properties.singleListFiltered,
+    disabled: false,
+    orderBy: PropertyFieldColumnPickerOrderBy.Title,
+    onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+    properties: this.properties,
+    onGetErrorMessage: null,
+    deferredValidationTime: 0,
+    key: 'multiColumnPickerFieldId',
+    displayHiddenColumns: false,
+    columnReturnProperty: IColumnReturnProperty.Title,
+    multiSelect: true
+    renderFieldAs: IPropertyFieldRenderOption["Multiselect Dropdown"]
+})
 ```
 
 ## Implementation
@@ -103,6 +124,7 @@ multiSelect | boolean | no | Specify if you want to have a single or multi-colum
 | onColumnsRetrieved | (columns: ISPColumn[]) => PromiseLike<ISPColumn[]> \| ISPColumn[] | no | Callback that is called before the dropdown is populated. |
 displayHiddenColumns | boolean | no | Hidden columns to be returned or not. By default this is set to `false` (No Hidden columns) |
 columnReturnProperty | IColumnReturnProperty | no | Property to be returned for the selected column(s). |
+renderFieldAs | IPropertyFieldRenderOption | no | Property to render the control as `Choice group` or `Multiselect Dropdown`. This is applicable only if the multiselect is `true`. By default the control will be displayed as `Choice Group`
 
 Enum `PropertyFieldColumnPickerOrderBy`
 
@@ -118,5 +140,11 @@ Enum `IColumnReturnProperty`
 | Id | Column `ID` to be returned |
 | Title | Column `Title` to be returned |
 | Internal Name | Column `InternalName` to be returned | 
+
+Enum `IPropertyFieldRenderOption`
+| Name | Description |
+| ---- | ---- |
+| Choice Group | Render the control as multi-select checkbox list
+| Multiselect Dropdown | Render the control as multi-select dropdown
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldColumnPicker)

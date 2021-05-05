@@ -42,3 +42,6 @@ docs/documentation/site
 
 # other files
 tslint.json
+
+# Release
+release

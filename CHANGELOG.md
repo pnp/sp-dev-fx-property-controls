@@ -1,11 +1,32 @@
 # Releases
 
+## 3.1.0
+
+### Enhancements
+
+- SharePoint Framework v1.12.1 support
+- `PropertyFieldColumnPicker`: Multiselect dropdown option [#354](https://github.com/pnp/sp-dev-fx-property-controls/pull/354)
+
+### Fixes
+
+- `PropertyFieldSitePicker`: Site Picker doesn't return sites with title starting from the typed string [#355](https://github.com/pnp/sp-dev-fx-property-controls/issues/355)
+
+### Contributors
+
+Special thanks to our contributor: [Sudharsan Kesavanarayanan](https://github.com/sudharsank).
+
 ## 3.0.0
 
 ### Enhancements
 
 - SharePoint Framework v1.12 support (Breaking change)
 - FLuent UI v7 support
+
+## 2.6.0
+
+### Fixes
+
+- `PropertyFieldSitePicker`: Site Picker doesn't return sites with title starting from the typed string [#355](https://github.com/pnp/sp-dev-fx-property-controls/issues/355)
 
 ## 2.5.0
 

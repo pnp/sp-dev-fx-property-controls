@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { Spinner, SpinnerSize, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { IPropertyFieldColumnMultiPickerHostProps, IPropertyFieldColumnMultiPickerHostState } from './IPropertyFieldColumnMultiPickerHost';
-import { ISPColumns, ISPColumn } from '.';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { ISPColumn } from './ISPColumn';
+import { ISPColumns } from './ISPColumns';
 import { SPColumnPickerService } from '../../services/SPColumnPickerService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as telemetry from '../../common/telemetry';
 import { setPropertyValue } from '../../helpers/GeneralHelper';
+import { IPropertyFieldColumnMultiPickerDropdownHostProps, IPropertyFieldColumnMultiPickerDropdownHostState } from './IPropertyFieldColumnMultiPickerDropdownHost';
 
 /**
 * Renders the controls for PropertyFieldSPColumnMultiplePicker component
 */
-export default class PropertyFieldColumnMultiPickerHost extends React.Component<IPropertyFieldColumnMultiPickerHostProps, IPropertyFieldColumnMultiPickerHostState> {
+export default class PropertyFieldColumnMultiPickerDropdownHost extends React.Component<IPropertyFieldColumnMultiPickerDropdownHostProps, IPropertyFieldColumnMultiPickerDropdownHostState> {
     private loaded: boolean = false;
     private async: Async;
     private delayedValidate: (value: string[]) => void;
@@ -22,7 +22,7 @@ export default class PropertyFieldColumnMultiPickerHost extends React.Component<
     /**
     * Constructor
     */
-    constructor(props: IPropertyFieldColumnMultiPickerHostProps) {
+    constructor(props: IPropertyFieldColumnMultiPickerDropdownHostProps) {
         super(props);
 
         telemetry.track('PropertyFieldColumnMultiPicker', {
@@ -51,7 +51,7 @@ export default class PropertyFieldColumnMultiPickerHost extends React.Component<
         this.loadColumns();
     }
 
-    public componentDidUpdate(prevProps: IPropertyFieldColumnMultiPickerHostProps, prevState: IPropertyFieldColumnMultiPickerHostState): void {
+    public componentDidUpdate(prevProps: IPropertyFieldColumnMultiPickerDropdownHostProps, prevState: IPropertyFieldColumnMultiPickerDropdownHostState): void {
         if (this.props.listId !== prevProps.listId ||
             this.props.webAbsoluteUrl !== prevProps.webAbsoluteUrl) {
             this.loadColumns();
@@ -59,10 +59,10 @@ export default class PropertyFieldColumnMultiPickerHost extends React.Component<
     }
 
     private loadColumns(): void {
-        const { context, selectedColumns, columnReturnProperty, displayHiddenColumns } = this.props;
+        const { selectedColumns, columnReturnProperty, displayHiddenColumns } = this.props;
         const columnService: SPColumnPickerService = new SPColumnPickerService(this.props, this.props.context);
         const columnsToExclude: string[] = this.props.columnsToExclude || [];
-        const options: IChoiceGroupOption[] = [];
+        const options: IDropdownOption[] = [];
         const selectedKeys: string[] = [];
         let selectedColumnsKeys: string[] = [];
         if (selectedColumns && selectedColumns.length) {
@@ -84,7 +84,6 @@ export default class PropertyFieldColumnMultiPickerHost extends React.Component<
                 if (selectedColumnsKeys) {
                     indexInExisting = selectedColumnsKeys.indexOf(colPropsToCheck);
                 }
-
                 if (indexInExisting > -1) {
                     isSelected = true;
                     selectedKeys.push(colPropsToCheck);
@@ -95,7 +94,7 @@ export default class PropertyFieldColumnMultiPickerHost extends React.Component<
                     options.push({
                         key: colPropsToCheck,
                         text: column.Title,
-                        checked: isSelected
+                        selected: isSelected
                     });
                 }
             });
@@ -111,17 +110,17 @@ export default class PropertyFieldColumnMultiPickerHost extends React.Component<
     /**
     * Raises when a column has been selected
     */
-    private onChanged(element: React.FormEvent<HTMLElement>, isChecked: boolean): void {
+    private onChanged(element: React.FormEvent<HTMLElement>, option?: IDropdownOption, index?: number): void {
         if (element) {
-            const value: string = (element.currentTarget as any).value;
+            //const value: string = (element.currentTarget as any).;
             let selectedKeys = this.state.selectedKeys;
             // Check if the element is selected
-            if (isChecked === false) {
+            if (option.selected === false) {
                 // Remove the unselected item
-                selectedKeys = selectedKeys.filter(s => s !== value);
+                selectedKeys = selectedKeys.filter(s => s !== option.key);
             } else {
                 // Add the selected item and filter out the doubles
-                selectedKeys.push(value);
+                selectedKeys.push(option.key.toString());
                 selectedKeys = selectedKeys.filter((item, pos, self) => {
                     return self.indexOf(item) === pos;
                 });
@@ -144,8 +143,8 @@ export default class PropertyFieldColumnMultiPickerHost extends React.Component<
                 results
             } = this.state;
             if (isChecked === true) {
-                results.forEach((value: IChoiceGroupOption) => {
-                    selectedKeys.push(value.key);
+                results.forEach((value: IDropdownOption) => {
+                    selectedKeys.push(value.key.toString());
                 });
             }
             this.setState({
@@ -262,30 +261,15 @@ export default class PropertyFieldColumnMultiPickerHost extends React.Component<
             // Renders content
             return (
                 <div>
-                    {this.props.label && <Label>{this.props.label}</Label>}
-                    {results && results.length > 0 ? (
-                        <>
-                            {
-                                results.map((item: IChoiceGroupOption, index: number) => {
-                                    const uniqueKey = targetProperty + '-' + item.key;
-                                    return (
-                                        <div style={{ marginBottom: '5px' }} className='ms-ChoiceField' key={uniqueKey}>
-                                            <Checkbox
-                                                checked={selectedKeys.indexOf(item.key.toString()) >= 0}
-                                                disabled={disabled}
-                                                label={item.text}
-                                                onChange={this.onChanged}
-                                                inputProps={{ value: item.key }}
-                                            />
-                                        </div>
-                                    );
-                                })
-                            }
-                        </>
-                    ) : (
-                            <FieldErrorMessage errorMessage={"List ID not provided!"} />
-                        )
-                    }
+                    <Dropdown
+                        multiSelect={true}
+                        label={this.props.label}
+                        disabled={disabled}
+                        options={results}
+                        defaultSelectedKeys={selectedKeys}
+                        onChange={this.onChanged}
+                        selectedKeys={selectedKeys}
+                    />
                     <FieldErrorMessage errorMessage={errorMessage} />
                 </div>
             );

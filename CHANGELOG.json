@@ -1,6 +1,22 @@
 {
   "versions": [
     {
+      "version": "3.1.0",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "SharePoint Framework v1.12.1 support",
+          "`PropertyFieldColumnPicker`: Multiselect dropdown option [#354](https://github.com/pnp/sp-dev-fx-property-controls/pull/354)"
+        ],
+        "fixes": [
+          "`PropertyFieldSitePicker`: Site Picker doesn't return sites with title starting from the typed string [#355](https://github.com/pnp/sp-dev-fx-property-controls/issues/355)"
+        ]
+      },
+      "contributions": [
+        "[Sudharsan Kesavanarayanan](https://github.com/sudharsank)"
+      ]
+    },
+    {
       "version": "3.0.0",
       "changes": {
         "new": [],
@@ -9,6 +25,17 @@
           "FLuent UI v7 support"
         ],
         "fixes": []
+      },
+      "contributions": []
+    },
+    {
+      "version": "2.6.0",
+      "changes": {
+        "new": [],
+        "enhancements": [],
+        "fixes": [
+          "`PropertyFieldSitePicker`: Site Picker doesn't return sites with title starting from the typed string [#355](https://github.com/pnp/sp-dev-fx-property-controls/issues/355)"
+        ]
       },
       "contributions": []
     },

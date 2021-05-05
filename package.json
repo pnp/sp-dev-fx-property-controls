@@ -54,7 +54,7 @@
     "ajv": "~5.2.2",
     "amd-loader": "0.0.8",
     "gulp": "4.0.2",
-    "husky": "5.2.0",
+    "husky": "^6.0.0",
     "request-promise": "4.2.6",
     "sonarqube-scanner": "2.1.2",
     "typescript": "3.7.7"

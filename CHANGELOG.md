@@ -1,5 +1,15 @@
 # Releases
 
+## 3.2.0
+
+### Fixes
+
+- `FilePicker`: Stock images url is getting a 404 server error [#364](https://github.com/pnp/sp-dev-fx-property-controls/issues/364)
+
+### Contributors
+
+Special thanks to our contributor: [Chrisrb05](https://github.com/Chrisrb05).
+
 ## 3.1.0
 
 ### Enhancements

@@ -1,6 +1,20 @@
 {
   "versions": [
     {
+      "version": "2.7.0",
+      "changes": {
+        "new": [],
+        "enhancements": [],
+        "fixes": [
+          "`PropertyFieldFilePicker`: Stock images url is getting a 404 server error [#364](https://github.com/pnp/sp-dev-fx-property-controls/issues/364)",
+          "`PropertyFieldColumnPicker`: Filter not working properly [#356](https://github.com/pnp/sp-dev-fx-property-controls/issues/356)"
+        ]
+      },
+      "contributions": [
+        "[Chrisrb05](https://github.com/Chrisrb05)"
+      ]
+    },
+    {
       "version": "2.6.0",
       "changes": {
         "new": [],

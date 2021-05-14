@@ -53,8 +53,8 @@ export class SPColumnPickerService implements ISPColumnPickerService {
 
                 // Adds an OData Filter to the list
                 if (this.props.filter) {
-                    if (displayHiddenColumns) queryUrl += `&$filter=&${encodeURIComponent(this.props.filter)}`;
-                    else queryUrl += `&$filter=Hidden eq false&${encodeURIComponent(this.props.filter)}`;
+                    if (displayHiddenColumns) queryUrl += `&$filter=${encodeURIComponent(this.props.filter)}`;
+                    else queryUrl += `&$filter=Hidden eq false and ${encodeURIComponent(this.props.filter)}`;
                 } else {
                     if (!displayHiddenColumns) queryUrl += `&$filter=Hidden eq false`;
                 }

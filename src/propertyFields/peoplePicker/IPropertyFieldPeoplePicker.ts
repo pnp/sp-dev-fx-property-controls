@@ -1,4 +1,3 @@
-import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-property-pane';
 import { BaseComponentContext } from '@microsoft/sp-component-base';
 
 /**

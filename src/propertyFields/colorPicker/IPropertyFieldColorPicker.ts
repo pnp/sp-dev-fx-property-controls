@@ -42,6 +42,11 @@ export interface IPropertyFieldColorPickerProps {
 	disabled?: boolean;
 
 	/**
+	 * Time after which the control is updated
+	 */
+	debounce?: number;
+
+	/**
 	* Whether the property pane field is hidden or not.
 	*/
 	isHidden?: boolean;

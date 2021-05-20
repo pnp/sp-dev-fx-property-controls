@@ -5,6 +5,7 @@
       "changes": {
         "new": [],
         "enhancements": [
+          "`PropertyFieldColorPicker`: Add debounce property to color picker control [#352](https://github.com/pnp/sp-dev-fx-property-controls/issues/352)"
         ],
         "fixes": [
           "`PropertyFieldFilePicker`: Stock images url is getting a 404 server error [#364](https://github.com/pnp/sp-dev-fx-property-controls/issues/364)",
@@ -12,7 +13,8 @@
         ]
       },
       "contributions": [
-        "[Chrisrb05](https://github.com/Chrisrb05)"
+        "[Chrisrb05](https://github.com/Chrisrb05)",
+        "[Konrad K.](https://github.com/wilecoyotegenius)"
       ]
     },
     {

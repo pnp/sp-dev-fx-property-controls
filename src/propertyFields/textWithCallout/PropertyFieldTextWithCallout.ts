@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import {
     IPropertyPaneField,
     PropertyPaneFieldType
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 
 import PropertyFieldTextWithCalloutHost from './PropertyFieldTextWithCalloutHost';
 
@@ -24,6 +24,7 @@ class PropertyFieldTextWithCalloutBuilder implements IPropertyPaneField<IPropert
 
         this.properties.onRender = this._render.bind(this);
         this.properties.onDispose = this._dispose.bind(this);
+        this.properties.onChanged = this._onChanged.bind(this);
     }
 
     private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
@@ -32,7 +33,8 @@ class PropertyFieldTextWithCalloutBuilder implements IPropertyPaneField<IPropert
 
         const element = React.createElement(PropertyFieldTextWithCalloutHost, {
             ...omit(props, ['logName']),
-            onNotifyValidationResult: this._onValidated.bind(this)
+            onNotifyValidationResult: this._onValidated.bind(this),
+            onChanged: this._onChanged.bind(this)
         });
 
         ReactDOM.render(element, elem);
@@ -51,11 +53,18 @@ class PropertyFieldTextWithCalloutBuilder implements IPropertyPaneField<IPropert
             this._onChangeCallback(this.targetProperty, value);
         }
     }
+
+    private _onChanged(value: string): void {
+        if (this._onChangeCallback) {
+          this._onChangeCallback(this.targetProperty, value);
+        }
+      }
 }
 
 export function PropertyFieldTextWithCallout(targetProperty: string, properties: IPropertyFieldTextWithCalloutProps): IPropertyPaneField<IPropertyFieldTextWithCalloutPropsInternal> {
     return new PropertyFieldTextWithCalloutBuilder(targetProperty, {
         ...properties,
+        onChanged: properties.onChanged,
         onRender: null,
         onDispose: null
     });

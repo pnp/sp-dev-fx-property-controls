@@ -4,14 +4,19 @@
       "version": "2.7.0",
       "changes": {
         "new": [],
-        "enhancements": [],
+        "enhancements": [
+          "`PropertyFieldColorPicker`: Add debounce property to color picker control [#352](https://github.com/pnp/sp-dev-fx-property-controls/issues/352)"
+        ],
         "fixes": [
           "`PropertyFieldFilePicker`: Stock images url is getting a 404 server error [#364](https://github.com/pnp/sp-dev-fx-property-controls/issues/364)",
-          "`PropertyFieldColumnPicker`: Filter not working properly [#356](https://github.com/pnp/sp-dev-fx-property-controls/issues/356)"
+          "`PropertyFieldColumnPicker`: Filter not working properly [#356](https://github.com/pnp/sp-dev-fx-property-controls/issues/356)",
+          "`PropertyFieldFilePicker`: React crash on large folders [#371](https://github.com/pnp/sp-dev-fx-property-controls/pull/371)"
         ]
       },
       "contributions": [
-        "[Chrisrb05](https://github.com/Chrisrb05)"
+        "[Chrisrb05](https://github.com/Chrisrb05)",
+        "[Konrad K.](https://github.com/wilecoyotegenius)",
+        "[Mark Bice](https://github.com/mbice)"
       ]
     },
     {

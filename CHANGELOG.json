@@ -12,10 +12,12 @@
           "`PropertyFieldFilePicker`: Stock images url is getting a 404 server error [#364](https://github.com/pnp/sp-dev-fx-property-controls/issues/364)",
           "`PropertyFieldColumnPicker`: Filter not working properly [#356](https://github.com/pnp/sp-dev-fx-property-controls/issues/356)",
           "`PropertyFieldTextWithCallout`: Fix TextWithCallout read-only in SPFx 1.12.1 [#372](https://github.com/pnp/sp-dev-fx-property-controls/pull/372)",
-          "`PropertyFieldFilePicker`: React crash on large folders [#371](https://github.com/pnp/sp-dev-fx-property-controls/pull/371)"
+          "`PropertyFieldFilePicker`: React crash on large folders [#371](https://github.com/pnp/sp-dev-fx-property-controls/pull/371)",
+          "`PropertyFieldFilePicker`: documentation formatting fix [#368](https://github.com/pnp/sp-dev-fx-property-controls/pull/368)"
         ]
       },
       "contributions": [
+        "[Ari Gunawan](https://github.com/AriGunawan)",
         "[Chrisrb05](https://github.com/Chrisrb05)",
         "[Gautam Sheth](https://github.com/gautamdsheth)",
         "[Konrad K.](https://github.com/wilecoyotegenius)",

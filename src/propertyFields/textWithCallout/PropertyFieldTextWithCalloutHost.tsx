@@ -20,7 +20,7 @@ export default class PropertyFieldTextWithCalloutHost extends React.Component<IP
     return (
       <div>
         <PropertyFieldHeader {...this.props} />
-        <TextField { ...omit(this.props, ['label']) } />
+        <TextField {...omit(this.props, ['label'])} onChange={(event, newValue: string) => { this.props.onChanged ? this.props.onChanged(newValue) : null }} />
       </div>
     );
   }

@@ -2,6 +2,7 @@
 
 File picker control allows to browse and select a file from various places via the property pane.
 Currently supported locations
+
 - Recent files - tab allows to select a file from recently modified files based on the search results.
 - Web search - tab uses Bing cognitive services to look for a file. (Only images)
 - OneDrive - tab allows to select a file from the user's One Drive.

@@ -127,7 +127,9 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
   private addAndSave = () => {
     // Check if the item is not empty
     if (this.state.inCreationItem) {
-      this.props.fOnSave([...this.state.crntItems, this.state.inCreationItem]);
+      let crntItems = [...this.state.crntItems, this.state.inCreationItem];
+      crntItems = this.updateSortProperty(crntItems);
+      this.props.fOnSave(crntItems);
     } else {
       this.onSave();
     }

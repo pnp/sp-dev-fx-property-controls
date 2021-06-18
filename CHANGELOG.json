@@ -13,7 +13,8 @@
           "`PropertyFieldColumnPicker`: Filter not working properly [#356](https://github.com/pnp/sp-dev-fx-property-controls/issues/356)",
           "`PropertyFieldTextWithCallout`: Fix TextWithCallout read-only in SPFx 1.12.1 [#372](https://github.com/pnp/sp-dev-fx-property-controls/pull/372)",
           "`PropertyFieldFilePicker`: React crash on large folders [#371](https://github.com/pnp/sp-dev-fx-property-controls/pull/371)",
-          "`PropertyFieldFilePicker`: documentation formatting fix [#368](https://github.com/pnp/sp-dev-fx-property-controls/pull/368)"
+          "`PropertyFieldFilePicker`: documentation formatting fix [#368](https://github.com/pnp/sp-dev-fx-property-controls/pull/368)",
+          "`PropertyFieldCollectionData`: PropertyFieldCollectionData is not setting sortIdx on resulting collection when using Add and Save [#369](https://github.com/pnp/sp-dev-fx-property-controls/issues/369)"
         ]
       },
       "contributions": [

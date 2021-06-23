@@ -42,6 +42,23 @@ Special thanks to our contributor: [Sudharsan Kesavanarayanan](https://github.co
 - SharePoint Framework v1.12 support (Breaking change)
 - FLuent UI v7 support
 
+## 2.7.0
+
+### Enhancements
+
+- `PropertyFieldColorPicker`: Add debounce property to color picker control [#352](https://github.com/pnp/sp-dev-fx-property-controls/issues/352)
+
+### Fixes
+
+- `PropertyFieldFilePicker`: Stock images url is getting a 404 server error [#364](https://github.com/pnp/sp-dev-fx-property-controls/issues/364)
+- `PropertyFieldColumnPicker`: Filter not working properly [#356](https://github.com/pnp/sp-dev-fx-property-controls/issues/356)
+- `PropertyFieldFilePicker`: React crash on large folders [#371](https://github.com/pnp/sp-dev-fx-property-controls/pull/371)
+- `PropertyFieldCollectionData`: PropertyFieldCollectionData is not setting sortIdx on resulting collection when using Add and Save [#369](https://github.com/pnp/sp-dev-fx-property-controls/issues/369)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Chrisrb05](https://github.com/Chrisrb05), [Konrad K.](https://github.com/wilecoyotegenius), [Mark Bice](https://github.com/mbice).
+
 ## 2.6.0
 
 ### Fixes

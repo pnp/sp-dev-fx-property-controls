@@ -66,7 +66,8 @@ export default class PropertyFieldColumnPickerHost extends React.Component<IProp
         this.options = [];
         columnService.getColumns(displayHiddenColumns).then((response: ISPColumns) => {
             // Start mapping the Columns that are selected
-            response.value.forEach((column: ISPColumn) => {
+            const value = response.value || [];
+            value.forEach((column: ISPColumn) => {
                 let colPropsToCheck = columnReturnProperty ? column[columnReturnProperty] : column.Id;
                 if (selectedColumn === colPropsToCheck) {
                     this.selectedKey = columnReturnProperty ? column[columnReturnProperty] : column.Id;

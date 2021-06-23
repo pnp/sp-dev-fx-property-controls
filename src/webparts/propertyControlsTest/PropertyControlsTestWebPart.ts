@@ -118,7 +118,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
   }
 
   private wait() {
-    return new Promise((resolve) => {
+    return new Promise<void>((resolve) => {
       setTimeout(() => {
         resolve();
         return;
@@ -174,6 +174,10 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
   }
 
   private _onChangedPassword(value: string) {
+    console.log(value);
+  }
+
+  private _onChangedTextWithCallout(value: string) {
     console.log(value);
   }
 
@@ -697,6 +701,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   selectedColor: this.properties.color,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
+                  debounce: 500,
                   //disabled: true,
                   //alphaSliderHidden: true,
                   //style: PropertyFieldColorPickerStyle.Full,
@@ -775,7 +780,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: 'Describe your PnP passion with few words',
                   calloutContent: React.createElement('span', {}, 'You can describe your passion with such words as strong, cosmic, all-absorbing, etc.'),
                   calloutWidth: 150,
-                  value: this.properties.textInfoHeaderValue
+                  value: this.properties.textInfoHeaderValue,
+                  onChanged: this._onChangedTextWithCallout
                 }),
                 PropertyFieldToggleWithCallout('toggleInfoHeaderValue', {
                   calloutTrigger: CalloutTriggers.Click,

@@ -45,3 +45,4 @@ tslint.json
 
 # Release
 release
+*.scss.d.ts

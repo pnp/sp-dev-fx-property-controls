@@ -3,6 +3,7 @@ import { getColorFromString, IColor } from 'office-ui-fabric-react/lib/utilities
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { setPropertyValue } from '../../helpers/GeneralHelper';
+import { debounce } from '../../common/util/Util';
 
 import {
 	IPropertyFieldColorPickerProps,
@@ -22,6 +23,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 	private color: string;
 	private valueAsObject: boolean;
 	private changeCB?: (targetProperty?: string, newValue?: any) => void;
+	private _debounce: (fnc: any, timeout:number) => void = debounce();
 
 	public constructor(_targetProperty: string, _properties: IPropertyFieldColorPickerProps) {
 		this.targetProperty = _targetProperty;
@@ -31,6 +33,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			onPropertyChange: _properties.onPropertyChange,
 			selectedColor: _properties.selectedColor,
 			disabled: _properties.disabled,
+			debounce: _properties.debounce,
 			isHidden: _properties.isHidden,
 			alphaSliderHidden: _properties.alphaSliderHidden,
 			properties: _properties.properties,
@@ -70,6 +73,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			label: this.properties.label,
 			alphaSliderHidden: this.properties.alphaSliderHidden,
 			disabled: this.properties.disabled,
+			debounce: this.properties.debounce,
 			isHidden: this.properties.isHidden,
 			selectedColor: this.color,
 			style: this.properties.style || PropertyFieldColorPickerStyle.Inline,
@@ -84,14 +88,20 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			let newValue: string | IColor = (this.valueAsObject ? getColorFromString(newColor) : newColor);
 			let oldValue: string | IColor = (this.valueAsObject ? getColorFromString(this.color) : this.color);
 			this.color = newColor;
-			this.properties.onPropertyChange(this.targetProperty, oldValue, newValue);
-      setPropertyValue(this.properties.properties, this.targetProperty, newValue);
-			if (typeof this.changeCB !== 'undefined' && this.changeCB !== null) {
-				this.changeCB(this.targetProperty, newValue);
-			}
+			this.properties.debounce ? 
+				this._debounce(() => {
+					this.onColorChangedInternal(oldValue, newValue);
+				}, this.properties.debounce) : 
+				this.onColorChangedInternal(oldValue, newValue);
 		}
 	}
-
+	private onColorChangedInternal(oldValue: string | IColor , newValue: string | IColor ) {
+		this.properties.onPropertyChange(this.targetProperty, oldValue, newValue);
+		setPropertyValue(this.properties.properties, this.targetProperty, newValue);
+		if (typeof this.changeCB !== 'undefined' && this.changeCB !== null) {
+			this.changeCB(this.targetProperty, newValue);
+		}
+	}
 }
 
 export function PropertyFieldColorPicker(targetProperty: string, properties: IPropertyFieldColorPickerProps): IPropertyPaneField<IPropertyFieldColorPickerProps> {

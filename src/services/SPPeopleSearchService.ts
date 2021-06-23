@@ -4,7 +4,6 @@ import { PrincipalType, IPropertyFieldGroupOrPerson } from './../propertyFields/
 import { ISPPeopleSearchService } from './ISPPeopleSearchService';
 import SPPeoplePickerMockHttpClient from './SPPeopleSearchMockService';
 import { BaseComponentContext } from '@microsoft/sp-component-base';
-import { IUsers } from './IUsers';
 
 /**
  * Service implementation to search people in SharePoint

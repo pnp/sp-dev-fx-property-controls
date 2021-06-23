@@ -36,6 +36,7 @@ PropertyFieldColorPicker('color', {
   onPropertyChange: this.onPropertyPaneFieldChanged,
   properties: this.properties,
   disabled: false,
+  debounce: 1000,
   isHidden: false,
   alphaSliderHidden: false,
   style: PropertyFieldColorPickerStyle.Full,
@@ -52,6 +53,7 @@ The `PropertyFieldColorPicker` control can be configured with the following prop
 | ---- | ---- | ---- | ---- |
 | label | string | yes | Property field label displayed on top. |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
+| debounce | number | no | Specify delay after which control value will be set. |
 | isHidden | boolean | no | Specify if the control needs to be hidden. |
 | selectedColor | string or IColor | no | The CSS-compatible string or an IColor object to describe the initial color |
 | alphaSliderHidden | boolean | no | When true, the alpha slider control is hidden |

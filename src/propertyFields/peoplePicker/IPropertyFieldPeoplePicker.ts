@@ -1,4 +1,4 @@
-import { IWebPartContext, IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
 /**
  * PrincipalType controls the type of entities that are returned in the results.

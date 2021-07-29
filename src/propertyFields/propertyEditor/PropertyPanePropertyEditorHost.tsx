@@ -47,8 +47,8 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
       // Do not update dynamic data properties
       const currentValue = getPropertyValue(this.props.webpart.properties, propName);
 
-      if (currentValue) {
-        if (currentValue.__type === "DynamicProperty") {
+
+        if (currentValue?.__type === "DynamicProperty") {
           const currVal: DynamicProperty<any> = currentValue as DynamicProperty<any>;
 
           const newVal = newProperties[propName];
@@ -67,7 +67,7 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
           this.props.webpart.properties[propName].onChange(propName, newProperties[propName]);
         }
       }
-    }
+
     this.props.webpart.render();
     this.props.webpart.context.propertyPane.refresh();
     this.setState((current) => ({ ...current, openPanel: false }));

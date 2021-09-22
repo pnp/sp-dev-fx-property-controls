@@ -1142,9 +1142,18 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                                   onError(field.id, "");
                                 }
                               }
-                            }), " 🎉"
+                            }), " 🎉" 
                           )
                         );
+                      }
+                    },
+                    {
+                      id: "customVisibility",
+                      title: "Custom Field",
+                      type: CustomCollectionFieldType.boolean,
+                      defaultValue: true,
+                      isVisible: (field, items) => {
+                        return items.filter(i => i.City == 'antwerp').length > 0;
                       }
                     }
                   ],

@@ -74,9 +74,9 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
       if (this.checkAllRequiredFieldsValid(crntItem) &&
           this.checkAnyFieldContainsValue(crntItem) &&
           this.checkAllFieldsAreValid()) {
-        this.props.fAddInCreation(crntItem);
+        this.props.fAddInCreation(crntItem, true);
       } else {
-        this.props.fAddInCreation(null);
+        this.props.fAddInCreation(crntItem, false);
       }
     }
 

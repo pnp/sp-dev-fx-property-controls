@@ -1142,14 +1142,14 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                                   onError(field.id, "");
                                 }
                               }
-                            }), " 🎉" 
+                            }), " 🎉"
                           )
                         );
                       }
                     },
                     {
                       id: "customVisibility",
-                      title: "Custom Field",
+                      title: "Custom Visible Field",
                       type: CustomCollectionFieldType.boolean,
                       defaultValue: true,
                       isVisible: (field, items) => {

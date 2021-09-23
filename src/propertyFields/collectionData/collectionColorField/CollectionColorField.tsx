@@ -56,11 +56,11 @@ export class CollectionColorField extends React.Component<ICollectionColorFieldP
    * @param field
    * @param value
    */
-  private valueChange = (field: ICustomCollectionField, value: string) => {
+  private valueChange = async (field: ICustomCollectionField, value: string) => {
     this.setState({
       color: value
     });
-    this.props.fOnValueChange(field.id, value);
+    await this.props.fOnValueChange(field.id, value);
     this.delayedValidate(field, value);
   }
 
@@ -98,7 +98,7 @@ export class CollectionColorField extends React.Component<ICollectionColorFieldP
           <ColorPicker
             color={this.state.color}
             alphaSliderHidden={true}
-            onChange={(ev, color) => this.valueChange(this.props.field, color.str)}
+            onChange={async (ev, color) => await this.valueChange(this.props.field, color.str)}
           />
 
         </Callout>

@@ -22,7 +22,7 @@ export const CollectionCheckboxField: React.FunctionComponent<ICollectionCheckbo
     }
 
     if (fOnValueChange) {
-      fOnValueChange(field.id, value);
+      await fOnValueChange(field.id, value);
     }
 
     if (fValidation) {
@@ -43,7 +43,7 @@ export const CollectionCheckboxField: React.FunctionComponent<ICollectionCheckbo
   }
 
   return <Checkbox checked={item[field.id] ? item[field.id] : false}
-    onChange={(e, v) => { onValueChange(v); }}
+    onChange={async (e, v) => await onValueChange(v)}
     disabled={disableEdit}
     className={`PropertyFieldCollectionData__panel__boolean-field ${errorMessage ? styles.invalidField : ''}`} />;
 };

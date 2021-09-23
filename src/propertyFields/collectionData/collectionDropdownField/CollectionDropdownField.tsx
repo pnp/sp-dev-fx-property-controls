@@ -1,16 +1,10 @@
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import * as React from 'react';
 import { ICustomCollectionField } from '..';
+import { IBaseCollectionFieldProps } from '../IBaseCollectionFIeldsProps';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
 
-export interface ICollectionDropdownFieldProps {
-  field: ICustomCollectionField;
-  item: any;
-  disableEdit: boolean;
-
-  fOnValueChange: (fieldId: string, value: any) => void;
-  fValidation: (field: ICustomCollectionField, value: any) => Promise<string>;
-}
+export interface ICollectionDropdownFieldProps extends IBaseCollectionFieldProps { }
 
 export const CollectionDropdownField: React.FunctionComponent<ICollectionDropdownFieldProps> = ({
   field,
@@ -32,7 +26,7 @@ export const CollectionDropdownField: React.FunctionComponent<ICollectionDropdow
     }
 
     if (fOnValueChange) {
-      fOnValueChange(field.id, value);
+      await fOnValueChange(field.id, value);
     }
 
     if (fValidation) {

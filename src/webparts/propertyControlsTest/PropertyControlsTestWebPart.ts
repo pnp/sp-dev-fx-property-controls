@@ -1059,7 +1059,10 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                     {
                       id: "Lastname",
                       title: "Lastname",
-                      type: CustomCollectionFieldType.string
+                      type: CustomCollectionFieldType.string,
+                      onGetErrorMessage: (value, index, currentItem) => {
+                        return value == 'Smith' && currentItem.City == 'antwerp' ? 'You cannot write Smith when City is Antwerp' : "" 
+                      }
                     },
                     {
                       id: "Age",
@@ -1104,9 +1107,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       title: "Signed",
                       type: CustomCollectionFieldType.boolean,
                       defaultValue: true,
-                      onGetErrorMessage: (value, index, currentItem) => { 
+                      onGetErrorMessage: (value, index, currentItem) => {
                         return value && currentItem.City == 'antwerp' ? 'You cannot check sign when City is Antwerp' : "";
-                      },
+                      }
                     },
                     {
                       id: "IconName",
@@ -1130,7 +1133,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       defaultValue: "#ff0000",
                       onGetErrorMessage: (value, index, currentItem) => {
                         return value == '#ff0000' && currentItem.City == 'antwerp' ? 'You cannot set default color when City is Antwerp' : "" 
-                      },
+                      }
                     },
                     {
                       id: "custom",
@@ -1151,6 +1154,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                             }), " 🎉"
                           )
                         );
+                      },
+                      onGetErrorMessage: (value, index, currentItem) => {
+                        return value == 'hello' && currentItem.City == 'antwerp' ? 'You cannot write hello when City is Antwerp' : "" 
                       }
                     }
                   ],

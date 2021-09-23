@@ -51,15 +51,15 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   /**
    * Update the item value on the field change
    */
-  private onValueChanged = (fieldId: string, value: any): void => {
-    this.setState((prevState: ICollectionDataItemState) => {
+  private onValueChanged = (fieldId: string, value: any): Promise<void> => {
+    return new Promise((resolve) => this.setState((prevState: ICollectionDataItemState) => {
       const { crntItem } = prevState;
       // Update the changed field
       crntItem[fieldId] = value;
 
       // Store this in the current state
       return { crntItem };
-    });
+    }, () => resolve()));
   }
 
   /**
@@ -124,10 +124,9 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    */
   private async checkAnyFieldCustomErrorMessage(item: any): Promise<boolean> {
     const { fields, index } = this.props;
-    const { crntItem } = this.state;
     
     var validations = await Promise.all(fields.filter(f => f.onGetErrorMessage).map(async f => {
-      var validation = await f.onGetErrorMessage(item[f.id], index, crntItem);
+      var validation = await f.onGetErrorMessage(item[f.id], index, item);
       return this.storeFieldValidation(f.id, validation);
     }))
 
@@ -387,7 +386,10 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                           inputClassName="PropertyFieldCollectionData__panel__url-field" />;
       case CustomCollectionFieldType.custom:
           if (field.onCustomRender) {
-            return field.onCustomRender(field, item[field.id], this.onValueChanged, item, item.uniqueId, this.onCustomFieldValidation);
+            return field.onCustomRender(field, item[field.id], (fieldId, value) => {
+              this.onValueChanged(fieldId, value);
+              if(field.onGetErrorMessage) { this.fieldValidation(field, value); }
+            }, item, item.uniqueId, this.onCustomFieldValidation);
           }
           return null;
       case CustomCollectionFieldType.string:

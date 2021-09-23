@@ -1,16 +1,20 @@
 import * as React from 'react';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
 import { ICollectionColorFieldProps } from '.';
+import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { Callout, DirectionalHint, Target } from 'office-ui-fabric-react/lib/Callout';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
+import { ICustomCollectionField } from '..';
 
 interface ICollectionColorFieldState {
   isCalloutVisible: boolean;
   color: string;
+  errorMessage: string;
 }
 
 export class CollectionColorField extends React.Component<ICollectionColorFieldProps, ICollectionColorFieldState> {
-
+  private async: Async;
+  private delayedValidate: (field: ICustomCollectionField, inputVal: string) => void;
   private _colorElement = React.createRef<HTMLDivElement>();
 
   public constructor(props: ICollectionColorFieldProps, state: ICollectionColorFieldState) {
@@ -19,8 +23,19 @@ export class CollectionColorField extends React.Component<ICollectionColorFieldP
 
     this.state = {
       isCalloutVisible: false,
-      color: item[field.id] ? item[field.id] : "#0000ff"
+      color: item[field.id] ? item[field.id] : "#0000ff",
+      errorMessage: ''
     };
+
+    this.async = new Async(this);
+    this.delayedValidate = this.async.debounce(this.valueValidation, (this.props.field.deferredValidationTime || this.props.field.deferredValidationTime >= 0) ? this.props.field.deferredValidationTime : 200);
+  }
+
+  /**
+   * componentWillMount lifecycle hook
+   */
+  public componentWillMount(): void {
+    this.valueChange(this.props.field, this.props.item[this.props.field.id]);
   }
 
   private _onCalloutDismiss = () => {
@@ -35,11 +50,36 @@ export class CollectionColorField extends React.Component<ICollectionColorFieldP
     });
   }
 
+   /**
+   * Value change event handler
+   *
+   * @param field
+   * @param value
+   */
+  private valueChange = (field: ICustomCollectionField, value: string) => {
+    this.setState({
+      color: value
+    });
+    this.props.fOnValueChange(field.id, value);
+    this.delayedValidate(field, value);
+  }
+
+  /**
+   * Delayed field validation
+   */
+  private valueValidation = async (field: ICustomCollectionField, value: string) => {
+    const validation = await this.props.fValidation(field, value);
+    // Update the error message
+    this.setState({
+      errorMessage: validation
+    });
+  }
+
   public render(): React.ReactElement<ICollectionColorFieldProps> {
     const { field } = this.props;
 
     return (
-      <div className={`PropertyFieldCollectionData__panel__color-field ${styles.colorField}`}>
+      <div className={`PropertyFieldCollectionData__panel__color-field ${styles.colorField} ${this.state.errorMessage ? styles.invalidField : ""}`}>
 
         <div className={styles.colorIndicator}
           style={{ backgroundColor: this.state.color, cursor: this.props.disableEdit ? 'default' : 'hand' }}
@@ -58,7 +98,7 @@ export class CollectionColorField extends React.Component<ICollectionColorFieldP
           <ColorPicker
             color={this.state.color}
             alphaSliderHidden={true}
-            onChange={(e, color) => { this.props.fOnValueChange(field.id, color.str); this.setState({ color: color.str }); }}
+            onChange={(ev, color) => this.valueChange(this.props.field, color.str)}
           />
 
         </Callout>

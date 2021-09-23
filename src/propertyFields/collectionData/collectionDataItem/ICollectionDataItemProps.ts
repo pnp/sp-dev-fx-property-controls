@@ -9,7 +9,7 @@ export interface ICollectionDataItemProps {
   disableItemDeletion?: boolean;
 
   fAddItem?: (item: any) => void;
-  fAddInCreation?: (item: any) => void;
+  fAddInCreation?: (item: any, isValid: boolean) => void;
   fUpdateItem?: (idx: number, item: any) => void;
   fDeleteItem?: (idx: number) => void;
   fValidation?: (idx: number, isValid: boolean) => void;

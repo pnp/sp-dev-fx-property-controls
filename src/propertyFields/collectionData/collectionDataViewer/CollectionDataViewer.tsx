@@ -16,6 +16,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
     this.state = {
       crntItems: [],
       inCreationItem: null,
+      inCreationItemValid: null,
       validation: {}
     };
   }
@@ -47,7 +48,8 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
       crntItems = this.updateSortProperty(crntItems);
       return {
         crntItems,
-        inCreationItem: null
+        inCreationItem: null,
+        inCreationItemValid: null
       };
     });
   }
@@ -115,9 +117,10 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
   /**
    * Currently in creation
    */
-  private addInCreation = (item: any) => {
+  private addInCreation = (item: any, isValid: boolean) => {
     this.setState({
-      inCreationItem: item
+      inCreationItem: item,
+      inCreationItemValid: isValid
     });
   }
 
@@ -255,7 +258,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
         }
 
         <div className={`PropertyFieldCollectionData__panel__actions ${styles.panelActions}`}>
-          { this.state.inCreationItem && <PrimaryButton text={this.props.saveAndAddBtnLabel || strings.CollectionSaveAndAddButtonLabel} onClick={this.addAndSave} disabled={!this.allItemsValid()} className="PropertyFieldCollectionData__panel__action__add" /> }
+          { this.state.inCreationItem && this.state.inCreationItemValid && <PrimaryButton text={this.props.saveAndAddBtnLabel || strings.CollectionSaveAndAddButtonLabel} onClick={this.addAndSave} disabled={!this.allItemsValid()} className="PropertyFieldCollectionData__panel__action__add" /> }
           { !this.state.inCreationItem && <PrimaryButton text={this.props.saveBtnLabel || strings.SaveButtonLabel} onClick={this.onSave} disabled={!this.allItemsValid()} className="PropertyFieldCollectionData__panel__action__save" /> }
           <DefaultButton text={this.props.cancelBtnLabel || strings.CancelButtonLabel} onClick={this.onCancel} className="PropertyFieldCollectionData__panel__action__cancel" />
         </div>

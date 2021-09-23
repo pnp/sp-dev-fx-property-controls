@@ -1103,7 +1103,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       id: "Sign",
                       title: "Signed",
                       type: CustomCollectionFieldType.boolean,
-                      defaultValue: true
+                      defaultValue: true,
+                      onGetErrorMessage: (value, index, currentItem) => { 
+                        console.log("onGetErrorMessage Sign", value);
+                        return value && currentItem.City == 'antwerp' ? 'You cannot check sign when City is Antwerp' : "";
+                      },
                     },
                     {
                       id: "IconName",
@@ -1124,7 +1128,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       id: "color",
                       title: "Color",
                       type: CustomCollectionFieldType.color,
-                      defaultValue: "#ff0000"
+                      defaultValue: "#ff0000",
+                      onGetErrorMessage: (value, index, currentItem) => {
+                        console.log("onGetErrorMessage Color", value);
+                        return value == '#ff0000' && currentItem.City == 'antwerp' ? 'You cannot set default color when City is Antwerp' : "" 
+                      },
                     },
                     {
                       id: "custom",

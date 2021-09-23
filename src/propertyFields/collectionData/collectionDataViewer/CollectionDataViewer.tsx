@@ -261,7 +261,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
 
         <div className={`PropertyFieldCollectionData__panel__actions ${styles.panelActions}`}>
           { this.state.inCreationItem && this.state.inCreationItemValid && <PrimaryButton text={this.props.saveAndAddBtnLabel || strings.CollectionSaveAndAddButtonLabel} onClick={this.addAndSave} disabled={!this.allItemsValid()} className="PropertyFieldCollectionData__panel__action__add" /> }
-          { !this.state.inCreationItem && <PrimaryButton text={this.props.saveBtnLabel || strings.SaveButtonLabel} onClick={this.onSave} disabled={!this.allItemsValid()} className="PropertyFieldCollectionData__panel__action__save" /> }
+          { !(this.state.inCreationItem && this.state.inCreationItemValid) && <PrimaryButton text={this.props.saveBtnLabel || strings.SaveButtonLabel} onClick={this.onSave} disabled={!this.allItemsValid()} className="PropertyFieldCollectionData__panel__action__save" /> }
           <DefaultButton text={this.props.cancelBtnLabel || strings.CancelButtonLabel} onClick={this.onCancel} className="PropertyFieldCollectionData__panel__action__cancel" />
         </div>
       </div>

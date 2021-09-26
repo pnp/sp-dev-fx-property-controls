@@ -25,7 +25,7 @@ export const CollectionDropdownField: React.FunctionComponent<ICollectionDropdow
 
 
 
-  const onValueChange = React.useCallback(async (value: string | number) => {
+  const onValueChange = React.useCallback(async (value: string | number | boolean) => {
 
     if (!field) {
       return;
@@ -74,7 +74,7 @@ export const CollectionDropdownField: React.FunctionComponent<ICollectionDropdow
 
   return <Dropdown placeHolder={field.placeholder || field.title}
     options={options}
-    selectedKey={item[field.id] || null}
+    selectedKey={item[field.id]}
     required={field.required}
     disabled={disableEdit}
     onChange={(e, i) => { onValueChange(i.key); }}

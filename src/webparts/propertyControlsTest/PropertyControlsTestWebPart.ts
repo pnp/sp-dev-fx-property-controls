@@ -1094,10 +1094,6 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                         {
                           key: 0,
                           text: 'Zero City'
-                        },
-                        {
-                          key: '',
-                          text: 'Empty City'
                         }
                       ],
                       required: true,

@@ -1,6 +1,6 @@
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import * as React from 'react';
-import { ICustomCollectionField } from '..';
+import { ICustomCollectionField, ICustomDropdownOption } from '..';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
 
 export interface ICollectionDropdownFieldProps {
@@ -20,7 +20,7 @@ export const CollectionDropdownField: React.FunctionComponent<ICollectionDropdow
   fValidation
 }) => {
 
-  const [options, setOptions] = React.useState<IDropdownOption[]>();
+  const [options, setOptions] = React.useState<ICustomDropdownOption[]>();
   const [errorMessage, setErrorMessage] = React.useState<string>();
 
 
@@ -46,7 +46,7 @@ export const CollectionDropdownField: React.FunctionComponent<ICollectionDropdow
       return;
     }
 
-    let newOptions: IDropdownOption[] = [];
+    let newOptions: ICustomDropdownOption[] = [];
 
     if (typeof (field.options) === 'function') {
       if (!item) {
@@ -73,7 +73,7 @@ export const CollectionDropdownField: React.FunctionComponent<ICollectionDropdow
   }
 
   return <Dropdown placeHolder={field.placeholder || field.title}
-    options={options}
+    options={options as IDropdownOption[]}
     selectedKey={item[field.id]}
     required={field.required}
     disabled={disableEdit}

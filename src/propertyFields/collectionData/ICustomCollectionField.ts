@@ -2,6 +2,12 @@ import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { IRenderFunction } from '@uifabric/utilities/lib/IRenderFunction';
 import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 
+
+export interface ICustomDropdownOption extends Omit<IDropdownOption, 'key'>
+{
+  key: string | number | boolean;
+}
+
 export interface ICustomCollectionField {
   /**
    * ID of the field.
@@ -27,7 +33,7 @@ export interface ICustomCollectionField {
    * Dropdown options. Only nescessary when dropdown type is used.
    * Options can be either a static array or a function that will calculate the values dynamically and can react to the current item.
    */
-  options?: IDropdownOption[] | ((fieldId: string, item: any) => IDropdownOption[]);
+  options?: ICustomDropdownOption[] | ((fieldId: string, item: any) => ICustomDropdownOption[]);
   /**
    * Dropdown custom options render method.
    */

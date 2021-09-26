@@ -28,7 +28,7 @@ export default class PropertyFieldDropdownHost extends React.Component<IProperty
         );
     }
 
-    private _convertPropPaneOptionsToDropdownOptions(propPaneOptions: any[]): IDropdownOption[] {
+    private _convertPropPaneOptionsToDropdownOptions(propPaneOptions: IPropertyPaneDropdownOption[]): IDropdownOption[] {
       return propPaneOptions.map<IDropdownOption>(propPaneOption => {
         return {
           key: propPaneOption.key,

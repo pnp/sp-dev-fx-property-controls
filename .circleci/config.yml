@@ -107,6 +107,7 @@ workflows:
               only:
                 - dev
                 - v2
+              ignore:
                 - v2-dev
       - build_next:
           requires:
@@ -116,6 +117,7 @@ workflows:
               only:
                 - dev
                 - v2
+              ignore:
                 - v2-dev
       - publish_next:
           requires:
@@ -125,6 +127,7 @@ workflows:
               only:
                 - dev
                 - v2
+              ignore:
                 - v2-dev
   release:
     jobs:

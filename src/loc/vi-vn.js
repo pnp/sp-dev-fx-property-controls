@@ -5,6 +5,8 @@ define([], () => {
   "ExportButtonLabel": "Xuất khẩu",
   "FormatCodeButtonLabel": "Mã Định dạng",
   "JsonFileRequiredMessage": "Vui lòng tải lên tệp json",
+  "EditPropertiesButtonLabel": "Chỉnh sửa thuộc tính",
+  "EditPropertiesPanelHeaderText": "Chỉnh sửa thuộc tính thô",
   "SaveButtonLabel": "Lưu",
   "CancelButtonLabel": "Hủy bỏ",
   "PeoplePickerSuggestedContacts": "Người được đề xuất",

@@ -5,6 +5,8 @@ define([], () => {
   "ExportButtonLabel": "Eksportu",
   "FormatCodeButtonLabel": "Kod formatu",
   "JsonFileRequiredMessage": "Prześlij plik json",
+  "EditPropertiesButtonLabel": "Edytuj właściwości",
+  "EditPropertiesPanelHeaderText": "Edytuj surowe właściwości",
   "SaveButtonLabel": "Zapisz",
   "CancelButtonLabel": "Anuluj",
   "PeoplePickerSuggestedContacts": "Sugerowane osoby",

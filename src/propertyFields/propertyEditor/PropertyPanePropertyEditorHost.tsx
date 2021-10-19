@@ -152,14 +152,14 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
   public render(): JSX.Element {
     return (
       <div>
-        <DefaultButton onClick={this.onOpenPanel}>Edit Properties</DefaultButton>
+        <DefaultButton onClick={this.onOpenPanel}>{strings.EditPropertiesButtonLabel}</DefaultButton>
         <Panel
           isOpen={this.state.openPanel}
           hasCloseButton={true}
           onDismiss={this.onClosePanel}
           isLightDismiss={true}
           type={PanelType.medium}
-          headerText="Edit Raw Properties"
+          headerText={strings.EditPropertiesPanelHeaderText}
           onRenderFooterContent={() => (
             <div className={styles.actions}>
               <div className="ms-Grid" dir="ltr">

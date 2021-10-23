@@ -1,5 +1,11 @@
 # Releases
 
+## 3.3.0
+
+### Enhancements
+
+- SharePoint Framework v1.13 support
+
 ## 3.2.0
 
 ### Enhancements

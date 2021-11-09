@@ -1146,6 +1146,15 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                           )
                         );
                       }
+                    },
+                    {
+                      id: "customVisibility",
+                      title: "Custom Visible Field",
+                      type: CustomCollectionFieldType.boolean,
+                      defaultValue: true,
+                      isVisible: (field, items) => {
+                        return items.filter(i => i.City == 'antwerp').length > 0;
+                      }
                     }
                   ],
                   disabled: false

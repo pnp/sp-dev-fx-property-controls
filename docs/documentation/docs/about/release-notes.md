@@ -5,6 +5,16 @@
 ### Enhancements
 
 - SharePoint Framework v1.13 support
+- `PropertyPanePropertyEditor`: Add translations for property editor control button and header [#399](https://github.com/pnp/sp-dev-fx-property-controls/pull/399)
+- `PropertyFieldCollectionData`: Adds conditional column visibility [#394](https://github.com/pnp/sp-dev-fx-property-controls/pull/394)
+
+### Fixes
+
+- `PropertyPanePropertyEditor`: Minor fix to allow PropertyEditor control to update properties when their current value is blank [#384](https://github.com/pnp/sp-dev-fx-property-controls/pull/384)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [ellinge](https://github.com/ellinge), [M365Bass](https://github.com/M365Bass), [Patrik Hellgren](https://github.com/patrikhellgren).
 
 ## 3.2.0
 

@@ -5,6 +5,8 @@ define([], () => {
   "ExportButtonLabel": "导出",
   "FormatCodeButtonLabel": "格式代码",
   "JsonFileRequiredMessage": "请上传Json文件",
+  "EditPropertiesButtonLabel": "编辑属性",
+  "EditPropertiesPanelHeaderText": "编辑原始属性",
   "SaveButtonLabel": "保存",
   "CancelButtonLabel": "取消",
   "PeoplePickerSuggestedContacts": "匹配的人员",

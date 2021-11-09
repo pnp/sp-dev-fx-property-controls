@@ -5,6 +5,8 @@ define([], () => {
   "ExportButtonLabel": "Износ",
   "FormatCodeButtonLabel": "Код на формат",
   "JsonFileRequiredMessage": "Моля, качете json файл",
+  "EditPropertiesButtonLabel": "редактиране на свойства",
+  "EditPropertiesPanelHeaderText": "редактиране на сурови свойства",
   "SaveButtonLabel": "Запишете",
   "CancelButtonLabel": "Отмените",
   "PeoplePickerSuggestedContacts": "Препоръчани хора",

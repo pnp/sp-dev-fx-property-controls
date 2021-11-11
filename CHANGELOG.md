@@ -11,6 +11,7 @@
 ### Fixes
 
 - `PropertyPanePropertyEditor`: Minor fix to allow PropertyEditor control to update properties when their current value is blank [#384](https://github.com/pnp/sp-dev-fx-property-controls/pull/384)
+- `PropertyFieldSitePicker`: Some sites do not show up in Property Field Site Picker control [#402](https://github.com/pnp/sp-dev-fx-property-controls/issues/402)
 
 ### Contributors
 

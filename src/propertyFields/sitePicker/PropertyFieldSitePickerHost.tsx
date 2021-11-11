@@ -41,7 +41,12 @@ export default class PropertyFieldSitePickerHost extends React.Component<IProper
     if (newValue && newValue.length > 2) {
       this.setState({ isLoading: true });
       try {
-        const sites = await this.searchService.searchSites(this.props.context, newValue);
+        const {
+          context,
+          trimDuplicates,
+          additionalQuery
+        } = this.props;
+        const sites = await this.searchService.searchSites(this.props.context, newValue, !!trimDuplicates, additionalQuery);
         this.setState({ siteSearchResults: sites });
       } catch (error) {
         this.setState({ errorMessage: error });

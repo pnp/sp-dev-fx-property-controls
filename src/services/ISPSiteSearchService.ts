@@ -9,5 +9,5 @@ export interface ISPSiteSearchService {
   /**
    * Search Site from a query
    */
-  searchSites(ctx: BaseComponentContext, query: string): Promise<Array<IPropertyFieldSite>>;
+  searchSites(ctx: BaseComponentContext, query: string, trimDuplicates: boolean, additionalQuery?: string | undefined): Promise<Array<IPropertyFieldSite>>;
 }

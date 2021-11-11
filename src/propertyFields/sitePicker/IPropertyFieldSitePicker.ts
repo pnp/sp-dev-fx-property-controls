@@ -18,6 +18,10 @@ export interface IPropertyFieldSite {
    * ID of the web
    */
   webId?: string;
+  /**
+   * ID of the hub site
+   */
+   hubSiteId?: string;
 }
 
 export interface IPropertyFieldSitePickerProps {
@@ -74,6 +78,18 @@ export interface IPropertyFieldSitePickerProps {
    * Default value is 200.
    */
   deferredValidationTime?: number;
+
+  /**
+   * Specifies if the duplicates should be trimmed. false by default.
+   * Applicable if mode is set to site or web.
+   */
+   trimDuplicates?: boolean;
+
+   /**
+    * If provided will be added to the search query as AND part.
+    * Applicable if mode is set to site or web.
+    */
+   additionalQuery?: string;
 }
 /**
  * Private properties of the PropertyFielSitePicker custom field.

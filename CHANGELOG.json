@@ -10,7 +10,8 @@
           "`PropertyFieldCollectionData`: Adds conditional column visibility [#394](https://github.com/pnp/sp-dev-fx-property-controls/pull/394)"
         ],
         "fixes": [
-          "`PropertyPanePropertyEditor`: Minor fix to allow PropertyEditor control to update properties when their current value is blank [#384](https://github.com/pnp/sp-dev-fx-property-controls/pull/384)"
+          "`PropertyPanePropertyEditor`: Minor fix to allow PropertyEditor control to update properties when their current value is blank [#384](https://github.com/pnp/sp-dev-fx-property-controls/pull/384)",
+          "`PropertyFieldSitePicker`: Some sites do not show up in Property Field Site Picker control [#402](https://github.com/pnp/sp-dev-fx-property-controls/issues/402)"
         ]
       },
       "contributions": [

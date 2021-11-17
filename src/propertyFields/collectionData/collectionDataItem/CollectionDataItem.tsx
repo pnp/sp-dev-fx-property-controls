@@ -81,7 +81,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
       }
     }
 
-    this.setState({ disableAdd })
+    this.setState({ disableAdd });
 
     // Check if item needs to be updated
     if (this.props.fUpdateItem) {
@@ -128,7 +128,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
     var validations = await Promise.all(fields.filter(f => f.onGetErrorMessage).map(async f => {
       var validation = await f.onGetErrorMessage(item[f.id], index, item);
       return this.storeFieldValidation(f.id, validation);
-    }))
+    }));
 
     return validations.filter(v => v && v.length > 0).length == 0;
   }
@@ -371,7 +371,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
       case CustomCollectionFieldType.number:
         return <CollectionNumberField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
       case CustomCollectionFieldType.fabricIcon:
-        return <CollectionIconField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />
+        return <CollectionIconField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
       case CustomCollectionFieldType.color:    
         return <CollectionColorField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
       case CustomCollectionFieldType.url:

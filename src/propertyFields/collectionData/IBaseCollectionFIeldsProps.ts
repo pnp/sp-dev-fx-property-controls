@@ -5,6 +5,6 @@ export interface IBaseCollectionFieldProps {
     item: any;
     disableEdit: boolean;
   
-    fOnValueChange: (fieldId: string, value: any) => Promise<void> | void;
+    fOnValueChange: (fieldId: string, value: any) => void | Promise<void>;
     fValidation: (field: ICustomCollectionField, value: any) => Promise<string>;
   }

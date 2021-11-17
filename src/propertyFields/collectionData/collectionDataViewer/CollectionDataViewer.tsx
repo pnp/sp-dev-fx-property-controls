@@ -203,6 +203,8 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
    * Default React render
    */
   public render(): React.ReactElement<ICollectionDataViewerProps> {
+    const crntItems = [...this.state.crntItems, this.state.inCreationItem].filter(i => i);
+    const visibleFields = this.props.fields.filter(f => !f.isVisible || f.isVisible(f, crntItems));
     return (
       <div>
         <div className={`PropertyFieldCollectionData__panel__table ${styles.table} ${this.props.tableClassName || ""}`}>
@@ -213,7 +215,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
               )
             }
             {
-              this.props.fields.map(f => (
+              visibleFields.map(f => (
                 <span key={`dataviewer-${f.id}`} className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}>{f.title} { f.required && <Icon className={styles.required} iconName="Asterisk" /> }</span>
               ))
             }
@@ -224,7 +226,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
             (this.state.crntItems && this.state.crntItems.length > 0) && (
               this.state.crntItems.map((item, idx, allItems) => (
                 <CollectionDataItem key={item.uniqueId}
-                                    fields={this.props.fields}
+                                    fields={visibleFields}
                                     index={idx}
                                     item={item}
                                     totalItems={allItems.length}
@@ -240,7 +242,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
 
           {
             !this.props.disableItemCreation && (
-              <CollectionDataItem fields={this.props.fields}
+              <CollectionDataItem fields={visibleFields}
                                   index={null}
                                   item={null}
                                   sortingEnabled={this.props.enableSorting}

@@ -4,6 +4,8 @@ define([], function() {
     ImportButtonLabel: "Importere",
     ExportButtonLabel: "Eksportere",
     JsonFileRequiredMessage: "Vennligst last opp en json fil",
+    EditPropertiesButtonLabel: "Rediger egenskaper",
+    EditPropertiesPanelHeaderText: "Rediger råegenskaper",
     SaveButtonLabel: "Lagre",
     CancelButtonLabel: "Avbryt",
     PeoplePickerSuggestedContacts: "Foreslåtte personer",

@@ -1,6 +1,26 @@
 {
   "versions": [
     {
+      "version": "3.3.0",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "SharePoint Framework v1.13 support",
+          "`PropertyPanePropertyEditor`: Add translations for property editor control button and header [#399](https://github.com/pnp/sp-dev-fx-property-controls/pull/399)",
+          "`PropertyFieldCollectionData`: Adds conditional column visibility [#394](https://github.com/pnp/sp-dev-fx-property-controls/pull/394)"
+        ],
+        "fixes": [
+          "`PropertyPanePropertyEditor`: Minor fix to allow PropertyEditor control to update properties when their current value is blank [#384](https://github.com/pnp/sp-dev-fx-property-controls/pull/384)",
+          "`PropertyFieldSitePicker`: Some sites do not show up in Property Field Site Picker control [#402](https://github.com/pnp/sp-dev-fx-property-controls/issues/402)"
+        ]
+      },
+      "contributions": [
+        "[ellinge](https://github.com/ellinge)",
+        "[M365Bass](https://github.com/M365Bass)",
+        "[Patrik Hellgren](https://github.com/patrikhellgren)"
+      ]
+    },
+    {
       "version": "3.2.0",
       "changes": {
         "new": [],

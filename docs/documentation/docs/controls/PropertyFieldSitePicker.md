@@ -60,6 +60,8 @@ The `PropertyFieldSitePicker` control can be configured with the following prope
 | key | string | yes | An unique key that indicates the identity of this control. |
 | onGetErrorMessage | function | no | The method is used to get the validation error message and determine whether the input value is valid or not. See [this documentation](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/validate-web-part-property-values) to learn how to use it. |
 | deferredValidationTime | number | no | Control will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default value is 200. |
+| trimDuplicates | boolean | no | Specifies if the duplicates should be trimmed. false by default. Applicable if mode is set to site or web. |
+| additionalQuery | string | no | If provided will be added to the search query as AND part. Applicable if mode is set to site or web. |
 
 Interface `IPropertyFieldSite`
 
@@ -69,5 +71,6 @@ Interface `IPropertyFieldSite`
 | title | string | no | Site's display name |
 | url | string | no | URL to the site |
 | webId | string | no | The ID of the web |
+| hubSiteId | string | no | ID of the hub site. |
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldSitePicker)

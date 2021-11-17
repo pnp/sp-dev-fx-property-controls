@@ -5,6 +5,8 @@ define([], function () {
     ExportButtonLabel: "Export",
     FormatCodeButtonLabel: "Format Code",
     JsonFileRequiredMessage: "Please upload a json file",
+    EditPropertiesButtonLabel: "Edit properties",
+    EditPropertiesPanelHeaderText: "Edit raw properties",
     SaveButtonLabel: "Save",
     CancelButtonLabel: "Cancel",
     PeoplePickerSuggestedContacts: "Suggested people",

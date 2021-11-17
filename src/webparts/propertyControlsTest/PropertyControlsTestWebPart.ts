@@ -675,7 +675,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   multiSelect: true,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
-                  key: 'sitesFieldId'
+                  key: 'sitesFieldId',
+                  trimDuplicates: true
                 }),
                 PropertyFieldTeamPicker('teams', {
                   key: 'teamsPicker',
@@ -1157,6 +1158,15 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       },
                       onGetErrorMessage: (value, index, currentItem) => {
                         return value == 'hello' && currentItem.City == 'antwerp' ? 'You cannot write hello when City is Antwerp' : "" 
+                      }
+                    },
+                    {
+                      id: "customVisibility",
+                      title: "Custom Visible Field",
+                      type: CustomCollectionFieldType.boolean,
+                      defaultValue: true,
+                      isVisible: (field, items) => {
+                        return items.filter(i => i.City == 'antwerp').length > 0;
                       }
                     }
                   ],

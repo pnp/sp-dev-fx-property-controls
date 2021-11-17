@@ -5,6 +5,8 @@ define([], () => {
   "ExportButtonLabel": "Ekspordi",
   "FormatCodeButtonLabel": "Vormingu tähis",
   "JsonFileRequiredMessage": "Palun laadige json faili",
+  "EditPropertiesButtonLabel": "Muutke atribuute",
+  "EditPropertiesPanelHeaderText": "Muutke töötlemata atribuute",
   "SaveButtonLabel": "Salvestada",
   "CancelButtonLabel": "Tühistada",
   "PeoplePickerSuggestedContacts": "Soovitatud inimesed",

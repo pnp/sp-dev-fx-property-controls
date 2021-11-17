@@ -95,6 +95,8 @@ declare interface IPropertyControlStrings {
   ExportButtonLabel: string;
   FormatCodeButtonLabel: string;
   JsonFileRequiredMessage: string;
+  EditPropertiesButtonLabel: string;
+  EditPropertiesPanelHeaderText: string;
 
   // Site Picker labels
   SitePickerSearchBoxPlaceholder: string;

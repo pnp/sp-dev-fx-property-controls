@@ -7,6 +7,13 @@
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "includeClientSideAssets": true,
+    "developer": {
+      "name": "Microsoft 365 PnP",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.13.0"
+    },
     "webApiPermissionRequests": [
       {
       "resource": "Microsoft Graph",

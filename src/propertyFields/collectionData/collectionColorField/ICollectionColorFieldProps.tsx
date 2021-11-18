@@ -1,8 +1,3 @@
-import { ICustomCollectionField } from "..";
+import { IBaseCollectionFieldProps } from "../IBaseCollectionFIeldsProps";
 
-export interface ICollectionColorFieldProps {
-  field: ICustomCollectionField;
-  item: any;
-  disableEdit: boolean;
-  fOnValueChange: (fieldId: string, value: string) => void;
-}
+export interface ICollectionColorFieldProps extends IBaseCollectionFieldProps { }

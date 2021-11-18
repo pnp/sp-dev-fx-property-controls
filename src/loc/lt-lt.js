@@ -5,6 +5,8 @@ define([], () => {
   "ExportButtonLabel": "Eksporto",
   "FormatCodeButtonLabel": "Formato kodas",
   "JsonFileRequiredMessage": "Įkelkite json failą",
+  "EditPropertiesButtonLabel": "Redaguoti ypatybes",
+  "EditPropertiesPanelHeaderText": "Redaguoti neapdorotas savybes",
   "SaveButtonLabel": "Išsaugoti",
   "CancelButtonLabel": "Atšaukti",
   "PeoplePickerSuggestedContacts": "Siūlomi žmonės",

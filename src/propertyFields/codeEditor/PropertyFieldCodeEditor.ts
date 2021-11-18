@@ -33,6 +33,7 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
   private disabled: boolean = false;
   private deferredValidationTime: number = 200;
   private options: AceOptions;
+  private panelWidth: string | undefined;
 
   /**
    * Constructor method
@@ -63,6 +64,8 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
       this.options = _properties.options;
     }
 
+    this.panelWidth = _properties.panelWidth;
+
   }
 
   /**
@@ -85,6 +88,7 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
       disabled: this.disabled,
       deferredValidationTime: this.deferredValidationTime,
       options: this.options,
+      panelWidth: this.panelWidth
     });
 
     // Calls the REACT content generator

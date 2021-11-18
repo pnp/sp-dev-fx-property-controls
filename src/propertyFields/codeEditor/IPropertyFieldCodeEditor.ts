@@ -65,6 +65,10 @@ export interface IPropertyFieldCodeEditorProps {
    * Additional properties available to the Ace editor
    */
   options?: AceOptions;
+  /**
+   * Specifies the width of the panel.
+   */
+  panelWidth?: string;
 }
 
 /**

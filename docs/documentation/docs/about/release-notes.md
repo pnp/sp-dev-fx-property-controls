@@ -4,9 +4,11 @@
 
 ### Enhancements
 
-- SharePoint Framework v1.13 support
+- SharePoint Framework v1.13.* support
 - `PropertyPanePropertyEditor`: Add translations for property editor control button and header [#399](https://github.com/pnp/sp-dev-fx-property-controls/pull/399)
 - `PropertyFieldCollectionData`: Adds conditional column visibility [#394](https://github.com/pnp/sp-dev-fx-property-controls/pull/394)
+- Include `mystrings.d.ts` in definition output [#393](https://github.com/pnp/sp-dev-fx-property-controls/pull/393)
+- `PropertyFieldCollectionData`: `onGetErrorMessage` support for boolean, custom and color fields. [#395](https://github.com/pnp/sp-dev-fx-property-controls/pull/395)
 
 ### Fixes
 

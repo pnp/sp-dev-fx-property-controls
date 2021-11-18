@@ -1026,6 +1026,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   disabled: false,
                   key: 'codeEditorFieldId',
                   language: PropertyFieldCodeEditorLanguages.HTML,
+                  panelWidth: '700px'
                   // options: {
                   //   wrap: true,
                   //   fontSize: 20,

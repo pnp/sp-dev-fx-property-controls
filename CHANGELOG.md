@@ -10,6 +10,7 @@
 - Include `mystrings.d.ts` in definition output [#393](https://github.com/pnp/sp-dev-fx-property-controls/pull/393)
 - `PropertyFieldCollectionData`: `onGetErrorMessage` support for boolean, custom and color fields. [#395](https://github.com/pnp/sp-dev-fx-property-controls/pull/395)
 - `PropertyFieldCodeEditor`: Added `panelWidth` property [#404](https://github.com/pnp/sp-dev-fx-property-controls/issues/404)
+- `PropertyFieldCollectionData`: Allow falsey keys as dropdown options [#397](https://github.com/pnp/sp-dev-fx-property-controls/pull/397)
 
 ### Fixes
 

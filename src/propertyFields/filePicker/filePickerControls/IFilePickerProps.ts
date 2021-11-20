@@ -27,6 +27,11 @@ export interface IFilePickerProps {
   onChanged?: (filePickerResult: IFilePickerResult) => void;
 
   /**
+   * Handler when the file picker panel has been closed without selection of a file.
+   */
+  onCancel: () => void;
+
+  /**
    * ClassName to be applied to the opener button element.
    */
   buttonClassName?: string;

@@ -11,6 +11,7 @@
 - `PropertyFieldCollectionData`: `onGetErrorMessage` support for boolean, custom and color fields. [#395](https://github.com/pnp/sp-dev-fx-property-controls/pull/395)
 - `PropertyFieldCodeEditor`: Added `panelWidth` property [#404](https://github.com/pnp/sp-dev-fx-property-controls/issues/404)
 - `PropertyFieldCollectionData`: Allow falsey keys as dropdown options [#397](https://github.com/pnp/sp-dev-fx-property-controls/pull/397)
+- `PropertyFieldFilePicker`: Add a handler to close a filepicker [#401](https://github.com/pnp/sp-dev-fx-property-controls/issues/401)
 
 ### Fixes
 

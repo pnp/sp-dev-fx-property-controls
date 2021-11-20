@@ -39,6 +39,7 @@ export default class PropertyFieldFilePickerHost extends React.Component<IProper
           buttonIcon={this.props.buttonIcon ? this.props.buttonIcon : "FileImage"}
           onSave={(filePickerResult: IFilePickerResult) => { this.handleFileSave(filePickerResult); }}
           onChanged={(filePickerResult: IFilePickerResult) => { this.handleFileChange(filePickerResult); }}
+          onCancel={this.handleCancel}
           context={this.props.context}
           filePickerResult={this.props.filePickerResult}
           buttonClassName={this.props.buttonClassName}
@@ -79,6 +80,12 @@ export default class PropertyFieldFilePickerHost extends React.Component<IProper
 
     if (typeof this.props.onChange !== 'undefined' && this.props.onChange !== null) {
       this.props.onChange(this.props.targetProperty, filePickerResult);
+    }
+  }
+
+  private handleCancel = (): void => {
+    if (this.props.onCancel) {
+      this.props.onCancel();
     }
   }
 

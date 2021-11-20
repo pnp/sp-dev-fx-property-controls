@@ -203,6 +203,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
    * Closes the panel
    */
   private _handleClosePanel = () => {
+    this.props.onCancel();
     this.setState({
       panelOpen: false
     });

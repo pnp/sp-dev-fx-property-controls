@@ -45,6 +45,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
   private buttonIcon?: string;
   private onSave: (filePickerResult: IFilePickerResult) => void;
   private onChanged?: (filePickerResult: IFilePickerResult) => void;
+  private onCancel?: () => void;
   private buttonClassName?: string;
   private panelClassName?: string;
   private accepts?: string[];
@@ -74,6 +75,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
 
     this.onSave = _properties.onSave;
     this.onChanged = _properties.onChanged;
+    this.onCancel = _properties.onCancel;
 
     this.itemsCountQueryLimit = _properties.itemsCountQueryLimit !== undefined ? _properties.itemsCountQueryLimit : 100;
 
@@ -113,6 +115,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
 
       onSave: this.onSave,
       onChanged: this.onChanged,
+      onCancel: this.onCancel,
       itemsCountQueryLimit: this.itemsCountQueryLimit,
       accepts: this.accepts,
       filePickerResult: this.filePickerResult,

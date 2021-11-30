@@ -57,6 +57,7 @@ export default class PropertyFieldFilePickerHost extends React.Component<IProper
           hideStockImages={this.props.hideStockImages !== undefined ? this.props.hideStockImages : false}
           panelClassName={this.props.panelClassName}
           storeLastActiveTab={this.props.storeLastActiveTab}
+          defaultSelectedTab={this.props.defaultSelectedTab}
         />
       </div>
     );

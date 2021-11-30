@@ -22,7 +22,7 @@ import { FileBrowserService } from '../../../services/FileBrowserService';
 import { OneDriveFilesTab } from './OneDriveFilesTab';
 import { OneDriveService } from '../../../services/OneDriveService';
 import { OrgAssetsService } from '../../../services/OrgAssetsService';
-import { IFilePickerResult } from './FilePicker.types';
+import { FilePickerTabType, IFilePickerResult } from './FilePicker.types';
 import { FilesSearchService } from '../../../services/FilesSearchService';
 import { StockImages } from './StockImagesTab';
 
@@ -43,7 +43,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
 
     this.state = {
       panelOpen: false,
-      selectedTab: 'keyRecent',
+      selectedTab: this.props.defaultSelectedTab ? this.props.defaultSelectedTab : FilePickerTabType.RecentTab,
       organisationAssetsEnabled: false,
       showFullNav: true
     };
@@ -114,7 +114,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
           </div>
           <div className={styles.tabsContainer}>
             {
-              this.state.selectedTab === "keyLink" &&
+              this.state.selectedTab === FilePickerTabType.LinkUploadTab &&
               <LinkFilePickerTab
                 fileSearchService={this.fileSearchService}
                 allowExternalTenantLinks={true}
@@ -122,7 +122,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
               />
             }
             {
-              this.state.selectedTab === "keyStockImages" &&
+              this.state.selectedTab === FilePickerTabType.StockImagesTab &&
               <StockImages
                 language={this.props.context.pageContext.cultureInfo.currentCultureName}
                 fileSearchService={this.fileSearchService}
@@ -130,46 +130,46 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
               />
             }
             {
-              this.state.selectedTab === "keyUpload" &&
+              this.state.selectedTab === FilePickerTabType.LocalUploadTab &&
               <UploadFilePickerTab
                 {...linkTabProps}
               />
             }
             {
-              this.state.selectedTab === "keySite" &&
+              this.state.selectedTab === FilePickerTabType.SiteFilesTab &&
               <SiteFilePickerTab
                 fileBrowserService={this.fileBrowserService}
                 {...linkTabProps}
               />
             }
             {
-              this.state.selectedTab === "keyOrgAssets" &&
+              this.state.selectedTab === FilePickerTabType.OrganisationalAssetTab &&
               <SiteFilePickerTab
                 breadcrumbFirstNode={{
                   isCurrentItem: true,
                   text: strings.OrgAssetsTabLabel,
-                  key: "keyOrgAssets"
+                  key: FilePickerTabType.OrganisationalAssetTab
                 }}
                 fileBrowserService={this.orgAssetsService}
                 {...linkTabProps}
               />
             }
             {
-              this.state.selectedTab === "keyWeb" &&
+              this.state.selectedTab === FilePickerTabType.WebSearchTab &&
               <WebSearchTab
                 bingSearchService={this.fileSearchService}
                 {...linkTabProps}
               />
             }
             {
-              this.state.selectedTab === "keyOneDrive" &&
+              this.state.selectedTab === FilePickerTabType.OneDriveTab &&
               <OneDriveFilesTab
                 oneDriveService={this.oneDriveService}
                 {...linkTabProps}
               />
             }
             {
-              this.state.selectedTab === "keyRecent" &&
+              this.state.selectedTab === FilePickerTabType.RecentTab &&
               <RecentFilesTab
                 fileSearchService={this.fileSearchService}
                 {...linkTabProps}
@@ -195,7 +195,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
   private _handleOpenPanel = () => {
     this.setState({
       panelOpen: true,
-      selectedTab: 'keyRecent'
+      selectedTab: this.props.defaultSelectedTab ? this.props.defaultSelectedTab : FilePickerTabType.RecentTab
     });
   }
 
@@ -238,14 +238,14 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
         name: strings.RecentLinkLabel,
         url: addUrl ? '#recent' : undefined,
         icon: 'Recent',
-        key: 'keyRecent',
+        key: FilePickerTabType.RecentTab,
       });
     }
     if (!this.props.hideStockImages) {
       links.push({
         name: strings.StockImagesLinkLabel,
         url: addUrl ? '#stockImages' : undefined,
-        key: 'keyStockImages',
+        key: FilePickerTabType.StockImagesTab,
         icon: 'ImageSearch',
       });
     }
@@ -253,7 +253,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
       links.push({
         name: strings.WebSearchLinkLabel,
         url: addUrl ? '#search' : undefined,
-        key: 'keyWeb',
+        key: FilePickerTabType.WebSearchTab,
         icon: 'Search',
       });
     }
@@ -262,14 +262,14 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
         name: 'Your organisation',
         url: addUrl ? '#orgAssets' : undefined,
         icon: 'FabricFolderConfirm',
-        key: 'keyOrgAssets',
+        key: FilePickerTabType.OrganisationalAssetTab,
       });
     }
     if (!this.props.hideOneDriveTab) {
       links.push({
         name: "OneDrive",
         url: addUrl ? '#onedrive' : undefined,
-        key: 'keyOneDrive',
+        key: FilePickerTabType.OneDriveTab,
         icon: 'OneDrive',
       });
     }
@@ -277,7 +277,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
       links.push({
         name: strings.SiteLinkLabel,
         url: addUrl ? '#globe' : undefined,
-        key: 'keySite',
+        key: FilePickerTabType.SiteFilesTab,
         icon: 'Globe',
       });
     }
@@ -285,7 +285,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
       links.push({
         name: strings.UploadLinkLabel,
         url: addUrl ? '#upload' : undefined,
-        key: 'keyUpload',
+        key: FilePickerTabType.LocalUploadTab,
         icon: 'System'
       });
     }
@@ -293,7 +293,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
       links.push({
         name: strings.FromLinkLinkLabel,
         url: addUrl ? '#link' : undefined,
-        key: 'keyLink',
+        key: FilePickerTabType.LinkUploadTab,
         icon: 'Link'
       });
     }

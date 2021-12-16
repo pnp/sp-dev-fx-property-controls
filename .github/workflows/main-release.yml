@@ -1,8 +1,9 @@
-name: BETA Release
+name: Release
 on:
-  push:
-    branches:
-      - dev
+  release:
+    types:
+      - published
+  workflow_dispatch:
 
 jobs:
   build:
@@ -12,14 +13,10 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 14
-        registry-url: https://registry.npmjs.org/
+        registry-url: 'https://registry.npmjs.org'
 
     - name: Install npm dependencies
       run: npm i
-
-    - name: Update the package version
-      if: github.ref == 'refs/heads/dev'
-      run: node scripts/update-package-version.js $GITHUB_RUN_ID
 
     - name: Update version number for telemetry
       run: npm run versionUpdater
@@ -30,8 +27,7 @@ jobs:
     - name: Run build
       run: npm run build
 
-    - name: Publish beta release
-      run: npm publish --tag next --access public
-      if: github.ref == 'refs/heads/dev'
+    - name: Publish release
+      run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}

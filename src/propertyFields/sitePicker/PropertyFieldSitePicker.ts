@@ -31,6 +31,8 @@ class PropertyFieldSitePickerBuilder implements IPropertyPaneField<IPropertyFiel
   private key: string;
   private onGetErrorMessage: (value: IPropertyFieldSite[]) => string | Promise<string>;
   private deferredValidationTime: number = 200;
+  private trimDuplicates: boolean;
+  private additionalQuery: string | undefined;
 
   /**
    * Constructor method
@@ -48,6 +50,8 @@ class PropertyFieldSitePickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.customProperties = _properties.properties;
     this.key = _properties.key;
     this.onGetErrorMessage = _properties.onGetErrorMessage;
+    this.trimDuplicates = _properties.trimDuplicates;
+    this.additionalQuery = _properties.additionalQuery;
 
     if (typeof _properties.disabled !== 'undefined') {
       this.disabled = _properties.disabled;
@@ -81,7 +85,9 @@ class PropertyFieldSitePickerBuilder implements IPropertyPaneField<IPropertyFiel
       properties: this.customProperties,
       key: this.key,
       onGetErrorMessage: this.onGetErrorMessage,
-      deferredValidationTime: this.deferredValidationTime
+      deferredValidationTime: this.deferredValidationTime,
+      trimDuplicates: this.trimDuplicates,
+      additionalQuery: this.additionalQuery
     });
 
     // Calls the REACT content generator

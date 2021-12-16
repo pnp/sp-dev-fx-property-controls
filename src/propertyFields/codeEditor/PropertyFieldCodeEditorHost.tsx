@@ -206,8 +206,17 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
           hasCloseButton={true}
           onDismiss={this.onClosePanel}
           isLightDismiss={true}
-          type={PanelType.medium}
+          type={this.props.panelWidth ? PanelType.custom : PanelType.medium}
+          customWidth={this.props.panelWidth}
           headerText={this.props.panelTitle}
+          isFooterAtBottom={true}
+          styles={{
+            content: {
+              height: '100%',
+              width: '100%',
+              boxSizing: 'border-box'
+            }
+          }}
           onRenderFooterContent={() => (
             <div className={styles.actions}>
               <div className="ms-Grid" dir="ltr">
@@ -233,6 +242,8 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
             name={`code-${this.props.targetProperty}`}
             editorProps={{ $blockScrolling: true }}
             setOptions={this.props.options}
+            width="100%"
+            height="100%"
           />
         </Panel>
       </div>

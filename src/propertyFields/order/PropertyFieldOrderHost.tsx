@@ -261,7 +261,7 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 	private moveItemAtIndexToTargetIndex = (itemIndex:number, targetIndex:number): void => {
 		if(itemIndex !== targetIndex && itemIndex > -1 && targetIndex > -1 && itemIndex < this.state.items.length && targetIndex < this.state.items.length) {
 			let items: Array<any> = this.state.items;
-			items.splice(targetIndex, 0, ...items.splice(itemIndex, 1)[0]);
+			items.splice(targetIndex, 0, ...items.splice(itemIndex, 1));
 
 			this.setState({
 				items: items

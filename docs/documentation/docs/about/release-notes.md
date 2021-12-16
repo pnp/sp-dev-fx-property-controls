@@ -1,5 +1,28 @@
 # Releases
 
+## 3.3.0
+
+### Enhancements
+
+- SharePoint Framework v1.13.* support
+- `PropertyPanePropertyEditor`: Add translations for property editor control button and header [#399](https://github.com/pnp/sp-dev-fx-property-controls/pull/399)
+- `PropertyFieldCollectionData`: Adds conditional column visibility [#394](https://github.com/pnp/sp-dev-fx-property-controls/pull/394)
+- Include `mystrings.d.ts` in definition output [#393](https://github.com/pnp/sp-dev-fx-property-controls/pull/393)
+- `PropertyFieldCollectionData`: `onGetErrorMessage` support for boolean, custom and color fields. [#395](https://github.com/pnp/sp-dev-fx-property-controls/pull/395)
+- `PropertyFieldCodeEditor`: Added `panelWidth` property [#404](https://github.com/pnp/sp-dev-fx-property-controls/issues/404)
+- `PropertyFieldCollectionData`: Allow falsey keys as dropdown options [#397](https://github.com/pnp/sp-dev-fx-property-controls/pull/397)
+- `PropertyFieldFilePicker`: Add a handler to close a filepicker [#401](https://github.com/pnp/sp-dev-fx-property-controls/issues/401)
+
+### Fixes
+
+- `PropertyPanePropertyEditor`: Minor fix to allow PropertyEditor control to update properties when their current value is blank [#384](https://github.com/pnp/sp-dev-fx-property-controls/pull/384)
+- `PropertyFieldSitePicker`: Some sites do not show up in Property Field Site Picker control [#402](https://github.com/pnp/sp-dev-fx-property-controls/issues/402)
+- `PropertyFieldOrder`: Not working with array of objects [#396](https://github.com/pnp/sp-dev-fx-property-controls/issues/396)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [ellinge](https://github.com/ellinge), [M365Bass](https://github.com/M365Bass), [Patrik Hellgren](https://github.com/patrikhellgren).
+
 ## 3.2.0
 
 ### Enhancements

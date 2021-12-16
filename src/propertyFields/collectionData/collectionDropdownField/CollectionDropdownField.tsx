@@ -1,16 +1,10 @@
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import * as React from 'react';
-import { ICustomCollectionField } from '..';
+import { ICustomCollectionField, ICustomDropdownOption } from '..';
+import { IBaseCollectionFieldProps } from '../IBaseCollectionFIeldsProps';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
 
-export interface ICollectionDropdownFieldProps {
-  field: ICustomCollectionField;
-  item: any;
-  disableEdit: boolean;
-
-  fOnValueChange: (fieldId: string, value: any) => void;
-  fValidation: (field: ICustomCollectionField, value: any) => Promise<string>;
-}
+export interface ICollectionDropdownFieldProps extends IBaseCollectionFieldProps { }
 
 export const CollectionDropdownField: React.FunctionComponent<ICollectionDropdownFieldProps> = ({
   field,
@@ -20,19 +14,19 @@ export const CollectionDropdownField: React.FunctionComponent<ICollectionDropdow
   fValidation
 }) => {
 
-  const [options, setOptions] = React.useState<IDropdownOption[]>();
+  const [options, setOptions] = React.useState<ICustomDropdownOption[]>();
   const [errorMessage, setErrorMessage] = React.useState<string>();
 
 
 
-  const onValueChange = React.useCallback(async (value: string | number) => {
+  const onValueChange = React.useCallback(async (value: string | number | boolean) => {
 
     if (!field) {
       return;
     }
 
     if (fOnValueChange) {
-      fOnValueChange(field.id, value);
+      await fOnValueChange(field.id, value);
     }
 
     if (fValidation) {
@@ -46,7 +40,7 @@ export const CollectionDropdownField: React.FunctionComponent<ICollectionDropdow
       return;
     }
 
-    let newOptions: IDropdownOption[] = [];
+    let newOptions: ICustomDropdownOption[] = [];
 
     if (typeof (field.options) === 'function') {
       if (!item) {
@@ -73,8 +67,8 @@ export const CollectionDropdownField: React.FunctionComponent<ICollectionDropdow
   }
 
   return <Dropdown placeHolder={field.placeholder || field.title}
-    options={options}
-    selectedKey={item[field.id] || null}
+    options={options as IDropdownOption[]}
+    selectedKey={item[field.id]}
     required={field.required}
     disabled={disableEdit}
     onChange={(e, i) => { onValueChange(i.key); }}

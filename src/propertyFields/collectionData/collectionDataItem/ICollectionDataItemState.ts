@@ -4,4 +4,5 @@ export interface ICollectionDataItemState {
   crntItem: any;
   errorMsgs?: ErrorMsg[];
   showCallout?: boolean;
+  disableAdd?: boolean;
 }

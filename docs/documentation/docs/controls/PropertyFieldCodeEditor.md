@@ -62,6 +62,7 @@ The `PropertyFieldCodeEditor` control can be configured with the following prope
 | onPropertyChange | function | yes | Defines a onPropertyChange function to raise when the date gets changed. |
 | key | string | yes | An unique key that indicates the identity of this control. |
 | options | AceOptions | no | [Additional properties](https://github.com/ajaxorg/ace/wiki/Configuring-Ace) available to the Ace editor. |
+| panelWidth | string | no | Width of the panel that contains the Ace editor |
 
 Enum `PropertyFieldCodeEditorLanguages`
 

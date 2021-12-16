@@ -51,12 +51,12 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
    * @param field
    * @param value
    */
-  private valueChange = (field: ICustomCollectionField, value: string | number) => {
+  private valueChange = async (field: ICustomCollectionField, value: string | number) => {
     const inputVal = typeof value === "string" ? parseInt(value) : value;
     this.setState({
       value: inputVal
     });
-    this.props.fOnValueChange(field.id, value);
+    await this.props.fOnValueChange(field.id, value);
     this.delayedValidate(field, inputVal);
   }
 

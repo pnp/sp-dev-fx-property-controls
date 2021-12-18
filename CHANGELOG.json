@@ -4,12 +4,15 @@
       "version": "3.4.0",
       "changes": {
         "new": [],
-        "enhancements": [],
+        "enhancements": [
+          "`PropertyFieldFilePicker`: ability to set default tab [#412](https://github.com/pnp/sp-dev-fx-property-controls/issues/412)"
+        ],
         "fixes": [
           "`PropertyFieldSearch`: documentation fix [#417](https://github.com/pnp/sp-dev-fx-property-controls/pull/417)"
         ]
       },
       "contributions": [
+        "[Christian Frizell](https://github.com/chrisfriz)",
         "[GuidoZam](https://github.com/GuidoZam)"
       ]
     },

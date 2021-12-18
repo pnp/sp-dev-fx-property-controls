@@ -62,6 +62,7 @@ import { PropertyFieldIconPicker } from "../../propertyFields/iconPicker";
 import {PropertyFieldColumnPicker, PropertyFieldColumnPickerOrderBy } from "../../PropertyFieldColumnPicker";
 import { IColumnReturnProperty, IPropertyFieldRenderOption } from '../../propertyFields/columnPicker';
 import { PropertyFieldEditableComboBox } from '../../PropertyFieldEditableComboBox';
+import { FilePickerTabType } from '../../propertyFields/filePicker/filePickerControls/FilePicker.types';
 
 /**
  * Web part that can be used to test out the various property controls

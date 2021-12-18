@@ -1,5 +1,5 @@
 import { BaseComponentContext } from '@microsoft/sp-component-base';
-import { IFilePickerResult } from "./FilePicker.types";
+import { FilePickerTabType, IFilePickerResult } from "./FilePicker.types";
 
 export interface IFilePickerProps {
   /**
@@ -107,6 +107,11 @@ export interface IFilePickerProps {
    * @default true
    */
   storeLastActiveTab?: boolean;
+
+  /**
+   * Specifies a default active tab. If none is specified, it will default to "RecentTab" regardless if it's hidden or not.
+   */
+   defaultSelectedTab?: FilePickerTabType;
 
   filePickerResult: IFilePickerResult;
 

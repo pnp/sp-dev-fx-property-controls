@@ -95,6 +95,7 @@ The `PropertyFieldFilePicker` control can be configured with the following prope
 | hideLocalUploadTab | boolean | no | Specifies if LocalUploadTab should be hidden. |
 | hideLinkUploadTab | boolean | no | Specifies if LinkUploadTab should be hidden. |
 | storeLastActiveTab | boolean | no | Specifies if last active tab will be stored after the Upload panel has been closed. Note: the value of selected tab is stored in the queryString hash. Default `true` |
+| defaultSelectedTab | FilePickerTabType | no | Specify a tab to be selected by default. If not specified, it will default to "RecentTab". |
 
 interface `IFilePickerResult`
 

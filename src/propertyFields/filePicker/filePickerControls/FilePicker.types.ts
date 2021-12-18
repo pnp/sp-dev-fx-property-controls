@@ -41,3 +41,14 @@ export interface IFilePickerResult {
    */
   downloadFileContent: () => Promise<File>;
 }
+
+export enum FilePickerTabType {
+  RecentTab = "keyRecent",
+  OneDriveTab = "keyOneDrive",
+  StockImagesTab = "keyStockImages",
+  WebSearchTab = "keyWeb",
+  OrganisationalAssetTab = "keyOrgAssets",
+  SiteFilesTab = "keySite",
+  LocalUploadTab = "keyUpload",
+  LinkUploadTab = "keyLink"
+}

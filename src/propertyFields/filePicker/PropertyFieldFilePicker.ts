@@ -9,7 +9,7 @@ import {
 
 import PropertyPaneFilePickerHost from './PropertyFieldFilePickerHost';
 
-import { IFilePickerResult } from './filePickerControls';
+import { FilePickerTabType, IFilePickerResult } from './filePickerControls';
 import { IPropertyFieldFilePickerHostProps } from './IPropertyFieldFilePickerHost';
 import { IPropertyFieldFilePickerPropsInternal, IPropertyFieldFilePickerProps } from './IPropertyFieldFilePicker';
 
@@ -39,6 +39,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
   private disabled: boolean = false;
   private required: boolean = false;
   private storeLastActiveTab: boolean = true;
+  private defaultSelectedTab: FilePickerTabType;
   private context: BaseComponentContext;
   private label?: string;
   private buttonLabel?: string;
@@ -87,6 +88,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.hideOrganisationalAssetTab = _properties.hideOrganisationalAssetTab !== undefined ? _properties.hideOrganisationalAssetTab : false;
     this.hideOneDriveTab = _properties.hideOneDriveTab !== undefined ? _properties.hideOneDriveTab : false;
     this.storeLastActiveTab = _properties.storeLastActiveTab !== undefined ? _properties.storeLastActiveTab : true;
+    this.defaultSelectedTab = _properties.defaultSelectedTab;
     this.hideStockImages = _properties.hideStockImages !== undefined ? _properties.hideStockImages : false;
     this.onPropertyChange = _properties.onPropertyChange;
     this.customProperties = _properties.properties;
@@ -128,6 +130,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
       hideOrganisationalAssetTab: this.hideOrganisationalAssetTab,
       hideOneDriveTab: this.hideOneDriveTab,
       storeLastActiveTab: this.storeLastActiveTab,
+      defaultSelectedTab: this.defaultSelectedTab,
       hideStockImages: this.hideStockImages,
       targetProperty: this.targetProperty,
 

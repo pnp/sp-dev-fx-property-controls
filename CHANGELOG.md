@@ -1,5 +1,15 @@
 # Releases
 
+## 3.4.0
+
+### Fixes
+
+- `PropertyFieldSearch`: documentation fix [#417](https://github.com/pnp/sp-dev-fx-property-controls/pull/417)
+
+### Contributors
+
+Special thanks to our contributor: [GuidoZam](https://github.com/GuidoZam).
+
 ## 3.3.0
 
 ### Enhancements

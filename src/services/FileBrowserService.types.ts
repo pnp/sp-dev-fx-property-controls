@@ -27,6 +27,7 @@ export interface IFile {
 }
 
 export interface ILibrary {
+  id: string;
   title: string;
   absoluteUrl: string;
   serverRelativeUrl: string;

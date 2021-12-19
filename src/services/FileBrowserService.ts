@@ -44,6 +44,26 @@ export class FileBrowserService {
     return filesQueryResult;
   }
 
+  public getListItemsByListId = async (listId: string, folderPath: string, acceptedFilesExtensions?: string[], nextPageQueryStringParams?: string): Promise<FilesQueryResult> => {
+    let filesQueryResult: FilesQueryResult = { items: [], nextHref: null };
+    try {
+      let restApi = `${this.context.pageContext.web.absoluteUrl}/_api/web/lists(guid'${listId}')/RenderListDataAsStream`;
+
+      // Do not pass FolderServerRelativeUrl as query parameter
+      // Attach passed nextPageQueryStringParams values to REST URL
+      if (nextPageQueryStringParams) {
+        restApi += `${nextPageQueryStringParams}`;
+        folderPath = null;
+      }
+
+      filesQueryResult = await this._getListDataAsStream(restApi, folderPath, acceptedFilesExtensions);
+    } catch (error) {
+      filesQueryResult.items = null;
+      console.error(error.message);
+    }
+    return filesQueryResult;
+  }
+
 
   /**
    * Provides the URL for file preview.
@@ -255,6 +275,7 @@ export class FileBrowserService {
   protected parseLibItem = (libItem: any): ILibrary => {
     const library: ILibrary = {
       title: libItem.Title,
+      id: libItem.Id,
       absoluteUrl: libItem.AbsoluteUrl,
       serverRelativeUrl: libItem.ServerRelativeUrl
     };

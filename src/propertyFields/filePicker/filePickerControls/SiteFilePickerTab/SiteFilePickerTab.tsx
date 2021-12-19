@@ -27,6 +27,7 @@ export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTa
       filePickerResult: null,
       libraryAbsolutePath: undefined,
       libraryTitle: strings.DocumentLibraries,
+      libraryId: '',
       libraryPath: undefined,
       folderName: strings.DocumentLibraries,
       breadcrumbItems: [breadcrumbSiteNode]
@@ -50,6 +51,7 @@ export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTa
               onOpenFolder={(folder: IFile) => this._handleOpenFolder(folder, true)}
               fileBrowserService={this.props.fileBrowserService}
               libraryName={this.state.libraryTitle}
+              libraryId={this.state.libraryId}
               folderPath={this.state.libraryPath}
               accepts={this.props.accepts} />}
         </div>
@@ -181,6 +183,7 @@ export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTa
     this.setState({
       libraryAbsolutePath: library.absoluteUrl,
       libraryTitle: library.title,
+      libraryId: library.id,
       libraryPath: library.serverRelativeUrl,
       breadcrumbItems
     });

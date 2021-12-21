@@ -9,6 +9,7 @@
 ### Fixes
 
 - `PropertyFieldSearch`: documentation fix [#417](https://github.com/pnp/sp-dev-fx-property-controls/pull/417)
+- `FilePicker`: cannot find library by its name in multilingual sites [#389](https://github.com/pnp/sp-dev-fx-property-controls/issues/389)
 
 ### Contributors
 

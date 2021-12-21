@@ -5,6 +5,7 @@ export interface IOneDriveFilesTabState {
   filePickerResult: IFilePickerResult;
   libraryAbsolutePath: string;
   libraryTitle: string;
+  libraryId: string;
   folderPath: string;
   folderName: string;
 

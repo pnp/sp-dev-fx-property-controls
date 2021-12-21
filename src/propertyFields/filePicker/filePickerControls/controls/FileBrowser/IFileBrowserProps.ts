@@ -5,6 +5,7 @@ import { IFilePickerResult } from "../../FilePicker.types";
 export interface IFileBrowserProps {
   fileBrowserService: FileBrowserService;
   libraryName: string;
+  libraryId: string;
   folderPath: string;
   accepts: string[];
   onChange: (filePickerResult: IFilePickerResult) => void;

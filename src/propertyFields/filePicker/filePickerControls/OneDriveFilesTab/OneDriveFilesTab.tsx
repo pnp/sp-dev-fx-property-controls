@@ -20,6 +20,7 @@ export class OneDriveFilesTab extends React.Component<IOneDriveFilesTabProps, IO
       filePickerResult: null,
       libraryAbsolutePath: undefined,
       libraryTitle: strings.DocumentLibraries,
+      libraryId: '',
       folderPath: undefined,
       folderName: strings.DocumentLibraries,
       breadcrumbItems: []
@@ -27,9 +28,16 @@ export class OneDriveFilesTab extends React.Component<IOneDriveFilesTabProps, IO
   }
 
   public async componentDidMount() {
-    const folderPath = await this.props.oneDriveService.getOneDriveRootFolderRelativeUrl();
-    const libraryAbsolutePath = await this.props.oneDriveService.getOneDriveRootFolderFullUrl();
-    const libraryTitle = await this.props.oneDriveService.getOneDrivePersonalLibraryTitle();
+    const {
+      oneDriveService,
+    } = this.props;
+
+    const {
+      folderPath,
+      libraryAbsolutePath,
+      libraryTitle,
+      libraryId
+    } = await oneDriveService.getOneDriveMetadata();
 
     const oneDriveFolderData: IFile = {
       isFolder: true,
@@ -57,30 +65,47 @@ export class OneDriveFilesTab extends React.Component<IOneDriveFilesTabProps, IO
     this.setState({
       libraryAbsolutePath: libraryAbsolutePath,
       folderName: folderPath,
-      libraryTitle
+      libraryTitle,
+      libraryId
     });
   }
 
   public render(): React.ReactElement<IOneDriveFilesTabProps> {
+
+    const {
+      libraryId,
+      libraryTitle,
+      folderPath,
+      breadcrumbItems,
+      libraryAbsolutePath,
+      filePickerResult
+    } = this.state;
+
+    const {
+      oneDriveService,
+      accepts
+    } = this.props;
+
     return (
       <div className={styles.tabContainer}>
         <div className={styles.tabHeaderContainer}>
-          <Breadcrumb items={this.state.breadcrumbItems} /*onRenderItem={this.renderBreadcrumbItem}*/ className={styles.breadcrumbNav}/>
+          <Breadcrumb items={breadcrumbItems} /*onRenderItem={this.renderBreadcrumbItem}*/ className={styles.breadcrumbNav}/>
         </div>
         <div className={styles.tabFiles}>
-          {this.state.libraryAbsolutePath !== undefined &&
+          {libraryAbsolutePath !== undefined &&
             <FileBrowser
-              onChange={(filePickerResult: IFilePickerResult) => this._handleSelectionChange(filePickerResult)}
+              onChange={(fpr: IFilePickerResult) => this._handleSelectionChange(fpr)}
               onOpenFolder={(folder: IFile) => this._handleOpenFolder(folder, true)}
-              fileBrowserService={this.props.oneDriveService}
-              libraryName={this.state.libraryTitle}
-              folderPath={this.state.folderPath}
-              accepts={this.props.accepts} />}
+              fileBrowserService={oneDriveService}
+              libraryName={libraryTitle}
+              libraryId={libraryId}
+              folderPath={folderPath}
+              accepts={accepts} />}
         </div>
         <div className={styles.actionButtonsContainer}>
           <div className={styles.actionButtons}>
             <PrimaryButton
-              disabled={!this.state.filePickerResult}
+              disabled={!filePickerResult}
               onClick={() => this._handleSave()} className={styles.actionButton}>{strings.OpenButtonLabel}</PrimaryButton>
             <DefaultButton onClick={() => this._handleClose()} className={styles.actionButton}>{strings.CancelButtonLabel}</DefaultButton>
           </div>

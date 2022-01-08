@@ -76,16 +76,20 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
    * Default React render method
    */
   public render(): React.ReactElement<ICollectionNumberFieldProps> {
+    const {
+      errorMessage,
+      value
+    } = this.state;
     return (
-      <div className={`PropertyFieldCollectionData__panel__number-field ${styles.numberField} ${this.state.errorMessage ? styles.invalidField : ""}`}>
+      <div className={`PropertyFieldCollectionData__panel__number-field ${styles.numberField} ${errorMessage ? styles.invalidField : ""}`}>
         <input type="number"
                role="spinbutton"
                placeholder={this.props.field.placeholder || this.props.field.title}
                aria-valuemax={99999}
                aria-valuemin={-999999}
                aria-valuenow={this.props.item[this.props.field.id] || ''}
-               aria-invalid={!!this.state.errorMessage}
-               value={this.state.value || ''}
+               aria-invalid={!!errorMessage}
+               value={(!value && value !== 0) ? '' : value}
                onChange={async (ev) => await this.valueChange(this.props.field, ev.target.value)}
                disabled={this.props.disableEdit} />
       </div>

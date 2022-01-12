@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Само за творческата общност",
   "LicensePlaceholderText": "Лиценз",
   "LinkFileInstructions": "Поставяне на връзка към файл в OneDrive за бизнес или SharePoint Online",
+  "ExternalLinkFileInstructions": "Поставете връзка към сайт, страница, документ, списък, библиотека (https:// или http://)",
   "LinkHeader": "От връзка",
   "LinkImageInstructions": "Поставяне на връзка към изображение в OneDrive за бизнес или SharePoint Online",
   "ListLayoutAriaLabel": "Преглед на опциите. {0} {1} .",

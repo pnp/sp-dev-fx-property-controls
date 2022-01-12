@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Ainult creative commons",
   "LicensePlaceholderText": "Litsentsi",
   "LinkFileInstructions": "Faili lingi kleepimine oneDrive for Businessis või SharePoint Online'is",
+  "ExternalLinkFileInstructions": "Kleepige link saidile, lehele, dokumendile, loendile, teegile (https:// või http://)",
   "LinkHeader": "Lingilt",
   "LinkImageInstructions": "Pildi lingi kleepimine OneDrive for Businessis või SharePoint Online'is",
   "ListLayoutAriaLabel": "Saate vaadata valikuid. {0} {1} .",

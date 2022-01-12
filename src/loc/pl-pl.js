@@ -124,6 +124,7 @@ define([], () => {
   "LicenseOptionAny": "Tylko Creative Commons",
   "LicensePlaceholderText": "Licencji",
   "LinkFileInstructions": "Wklejanie łącza do pliku w usłudze OneDrive dla Firm lub usłudze SharePoint Online",
+  "ExternalLinkFileInstructions": "Wklej link do witryny, strony, dokumentu, listy, biblioteki (https:// lub http://)",
   "LinkHeader": "Z linku",
   "LinkImageInstructions": "Wklejanie łącza do obrazu w usłudze OneDrive dla Firm lub usłudze SharePoint Online",
   "ListLayoutAriaLabel": "Opcje wyświetlania. {0} {1} .",

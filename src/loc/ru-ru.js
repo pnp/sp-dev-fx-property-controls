@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Creative Commons только",
   "LicensePlaceholderText": "Лицензии",
   "LinkFileInstructions": "Вставьте ссылку на файл в OneDrive для бизнеса или SharePoint Online",
+  "ExternalLinkFileInstructions": "Вставьте ссылку на сайт, страницу, документ, список, библиотеку (https: // или http: //)",
   "LinkHeader": "По ссылке",
   "LinkImageInstructions": "Вставьте ссылку на изображение в OneDrive для бизнеса или SharePoint Online",
   "ListLayoutAriaLabel": "Просмотр опций. {0} {1} .",

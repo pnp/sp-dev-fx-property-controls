@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Solo Creative Commons",
   "LicensePlaceholderText": "Licenza",
   "LinkFileInstructions": "Incollare un collegamento a un file in OneDrive for Business o SharePoint Online",
+  "ExternalLinkFileInstructions": "Incollare un collegamento a un sito, una pagina, un documento, un elenco, una raccolta (https:// o http://)",
   "LinkHeader": "Da un link",
   "LinkImageInstructions": "Incollare un collegamento a un'immagine in OneDrive for Business o SharePoint Online",
   "ListLayoutAriaLabel": "Opzioni di visualizzazione. {0} {1} .",

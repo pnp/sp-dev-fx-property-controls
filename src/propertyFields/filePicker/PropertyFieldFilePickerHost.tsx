@@ -58,6 +58,9 @@ export default class PropertyFieldFilePickerHost extends React.Component<IProper
           panelClassName={this.props.panelClassName}
           storeLastActiveTab={this.props.storeLastActiveTab}
           defaultSelectedTab={this.props.defaultSelectedTab}
+          allowExternalTenantLinks={this.props.allowExternalTenantLinks}
+          checkIfFileExists={this.props.checkIfFileExists}
+          displaySitePages={this.props.displaySitePages}
         />
       </div>
     );

@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Alleen Creative Commons",
   "LicensePlaceholderText": "Licentie",
   "LinkFileInstructions": "Een koppeling naar een bestand plakken in OneDrive voor Bedrijven of SharePoint Online",
+  "ExternalLinkFileInstructions": "Plak een link naar een site, pagina, document, lijst, bibliotheek (https:// of http://)",
   "LinkHeader": "Van een link",
   "LinkImageInstructions": "Een koppeling naar een afbeelding plakken in OneDrive voor Bedrijven of SharePoint Online",
   "ListLayoutAriaLabel": "Opties weergeven. {0} {1} .",

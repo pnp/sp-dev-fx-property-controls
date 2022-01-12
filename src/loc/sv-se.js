@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Endast Creative Commons",
   "LicensePlaceholderText": "Licens",
   "LinkFileInstructions": "Klistra in en länk till en fil i OneDrive för företag eller SharePoint Online",
+  "ExternalLinkFileInstructions": "Klistra in en länk till en webbplats, sida, dokument, lista, bibliotek (https:// eller http://)",
   "LinkHeader": "Från en länk",
   "LinkImageInstructions": "Klistra in en länk till en bild i OneDrive för företag eller SharePoint Online",
   "ListLayoutAriaLabel": "Visa alternativ. {0} {1} .",

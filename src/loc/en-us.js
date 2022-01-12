@@ -125,6 +125,7 @@ define([], function () {
     LicenseOptionAny: "Creative Commons only",
     LicensePlaceholderText: "License",
     LinkFileInstructions: "Paste a link to a file in OneDrive for Business or SharePoint Online",
+    ExternalLinkFileInstructions: "Paste a link to a site, page, document, list, library (https:// or http://)",
     LinkHeader: "From a link",
     LinkImageInstructions: "Paste a link to an image in OneDrive for Business or SharePoint Online",
     ListLayoutAriaLabel: "View options. {0}  {1} .",

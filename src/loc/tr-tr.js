@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Yalnızca Creative Commons",
   "LicensePlaceholderText": "Lisans",
   "LinkFileInstructions": "OneDrive for Business veya SharePoint Online'da bir dosyaya bağlantı yapıştır",
+  "ExternalLinkFileInstructions": "Bir siteye, sayfaya, belgeye, listeye, kitaplığa bağlantı yapıştırın (https:// veya http://)",
   "LinkHeader": "Bir bağlantıdan",
   "LinkImageInstructions": "OneDrive for Business veya SharePoint Online'daki bir resme bağlantı yapıştır",
   "ListLayoutAriaLabel": "Seçenekleri görüntüleyin. {0} {1} .",

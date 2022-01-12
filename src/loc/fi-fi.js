@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Creative Commons vain",
   "LicensePlaceholderText": "Lisenssi",
   "LinkFileInstructions": "Linkin liittäminen tiedostoon OneDrive for Businessissa tai SharePoint Onlinessa",
+  "ExternalLinkFileInstructions": "Liitä linkki sivustoon, sivuun, asiakirjaan, luetteloon, kirjastoon (https:// tai http://)",
   "LinkHeader": "Linkistä",
   "LinkImageInstructions": "Linkin liittäminen kuvaan OneDrive for Businessissa tai SharePoint Onlinessa",
   "ListLayoutAriaLabel": "Näytä asetukset. {0} {1} .",

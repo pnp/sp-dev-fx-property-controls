@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Tik kūrybinės commons",
   "LicensePlaceholderText": "Licencijos",
   "LinkFileInstructions": "Saito į failą įklijavimas \"OneDrive\" verslui arba \"SharePoint Online\"",
+  "ExternalLinkFileInstructions": "Įklijuokite nuorodą į svetainę, puslapį, dokumentą, sąrašą, biblioteką (https:// arba http://)",
   "LinkHeader": "Iš nuorodos",
   "LinkImageInstructions": "Saito į vaizdą įklijavimas \"OneDrive\" verslui arba \"SharePoint Online\"",
   "ListLayoutAriaLabel": "Peržiūrėti parinktis. {0} {1} .",

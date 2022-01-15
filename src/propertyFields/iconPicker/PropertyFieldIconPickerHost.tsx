@@ -17,6 +17,7 @@ import debounce from 'lodash/debounce';
 import styles from './IconPicker.module.scss';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { setPropertyValue } from "../../helpers/GeneralHelper";
+import { IconsList } from "../../common/iconsList/IconsList";
 initializeIcons();
 
 export default class PropertyFieldIconPickerHost extends React.Component<IPropertyFieldIconPickerHostProps,IPropertyFieldIconPickerHostState> {
@@ -216,23 +217,7 @@ export default class PropertyFieldIconPickerHost extends React.Component<IProper
   }
 
   private renderIcons = (): React.ReactElement<IPropertyFieldIconPickerHostProps> => {
-    return (<ul className={styles.iconList}>
-      {this.state.items.map(this.renderIcon)}
-    </ul>);
-  }
-
-  private renderIcon = (item: string): JSX.Element => {
-    const radioId: string = `${this.radioIdBase}-${item}`;
-    return <li className={styles.iconItem}>
-      <input type="radio" name={this.radioIdBase} id={radioId} className={styles.iconRadio}
-        data-automation-id={`icon-picker-${item}`}
-        checked={item == this.state.currentIcon}
-        onChange={() => this.iconOnClick(item)} />
-      <label className={styles.iconLabel} htmlFor={radioId} title={item}>
-        <Icon iconName={item} className={styles.iconGlyph} />
-        <span className={styles.iconName}>{item}</span>
-      </label>
-    </li>;
+    return <IconsList icons={this.state.items} selectedIconName={this.state.currentIcon} onChange={this.iconOnClick} />;
   }
 
 }

@@ -1,0 +1,89 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+.dialog {
+  max-width: 600px;
+  width: 600px;
+}
+
+.dialogSelectedIcons {
+  font-size: 30px;
+  min-width: 32px;
+  width: 100%;
+  color: "[theme: themePrimary, default: #0078d7]";
+  text-align: center;
+}
+.dialogIconsContainer {
+  padding: 5px;
+  overflow: auto;
+  max-height: 600px;
+  height: 600px;
+}
+
+.dialogFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  .save {
+    margin-right: 5px;
+  }
+}
+
+.navArea {
+  display: flex;
+  width: 100%;
+  padding-left: 11px;
+}
+.headTitle {
+  display: inline-block;
+  flex-grow: 1;
+  flex-shrink: 2;
+  font-size: 28px;
+  font-weight: 300;
+  margin: auto 8px 5px 0;
+  white-space: nowrap;
+}
+.searchBox {
+  flex-grow: 5;
+  flex-shrink: 1;
+  margin: 5px 0;
+}
+.closeBtnContainer {
+  flex: 0 0 54px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+}
+.selectionDisplay {
+  order: 2;
+  display: flex;
+  flex: 1 0 32px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  &:global {
+    &.noSelection {
+      opacity: 0.3;
+    }
+  }
+}
+.selectionLabel {
+  display: inline-block;
+}
+.selectionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  min-width: 32px;
+}
+.btnCancel {
+  order: 1;
+}
+.btnSave {
+  order: 3;
+}

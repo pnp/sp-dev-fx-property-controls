@@ -11,6 +11,9 @@ import { FluentIconsService } from '../../services/FluentIconsService';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import Dialog, { DialogFooter, DialogType } from 'office-ui-fabric-react/lib/Dialog';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+
+initializeIcons();
 
 const _fluentIconsService: FluentIconsService = new FluentIconsService();
 const _icons = _fluentIconsService.getAll();
@@ -18,7 +21,6 @@ const _icons = _fluentIconsService.getAll();
 export interface IIconSelectorProps {
   renderOption?: IconSelectorRenderOption;
   currentIcon?: string;
-  icons: string[];
   panelClassName?: string;
   panelType?: PanelType;
   dialogType?: DialogType;
@@ -116,6 +118,7 @@ export const IconSelector: React.FunctionComponent<IIconSelectorProps> = ({
       className={panelClassName}
       onRenderNavigation={renderPanelNav}
       onRenderFooterContent={renderPanelFooter}
+      isFooterAtBottom={true}
     >
       {renderContent()}
     </Panel>;
@@ -157,6 +160,12 @@ export const IconSelector: React.FunctionComponent<IIconSelectorProps> = ({
   React.useEffect(() => {
     setIcons(_icons);
   }, []);
+
+  React.useEffect(() => {
+    if (isOpen === false) {
+      setIcons(_icons);
+    }
+  }, [isOpen]);
 
   React.useEffect(() => {
     setSelectedIconName(currentIcon);

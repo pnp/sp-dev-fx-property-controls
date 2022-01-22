@@ -371,7 +371,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
       case CustomCollectionFieldType.number:
         return <CollectionNumberField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
       case CustomCollectionFieldType.fabricIcon:
-        return <CollectionIconField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
+        return <CollectionIconField renderMode={field.iconFieldRenderMode} field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
       case CustomCollectionFieldType.color:    
         return <CollectionColorField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
       case CustomCollectionFieldType.url:

@@ -6,6 +6,5 @@ export interface IPropertyFieldIconPickerHostProps extends IPropertyFieldIconPic
 
 export interface IPropertyFieldIconPickerHostState {
   currentIcon: string;
-  items: string[];
   isPanelOpen: boolean;
 }

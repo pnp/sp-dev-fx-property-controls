@@ -5,7 +5,8 @@
       "changes": {
         "new": [],
         "enhancements": [
-          "`PropertyFieldFilePicker`: ability to set default tab [#412](https://github.com/pnp/sp-dev-fx-property-controls/issues/412)"
+          "`PropertyFieldFilePicker`: ability to set default tab [#412](https://github.com/pnp/sp-dev-fx-property-controls/issues/412)",
+          "`PropertyFieldCollectionData`: ability to use `IconPicker` for icon field [#423](https://github.com/pnp/sp-dev-fx-property-controls/pull/423)"
         ],
         "fixes": [
           "`PropertyFieldSearch`: documentation fix [#417](https://github.com/pnp/sp-dev-fx-property-controls/pull/417)",

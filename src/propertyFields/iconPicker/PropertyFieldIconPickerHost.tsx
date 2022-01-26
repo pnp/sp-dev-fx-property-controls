@@ -1,42 +1,27 @@
-import * as React from "react";
-import { IRenderFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Icon, IIconProps } from 'office-ui-fabric-react/lib/Icon';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import * as React from 'react';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import {
   IPropertyFieldIconPickerHostProps,
   IPropertyFieldIconPickerHostState
-} from "./IPropertyFieldIconPickerHost";
-import * as strings from 'PropertyControlStrings';
-import { FluentIconsService } from '../../services/FluentIconsService';
+} from './IPropertyFieldIconPickerHost';
 import * as telemetry from '../../common/telemetry';
-import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
-import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
-import { Panel, PanelType, IPanelProps } from 'office-ui-fabric-react/lib/Panel';
-import debounce from 'lodash/debounce';
-import styles from './IconPicker.module.scss';
+import { DialogType } from 'office-ui-fabric-react/lib/Dialog';
+import { PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { setPropertyValue } from "../../helpers/GeneralHelper";
-initializeIcons();
+import { setPropertyValue } from '../../helpers/GeneralHelper';
+import { IconSelector } from '../../common/iconSelector/IconSelector';
 
-export default class PropertyFieldIconPickerHost extends React.Component<IPropertyFieldIconPickerHostProps,IPropertyFieldIconPickerHostState> {
-
-  private radioIdBase: string = getId("radio");
-
-  private readonly _fluentIconsService: FluentIconsService;
-
-
+export default class PropertyFieldIconPickerHost extends React.Component<IPropertyFieldIconPickerHostProps, IPropertyFieldIconPickerHostState> {
   constructor(props: IPropertyFieldIconPickerHostProps) {
     super(props);
     telemetry.track('PropertyFieldIconPicker', {
       disabled: props.disabled
     });
 
-    this._fluentIconsService = new FluentIconsService();
     this.state = {
-        currentIcon: this.props.currentIcon || null,
-        isPanelOpen: false,
-        items: this._fluentIconsService.getAll()
+      currentIcon: this.props.currentIcon || null,
+      isPanelOpen: false
     };
   }
 
@@ -74,54 +59,17 @@ export default class PropertyFieldIconPickerHost extends React.Component<IProper
         }
         data-automation-id={`icon-picker-open`}
       />
-      {
-
-        renderOption === 'panel' ?
-          <Panel
-            isOpen={this.state.isPanelOpen}
-            onDismiss={this.closePanel}
-            type={PanelType.medium}
-            data-automation-id={`icon-picker-panel`}
-            closeButtonAriaLabel={strings.CloseButton}
-            className={panelClassName}
-            onRenderNavigation={this.renderPanelNav}
-            onRenderFooterContent={this.renderPanelFooter}
-          >
-            {this.renderPanelContent()}
-          </Panel>
-          :
-          <Dialog
-            hidden={!this.state.isPanelOpen}
-            onDismiss={this.closePanel}
-            isBlocking={true}
-            containerClassName={styles.dialog}
-
-            dialogContentProps={{
-              type: DialogType.normal,
-              title: strings.SelectIcon,
-              showCloseButton: true,
-              className: panelClassName
-            }}
-          >
-            <SearchBox className={styles.searchBox}
-              onAbort={this.onAbort}
-              data-automation-id={`icon-picker-search`}
-              onSearch={debounce(this.onChange, 300)}
-              onChange={debounce((e, value) => this.onChange(value), 300)} />
-            <div className={styles.dialogIconsContainer}>
-              {this.renderPanelContent()}
-            </div>
-
-            <DialogFooter>
-              <div className={styles.dialogFooter}>
-                <Icon iconName={this.state.currentIcon} className={styles.dialogSelectedIcons} />
-                <PrimaryButton className={styles.save} text={strings.SaveButtonLabel} onClick={this.confirmSelection} disabled={!this.state.currentIcon} data-automation-id={`icon-picker-save`} />
-                <DefaultButton text={strings.CancelButtonLabel} onClick={this.closePanel} className={styles.btnCancel} data-automation-id={`icon-picker-close`} />
-              </div>
-            </DialogFooter>
-          </Dialog>
-
-      }
+      <IconSelector
+        renderOption={renderOption}
+        currentIcon={this.state.currentIcon}
+        panelClassName={panelClassName}
+        panelType={PanelType.medium}
+        dialogType={DialogType.normal}
+        isOpen={this.state.isPanelOpen}
+        onChange={this.iconOnClick}
+        onDismiss={this.closePanel}
+        onSave={this.confirmSelection}
+      />
     </div>;
   }
 
@@ -134,8 +82,7 @@ export default class PropertyFieldIconPickerHost extends React.Component<IProper
 
   private iconPickerOnClick = (): void => {
     this.setState({
-      isPanelOpen: true,
-      items: this._fluentIconsService.getAll() //IconNames.Icons
+      isPanelOpen: true
     });
   }
 
@@ -147,26 +94,6 @@ export default class PropertyFieldIconPickerHost extends React.Component<IProper
     }
     this.setState({
       currentIcon: iconName
-    });
-  }
-
-  private onAbort = (): void => {
-    this.setState({
-      items: this._fluentIconsService.getAll() //IconNames.Icons
-    });
-  }
-
-  private onChange = (newValue?: string): void => {
-    let items: string[];
-    if (newValue && newValue.trim().length > 2) {
-      items = this._fluentIconsService.search(newValue); /*IconNames.Icons.filter(item => {
-        return item.toLocaleLowerCase().indexOf(newValue.toLocaleLowerCase()) !== -1;
-      });*/
-    } else {
-      items =  this._fluentIconsService.getAll();//IconNames.Icons;
-    }
-    this.setState({
-      items: items
     });
   }
 
@@ -184,55 +111,6 @@ export default class PropertyFieldIconPickerHost extends React.Component<IProper
     this.setState({
       isPanelOpen: false
     });
-  }
-
-  private renderPanelNav: IRenderFunction<IPanelProps> = (props: IPanelProps, defaultRender: IRenderFunction<IPanelProps>) => {
-    return <div className={styles.navArea}>
-      <h2 className={styles.headTitle}>{strings.SelectIcon}</h2>
-      <SearchBox className={styles.searchBox}
-        onAbort={this.onAbort}
-        data-automation-id={`icon-picker-search`}
-        onSearch={debounce(this.onChange, 300)}
-        onChange={debounce((e, value) => this.onChange(value), 300)} />
-      <div className={styles.closeBtnContainer}>{defaultRender!(props)}</div>
-    </div>;
-  }
-
-  private renderPanelContent = () => {
-    return <div>
-      {this.renderIcons()}
-    </div>;
-  }
-
-  private renderPanelFooter: IRenderFunction<IPanelProps> = () => {
-    return <div className={styles.footer} data-automation-id={`icon-picker-footer`}>
-      <PrimaryButton text={strings.SaveButtonLabel} onClick={this.confirmSelection} disabled={!this.state.currentIcon} className={styles.btnSave} data-automation-id={`icon-picker-save`} />
-      <div className={`${styles.selectionDisplay} ${!this.state.currentIcon ? 'noSelection' : ''}`}>
-        <span className={styles.selectionLabel}>{strings.SelectedLabel}:</span>
-        <Icon iconName={this.state.currentIcon} className={styles.selectionIcon} />
-      </div>
-      <DefaultButton text={strings.CancelButtonLabel} onClick={this.closePanel} className={styles.btnCancel} data-automation-id={`icon-picker-close`} />
-    </div>;
-  }
-
-  private renderIcons = (): React.ReactElement<IPropertyFieldIconPickerHostProps> => {
-    return (<ul className={styles.iconList}>
-      {this.state.items.map(this.renderIcon)}
-    </ul>);
-  }
-
-  private renderIcon = (item: string): JSX.Element => {
-    const radioId: string = `${this.radioIdBase}-${item}`;
-    return <li className={styles.iconItem}>
-      <input type="radio" name={this.radioIdBase} id={radioId} className={styles.iconRadio}
-        data-automation-id={`icon-picker-${item}`}
-        checked={item == this.state.currentIcon}
-        onChange={() => this.iconOnClick(item)} />
-      <label className={styles.iconLabel} htmlFor={radioId} title={item}>
-        <Icon iconName={item} className={styles.iconGlyph} />
-        <span className={styles.iconName}>{item}</span>
-      </label>
-    </li>;
   }
 
 }

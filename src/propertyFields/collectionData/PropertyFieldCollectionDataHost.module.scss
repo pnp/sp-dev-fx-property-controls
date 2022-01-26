@@ -87,6 +87,15 @@
   }
 }
 
+.iconPicker {
+  display: flex;
+
+  .requiredField {
+    vertical-align: super;
+    display: inline-block;
+  }
+}
+
 .colorField {
   position: relative;
 

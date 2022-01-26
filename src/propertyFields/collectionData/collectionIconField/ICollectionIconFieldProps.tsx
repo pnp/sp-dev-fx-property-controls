@@ -1,3 +1,7 @@
 import { IBaseCollectionFieldProps } from "../IBaseCollectionFIeldsProps";
 
-export interface ICollectionIconFieldProps extends IBaseCollectionFieldProps { }
+export type CollectionIconFieldRenderMode = 'textbox' | 'picker';
+
+export interface ICollectionIconFieldProps extends IBaseCollectionFieldProps { 
+  renderMode?: CollectionIconFieldRenderMode;
+}

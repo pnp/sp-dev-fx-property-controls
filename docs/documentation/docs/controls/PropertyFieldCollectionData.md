@@ -157,6 +157,7 @@ Interface `ICustomCollectionField`
 | onGetErrorMessage | (value: any, index: number, crntItem: any): string \| Promise<string> | no | The method is used to get the validation error message and determine whether the input value is valid or not. It provides you the current row index and the item you are currently editing. |
 | onCustomRender | (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void, item: any, itemUniqueId: string, onCustomFieldValidation: (fieldId: string, errorMessage: string) => void) => JSX.Element | no | This property is only required if you are using the `custom` field type and it can be used to specify the custom rendering of your control in the collection data. |
 | isVisible | (field: ICustomCollectionField, items: any[]) => boolean | no | The method is used to toggle column visibility depending on current state of editing items |
+| iconFieldRenderMode | CollectionIconFieldRenderMode | no | Icon field render mode: text box or `IconPicker` |
 
 Enum `CustomCollectionFieldType`
 
@@ -170,5 +171,10 @@ Enum `CustomCollectionFieldType`
 | url | URL field |
 | custom | This gives you control over the whole field rendering. Be sure to provide the `onCustomRender` method to render your control in the collection data. |
 | color | Color field |
+
+Type `CollectionIconFieldRenderMode`
+```typescript
+export type CollectionIconFieldRenderMode = 'textbox' | 'picker';
+```
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldCollectionData)

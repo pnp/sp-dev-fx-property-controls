@@ -1,6 +1,7 @@
 import {
     IPropertyPaneCustomFieldProps,
   } from '@microsoft/sp-property-pane';
+import { IconSelectorRenderOption } from '../../common/Types';
   
   export interface IPropertyFieldIconPickerProps {
     key: string;
@@ -33,9 +34,9 @@ import {
      */
     currentIcon?: string;
      /**
-     * irender option:  panel, dialog
+     * Render option:  panel, dialog
      */
-    renderOption?: 'panel' | 'dialog';
+    renderOption?: IconSelectorRenderOption;
     /**
    * Defines a onPropertyChange function to raise when the selected value changed.
    * Normally this function must be always defined with the 'this.onPropertyChange'

@@ -17,13 +17,6 @@ export default class PropertyFieldToggleWithCalloutHost extends React.Component<
     }
 
     public render(): JSX.Element {
-        const choiceGroupProps: IChoiceGroupProps = omit(this.props, ['label']);
-        choiceGroupProps.options.forEach(option => {
-            if (option.iconProps) {
-                const iconPropsAny: any = option.iconProps as any;
-                option.iconProps.iconName = iconPropsAny.officeFabricIconFontName;
-            }
-        });
         return (
             <div>
                 <PropertyFieldHeader {...this.props} />

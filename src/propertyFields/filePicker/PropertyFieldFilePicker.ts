@@ -36,7 +36,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
 
   private allowExternalLinks: boolean;
   private checkIfFileExists: boolean;
-  private displaySitePages: boolean;
+  private includePageLibraries: boolean;
 
   private customProperties: any;
   private key: string;
@@ -96,7 +96,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.hideStockImages = _properties.hideStockImages !== undefined ? _properties.hideStockImages : false;
     this.allowExternalLinks = _properties.allowExternalLinks !== undefined ? _properties.allowExternalLinks : true;
     this.checkIfFileExists = _properties.checkIfFileExists !== undefined ? _properties.checkIfFileExists : true;
-    this.displaySitePages = _properties.displaySitePages !== undefined ? _properties.displaySitePages : false;
+    this.includePageLibraries = _properties.includePageLibraries !== undefined ? _properties.includePageLibraries : false;
 
     this.onPropertyChange = _properties.onPropertyChange;
     this.customProperties = _properties.properties;
@@ -144,7 +144,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
 
       allowExternalLinks: this.allowExternalLinks,
       checkIfFileExists: this.checkIfFileExists,
-      displaySitePages: this.displaySitePages,
+      includePageLibraries: this.includePageLibraries,
 
       properties: this.customProperties,
       key: this.key,

@@ -118,7 +118,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
               <LinkFilePickerTab
                 fileSearchService={this.fileSearchService}
                 allowExternalLinks={this.props.allowExternalLinks}
-                checkIfFileExists={this.props.checkIfFileExists}
+                checkIfFileExists={this.props.checkIfFileExists !== false}
                 {...linkTabProps}
               />
             }
@@ -140,7 +140,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
               this.state.selectedTab === FilePickerTabType.SiteFilesTab &&
               <SiteFilePickerTab
                 fileBrowserService={this.fileBrowserService}
-                displaySitePages={this.props.displaySitePages}
+                includePageLibraries={this.props.includePageLibraries}
                 {...linkTabProps}
               />
             }

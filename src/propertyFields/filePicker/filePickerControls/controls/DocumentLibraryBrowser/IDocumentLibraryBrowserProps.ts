@@ -3,6 +3,6 @@ import { ILibrary } from "../../../../../services/FileBrowserService.types";
 
 export interface IDocumentLibraryBrowserProps {
   fileBrowserService: FileBrowserService;
-  displaySitePages?: boolean;
+  includePageLibraries?: boolean;
   onOpenLibrary: (selectedLibrary: ILibrary) => void;
 }

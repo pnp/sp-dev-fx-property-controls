@@ -98,7 +98,7 @@ The `PropertyFieldFilePicker` control can be configured with the following prope
 | defaultSelectedTab | FilePickerTabType | no | Specify a tab to be selected by default. If not specified, it will default to "RecentTab". |
 | allowExternalLinks | boolean | no | Specifies if external links should be allowed. |
 | checkIfFileExists | boolean | no | When using file links, this property allows the user to choose if the control should check if the link point to a file that exists or not. |
-| displaySitePages | boolean | no | Specifies if site pages should be displayed. | Allows the user to display the Site Pages folder too if set to true. |
+| includePageLibraries | boolean | no | Specifies if site pages should be displayed. | Allows the user to display the Site Pages folder too if set to true. |
 
 interface `IFilePickerResult`
 

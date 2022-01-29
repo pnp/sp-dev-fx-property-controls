@@ -157,7 +157,7 @@ export interface IPropertyFieldFilePickerProps {
   /**
    * Specifies if Site Pages is displayed in the Site Tab
    */
-   displaySitePages?: boolean;
+   includePageLibraries?: boolean;
 }
 
 export interface IPropertyFieldFilePickerPropsInternal extends IPropertyFieldFilePickerProps {

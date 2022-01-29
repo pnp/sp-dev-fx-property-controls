@@ -133,5 +133,5 @@ export interface IFilePickerProps {
   /**
    * Specifies if Site Pages is displayed in the Site Tab
    */
-   displaySitePages?: boolean;
+   includePageLibraries?: boolean;
 }

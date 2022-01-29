@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Només Creative Commons",
   "LicensePlaceholderText": "Llicència",
   "LinkFileInstructions": "Enganxar un enllaç a un fitxer del OneDrive for Business o del SharePoint Online",
+  "ExternalLinkFileInstructions": "Enganxeu un enllaç a un lloc, pàgina, document, llista, biblioteca (https:// o http://)",
   "LinkHeader": "Des d'un enllaç",
   "LinkImageInstructions": "Enganxar un enllaç a una imatge del OneDrive for Business o del SharePoint Online",
   "ListLayoutAriaLabel": "Visualitza les opcions. {0} {1} .",

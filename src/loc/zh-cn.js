@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "仅知识共享",
   "LicensePlaceholderText": "许可证",
   "LinkFileInstructions": "将指向\"企业\"或\"共享点联机\"中的文件的链接粘贴",
+  "ExternalLinkFileInstructions": "将链接粘贴到站点、页面、文档、列表、库（https:// 或 http://）",
   "LinkHeader": "从链接",
   "LinkImageInstructions": "在 OneDrive 中粘贴指向图像的链接，用于业务或共享点联机",
   "ListLayoutAriaLabel": "查看选项。{0} {1} .",

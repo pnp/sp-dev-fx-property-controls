@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Tikai Creative Commons",
   "LicensePlaceholderText": "Licences",
   "LinkFileInstructions": "Saites uz failu ielīmēšana pakalpojumā OneDrive darbam vai SharePoint Online",
+  "ExternalLinkFileInstructions": "Ielīmējiet saiti uz vietni, lapu, dokumentu, sarakstu, bibliotēku (https:// vai http://)",
   "LinkHeader": "No saites",
   "LinkImageInstructions": "Saites ielīmēšana uz attēlu pakalpojumā OneDrive darbam vai SharePoint Online",
   "ListLayoutAriaLabel": "Skatīt opcijas. {0} {1} .",

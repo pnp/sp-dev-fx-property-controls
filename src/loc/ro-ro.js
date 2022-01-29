@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Numai Creative Commons",
   "LicensePlaceholderText": "Licenţă",
   "LinkFileInstructions": "Lipirea unui link la un fișier în OneDrive pentru business sau SharePoint Online",
+  "ExternalLinkFileInstructions": "Lipiți un link către un site, pagină, document, listă, bibliotecă (https:// sau http://)",
   "LinkHeader": "Dintr-un link",
   "LinkImageInstructions": "Lipirea unui link la o imagine în OneDrive pentru business sau SharePoint Online",
   "ListLayoutAriaLabel": "Vizualizați opțiunile. {0} {1} .",

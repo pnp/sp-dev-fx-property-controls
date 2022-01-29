@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Chỉ Creative Commons",
   "LicensePlaceholderText": "Giấy phép",
   "LinkFileInstructions": "Dán nối kết đến tệp trong OneDrive for Business hoặc SharePoint Online",
+  "ExternalLinkFileInstructions": "Dán liên kết đến một trang, trang, tài liệu, danh sách, thư viện (https: // hoặc http: //)",
   "LinkHeader": "Từ một liên kết",
   "LinkImageInstructions": "Dán nối kết đến ảnh trong OneDrive for Business hoặc SharePoint Online",
   "ListLayoutAriaLabel": "Xem tùy chọn. {0} {1} .",

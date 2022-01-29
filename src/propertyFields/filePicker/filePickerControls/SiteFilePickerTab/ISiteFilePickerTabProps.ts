@@ -4,6 +4,7 @@ import { IBreadcrumbItem } from "office-ui-fabric-react/lib/Breadcrumb";
 
 export interface ISiteFilePickerTabProps extends IFilePickerTab {
   fileBrowserService: FileBrowserService;
+  displaySitePages?: boolean;
 
   /**
    * Represents the base node in the breadrumb navigation

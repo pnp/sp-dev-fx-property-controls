@@ -145,6 +145,19 @@ export interface IPropertyFieldFilePickerProps {
    * Specifies if StockImagesTab should be hidden.
    */
   hideStockImages?: boolean;
+
+  /**
+   * Specifies if external links are allowed
+   */
+   allowExternalTenantLinks?: boolean;
+  /**
+   * Specifies if file check should be done
+   */
+   checkIfFileExists?: boolean;
+  /**
+   * Specifies if Site Pages is displayed in the Site Tab
+   */
+   displaySitePages?: boolean;
 }
 
 export interface IPropertyFieldFilePickerPropsInternal extends IPropertyFieldFilePickerProps {

@@ -34,6 +34,10 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
   private hideOneDriveTab: boolean;
   private hideStockImages: boolean;
 
+  private allowExternalTenantLinks: boolean;
+  private checkIfFileExists: boolean;
+  private displaySitePages: boolean;
+
   private customProperties: any;
   private key: string;
   private disabled: boolean = false;
@@ -90,6 +94,10 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.storeLastActiveTab = _properties.storeLastActiveTab !== undefined ? _properties.storeLastActiveTab : true;
     this.defaultSelectedTab = _properties.defaultSelectedTab;
     this.hideStockImages = _properties.hideStockImages !== undefined ? _properties.hideStockImages : false;
+    this.allowExternalTenantLinks = _properties.allowExternalTenantLinks !== undefined ? _properties.allowExternalTenantLinks : true;
+    this.checkIfFileExists = _properties.checkIfFileExists !== undefined ? _properties.checkIfFileExists : true;
+    this.displaySitePages = _properties.displaySitePages !== undefined ? _properties.displaySitePages : false;
+
     this.onPropertyChange = _properties.onPropertyChange;
     this.customProperties = _properties.properties;
     this.key = _properties.key;
@@ -133,6 +141,10 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
       defaultSelectedTab: this.defaultSelectedTab,
       hideStockImages: this.hideStockImages,
       targetProperty: this.targetProperty,
+
+      allowExternalTenantLinks: this.allowExternalTenantLinks,
+      checkIfFileExists: this.checkIfFileExists,
+      displaySitePages: this.displaySitePages,
 
       properties: this.customProperties,
       key: this.key,

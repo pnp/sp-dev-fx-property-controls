@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Creative Commons uniquement",
   "LicensePlaceholderText": "Licence",
   "LinkFileInstructions": "Coller un lien vers un fichier dans OneDrive Entreprise ou SharePoint Online",
+  "ExternalLinkFileInstructions": "Coller un lien vers un site, une page, un document, une liste, une bibliothèque (https:// ou http://)",
   "LinkHeader": "À partir d’un lien",
   "LinkImageInstructions": "Coller un lien vers une image dans OneDrive Entreprise ou SharePoint Online",
   "ListLayoutAriaLabel": "Afficher les options. {0} {1} .",

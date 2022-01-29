@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Iba Creative Commons",
   "LicensePlaceholderText": "Licencie",
   "LinkFileInstructions": "Prilepiť prepojenie na súbor vo OneDrive for Business alebo SharePointe Online",
+  "ExternalLinkFileInstructions": "Prilepte odkaz na lokalitu, stránku, dokument, zoznam, knižnicu (https:// alebo http://)",
   "LinkHeader": "Z prepojenia",
   "LinkImageInstructions": "Prilepiť prepojenie na obrázok vo OneDrive for Business alebo SharePointe Online",
   "ListLayoutAriaLabel": "Zobraziť možnosti. {0} {1} .",

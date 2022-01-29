@@ -40,7 +40,8 @@ export class DocumentLibraryBrowser extends React.Component<IDocumentLibraryBrow
   }
 
   public async componentDidMount() {
-    const lists = await this.props.fileBrowserService.getSiteMediaLibraries();
+    let includePageLibraries = this.props.displaySitePages ? this.props.displaySitePages : false;
+    const lists = await this.props.fileBrowserService.getSiteMediaLibraries(includePageLibraries);
     this.setState({
       lists: lists,
       isLoading: false

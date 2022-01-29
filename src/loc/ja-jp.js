@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "クリエイティブ・コモンズのみ",
   "LicensePlaceholderText": "ライセンス",
   "LinkFileInstructions": "ビジネスまたは SharePoint オンラインの OneDrive のファイルへのリンクを貼り付ける",
+  "ExternalLinkFileInstructions": "サイト、ページ、ドキュメント、リスト、ライブラリへのリンクを貼り付けます（https：//またはhttp：//）",
   "LinkHeader": "リンクから",
   "LinkImageInstructions": "ビジネスまたは SharePoint オンラインの OneDrive のイメージへのリンクを貼り付ける",
   "ListLayoutAriaLabel": "オプションを表示します。{0} {1} .",

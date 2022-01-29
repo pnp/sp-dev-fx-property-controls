@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Μόνο δημιουργικά κοινά",
   "LicensePlaceholderText": "Άδεια",
   "LinkFileInstructions": "Επικόλληση σύνδεσης σε αρχείο στο OneDrive για επιχειρήσεις ή στο SharePoint Online",
+  "ExternalLinkFileInstructions": "Επικολλήστε έναν σύνδεσμο προς έναν ιστότοπο, σελίδα, έγγραφο, λίστα, βιβλιοθήκη (https:// ή http://)",
   "LinkHeader": "Από μια σύνδεση",
   "LinkImageInstructions": "Επικόλληση σύνδεσης σε εικόνα στο OneDrive για επιχειρήσεις ή στο SharePoint Online",
   "ListLayoutAriaLabel": "Προβολή επιλογών. {0} {1} .",

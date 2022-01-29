@@ -117,7 +117,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
               this.state.selectedTab === FilePickerTabType.LinkUploadTab &&
               <LinkFilePickerTab
                 fileSearchService={this.fileSearchService}
-                allowExternalTenantLinks={this.props.allowExternalTenantLinks}
+                allowExternalLinks={this.props.allowExternalLinks}
                 checkIfFileExists={this.props.checkIfFileExists}
                 {...linkTabProps}
               />

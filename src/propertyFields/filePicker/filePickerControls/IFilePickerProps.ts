@@ -125,7 +125,7 @@ export interface IFilePickerProps {
   /**
    * Specifies if external links are allowed
    */
-  allowExternalTenantLinks?: boolean;
+  allowExternalLinks?: boolean;
   /**
    * Specifies if file check should be done
    */

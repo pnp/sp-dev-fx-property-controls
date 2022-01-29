@@ -149,7 +149,7 @@ export interface IPropertyFieldFilePickerProps {
   /**
    * Specifies if external links are allowed
    */
-   allowExternalTenantLinks?: boolean;
+   allowExternalLinks?: boolean;
   /**
    * Specifies if file check should be done
    */

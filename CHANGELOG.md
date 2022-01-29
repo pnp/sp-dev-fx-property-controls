@@ -6,6 +6,7 @@
 
 - `PropertyFieldFilePicker`: ability to set default tab [#412](https://github.com/pnp/sp-dev-fx-property-controls/issues/412)
 - `PropertyFieldCollectionData`: ability to use `IconPicker` for icon field [#423](https://github.com/pnp/sp-dev-fx-property-controls/pull/423)
+- `PropertyFieldFilePicker`: Added a feature to allow external links / Added a feature to show the Site Pages in the Site tab [#421](https://github.com/pnp/sp-dev-fx-property-controls/pull/421)
 
 ### Fixes
 
@@ -16,7 +17,7 @@
 
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [Christian Frizell](https://github.com/chrisfriz), [GuidoZam](https://github.com/GuidoZam).
+Special thanks to our contributors (in alphabetical order): [19ahmed99](https://github.com/19ahmed99), [Christian Frizell](https://github.com/chrisfriz), [GuidoZam](https://github.com/GuidoZam).
 
 ## 3.3.0
 

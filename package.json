@@ -52,7 +52,7 @@
     "@types/react-addons-update": "0.14.14",
     "@types/react-dom": "16.9.8",
     "@types/webpack-env": "1.13.1",
-    "ajv": "~5.2.2",
+    "ajv": "~6.12.3",
     "amd-loader": "0.0.8",
     "gulp": "4.0.2",
     "husky": "^6.0.0",

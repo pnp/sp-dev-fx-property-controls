@@ -1,6 +1,29 @@
 {
   "versions": [
     {
+      "version": "3.4.0",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "`PropertyFieldFilePicker`: ability to set default tab [#412](https://github.com/pnp/sp-dev-fx-property-controls/issues/412)",
+          "`PropertyFieldCollectionData`: ability to use `IconPicker` for icon field [#423](https://github.com/pnp/sp-dev-fx-property-controls/pull/423)",
+          "`PropertyFieldFilePicker`: Added a feature to allow external links / Added a feature to show the Site Pages in the Site tab [#421](https://github.com/pnp/sp-dev-fx-property-controls/pull/421)"
+        ],
+        "fixes": [
+          "`PropertyFieldSearch`: documentation fix [#417](https://github.com/pnp/sp-dev-fx-property-controls/pull/417)",
+          "`FilePicker`: cannot find library by its name in multilingual sites [#389](https://github.com/pnp/sp-dev-fx-property-controls/issues/389)",
+          "`PropertyFieldDateTimePicker`: `formatDate` property doesn't apply to the textbox value in the property pane [#388](https://github.com/pnp/sp-dev-fx-property-controls/issues/388)",
+          "`PropertyFieldCollectionData`: number input shows placeholder instead of 0 [#379](https://github.com/pnp/sp-dev-fx-property-controls/issues/379)",
+          "`PropertyFieldChoiceGroupWithCallout`: iconProps not working [#424](https://github.com/pnp/sp-dev-fx-property-controls/issues/424)"
+        ]
+      },
+      "contributions": [
+        "[19ahmed99](https://github.com/19ahmed99)",
+        "[Christian Frizell](https://github.com/chrisfriz)",
+        "[GuidoZam](https://github.com/GuidoZam)"
+      ]
+    },
+    {
       "version": "3.3.0",
       "changes": {
         "new": [],

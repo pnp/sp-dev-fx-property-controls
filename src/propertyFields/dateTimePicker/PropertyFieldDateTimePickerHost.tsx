@@ -293,7 +293,8 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
       disabled,
       timeConvention,
       dateConvention,
-      label
+      label,
+      formatDate
     } = this.props;
 
     // Check if the time element needs to be rendered
@@ -348,6 +349,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
               </td>}
               <td>
                 <DatePicker
+                formatDate={formatDate}
                   disabled={disabled}
                   value={this.state.day}
                   strings={dateStrings}

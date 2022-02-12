@@ -31,8 +31,8 @@ export default class LinkFilePickerTab extends React.Component<ILinkFilePickerTa
             resizable={false}
             deferredValidationTime={300}
             className={styles.linkTextField}
-            label={strings.LinkFileInstructions}
-            ariaLabel={strings.LinkFileInstructions}
+            label={this.props.allowExternalLinks ? strings.ExternalLinkFileInstructions : strings.LinkFileInstructions}
+            ariaLabel={this.props.allowExternalLinks ? strings.ExternalLinkFileInstructions : strings.LinkFileInstructions}
             defaultValue={"https://"}
             onGetErrorMessage={(value: string) => this._getErrorMessagePromise(value)}
             autoAdjustHeight={false}
@@ -91,9 +91,14 @@ export default class LinkFilePickerTab extends React.Component<ILinkFilePickerTa
     }
 
     // If we don't allow external links, verify that we're in the same domain
-    if (!this.props.allowExternalTenantLinks && !this._isSameDomain(value)) {
+    if (!this.props.allowExternalLinks && !this._isSameDomain(value)) {
       this.setState({ isValid: false });
       return strings.NoExternalLinksValidationMessage;
+    }
+
+    if(!this.props.checkIfFileExists){
+      this.setState({ isValid: true });
+      return '';
     }
 
     const fileExists = await this.props.fileSearchService.checkFileExists(value);

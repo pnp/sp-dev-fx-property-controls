@@ -149,6 +149,7 @@ declare interface IPropertyControlStrings {
   LicenseOptionAny: string;
   LicensePlaceholderText: string;
   LinkFileInstructions: string;
+  ExternalLinkFileInstructions: string;
   LinkHeader: string;
   LinkImageInstructions: string;
   ListLayoutAriaLabel: string;

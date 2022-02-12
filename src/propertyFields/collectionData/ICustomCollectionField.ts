@@ -1,6 +1,7 @@
 import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { IRenderFunction } from '@uifabric/utilities/lib/IRenderFunction';
 import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
+import { CollectionIconFieldRenderMode } from './collectionIconField';
 
 
 export interface ICustomDropdownOption extends Omit<IDropdownOption, 'key'>
@@ -67,6 +68,11 @@ export interface ICustomCollectionField {
    * Custom field visibility support
    */
   isVisible?: (field: ICustomCollectionField, items: any[]) => boolean;
+
+  /**
+   * Icon field render mode
+   */
+  iconFieldRenderMode?: CollectionIconFieldRenderMode;
 }
 
 export enum CustomCollectionFieldType {

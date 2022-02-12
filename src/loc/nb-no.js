@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Kun Creative Commons",
   "LicensePlaceholderText": "Lisens",
   "LinkFileInstructions": "Lime inn en kobling til en fil i OneDrive for Business eller SharePoint Online",
+  "ExternalLinkFileInstructions": "Lim inn en kobling til et nettsted, side, dokument, liste, bibliotek (https:// eller http://)",
   "LinkHeader": "Fra en kobling",
   "LinkImageInstructions": "Lime inn en kobling til et bilde i OneDrive for Business eller SharePoint Online",
   "ListLayoutAriaLabel": "Vis alternativer. {0} {1} .",

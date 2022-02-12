@@ -41,7 +41,7 @@ PropertyFieldSearch("searchValue", {
 
 ## Implementation
 
-The `PropertyFieldSeasrch` control can be configured with the following properties:
+The `PropertyFieldSearch` control can be configured with the following properties:
 
 | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- |

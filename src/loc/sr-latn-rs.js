@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "Samo kreativni commons",
   "LicensePlaceholderText": "Dozvolu",
   "LinkFileInstructions": "Lepljenje veze ka datoteci u usluzi OneDrive for Business ili SharePoint Online",
+  "ExternalLinkFileInstructions": "Pegar un enlace a un sitio, página, documento, lista, biblioteca (https:// o http://)",
   "LinkHeader": "Iz veze",
   "LinkImageInstructions": "Lepljenje veze ka slici u usluzi OneDrive for Business ili SharePoint Online",
   "ListLayoutAriaLabel": "Prikažite opcije. {0} {1} .",

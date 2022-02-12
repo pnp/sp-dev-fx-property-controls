@@ -9,7 +9,7 @@ import {
 
 import PropertyPaneFilePickerHost from './PropertyFieldFilePickerHost';
 
-import { IFilePickerResult } from './filePickerControls';
+import { FilePickerTabType, IFilePickerResult } from './filePickerControls';
 import { IPropertyFieldFilePickerHostProps } from './IPropertyFieldFilePickerHost';
 import { IPropertyFieldFilePickerPropsInternal, IPropertyFieldFilePickerProps } from './IPropertyFieldFilePicker';
 
@@ -34,11 +34,16 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
   private hideOneDriveTab: boolean;
   private hideStockImages: boolean;
 
+  private allowExternalLinks: boolean;
+  private checkIfFileExists: boolean;
+  private includePageLibraries: boolean;
+
   private customProperties: any;
   private key: string;
   private disabled: boolean = false;
   private required: boolean = false;
   private storeLastActiveTab: boolean = true;
+  private defaultSelectedTab: FilePickerTabType;
   private context: BaseComponentContext;
   private label?: string;
   private buttonLabel?: string;
@@ -87,7 +92,12 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.hideOrganisationalAssetTab = _properties.hideOrganisationalAssetTab !== undefined ? _properties.hideOrganisationalAssetTab : false;
     this.hideOneDriveTab = _properties.hideOneDriveTab !== undefined ? _properties.hideOneDriveTab : false;
     this.storeLastActiveTab = _properties.storeLastActiveTab !== undefined ? _properties.storeLastActiveTab : true;
+    this.defaultSelectedTab = _properties.defaultSelectedTab;
     this.hideStockImages = _properties.hideStockImages !== undefined ? _properties.hideStockImages : false;
+    this.allowExternalLinks = _properties.allowExternalLinks !== undefined ? _properties.allowExternalLinks : true;
+    this.checkIfFileExists = _properties.checkIfFileExists !== undefined ? _properties.checkIfFileExists : true;
+    this.includePageLibraries = _properties.includePageLibraries !== undefined ? _properties.includePageLibraries : false;
+
     this.onPropertyChange = _properties.onPropertyChange;
     this.customProperties = _properties.properties;
     this.key = _properties.key;
@@ -128,8 +138,13 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
       hideOrganisationalAssetTab: this.hideOrganisationalAssetTab,
       hideOneDriveTab: this.hideOneDriveTab,
       storeLastActiveTab: this.storeLastActiveTab,
+      defaultSelectedTab: this.defaultSelectedTab,
       hideStockImages: this.hideStockImages,
       targetProperty: this.targetProperty,
+
+      allowExternalLinks: this.allowExternalLinks,
+      checkIfFileExists: this.checkIfFileExists,
+      includePageLibraries: this.includePageLibraries,
 
       properties: this.customProperties,
       key: this.key,

@@ -1,5 +1,5 @@
 import { BaseComponentContext } from '@microsoft/sp-component-base';
-import { IFilePickerResult } from "./FilePicker.types";
+import { FilePickerTabType, IFilePickerResult } from "./FilePicker.types";
 
 export interface IFilePickerProps {
   /**
@@ -108,6 +108,11 @@ export interface IFilePickerProps {
    */
   storeLastActiveTab?: boolean;
 
+  /**
+   * Specifies a default active tab. If none is specified, it will default to "RecentTab" regardless if it's hidden or not.
+   */
+   defaultSelectedTab?: FilePickerTabType;
+
   filePickerResult: IFilePickerResult;
 
   context: BaseComponentContext;
@@ -116,4 +121,17 @@ export interface IFilePickerProps {
    * Specifies if StockImagesTab should be hidden.
    */
   hideStockImages?: boolean;
+
+  /**
+   * Specifies if external links are allowed
+   */
+  allowExternalLinks?: boolean;
+  /**
+   * Specifies if file check should be done
+   */
+   checkIfFileExists?: boolean;
+  /**
+   * Specifies if Site Pages is displayed in the Site Tab
+   */
+   includePageLibraries?: boolean;
 }

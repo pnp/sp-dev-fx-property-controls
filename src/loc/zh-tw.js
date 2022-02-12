@@ -123,6 +123,7 @@ define([], () => {
   "LicenseOptionAny": "僅知識共用。",
   "LicensePlaceholderText": "許可證。",
   "LinkFileInstructions": "將指向「企業」或「共用點連線」中的檔的連結粘貼。",
+  "ExternalLinkFileInstructions": "將鏈接粘貼到站點、頁面、文檔、列表、庫（https:// 或 http://）",
   "LinkHeader": "從連結。",
   "LinkImageInstructions": "在 OneDrive 中貼貼指向圖像的連結,用於業務或共用點連線。",
   "ListLayoutAriaLabel": "查看選項。{0} {1} .",

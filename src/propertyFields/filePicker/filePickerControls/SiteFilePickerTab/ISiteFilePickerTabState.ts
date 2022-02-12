@@ -4,6 +4,7 @@ export interface ISiteFilePickerTabState {
   filePickerResult: IFilePickerResult;
   libraryAbsolutePath: string;
   libraryTitle: string;
+  libraryId: string;
   libraryPath: string;
   folderName: string;
 

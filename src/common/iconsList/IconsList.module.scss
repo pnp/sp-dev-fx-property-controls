@@ -1,0 +1,77 @@
+.iconList {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 10px -5px;
+}
+.iconItem {
+  display: inline-block;
+  padding: 0;
+  margin: 0 2px 4px;
+  list-style-type: none;
+  position: relative;
+  overflow: hidden;
+}
+.iconRadio {
+  position: absolute;
+  left: -1000px;
+  opacity: 0;
+}
+.iconLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 78px;
+  padding: 5px;
+  height: 70px;
+  border-radius: 3px;
+  background-color: "[theme:neutralLighterAlt, default:#f8f8f8]";
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid transparent;
+    border-color: "[theme:neutralQuarternary, default:#d0d0d0]";
+    border-radius: 3px;
+    opacity: 0;
+    will-change: opacity, border-color;
+    transition: opacity ease-out 0.05s;
+  }
+  &:hover {
+    &:after {
+      opacity: 1;
+    }
+  }
+}
+.iconRadio:checked + .iconLabel {
+  &:after {
+    opacity: 1;
+    border-color: "[theme: themePrimary, default: #0078d7]";
+  }
+  color: "[theme: themePrimary, default: #0078d7]";
+}
+.iconRadio:focus + .iconLabel {
+  outline: 1px;
+  outline-color: "[theme: themePrimary, default: #0078d7]";
+  outline-offset: -5px;
+}
+.iconGlyph {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  margin-bottom: 5px;
+  color: inherit;
+}
+.iconName {
+  display: inline-block;
+  max-width: 100%;
+  text-align: left;
+  font-size: 12px;
+}

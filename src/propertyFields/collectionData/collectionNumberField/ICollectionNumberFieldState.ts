@@ -1,4 +1,4 @@
 export interface ICollectionNumberFieldState {
-  value: number;
+  value: number | null | undefined;
   errorMessage: string;
 }

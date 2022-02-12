@@ -77,6 +77,7 @@ define([], function() {
     DescriptionLabel: "Beskrivelse",
     MoreInfoLabel: "Mer informasjon",
     AboutGroupLabel: "Om",
+    ExternalLinkFileInstructions: "Lim inn en kobling til et nettsted, side, dokument, liste, bibliotek (https:// eller http://)",
 
   }
 });

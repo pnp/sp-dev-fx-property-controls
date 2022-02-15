@@ -3,7 +3,7 @@ import * as ReactDom from 'react-dom';
 import {
   IPropertyPaneField,
   PropertyPaneFieldType
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 import {
 	IPropertyPanePropertyEditorProps,
 	IPropertyPanePropertyEditorPropsInternal

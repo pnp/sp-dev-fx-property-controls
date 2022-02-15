@@ -1,10 +1,4 @@
-
-import {
-  IPropertyPaneCustomFieldProps,
-} from '@microsoft/sp-webpart-base';
-
 import { ISpinnerStyles, SpinnerSize } from 'office-ui-fabric-react';
-
 
 export interface IPropertyFieldSpinnerHostProps {
   key: string;

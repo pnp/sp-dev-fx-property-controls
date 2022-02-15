@@ -1,6 +1,6 @@
 import {
   IPropertyPaneCustomFieldProps,
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 import { SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 
 

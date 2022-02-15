@@ -1,5 +1,4 @@
 import { DayOfWeek } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
-import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
 
 /**
  * Date field value interface

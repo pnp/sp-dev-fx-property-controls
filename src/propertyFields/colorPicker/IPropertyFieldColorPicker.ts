@@ -1,4 +1,4 @@
-import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
+import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-property-pane';
 import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
 
 /**

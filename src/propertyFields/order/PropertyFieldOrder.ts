@@ -1,4 +1,4 @@
-import { IPropertyPaneField, PropertyPaneFieldType } from '@microsoft/sp-webpart-base';
+import { IPropertyPaneField, PropertyPaneFieldType } from '@microsoft/sp-property-pane';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { setPropertyValue } from '../../helpers/GeneralHelper';

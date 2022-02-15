@@ -1,6 +1,6 @@
 import {
   IPropertyPaneCustomFieldProps,
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 
 export interface IPropertyFieldMessageProps {

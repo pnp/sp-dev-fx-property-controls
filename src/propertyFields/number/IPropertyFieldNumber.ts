@@ -1,6 +1,6 @@
 import {
   IPropertyPaneCustomFieldProps,
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 
 /**
 * Public properties of PropertyFieldNumber custom field

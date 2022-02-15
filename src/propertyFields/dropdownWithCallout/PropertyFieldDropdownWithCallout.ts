@@ -4,7 +4,7 @@ import {
     IPropertyPaneField,
     PropertyPaneFieldType,
     IPropertyPaneDropdownOption
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 
 import PropertyFieldDropdownHost from './PropertyFieldDropdownWithCalloutHost';
 import omit from 'lodash/omit';

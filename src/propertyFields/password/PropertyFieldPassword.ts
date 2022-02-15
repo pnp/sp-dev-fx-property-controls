@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import {
   IPropertyPaneField,
   PropertyPaneFieldType,
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 
 import { IPropertyFieldPasswordProps, IPropertyFieldPasswordPropsInternal } from './IPropertyFieldPassword';
 import PropertyFieldPasswordHost from './PropertyFieldPasswordHost';

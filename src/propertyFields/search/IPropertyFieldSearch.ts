@@ -1,6 +1,6 @@
 import {
   IPropertyPaneCustomFieldProps,
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 import { ISearchBoxStyles } from 'office-ui-fabric-react';
 
 export interface IPropertyFieldSearchProps {

@@ -1,7 +1,7 @@
 import { IPropertyFieldEnterpriseTermPickerProps, IPropertyFieldEnterpriseTermPickerPropsInternal, IPropertyFieldTermPickerProps } from "./IPropertyFieldTermPicker";
 import { PropertyFieldTermPickerBuilder } from "./PropertyFieldTermPicker";
 import PnPTermStorePickerService from "../../services/PnPTermStorePickerService";
-import { IPropertyPaneField } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneField } from "@microsoft/sp-property-pane";
 
 /**
  * Helper method to create a Enterprise Term Picker on the PropertyPane.

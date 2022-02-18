@@ -1,6 +1,17 @@
 {
   "versions": [
     {
+      "version": "3.5.0",
+      "changes": {
+        "new": [],
+        "enhancements": [],
+        "fixes": [
+          "Multiple controls: Update imports to support controls in ACEs [#431](https://github.com/pnp/sp-dev-fx-property-controls/issues/431)"
+        ]
+      },
+      "contributions": []
+    },
+    {
       "version": "3.4.0",
       "changes": {
         "new": [],

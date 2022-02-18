@@ -4,8 +4,7 @@ import * as ReactDom from 'react-dom';
 import {
   IPropertyPaneField,
   PropertyPaneFieldType,
-  IPropertyPaneCustomFieldProps
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 import { IPropertyFieldDateTimePickerHostProps } from './IPropertyFieldDateTimePickerHost';
 import PropertyFieldDateTimePickerHost from './PropertyFieldDateTimePickerHost';
 import { IDateTimeFieldValue, IPropertyFieldDateTimePickerPropsInternal, TimeConvention, IPropertyFieldDateTimePickerProps, DateConvention } from './IPropertyFieldDateTimePicker';

@@ -4,7 +4,7 @@ import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldH
 import { IPropertyFieldDropdownWithCalloutHostProps } from './IPropertyFieldDropdownWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
 import { Dropdown, IDropdownProps, IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
-import { IPropertyPaneDropdownOption } from '@microsoft/sp-webpart-base';
+import { IPropertyPaneDropdownOption } from '@microsoft/sp-property-pane';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 import omit from 'lodash/omit';
 

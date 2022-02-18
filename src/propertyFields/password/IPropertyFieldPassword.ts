@@ -1,6 +1,6 @@
 import {
   IPropertyPaneCustomFieldProps,
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 
 export interface IPropertyFieldPasswordProps {
   key: string;

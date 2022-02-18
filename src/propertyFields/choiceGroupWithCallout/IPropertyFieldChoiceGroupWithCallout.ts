@@ -1,7 +1,7 @@
 import {
     IPropertyPaneCustomFieldProps,
     IPropertyPaneChoiceGroupProps
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 
 import { IPropertyFieldHeaderCalloutProps } from '../../common/propertyFieldHeader/IPropertyFieldHeader';
 

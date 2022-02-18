@@ -1,5 +1,11 @@
 # Releases
 
+## 3.5.0
+
+### Fixes
+
+- Multiple controls: Update imports to support controls in ACEs [#431](https://github.com/pnp/sp-dev-fx-property-controls/issues/431)
+
 ## 3.4.0
 
 ### Enhancements

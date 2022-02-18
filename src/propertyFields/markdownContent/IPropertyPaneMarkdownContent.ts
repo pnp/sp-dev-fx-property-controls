@@ -1,6 +1,6 @@
 import {
   IPropertyPaneCustomFieldProps
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 import { IMarkdownProps } from 'markdown-to-jsx';
 
 

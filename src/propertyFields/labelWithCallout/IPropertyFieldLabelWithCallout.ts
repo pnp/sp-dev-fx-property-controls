@@ -1,7 +1,7 @@
 import {
     IPropertyPaneCustomFieldProps,
     IPropertyPaneLabelProps
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 
 import { IPlaceholderWithCalloutProps } from '../../common/placeholderWithCallout/IPlaceholderWithCallout';
 

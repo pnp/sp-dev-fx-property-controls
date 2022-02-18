@@ -6,7 +6,7 @@ import { IPropertyPaneMarkdownContentHostProps } from './IPropertyPaneMarkdownCo
 import PropertyPaneMarkdownContentHost from './PropertyPaneMarkdownContentHost';
 import {
   IPropertyPaneField, PropertyPaneFieldType
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 
 
 class PropertyPaneMarkdownContentBuilder implements IPropertyPaneField<IPropertyPaneMarkdownContentProps> {

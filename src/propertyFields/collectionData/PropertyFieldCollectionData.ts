@@ -3,8 +3,7 @@ import * as ReactDOM from 'react-dom';
 import {
   IPropertyPaneField,
   PropertyPaneFieldType,
-  IPropertyPaneDropdownOption
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 
 import { PropertyFieldCollectionDataHost, IPropertyFieldCollectionDataPropsInternal, IPropertyFieldCollectionDataProps } from '.';
 

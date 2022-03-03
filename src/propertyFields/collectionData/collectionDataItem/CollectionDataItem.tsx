@@ -73,10 +73,10 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
     // Check if current item is valid
     if (this.props.fAddInCreation) {
       if (await this.checkRowIsValidForSave(crntItem)) {
-        disableAdd = true;
+        disableAdd = false;
         this.props.fAddInCreation(crntItem, true);
       } else {
-        disableAdd = false;
+        disableAdd = true;
         this.props.fAddInCreation(crntItem, false);
       }
     }

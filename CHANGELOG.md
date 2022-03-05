@@ -2,6 +2,10 @@
 
 ## 3.6.0
 
+### Enhancements
+
+- SharePoint Framework v1.14.0 support
+
 ## 3.5.0
 
 ### Fixes

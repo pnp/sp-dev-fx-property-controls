@@ -222,7 +222,11 @@ define([], () => {
     "L_RelativeDateTime_XDays": "{0} há um dia. {0} dias atrás",
     "L_RelativeDateTime_XDaysFutureIntervals": "1/ 2-",
     "L_RelativeDateTime_XDaysIntervals": "1/ 2-",
-    "L_RelativeDateTime_Today": "Hoje"
+    "L_RelativeDateTime_Today": "Hoje",
+    "MonacoEditorOpenButtonLabel": "Abrir o editor de texto",
+    "MonacoEditorCancelButtonLabel": "Cancelar",
+    "MonacoEditorSaveButtonLabel": "Guardar",
+    "MonacoEditorPanelTitle": "Editar Template",
   },
   "NewFolderNamePlaceholder": "Insira o nome da sua pasta",
   "FolderFilterBoxPlaceholder": "Pastas de filtro pelo nome",

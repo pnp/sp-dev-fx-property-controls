@@ -229,7 +229,10 @@ declare interface IPropertyControlStrings {
   SelectedLabel: string;
   SelectIcon: string;
   CloseButton: string;
-
+  MonacoEditorOpenButtonLabel: string,
+  MonacoEditorCancelButtonLabel: string,
+  MonacoEditorSaveButtonLabel: string,
+    MonacoEditorPanelTitle: string,
 }
 
 declare interface IDateTimeStrings {
@@ -257,6 +260,7 @@ declare interface IDateTimeStrings {
   L_RelativeDateTime_XDaysFutureIntervals: string;
   L_RelativeDateTime_XDaysIntervals: string;
   L_RelativeDateTime_Today: string;
+
 }
 
 declare module 'PropertyControlStrings' {

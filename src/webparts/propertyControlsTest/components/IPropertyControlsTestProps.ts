@@ -1,13 +1,18 @@
-import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
 
+import { BaseComponentContext } from '@microsoft/sp-component-base';
+
 import { IDateTimeFieldValue } from '../../../PropertyFieldDateTimePicker';
-import { IPropertyFieldGroupOrPerson } from '../../../PropertyFieldPeoplePicker';
-import { IPickerTerms } from '../../../PropertyFieldTermPicker';
-import { IPropertyFieldSite } from '../../../propertyFields/sitePicker';
 import { IFilePickerResult } from '../../../PropertyFieldFilePicker';
-import { IRoleDefinitionInformation  } from "../../../PropertyFieldRoleDefinitionPicker";
-import { IFolder } from "../../../PropertyFieldFolderPicker";
+import { IFolder } from '../../../PropertyFieldFolderPicker';
+import {
+  IPropertyFieldGroupOrPerson,
+} from '../../../PropertyFieldPeoplePicker';
+import {
+  IRoleDefinitionInformation,
+} from '../../../PropertyFieldRoleDefinitionPicker';
+import { IPropertyFieldSite } from '../../../propertyFields/sitePicker';
+import { IPickerTerms } from '../../../PropertyFieldTermPicker';
 
 export interface IPropertyControlsTestProps {
   password:string;
@@ -48,4 +53,5 @@ export interface IPropertyControlsTestProps {
   guid: string;
   iconPicker: string;
   editableComboBox: string;
+  monacoEditor:string;
 }

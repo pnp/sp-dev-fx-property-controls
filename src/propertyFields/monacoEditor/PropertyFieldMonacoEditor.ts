@@ -30,10 +30,9 @@ class PropertyFieldMonacoEditorBuilder implements IPropertyPaneField<IPropertyFi
   private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
 
     const props: IPropertyFieldMonacoEditorProps = <IPropertyFieldMonacoEditorProps>this.properties;
-
     const element = React.createElement(PropertyFieldMonacoEditorHost, {
       ...props,
-      onValueChange:  this._onValueChanged
+      onPropertyChange:  this._onValueChanged.bind(this)
     });
 
     ReactDOM.render(element, elem);
@@ -47,9 +46,10 @@ class PropertyFieldMonacoEditorBuilder implements IPropertyPaneField<IPropertyFi
     ReactDOM.unmountComponentAtNode(elem);
   }
 
-  private _onValueChanged = (value:string, validationErrors?:string[]): void => {
+  private _onValueChanged (value:string, validationErrors?:string[]): void {
     if (this._onChangeCallback) {
       this._onChangeCallback(this.targetProperty, value);
+      this.properties.onChange(value);
     }
   }
 }
@@ -57,7 +57,6 @@ class PropertyFieldMonacoEditorBuilder implements IPropertyPaneField<IPropertyFi
  export function PropertyFieldMonacoEditor(targetProperty: string, properties: IPropertyFieldMonacoEditorProps): IPropertyPaneField<IPropertyFieldMonacoEditorPropsInternal> {
   return new PropertyFieldMonacoEditorBuilder(targetProperty, {
     ...properties,
-    onValueChange: properties.onValueChange,
     onRender: null,
     onDispose: null
   });

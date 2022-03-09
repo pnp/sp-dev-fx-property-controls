@@ -57,7 +57,7 @@ export default class PropertyFieldMonacoEditorHost extends React.Component<
     }),
   });
 
-  protected onValueChange = (newValue: string, errors: string[]): void => {
+  protected _onValueChange = (newValue: string, errors: string[]): void => {
     this.setState({ value: newValue, validationErrors: errors });
   }
 
@@ -65,14 +65,19 @@ export default class PropertyFieldMonacoEditorHost extends React.Component<
     return (
       <Stack horizontal horizontalAlign="start" tokens={{ childrenGap: 5 }}>
         <PrimaryButton
-          onClick={() => {
-            this.props.onValueChange(this.state.value, this.state.validationErrors);
+          onClick={(ev) => {
+            ev.preventDefault();
+            this.props.onPropertyChange(this.state.value);
             this.showPanel(false);
           }}
         >
           {strings.MonacoEditorSaveButtonLabel}
         </PrimaryButton>
-        <DefaultButton onClick={() => this.showPanel(false)}>{strings.MonacoEditorCancelButtonLabel}</DefaultButton>
+        <DefaultButton onClick={(ev) => {
+           ev.preventDefault();
+           this.props.onPropertyChange(this.props.value);
+          this.showPanel(false);
+          }}>{strings.MonacoEditorCancelButtonLabel}</DefaultButton>
       </Stack>
     );
   }
@@ -86,9 +91,9 @@ export default class PropertyFieldMonacoEditorHost extends React.Component<
         <PrimaryButton
           text={strings.MonacoEditorOpenButtonLabel}
           onClick={(ev) => {
+            ev.preventDefault();
             this.showPanel(true);
-          }}
-        ></PrimaryButton>
+          }}/>
         <Panel
           type={PanelType.custom}
           customWidth={_panelWidth}
@@ -98,10 +103,9 @@ export default class PropertyFieldMonacoEditorHost extends React.Component<
           }}
           headerText={strings.MonacoEditorPanelTitle}
           onRenderFooterContent={this.onRenderFooterContent}
-          isFooterAtBottom={true}
-        >
+          isFooterAtBottom={true}>
           <div className={this.controlClasses.headerTitle}>
-            <MonacoEditor {...this.props} onValueChange={this.onValueChange} />
+            <MonacoEditor {...this.props} onValueChange={ this._onValueChange}/>
           </div>
         </Panel>
       </>

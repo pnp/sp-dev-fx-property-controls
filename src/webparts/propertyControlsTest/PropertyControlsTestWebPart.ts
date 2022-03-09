@@ -140,7 +140,10 @@ import {
 export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<IPropertyControlsTestWebPartProps> {
   private multiSelectProps = [];
 
- protected monacoChange = (newValue: string, validationErrors: string[]) => { console.log(newValue);};
+ protected monacoChange = (newValue: string, validationErrors: string[]) => {
+   console.log('teste',newValue);
+
+  }
 
   public render(): void {
     this.properties.monacoEditor = "";
@@ -1080,7 +1083,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'monacoEditor',
                   value: this.properties.monacoEditor,
                   showMiniMap: true,
-                  onValueChange: this.monacoChange ,
+                  onChange: (newValue: string ) => {
+                    console.log('treste',newValue);
+                  } ,
                   language:"json",
                   showLineNumbers:true,
                 }),

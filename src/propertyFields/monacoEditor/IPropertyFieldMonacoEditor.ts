@@ -9,7 +9,7 @@ export interface IPropertyFieldMonacoEditorProps   {
 	readOnly?: boolean;
 	showLineNumbers?: boolean;
 	showMiniMap?: boolean;
-	onValueChange?: (newValue:string, validationErrors?:string[]) => void;
+	onChange?: (newValue: string) => void;
   language: string | Elanguages;
   jsonDiagnosticsOptions?: monaco.languages.json.DiagnosticsOptions;
   jscriptDiagnosticsOptions?: monaco.languages.typescript.DiagnosticsOptions;
@@ -17,8 +17,6 @@ export interface IPropertyFieldMonacoEditorProps   {
 }
 
 export interface IPropertyFieldMonacoEditorPropsInternal extends IPropertyFieldMonacoEditorProps , IPropertyPaneCustomFieldProps{}
-
-
 
  enum Elanguages {
     typescript = 'typescript',

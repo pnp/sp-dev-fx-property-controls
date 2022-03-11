@@ -5,11 +5,14 @@
       "changes": {
         "new": [],
         "enhancements": [
-          "SharePoint Framework v1.14.0 support"
+          "SharePoint Framework v1.14.0 support",
+          "Improved documentation"
         ],
         "fixes": []
       },
-      "contributions": []
+      "contributions": [
+        "[GuidoZam](https://github.com/GuidoZam)"
+      ]
     },
     {
       "version": "3.5.0",

@@ -46,6 +46,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private renderWebPart: () => void;
   private disableReactivePropertyChanges: boolean = false;
   private filter: string;
+  private contentTypeId: string;
   private onListsRetrieved?: (lists: ISPList[]) => PromiseLike<ISPList[]> | ISPList[];
   /**
    * Constructor method
@@ -76,6 +77,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
     this.filter = _properties.filter;
     this.onListsRetrieved = _properties.onListsRetrieved;
     this.includeListTitleAndUrl = _properties.includeListTitleAndUrl;
+    this.contentTypeId=_properties.contentTypeId;
 
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
@@ -110,7 +112,9 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
       listsToExclude: this.listsToExclude,
       filter: this.filter,
       onListsRetrieved: this.onListsRetrieved,
-      includeListTitleAndUrl: this.includeListTitleAndUrl
+      includeListTitleAndUrl: this.includeListTitleAndUrl,
+      contentTypeId:this.contentTypeId
+    
     };
 
     // Check if the multi or single select component has to get loaded
@@ -174,7 +178,8 @@ export function PropertyFieldListPicker(targetProperty: string, properties: IPro
     listsToExclude: properties.listsToExclude,
     filter: properties.filter,
     onListsRetrieved: properties.onListsRetrieved,
-    includeListTitleAndUrl: properties.includeListTitleAndUrl
+    includeListTitleAndUrl: properties.includeListTitleAndUrl,
+    contentTypeId:properties.contentTypeId
   };
   //Calls the PropertyFieldListPicker builder object
   //This object will simulate a PropertyFieldCustom to manage his rendering process

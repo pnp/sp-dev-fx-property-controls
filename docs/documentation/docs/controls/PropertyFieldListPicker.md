@@ -75,6 +75,7 @@ The `PropertyFieldListPicker` control can be configured with the following prope
 | filter | string | no | Filter list from OData query (takes precedence over Hidden and BaseTemplate Filters). |
 | onListsRetrieved | (lists: ISPList[]) => PromiseLike<ISPList[]> \| ISPList[] | no | Callback that is called before the dropdown is populated. |
 | includeListTitleAndUrl | boolean | no | Specifies if the picker returns list id, title and url as an object instead on id. |
+ contentTypeId | string | no | Specifies a content type ID , or a portion of one. If specified, all the lists presented in the control will have at least one content type beginning with the specified content type id. |
 
 Interface `IPropertyFieldList`
 

@@ -1084,7 +1084,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   value: this.properties.monacoEditor,
                   showMiniMap: true,
                   onChange: (newValue: string ) => {
-                    console.log('treste',newValue);
+                    console.log('teste',newValue);
                   } ,
                   language:"json",
                   showLineNumbers:true,

@@ -3,15 +3,21 @@
     {
       "version": "3.6.0",
       "changes": {
-        "new": [],
+        "new": [
+          "`PropertyFieldMonacoEditor`: new control - Monaco editor [#439](https://github.com/pnp/sp-dev-fx-property-controls/pull/439)"
+        ],
         "enhancements": [
           "SharePoint Framework v1.14.0 support",
           "Improved documentation"
         ],
-        "fixes": []
+        "fixes": [
+          "`PropertyFieldCollectionData`: Add button is disabled when it should not be [#436](https://github.com/pnp/sp-dev-fx-property-controls/issues/436)"
+        ]
       },
       "contributions": [
-        "[GuidoZam](https://github.com/GuidoZam)"
+        "[Chad Eiserloh](https://github.com/c-eiser13)",
+        "[GuidoZam](https://github.com/GuidoZam)",
+        "[João Mendes](https://github.com/joaojmendes)"
       ]
     },
     {

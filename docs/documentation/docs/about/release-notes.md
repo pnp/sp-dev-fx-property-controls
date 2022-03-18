@@ -5,6 +5,11 @@
 ### Enhancements
 
 - SharePoint Framework v1.14.0 support
+- Improved documentation
+
+### Contributors
+
+Special thanks to our contributor: [GuidoZam](https://github.com/GuidoZam).
 
 ## 3.5.0
 

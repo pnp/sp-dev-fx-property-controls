@@ -1,14 +1,16 @@
 import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
 
 import { IDateTimeFieldValue } from '../../PropertyFieldDateTimePicker';
-import { IPropertyFieldGroupOrPerson } from '../../PropertyFieldPeoplePicker';
-import { IPickerTerms } from '../../PropertyFieldTermPicker';
-import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
 import { IFilePickerResult } from '../../PropertyFieldFilePicker';
-import { IRoleDefinitionInformation  } from "../../PropertyFieldRoleDefinitionPicker";
-import { IFolder } from "../../PropertyFieldFolderPicker";
-import { IPropertyFieldTeam } from '../../PropertyFieldTeamPicker';
+import { IFolder } from '../../PropertyFieldFolderPicker';
+import { IPropertyFieldGroupOrPerson } from '../../PropertyFieldPeoplePicker';
+import {
+  IRoleDefinitionInformation,
+} from '../../PropertyFieldRoleDefinitionPicker';
 import { IPropertyFieldList } from '../../propertyFields/listPicker';
+import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
+import { IPropertyFieldTeam } from '../../PropertyFieldTeamPicker';
+import { IPickerTerms } from '../../PropertyFieldTermPicker';
 
 export interface IPropertyControlsTestWebPartProps {
   siteUrl: string;
@@ -52,4 +54,5 @@ export interface IPropertyControlsTestWebPartProps {
   teams: IPropertyFieldTeam[];
   iconPicker: string;
   editableComboBox: string;
+  monacoEditor:string;
 }

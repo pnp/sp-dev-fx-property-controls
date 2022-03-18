@@ -237,6 +237,10 @@ define([], function () {
 
     SelectedLabel: "Selected",
     SelectIcon: "Select icon",
-    CloseButton: "Close"
+    CloseButton: "Close",
+    "MonacoEditorOpenButtonLabel": "Open editor",
+    "MonacoEditorCancelButtonLabel": "Cancel",
+    "MonacoEditorSaveButtonLabel": "Save",
+    "MonacoEditorPanelTitle": "Edit Template",
   }
 });

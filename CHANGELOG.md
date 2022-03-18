@@ -2,14 +2,22 @@
 
 ## 3.6.0
 
+### New control(s)
+
+- `PropertyFieldMonacoEditor`: new control - Monaco editor [#439](https://github.com/pnp/sp-dev-fx-property-controls/pull/439)
+
 ### Enhancements
 
 - SharePoint Framework v1.14.0 support
 - Improved documentation
 
+### Fixes
+
+- `PropertyFieldCollectionData`: Add button is disabled when it should not be [#436](https://github.com/pnp/sp-dev-fx-property-controls/issues/436)
+
 ### Contributors
 
-Special thanks to our contributor: [GuidoZam](https://github.com/GuidoZam).
+Special thanks to our contributors (in alphabetical order): [Chad Eiserloh](https://github.com/c-eiser13), [GuidoZam](https://github.com/GuidoZam), [João Mendes](https://github.com/joaojmendes).
 
 ## 3.5.0
 

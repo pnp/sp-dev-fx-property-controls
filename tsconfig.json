@@ -33,7 +33,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx"
-  ],
+, "src/propertyFields/monacoEditor/PropertyFieldMonacoEditor.ts"  ],
   "exclude": [
   ]
 }

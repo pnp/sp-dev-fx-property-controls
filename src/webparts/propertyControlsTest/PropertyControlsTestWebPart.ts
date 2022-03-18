@@ -1,68 +1,138 @@
-import { IPropertyFieldGroupOrPerson } from './../../propertyFields/peoplePicker/IPropertyFieldPeoplePicker';
-import { DayOfWeek } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+
+import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import {
-  BaseClientSideWebPart,
-} from '@microsoft/sp-webpart-base';
+  DayOfWeek,
+} from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import * as strings from 'PropertyControlsTestWebPartStrings';
+
+import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneToggle
+  PropertyPaneToggle,
 } from '@microsoft/sp-property-pane';
-import { PropertyFieldCodeEditor, PropertyFieldCodeEditorLanguages } from '../../PropertyFieldCodeEditor';
-import * as strings from 'PropertyControlsTestWebPartStrings';
-import PropertyControlsTest from './components/PropertyControlsTest';
-import { IPropertyControlsTestProps } from './components/IPropertyControlsTestProps';
-import { IPropertyControlsTestWebPartProps } from './IPropertyControlsTestWebPartProps';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+
+import { PropertyPaneHelpers } from '../../helpers';
+import { PropertyFieldMonacoEditor } from '../../PropertyFiedMonacoEditor';
+import {
+  PropertyFieldButtonWithCallout,
+} from '../../PropertyFieldButtonWithCallout';
+import {
+  PropertyFieldCheckboxWithCallout,
+} from '../../PropertyFieldCheckboxWithCallout';
+import {
+  PropertyFieldChoiceGroupWithCallout,
+} from '../../PropertyFieldChoiceGroupWithCallout';
+import {
+  PropertyFieldCodeEditor,
+  PropertyFieldCodeEditorLanguages,
+} from '../../PropertyFieldCodeEditor';
+import {
+  CustomCollectionFieldType,
+  PropertyFieldCollectionData,
+} from '../../PropertyFieldCollectionData';
+import { PropertyFieldColorPicker } from '../../PropertyFieldColorPicker';
+import {
+  PropertyFieldColumnPicker,
+  PropertyFieldColumnPickerOrderBy,
+} from '../../PropertyFieldColumnPicker';
+import {
+  DateConvention,
+  PropertyFieldDateTimePicker,
+  TimeConvention,
+} from '../../PropertyFieldDateTimePicker';
+import {
+  PropertyFieldDropdownWithCallout,
+} from '../../PropertyFieldDropdownWithCallout';
+import {
+  PropertyFieldEditableComboBox,
+} from '../../PropertyFieldEditableComboBox';
+import {
+  IFilePickerResult,
+  PropertyFieldFilePicker,
+} from '../../PropertyFieldFilePicker';
+import {
+  IFolder,
+  PropertyFieldFolderPicker,
+} from '../../PropertyFieldFolderPicker';
+import { PropertyFieldGuid } from '../../PropertyFieldGuid';
 import { CalloutTriggers } from '../../PropertyFieldHeader';
-import { PropertyFieldPeoplePicker, PrincipalType } from '../../PropertyFieldPeoplePicker';
-import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '../../PropertyFieldListPicker';
-import { PropertyFieldTermPicker } from '../../PropertyFieldTermPicker';
-import { PropertyFieldDateTimePicker, DateConvention, TimeConvention } from '../../PropertyFieldDateTimePicker';
-import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '../../PropertyFieldColorPicker';
-import { PropertyFieldSpinButton } from '../../PropertyFieldSpinButton';
-import { PropertyFieldDropdownWithCallout } from '../../PropertyFieldDropdownWithCallout';
-import { PropertyFieldTextWithCallout } from '../../PropertyFieldTextWithCallout';
-import { PropertyFieldToggleWithCallout } from '../../PropertyFieldToggleWithCallout';
-import { PropertyFieldSliderWithCallout } from '../../PropertyFieldSliderWithCallout';
-import { PropertyFieldChoiceGroupWithCallout } from '../../PropertyFieldChoiceGroupWithCallout';
-import { PropertyFieldButtonWithCallout } from '../../PropertyFieldButtonWithCallout';
-import { PropertyFieldCheckboxWithCallout } from '../../PropertyFieldCheckboxWithCallout';
-import { PropertyFieldLabelWithCallout } from '../../PropertyFieldLabelWithCallout';
-import { PropertyFieldLinkWithCallout } from '../../PropertyFieldLinkWithCallout';
+import {
+  PropertyFieldLabelWithCallout,
+} from '../../PropertyFieldLabelWithCallout';
+import {
+  PropertyFieldLinkWithCallout,
+} from '../../PropertyFieldLinkWithCallout';
+import {
+  PropertyFieldListPicker,
+  PropertyFieldListPickerOrderBy,
+} from '../../PropertyFieldListPicker';
+import { PropertyFieldMessage } from '../../PropertyFieldMessage';
 import { PropertyFieldMultiSelect } from '../../PropertyFieldMultiSelect';
 import { PropertyFieldNumber } from '../../PropertyFieldNumber';
-import { PropertyFieldCollectionData, CustomCollectionFieldType } from '../../PropertyFieldCollectionData';
 import { PropertyFieldOrder } from '../../PropertyFieldOrder';
-import { orderedItem } from './components/OrderedItem';
-import { PropertyFieldSwatchColorPicker, PropertyFieldSwatchColorPickerStyle } from '../../PropertyFieldSwatchColorPicker';
-import { PropertyPaneWebPartInformation } from '../../propertyFields/webPartInformation';
-import { PropertyPanePropertyEditor } from '../../propertyFields/propertyEditor/PropertyPanePropertyEditor';
-import { PropertyFieldEnterpriseTermPicker } from '../../propertyFields/termPicker/PropertyFieldEnterpriseTermPicker';
-import { ISPList } from '../../propertyFields/listPicker';
-import { PropertyFieldSitePicker } from '../../PropertyFieldSitePicker';
-import { PropertyPaneHelpers } from '../../helpers';
-import { SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { PropertyFieldPassword } from '../../PropertyFieldPassword';
-import { PropertyFieldViewPickerOrderBy, PropertyFieldViewPicker, ISPView } from '../../PropertyFieldViewPicker';
-import { PropertyFieldMessage } from '../../PropertyFieldMessage';
-import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { PropertyFieldSearch } from '../../PropertyFieldSearch';
-import { PropertyFieldSpinner } from '../../PropertyFieldSpinner';
-import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResult } from "../../PropertyFieldFilePicker";
-import { IBasePermissions, IPropertyFieldRoleDefinitionPickerProps, PropertyFieldRoleDefinitionPicker, RoleTypeKind, IRoleDefinitionInformation } from "../../PropertyFieldRoleDefinitionPicker";
-import { IFolder, IPropertyFieldFolderPickerProps , PropertyFieldFolderPicker } from "../../PropertyFieldFolderPicker";
-import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
-import { PropertyFieldGuid } from '../../PropertyFieldGuid';
-import FieldErrorMessage from '../../propertyFields/errorMessage/FieldErrorMessage';
+import {
+  PrincipalType,
+  PropertyFieldPeoplePicker,
+} from '../../PropertyFieldPeoplePicker';
+import {
+  PropertyFieldRoleDefinitionPicker,
+} from '../../PropertyFieldRoleDefinitionPicker';
+import {
+  IColumnReturnProperty,
+  IPropertyFieldRenderOption,
+} from '../../propertyFields/columnPicker';
+import FieldErrorMessage
+  from '../../propertyFields/errorMessage/FieldErrorMessage';
+import { PropertyFieldIconPicker } from '../../propertyFields/iconPicker';
+import { ISPList } from '../../propertyFields/listPicker';
+import {
+  IPropertyFieldGroupOrPerson,
+} from '../../propertyFields/peoplePicker/IPropertyFieldPeoplePicker';
+import {
+  PropertyPanePropertyEditor,
+} from '../../propertyFields/propertyEditor/PropertyPanePropertyEditor';
 import { PropertyFieldTeamPicker } from '../../propertyFields/teamPicker';
-import { PropertyFieldIconPicker } from "../../propertyFields/iconPicker";
-import {PropertyFieldColumnPicker, PropertyFieldColumnPickerOrderBy } from "../../PropertyFieldColumnPicker";
-import { IColumnReturnProperty, IPropertyFieldRenderOption } from '../../propertyFields/columnPicker';
-import { PropertyFieldEditableComboBox } from '../../PropertyFieldEditableComboBox';
-import { FilePickerTabType } from '../../propertyFields/filePicker/filePickerControls/FilePicker.types';
+import {
+  PropertyFieldEnterpriseTermPicker,
+} from '../../propertyFields/termPicker/PropertyFieldEnterpriseTermPicker';
+import {
+  PropertyPaneWebPartInformation,
+} from '../../propertyFields/webPartInformation';
+import { PropertyFieldSearch } from '../../PropertyFieldSearch';
+import { PropertyFieldSitePicker } from '../../PropertyFieldSitePicker';
+import {
+  PropertyFieldSliderWithCallout,
+} from '../../PropertyFieldSliderWithCallout';
+import { PropertyFieldSpinButton } from '../../PropertyFieldSpinButton';
+import { PropertyFieldSpinner } from '../../PropertyFieldSpinner';
+import {
+  PropertyFieldSwatchColorPicker,
+} from '../../PropertyFieldSwatchColorPicker';
+import { PropertyFieldTermPicker } from '../../PropertyFieldTermPicker';
+import {
+  PropertyFieldTextWithCallout,
+} from '../../PropertyFieldTextWithCallout';
+import {
+  PropertyFieldToggleWithCallout,
+} from '../../PropertyFieldToggleWithCallout';
+import {
+  PropertyFieldViewPicker,
+  PropertyFieldViewPickerOrderBy,
+} from '../../PropertyFieldViewPicker';
+import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
+import {
+  IPropertyControlsTestProps,
+} from './components/IPropertyControlsTestProps';
+import PropertyControlsTest from './components/PropertyControlsTest';
+import {
+  IPropertyControlsTestWebPartProps,
+} from './IPropertyControlsTestWebPartProps';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -70,7 +140,13 @@ import { FilePickerTabType } from '../../propertyFields/filePicker/filePickerCon
 export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<IPropertyControlsTestWebPartProps> {
   private multiSelectProps = [];
 
+ protected monacoChange = (newValue: string, validationErrors: string[]) => {
+   console.log('teste',newValue);
+
+  }
+
   public render(): void {
+    this.properties.monacoEditor = "";
     const element: React.ReactElement<IPropertyControlsTestProps> = React.createElement(
       PropertyControlsTest,
       {
@@ -111,7 +187,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         folderPicker: this.properties.folderPicker,
         guid: this.properties.guid,
         iconPicker: this.properties.iconPicker,
-        editableComboBox: this.properties.editableComboBox
+        editableComboBox: this.properties.editableComboBox,
+        monacoEditor:  this.properties.monacoEditor,
       }
     );
 
@@ -522,7 +599,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   tooltipText: 'This is what the tooltip would say if it shows. lol',
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   onOptionAdded: this.comboBoxOptionAdded
-                })
+                }),
+
               ]
             },
             {
@@ -1001,6 +1079,16 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
               groupName: "Editors",
               isCollapsed: true,
               groupFields: [
+                PropertyFieldMonacoEditor('monacoEditor', {
+                  key: 'monacoEditor',
+                  value: this.properties.monacoEditor,
+                  showMiniMap: true,
+                  onChange: (newValue: string ) => {
+                    console.log('teste',newValue);
+                  } ,
+                  language:"json",
+                  showLineNumbers:true,
+                }),
                 PropertyFieldOrder("orderedItems", {
                   key: "orderedItems",
                   label: "Ordered Items",
@@ -1064,7 +1152,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       title: "Lastname",
                       type: CustomCollectionFieldType.string,
                       onGetErrorMessage: (value, index, currentItem) => {
-                        return value == 'Smith' && currentItem.City == 'antwerp' ? 'You cannot write Smith when City is Antwerp' : ""; 
+                        return value == 'Smith' && currentItem.City == 'antwerp' ? 'You cannot write Smith when City is Antwerp' : "";
                       }
                     },
                     {
@@ -1145,7 +1233,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       type: CustomCollectionFieldType.color,
                       defaultValue: "#ff0000",
                       onGetErrorMessage: (value, index, currentItem) => {
-                        return value == '#ff0000' && currentItem.City == 'antwerp' ? 'You cannot set default color when City is Antwerp' : ""; 
+                        return value == '#ff0000' && currentItem.City == 'antwerp' ? 'You cannot set default color when City is Antwerp' : "";
                       }
                     },
                     {
@@ -1169,7 +1257,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                         );
                       },
                       onGetErrorMessage: (value, index, currentItem) => {
-                        return value == 'hello' && currentItem.City == 'antwerp' ? 'You cannot write hello when City is Antwerp' : ""; 
+                        return value == 'hello' && currentItem.City == 'antwerp' ? 'You cannot write hello when City is Antwerp' : "";
                       }
                     },
                     {

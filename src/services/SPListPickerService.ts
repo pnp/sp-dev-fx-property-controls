@@ -1,16 +1,16 @@
-import { SPHttpClientResponse } from "@microsoft/sp-http";
-import { SPHttpClient } from "@microsoft/sp-http";
-import { Environment, EnvironmentType } from "@microsoft/sp-core-library";
-import { BaseComponentContext } from "@microsoft/sp-component-base";
+import { SPHttpClientResponse } from '@microsoft/sp-http';
+import { SPHttpClient } from '@microsoft/sp-http';
+import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import {
   ISPLists,
   IPropertyFieldListPickerHostProps,
   ISPList,
-} from "../propertyFields/listPicker/IPropertyFieldListPickerHost";
-import { PropertyFieldListPickerOrderBy } from "../propertyFields/listPicker/IPropertyFieldListPicker";
-import SPListPickerMockHttpClient from "./SPListPickerMockService";
+} from '../propertyFields/listPicker/IPropertyFieldListPickerHost';
+import { PropertyFieldListPickerOrderBy } from '../propertyFields/listPicker/IPropertyFieldListPicker';
+import SPListPickerMockHttpClient from './SPListPickerMockService';
 
-import filter from "lodash";
+
 /**
  * Service implementation to get list & list items from current SharePoint site
  */
@@ -51,13 +51,13 @@ export default class SPListPickerService {
       }
       // Check if the orderBy property is provided
       if (this.props.orderBy !== null) {
-        queryUrl += "&$orderby=";
+        queryUrl += '&$orderby=';
         switch (this.props.orderBy) {
           case PropertyFieldListPickerOrderBy.Id:
-            queryUrl += "Id";
+            queryUrl += 'Id';
             break;
           case PropertyFieldListPickerOrderBy.Title:
-            queryUrl += "Title";
+            queryUrl += 'Title';
             break;
         }
       }
@@ -68,15 +68,15 @@ export default class SPListPickerService {
       }
       // Check if the list have get filtered based on the list base template type
       else if (this.props.baseTemplate !== null && this.props.baseTemplate) {
-        queryUrl += "&$filter=BaseTemplate%20eq%20";
+        queryUrl += '&$filter=BaseTemplate%20eq%20';
         queryUrl += this.props.baseTemplate;
         // Check if you also want to exclude hidden list in the list
         if (this.props.includeHidden === false) {
-          queryUrl += "%20and%20Hidden%20eq%20false";
+          queryUrl += '%20and%20Hidden%20eq%20false';
         }
       } else {
         if (this.props.includeHidden === false) {
-          queryUrl += "&$filter=Hidden%20eq%20false";
+          queryUrl += '&$filter=Hidden%20eq%20false';
         }
       }
       let response = await this.context.spHttpClient.get(
@@ -133,25 +133,25 @@ export default class SPListPickerService {
       const listData: ISPLists = {
         value: [
           {
-            Title: "Mock List One",
-            Id: "6770c83b-29e8-494b-87b6-468a2066bcc6",
-            BaseTemplate: "109",
-            RootFolder: { ServerRelativeUrl: "/sites/test/MockListOne" },
-          ContentTypes:[{StringId:"0x0100"}]
+            Title: 'Mock List One',
+            Id: '6770c83b-29e8-494b-87b6-468a2066bcc6',
+            BaseTemplate: '109',
+            RootFolder: { ServerRelativeUrl: '/sites/test/MockListOne' },
+          ContentTypes:[{StringId:'0x0100'}]
           },
           {
-            Title: "Mock List Two",
-            Id: "2ece98f2-cc5e-48ff-8145-badf5009754c",
-            BaseTemplate: "109",
-            RootFolder: { ServerRelativeUrl: "/sites/test/MockListTwo" },
-            ContentTypes:[{StringId:"0x0120"}]
+            Title: 'Mock List Two',
+            Id: '2ece98f2-cc5e-48ff-8145-badf5009754c',
+            BaseTemplate: '109',
+            RootFolder: { ServerRelativeUrl: '/sites/test/MockListTwo' },
+            ContentTypes:[{StringId:'0x0120'}]
           },
           {
-            Title: "Mock List Three",
-            Id: "bd5dbd33-0e8d-4e12-b289-b276e5ef79c2",
-            BaseTemplate: "109",
-            RootFolder: { ServerRelativeUrl: "/sites/test/MockListThree" },
-            ContentTypes:[{StringId:"0x0100"}]
+            Title: 'Mock List Three',
+            Id: 'bd5dbd33-0e8d-4e12-b289-b276e5ef79c2',
+            BaseTemplate: '109',
+            RootFolder: { ServerRelativeUrl: '/sites/test/MockListThree' },
+            ContentTypes:[{StringId:'0x0100'}]
           },
         ],
       };

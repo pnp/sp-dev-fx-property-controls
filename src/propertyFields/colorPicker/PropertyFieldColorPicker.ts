@@ -36,6 +36,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			debounce: _properties.debounce,
 			isHidden: _properties.isHidden,
 			alphaSliderHidden: _properties.alphaSliderHidden,
+			showPreview: _properties.showPreview,
 			properties: _properties.properties,
 			style: _properties.style,
 			iconName: _properties.iconName,
@@ -72,6 +73,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 		const element: React.ReactElement<IPropertyFieldColorPickerHostProps> = React.createElement(PropertyFieldColorPickerHost, {
 			label: this.properties.label,
 			alphaSliderHidden: this.properties.alphaSliderHidden,
+			showPreview: this.properties.showPreview,
 			disabled: this.properties.disabled,
 			debounce: this.properties.debounce,
 			isHidden: this.properties.isHidden,

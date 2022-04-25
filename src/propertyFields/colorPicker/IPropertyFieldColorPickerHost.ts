@@ -12,6 +12,7 @@ export interface IPropertyFieldColorPickerHostProps {
 	selectedColor: string;
 	style: PropertyFieldColorPickerStyle;
 	iconName: string;
+	showPreview: boolean;
 	onColorChanged: (color: string) => void;
 }
 

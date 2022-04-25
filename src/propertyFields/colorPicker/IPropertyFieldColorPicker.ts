@@ -37,6 +37,11 @@ export interface IPropertyFieldColorPickerProps {
 	alphaSliderHidden?: boolean;
 
 	/**
+	 * Whether to show color preview box. 
+	 */
+	showPreview?: boolean;
+
+	/**
 	* Whether the property pane field is enabled or not.
 	*/
 	disabled?: boolean;

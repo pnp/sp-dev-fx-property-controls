@@ -5,11 +5,13 @@
       "changes": {
         "new": [],
         "enhancements": [
-          "`PropertyFieldListPicker`: ability to provide content type id [#441](https://github.com/pnp/sp-dev-fx-property-controls/pull/441)"
+          "`PropertyFieldListPicker`: ability to provide content type id [#441](https://github.com/pnp/sp-dev-fx-property-controls/pull/441)",
+          "`PropertyFieldColorPicker`: provide preview of the current selected color [#447](https://github.com/pnp/sp-dev-fx-property-controls/issues/447)"
         ],
         "fixes": []
       },
       "contributions": [
+        "[Milan Holemans](https://github.com/milanholemans)",
         "[Russell gove](https://github.com/russgove)"
       ]
     },

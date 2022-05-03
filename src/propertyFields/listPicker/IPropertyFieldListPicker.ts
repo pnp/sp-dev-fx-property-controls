@@ -131,6 +131,10 @@ export interface IPropertyFieldListPickerProps {
    * Specifies if the picker returns list id, title and url as an object instead on id.
    */
   includeListTitleAndUrl?: boolean;
+   /**
+  * Content type id which, if present, must be on the list
+  */
+    contentTypeId?: string;
 }
 
 /**

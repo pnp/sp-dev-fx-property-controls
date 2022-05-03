@@ -28,6 +28,13 @@ export interface ISPLists {
 }
 
 /**
+ * Defines a Content Type
+ */
+ export interface ISPContentType{
+   StringId:string;
+ }
+
+/**
  * Defines a SharePoint list
  */
 export interface ISPList {
@@ -38,4 +45,5 @@ export interface ISPList {
   RootFolder: {
     ServerRelativeUrl: string;
   };
+  ContentTypes: Array<ISPContentType>
 }

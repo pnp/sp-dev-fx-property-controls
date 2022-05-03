@@ -616,7 +616,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   includeHidden: false,
                   //baseTemplate: 109,
                   orderBy: PropertyFieldListPickerOrderBy.Title,
-                  // multiSelect: false,
+                  multiSelect: true,
                   disabled: false,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
@@ -624,6 +624,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: (value: string) => {
                     return value;
                   },
+                  contentTypeId:"0x0100",
                   deferredValidationTime: 0,
                   key: 'listPickerFieldId',
                   webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
@@ -643,6 +644,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   // onGetErrorMessage: (value: string) => {
                   //   return value;
                   // },
+                  contentTypeId:"0x0120",
                   deferredValidationTime: 0,
                   key: 'listPickerFieldId',
                   webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
@@ -782,6 +784,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
                   debounce: 500,
+                  showPreview: true,
                   //disabled: true,
                   //alphaSliderHidden: true,
                   //style: PropertyFieldColorPickerStyle.Full,

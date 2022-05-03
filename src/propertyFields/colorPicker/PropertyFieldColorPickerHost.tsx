@@ -42,7 +42,8 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 											<ColorPicker
 												color={this.props.selectedColor}
 												onChange={(e, color) => this.props.onColorChanged(color.str)}
-												alphaSliderHidden={this.props.alphaSliderHidden} />
+												alphaSliderHidden={this.props.alphaSliderHidden}
+												showPreview={this.props.showPreview} />
 										</div>
 									}
 									{!this.state.inlinePickerShowing &&

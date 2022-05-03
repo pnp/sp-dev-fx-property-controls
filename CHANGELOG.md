@@ -1,5 +1,16 @@
 # Releases
 
+## 3.7.0
+
+### Enhancements
+
+- `PropertyFieldListPicker`: ability to provide content type id [#441](https://github.com/pnp/sp-dev-fx-property-controls/pull/441)
+- `PropertyFieldColorPicker`: provide preview of the current selected color [#447](https://github.com/pnp/sp-dev-fx-property-controls/issues/447)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Milan Holemans](https://github.com/milanholemans), [Russell gove](https://github.com/russgove).
+
 ## 3.6.0
 
 ### New control(s)

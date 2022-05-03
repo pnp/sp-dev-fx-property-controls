@@ -57,6 +57,7 @@ The `PropertyFieldColorPicker` control can be configured with the following prop
 | isHidden | boolean | no | Specify if the control needs to be hidden. |
 | selectedColor | string or IColor | no | The CSS-compatible string or an IColor object to describe the initial color |
 | alphaSliderHidden | boolean | no | When true, the alpha slider control is hidden |
+| showPreview | boolean | no | Whether to show color preview box. |
 | style | PropertyFieldColorPickerStyle | no | Determines how the control is displayed (defaults to inline) |
 | iconName | string | no | The name of the UI Fabric Font Icon to use for Inline display (defaults to Color) |
 | valueAsObject | boolean | no | When true, the property is returned as an IColor object. When false (default), the property is returned as a CSS-compatible string |

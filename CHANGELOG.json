@@ -4,10 +4,14 @@
       "version": "3.8.0",
       "changes": {
         "new": [],
-        "enhancements": [],
+        "enhancements": [
+          "`PropertyFieldSitePicker`: Site Picker search for any input string [#386](https://github.com/pnp/sp-dev-fx-property-controls/pull/386)"
+        ],
         "fixes": []
       },
-      "contributions": []
+      "contributions": [
+        "[Milan Holemans](https://github.com/milanholemans)"
+      ]
     },
     {
       "version": "3.7.0",

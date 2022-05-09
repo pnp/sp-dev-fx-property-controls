@@ -45,5 +45,5 @@ export interface ISPList {
   RootFolder: {
     ServerRelativeUrl: string;
   };
-  ContentTypes: Array<ISPContentType>
+  ContentTypes: Array<ISPContentType>;
 }

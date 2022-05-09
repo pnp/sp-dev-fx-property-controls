@@ -69,6 +69,7 @@ The following controls are currently available:
 - [PropertyFieldIconPicker](./controls/PropertyFieldIconPicker) (Property pane icon picker)
 - [PropertyFieldListPicker](./controls/PropertyFieldListPicker) (Property pane list selector)
 - [PropertyFieldMessage](./controls/PropertyFieldMessage) (Property pane message)
+- [PropertyFieldMonacoEditor](./controls/PropertyFieldMonacoEditor) (Property pane Monaco Editor)
 - [PropertyFieldMultiSelect](./controls/PropertyFieldMultiSelect) (Property pane multi select dropdown)
 - [PropertyFieldNumber](./controls/PropertyFieldNumber) (Property pane number editor)
 - [PropertyFieldOrder](./controls/PropertyFieldOrder) (Property pane ordered list editor)

@@ -13,6 +13,7 @@ nav:
     - PropertyFieldIconPicker: 'controls/PropertyFieldIconPicker.md'
     - PropertyFieldListPicker: 'controls/PropertyFieldListPicker.md'
     - PropertyFieldMessage: 'controls/PropertyFieldMessage.md'
+    - PropertyFieldMonacoEditor: 'controls/PropertyFieldMonacoEditor.md'
     - PropertyFieldMultiSelect: 'controls/PropertyFieldMultiSelect.md'
     - PropertyFieldNumber: 'controls/PropertyFieldNumber.md'
     - PropertyFieldOrder: 'controls/PropertyFieldOrder.md'

@@ -2,6 +2,14 @@
 
 ## 3.8.0
 
+### Enhancements
+
+- `PropertyFieldSitePicker`: Site Picker search for any input string [#386](https://github.com/pnp/sp-dev-fx-property-controls/pull/386)
+
+### Contributors
+
+Special thanks to our contributor: [Milan Holemans](https://github.com/milanholemans).
+
 ## 3.7.0
 
 ### Enhancements

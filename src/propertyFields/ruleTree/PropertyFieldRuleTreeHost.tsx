@@ -4,7 +4,7 @@ import { IPropertyFieldRuleTreeHostProps, IPropertyFieldRuleTreeHostState } from
 import { DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/components/Panel';
 import { Label } from 'office-ui-fabric-react/lib/components/Label';
-// import { CollectionDataViewer } from './collectionDataViewer';
+ import { RuleTreeViewer } from './ruleTreeViewer';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as strings from 'PropertyControlStrings';
 import { Dropdown, GroupedList, TextField } from 'office-ui-fabric-react';
@@ -74,15 +74,7 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
               <p className="PropertyFieldCollectionData__panel__description">{this.props.panelDescription}</p>
             )
           }
-          <GroupedList items={[{title:'fu'},{title:'fu2'}]} groups={[{key:'1',name:'g1', startIndex:0, count:1},{key:'2',name:'g2', startIndex:1, count:1}]} onRenderCell={function (nestingDepth?: number, item?: any, index?: number): ReactNode {
-            
-            return <div key={item.title}>
-              <Dropdown  options={[{key:1,text:'1'}]} />
-              <TextField value={item.title} />
-              <Dropdown options={[{key:'Eq',text:'Eq'}]} />
-              <TextField value={item.title} />
-              </div>;
-          }} />
+          <RuleTreeViewer {...this.props} fOnSave={this.onSave} fOnClose={this.closePanel} />
 
         </Panel>
       </div>

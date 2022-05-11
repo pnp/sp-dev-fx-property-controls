@@ -151,7 +151,7 @@ define([], function () {
     ODModifiedField: "Modified",
     ODPhotoIconUrl: "https://spoprod-a.akamaihd.net/files/odsp-next-prod_2019-01-18_20190124.001/odsp-media/images/itemtypes/16_2x/photo.png",
     ODRowArialLabelTemplate: "{0}, {1}, Modified {2}, edited by {3}, {4}, {5}",
-    OneDriveConfirmDialogBody: "This item is from your OneDrive site. Files and folders in OneDrive are private unless you share them. Have you shared this file with your site members so they can ccess it?",
+    OneDriveConfirmDialogBody: "This item is from your OneDrive site. Files and folders in OneDrive are private unless you share them. Have you shared this file with your site members so they can access it?",
     OneDriveConfirmDialogTitle: "Just checking...",
     OneDriveEmptyFolderAlt: "Empty folder",
     OneDriveEmptyFolderDescription: "To add files, go to your OneDrive. You can also add files to this folder using the OneDrive app for your computer.",

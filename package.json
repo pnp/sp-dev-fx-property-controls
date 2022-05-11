@@ -61,7 +61,7 @@
     "husky": "^6.0.0",
     "request-promise": "4.2.6",
     "sonarqube-scanner": "2.1.2",
-    "spfx-fast-serve-helpers": "~1.13.0",
+    "spfx-fast-serve-helpers": "~1.14.0",
     "typescript": "3.7.7"
   },
   "repository": {

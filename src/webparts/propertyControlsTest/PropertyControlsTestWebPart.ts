@@ -126,6 +126,7 @@ import {
   PropertyFieldViewPickerOrderBy,
 } from '../../PropertyFieldViewPicker';
 import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
+import { PropertyFieldRuleTree } from '../../PropertyFieldRuleTree';
 import {
   IPropertyControlsTestProps,
 } from './components/IPropertyControlsTestProps';
@@ -133,6 +134,7 @@ import PropertyControlsTest from './components/PropertyControlsTest';
 import {
   IPropertyControlsTestWebPartProps,
 } from './IPropertyControlsTestWebPartProps';
+
 
 /**
  * Web part that can be used to test out the various property controls
@@ -1273,6 +1275,23 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       }
                     }
                   ],
+                  disabled: false
+                }),
+                PropertyFieldRuleTree("collectionData", {
+                  key: "ruleTree",
+                  label: "Rule Tree",
+                  panelHeader: "Rule Tree panel header",
+                  manageBtnLabel: "Manage rule tree",
+                  saveBtnLabel: "Save button",
+                  saveAndAddBtnLabel: "Save + Add button",
+                  cancelBtnLabel: "Cancel button",
+                  panelDescription: "This is the description which appears in the panel.",
+                  value: this.properties.collectionData, //TODO
+                  enableSorting: true,
+                  disableItemDeletion: false,
+                  disableItemCreation: false,
+                  panelClassName: "MyAwesomePanelClassName",
+                  tableClassName: "MyAwesomeTableClassName",                  
                   disabled: false
                 }),
               ]

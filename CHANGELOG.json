@@ -3,14 +3,17 @@
     {
       "version": "3.8.0",
       "changes": {
-        "new": [],
+        "new": [
+          "Localizations for en-gb [#454](https://github.com/pnp/sp-dev-fx-property-controls/pull/454)"
+        ],
         "enhancements": [
           "`PropertyFieldSitePicker`: Site Picker search for any input string [#386](https://github.com/pnp/sp-dev-fx-property-controls/pull/386)"
         ],
         "fixes": []
       },
       "contributions": [
-        "[Milan Holemans](https://github.com/milanholemans)"
+        "[Milan Holemans](https://github.com/milanholemans)",
+        "[Peter Cox](https://github.com/PeterWCox)"
       ]
     },
     {

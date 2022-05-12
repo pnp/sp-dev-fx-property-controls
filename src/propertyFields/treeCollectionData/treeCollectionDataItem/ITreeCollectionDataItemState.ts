@@ -1,6 +1,6 @@
 import { ErrorMsg } from ".";
 
-export interface IRuleTreeNodeState {
+export interface ITreeCollectionDataItemState {
   crntItem: any;
   errorMsgs?: ErrorMsg[];
   showCallout?: boolean;

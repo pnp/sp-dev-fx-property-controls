@@ -5,7 +5,7 @@ import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/compone
 import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import * as strings from 'PropertyControlStrings';
 import { cloneDeep, sortBy } from '@microsoft/sp-lodash-subset';
-import { RuleTreeNode } from '../ruleTreeNode';
+//import { RuleTreeNode } from '../ruleTreeNode';
 
 export class RuleTreeViewer extends React.Component<IRuleTreeViewerProps, IRuleTreeViewerState> {
   private readonly SORT_IDX = "sortIdx";
@@ -226,7 +226,28 @@ export class RuleTreeViewer extends React.Component<IRuleTreeViewerProps, IRuleT
             <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}></span>
             <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}></span>
           </div>
-          {
+        
+        </div>
+
+        {
+          (!this.state.crntItems || this.state.crntItems.length === 0) && (
+            <p className={`PropertyFieldCollectionData__panel__no-collection-data ${styles.noCollectionData}`}>{strings.CollectionDataEmptyValue}</p>
+          )
+        }
+
+        <div className={`PropertyFieldCollectionData__panel__actions ${styles.panelActions}`}>
+          { this.state.inCreationItem && this.state.inCreationItemValid && <PrimaryButton text={this.props.saveAndAddBtnLabel || strings.CollectionSaveAndAddButtonLabel} onClick={this.addAndSave} disabled={!this.allItemsValid()} className="PropertyFieldCollectionData__panel__action__add" /> }
+          { !(this.state.inCreationItem && this.state.inCreationItemValid) && <PrimaryButton text={this.props.saveBtnLabel || strings.SaveButtonLabel} onClick={this.onSave} disabled={!this.allItemsValid()} className="PropertyFieldCollectionData__panel__action__save" /> }
+          <DefaultButton text={this.props.cancelBtnLabel || strings.CancelButtonLabel} onClick={this.onCancel} className="PropertyFieldCollectionData__panel__action__cancel" />
+        </div>
+      </div>
+    );
+  }
+}
+
+/*
+
+  {
             (this.state.crntItems && this.state.crntItems.length > 0) && (
               this.state.crntItems.map((item, idx, allItems) => (
                 <RuleTreeNode 
@@ -256,25 +277,7 @@ export class RuleTreeViewer extends React.Component<IRuleTreeViewerProps, IRuleT
             />
             )
           }
-        </div>
-
-        {
-          (!this.state.crntItems || this.state.crntItems.length === 0) && (
-            <p className={`PropertyFieldCollectionData__panel__no-collection-data ${styles.noCollectionData}`}>{strings.CollectionDataEmptyValue}</p>
-          )
-        }
-
-        <div className={`PropertyFieldCollectionData__panel__actions ${styles.panelActions}`}>
-          { this.state.inCreationItem && this.state.inCreationItemValid && <PrimaryButton text={this.props.saveAndAddBtnLabel || strings.CollectionSaveAndAddButtonLabel} onClick={this.addAndSave} disabled={!this.allItemsValid()} className="PropertyFieldCollectionData__panel__action__add" /> }
-          { !(this.state.inCreationItem && this.state.inCreationItemValid) && <PrimaryButton text={this.props.saveBtnLabel || strings.SaveButtonLabel} onClick={this.onSave} disabled={!this.allItemsValid()} className="PropertyFieldCollectionData__panel__action__save" /> }
-          <DefaultButton text={this.props.cancelBtnLabel || strings.CancelButtonLabel} onClick={this.onCancel} className="PropertyFieldCollectionData__panel__action__cancel" />
-        </div>
-      </div>
-    );
-  }
-}
-
-/*
+          
 {
               this.props.enableSorting && (
                 <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}></span>

@@ -1,0 +1,19 @@
+import { ICustomTreeCollectionField } from "..";
+
+export interface ITreeCollectionDataItemProps {
+  fields: ICustomTreeCollectionField[];
+  index?: number;
+  itemKey:string;
+  itemData?: any;
+  parentKey:string;
+  sortingEnabled?: boolean;
+  totalItems?: number;
+  disableItemDeletion?: boolean;
+
+  fAddItem?: (parent:string, item: any) => void;
+  //fAddInCreation?: (item: ITreeItem, isValid: boolean) => void;
+  fUpdateItem?: (key: string, item: any) => void;
+  fDeleteItem?: (key: string, parentKey: string) => void;
+  fValidation?: (idx: number, isValid: boolean) => void;
+  fOnSorting?: (oldIdx: number, newIdx: number) => void;
+}

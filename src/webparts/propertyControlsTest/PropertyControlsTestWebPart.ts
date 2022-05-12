@@ -127,6 +127,7 @@ import {
 } from '../../PropertyFieldViewPicker';
 import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
 import { PropertyFieldRuleTree } from '../../PropertyFieldRuleTree';
+import { CustomTreeCollectionFieldType, PropertyFieldTreeCollectionData } from '../../PropertyFieldTreeCollectionData';
 import {
   IPropertyControlsTestProps,
 } from './components/IPropertyControlsTestProps';
@@ -177,6 +178,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         checkboxWithCalloutValue: this.properties.checkboxWithCalloutValue,
         htmlCode: this.properties.htmlCode,
         collectionData: this.properties.collectionData,
+        treeCollectionData: this.properties.treeCollectionData,
         orderedItems: this.properties.orderedItems,
         swatchColor: this.properties.swatchColor,
         enterpriseTerms: this.properties.enterpriseTerms || [],
@@ -490,7 +492,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                         return (
                           React.createElement("div", null,
                             React.createElement("input", {
-                              key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+                              itemKey: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
                                 if (event.currentTarget.value === "error") {
                                   onError(field.id, "Value shouldn't be equal to error");
                                 } else {
@@ -520,7 +522,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
                         return (
                           React.createElement("div", null,
-                            React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+                            React.createElement("input", { itemKey: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
                                 onError(field.id, "Value shouldn't be equal to error");
                             }}), " 🎉"
                           )
@@ -1249,7 +1251,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                         return (
                           React.createElement("div", null,
                             React.createElement("input", {
-                              key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+                              itemKey: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
                                 onUpdate(field.id, event.currentTarget.value);
                                 if (event.currentTarget.value === "error") {
                                   onError(field.id, "Value shouldn't be equal to error");
@@ -1277,7 +1279,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   ],
                   disabled: false
                 }),
-                PropertyFieldRuleTree("collectionData", {
+           /*     PropertyFieldRuleTree("ruleCollectionData", {
                   key: "ruleTree",
                   label: "Rule Tree",
                   panelHeader: "Rule Tree panel header",
@@ -1286,13 +1288,47 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   saveAndAddBtnLabel: "Save + Add button",
                   cancelBtnLabel: "Cancel button",
                   panelDescription: "This is the description which appears in the panel.",
-                  value: this.properties.collectionData, //TODO
+                  value: this.properties.treeCollectionData, //TODO
                   enableSorting: true,
                   disableItemDeletion: false,
                   disableItemCreation: false,
                   panelClassName: "MyAwesomePanelClassName",
                   tableClassName: "MyAwesomeTableClassName",                  
                   disabled: false
+                }),
+                ,*/
+                PropertyFieldTreeCollectionData("treeCollectionData", {
+                  key: "treeCollection",
+                  label: "Tree Collection",
+                  panelHeader: "Tree collection panel header",
+                  manageBtnLabel: "Manage tree collection",
+                  saveBtnLabel: "Save button",
+                  saveAndAddBtnLabel: "Save + Add button",
+                  cancelBtnLabel: "Cancel button",
+                  panelDescription: "This is the description which appears in the panel.",
+                  value: this.properties.treeCollectionData, //TODO
+                  enableSorting: true,
+                  disableItemDeletion: false,
+                  disableItemCreation: false,
+                  panelClassName: "MyAwesomePanelClassName",
+                  tableClassName: "MyAwesomeTableClassName",                  
+                  disabled: false,
+                  fields:[       {
+                    id: "Title",
+                    title: "Firstname",
+                    type: CustomTreeCollectionFieldType.string,
+                    required: true,
+                    placeholder: "Enter the firstname",                                        
+                    disableEdit: false
+                  },
+                  {
+                    id: "Lastname",
+                    title: "Lastname",
+                    type: CustomTreeCollectionFieldType.string,
+                    onGetErrorMessage: (value, index, currentItem) => {
+                      return value == 'Smith' && currentItem.City == 'antwerp' ? 'You cannot write Smith when City is Antwerp' : "";
+                    }
+                  },]
                 }),
               ]
             },

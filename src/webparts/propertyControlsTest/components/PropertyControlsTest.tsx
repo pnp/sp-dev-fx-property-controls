@@ -75,6 +75,7 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
               <div dangerouslySetInnerHTML={this.setHtml()} />
               </p>
               <p className="ms-font-m ms-fontColor-neutralDark" style={{ wordBreak: "break-all" }}>Collection data: {JSON.stringify(this.props.collectionData)}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark" style={{ wordBreak: "break-all" }}>treeCollectionData: {JSON.stringify(this.props.treeCollectionData)}</p>
               <p>File Picker: {this.props.filePickerResult ?  this.props.filePickerResult.fileAbsoluteUrl : ""}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Role Definitions: {this.props.roleDefinitions && this.props.roleDefinitions.length > 0 ? this.props.roleDefinitions.map(p => {
                 return p.Name;

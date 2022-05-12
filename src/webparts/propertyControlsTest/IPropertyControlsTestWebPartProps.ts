@@ -40,6 +40,7 @@ export interface IPropertyControlsTestWebPartProps {
   checkboxWithCalloutValue: boolean;
   htmlCode: string;
   collectionData: any[];
+  treeCollectionData:any[];
   orderedItems: any[];
   swatchColor: string;
   enterpriseTerms: IPickerTerms;

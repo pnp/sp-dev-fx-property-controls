@@ -8,6 +8,7 @@ import * as strings from 'PropertyControlStrings';
 import { cloneDeep, sortBy } from '@microsoft/sp-lodash-subset';
 import { TreeView, ITreeItem, TreeViewSelectionMode, ITreeItemAction } from "@pnp/spfx-controls-react/lib/TreeView";
 import { getGUID } from '@pnp/common';
+import { ICustomTreeItem } from '../ICustomTreeItem';
 
 export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDataViewerProps, ITreeCollectionDataViewerState> {
   private readonly SORT_IDX = "sortIdx";
@@ -21,27 +22,44 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
     };
   }
 
+
+  private initItemKeys = (item: ICustomTreeItem, key: string, parentKey: string, level: number, sortIdx:number): ITreeItem => {
+    return {
+      'key': key,
+      'label': '', 'data': {
+        ...item.data,
+        "parent": parentKey,
+        "level": level,
+        "sortIdx":sortIdx
+      },
+      'children': item.children?.map((childItem,childIndex) => this.initItemKeys(childItem, getGUID(), key, level + 1, childIndex))
+    };
+  }
+
+
   /**
    * componentDidMount lifecycle hook
    */
   public componentDidMount(): void {
-    let crntItems = this.props.value ? sortBy(cloneDeep(this.props.value), this.SORT_IDX) : [{key:'root', label:'root', data:{parent:null, level: 0, value:{}},children:[]},];
+    let crntItems = this.props.value ? cloneDeep(this.props.value) : [{ key: 'root', label: 'root', data: { parent: null, level: 0, value: {} }, children: [] },];
 
-    crntItems = crntItems.map((item, idx) => {
-      if (!item[this.SORT_IDX]) {
-        item[this.SORT_IDX] = idx + 1;
-      }
-      return item;
-    });
-    // Update the sort propety
-    crntItems = this.updateSortProperty(crntItems);
+
+    /* crntItems = crntItems.map((item, idx) => {
+       if (!item[this.SORT_IDX]) {
+         item[this.SORT_IDX] = idx + 1;
+       }
+       return item;
+     });
+     // Update the sort propety
+     crntItems = this.updateSortProperty(crntItems);*/
+
     this.setState({
-      crntItems: sortBy(crntItems, this.SORT_IDX)
+      crntItems: [this.initItemKeys(crntItems[0], 'root', null, 0,0)]//sortBy(crntItems, this.SORT_IDX)
     });
   }
 
-  private search = (tree:ITreeItem[], key:string)=> {
-    const stack = [ tree[0] ]
+  private findNode = (tree: ITreeItem[], key: string) => {
+    const stack = [tree[0]]
     while (stack.length) {
       const node = stack.pop();
       if (node.key === key) return node
@@ -50,42 +68,37 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
     return null;
   }
 
-  private addItemAction =  async (parentKey:string, item: any) => {
-    
+  private addItem = async (parentKey: string) => {
+
     this.setState((prevState: ITreeCollectionDataViewerState): ITreeCollectionDataViewerState => {
       const { crntItems } = prevState;
-    
-      const treeItem = this.search(crntItems, parentKey);      
-      const nItem:ITreeItem = {key:getGUID(),label:`${treeItem.children?.length?? 0}`, data:{parent:treeItem.key, level: treeItem.data.level +1, value:{} },children:[]};
+
+      const treeItem = this.findNode(crntItems, parentKey);
+      const nItem: ITreeItem = { key: getGUID(), label: `${treeItem.children?.length ?? 0}`, data: { parent: treeItem.key, level: treeItem.data.level + 1, value: {} }, children: [] };
       treeItem.children.push(nItem);
-      // Update the item in the array
-      //let extNode = crntItems.filter(_=> _.key === treeItem.key)[0];
-      //console.log('extNode',extNode, nItem);
-      //extNode = nItem;
       return { crntItems };
-    });        
+    });
   }
 
-  private removeItemAction =  async (key: string, parentKey:string) => {
-    console.log("delete", key,parent);
-
-
-    if(!parent)
+  private removeItem = async (key: string, parentKey: string) => {
+    if (!parent)
       return;
 
     this.setState((prevState: ITreeCollectionDataViewerState): ITreeCollectionDataViewerState => {
-      const { crntItems } = prevState;
-      const parent = this.search(crntItems, parentKey);
+      let { crntItems,validation } = prevState;
+      const parent = this.findNode(crntItems, parentKey);
+      parent.children = parent.children.filter(_ => key !== _.key);
 
-      parent.children = parent.children.filter(_=> key !== _.key);
+      //crntItems.splice(idx, 1);
+      delete validation[key];
 
-      // Update the item in the array
-      //let extNode = crntItems.filter(_=> _.key === treeItem.key)[0];
-      //extNode = nItem;
-      return { crntItems };
-    });        
+      // Update the sort propety
+      crntItems = this.updateSortProperty(crntItems);
+
+      return { crntItems,validation };
+    });
   }
-  
+
   /**
    * Update an item from the tree
    */
@@ -93,38 +106,20 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
     this.setState((prevState: ITreeCollectionDataViewerState): ITreeCollectionDataViewerState => {
       const { crntItems } = prevState;
       // Update the item in the array
-      const treeItem = this.search(crntItems, key); 
+      const treeItem = this.findNode(crntItems, key);
       treeItem.data.value = item;
       return { crntItems };
     });
   }
 
-  /**
-   * Remove an item from the collection
-   */
-  private deleteItem = (idx: number) => {
-    this.setState((prevState: ITreeCollectionDataViewerState): ITreeCollectionDataViewerState => {
-      let { crntItems, validation } = prevState;
-      crntItems.splice(idx, 1);
-      delete validation[idx];
-
-      // Update the sort propety
-      crntItems = this.updateSortProperty(crntItems);
-
-      return {
-        crntItems: sortBy(crntItems, this.SORT_IDX),
-        validation: validation
-      };
-    });
-  }
 
   /**
    * Validate every item
    */
-  private validateItem = (idx: number, isValid: boolean) => {
+  private validateItem = (key: string, isValid: boolean) => {
     this.setState((prevState: ITreeCollectionDataViewerState) => {
       const { validation } = prevState;
-      validation[idx] = isValid;
+      validation[key] = isValid;
       return {
         validation: prevState.validation
       };
@@ -172,7 +167,7 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
   private updateSortProperty(crntItems: any[]): any[] {
     // Update the sort order
     return crntItems.map((item, itemIdx) => {
-      item[this.SORT_IDX] = itemIdx + 1;
+      item.data.sortIdx = itemIdx + 1;
       return item;
     });
   }
@@ -180,13 +175,14 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
   /**
    * Update the sort order
    */
-  private updateSortOrder = (oldIdx: number, newIdx: number) => {
+  private updateSortOrder = (parentKey:string, oldIdx: number, newIdx: number) => {
     this.setState((prevState: ITreeCollectionDataViewerState) => {
       const { crntItems } = prevState;
       let newOrderedItems = cloneDeep(crntItems);
-      newOrderedItems = this.moveItemTo(newOrderedItems, oldIdx, newIdx - 1);
-      newOrderedItems = this.updateSortProperty(newOrderedItems);
-      newOrderedItems = sortBy(newOrderedItems, this.SORT_IDX);
+      const parentItem = this.findNode(newOrderedItems, parentKey);
+      parentItem.children = this.moveItemTo(parentItem.children, oldIdx, newIdx - 1);
+      parentItem.children = this.updateSortProperty(parentItem.children);
+      parentItem.children = sortBy(parentItem.children,   function(o) { return o.data.sortIdx; }) as ITreeItem[];
 
       return {
         crntItems: newOrderedItems
@@ -195,20 +191,19 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
   }
 
 
-  private cleanupMap = (item:ITreeItem)=>
-  {
-
-    return {'key': item.key, 'label':item.label, 'data': item.data, 'children':item.children?.map( childItem =>this.cleanupMap(childItem)) };
+  private cleanupMap = (item: ITreeItem) => {
+    const { value } = item.data;
+    return { 'data': { 'value': value }, 'children': item.children?.map(childItem => this.cleanupMap(childItem)) };
   }
+
   /**
    * Save the collection data
    */
   private onSave = () => {
-    
-    //const mapped = this.state.crntItems.map(item=> this.cleanupMap(item));
-    //console.log("saving",this.state.crntItems, mapped);
-    this.props.fOnSave(this.state.crntItems);
-    
+
+    const mapped = this.state.crntItems.map(item => this.cleanupMap(item));
+    this.props.fOnSave(mapped);
+
   }
 
   /**
@@ -218,37 +213,35 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
     this.props.fOnClose();
   }
 
-  private renderItem  = (item: ITreeItem):JSX.Element => 
-  {
+  private renderItem = (item: ITreeItem): JSX.Element => {
     console.log(item);
 
     let fields;
 
     if (typeof (this.props.fields) === 'function') {
-      //((level: number, item: ITreeItem) => ICustomTreeCollectionField[])
       fields = this.props.fields(item);
     }
-    else
-    {
+    else {
       fields = this.props.fields;
     }
 
+    const parentItem = item.data.parent ? this.findNode(this.state.crntItems, item.data.parent) : undefined;
 
-    return <TreeCollectionDataItem 
-    itemKey={item.key}
-    fields={fields}
-    index={0}
-    itemData={item.data.value}
-    parentKey={item.data.parent}
-    // totalItems={allItems.length}
-    sortingEnabled={this.props.enableSorting}
-    disableItemDeletion={this.props.disableItemDeletion}
-    fUpdateItem={this.updateItem}
-    fDeleteItem={this.removeItemAction}
-    fValidation={this.validateItem}
-    fOnSorting={this.updateSortOrder} 
-    fAddItem={this.addItemAction}
-    // fAddInCreation={ ()=>{console.log("WTF")}}
+
+    return <TreeCollectionDataItem
+      itemKey={item.key}
+      fields={fields}
+      index={item.data.sortIdx}
+      itemData={item.data.value}
+      parentKey={item.data.parent}
+      totalItems={parentItem?.children?.length ?? 0}
+      sortingEnabled={this.props.enableSorting}
+      disableItemDeletion={this.props.disableItemDeletion}
+      fUpdateItem={this.updateItem}
+      fDeleteItem={item.data.parent ? this.removeItem : undefined}
+      fValidation={this.validateItem}
+      fOnSorting={this.updateSortOrder}
+      fAddItem={this.addItem}
     />
   }
 
@@ -256,14 +249,14 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
    * Default React render
    */
   public render(): React.ReactElement<ITreeCollectionDataViewerProps> {
-    
-    
+
+
     return (
       <div>
-        <div className={`PropertyFieldTreeCollectionData__panel__table ${styles.table} ${this.props.tableClassName || ""}`}>       
+        <div className={`PropertyFieldTreeCollectionData__panel__table ${styles.table} ${this.props.tableClassName || ""}`}>
           {
             (this.state.crntItems && this.state.crntItems.length > 0) && (
-              <TreeView items={this.state.crntItems} onRenderItem={this.renderItem} />
+              <TreeView items={this.state.crntItems} onRenderItem={this.renderItem} defaultExpanded   />
             )
           }
 
@@ -271,7 +264,7 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
 
 
         <div className={`PropertyFieldTreeCollectionData__panel__actions ${styles.panelActions}`}>
-          <PrimaryButton text={this.props.saveBtnLabel || strings.SaveButtonLabel} onClick={this.onSave} disabled={!this.allItemsValid()} className="PropertyFieldTreeCollectionData__panel__action__save" /> 
+          <PrimaryButton text={this.props.saveBtnLabel || strings.SaveButtonLabel} onClick={this.onSave} disabled={!this.allItemsValid()} className="PropertyFieldTreeCollectionData__panel__action__save" />
           <DefaultButton text={this.props.cancelBtnLabel || strings.CancelButtonLabel} onClick={this.onCancel} className="PropertyFieldTreeCollectionData__panel__action__cancel" />
         </div>
       </div>

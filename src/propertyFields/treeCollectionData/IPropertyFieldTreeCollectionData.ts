@@ -1,6 +1,7 @@
 import { IPropertyPaneCustomFieldProps } from "@microsoft/sp-property-pane";
 import { ITreeItem } from "@pnp/spfx-controls-react/lib/TreeView";
 import { ICustomTreeCollectionField } from ".";
+import { ICustomTreeItem } from "./ICustomTreeItem";
 
 export interface IPropertyFieldTreeCollectionDataProps {
   /**
@@ -43,7 +44,7 @@ export interface IPropertyFieldTreeCollectionDataProps {
   /**
    * The collection data value.
    */
-  value: ITreeItem[];
+  value: ICustomTreeItem[];
   /**
    * Specify if you want to enable sorting
    */

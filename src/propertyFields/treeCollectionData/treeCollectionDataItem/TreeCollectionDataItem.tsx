@@ -23,8 +23,6 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
 
   constructor(props: ITreeCollectionDataItemProps) {
     super(props);
-    console.log("props",props);
-
     // Create an empty item with all properties
     let emptyItem = this.generateEmptyItem();
 
@@ -67,21 +65,7 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
    * Perform all required field checks at once
    */
   private async doAllFieldChecks() {
-    const { crntItem } = this.state;
-
     let disableAdd : boolean = null;
-
-    // Check if current item is valid
-    /*if (this.props.fAddInCreation) {
-      if (await this.checkRowIsValidForSave(crntItem)) {
-        disableAdd = false;
-        this.props.fAddInCreation(crntItem, true);
-      } else {
-        disableAdd = true;
-        this.props.fAddInCreation(crntItem, false);
-      }
-    }*/
-
     this.setState({ disableAdd });
 
     // Check if item needs to be updated
@@ -162,7 +146,7 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
   /**
    * Add the current row to the collection
    */
-  private addRow = async () => {
+  private addNode = async () => {
     if (this.props.fAddItem) {
       const { crntItem } = this.state;
       // Check if all the fields are correctly provided
@@ -188,7 +172,7 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
 
     // Set the validation for the item
     if (this.props.fValidation) {
-      this.props.fValidation(this.props.index, isValid);
+      this.props.fValidation(this.props.itemKey, isValid);
     }
   }
 
@@ -423,7 +407,6 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
   private generateEmptyItem(): any {
     // Create an empty item with all properties
     let emptyItem:any = {};
-    emptyItem.uniqueId = Guid.newGuid().toString();
 
     for (const field of this.props.fields) {
       // Assign default value or null to the emptyItem
@@ -442,9 +425,9 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
     return (
       <div className={`PropertyFieldTreeCollectionData__panel__table-row ${styles.tableRow} ${this.props.index === null ? styles.tableFooter : ""}`}>
         {
-          (this.props.sortingEnabled && this.props.totalItems) && (
+          (this.props.sortingEnabled && this.props.totalItems > 0)  && (
             <span className={`PropertyFieldTreeCollectionData__panel__sorting-field ${styles.tableCell}`}>
-              <Dropdown options={opts} selectedKey={this.props.index + 1} onChanged={(opt) => this.props.fOnSorting(this.props.index, opt.key as number) } />
+              <Dropdown options={opts} selectedKey={this.props.index + 1} onChanged={(opt) => this.props.fOnSorting(this.props.parentKey, this.props.index, opt.key as number) } />
             </span>
           )
         }
@@ -500,11 +483,11 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
         {
           /* Check add or delete action */
           
-           (<> <Link title={strings.CollectionDeleteRowButtonLabel} disabled={!this.props.fDeleteItem || this.props.disableItemDeletion} onClick={this.deleteRow}>
+           (<>  { this.props.parentKey && (<Link title={strings.CollectionDeleteRowButtonLabel} disabled={!this.props.fDeleteItem || this.props.disableItemDeletion} onClick={this.deleteRow}>
               <Icon iconName="Clear" />
-            </Link>
+            </Link>)}
           
-            <Link title={strings.CollectionAddRowButtonLabel} className={`${disableAdd ? "" : styles.addBtn}`} disabled={disableAdd} onClick={async () => await this.addRow()}>
+            <Link title={strings.CollectionAddRowButtonLabel} className={`${disableAdd ? "" : styles.addBtn}`} disabled={disableAdd} onClick={async () => await this.addNode()}>
               <Icon iconName="Add" />
             </Link>
             

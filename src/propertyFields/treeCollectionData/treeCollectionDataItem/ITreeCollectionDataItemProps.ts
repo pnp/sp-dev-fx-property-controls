@@ -1,7 +1,7 @@
-import { ICustomTreeCollectionField } from "..";
+import { ICustomCollectionField } from "../../collectionData";
 
 export interface ITreeCollectionDataItemProps {
-  fields: ICustomTreeCollectionField[];
+  fields: ICustomCollectionField[];
   index?: number;
   itemKey:string;
   itemData?: any;

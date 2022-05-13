@@ -3,13 +3,11 @@ import styles from '../PropertyFieldTreeCollectionDataHost.module.scss';
 import { ITreeCollectionDataViewerProps, ITreeCollectionDataViewerState } from '.';
 import { TreeCollectionDataItem } from '../treeCollectionDataItem';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
-import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import * as strings from 'PropertyControlStrings';
-import { cloneDeep, sortBy } from '@microsoft/sp-lodash-subset';
-import { TreeView, ITreeItem, TreeViewSelectionMode, ITreeItemAction } from "@pnp/spfx-controls-react/lib/TreeView";
+import { cloneDeep } from '@microsoft/sp-lodash-subset';
+import { TreeView, ITreeItem} from "@pnp/spfx-controls-react/lib/TreeView";
 import { getGUID } from '@pnp/common';
 import { ICustomTreeItem } from '../ICustomTreeItem';
-import { isEqual } from 'lodash';
 
 export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDataViewerProps, ITreeCollectionDataViewerState> {
   private readonly SORT_IDX = "sortIdx";

@@ -5,16 +5,18 @@ import { TextField } from 'office-ui-fabric-react/lib/components/TextField';
 import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import * as strings from 'PropertyControlStrings';
-import { ICustomTreeCollectionField, CustomTreeCollectionFieldType, FieldValidator } from '..';
+
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/components/Callout';
-import { CollectionIconField } from '../treeCollectionIconField';
+
 import { clone, findIndex, sortBy } from '@microsoft/sp-lodash-subset';
-import { CollectionNumberField } from '../treeCollectionNumberField';
-import { CollectionColorField } from '../treeCollectionColorField';
-import { CollectionDropdownField } from '../treeCollectionDropdownField/TreeCollectionDropdownField';
-import { TreeCollectionCheckboxField } from '../treeCollectionCheckboxField/TreeCollectionCheckboxField';
+import { CollectionDropdownField } from '../../collectionData/collectionDropdownField/CollectionDropdownField';
 import { isEqual } from 'lodash';
+import { CollectionCheckboxField } from '../../collectionData/collectionCheckboxField/CollectionCheckboxField';
+import { CustomCollectionFieldType, ICustomCollectionField,FieldValidator } from '../../collectionData';
+import { CollectionNumberField } from '../../collectionData/collectionNumberField/CollectionNumberField';
+import { CollectionColorField } from '../../collectionData/collectionColorField/CollectionColorField';
+import { CollectionIconField } from '../../collectionData/collectionIconField/CollectionIconField';
 
 export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataItemProps, ITreeCollectionDataItemState> {
   
@@ -194,7 +196,7 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
    * @param field
    * @param value
    */
-  private fieldValidation = async (field: ICustomTreeCollectionField, value: any): Promise<string> => {    
+  private fieldValidation = async (field: ICustomCollectionField, value: any): Promise<string> => {    
     
     let validation = "";
     // Do the custom validation check
@@ -239,7 +241,7 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
    * @param value
    * @param item
    */
-  private urlFieldValidation = async (field: ICustomTreeCollectionField, value: any, item: any): Promise<string> => {
+  private urlFieldValidation = async (field: ICustomCollectionField, value: any, item: any): Promise<string> => {
     let isValid = true;
     let validation = "";
 
@@ -347,21 +349,21 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
    * @param field
    * @param item
    */
-  private renderField(field: ICustomTreeCollectionField, item: any) {
+  private renderField(field: ICustomCollectionField, item: any) {
     const disableFieldOnEdit: boolean = field.disableEdit && !!this.props.fUpdateItem;
 
     switch(field.type) {
-      case CustomTreeCollectionFieldType.boolean:
-        return <TreeCollectionCheckboxField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
-      case CustomTreeCollectionFieldType.dropdown:
+      case CustomCollectionFieldType.boolean:
+        return <CollectionCheckboxField field={ field } item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
+      case CustomCollectionFieldType.dropdown:
         return <CollectionDropdownField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
-      case CustomTreeCollectionFieldType.number:
+      case CustomCollectionFieldType.number:
         return <CollectionNumberField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
-      case CustomTreeCollectionFieldType.fabricIcon:
+      case CustomCollectionFieldType.fabricIcon:
         return <CollectionIconField renderMode={field.iconFieldRenderMode} field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
-      case CustomTreeCollectionFieldType.color:    
+      case CustomCollectionFieldType.color:    
         return <CollectionColorField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
-      case CustomTreeCollectionFieldType.url:
+      case CustomCollectionFieldType.url:
         return <TextField placeholder={field.placeholder || field.title}
                           value={item[field.id] ? item[field.id] : ""}
                           required={field.required}
@@ -371,7 +373,7 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
                           deferredValidationTime={field.deferredValidationTime || field.deferredValidationTime >= 0 ? field.deferredValidationTime : 200}
                           onGetErrorMessage={async (value: string) => this.urlFieldValidation(field, value, item)}
                           inputClassName="PropertyFieldTreeCollectionData__panel__url-field" />;
-      case CustomTreeCollectionFieldType.custom:
+      case CustomCollectionFieldType.custom:
           if (field.onCustomRender) {
             return field.onCustomRender(field, item[field.id], (fieldId, value) => {
               this.onValueChanged(fieldId, value);
@@ -379,7 +381,7 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
             }, item, item.uniqueId, this.onCustomFieldValidation);
           }
           return null;
-      case CustomTreeCollectionFieldType.string:
+      case CustomCollectionFieldType.string:
       default:
         return <TextField placeholder={field.placeholder || field.title}
                           className={styles.collectionDataField}
@@ -510,8 +512,3 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
     );
   }
 }
-
-
-/*
-
-*/

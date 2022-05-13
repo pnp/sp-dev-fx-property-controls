@@ -127,7 +127,7 @@ import {
 } from '../../PropertyFieldViewPicker';
 import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
 import { PropertyFieldRuleTree } from '../../PropertyFieldRuleTree';
-import { CustomTreeCollectionFieldType, PropertyFieldTreeCollectionData } from '../../PropertyFieldTreeCollectionData';
+import {  PropertyFieldTreeCollectionData } from '../../PropertyFieldTreeCollectionData';
 import {
   IPropertyControlsTestProps,
 } from './components/IPropertyControlsTestProps';
@@ -1316,7 +1316,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   fields:[       {
                     id: "Title",
                     title: "Firstname",
-                    type: CustomTreeCollectionFieldType.string,
+                    type: CustomCollectionFieldType.string,
                     required: true,
                     placeholder: "Enter the firstname",                                        
                     disableEdit: false
@@ -1324,7 +1324,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   {
                     id: "Lastname",
                     title: "Lastname",
-                    type: CustomTreeCollectionFieldType.string,
+                    type: CustomCollectionFieldType.string,
                     onGetErrorMessage: (value, index, currentItem) => {
                       return value == 'Smith' && currentItem.City == 'antwerp' ? 'You cannot write Smith when City is Antwerp' : "";
                     }

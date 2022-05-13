@@ -9,6 +9,7 @@ import { cloneDeep, sortBy } from '@microsoft/sp-lodash-subset';
 import { TreeView, ITreeItem, TreeViewSelectionMode, ITreeItemAction } from "@pnp/spfx-controls-react/lib/TreeView";
 import { getGUID } from '@pnp/common';
 import { ICustomTreeItem } from '../ICustomTreeItem';
+import { isEqual } from 'lodash';
 
 export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDataViewerProps, ITreeCollectionDataViewerState> {
   private readonly SORT_IDX = "sortIdx";
@@ -18,7 +19,8 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
 
     this.state = {
       crntItems: [],
-      validation: {}
+      validation: {},
+      isLoading:true
     };
   }
 
@@ -32,10 +34,9 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
         "level": level,
         "sortIdx":sortIdx
       },
-      'children': item.children?.map((childItem,childIndex) => this.initItemKeys(childItem, getGUID(), key, level + 1, childIndex))
+      'children': item.children?.map((childItem,childIndex) => this.initItemKeys(childItem, getGUID(), key, level + 1, childIndex+1))
     };
   }
-
 
   /**
    * componentDidMount lifecycle hook
@@ -43,19 +44,10 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
   public componentDidMount(): void {
     let crntItems = this.props.value ? cloneDeep(this.props.value) : [{ key: 'root', label: 'root', data: { parent: null, level: 0, value: {} }, children: [] },];
 
-
-    /* crntItems = crntItems.map((item, idx) => {
-       if (!item[this.SORT_IDX]) {
-         item[this.SORT_IDX] = idx + 1;
-       }
-       return item;
-     });
-     // Update the sort propety
-     crntItems = this.updateSortProperty(crntItems);*/
-
     this.setState({
-      crntItems: [this.initItemKeys(crntItems[0], 'root', null, 0,0)]//sortBy(crntItems, this.SORT_IDX)
-    });
+      crntItems: [this.initItemKeys(crntItems[0], 'root', null, 0,1)]//sortBy(crntItems, this.SORT_IDX)
+      , isLoading: false
+    });    
   }
 
   private findNode = (tree: ITreeItem[], key: string) => {
@@ -76,7 +68,7 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
       const treeItem = this.findNode(crntItems, parentKey);
       const nItem: ITreeItem = { key: getGUID(), label: `${treeItem.children?.length ?? 0}`, data: { parent: treeItem.key, level: treeItem.data.level + 1, value: {} }, children: [] };
       treeItem.children.push(nItem);
-      return { crntItems };
+      return { crntItems,isLoading:false };
     });
   }
 
@@ -95,20 +87,20 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
       // Update the sort propety
       crntItems = this.updateSortProperty(crntItems);
 
-      return { crntItems,validation };
+      return { crntItems,validation, isLoading:false };
     });
   }
 
   /**
    * Update an item from the tree
    */
-  private updateItem = (key: string, item: any) => {
+  private updateItem = (key: string, item: any) => {    
     this.setState((prevState: ITreeCollectionDataViewerState): ITreeCollectionDataViewerState => {
       const { crntItems } = prevState;
       // Update the item in the array
       const treeItem = this.findNode(crntItems, key);
       treeItem.data.value = item;
-      return { crntItems };
+      return { crntItems , isLoading:false};
     });
   }
 
@@ -117,6 +109,7 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
    * Validate every item
    */
   private validateItem = (key: string, isValid: boolean) => {
+
     this.setState((prevState: ITreeCollectionDataViewerState) => {
       const { validation } = prevState;
       validation[key] = isValid;
@@ -129,7 +122,8 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
   /**
    * Check if all items are valid
    */
-  private allItemsValid() {
+  private allItemsValid() {    
+    
     const { validation } = this.state;
     if (validation) {
       const keys = Object.keys(validation);
@@ -149,11 +143,11 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
    * @param oldIdx
    * @param newIdx
    */
-  private moveItemTo(crntItems: any[], oldIdx: number, newIdx: number): any[] {
+  private moveItemTo(crntItems: any[], oldIdx: number, newIdx: number): any[] {    
     if (newIdx > -1 && newIdx < crntItems.length) {
-      const removedElement = crntItems.splice(oldIdx, 1)[0];
+      const removedElement = crntItems.splice(oldIdx, 1)[0];      
       if (removedElement) {
-        crntItems.splice(newIdx, 0, removedElement);
+        crntItems.splice(newIdx, 0, removedElement);        
       }
     }
     return crntItems;
@@ -176,17 +170,15 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
    * Update the sort order
    */
   private updateSortOrder = (parentKey:string, oldIdx: number, newIdx: number) => {
-    this.setState((prevState: ITreeCollectionDataViewerState) => {
-      const { crntItems } = prevState;
-      let newOrderedItems = cloneDeep(crntItems);
-      const parentItem = this.findNode(newOrderedItems, parentKey);
-      parentItem.children = this.moveItemTo(parentItem.children, oldIdx, newIdx - 1);
-      parentItem.children = this.updateSortProperty(parentItem.children);
-      parentItem.children = sortBy(parentItem.children,   function(o) { return o.data.sortIdx; }) as ITreeItem[];
 
-      return {
-        crntItems: newOrderedItems
-      };
+    let newOrderedItems = cloneDeep(this.state.crntItems);
+    const parentItem = this.findNode(newOrderedItems, parentKey);
+    parentItem.children = this.moveItemTo(parentItem.children, oldIdx, newIdx - 1);
+    parentItem.children = this.updateSortProperty(parentItem.children);
+    //parentItem.children = sortBy(parentItem.children,   function(o) { return o.data.sortIdx; }) as ITreeItem[];
+
+    this.setState({
+      crntItems: newOrderedItems
     });
   }
 
@@ -213,8 +205,7 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
     this.props.fOnClose();
   }
 
-  private renderItem = (item: ITreeItem): JSX.Element => {
-    console.log(item);
+  private renderItem = (item: ITreeItem): JSX.Element => {    
 
     let fields;
 
@@ -230,6 +221,7 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
 
     return <TreeCollectionDataItem
       itemKey={item.key}
+      key={item.key}
       fields={fields}
       index={item.data.sortIdx}
       itemData={item.data.value}
@@ -250,13 +242,14 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
    */
   public render(): React.ReactElement<ITreeCollectionDataViewerProps> {
 
+    if(this.state.isLoading) return <div></div>;
 
     return (
       <div>
         <div className={`PropertyFieldTreeCollectionData__panel__table ${styles.table} ${this.props.tableClassName || ""}`}>
           {
             (this.state.crntItems && this.state.crntItems.length > 0) && (
-              <TreeView items={this.state.crntItems} onRenderItem={this.renderItem} defaultExpanded   />
+              <TreeView key="treeView" items={this.state.crntItems} onRenderItem={this.renderItem} defaultExpanded   />
             )
           }
 
@@ -279,27 +272,4 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
             <p className={`PropertyFieldTreeCollectionData__panel__no-collection-data ${styles.noTreeCollectionData}`}>{strings.TreeCollectionDataEmptyValue}</p>
           )
         }
-         <TreeCollectionDataItem key={item.uniqueId}
-                                    fields={visibleFields}
-                                    index={idx}
-                                    item={item}
-                                    totalItems={allItems.length}
-                                    sortingEnabled={this.props.enableSorting}
-                                    disableItemDeletion={this.props.disableItemDeletion}
-                                    fUpdateItem={this.updateItem}
-                                    fDeleteItem={this.deleteItem}
-                                    fValidation={this.validateItem}
-                                    fOnSorting={this.updateSortOrder} />
-
-          {
-            !this.props.disableItemCreation && (
-              <TreeCollectionDataItem fields={visibleFields}
-                                  index={null}
-                                  item={null}
-                                  sortingEnabled={this.props.enableSorting}
-                                  totalItems={null}
-                                  fAddItem={this.addItem}
-                                  fAddInCreation={this.addInCreation} />
-            )
-          }
 */

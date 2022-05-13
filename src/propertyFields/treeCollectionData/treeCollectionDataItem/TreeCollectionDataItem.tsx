@@ -12,9 +12,9 @@ import { CollectionIconField } from '../treeCollectionIconField';
 import { clone, findIndex, sortBy } from '@microsoft/sp-lodash-subset';
 import { CollectionNumberField } from '../treeCollectionNumberField';
 import { CollectionColorField } from '../treeCollectionColorField';
-import { Guid } from '@microsoft/sp-core-library';
 import { CollectionDropdownField } from '../treeCollectionDropdownField/TreeCollectionDropdownField';
 import { TreeCollectionCheckboxField } from '../treeCollectionCheckboxField/TreeCollectionCheckboxField';
+import { isEqual } from 'lodash';
 
 export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataItemProps, ITreeCollectionDataItemState> {
   
@@ -29,18 +29,25 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
     this.state = {
       crntItem: clone(this.props.itemData) || {...emptyItem},
       errorMsgs: [],
-      showCallout: false,
-      disableAdd: false
+      showCallout: false,      
+      isLoading:true
     };
   }
 
+
+  public componentDidMount(): void {
+    
+    this.setState({isLoading:false});
+  }
   /**
    * componentDidUpdate lifecycle hook
    * @param prevProps
    * @param prevState
    */
-  public componentDidUpdate(prevProps: ITreeCollectionDataItemProps): void {
-    if (this.props.itemData !== prevProps.itemData) {
+  public componentDidUpdate(prevProps: ITreeCollectionDataItemProps, prevState: ITreeCollectionDataItemState): void {
+
+    if(!isEqual(prevProps, this.props))
+    {      
       this.setState({
         crntItem: clone(this.props.itemData)
       });
@@ -50,26 +57,21 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
   /**
    * Update the item value on the field change
    */
-  private onValueChanged = (fieldId: string, value: any): Promise<void> => {
-    return new Promise((resolve) => this.setState((prevState: ITreeCollectionDataItemState) => {
-      const { crntItem } = prevState;
-      // Update the changed field
-      crntItem[fieldId] = value;
+  private onValueChanged = (fieldId: string, value: any): Promise<void> => {    
 
-      // Store this in the current state
-      return { crntItem };
-    }, () => resolve()));
+    const  crntItem = clone(this.state.crntItem);       
+    // Update the changed field
+    crntItem[fieldId] = value;
+    this.setState({crntItem});
+    return;
   }
 
   /**
    * Perform all required field checks at once
    */
-  private async doAllFieldChecks() {
-    let disableAdd : boolean = null;
-    this.setState({ disableAdd });
-
+  private async doAllFieldChecks() {    
     // Check if item needs to be updated
-    if (this.props.fUpdateItem) {
+    if (this.props.fUpdateItem && !isEqual(this.props.itemData, this.state.crntItem)) {
       await this.updateItem();
     }
   }
@@ -170,9 +172,10 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
       }
     }
 
+    // TODO: We set validation anyways?
     // Set the validation for the item
     if (this.props.fValidation) {
-      this.props.fValidation(this.props.itemKey, isValid);
+       this.props.fValidation(this.props.itemKey, isValid);
     }
   }
 
@@ -191,7 +194,8 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
    * @param field
    * @param value
    */
-  private fieldValidation = async (field: ICustomTreeCollectionField, value: any): Promise<string> => {
+  private fieldValidation = async (field: ICustomTreeCollectionField, value: any): Promise<string> => {    
+    
     let validation = "";
     // Do the custom validation check
     if (field.onGetErrorMessage) {
@@ -222,7 +226,7 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
    * Custom field validation
    */
   private onCustomFieldValidation = async (fieldId: string, errorMsg: string) => {
-    console.log(fieldId, errorMsg);
+    
     if (fieldId) {
       await this.storeFieldValidation(fieldId, errorMsg, true);
     }
@@ -261,62 +265,65 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
    * @param message
    */
   private errorCalloutHandler(fieldId: string, message: string) {
-    this.setState((prevState: ITreeCollectionDataItemState) => {
-      let { crntItem, errorMsgs } = prevState;
 
-      // Get the current field
-      const fieldIdx = findIndex(this.props.fields, f => f.id === fieldId);
-      if (fieldIdx === -1) {
-        return;
-      }
-      const field = this.props.fields[fieldIdx];
+    let { crntItem, errorMsgs } = this.state;
 
-      // Check if there already is a message for the field
-      const fieldMsgIdx = findIndex(errorMsgs, msg => msg.field === field.title);
+    // Get the current field
+    const fieldIdx = findIndex(this.props.fields, f => f.id === fieldId);
+    if (fieldIdx === -1) {
+      return;
+    }
+    const field = this.props.fields[fieldIdx];
 
-      // Add message
-      let fieldMsg;
-      if (fieldMsgIdx === -1) {
-        fieldMsg = {
-          field: field.title,
-          message: message
-        };
-      } else {
-        // Update message
-        fieldMsg = errorMsgs[fieldMsgIdx];
-        if (fieldMsg) {
-          fieldMsg.message = message;
-        }
-      }
+    // Check if there already is a message for the field
+    const fieldMsgIdx = findIndex(errorMsgs, msg => msg.field === field.title);
 
-      // Check if field required message needs to be shown
-      if (field.required) {
-        if (typeof crntItem[field.id] === "undefined" || crntItem[field.id] === null || crntItem[field.id] === "") {
-          fieldMsg.isRequired = true;
-        } else {
-          fieldMsg.isRequired = false;
-        }
-      }
-
-      // If required and message are false, it doesn't need to be added
-      if (!fieldMsg.message && !fieldMsg.isRequired) {
-        // Remove the item
-        if (fieldMsgIdx !== -1) {
-          errorMsgs.splice(fieldMsgIdx, 1);
-        }
-      } else {
-        if (fieldMsgIdx === -1) {
-          errorMsgs.push(fieldMsg);
-        }
-      }
-
-      // Sort based on the index
-      errorMsgs = sortBy(errorMsgs, ["field"]);
-
-      return {
-        errorMsgs
+    // Add message
+    let fieldMsg;
+    if (fieldMsgIdx === -1) {
+      fieldMsg = {
+        field: field.title,
+        message: message
       };
-    });
+    } else {
+      // Update message
+      fieldMsg = errorMsgs[fieldMsgIdx];
+      if (fieldMsg) {
+        fieldMsg.message = message;
+      }
+    }
+
+    // Check if field required message needs to be shown
+    if (field.required) {
+      if (typeof crntItem[field.id] === "undefined" || crntItem[field.id] === null || crntItem[field.id] === "") {
+        fieldMsg.isRequired = true;
+      } else {
+        fieldMsg.isRequired = false;
+      }
+    }
+
+    // If required and message are false, it doesn't need to be added
+    if (!fieldMsg.message && !fieldMsg.isRequired) {
+      // Remove the item
+      if (fieldMsgIdx !== -1) {
+        errorMsgs.splice(fieldMsgIdx, 1);
+      }
+    } else {
+      if (fieldMsgIdx === -1) {
+        errorMsgs.push(fieldMsg);
+      }
+    }
+
+    // Sort based on the index
+    errorMsgs = sortBy(errorMsgs, ["field"]);
+
+
+    if(!isEqual(this.state.errorMsgs, errorMsgs))
+    {      
+      this.setState({
+        errorMsgs
+      });
+    }
   }
 
   /**
@@ -419,15 +426,19 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
    * Default React render
    */
   public render(): React.ReactElement<ITreeCollectionDataItemProps> {
-    const { crntItem, disableAdd } = this.state;
+      
+   if(this.state.isLoading) return <div></div>;
+    
+   const { crntItem } = this.state;
     const opts = this.getSortingOptions();
-
+    
+    this.props
     return (
       <div className={`PropertyFieldTreeCollectionData__panel__table-row ${styles.tableRow} ${this.props.index === null ? styles.tableFooter : ""}`}>
         {
           (this.props.sortingEnabled && this.props.totalItems > 0)  && (
             <span className={`PropertyFieldTreeCollectionData__panel__sorting-field ${styles.tableCell}`}>
-              <Dropdown options={opts} selectedKey={this.props.index + 1} onChanged={(opt) => this.props.fOnSorting(this.props.parentKey, this.props.index, opt.key as number) } />
+              <Dropdown options={opts} selectedKey={this.props.index } onChange={(event,opt) => this.props.fOnSorting(this.props.parentKey, this.props.index - 1, opt.key as number) } />
             </span>
           )
         }
@@ -487,7 +498,7 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
               <Icon iconName="Clear" />
             </Link>)}
           
-            <Link title={strings.CollectionAddRowButtonLabel} className={`${disableAdd ? "" : styles.addBtn}`} disabled={disableAdd} onClick={async () => await this.addNode()}>
+            <Link title={strings.CollectionAddRowButtonLabel} className={`${ styles.addBtn}`}  onClick={async () => await this.addNode()}>
               <Icon iconName="Add" />
             </Link>
             
@@ -499,3 +510,8 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
     );
   }
 }
+
+
+/*
+
+*/

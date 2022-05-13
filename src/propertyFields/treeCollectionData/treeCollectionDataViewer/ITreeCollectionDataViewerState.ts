@@ -4,4 +4,5 @@ import { FieldValidator } from "..";
 export interface ITreeCollectionDataViewerState {
   crntItems: ITreeItem[];  
   validation?: FieldValidator;
+  isLoading:boolean;
 }

@@ -1,8 +1,4 @@
-export interface ICustomTreeItem {
- /**
-     * Unique key to identify tree item.
-     */
-  key: string; 
+export interface ICustomTreeItem { 
   /**
    * Additional data of the tree item.
    */

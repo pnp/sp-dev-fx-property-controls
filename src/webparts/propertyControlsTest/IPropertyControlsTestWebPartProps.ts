@@ -9,6 +9,7 @@ import {
 } from '../../PropertyFieldRoleDefinitionPicker';
 import { IPropertyFieldList } from '../../propertyFields/listPicker';
 import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
+import { ICustomTreeItem } from '../../propertyFields/treeCollectionData/ICustomTreeItem';
 import { IPropertyFieldTeam } from '../../PropertyFieldTeamPicker';
 import { IPickerTerms } from '../../PropertyFieldTermPicker';
 
@@ -40,7 +41,7 @@ export interface IPropertyControlsTestWebPartProps {
   checkboxWithCalloutValue: boolean;
   htmlCode: string;
   collectionData: any[];
-  treeCollectionData:any[];
+  treeCollectionData:ICustomTreeItem[];
   orderedItems: any[];
   swatchColor: string;
   enterpriseTerms: IPickerTerms;

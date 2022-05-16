@@ -5,7 +5,7 @@
   padding: 10px;
 }
 
-.noCollectionData {
+.styles.noTreeCollectionData {
   text-align: center;
 }
 
@@ -30,6 +30,10 @@
 
 .addBtn {
   color: $ms-color-themePrimary;
+  margin-left: 10px;
+}
+
+.addBtnDisabled {  
   margin-left: 10px;
 }
 

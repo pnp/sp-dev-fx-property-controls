@@ -6,12 +6,12 @@ export interface ITreeCollectionDataItemProps {
   itemKey:string;
   itemData?: any;
   parentKey:string;
-  sortingEnabled?: boolean;
+  enableSorting?: boolean;
   totalItems?: number;
   disableItemDeletion?: boolean;
+  disableItemCreation?: boolean;  
 
   fAddItem?: (parent:string, item: any) => void;
-  //fAddInCreation?: (item: ITreeItem, isValid: boolean) => void;
   fUpdateItem?: (key: string, item: any) => void;
   fDeleteItem?: (key: string, parentKey: string) => void;
   fValidation?: (key:string, isValid: boolean) => void;

@@ -135,6 +135,7 @@ import PropertyControlsTest from './components/PropertyControlsTest';
 import {
   IPropertyControlsTestWebPartProps,
 } from './IPropertyControlsTestWebPartProps';
+import { ITreeItem } from '@pnp/spfx-controls-react/lib/controls/treeView/ITreeItem';
 
 
 /**
@@ -1306,29 +1307,45 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   saveAndAddBtnLabel: "Save + Add button",
                   cancelBtnLabel: "Cancel button",
                   panelDescription: "This is the description which appears in the panel.",
-                  value: this.properties.treeCollectionData, //TODO
+                  value: this.properties.treeCollectionData, 
                   enableSorting: true,
                   disableItemDeletion: false,
                   disableItemCreation: false,
                   panelClassName: "MyAwesomePanelClassName",
                   tableClassName: "MyAwesomeTableClassName",                  
                   disabled: false,
-                  fields:[       {
-                    id: "Title",
-                    title: "Firstname",
-                    type: CustomCollectionFieldType.string,
-                    required: true,
-                    placeholder: "Enter the firstname",                                        
-                    disableEdit: false
-                  },
-                  {
-                    id: "Lastname",
-                    title: "Lastname",
-                    type: CustomCollectionFieldType.string,
-                    onGetErrorMessage: (value, index, currentItem) => {
-                      return value == 'Smith' && currentItem.City == 'antwerp' ? 'You cannot write Smith when City is Antwerp' : "";
+              
+                  fields: (item:ITreeItem)=> {
+
+                    if(item.data.level === 0)
+                    {
+                        return [ {
+                          id: "MyRootNode",
+                          title: "RootNodeValue",
+                          type: CustomCollectionFieldType.string,
+                          required: true,
+                          placeholder: "Enter the rootnode",                                        
+                          disableEdit: false
+                        }];
                     }
-                  },]
+
+                    return     [       {
+                      id: "Title",
+                      title: "Firstname",
+                      type: CustomCollectionFieldType.string,
+                      required: true,
+                      placeholder: "Enter the firstname",                                        
+                      disableEdit: false
+                    },
+                    {
+                      id: "Lastname",
+                      title: "Lastname",
+                      type: CustomCollectionFieldType.string,
+                      onGetErrorMessage: (value, index, currentItem) => {
+                        return value === 'Smith'  ? 'You cannot write Smith ' : "";
+                      }
+                    },]
+                  }                                  
                 }),
               ]
             },

@@ -180,6 +180,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         htmlCode: this.properties.htmlCode,
         collectionData: this.properties.collectionData,
         treeCollectionData: this.properties.treeCollectionData,
+        ruleTreeData: this.properties.ruleTreeData,
         orderedItems: this.properties.orderedItems,
         swatchColor: this.properties.swatchColor,
         enterpriseTerms: this.properties.enterpriseTerms || [],
@@ -1280,31 +1281,28 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   ],
                   disabled: false
                 }),
-           /*     PropertyFieldRuleTree("ruleCollectionData", {
+                PropertyFieldRuleTree("ruleTreeData", {
                   key: "ruleTree",
                   label: "Rule Tree",
                   panelHeader: "Rule Tree panel header",
                   manageBtnLabel: "Manage rule tree",
                   saveBtnLabel: "Save button",
-                  saveAndAddBtnLabel: "Save + Add button",
                   cancelBtnLabel: "Cancel button",
                   panelDescription: "This is the description which appears in the panel.",
-                  value: this.properties.treeCollectionData, //TODO
+                  value: this.properties.ruleTreeData, 
                   enableSorting: true,
                   disableItemDeletion: false,
                   disableItemCreation: false,
                   panelClassName: "MyAwesomePanelClassName",
                   tableClassName: "MyAwesomeTableClassName",                  
                   disabled: false
-                }),
-                ,*/
+                }),                
                 PropertyFieldTreeCollectionData("treeCollectionData", {
                   key: "treeCollection",
                   label: "Tree Collection",
                   panelHeader: "Tree collection panel header",
                   manageBtnLabel: "Manage tree collection",
                   saveBtnLabel: "Save button",
-                  saveAndAddBtnLabel: "Save + Add button",
                   cancelBtnLabel: "Cancel button",
                   panelDescription: "This is the description which appears in the panel.",
                   value: this.properties.treeCollectionData, 

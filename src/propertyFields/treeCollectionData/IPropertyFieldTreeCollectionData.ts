@@ -1,7 +1,7 @@
 import { IPropertyPaneCustomFieldProps } from "@microsoft/sp-property-pane";
 import { ITreeItem } from "@pnp/spfx-controls-react/lib/TreeView";
 import { ICustomCollectionField } from "../collectionData/ICustomCollectionField";
-import { ICustomTreeItem } from "./ICustomTreeItem";
+import { ICustomTreeData, ICustomTreeItem } from "./ICustomTreeItem";
 
 export interface IPropertyFieldTreeCollectionDataProps {
   /**
@@ -31,11 +31,7 @@ export interface IPropertyFieldTreeCollectionDataProps {
   /**
    * Label of the save button
    */
-  saveBtnLabel?: string;
-  /**
-   * Label of the save and add button
-   */
-  saveAndAddBtnLabel?: string;
+  saveBtnLabel?: string;  
   /**
    * The fields to be used for the list of collection data.
    * Fields can be the same for every level or a function that will determine the fields based on item? and level(depth of tree)
@@ -44,7 +40,7 @@ export interface IPropertyFieldTreeCollectionDataProps {
   /**
    * The collection data value.
    */
-  value: ICustomTreeItem[];
+  value: ICustomTreeItem<any>[];
   /**
    * Specify if you want to enable sorting
    */

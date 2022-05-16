@@ -13,6 +13,7 @@ import {
 } from '../../../PropertyFieldRoleDefinitionPicker';
 import { IPropertyFieldSite } from '../../../propertyFields/sitePicker';
 import { IPickerTerms } from '../../../PropertyFieldTermPicker';
+import { ICustomTreeItem } from '../../../propertyFields/treeCollectionData/ICustomTreeItem';
 
 export interface IPropertyControlsTestProps {
   password:string;
@@ -41,7 +42,8 @@ export interface IPropertyControlsTestProps {
   checkboxWithCalloutValue: boolean;
   htmlCode: string;
   collectionData: any[];
-  treeCollectionData: any[];
+  treeCollectionData: ICustomTreeItem<any>[];
+  ruleTreeData: any[];  
   orderedItems: any[];
   swatchColor: string;
   enterpriseTerms: IPickerTerms;

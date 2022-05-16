@@ -28,16 +28,8 @@ export interface IPropertyFieldRuleTreeProps {
   /**
    * Label of the save button
    */
-  saveBtnLabel?: string;
-  /**
-   * Label of the save and add button
-   */
-  saveAndAddBtnLabel?: string;
-  /**
-   * The fields to be used for the list of collection data.
-   * TODO
-   */
-  //fields: ICustomCollectionField[];
+  saveBtnLabel?: string;  
+  
   /**
    * The collection data value.
    */

@@ -7,9 +7,9 @@ import * as strings from 'PropertyControlStrings';
 import { cloneDeep } from '@microsoft/sp-lodash-subset';
 import { TreeView, ITreeItem } from "@pnp/spfx-controls-react/lib/TreeView";
 import { getGUID } from '@pnp/common';
-import { ICustomTreeItem } from '../ICustomTreeItem';
+import { ICustomTreeData, ICustomTreeItem } from '../ICustomTreeItem';
 
-export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDataViewerProps, ITreeCollectionDataViewerState> {
+export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.Component<ITreeCollectionDataViewerProps, ITreeCollectionDataViewerState> {
   private readonly SORT_IDX = "sortIdx";
 
   constructor(props: ITreeCollectionDataViewerProps) {
@@ -23,7 +23,7 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
   }
 
 
-  private initItemKeys = (item: ICustomTreeItem, key: string, parentKey: string, level: number, sortIdx: number): ITreeItem => {
+  private initItemKeys = (item: ICustomTreeItem<T>, key: string, parentKey: string, level: number, sortIdx: number): ITreeItem => {
     return {
       'key': key,
       'label': '', 'data': {
@@ -41,9 +41,9 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
    */
   public componentDidMount(): void {
     let crntItems = this.props.value ? cloneDeep(this.props.value) : [{ key: 'root', label: 'root', data: { parent: null, level: 0, value: {} }, children: [] },];
-
+    
     this.setState({
-      crntItems: [this.initItemKeys(crntItems[0], 'root', null, 0, 1)]
+      crntItems: [this.initItemKeys(crntItems[0] as ICustomTreeItem<T>, 'root', null, 0, 1)]
       , isLoading: false
     });
   }
@@ -67,6 +67,11 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
       const treeItem = this.findNode(crntItems, parentKey);
       const nItem: ITreeItem = { key: getGUID(), label: `${treeItem.children?.length ?? 0}`, data: { parent: treeItem.key, level: treeItem.data.level + 1, value: itemData, sortIdx: treeItem.children.length + 1 }, children: [] };
       treeItem.children.push(nItem);
+
+      if(this.props.onChanged)
+      {
+        this.props.onChanged(crntItems);
+      }
       return { crntItems, isLoading: false };
     });
   }
@@ -86,6 +91,10 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
       // Update the sort propety
       crntItems = this.updateSortProperty(crntItems);
 
+      if(this.props.onChanged)
+      {
+        this.props.onChanged(crntItems);
+      }
       return { crntItems, validation, isLoading: false };
     });
   }
@@ -99,6 +108,11 @@ export class TreeCollectionDataViewer extends React.Component<ITreeCollectionDat
       // Update the item in the array
       const treeItem = this.findNode(crntItems, key);
       treeItem.data.value = item;
+      
+      if(this.props.onChanged)
+      {
+        this.props.onChanged(crntItems);
+      }
       return { crntItems, isLoading: false };
     });
   }

@@ -35,6 +35,10 @@ export interface IPropertyFieldRuleTreeProps {
    */
   value: any[];
   /**
+   * Allow a forest
+   */
+   enableMultiRoots?: boolean;
+  /**
    * Specify if you want to enable sorting
    */
   enableSorting?: boolean;

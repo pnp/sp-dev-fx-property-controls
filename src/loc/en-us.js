@@ -78,6 +78,7 @@ define([], function () {
     TreeCollectionDataEmptyFields: "No fields were provided for the tree collection data.",
     TreeCollectionDataEmptyValue: "No data in your tree collection.",
     TreeCollectionAddNodeButtonLabel: "Add child node",
+    TreeCollectionAddRootButtonLabel: "Add root node",
     TreeCollectionDeleteNodeButtonLabel: "Delete the current node",
     TreeCollectionSaveAndAddButtonLabel: "Add and save",
     TreeCollectionDataItemShowErrorsLabel: "Show node errors",

@@ -1293,6 +1293,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   enableSorting: true,
                   disableItemDeletion: false,
                   disableItemCreation: false,
+                  enableMultiRoots:true,
                   panelClassName: "MyAwesomePanelClassName",
                   tableClassName: "MyAwesomeTableClassName",                  
                   disabled: false
@@ -1307,6 +1308,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   panelDescription: "This is the description which appears in the panel.",
                   value: this.properties.treeCollectionData, 
                   enableSorting: true,
+                  enableMultiRoots:true,
                   disableItemDeletion: false,
                   disableItemCreation: false,
                   panelClassName: "MyAwesomePanelClassName",

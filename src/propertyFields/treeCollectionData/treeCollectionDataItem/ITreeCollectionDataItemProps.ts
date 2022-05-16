@@ -11,7 +11,7 @@ export interface ITreeCollectionDataItemProps {
   disableItemDeletion?: boolean;
   disableItemCreation?: boolean;  
 
-  fAddItem?: (parent:string, item: any) => void;
+  fAddItem?: (parent:string) => void;
   fUpdateItem?: (key: string, item: any) => void;
   fDeleteItem?: (key: string, parentKey: string) => void;
   fValidation?: (key:string, isValid: boolean) => void;

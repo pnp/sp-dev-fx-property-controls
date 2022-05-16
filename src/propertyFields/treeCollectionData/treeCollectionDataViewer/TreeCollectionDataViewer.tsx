@@ -8,6 +8,8 @@ import { cloneDeep } from '@microsoft/sp-lodash-subset';
 import { TreeView, ITreeItem } from "@pnp/spfx-controls-react/lib/TreeView";
 import { getGUID } from '@pnp/common';
 import { ICustomTreeData, ICustomTreeItem } from '../ICustomTreeItem';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Link } from 'office-ui-fabric-react/lib/components/Link';
 
 export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.Component<ITreeCollectionDataViewerProps, ITreeCollectionDataViewerState> {
   private readonly SORT_IDX = "sortIdx";
@@ -21,7 +23,6 @@ export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.C
       isLoading: true
     };
   }
-
 
   private initItemKeys = (item: ICustomTreeItem<T>, key: string, parentKey: string, level: number, sortIdx: number): ITreeItem => {
     return {
@@ -40,61 +41,107 @@ export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.C
    * componentDidMount lifecycle hook
    */
   public componentDidMount(): void {
-    let crntItems = this.props.value ? cloneDeep(this.props.value) : [{ key: 'root', label: 'root', data: { parent: null, level: 0, value: {} }, children: [] },];
-    
+
     this.setState({
-      crntItems: [this.initItemKeys(crntItems[0] as ICustomTreeItem<T>, 'root', null, 0, 1)]
+      crntItems:  this.props.value ? 
+                                      cloneDeep(this.props.value).map( (rootItem,index) => this.initItemKeys(rootItem,  getGUID(), null, 0, index + 1)) 
+                                      : []
       , isLoading: false
     });
   }
 
-  private findNode = (tree: ITreeItem[], key: string) => {
-    const stack = [tree[0]];
-    while (stack.length) {
-      const node = stack.pop();
-      if (node.key === key) return node;
-      // tslint:disable-next-line:no-unused-expression
-      node.children && stack.push(...node.children);
+   /**
+   * Creates an empty item with a unique id
+   */
+    private fillEmptyItemDataDefaults(item:ITreeItem): any {
+      let fields;
+
+      if (typeof (this.props.fields) === 'function') {
+        fields = this.props.fields(item);
+      }
+      else {
+        fields = this.props.fields;
+      }
+      
+      for (const field of fields) {
+        // Assign default value or null to the emptyItem
+        item.data[field.id] = field.defaultValue || null;
+      }
+      return item;
     }
+    
+  private findNode = (tree: ITreeItem[], key: string) => {
+    for(let i = 0; i < tree.length;i++){
+      const stack = [tree[i]];
+      while (stack.length) {
+        const node = stack.pop();
+        if (node.key === key) return node;
+        // tslint:disable-next-line:no-unused-expression
+        node.children && stack.push(...node.children);
+      }
+  }
     return null;
   }
 
-  private addItem = async (parentKey: string, itemData: any) => {
+  private addNewItem = async (parentKey: string) => {
 
     this.setState((prevState: ITreeCollectionDataViewerState): ITreeCollectionDataViewerState => {
       const { crntItems } = prevState;
 
-      const treeItem = this.findNode(crntItems, parentKey);
-      const nItem: ITreeItem = { key: getGUID(), label: `${treeItem.children?.length ?? 0}`, data: { parent: treeItem.key, level: treeItem.data.level + 1, value: itemData, sortIdx: treeItem.children.length + 1 }, children: [] };
-      treeItem.children.push(nItem);
+      if(parentKey)
+      {
+        const treeItem = this.findNode(crntItems, parentKey);
+        const nItem: ITreeItem = {  key: getGUID(), 
+                                    label: `${treeItem.children?.length ?? 0}`, 
+                                    data: { parent: parentKey, level: treeItem.data.level + 1, value: {}, sortIdx: treeItem.children.length + 1 },
+                                    children: [] 
+                                  };
+        this.fillEmptyItemDataDefaults(nItem);
+        treeItem.children.push(nItem);
+      }else{
+        const nItem: ITreeItem = {  key: getGUID(), 
+          label: '', 
+          data: { parent: null, level: 0, value: {}, sortIdx: crntItems.length + 1 },
+          children: [] 
+        };
+        this.fillEmptyItemDataDefaults(nItem);
+        crntItems.push(nItem);
+      }
 
+      // TODO: its probably for getting immediate reactions on change without saving the data
+      // maybe if validation is ok, we can do it as well.
       if(this.props.onChanged)
       {
-        this.props.onChanged(crntItems);
+        // this.props.onChanged(crntItems);
       }
       return { crntItems, isLoading: false };
     });
   }
 
   private removeItem = async (key: string, parentKey: string) => {
-    if (!parent)
-      return;
+
 
     this.setState((prevState: ITreeCollectionDataViewerState): ITreeCollectionDataViewerState => {
       let { crntItems, validation } = prevState;
-      const parent = this.findNode(crntItems, parentKey);
-      parent.children = parent.children.filter(_ => key !== _.key);
+
+      if(parentKey)
+      {
+        const parent = this.findNode(crntItems, parentKey);
+        parent.children = parent.children.filter(_ => key !== _.key);      
+      }else{
+        crntItems = crntItems.filter(_=> _.key !== key);
+      }
 
       //crntItems.splice(idx, 1);
       delete validation[key];
-
       // Update the sort propety
       crntItems = this.updateSortProperty(crntItems);
 
       if(this.props.onChanged)
       {
-        this.props.onChanged(crntItems);
+       //   this.props.onChanged(crntItems);
       }
+      
       return { crntItems, validation, isLoading: false };
     });
   }
@@ -109,9 +156,10 @@ export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.C
       const treeItem = this.findNode(crntItems, key);
       treeItem.data.value = item;
       
+      //TODO
       if(this.props.onChanged)
       {
-        this.props.onChanged(crntItems);
+      //  this.props.onChanged(crntItems);
       }
       return { crntItems, isLoading: false };
     });
@@ -243,10 +291,10 @@ export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.C
       disableItemDeletion={this.props.disableItemDeletion}
       disableItemCreation={this.props.disableItemCreation}
       fUpdateItem={this.updateItem}
-      fDeleteItem={item.data.parent ? this.removeItem : undefined}
+      fDeleteItem={this.removeItem}
       fValidation={this.validateItem}
       fOnSorting={this.updateSortOrder}
-      fAddItem={this.addItem}
+      fAddItem={this.addNewItem}
     />;
   }
 
@@ -272,6 +320,19 @@ export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.C
           )
         }
 
+<span className={styles.tableCell}>
+        {
+          /* Check add or delete action */
+          
+           (
+          
+            <Link title={strings.TreeCollectionAddRootButtonLabel} className={`${this.props.disableItemCreation ? styles.addBtnDisabled : styles.addBtn}`}  
+                  disabled={( !this.props.enableMultiRoots && this.state.crntItems.length === 1) || this.props.disableItemCreation}   onClick={async () => await this.addNewItem(null)}>
+              <Icon iconName="Add" />
+            </Link>            
+            )
+        }
+        </span>
         <div className={`PropertyFieldTreeCollectionData__panel__actions ${styles.panelActions}`}>
           <PrimaryButton text={this.props.saveBtnLabel || strings.SaveButtonLabel} onClick={this.onSave} disabled={!this.allItemsValid()} className="PropertyFieldTreeCollectionData__panel__action__save" />
           <DefaultButton text={this.props.cancelBtnLabel || strings.CancelButtonLabel} onClick={this.onCancel} className="PropertyFieldTreeCollectionData__panel__action__cancel" />

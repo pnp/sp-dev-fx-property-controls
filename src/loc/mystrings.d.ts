@@ -93,6 +93,7 @@ declare interface IPropertyControlStrings {
   TreeCollectionDataEmptyFields: string;
   TreeCollectionDataEmptyValue: string;
   TreeCollectionAddNodeButtonLabel: string;
+  TreeCollectionAddRootButtonLabel: string;
   TreeCollectionDeleteNodeButtonLabel: string;
   TreeCollectionSaveAndAddButtonLabel: string;
   TreeCollectionDataItemShowErrorsLabel: string;

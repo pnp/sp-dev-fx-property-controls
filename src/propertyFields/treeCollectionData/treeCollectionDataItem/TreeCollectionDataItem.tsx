@@ -25,11 +25,9 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
 
   constructor(props: ITreeCollectionDataItemProps) {
     super(props);
-    // Create an empty item with all properties
-    let emptyItem = this.generateEmptyItem();
 
     this.state = {
-      crntItem: clone(this.props.itemData) || {...emptyItem},
+      crntItem: clone(this.props.itemData),
       errorMsgs: [],
       showCallout: false,      
       isLoading:true
@@ -160,8 +158,7 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
    */
   private addNode = async () => {
     if (this.props.fAddItem) {
-      let emptyItem = this.generateEmptyItem();                
-      this.props.fAddItem(this.props.itemKey, emptyItem);              
+      this.props.fAddItem(this.props.itemKey);              
     }
   }
 
@@ -415,19 +412,7 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
     return opts;
   }
 
-   /**
-   * Creates an empty item with a unique id
-   */
-  private generateEmptyItem(): any {
-    // Create an empty item with all properties
-    let emptyItem:any = {};
-
-    for (const field of this.props.fields) {
-      // Assign default value or null to the emptyItem
-      emptyItem[field.id] = field.defaultValue || null;
-    }
-    return emptyItem;
-  }
+  
 
   /**
    * Default React render
@@ -500,9 +485,9 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
         {
           /* Check add or delete action */
           
-           (<>  { this.props.parentKey && (<Link title={strings.TreeCollectionDeleteNodeButtonLabel} disabled={!this.props.fDeleteItem || this.props.disableItemDeletion} onClick={this.deleteNode}>
+           (<>  <Link title={strings.TreeCollectionDeleteNodeButtonLabel} disabled={!this.props.fDeleteItem || this.props.disableItemDeletion} onClick={this.deleteNode}>
               <Icon iconName="Clear" />
-            </Link>)}
+            </Link>
           
             <Link title={strings.TreeCollectionAddNodeButtonLabel} className={`${this.props.disableItemCreation ? styles.addBtnDisabled : styles.addBtn}`}  disabled={!this.props.fAddItem || this.props.disableItemCreation}   onClick={async () => await this.addNode()}>
               <Icon iconName="Add" />

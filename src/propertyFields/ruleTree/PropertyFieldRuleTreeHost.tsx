@@ -7,7 +7,7 @@ import { Label } from 'office-ui-fabric-react/lib/components/Label';
 import * as strings from 'PropertyControlStrings';
 import { TreeCollectionDataViewer } from '../treeCollectionData/treeCollectionDataViewer/TreeCollectionDataViewer';
 import { CustomCollectionFieldType, ICustomCollectionField } from '../collectionData/ICustomCollectionField';
-import { RuleTreeBaseOperator } from './ruleTreeBaseOperator';
+import { RuleTreeBaseOperator } from './RuleTreeBaseOperator';
 import { ICustomTreeData, ICustomTreeItem } from '../treeCollectionData/ICustomTreeItem';
 
 export interface IRuleTreeData extends ICustomTreeData  {

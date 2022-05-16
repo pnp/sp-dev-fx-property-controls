@@ -41,7 +41,6 @@ export class PropertyFieldTreeCollectionDataHost extends React.Component<IProper
    * On save action
    */
   private onSave = (items: any[]) => {
-    console.log("saving", items);
     this.props.onChanged(items);
     this.setState({
       panelOpen: false

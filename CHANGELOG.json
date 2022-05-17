@@ -9,9 +9,12 @@
         "enhancements": [
           "`PropertyFieldSitePicker`: Site Picker search for any input string [#386](https://github.com/pnp/sp-dev-fx-property-controls/pull/386)"
         ],
-        "fixes": []
+        "fixes": [
+          "`PropertyFieldListPicker`: Remove debugger [#455](https://github.com/pnp/sp-dev-fx-property-controls/pull/455)"          
+        ]
       },
       "contributions": [
+        "[Markus Langer](https://github.com/MarkusLanger)",
         "[Milan Holemans](https://github.com/milanholemans)",
         "[Peter Cox](https://github.com/PeterWCox)"
       ]

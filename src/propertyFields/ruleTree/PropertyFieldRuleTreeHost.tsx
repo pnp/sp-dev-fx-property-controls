@@ -10,10 +10,10 @@ import { CustomCollectionFieldType, ICustomCollectionField } from '../collection
 import { RuleTreeBaseOperator } from './RuleTreeBaseOperator';
 import { ICustomTreeData, ICustomTreeItem } from '../treeCollectionData/ICustomTreeItem';
 
-export interface IRuleTreeData extends ICustomTreeData  {
-  leftHand:string;
-  operation:RuleTreeBaseOperator;
-  rightHand:string;
+export interface IRuleTreeData extends ICustomTreeData {
+  leftHand: string;
+  operation: RuleTreeBaseOperator;
+  rightHand: string;
   conjunction: 'AND' | 'OR'
 }
 
@@ -23,7 +23,7 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
 
     this.state = {
       panelOpen: false,
-      items:[]
+      items: []
     };
 
     telemetry.track('PropertyFieldCollectionData', {});
@@ -60,111 +60,111 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
 
   private readonly fields: ICustomCollectionField[] = [{
     id: 'leftHand',
-    title:"Left Hand", // commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Name,
+    title: "Left Hand", // commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Name,
     type: CustomCollectionFieldType.string,
-    required:true,    
-},
-{
+    required: true,
+  },
+  {
     id: 'operator',
     title: "Operator", //commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Id,
-    type: CustomCollectionFieldType.dropdown,                        
+    type: CustomCollectionFieldType.dropdown,
     options: [{
-            key: "Eq",
-            text: "Eq",            
-        },
-        {
-            key: "Ne",
-            text: "Ne"
-        },
-        {
-            key: "In",
-            text: 'In'
-        }
-        ,
-        {
-            key: "NotIn",
-            text: 'NotIn'
-        }
-    ],    
-    required:true
-},
-{
+      key: "Eq",
+      text: "Eq",
+    },
+    {
+      key: "Ne",
+      text: "Ne"
+    },
+    {
+      key: "In",
+      text: 'In'
+    }
+      ,
+    {
+      key: "NotIn",
+      text: 'NotIn'
+    }
+    ],
+    required: true
+  },
+  {
     id: 'rightHand',
     title: "Right Hand", //commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Name,
     type: CustomCollectionFieldType.string
-},
-{
+  },
+  {
     id: 'conjunction',
     title: "Conjunction", //commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Id,
-    type: CustomCollectionFieldType.dropdown,                        
+    type: CustomCollectionFieldType.dropdown,
     options: [{
-            key: "AND",
-            text: "AND",            
-            selected:true
-        },
-        {
-            key: "OR",
-            text: "OR"
-        }
-    ],    
-    required:true
-},
-];
+      key: "AND",
+      text: "AND",
+      selected: true
+    },
+    {
+      key: "OR",
+      text: "OR"
+    }
+    ],
+    required: true
+  },
+  ];
 
   private evaluateRules = () => {
-/*
-    for (const rule of this.properties.targetAudienceRules) {                
-      const leftHand = await this.tokenService.resolveTokens(rule.leftHand);
-      const rightHand = await this.tokenService.resolveTokens(rule.rightHand);                    
-     console.log("X:",`'${leftHand}' ${rule.operator} '${rightHand}'`);
-      switch((<any>RuleTreeBaseOperator)[rule.operator])
-      {
-          case RuleTreeBaseOperator.Eq:
-              this._showWebpartFromAudienceSetting = isEqual(leftHand,rightHand);
-          break;
-
-          case TagetAudianceRuleOperator.Neq:
-              this._showWebpartFromAudienceSetting = !isEqual(leftHand,rightHand);
-          break;
-
-          case TagetAudianceRuleOperator.In:
-              this._showWebpartFromAudienceSetting = rightHand?.split(',').includes(leftHand);
-          break;
-
-          case TagetAudianceRuleOperator.NotIn:
-              this._showWebpartFromAudienceSetting = !rightHand?.split(',').includes(leftHand);
-          break;
-          default:
-              console.error("Unknown op", rule.operator);
-      }
-      
-      if(this._showWebpartFromAudienceSetting) {
-          console.log("this._showWebpartFromAudienceSetting",this._showWebpartFromAudienceSetting);
-          break;
+    /*
+        for (const rule of this.properties.targetAudienceRules) {                
+          const leftHand = await this.tokenService.resolveTokens(rule.leftHand);
+          const rightHand = await this.tokenService.resolveTokens(rule.rightHand);                    
+         console.log("X:",`'${leftHand}' ${rule.operator} '${rightHand}'`);
+          switch((<any>RuleTreeBaseOperator)[rule.operator])
+          {
+              case RuleTreeBaseOperator.Eq:
+                  this._showWebpartFromAudienceSetting = isEqual(leftHand,rightHand);
+              break;
+    
+              case TagetAudianceRuleOperator.Neq:
+                  this._showWebpartFromAudienceSetting = !isEqual(leftHand,rightHand);
+              break;
+    
+              case TagetAudianceRuleOperator.In:
+                  this._showWebpartFromAudienceSetting = rightHand?.split(',').includes(leftHand);
+              break;
+    
+              case TagetAudianceRuleOperator.NotIn:
+                  this._showWebpartFromAudienceSetting = !rightHand?.split(',').includes(leftHand);
+              break;
+              default:
+                  console.error("Unknown op", rule.operator);
+          }
           
-      }else{
-          this._failedAudienceRule.push(`'${leftHand}' ${rule.operator} '${rightHand}'`);                        
-      }
-    }
-*/
+          if(this._showWebpartFromAudienceSetting) {
+              console.log("this._showWebpartFromAudienceSetting",this._showWebpartFromAudienceSetting);
+              break;
+              
+          }else{
+              this._failedAudienceRule.push(`'${leftHand}' ${rule.operator} '${rightHand}'`);                        
+          }
+        }
+    */
   }
 
 
-  private itemsToText =  (items:ICustomTreeItem<IRuleTreeData>[])=>{
-    console.log("totext",items);
-    
+  private itemsToText = (items: ICustomTreeItem<IRuleTreeData>[]) => {
+    console.log("totext", JSON.stringify(items));
+
     const res = items?.map(item => {
-        `${item.data.leftHand} ${item.data.operation} ${item.data.rightHand} ${this.itemsToText(item.children)}`
+      `${item.data.leftHand} ${item.data.operation} ${item.data.rightHand} ${this.itemsToText(item.children)}`
     }).join(' ');
 
 
-console.log("res",res);
-    return res ;
+    console.log("res", res);
+    return res;
   }
 
-  private itemsUpdated = (items:any)=>{
-    console.log("items",items);
-    this.setState({items});
+  private itemsUpdated = (items: any) => {
+    console.log("items", items);
+    this.setState({ items });
   }
 
 
@@ -177,7 +177,8 @@ console.log("res",res);
           onClick={this.openPanel}
           disabled={this.props.disabled} />
 
-        <Panel isOpen={this.state.panelOpen}
+
+        {this.state.panelOpen && <Panel isOpen={this.state.panelOpen}
           onDismiss={this.closePanel}
           type={PanelType.large}
           headerText={this.props.panelHeader}
@@ -189,16 +190,14 @@ console.log("res",res);
             )
           }
 
-          <TreeCollectionDataViewer {...this.props} fields={this.fields} fOnSave={this.onSave} fOnClose={this.closePanel} onChanged={this.itemsUpdated}/>
+          <TreeCollectionDataViewer {...this.props} fields={this.fields} fOnSave={this.onSave} fOnClose={this.closePanel} onChanged={this.itemsUpdated} />
 
           <div>
             {this.itemsToText(this.state.items)}
           </div>
 
-        </Panel>
+        </Panel>}
       </div>
     );
   }
 }
-
-// Can we show status ?

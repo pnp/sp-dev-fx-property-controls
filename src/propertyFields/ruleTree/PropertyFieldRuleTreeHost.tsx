@@ -4,18 +4,14 @@ import { IPropertyFieldRuleTreeHostProps, IPropertyFieldRuleTreeHostState } from
 import { DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/components/Panel';
 import { Label } from 'office-ui-fabric-react/lib/components/Label';
+import {Text } from 'office-ui-fabric-react/lib/components/Text';
 import * as strings from 'PropertyControlStrings';
 import { TreeCollectionDataViewer } from '../treeCollectionData/treeCollectionDataViewer/TreeCollectionDataViewer';
 import { CustomCollectionFieldType, ICustomCollectionField } from '../collectionData/ICustomCollectionField';
 import { RuleTreeBaseOperator } from './RuleTreeBaseOperator';
-import { ICustomTreeData, ICustomTreeItem } from '../treeCollectionData/ICustomTreeItem';
-
-export interface IRuleTreeData extends ICustomTreeData {
-  leftHand: string;
-  operation: RuleTreeBaseOperator;
-  rightHand: string;
-  conjunction: 'AND' | 'OR'
-}
+import {  ICustomTreeItem } from '../treeCollectionData/ICustomTreeItem';
+import { IRuleTreeData } from './IRuleTreeData';
+import { ITreeItem } from '@pnp/spfx-controls-react/lib/TreeView';
 
 export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRuleTreeHostProps, IPropertyFieldRuleTreeHostState> {
   constructor(props: IPropertyFieldRuleTreeHostProps) {
@@ -29,6 +25,10 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
     telemetry.track('PropertyFieldCollectionData', {});
   }
 
+  componentDidUpdate(prevProps: Readonly<IPropertyFieldRuleTreeHostProps>, prevState: Readonly<IPropertyFieldRuleTreeHostState>, snapshot?: any): void {
+    console.log('props',prevProps,this.props);
+    console.log('state',prevState,this.state);
+  }
   /**
    * Open the panel
    */
@@ -58,7 +58,7 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
   }
 
 
-  private readonly fields: ICustomCollectionField[] = [{
+  private readonly standardFields: ICustomCollectionField[] = [{
     id: 'leftHand',
     title: "Left Hand", // commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Name,
     type: CustomCollectionFieldType.string,
@@ -69,21 +69,21 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
     title: "Operator", //commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Id,
     type: CustomCollectionFieldType.dropdown,
     options: [{
-      key: "Eq",
-      text: "Eq",
+      key: "EQ",
+      text: "EQ",
     },
     {
-      key: "Ne",
-      text: "Ne"
+      key: "NE",
+      text: "NE"
     },
     {
-      key: "In",
-      text: 'In'
+      key: "IN",
+      text: 'IN'
     }
       ,
     {
-      key: "NotIn",
-      text: 'NotIn'
+      key: "NOTIN",
+      text: 'NOTIN'
     }
     ],
     required: true
@@ -92,24 +92,34 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
     id: 'rightHand',
     title: "Right Hand", //commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Name,
     type: CustomCollectionFieldType.string
-  },
-  {
-    id: 'conjunction',
-    title: "Conjunction", //commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Id,
-    type: CustomCollectionFieldType.dropdown,
-    options: [{
-      key: "AND",
-      text: "AND",
-      selected: true
-    },
-    {
-      key: "OR",
-      text: "OR"
-    }
-    ],
-    required: true
-  },
+  },  
   ];
+  
+
+  private getFields = (item: ITreeItem, items: ITreeItem[],parentItem: ITreeItem):ICustomCollectionField[] => {
+
+    if( (item.data.sortIdx < parentItem?.children?.length ?? 0) || ( !parentItem && item.data.sortIdx < items.length))
+    {
+      return this.standardFields.concat({
+        id: 'conjunction',
+        title: "Conjunction", //commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Id,
+        type: CustomCollectionFieldType.dropdown,
+        options: [{
+          key: "AND",
+          text: "AND",
+          selected: true
+        },
+        {
+          key: "OR",
+          text: "OR"
+        }
+        ],
+        required: true
+      },)
+    }
+
+    return this.standardFields;
+  }
 
   private evaluateRules = () => {
     /*
@@ -153,12 +163,8 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
   private itemsToText = (items: ICustomTreeItem<IRuleTreeData>[]) => {
     console.log("totext", JSON.stringify(items));
 
-    const res = items?.map(item => {
-      `${item.data.leftHand} ${item.data.operation} ${item.data.rightHand} ${this.itemsToText(item.children)}`
-    }).join(' ');
+    const res = items?.map(item =>`${item.data.value.leftHand} ${item.data.value.operator} ${item.data.value.rightHand} ${item.data.value.conjunction} ${ item.children?.length ?? 0 > 0 ? '(' + this.itemsToText(item.children) + ')' : '' }`).join(' ');
 
-
-    console.log("res", res);
     return res;
   }
 
@@ -169,6 +175,7 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
 
 
   public render(): JSX.Element {
+    const text = this.itemsToText(this.state.items);
     return (
       <div>
         <Label>{this.props.label}</Label>
@@ -190,10 +197,10 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
             )
           }
 
-          <TreeCollectionDataViewer {...this.props} fields={this.fields} fOnSave={this.onSave} fOnClose={this.closePanel} onChanged={this.itemsUpdated} />
+          <TreeCollectionDataViewer {...this.props} fields={this.getFields} fOnSave={this.onSave} fOnClose={this.closePanel} onChanged={this.itemsUpdated} />
 
           <div>
-            {this.itemsToText(this.state.items)}
+            <Text>{text}</Text>
           </div>
 
         </Panel>}

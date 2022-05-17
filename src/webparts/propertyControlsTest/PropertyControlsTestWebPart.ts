@@ -1293,7 +1293,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   enableSorting: true,
                   disableItemDeletion: false,
                   disableItemCreation: false,
-                  enableMultiRoots:true,
+                  enableMultiRoots: true,
                   panelClassName: "MyAwesomePanelClassName",
                   tableClassName: "MyAwesomeTableClassName",                  
                   disabled: false

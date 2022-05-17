@@ -47,6 +47,12 @@ export class PropertyFieldTreeCollectionDataHost extends React.Component<IProper
     });
   }
 
+  private itemsUpdated = (items: any) => {
+    console.log("items", items);
+    //this.setState({ items });
+    //this.props.onChanged(items);
+  }
+
   public render(): JSX.Element {
     return (
       <div>
@@ -72,7 +78,7 @@ export class PropertyFieldTreeCollectionDataHost extends React.Component<IProper
             )
           }
 
-          <TreeCollectionDataViewer {...this.props} fOnSave={this.onSave} fOnClose={this.closePanel} />
+          <TreeCollectionDataViewer {...this.props} fOnSave={this.onSave} fOnClose={this.closePanel} onChanged={this.itemsUpdated} />
         </Panel>
       </div>
     );

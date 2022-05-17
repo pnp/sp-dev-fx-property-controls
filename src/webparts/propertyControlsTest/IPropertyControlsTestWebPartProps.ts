@@ -8,6 +8,7 @@ import {
   IRoleDefinitionInformation,
 } from '../../PropertyFieldRoleDefinitionPicker';
 import { IPropertyFieldList } from '../../propertyFields/listPicker';
+import { IRuleTreeData } from '../../propertyFields/ruleTree/IRuleTreeData';
 import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
 import { ICustomTreeItem } from '../../propertyFields/treeCollectionData/ICustomTreeItem';
 import { IPropertyFieldTeam } from '../../PropertyFieldTeamPicker';
@@ -42,7 +43,7 @@ export interface IPropertyControlsTestWebPartProps {
   htmlCode: string;
   collectionData: any[];
   treeCollectionData:ICustomTreeItem<any>[];
-  ruleTreeData:any[];
+  ruleTreeData:ICustomTreeItem<IRuleTreeData>[];
   orderedItems: any[];
   swatchColor: string;
   enterpriseTerms: IPickerTerms;

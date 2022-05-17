@@ -11,7 +11,7 @@ import { ICustomTreeData, ICustomTreeItem } from '../ICustomTreeItem';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 
-export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.Component<ITreeCollectionDataViewerProps, ITreeCollectionDataViewerState> {
+export class TreeCollectionDataViewer<T> extends React.Component<ITreeCollectionDataViewerProps, ITreeCollectionDataViewerState> {
   private readonly SORT_IDX = "sortIdx";
 
   constructor(props: ITreeCollectionDataViewerProps) {
@@ -28,10 +28,10 @@ export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.C
     return {
       'key': key,
       'label': '', 'data': {
-        ...item.data, //TODO clean data if we got from const fields to dynamic fields?
-        "parent": parentKey,
-        "level": level,
-        "sortIdx": sortIdx
+        'value':item.data.value, //TODO clean data if we got from const fields to dynamic fields?
+        'parent': parentKey,
+        'level': level,
+        'sortIdx': sortIdx
       },
       'children': item.children?.map((childItem, childIndex) => this.initItemKeys(childItem, getGUID(), key, level + 1, childIndex + 1))
     };
@@ -53,11 +53,11 @@ export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.C
    /**
    * Creates an empty item with a unique id
    */
-    private fillEmptyItemDataDefaults(item:ITreeItem): any {
+    private fillEmptyItemDataDefaults(item:ITreeItem,parentItem?:ITreeItem): any {
       let fields;
 
       if (typeof (this.props.fields) === 'function') {
-        fields = this.props.fields(item);
+        fields = this.props.fields(cloneDeep(item), cloneDeep(this.state.crntItems),parentItem ?  cloneDeep(parentItem) : null);
       }
       else {
         fields = this.props.fields;
@@ -65,7 +65,7 @@ export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.C
       
       for (const field of fields) {
         // Assign default value or null to the emptyItem
-        item.data[field.id] = field.defaultValue || null;
+        item.data.value[field.id] = field.defaultValue || null;
       }
       return item;
     }
@@ -96,7 +96,7 @@ export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.C
                                     data: { parent: parentKey, level: treeItem.data.level + 1, value: {}, sortIdx: treeItem.children.length + 1 },
                                     children: [] 
                                   };
-        this.fillEmptyItemDataDefaults(nItem);
+        this.fillEmptyItemDataDefaults(nItem,treeItem);
         treeItem.children.push(nItem);
       }else{
         const nItem: ITreeItem = {  key: getGUID(), 
@@ -108,11 +108,9 @@ export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.C
         crntItems.push(nItem);
       }
 
-      // TODO: its probably for getting immediate reactions on change without saving the data
-      // maybe if validation is ok, we can do it as well.
       if(this.props.onChanged)
       {
-        // this.props.onChanged(crntItems);
+         this.props.onChanged(crntItems);
       }
       return { crntItems, isLoading: false };
     });
@@ -139,7 +137,7 @@ export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.C
 
       if(this.props.onChanged)
       {
-       //   this.props.onChanged(crntItems);
+          this.props.onChanged(crntItems);
       }
       
       return { crntItems, validation, isLoading: false };
@@ -156,10 +154,10 @@ export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.C
       const treeItem = this.findNode(crntItems, key);
       treeItem.data.value = item;
       
-      //TODO
       if(this.props.onChanged)
       {
-      //  this.props.onChanged(crntItems);
+        console.log("this.props.onChanged", crntItems, key, item);
+        this.props.onChanged(crntItems);
       }
       return { crntItems, isLoading: false };
     });
@@ -270,7 +268,7 @@ export class TreeCollectionDataViewer<T extends ICustomTreeData> extends React.C
     let fields;
 
     if (typeof (this.props.fields) === 'function') {
-      fields = this.props.fields(item);
+      fields = this.props.fields(cloneDeep(item),   cloneDeep(this.state.crntItems), item.data.parent?  cloneDeep(this.findNode(this.state.crntItems, item.data.parentKey)) : null);
     }
     else {
       fields = this.props.fields;

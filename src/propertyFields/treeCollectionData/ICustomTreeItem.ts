@@ -1,16 +1,16 @@
 
-export interface ICustomTreeData
+export interface ICustomTreeData<T>
 {
   parent:string;
   level:number;
-  value:{};
+  value: T;
 }
 
-export interface ICustomTreeItem<T extends ICustomTreeData> { 
+export interface ICustomTreeItem<T> { 
   /**
    * Additional data of the tree item.
    */
-  data: T;
+  data: ICustomTreeData<T>;
   /**
    * List of child tree items.
    */

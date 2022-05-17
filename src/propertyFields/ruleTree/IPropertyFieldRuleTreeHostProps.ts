@@ -1,5 +1,6 @@
-import { IPropertyFieldRuleTreeProps as IPropertyFieldRuleTreeProps, IRuleTreeData } from '.';
+import { IPropertyFieldRuleTreeProps as IPropertyFieldRuleTreeProps } from '.';
 import { ICustomTreeItem } from '../treeCollectionData/ICustomTreeItem';
+import { IRuleTreeData } from './IRuleTreeData';
 
 /**
  * PropertyFieldCollectionDataHost properties interface

@@ -36,7 +36,7 @@ export interface IPropertyFieldTreeCollectionDataProps {
    * The fields to be used for the list of collection data.
    * Fields can be the same for every level or a function that will determine the fields based on item? and level(depth of tree)
    */
-  fields: ICustomCollectionField[] |  ((item: ITreeItem) => ICustomCollectionField[]);
+  fields: ICustomCollectionField[] |  ((item: ITreeItem,  items: ITreeItem[], parentItem?: ITreeItem) => ICustomCollectionField[]);
   /**
    * The collection data value.
    */

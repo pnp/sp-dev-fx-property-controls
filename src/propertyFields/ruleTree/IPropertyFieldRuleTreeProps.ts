@@ -1,4 +1,6 @@
 import { IPropertyPaneCustomFieldProps } from "@microsoft/sp-property-pane";
+import { ICustomTreeItem } from "../treeCollectionData/ICustomTreeItem";
+import { IRuleTreeData } from "./IRuleTreeData";
 
 export interface IPropertyFieldRuleTreeProps {
   /**
@@ -29,11 +31,14 @@ export interface IPropertyFieldRuleTreeProps {
    * Label of the save button
    */
   saveBtnLabel?: string;  
-  
   /**
-   * The collection data value.
+   * The custom tree data
    */
-  value: any[];
+  value: ICustomTreeItem<IRuleTreeData>[];
+  /**
+   * 
+   */
+  serviceInterfaceObject: {};
   /**
    * Allow a forest
    */

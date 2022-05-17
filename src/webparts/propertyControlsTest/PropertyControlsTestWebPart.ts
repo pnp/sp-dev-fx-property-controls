@@ -1289,7 +1289,13 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   saveBtnLabel: "Save button",
                   cancelBtnLabel: "Cancel button",
                   panelDescription: "This is the description which appears in the panel.",
-                  value: this.properties.ruleTreeData, 
+                  value: this.properties.ruleTreeData,
+                  serviceInterfaceObject: {
+                    "test":{},
+                    "master":{
+                        "desaster":{}
+                    }
+                  },
                   enableSorting: true,
                   disableItemDeletion: false,
                   disableItemCreation: false,

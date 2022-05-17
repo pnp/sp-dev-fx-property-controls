@@ -189,9 +189,26 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
     this.setState({ items });
   }
 
+  private getTokens = (tokenObject:any)=>{
+    const names = [];
+    let w;
+
+    for (const objName in tokenObject) {       
+        names.push(<li>{objName} {this.getTokens(tokenObject[objName])}</li>);
+    }
+
+    if(names)
+    {
+      return <ul>{names}</ul>
+    }
+    return <></>;
+  }
 
   public render(): JSX.Element {
     const text = this.itemsToText(this.state.items);
+
+    const tokens = this.getTokens(this.props.serviceInterfaceObject);
+
     return (
       <div>
         <Label>{this.props.label}</Label>
@@ -218,6 +235,11 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
           <div>
             <Label>Debug:</Label>
             <Text>{text}</Text>
+          </div>
+          <div>
+            <Label>Known Tokens</Label>
+            {tokens}              
+            
           </div>
 
         </Panel>}

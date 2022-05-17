@@ -89,7 +89,6 @@ export default class SPListPickerService {
      
    
       if (this.props.contentTypeId) {
-        debugger;
         const testct=this.props.contentTypeId.toUpperCase();
         lists.value = lists.value.filter((l) => {
           for (let ct of l.ContentTypes) {

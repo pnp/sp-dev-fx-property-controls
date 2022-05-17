@@ -494,7 +494,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                         return (
                           React.createElement("div", null,
                             React.createElement("input", {
-                              itemKey: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+                              key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
                                 if (event.currentTarget.value === "error") {
                                   onError(field.id, "Value shouldn't be equal to error");
                                 } else {
@@ -524,7 +524,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
                         return (
                           React.createElement("div", null,
-                            React.createElement("input", { itemKey: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+                            React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
                                 onError(field.id, "Value shouldn't be equal to error");
                             }}), " 🎉"
                           )
@@ -1253,7 +1253,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                         return (
                           React.createElement("div", null,
                             React.createElement("input", {
-                              itemKey: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+                              key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
                                 onUpdate(field.id, event.currentTarget.value);
                                 if (event.currentTarget.value === "error") {
                                   onError(field.id, "Value shouldn't be equal to error");

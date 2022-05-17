@@ -3,6 +3,7 @@ export interface ICustomTreeData<T>
 {
   parent:string;
   level:number;
+  sortIdx:number;
   value: T;
 }
 

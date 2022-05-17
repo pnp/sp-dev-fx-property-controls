@@ -146,6 +146,11 @@
   }
 }
 
+
+.tableRowEven { background-color: $ms-color-neutralLight;}
+.tableRowOdd { background-color: $ms-color-neutralLighterAlt;}
+
+
 .tableCell {
   display: table-cell;
   padding: 0 10px;

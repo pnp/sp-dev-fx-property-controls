@@ -25,10 +25,6 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
     telemetry.track('PropertyFieldCollectionData', {});
   }
 
-  componentDidUpdate(prevProps: Readonly<IPropertyFieldRuleTreeHostProps>, prevState: Readonly<IPropertyFieldRuleTreeHostState>, snapshot?: any): void {
-    console.log('props',prevProps,this.props);
-    console.log('state',prevState,this.state);
-  }
   /**
    * Open the panel
    */
@@ -68,9 +64,11 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
     id: 'operator',
     title: "Operator", //commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Id,
     type: CustomCollectionFieldType.dropdown,
+    defaultValue:"EQ",
     options: [{
       key: "EQ",
       text: "EQ",
+      selected:true
     },
     {
       key: "NE",
@@ -94,11 +92,10 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
     type: CustomCollectionFieldType.string
   },  
   ];
-  
 
-  private getFields = (item: ITreeItem, items: ITreeItem[],parentItem: ITreeItem):ICustomCollectionField[] => {
+  private getFields = (item: ITreeItem, items: ITreeItem[], parentItem: ITreeItem):ICustomCollectionField[] => {
 
-    if( (item.data.sortIdx < parentItem?.children?.length ?? 0) || ( !parentItem && item.data.sortIdx < items.length))
+  /*  if( (item.children?.length ?? 0 > 0) || (item.data.sortIdx < (parentItem?.children?.length ?? 0) ) || ( !parentItem && item.data.sortIdx < items.length))
     {
       return this.standardFields.concat({
         id: 'conjunction',
@@ -116,8 +113,30 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
         ],
         required: true
       },)
+    }*/
+    
+    if( parentItem
+         || item.data.sortIdx > 1
+        )
+    {
+      return  [{
+        id: 'conjunction',
+        title: "Conjunction", //commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Id,
+        type: CustomCollectionFieldType.dropdown,
+        defaultValue:'AND',
+        options: [{
+          key: "AND",
+          text: "AND",
+          selected: true
+        },
+        {
+          key: "OR",
+          text: "OR"
+        }
+        ],
+        required: true
+      }, ...this.standardFields]
     }
-
     return this.standardFields;
   }
 
@@ -161,15 +180,12 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
 
 
   private itemsToText = (items: ICustomTreeItem<IRuleTreeData>[]) => {
-    console.log("totext", JSON.stringify(items));
-
-    const res = items?.map(item =>`${item.data.value.leftHand} ${item.data.value.operator} ${item.data.value.rightHand} ${item.data.value.conjunction} ${ item.children?.length ?? 0 > 0 ? '(' + this.itemsToText(item.children) + ')' : '' }`).join(' ');
-
+  
+    const res = items?.map(item =>`${(item.data.value.conjunction && item.data.sortIdx > 1) ? item.data.value.conjunction: ''  } ${item.data.value.leftHand} ${item.data.value.operator} ${item.data.value.rightHand} ${ item.children?.length ?? 0 > 0 ? `${item.children[0].data.value.conjunction}` + '(' + this.itemsToText(item.children) + ')' : '' }`).join(' ');
     return res;
   }
 
   private itemsUpdated = (items: any) => {
-    console.log("items", items);
     this.setState({ items });
   }
 
@@ -200,6 +216,7 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
           <TreeCollectionDataViewer {...this.props} fields={this.getFields} fOnSave={this.onSave} fOnClose={this.closePanel} onChanged={this.itemsUpdated} />
 
           <div>
+            <Label>Debug:</Label>
             <Text>{text}</Text>
           </div>
 

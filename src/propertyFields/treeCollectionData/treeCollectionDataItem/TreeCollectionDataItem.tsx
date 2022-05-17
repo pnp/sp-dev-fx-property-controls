@@ -425,7 +425,7 @@ export class TreeCollectionDataItem extends React.Component<ITreeCollectionDataI
     const opts = this.getSortingOptions();
         
     return (
-      <div className={`PropertyFieldTreeCollectionData__panel__table-row ${styles.tableRow} ${this.props.index === null ? styles.tableFooter : ""}`}>
+      <div className={`PropertyFieldTreeCollectionData__panel__table-row ${styles.tableRow} ${(this.props.level % 2 === 0) ? styles.tableRowEven: styles.tableRowOdd} ${this.props.index === null ? styles.tableFooter : ""}`}>
         {
           (this.props.enableSorting && this.props.totalItems > 1)  && (
             <span className={`PropertyFieldTreeCollectionData__panel__sorting-field ${styles.tableCell}`}>

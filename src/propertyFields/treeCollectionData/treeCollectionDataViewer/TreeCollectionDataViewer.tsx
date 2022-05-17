@@ -57,7 +57,7 @@ export class TreeCollectionDataViewer<T> extends React.Component<ITreeCollection
       let fields;
 
       if (typeof (this.props.fields) === 'function') {
-        fields = this.props.fields(cloneDeep(item), cloneDeep(this.state.crntItems),parentItem ?  cloneDeep(parentItem) : null);
+        fields = this.props.fields(cloneDeep(item), cloneDeep(this.state.crntItems), parentItem ?  cloneDeep(parentItem) : null);
       }
       else {
         fields = this.props.fields;
@@ -156,7 +156,6 @@ export class TreeCollectionDataViewer<T> extends React.Component<ITreeCollection
       
       if(this.props.onChanged)
       {
-        console.log("this.props.onChanged", crntItems, key, item);
         this.props.onChanged(crntItems);
       }
       return { crntItems, isLoading: false };
@@ -267,14 +266,15 @@ export class TreeCollectionDataViewer<T> extends React.Component<ITreeCollection
 
     let fields;
 
+    const parentItem = item.data.parent ? this.findNode(this.state.crntItems, item.data.parent) : undefined;
+
     if (typeof (this.props.fields) === 'function') {
-      fields = this.props.fields(cloneDeep(item),   cloneDeep(this.state.crntItems), item.data.parent?  cloneDeep(this.findNode(this.state.crntItems, item.data.parentKey)) : null);
+      const foundParent = parentItem?  cloneDeep(parentItem) : undefined;
+      fields = this.props.fields(cloneDeep(item), cloneDeep(this.state.crntItems), foundParent);
     }
     else {
       fields = this.props.fields;
     }
-
-    const parentItem = item.data.parent ? this.findNode(this.state.crntItems, item.data.parent) : undefined;
 
 
     return <TreeCollectionDataItem
@@ -282,6 +282,7 @@ export class TreeCollectionDataViewer<T> extends React.Component<ITreeCollection
       key={item.key}
       fields={fields}
       index={item.data.sortIdx}
+      level={item.data.level}
       itemData={item.data.value}
       parentKey={item.data.parent}
       totalItems={parentItem?.children?.length ?? 0}

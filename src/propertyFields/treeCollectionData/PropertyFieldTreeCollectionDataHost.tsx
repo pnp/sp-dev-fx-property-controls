@@ -48,7 +48,7 @@ export class PropertyFieldTreeCollectionDataHost extends React.Component<IProper
   }
 
   private itemsUpdated = (items: any) => {
-    console.log("items", items);
+    // TODO: Do we want to update the state /props even without the user clicking save?
     //this.setState({ items });
     //this.props.onChanged(items);
   }

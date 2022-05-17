@@ -3,6 +3,7 @@ import { ICustomCollectionField } from "../../collectionData";
 export interface ITreeCollectionDataItemProps {
   fields: ICustomCollectionField[];
   index?: number;
+  level:number;
   itemKey:string;
   itemData?: any;
   parentKey:string;

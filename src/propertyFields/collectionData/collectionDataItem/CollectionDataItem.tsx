@@ -387,8 +387,9 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
       case CustomCollectionFieldType.custom:
           if (field.onCustomRender) {
             return field.onCustomRender(field, item[field.id], (fieldId, value) => {
-              this.onValueChanged(fieldId, value);
-              if(field.onGetErrorMessage) { this.fieldValidation(field, value); }
+              this.onValueChanged(fieldId, value).then(() => {
+                this.fieldValidation(field, value);
+              });
             }, item, item.uniqueId, this.onCustomFieldValidation);
           }
           return null;

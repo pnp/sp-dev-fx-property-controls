@@ -16,10 +16,11 @@
 
 - `PropertyFieldListPicker`: Remove debugger [#455](https://github.com/pnp/sp-dev-fx-property-controls/pull/455)
 - `PropertyFieldCollectionData`: Add button is invisible on a root site [#462](https://github.com/pnp/sp-dev-fx-property-controls/pull/462)
+- `PropertyFieldCollectionData`: `fieldValidation` for custom fields did not get called if no `onGetErrorMessage` had been defined [#446](https://github.com/pnp/sp-dev-fx-property-controls/issues/446)
 
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [Gautam Sheth](https://github.com/gautamdsheth), [Jasey Waegebaert](https://github.com/Jwaegebaert), [Markus Langer](https://github.com/MarkusLanger), [Milan Holemans](https://github.com/milanholemans), [Peter Cox](https://github.com/PeterWCox).
+Special thanks to our contributors (in alphabetical order): [Gautam Sheth](https://github.com/gautamdsheth), [Jasey Waegebaert](https://github.com/Jwaegebaert), [IRRDC](https://github.com/IRRDC), [Markus Langer](https://github.com/MarkusLanger), [Milan Holemans](https://github.com/milanholemans), [Peter Cox](https://github.com/PeterWCox).
 
 ## 3.7.0
 

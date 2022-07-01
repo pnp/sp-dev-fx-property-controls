@@ -10,6 +10,7 @@
 
 - `PropertyFieldSitePicker`: Site Picker search for any input string [#386](https://github.com/pnp/sp-dev-fx-property-controls/pull/386)
 - `fast-serve`: bump support to 1.14.0 [#386](https://github.com/pnp/sp-dev-fx-property-controls/pull/386)
+- `PropertyFieldCollectionData`: allow to conditionally disable specific field in the item [#464](https://github.com/pnp/sp-dev-fx-property-controls/issues/464)
 
 ### Fixes
 

@@ -508,7 +508,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
               <Icon iconName="Clear" />
             </Link>
           ) : (
-            <Link title={strings.CollectionAddRowButtonLabel} className={`${disableAdd ? "" : styles.addBtn}`} disabled={disableAdd} onClick={async () => await this.addRow()}>
+            <Link title={strings.CollectionAddRowButtonLabel} className={`${disableAdd ? styles.addBtnDisabled : styles.addBtn}`} disabled={disableAdd} onClick={async () => await this.addRow()}>
               <Icon iconName="Add" />
             </Link>
           )

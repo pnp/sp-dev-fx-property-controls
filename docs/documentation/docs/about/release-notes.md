@@ -2,6 +2,24 @@
 
 ## 3.8.0
 
+### New control(s)
+
+- Localizations for en-gb [#454](https://github.com/pnp/sp-dev-fx-property-controls/pull/454)
+
+### Enhancements
+
+- `PropertyFieldSitePicker`: Site Picker search for any input string [#386](https://github.com/pnp/sp-dev-fx-property-controls/pull/386)
+- `fast-serve`: bump support to 1.14.0 [#386](https://github.com/pnp/sp-dev-fx-property-controls/pull/386)
+
+### Fixes
+
+- `PropertyFieldListPicker`: Remove debugger [#455](https://github.com/pnp/sp-dev-fx-property-controls/pull/455)
+- `PropertyFieldCollectionData`: Add button is invisible on a root site [#462](https://github.com/pnp/sp-dev-fx-property-controls/pull/462)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Gautam Sheth](https://github.com/gautamdsheth), [Jasey Waegebaert](https://github.com/Jwaegebaert), [Markus Langer](https://github.com/MarkusLanger), [Milan Holemans](https://github.com/milanholemans), [Peter Cox](https://github.com/PeterWCox).
+
 ## 3.7.0
 
 ### Enhancements

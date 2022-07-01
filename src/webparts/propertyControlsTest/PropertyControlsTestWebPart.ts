@@ -471,7 +471,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       type: CustomCollectionFieldType.fabricIcon,
                       placeholder: "Enter the name of the icon",
                       defaultValue: "website",
-                      onGetErrorMessage: this.minLengthValidation
+                      onGetErrorMessage: this.minLengthValidation,
+                      disable: (item) => !item.Sign
                     },
                     {
                       id: "URL",

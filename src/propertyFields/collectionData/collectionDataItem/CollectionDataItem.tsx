@@ -361,7 +361,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * @param item
    */
   private renderField(field: ICustomCollectionField, item: any) {
-    const disableFieldOnEdit: boolean = field.disableEdit && !!this.props.fUpdateItem;
+    const disableFieldOnEdit: boolean = (field.disableEdit && !!this.props.fUpdateItem) || (field.disable && field.disable(item));
 
     switch(field.type) {
       case CustomCollectionFieldType.boolean:

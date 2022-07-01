@@ -23,6 +23,10 @@ export interface ICustomCollectionField {
    */
   type: CustomCollectionFieldType;
   /**
+  * Conditionally disable a field
+  */
+  disable?: (item: any) => boolean;
+  /**
    * Allows you to specify if a field is disabled for editing
    */
   disableEdit?: boolean;

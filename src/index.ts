@@ -26,3 +26,4 @@ export * from './PropertyFieldRoleDefinitionPicker';
 export * from './PropertyFieldFolderPicker';
 
 export * from './PropertyFieldColumnPicker';
+export * from './PropertyFieldMonacoEditor';

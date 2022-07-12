@@ -361,7 +361,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * @param item
    */
   private renderField(field: ICustomCollectionField, item: any) {
-    const disableFieldOnEdit: boolean = field.disableEdit && !!this.props.fUpdateItem;
+    const disableFieldOnEdit: boolean = (field.disableEdit && !!this.props.fUpdateItem) || (field.disable && field.disable(item));
 
     switch(field.type) {
       case CustomCollectionFieldType.boolean:
@@ -387,8 +387,9 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
       case CustomCollectionFieldType.custom:
           if (field.onCustomRender) {
             return field.onCustomRender(field, item[field.id], (fieldId, value) => {
-              this.onValueChanged(fieldId, value);
-              if(field.onGetErrorMessage) { this.fieldValidation(field, value); }
+              this.onValueChanged(fieldId, value).then(() => {
+                this.fieldValidation(field, value);
+              });
             }, item, item.uniqueId, this.onCustomFieldValidation);
           }
           return null;
@@ -508,7 +509,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
               <Icon iconName="Clear" />
             </Link>
           ) : (
-            <Link title={strings.CollectionAddRowButtonLabel} className={`${disableAdd ? "" : styles.addBtn}`} disabled={disableAdd} onClick={async () => await this.addRow()}>
+            <Link title={strings.CollectionAddRowButtonLabel} className={`${disableAdd ? styles.addBtnDisabled : styles.addBtn}`} disabled={disableAdd} onClick={async () => await this.addRow()}>
               <Icon iconName="Add" />
             </Link>
           )

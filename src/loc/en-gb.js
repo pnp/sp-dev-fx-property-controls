@@ -1,4 +1,5 @@
-define([], function () {
+define([], function ()
+{
   return {
     ApplyButtonLabel: "Apply",
     ImportButtonLabel: "Import",
@@ -98,7 +99,7 @@ define([], function () {
     CopyrightUrl: "https://www.microsoft.com/en-US/legal/copyright/default.aspx",
     CopyrightWarning: "You are responsible for respecting others' rights, including copyright.",
     CreativeCommonsMessage: "These results are tagged with Creative Commons licenses. Review the licenses to ensure you comply.",
-    DateFormat: "MM/DD/YYYY hh:mm A",
+    DateFormat: "DD/MM/YYYY hh:mm A",
     DocumentLabelTemplate: "{0}, Document, Modified {1}, edited by {2}, Private",
     DocumentLibraries: "Document libraries",
     EditedByNamePlate: "edited by ",
@@ -160,7 +161,7 @@ define([], function () {
     OneDriveRootFolderName: "Files",
     OpenButtonLabel: "Open",
     PhotoIconUrl: "https://spoprod-a.akamaihd.net/files/odsp-next-prod_2019-01-11_20190116.001/odsp-media/images/itemtypes/20_2x/photo.png",
-    OrgAssetsTabLabel: "Images and files provided by your organization",
+    OrgAssetsTabLabel: "Images and files provided by your organisation",
     PoweredByBing: "Powered by Bing",
     RecentDocumentsHeader: "Recent documents",
     RecentImagesHeader: "Recent images",
@@ -179,15 +180,15 @@ define([], function () {
     SizeOptionMedium: "Medium",
     SizeOptionSmall: "Small",
     SizeUnit: [
-     "bytes",
-     "KB",
-     "MB",
-     "GB",
-     "TB",
-     "PB",
-     "EB",
-     "ZB",
-     "YB"
+      "bytes",
+      "KB",
+      "MB",
+      "GB",
+      "TB",
+      "PB",
+      "EB",
+      "ZB",
+      "YB"
     ],
     SorryWebSearch: "Sorry, this function isn't implemented in this sample, because it would require a Bing API key.",
     SortedAscending: "Sorted A to Z",

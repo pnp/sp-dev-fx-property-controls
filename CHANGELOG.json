@@ -1,6 +1,32 @@
 {
   "versions": [
     {
+      "version": "3.8.0",
+      "changes": {
+        "new": [
+          "Localizations for en-gb [#454](https://github.com/pnp/sp-dev-fx-property-controls/pull/454)"
+        ],
+        "enhancements": [
+          "`PropertyFieldSitePicker`: Site Picker search for any input string [#386](https://github.com/pnp/sp-dev-fx-property-controls/pull/386)",
+          "`fast-serve`: bump support to 1.14.0 [#386](https://github.com/pnp/sp-dev-fx-property-controls/pull/386)",
+          "`PropertyFieldCollectionData`: allow to conditionally disable specific field in the item [#464](https://github.com/pnp/sp-dev-fx-property-controls/issues/464)"
+        ],
+        "fixes": [
+          "`PropertyFieldListPicker`: Remove debugger [#455](https://github.com/pnp/sp-dev-fx-property-controls/pull/455)",
+          "`PropertyFieldCollectionData`: Add button is invisible on a root site [#462](https://github.com/pnp/sp-dev-fx-property-controls/pull/462)",
+          "`PropertyFieldCollectionData`: `fieldValidation` for custom fields did not get called if no `onGetErrorMessage` had been defined [#446](https://github.com/pnp/sp-dev-fx-property-controls/issues/446)"
+        ]
+      },
+      "contributions": [
+        "[Gautam Sheth](https://github.com/gautamdsheth)",
+        "[Jasey Waegebaert](https://github.com/Jwaegebaert)",
+        "[IRRDC](https://github.com/IRRDC)",
+        "[Markus Langer](https://github.com/MarkusLanger)",
+        "[Milan Holemans](https://github.com/milanholemans)",
+        "[Peter Cox](https://github.com/PeterWCox)"
+      ]
+    },
+    {
       "version": "3.7.0",
       "changes": {
         "new": [],

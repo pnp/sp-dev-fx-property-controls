@@ -38,23 +38,23 @@ export default class PropertyFieldSitePickerHost extends React.Component<IProper
   }
 
   private onSearchFieldChange = async (newValue?: string): Promise<void> => {
-    if (newValue && newValue.length > 2) {
-      this.setState({ isLoading: true });
-      try {
-        const {
-          context,
-          trimDuplicates,
-          additionalQuery
-        } = this.props;
-        const sites = await this.searchService.searchSites(this.props.context, newValue, !!trimDuplicates, additionalQuery);
-        this.setState({ siteSearchResults: sites });
-      } catch (error) {
-        this.setState({ errorMessage: error });
-      } finally {
-        this.setState({ isLoading: false });
-      }
-    } else {
+    if (!newValue) {
       this.setState({ siteSearchResults: [] });
+      return;
+    }
+
+    this.setState({ isLoading: true });
+    try {
+      const {
+        trimDuplicates,
+        additionalQuery
+      } = this.props;
+      const sites = await this.searchService.searchSites(this.props.context, newValue, !!trimDuplicates, additionalQuery);
+      this.setState({ siteSearchResults: sites });
+    } catch (error) {
+      this.setState({ errorMessage: error });
+    } finally {
+      this.setState({ isLoading: false });
     }
   }
 

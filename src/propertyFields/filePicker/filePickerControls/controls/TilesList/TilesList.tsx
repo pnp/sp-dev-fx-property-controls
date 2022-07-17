@@ -206,7 +206,7 @@ export class TilesList extends React.Component<ITilesListProps> {
                 />
               :
                 <DocumentTile
-                  fileBroserService={this.props.fileBrowserService}
+				  fileBrowserService={this.props.fileBrowserService}
                   item={item}
                   index={index}
                   isSelected={isSelected}

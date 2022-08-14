@@ -1691,7 +1691,7 @@ export class ScriptFormatter {
         this.wordchar = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_$'.split('');
         this.digits = '0123456789'.split('');
 
-        this.punct = '+ - * / % & ++ -- = += -= *= /= %= == === != !== > < >= <= >> << >>> >>>= >>= <<= && &= | || ! , : ? ^ ^= |= :: =>';
+        this.punct = '+ - * / % & ++ -- = += -= *= /= %= === === != !== > < >= <= >> << >>> >>>= >>= <<= && &= | || ! , : ? ^ ^= |= :: =>';
         this.punct += ' <%= <% %> <?= <? ?>'; // try to be a good boy and try not to break the markup language identifiers
         this.punct = this.punct.split(' ');
 

@@ -24,7 +24,7 @@ export const IconsList: React.FunctionComponent<IIconsListProps> = ({
     return <li className={styles.iconItem}>
       <input type="radio" name={radioIdBase} id={radioId} className={styles.iconRadio}
         data-automation-id={`icon-picker-${iconName}`}
-        checked={iconName == selectedIconName}
+        checked={iconName === selectedIconName}
         onChange={() => onChange(iconName)} />
       <label className={styles.iconLabel} htmlFor={radioId} title={iconName}>
         <Icon iconName={iconName} className={styles.iconGlyph} />

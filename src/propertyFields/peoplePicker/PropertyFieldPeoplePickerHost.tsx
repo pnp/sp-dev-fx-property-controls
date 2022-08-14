@@ -65,7 +65,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
       const result = this.searchService.searchPeople(this.props.context, searchText, this.props.principalType, this.props.targetSiteUrl).then((response: IPropertyFieldGroupOrPerson[]) => {
         this.resultsPeople = [];
         this.resultsPersonas = [];
-        // If allowDuplicate == false, so remove duplicates from results
+        // If allowDuplicate === false, so remove duplicates from results
         if (this.props.allowDuplicate === false) {
           response = this.removeDuplicates(response);
         }

@@ -1,4 +1,4 @@
-import { MSGraphClient } from '@microsoft/sp-http';
+import { MSGraphClientV3 } from '@microsoft/sp-http';
 import { BaseComponentContext } from '@microsoft/sp-component-base';
 
 export interface IGraphBatchRequestItem {
@@ -44,8 +44,8 @@ export async function batch(batchRequestItems: IGraphBatchRequestItem[], version
   return result;
 }
 
-export async function getGraphClient(context: BaseComponentContext): Promise<MSGraphClient> {
-  const client = await context.msGraphClientFactory.getClient();
+export async function getGraphClient(context: BaseComponentContext): Promise<MSGraphClientV3> {
+  const client = await context.msGraphClientFactory.getClient('3');
 
   return client;
 }

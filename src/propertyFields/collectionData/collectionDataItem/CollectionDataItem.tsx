@@ -130,7 +130,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
       return this.storeFieldValidation(f.id, validation);
     }));
 
-    return validations.filter(v => v && v.length > 0).length == 0;
+    return validations.filter(v => v && v.length > 0).length === 0;
   }
 
   /**

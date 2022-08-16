@@ -33,7 +33,7 @@ export class FolderExplorer extends React.Component<IFolderExplorerProps, IFolde
     const siteAbsoluteUrl: string = this.props.siteAbsoluteUrl || this.props.context.pageContext.web.absoluteUrl;
     // get libraries if site absolute url does not end with folder relative url - if not retrieving document libraries by default
     if (siteAbsoluteUrl.lastIndexOf(targetFolder.ServerRelativeUrl, siteAbsoluteUrl.length - targetFolder.ServerRelativeUrl.length) === -1) {
-      this._allLibraries = await this._spService.GetDocumentLibraries(siteAbsoluteUrl);
+      this._allLibraries = await this._spService.getDocumentLibraries(siteAbsoluteUrl);
     }
     await this._getFolders(targetFolder);
 
@@ -162,12 +162,12 @@ export class FolderExplorer extends React.Component<IFolderExplorerProps, IFolde
         if (this._allLibraries.length > 0) {
           this._allFolders = [...this._allLibraries];
         } else {
-          this._allLibraries = await this._spService.GetDocumentLibraries(siteAbsoluteUrl);
+          this._allLibraries = await this._spService.getDocumentLibraries(siteAbsoluteUrl);
           this._allFolders = [...this._allLibraries];
         }
       } else {
         // library/folder level, get folders
-        this._allFolders = await this._spService.GetFolders(siteAbsoluteUrl, folder.ServerRelativeUrl);
+        this._allFolders = await this._spService.getFolders(siteAbsoluteUrl, folder.ServerRelativeUrl);
       }
       this.setState({ folders: this._allFolders, selectedFolder: folder, foldersLoading: false });
 

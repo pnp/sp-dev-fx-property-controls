@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as strings from 'PropertyControlStrings';
 import { IPropertyPaneWebPartInformationHostProps } from './IPropertyPaneWebPartInformationHost';
-import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
 import * as telemetry from '../../common/telemetry';
 
 export default class PropertyPaneWebPartInformationHost extends React.Component<IPropertyPaneWebPartInformationHostProps> {
@@ -14,29 +13,33 @@ export default class PropertyPaneWebPartInformationHost extends React.Component<
 
   public render(): JSX.Element {
     let iframeElm: JSX.Element = null;
-    if (this.props.videoProperties && this.props.videoProperties.embedLink !== "") {
-      let linkProperties = {};
-      linkProperties["src"] = this.props.videoProperties.embedLink;
+    const {
+      videoProperties
+    } = this.props;
+    if (videoProperties && videoProperties.embedLink !== "") {
+      const linkProperties: React.IframeHTMLAttributes<HTMLIFrameElement> = {};
 
-      if (this.props.videoProperties.height) {
-        linkProperties["height"] = this.props.videoProperties.height;
+      linkProperties.src = videoProperties.embedLink;
+      if (videoProperties.height) {
+        linkProperties.height = videoProperties.height;
       }
 
-      if (this.props.videoProperties.width) {
-        linkProperties["width"] = this.props.videoProperties.width;
+      if (videoProperties.width) {
+        linkProperties.width = videoProperties.width;
       }
 
-      for (let prop in this.props.videoProperties.properties)
-      {
-        linkProperties["prop"] = this.props.videoProperties[prop];
+      for (const prop in videoProperties.properties) {
+        if (Object.prototype.hasOwnProperty.call(videoProperties.properties, prop)) {
+          linkProperties[prop] = this.props.videoProperties[prop];
+        }
       }
 
-      iframeElm = <iframe {...linkProperties}></iframe>;
+      iframeElm = <iframe {...linkProperties} />;
     }
 
     return (
       <div>
-        <div dangerouslySetInnerHTML={{ __html: this.props.description }}></div>
+        <div dangerouslySetInnerHTML={{ __html: this.props.description }} />
 
         {
           this.props.moreInfoLink && (

@@ -81,7 +81,7 @@ export class NewFolder extends React.Component<INewFolderProps, INewFolderState>
     try {
       const siteAbsoluteUrl = this.props.siteAbsoluteUrl || this.props.context.pageContext.web.absoluteUrl;
 
-      const folder = await this._spService.AddFolder(
+      const folder = await this._spService.addFolder(
         siteAbsoluteUrl,
         this.props.selectedFolder.ServerRelativeUrl,
         this.state.folderName);

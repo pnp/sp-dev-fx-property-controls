@@ -102,7 +102,7 @@ export class OrgAssetsService extends FileBrowserService {
     }
   }
 
-  private _parseOrgAssetsLibraryItem = (libItem: any) => {
+  private _parseOrgAssetsLibraryItem = (libItem: any): ILibrary => { // eslint-disable-line @typescript-eslint/no-explicit-any
     const orgAssetsLibrary: ILibrary = {
       absoluteUrl: this.buildAbsoluteUrl(libItem.LibraryUrl.DecodedUrl),
       title: libItem.DisplayName,

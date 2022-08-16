@@ -165,7 +165,7 @@ export class TermStorePickerServiceHelper {
    *
    * @param terms
    */
-  public static sortTerms(terms: ITerm[]) {
+  public static sortTerms(terms: ITerm[]): ITerm[] {
     // Start sorting by depth
     let newTermsOrder: ITerm[] = [];
     let itemsToSort = true;
@@ -209,7 +209,7 @@ export class TermStorePickerServiceHelper {
    * @param a term 2
    * @param b term 2
    */
-  private static sortTermByPath(a: ITerm, b: ITerm) {
+  private static sortTermByPath(a: ITerm, b: ITerm): number {
     if (a.PathOfTerm < b.PathOfTerm) {
       return -1;
     }

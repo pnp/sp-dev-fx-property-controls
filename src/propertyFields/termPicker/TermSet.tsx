@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ITermSetProps, ITermSetState } from './IPropertyFieldTermPickerHost';
 import { ITerm, TermStorePickerServiceHelper } from '../../services/ISPTermStorePickerService';
@@ -34,15 +34,15 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
   /**
    * Autoload the terms of the term set
    */
-  private _autoLoadTerms() {
+  private _autoLoadTerms(): void {
     this.props.autoExpand();
-    this._loadTerms(true);
+    this._loadTerms(true).then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
   }
 
   /**
    * Handle the click event: collapse or expand
    */
-  private _handleClick() {
+  private _handleClick(): void {
     if (this.props.areTermsHidden) {
       return;
     }
@@ -51,14 +51,14 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
     });
 
     if (!this.state.expanded) {
-      this._loadTerms();
+      this._loadTerms().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
     }
   }
 
   /**
    * Load the terms for the current term set
    */
-  private async _loadTerms(autoExpand?: boolean) {
+  private async _loadTerms(autoExpand?: boolean): Promise<void> {
     // Check if there are already terms loaded
     if (!this.state.loaded) {
       // Receive all the terms for the current term set
@@ -137,7 +137,7 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
           termElm = <div className={`${styles.listItem} ${styles.term}`}>{strings.TermPickerNoTerms}</div>;
         }
       } else {
-        termElm = <Spinner type={SpinnerType.normal} />;
+        termElm = <Spinner size={SpinnerSize.medium} />;
       }
     }
 

@@ -16,7 +16,7 @@ class PropertyFieldTextWithCalloutBuilder implements IPropertyPaneField<IPropert
     public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
     public properties: IPropertyFieldTextWithCalloutPropsInternal;
 
-    private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
+    private _onChangeCallback: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
     public constructor(_targetProperty: string, _properties: IPropertyFieldTextWithCalloutPropsInternal) {
         this.targetProperty = _targetProperty;
@@ -27,7 +27,7 @@ class PropertyFieldTextWithCalloutBuilder implements IPropertyPaneField<IPropert
         this.properties.onChanged = this._onChanged.bind(this);
     }
 
-    private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+    private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 
         const props: IPropertyFieldTextWithCalloutProps = <IPropertyFieldTextWithCalloutPropsInternal>this.properties;
 
@@ -44,7 +44,7 @@ class PropertyFieldTextWithCalloutBuilder implements IPropertyPaneField<IPropert
         }
     }
 
-    private _dispose(elem: HTMLElement) {
+    private _dispose(elem: HTMLElement): void {
         ReactDOM.unmountComponentAtNode(elem);
     }
 

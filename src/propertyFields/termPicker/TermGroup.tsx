@@ -5,7 +5,7 @@ import TermSet from './TermSet';
 
 import styles from './PropertyFieldTermPickerHost.module.scss';
 import * as strings from 'PropertyControlStrings';
-import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 
 /**
  * Term group component
@@ -22,7 +22,7 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
     // Check if the term group has to be automatically opened
     const selectedTermsInGroup = this.props.activeNodes.filter(node => node.termGroup === this.props.group.Id);
     if (selectedTermsInGroup.length > 0) {
-      this._loadTermSets(true);
+      this._loadTermSets(true).then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
     }
 
     this._handleClick = this._handleClick.bind(this);
@@ -32,7 +32,7 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
   /**
    * Handle the click event: collapse or expand
    */
-  private _handleClick() {
+  private _handleClick(): void {
     const isExpanded: boolean = this.state.expanded; // current state
 
     this.setState({
@@ -40,14 +40,14 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
     });
 
     if (!isExpanded) {
-      this._loadTermSets();
+      this._loadTermSets().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
     }
   }
 
   /**
    * Function to auto expand the termset
    */
-  private _autoExpand() {
+  private _autoExpand(): void {
     this.setState({
       expanded: true
     });
@@ -99,7 +99,7 @@ export default class TermGroup extends React.Component<ITermGroupProps, ITermGro
                 areTermsSelectable={this.props.areTermsSelectable}
                 areTermsHidden={this.props.areTermsHidden}
                 disabledTermIds={this.props.disabledTermIds} />;
-            }) : <Spinner type={SpinnerType.normal} />
+            }) : <Spinner size={SpinnerSize.medium} />
           }
         </div>
       </div>

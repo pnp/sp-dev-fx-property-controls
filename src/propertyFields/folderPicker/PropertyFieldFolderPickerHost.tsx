@@ -30,7 +30,7 @@ export default class PropertyFieldFolderPickerHost extends React.Component<IProp
     };
   }
 
-  public componentWillReceiveProps(nextProps: IPropertyFieldFolderPickerHostProps) {
+  public UNSAFE_componentWillReceiveProps(nextProps: IPropertyFieldFolderPickerHostProps) {
     const currentValue = getPropertyValue(this.props.properties, this.props.targetProperty);
     const nextValue = getPropertyValue(nextProps.properties, nextProps.targetProperty);
 

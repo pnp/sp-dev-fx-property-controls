@@ -58,7 +58,7 @@ export interface IPropertyFieldViewPickerProps {
   /**
    * Parent Web Part properties
    */
-  properties: any;
+  properties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   /**
    * Initial selected view of the control
@@ -94,7 +94,7 @@ export interface IPropertyFieldViewPickerProps {
    * Normally this function must be always defined with the 'this.onPropertyChange'
    * method of the web part object.
    */
-  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
+  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
     * Callback that is called before the dropdown is populated
     */
@@ -116,12 +116,12 @@ export interface IPropertyFieldViewPickerPropsInternal extends IPropertyFieldVie
   label: string;
   listId?: string;
   orderBy?: PropertyFieldViewPickerOrderBy;
-  properties: any;
+  properties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   selectedView?: string;
   targetProperty: string;
   viewsToExclude?: string[];
   webAbsoluteUrl?: string;
   onGetErrorMessage?: (value: string | string[]) => string | Promise<string>;
-  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
+  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void; // eslint-disable-line @typescript-eslint/no-explicit-any
   onViewsRetrieved?: (views: ISPView[]) => PromiseLike<ISPView[]> | ISPView[];
 }

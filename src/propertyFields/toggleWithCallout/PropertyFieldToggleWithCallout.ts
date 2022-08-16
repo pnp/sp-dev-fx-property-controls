@@ -14,7 +14,7 @@ class PropertyFieldToggleWithCalloutBuilder implements IPropertyPaneField<IPrope
     public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
     public properties: IPropertyFieldToggleWithCalloutPropsInternal;
 
-    private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
+    private _onChangeCallback: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
     public constructor(_targetProperty: string, _properties: IPropertyFieldToggleWithCalloutPropsInternal) {
         this.targetProperty = _targetProperty;
@@ -24,7 +24,7 @@ class PropertyFieldToggleWithCalloutBuilder implements IPropertyPaneField<IPrope
         this.properties.onDispose = this._dispose.bind(this);
     }
 
-    private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+    private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 
         const props: IPropertyFieldToggleWithCalloutProps = <IPropertyFieldToggleWithCalloutProps>this.properties;
 
@@ -40,7 +40,7 @@ class PropertyFieldToggleWithCalloutBuilder implements IPropertyPaneField<IPrope
         }
     }
 
-    private _dispose(elem: HTMLElement) {
+    private _dispose(elem: HTMLElement): void {
         ReactDOM.unmountComponentAtNode(elem);
     }
 

@@ -26,7 +26,7 @@ class PropertyFieldRoleDefinitionPickerBuilder implements IPropertyPaneField<IPr
   private selectedRoleDefinition: string[];
   private roleDefinitionsToExclude: string[];
   private roleDefinitions: IRoleDefinitionInformation[];
-  private customProperties: any;
+  private customProperties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   private disabled: boolean = false;
   private multiSelect: boolean = false;
   private key: string;
@@ -34,7 +34,7 @@ class PropertyFieldRoleDefinitionPickerBuilder implements IPropertyPaneField<IPr
   private onGetErrorMessage: (value: IRoleDefinitionInformation[]) => string | Promise<string>;
   private onRoleDefinitionsRetrieved?: (roleDefinitions: IRoleDefinitionInformation[]) => PromiseLike<IRoleDefinitionInformation[]> | IRoleDefinitionInformation[];
 
-  private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
+  private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 
   /**
@@ -69,7 +69,7 @@ class PropertyFieldRoleDefinitionPickerBuilder implements IPropertyPaneField<IPr
   /**
    * Renders the RoleDefinitionPicker field content
    */
-  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
     const componentProps = {
       label: this.label,
       targetProperty: this.targetProperty,
@@ -99,7 +99,7 @@ class PropertyFieldRoleDefinitionPickerBuilder implements IPropertyPaneField<IPr
    * Disposes the current object
    */
   private dispose(_elem: HTMLElement): void {
-
+    // no-op;
   }
 
 }

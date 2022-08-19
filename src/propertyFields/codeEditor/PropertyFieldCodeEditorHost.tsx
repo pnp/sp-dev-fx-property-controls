@@ -58,12 +58,12 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
   }
 
   /**
-   * componentWillUpdate lifecycle hook
+   * UNSAFE_componentWillUpdate lifecycle hook
    *
    * @param nextProps
    * @param nextState
    */
-  public componentWillUpdate(nextProps: IPropertyFieldCodeEditorHostProps, nextState: IPropertyFieldCodeEditorHostState): void {
+  public UNSAFE_componentWillUpdate(nextProps: IPropertyFieldCodeEditorHostProps, nextState: IPropertyFieldCodeEditorHostState): void {
     if (nextProps.initialValue !== this.props.initialValue) {
       this.setState({
         code: typeof nextProps.initialValue !== 'undefined' ? nextProps.initialValue : ''

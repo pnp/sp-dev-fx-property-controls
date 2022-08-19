@@ -1,9 +1,9 @@
 import * as React from "react";
-import { TextField, Spinner, SpinnerSize } from "office-ui-fabric-react";
+import { Spinner } from "office-ui-fabric-react/lib/components/Spinner";
 //import styles from './Component.module.scss';
 
 import {
-   IPropertyFieldSpinnerHostProps,
+  IPropertyFieldSpinnerHostProps,
   IPropertyFieldSpinnerHostState
 } from "./IPropertyFieldSpinnerHost";
 
@@ -36,17 +36,14 @@ export default class PropertyFieldSpinnerHost extends React.Component<
   public render(): React.ReactElement<IPropertyFieldSpinnerHostProps> {
     return (
       <div>
-
-
-      {
-        this.props.isVisible &&
-         <Spinner
-         className={this.props.className}
-         size={this.props.size}
-         label={this.props.label}
-       >
-       </Spinner>
-      }
+        {
+          this.props.isVisible &&
+          <Spinner
+            className={this.props.className}
+            size={this.props.size}
+            label={this.props.label}
+          />
+        }
       </div>
     );
   }

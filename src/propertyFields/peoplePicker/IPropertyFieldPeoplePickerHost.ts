@@ -5,8 +5,7 @@ import { IPersonaProps } from 'office-ui-fabric-react/lib/components/Persona';
  * PropertyFieldPeoplePickerHost properties interface
  */
 export interface IPropertyFieldPeoplePickerHostProps extends IPropertyFieldPeoplePickerPropsInternal {
-
-  onChange: (targetProperty?: string, newValue?: any) => void;
+  onChange: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 /**

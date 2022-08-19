@@ -40,17 +40,17 @@ export interface IPropertyFieldOrderProps {
 	/**
 	 * The maximun height for the items in px (when not set, the control expands as necessary)
 	 */
-	maxHeight?:number;
+	maxHeight?: number;
 
-	 /**
-	  * Whether the property pane field is enabled or not.
-	  */
+	/**
+	 * Whether the property pane field is enabled or not.
+	 */
 	disabled?: boolean;
 
 	/**
 	 * Optional callback to provide custom rendering of the item (default is simple text based on either item or the property identified in the textProperty)
 	 */
-	onRenderItem?: (item:any, index:number) => JSX.Element; // eslint-disable-line @typescript-eslint/no-explicit-any
+	onRenderItem?: (item: any, index: number) => JSX.Element; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	/**
 	 * An UNIQUE key indicates the identity of this control

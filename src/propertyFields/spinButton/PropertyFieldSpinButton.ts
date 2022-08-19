@@ -20,7 +20,7 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 	public properties: IPropertyFieldSpinButtonPropsInternal;
 	private elem: HTMLElement;
 	private svalue: number;
-	private changeCB?: (targetProperty?: string, newValue?: any) => void;
+	private changeCB?: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	public constructor(_targetProperty: string, _properties: IPropertyFieldSpinButtonProps) {
 		this.targetProperty = _targetProperty;
@@ -50,7 +50,7 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 		this.onRender(this.elem);
 	}
 
-	private onRender(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+	private onRender(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 		if (!this.elem) {
 			this.elem = elem;
 		}
@@ -70,7 +70,7 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 	}
 
 	private validate(rawValue: string): string {
-		let numValue: number = this.extractNumValue(rawValue);
+		const numValue: number = this.extractNumValue(rawValue);
 
 		return this.validateNumber(numValue);
 	}
@@ -111,7 +111,7 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 
 	private extractNumValue(rawValue: string): number {
 		let numValue: number;
-		let baseValue: string = this.removeSuffix(rawValue);
+		const baseValue: string = this.removeSuffix(rawValue);
 
 		if(isNaN(+baseValue)){
 			if(this.properties.min) {
@@ -130,7 +130,7 @@ class PropertyFieldSpinButtonBuilder implements IPropertyPaneField<IPropertyFiel
 		if(!this.properties.suffix) {
 			return false;
 		}
-		let subString: string = rawValue.substr(rawValue.length - this.properties.suffix.length);
+		const subString: string = rawValue.substr(rawValue.length - this.properties.suffix.length);
 		return subString === this.properties.suffix;
 	}
 

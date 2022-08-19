@@ -15,7 +15,7 @@ export interface IPropertyFieldSpinButtonProps {
 	 * Normally this function must be defined with the 'this.onPropertyChange'
 	 * method of the web part object.
 	 */
-	onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
+	onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	/**
 	 * The number to use for the initial value (The minimum value is used by default)
@@ -37,7 +37,7 @@ export interface IPropertyFieldSpinButtonProps {
 	 */
 	max?: number;
 
-	 /**
+	/**
 	 * Whether the property pane field is enabled or not.
 	 */
 	disabled?: boolean;
@@ -50,7 +50,7 @@ export interface IPropertyFieldSpinButtonProps {
 	/**
 	 * Parent Web Part properties
 	 */
-	properties: any;
+	properties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	/**
 	 * The name of the UI Fabric Font Icon to use for the increment button (defaults to ChevronUpSmall)

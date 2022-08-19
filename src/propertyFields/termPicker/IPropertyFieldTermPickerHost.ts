@@ -6,7 +6,7 @@ import { IPropertyFieldTermPickerPropsInternal } from './IPropertyFieldTermPicke
  * PropertyFieldTermPickerHost properties interface
  */
 export interface IPropertyFieldTermPickerHostProps extends IPropertyFieldTermPickerPropsInternal {
-  onChange: (targetProperty?: string, newValue?: any) => void;
+  onChange: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 /**

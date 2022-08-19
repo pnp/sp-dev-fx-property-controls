@@ -32,9 +32,9 @@ export class CollectionColorField extends React.Component<ICollectionColorFieldP
   }
 
   /**
-   * componentWillMount lifecycle hook
+   * UNSAFE_componentWillMount lifecycle hook
    */
-  public componentWillMount(): void {
+  public UNSAFE_componentWillMount(): void {
     this.valueChange(this.props.field, this.props.item[this.props.field.id]);
   }
 

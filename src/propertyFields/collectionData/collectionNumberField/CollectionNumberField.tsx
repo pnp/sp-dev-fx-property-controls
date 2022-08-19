@@ -22,9 +22,9 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
   }
 
   /**
-   * componentWillMount lifecycle hook
+   * UNSAFE_componentWillMount lifecycle hook
    */
-  public componentWillMount(): void {
+  public UNSAFE_componentWillMount(): void {
     this.setState({
       value: this.props.item[this.props.field.id]
     });
@@ -32,12 +32,12 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
   }
 
   /**
-   * componentWillUpdate lifecycle hook
+   * UNSAFE_componentWillUpdate lifecycle hook
    *
    * @param nextProps
    * @param nextState
    */
-  public componentWillUpdate(nextProps: ICollectionNumberFieldProps, nextState: ICollectionNumberFieldState): void {
+  public UNSAFE_componentWillUpdate(nextProps: ICollectionNumberFieldProps, nextState: ICollectionNumberFieldState): void {
     if (!isEqual(nextProps.item, this.props.item)) {
       this.setState({
         value: nextProps.item[nextProps.field.id]

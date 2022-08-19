@@ -1,7 +1,7 @@
 import {
   IPropertyPaneCustomFieldProps,
 } from '@microsoft/sp-property-pane';
-import { ISearchBoxStyles } from 'office-ui-fabric-react';
+import { ISearchBoxStyles } from 'office-ui-fabric-react/lib/components/SearchBox';
 
 export interface IPropertyFieldSearchProps {
   key: string;
@@ -10,10 +10,10 @@ export interface IPropertyFieldSearchProps {
   underlined?:boolean;
   styles?: ISearchBoxStyles;
   className?: string;
-  onSearch?: (newValue: any) => void;
-  onChange?: (newValue: any) => void;
-  onClear?: (ev?: any) => void;
-  onEscape?: (ev?: any) => void;
+  onSearch?: (newValue: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
+  onChange?: (newValue: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
+  onClear?: (ev?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
+  onEscape?: (ev?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export interface IPropertyFieldSearchPropsInternal extends IPropertyFieldSearchProps , IPropertyPaneCustomFieldProps{}

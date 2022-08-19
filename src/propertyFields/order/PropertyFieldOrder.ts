@@ -14,8 +14,8 @@ class PropertyFieldOrderBuilder implements IPropertyPaneField<IPropertyFieldOrde
 	public targetProperty: string;
 	public properties: IPropertyFieldOrderPropsInternal;
 	private elem: HTMLElement;
-	private items: Array<any>;
-	private changeCB?: (targetProperty?: string, newValue?: any) => void;
+	private items: Array<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+	private changeCB?: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	public constructor(_targetProperty: string, _properties: IPropertyFieldOrderProps) {
 		this.targetProperty = _targetProperty;
@@ -46,7 +46,7 @@ class PropertyFieldOrderBuilder implements IPropertyPaneField<IPropertyFieldOrde
 		this.onRender(this.elem);
 	}
 
-	private onRender(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+	private onRender(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 		if (!this.elem) {
 			this.elem = elem;
 		}
@@ -68,7 +68,7 @@ class PropertyFieldOrderBuilder implements IPropertyPaneField<IPropertyFieldOrde
 		ReactDom.render(element, elem);
 	}
 
-	private onValueChanged(newValue: Array<any>): void {
+	private onValueChanged(newValue: Array<any>): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 		if (this.properties.onPropertyChange && newValue !== null) {
 			this.properties.onPropertyChange(this.targetProperty, this.items, newValue);
 			this.items = newValue;

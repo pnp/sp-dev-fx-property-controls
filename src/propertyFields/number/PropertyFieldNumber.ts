@@ -15,7 +15,7 @@ class PropertyFieldNumberBuilder implements IPropertyPaneField<IPropertyFieldNum
   public properties: IPropertyFieldNumberPropsInternal;
 
 
-  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   public constructor(_targetProperty: string, _properties: IPropertyFieldNumberPropsInternal) {
     this.targetProperty = _targetProperty;

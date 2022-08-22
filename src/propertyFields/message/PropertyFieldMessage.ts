@@ -14,7 +14,7 @@ class PropertyFieldMessageBuilder implements IPropertyPaneField<IPropertyFieldMe
   public properties: IPropertyFieldMessagePropsInternal;
 
 
-  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
+  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   public constructor(_targetProperty: string, _properties: IPropertyFieldMessagePropsInternal) {
     this.targetProperty = _targetProperty;
@@ -24,7 +24,7 @@ class PropertyFieldMessageBuilder implements IPropertyPaneField<IPropertyFieldMe
     this.properties.onDispose = this._dispose.bind(this);
   }
 
-  private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+  private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 
     const props: IPropertyFieldMessageProps = <IPropertyFieldMessageProps>this.properties;
 
@@ -39,7 +39,7 @@ class PropertyFieldMessageBuilder implements IPropertyPaneField<IPropertyFieldMe
     }
   }
 
-  private _dispose(elem: HTMLElement) {
+  private _dispose(elem: HTMLElement): void {
     ReactDOM.unmountComponentAtNode(elem);
   }
 

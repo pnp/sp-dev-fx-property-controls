@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { IPropertyFieldListPickerHostProps, IPropertyFieldListPickerHostState, ISPList, ISPLists } from './IPropertyFieldListPickerHost';
+import { IPropertyFieldListPickerHostProps, IPropertyFieldListPickerHostState, ISPList } from './IPropertyFieldListPickerHost';
 import SPListPickerService from '../../services/SPListPickerService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as telemetry from '../../common/telemetry';
@@ -48,13 +48,13 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
 
   public componentDidMount(): void {
     // Start retrieving the SharePoint lists
-    this.loadLists();
+    this.loadLists().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
   }
 
   public componentDidUpdate(prevProps: IPropertyFieldListPickerHostProps, prevState: IPropertyFieldListPickerHostState): void {
     if (this.props.baseTemplate !== prevProps.baseTemplate ||
       this.props.webAbsoluteUrl !== prevProps.webAbsoluteUrl) {
-      this.loadLists();
+      this.loadLists().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
     }
   }
 
@@ -129,7 +129,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
 
     this.latestValidateValue = value;
 
-    const errResult: string | PromiseLike<string> = this.props.onGetErrorMessage(value || '');
+    const errResult: string | Promise<string> = this.props.onGetErrorMessage(value || '');
     if (typeof errResult !== 'undefined') {
       if (typeof errResult === 'string') {
         if (errResult === '') {
@@ -146,7 +146,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
           this.setState({
             errorMessage: errorMessage
           });
-        });
+        }).catch(() => { /* no-op; */ });
       }
     } else {
       this.notifyAfterValidate(value);
@@ -156,7 +156,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
   /**
    * Notifies the parent Web Part of a property value change
    */
-  private notifyAfterValidate(newValue: string) {
+  private notifyAfterValidate(newValue: string): void {
     const {
       onPropertyChange,
       targetProperty,
@@ -167,7 +167,6 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
     } = this.props;
 
     const {
-      results,
       loadedLists
     } = this.state;
 
@@ -222,7 +221,7 @@ export default class PropertyFieldListPickerHost extends React.Component<IProper
   /**
    * Called when the component will unmount
    */
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (typeof this.async !== 'undefined') {
       this.async.dispose();
     }

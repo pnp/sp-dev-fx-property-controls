@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { Spinner, SpinnerSize, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IPropertyFieldListMultiPickerHostProps, IPropertyFieldListMultiPickerHostState } from './IPropertyFieldListMultiPickerHost';
-import { ISPLists, ISPList } from './IPropertyFieldListPickerHost';
+import { ISPList } from './IPropertyFieldListPickerHost';
 import SPListPickerService from '../../services/SPListPickerService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as telemetry from '../../common/telemetry';
@@ -48,14 +48,14 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
     this.delayedValidate = this.async.debounce(this.validate, this.props.deferredValidationTime);
   }
 
-  public componentDidMount() {
-    this.loadLists();
+  public componentDidMount(): void {
+    this.loadLists().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
   }
 
   public componentDidUpdate(prevProps: IPropertyFieldListMultiPickerHostProps, prevState: IPropertyFieldListMultiPickerHostState): void {
     if (this.props.baseTemplate !== prevProps.baseTemplate ||
       this.props.webAbsoluteUrl !== prevProps.webAbsoluteUrl) {
-      this.loadLists();
+      this.loadLists().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
     }
   }
 
@@ -125,7 +125,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   */
   private onChanged(element: React.FormEvent<HTMLElement>, isChecked: boolean): void {
     if (element) {
-      const value: string = (element.currentTarget as any).value;
+      const value: string = (element.currentTarget as any).value; // eslint-disable-line @typescript-eslint/no-explicit-any
       let selectedKeys = this.state.selectedKeys;
       // Check if the element is selected
       if (isChecked === false) {
@@ -151,7 +151,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
    */
   private onSelectAllChanged(element: React.FormEvent<HTMLElement>, isChecked: boolean): void {
     if (element) {
-      let selectedKeys = new Array<string>();
+      const selectedKeys = new Array<string>();
       const {
         results
       } = this.state;
@@ -176,7 +176,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
       return;
     }
 
-    const errResult: string | PromiseLike<string> = this.props.onGetErrorMessage(value || []);
+    const errResult: string | Promise<string> = this.props.onGetErrorMessage(value || []);
     if (typeof errResult !== 'undefined') {
       if (typeof errResult === 'string') {
         if (errResult === '') {
@@ -193,7 +193,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
           this.setState({
             errorMessage: errorMessage
           });
-        });
+        }).catch(() => { /* no-op; */ });
       }
     } else {
       this.notifyAfterValidate(value);
@@ -203,7 +203,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   /**
   * Notifies the parent Web Part of a property value change
   */
-  private notifyAfterValidate(newValue: string[]) {
+  private notifyAfterValidate(newValue: string[]): void {
 
     const {
       onPropertyChange,
@@ -251,7 +251,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
   /**
   * Called when the component will unmount
   */
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this.async.dispose();
   }
 
@@ -283,10 +283,6 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
         </div>
       );
     } else {
-      const styleOfLabel: any = {
-        color: disabled === true ? '#A6A6A6' : 'auto'
-      };
-
       // Renders content
       return (
         <div>

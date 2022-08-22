@@ -37,8 +37,8 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private listsToExclude: string[];
   private includeListTitleAndUrl: boolean;
 
-  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { }
-  private customProperties: any;
+  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { /* no-op; */ } // eslint-disable-line @typescript-eslint/no-explicit-any
+  private customProperties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   private key: string;
   private disabled: boolean = false;
   private onGetErrorMessage: (value: string) => string | Promise<string>;
@@ -90,8 +90,8 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
   /**
    * Renders the SPListPicker field content
    */
-  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
-    const componentProps = {
+  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
+    const componentProps: IPropertyFieldListPickerHostProps = {
       label: this.label,
       targetProperty: this.targetProperty,
       context: this.context,
@@ -120,16 +120,16 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
     // Check if the multi or single select component has to get loaded
     if (this.multiSelect) {
       // Multi selector
-      componentProps['selectedLists'] = this.selectedLists;
-      componentProps['showSelectAll'] = this.showSelectAll;
-      componentProps['selectAllInList'] = this.selectAllInList;
-      componentProps['selectAllInListLabel'] = this.selectAllInListLabel;
+      componentProps.selectedLists = this.selectedLists;
+      componentProps.showSelectAll = this.showSelectAll;
+      componentProps.selectAllInList = this.selectAllInList;
+      componentProps.selectAllInListLabel = this.selectAllInListLabel;
       const element: React.ReactElement<IPropertyFieldListMultiPickerHostProps> = React.createElement(PropertyFieldListMultiPickerHost, componentProps);
       // Calls the REACT content generator
       ReactDom.render(element, elem);
     } else {
       // Single selector
-      componentProps['selectedList'] = this.selectedList;
+      componentProps.selectedList = this.selectedList;
       const element: React.ReactElement<IPropertyFieldListPickerHostProps> = React.createElement(PropertyFieldListPickerHost, componentProps);
       // Calls the REACT content generator
       ReactDom.render(element, elem);
@@ -140,7 +140,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
    * Disposes the current object
    */
   private dispose(elem: HTMLElement): void {
-
+    ReactDom.unmountComponentAtNode(elem);
   }
 
 }

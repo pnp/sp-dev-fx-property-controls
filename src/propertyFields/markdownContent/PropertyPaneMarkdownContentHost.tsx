@@ -16,7 +16,7 @@ export default class PropertyPaneMarkdownContentHost extends React.Component<IPr
     return (
       <div className={this.props.className}>
         { this.props.description && this.props.description !== '' &&
-          <div dangerouslySetInnerHTML={{ __html: this.props.description }}></div>
+          <div dangerouslySetInnerHTML={{ __html: this.props.description }} />
         }
 
         <Markdown

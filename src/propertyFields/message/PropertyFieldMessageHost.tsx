@@ -1,6 +1,5 @@
 import * as React from "react";
-import { TextField, MessageBar, MessageBarType } from "office-ui-fabric-react";
-//import styles from './Component.module.scss';
+import { MessageBar } from "office-ui-fabric-react/lib/MessageBar";
 
 import {
   IPropertyFieldMessageHostProps,

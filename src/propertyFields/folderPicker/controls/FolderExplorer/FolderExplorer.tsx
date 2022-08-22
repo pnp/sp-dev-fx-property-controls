@@ -28,7 +28,7 @@ export class FolderExplorer extends React.Component<IFolderExplorerProps, IFolde
     };
   }
 
-  public async componentDidMount() {
+  public async componentDidMount(): Promise<void> {
     const targetFolder = this.props.defaultFolder ? this.props.defaultFolder : this.props.rootFolder;
     const siteAbsoluteUrl: string = this.props.siteAbsoluteUrl || this.props.context.pageContext.web.absoluteUrl;
     // get libraries if site absolute url does not end with folder relative url - if not retrieving document libraries by default
@@ -65,7 +65,7 @@ export class FolderExplorer extends React.Component<IFolderExplorerProps, IFolde
             <div>
               {this.state.folders.map((folder) => {
                 return (
-                  <div className={styles.libraryItem} onClick={() => { this._getFolders(folder); }}>
+                  <div key={folder.Name} className={styles.libraryItem} onClick={() => { this._getFolders(folder).then(() => { /* no-op; */ }).catch(() => { /* no-op; */ }); }}>
                     <Icon iconName="FabricFolder" className={styles.folderIcon} />
                     {folder.Name}
                   </div>
@@ -78,7 +78,7 @@ export class FolderExplorer extends React.Component<IFolderExplorerProps, IFolde
             <NewFolder context={this.props.context}
               siteAbsoluteUrl={siteAbsoluteUrl}
               selectedFolder={this.state.selectedFolder}
-              addSubFolder={this._addSubFolder}></NewFolder>
+              addSubFolder={this._addSubFolder} />
           }
         </div>
       </div>
@@ -92,8 +92,8 @@ export class FolderExplorer extends React.Component<IFolderExplorerProps, IFolde
   private _getBreadcrumbDOM = (): JSX.Element => {
     let breadCrumbDOM = null;
 
-    let breadCrumbItems = this._getCurrentBreadcrumbItems();
-    let overflowIndex = breadCrumbItems.length > 1 ? 1 : 0;
+    const breadCrumbItems = this._getCurrentBreadcrumbItems();
+    const overflowIndex = breadCrumbItems.length > 1 ? 1 : 0;
     breadCrumbDOM = <Breadcrumb items={breadCrumbItems} className={styles.breadcrumbPath} maxDisplayedItems={3} overflowIndex={overflowIndex} />;
 
     return breadCrumbDOM;
@@ -110,7 +110,7 @@ export class FolderExplorer extends React.Component<IFolderExplorerProps, IFolde
       items = [...this.props.initialBreadcrumbItems];
     }
 
-    let rootItem: IBreadcrumbItem = { text: this.props.rootFolder.Name, key: 'Root-Item', onClick: this._getFolders.bind(this, this.props.rootFolder) };
+    const rootItem: IBreadcrumbItem = { text: this.props.rootFolder.Name, key: 'Root-Item', onClick: this._getFolders.bind(this, this.props.rootFolder) };
     items.push(rootItem);
 
     if (this.state.selectedFolder && this.state.selectedFolder.ServerRelativeUrl !== this.props.rootFolder.ServerRelativeUrl) {
@@ -126,7 +126,7 @@ export class FolderExplorer extends React.Component<IFolderExplorerProps, IFolde
             itemText = lib[0].Name;
           }
 
-          let folderItem: IBreadcrumbItem = { text: itemText, key: `Folder-${index.toString()}`, onClick: this._getFolders.bind(this, { Name: folderName, ServerRelativeUrl: folderPath }) };
+          const folderItem: IBreadcrumbItem = { text: itemText, key: `Folder-${index.toString()}`, onClick: this._getFolders.bind(this, { Name: folderName, ServerRelativeUrl: folderPath }) };
           items.push(folderItem);
         }
       });

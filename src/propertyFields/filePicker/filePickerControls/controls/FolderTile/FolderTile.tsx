@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './FolderTile.module.scss';
-import { css, IRenderFunction, IRectangle } from 'office-ui-fabric-react/lib/Utilities';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Icon, IconType } from 'office-ui-fabric-react/lib/Icon';
 import * as strings from 'PropertyControlStrings';
 import { ScreenWidthMinLarge  } from 'office-ui-fabric-react/lib/Styling';
@@ -52,8 +52,7 @@ export class FolderTile extends React.Component<IFolderTileProps> {
                     {item.totalFileCount > 0 &&
                       <span className={styles.folderCoverContent}>
                         <span className={styles.folderCoverFrame}>
-                          <span className={styles.itemTileBlankCover} style={{ width: 104, height: 72 }}>
-                          </span>
+                          <span className={styles.itemTileBlankCover} style={{ width: 104, height: 72 }} />
                         </span>
                       </span>
                     }

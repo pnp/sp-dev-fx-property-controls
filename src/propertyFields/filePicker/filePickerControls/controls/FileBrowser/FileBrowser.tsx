@@ -4,9 +4,11 @@ import { GeneralHelper } from '../../../../../helpers/GeneralHelper';
 import { LoadingState } from './IFileBrowserState';
 import { TilesList } from '../TilesList/TilesList';
 import { IFilePickerResult } from '../../FilePicker.types';
-import { IFileBrowserProps, IFileBrowserState, ViewType } from '.';
+import  { IFileBrowserProps } from './IFileBrowserProps';
+import { IFileBrowserState } from './IFileBrowserState';
+import { ViewType } from './FileBrowser.types';
 import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
-import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn, IDetailsRowProps, DetailsRow, SelectionZone } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn, IDetailsRowProps, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
@@ -137,7 +139,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
 
     if (this.props.folderPath !== prevProps.folderPath) {
       this._selection.setAllSelected(false);
-      this._getListItems();
+      this._getListItems().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
     }
   }
 
@@ -145,7 +147,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
    * Gets the list of files when tab first loads
    */
   public componentDidMount(): void {
-    this._getListItems();
+    this._getListItems().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
   }
 
   public render(): React.ReactElement<IFileBrowserProps> {
@@ -179,7 +181,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
                         selectionPreservedOnEmptyClick={true}
                         enterModalSelectionOnTouch={true}
                         onRenderRow={this._onRenderRow}
-                        onRenderMissingItem={() => { this._loadNextDataRequest(); return null; }}
+                        onRenderMissingItem={() => { this._loadNextDataRequest().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ }); return null; }}
                       />) :
                       (<TilesList
                         fileBrowserService={this.props.fileBrowserService}
@@ -214,7 +216,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
   /**
    * Triggers paged data load
    */
-  private _loadNextDataRequest = async () => {
+  private _loadNextDataRequest = async (): Promise<void> => {
     if (this.state.loadingState === LoadingState.idle) {
       // Load next list items from next page
       await this._getListItems(true);
@@ -346,7 +348,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
   /**
    * Called when users switch the view
    */
-  private _handleSwitchLayout = (item?: IContextualMenuItem) => {
+  private _handleSwitchLayout = (item?: IContextualMenuItem): void => {
     if (item) {
       // Store the user's favourite layout
       if (localStorage) {
@@ -373,7 +375,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
     }
 
     // Sort the items.
-    items = items!.concat([]).sort((a, b) => {
+    items = items.concat([]).sort((a, b) => {
       const firstValue = a[column.fieldName || ''];
       const secondValue = b[column.fieldName || ''];
 
@@ -387,7 +389,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
     // Reset the items and columns to match the state.
     this.setState({
       items: items,
-      columns: columns!.map(col => {
+      columns: columns.map(col => {
         col.isSorted = col.key === column.key;
 
         if (col.isSorted) {
@@ -402,7 +404,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
   /**
    * When a folder is opened, calls parent tab to navigate down
    */
-  private _handleOpenFolder = (item: IFile) => {
+  private _handleOpenFolder = (item: IFile): void => {
     // De-select the list item that was clicked, the item in the same position
     this._selection.setAllSelected(false);
     // item in the folder will appear selected
@@ -415,7 +417,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
   /**
    * Handles selected item change
    */
-  private _itemSelectionChanged = (item?: IFile) => {
+  private _itemSelectionChanged = (item?: IFile): void => {
     let selectedItem: IFile = null;
     // Deselect item
     if (item && this.state.filePickerResult && item.absoluteUrl === this.state.filePickerResult.fileAbsoluteUrl) {
@@ -447,7 +449,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
   /**
    * Handles item click.
    */
-  private _handleItemInvoked = (item: IFile) => {
+  private _handleItemInvoked = (item: IFile): void => {
    // If a file is selected, open the library
    if (item.isFolder) {
      this._handleOpenFolder(item);
@@ -460,9 +462,10 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
   /**
    * Gets all files in a library with a matchihg path
    */
-  private async _getListItems(concatenateResults: boolean = false) {
+  private async _getListItems(concatenateResults: boolean = false): Promise<void> {
     const { libraryId, folderPath, accepts } = this.props;
-    let { items, nextPageQueryString } = this.state;
+    let { nextPageQueryString } = this.state;
+    const { items } = this.state;
 
     let filesQueryResult: FilesQueryResult = { items: [], nextHref: null };
     const loadingState = concatenateResults ? LoadingState.loadingNextPage : LoadingState.loading;

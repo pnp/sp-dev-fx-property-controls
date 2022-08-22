@@ -1,6 +1,6 @@
 import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { SPHttpClient } from "@microsoft/sp-http";
-import { ISearchResult, BingQuerySearchParams, IRecentFile } from "./FilesSearchService.types";
+import { ISearchResult, BingQuerySearchParams, IRecentFile, IBingSearchResult } from "./FilesSearchService.types";
 import { find } from "office-ui-fabric-react/lib/Utilities";
 import { GeneralHelper } from "../helpers/GeneralHelper";
 

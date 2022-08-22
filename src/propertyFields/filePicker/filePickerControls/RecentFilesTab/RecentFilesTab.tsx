@@ -13,7 +13,8 @@ import { Placeholder } from '../../placeHolderControl';
 import { IRecentFile } from '../../../../services/FilesSearchService.types';
 import { IFilePickerResult } from '../FilePicker.types';
 import { GeneralHelper } from '../../../../helpers/GeneralHelper';
-import { IRecentFilesTabProps, IRecentFilesTabState } from '.';
+import { IRecentFilesTabProps } from './IRecentFilesTabProps';
+import { IRecentFilesTabState } from './IRecentFilesTabState';
 
 import * as strings from 'PropertyControlStrings';
 import styles from './RecentFilesTab.module.scss';
@@ -54,7 +55,7 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
   /**
    * Gets the most recently used files
    */
-  public async componentDidMount() {
+  public async componentDidMount(): Promise<void> {
     const recentFilesResult = await this.props.fileSearchService.executeRecentSearch(this.props.accepts);
     this._selection.setItems(recentFilesResult, true);
 
@@ -95,7 +96,7 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
     );
   }
 
-  private _onSelectionChanged = () => {
+  private _onSelectionChanged = (): void => {
     // Get the selected item
     const selectedItems = this._selection.getSelection();
     if (selectedItems && selectedItems.length > 0) {
@@ -240,28 +241,28 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
   /**
    * Gets called what a file is selected.
    */
-  private _handleItemInvoked = (item: IRecentFile) => {
+  private _handleItemInvoked = (item: IRecentFile): void => {
     this._selection.setKeySelected(item.key, true, true);
   }
 
   /**
    * Gets called when it is time to save the currently selected item
    */
-  private _handleSave = () => {
+  private _handleSave = (): void => {
     this.props.onSave(this.state.filePickerResult);
   }
 
   /**
    * Gets called when it is time to close (without saving)
    */
-  private _handleClose = () => {
+  private _handleClose = (): void => {
     this.props.onClose();
   }
 
   /**
    * Creates a ref to the list
    */
-  private _linkElement = (e: any) => {
+  private _linkElement = (e: List): void => {
     this._listElem = e;
   }
 }

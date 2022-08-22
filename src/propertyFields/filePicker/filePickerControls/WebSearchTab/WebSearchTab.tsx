@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-import { IWebSearchTabProps, IWebSearchTabState, ISearchSuggestion, ImageSize, ImageAspect, ImageLicense, DEFAULT_SUGGESTIONS, MAX_ROW_HEIGHT, ROWS_PER_PAGE } from '.';
+import { IWebSearchTabProps } from './IWebSearchTabProps';
+import { IWebSearchTabState } from './IWebSearchTabState';
+import { ISearchSuggestion, ImageSize, ImageAspect, ImageLicense, DEFAULT_SUGGESTIONS, MAX_ROW_HEIGHT, ROWS_PER_PAGE } from './WebSearchTab.types';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
@@ -86,7 +88,7 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
     );
   }
 
-  private _onSelectionChanged = () => {
+  private _onSelectionChanged = (): void => {
     // Get the selected item
     const selectedItems = this._selection.getSelection();
     const filePickerResult = this.state.filePickerResult;
@@ -121,17 +123,6 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
       // Force the list to update to show the selection check
       this._listElem.forceUpdate();
     }
-  }
-
-  /**
-   * Resets state of the control to the default one
-   */
-  private _clearSearch = () => {
-    this.setState({
-      query: undefined,
-      results: undefined,
-      filePickerResult: undefined
-    });
   }
 
   /**
@@ -183,10 +174,10 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
     const ratio: number = item.width / item.height;
 
     // Fit the height to the desired row height
-    let thumbnailHeight: number = Math.min(this._rowHeight, item.height);
+    const thumbnailHeight: number = Math.min(this._rowHeight, item.height);
 
     // Resize the picture with the same aspect ratio
-    let thumbnailWidth: number = thumbnailHeight * ratio;
+    const thumbnailWidth: number = thumbnailHeight * ratio;
 
     const searchResultAltText: string = strings.SearchResultAlt.replace('{0}', query);
     return (
@@ -207,7 +198,7 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
           }}>
           <div className={styles.bingTileContent} data-selection-invoke={true}>
             <Image src={item.thumbnailUrl} className={styles.bingTileThumbnail} alt={searchResultAltText} width={thumbnailWidth} height={thumbnailHeight} />
-            <div className={styles.bingTileFrame}></div>
+            <div className={styles.bingTileFrame} />
             <div className={styles.bingTileCheckCircle}
               role='checkbox'
               aria-checked={isSelected}
@@ -249,7 +240,7 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
   /**
    * Gets search results from Bing
    */
-  private _getSearchResults = async () => {
+  private _getSearchResults = async (): Promise<void> => {
     // Do nothing
     if (this.state.query === undefined || !this.props.bingSearchService) {
       return;
@@ -391,7 +382,7 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
    * Handles when a user changes the size drop down.
    * Resubmits search query
    */
-  private _handleChangeSize = (option: IDropdownOption) => {
+  private _handleChangeSize = (option: IDropdownOption): void => {
     this.setState({
       size: option.key as ImageSize
     }, () => this._getSearchResults());
@@ -401,7 +392,7 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
    * Handles when user selects a new layout from the drop down.
    * Resubmits search query.
    */
-  private _handleChangeLayout = (option: IDropdownOption) => {
+  private _handleChangeLayout = (option: IDropdownOption): void => {
     this.setState({
       aspect: option.key as ImageAspect
     }, () => this._getSearchResults());
@@ -411,7 +402,7 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
    * Handles when a user changes the license from the drop down
    * Resubits search query
    */
-  private _handleChangeLicense = (option: IDropdownOption) => {
+  private _handleChangeLicense = (option: IDropdownOption): void => {
     this.setState({
       license: option.key as ImageLicense
     }, () => this._getSearchResults());
@@ -428,7 +419,7 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
   /**
    * Handles when user triggers search query
    */
-  private _handleSearch = (newQuery?: string) => {
+  private _handleSearch = (newQuery?: string): void => {
     this.setState({
       query: newQuery
     }, () => this._getSearchResults());
@@ -437,7 +428,7 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
   /**
    * Handles when user closes search pane
    */
-  private _handleClose = () => {
+  private _handleClose = (): void => {
     this.props.onClose();
   }
 
@@ -445,14 +436,14 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
    * Handes when user saves selection
    * Calls property pane file picker's save function
    */
-  private _handleSave = () => {
+  private _handleSave = (): void => {
     this.props.onSave(this.state.filePickerResult);
   }
 
   /**
    * Creates a reference to the list
    */
-  private _linkElement = (e: any) => {
+  private _linkElement = (e: List): void => {
     this._listElem = e;
   }
 }

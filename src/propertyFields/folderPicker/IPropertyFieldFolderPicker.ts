@@ -53,11 +53,11 @@ export interface IPropertyFieldFolderPickerProps {
    * Normally this function must be always defined with the 'this.onPropertyChange'
    * method of the web part object.
    */
-  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
+  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
    * Parent Web Part properties
    */
-  properties: any;
+  properties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
    * An unique key to identity this file picker control
    */

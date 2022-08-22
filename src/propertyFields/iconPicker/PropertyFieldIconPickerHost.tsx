@@ -25,7 +25,7 @@ export default class PropertyFieldIconPickerHost extends React.Component<IProper
     };
   }
 
-  public componentDidUpdate(prevProps: IPropertyFieldIconPickerHostProps, prevState: IPropertyFieldIconPickerHostState) {
+  public componentDidUpdate(prevProps: IPropertyFieldIconPickerHostProps, prevState: IPropertyFieldIconPickerHostState): void {
     if (prevProps.currentIcon !== this.props.currentIcon) {
       this.setState({
         currentIcon: this.props.currentIcon

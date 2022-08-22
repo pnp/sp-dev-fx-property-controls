@@ -24,7 +24,7 @@ class PropertyFieldFolderPickerBuilder implements IPropertyPaneField<IPropertyFi
   private context: BaseComponentContext;
   private label: string;
 
-  private customProperties: any;
+  private customProperties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   private disabled: boolean = false;
   private key: string;
 
@@ -35,7 +35,7 @@ class PropertyFieldFolderPickerBuilder implements IPropertyPaneField<IPropertyFi
   private canCreateFolders: boolean = false;
   private selectedFolder: IFolder;
 
-  private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
+  private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
   private onSelect: (folder: IFolder) => void;
 
 
@@ -78,7 +78,7 @@ class PropertyFieldFolderPickerBuilder implements IPropertyPaneField<IPropertyFi
   /**
    * Renders the FolderPickerPicker field content
    */
-  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 
     const element: React.ReactElement<IPropertyFieldFolderPickerHostProps> = React.createElement(PropertyFieldFolderPickerHost, {
         label: this.label,
@@ -107,7 +107,7 @@ class PropertyFieldFolderPickerBuilder implements IPropertyPaneField<IPropertyFi
    * Disposes the current object
    */
   private dispose(_elem: HTMLElement): void {
-
+    ReactDom.unmountComponentAtNode(_elem);
   }
 
 }

@@ -63,8 +63,8 @@ class PropertyFieldEditableComboBoxBuilder implements IPropertyPaneField<IProper
   private onOptionChanged(text: string, wasAdded: boolean): void {
     if (this.properties !== undefined) {
       if (this.properties.onPropertyChange && text !== null) {
-        let newOption: string = text;
-        let oldOption: string = this.currentOptionText;
+        const newOption: string = text;
+        const oldOption: string = this.currentOptionText;
         this.currentOptionText = newOption;
         this.properties.onPropertyChange(this.targetProperty, oldOption, newOption);
         this.properties.properties[this.targetProperty] = newOption;

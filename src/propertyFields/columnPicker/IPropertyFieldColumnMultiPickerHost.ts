@@ -1,12 +1,12 @@
 import { IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { ISPColumns } from '.';
+import { ISPColumns } from './ISPColumns';
 import { IPropertyFieldColumnPickerPropsInternal } from './IPropertyFieldColumnPicker';
 
 /**
  * PropertyFieldColumnPickerHost properties interface
  */
 export interface IPropertyFieldColumnMultiPickerHostProps extends IPropertyFieldColumnPickerPropsInternal {
-    onChange: (targetProperty?: string, newValue?: any) => void;
+    onChange: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 /**

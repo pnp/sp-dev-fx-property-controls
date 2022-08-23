@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
-import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import {
 	IPropertyFieldColorPickerHostProps,
 	IPropertyFieldColorPickerHostState
@@ -18,7 +18,7 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 
 		telemetry.track('PropertyFieldColorPicker', {
 			disabled: props.disabled
-		  });
+		});
 
 		this.state = {
 			errorMessage: undefined,
@@ -36,7 +36,7 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 					<table className={styles.cpInlineTable}>
 						<tbody>
 							<tr>
-								<td style={{width:"100%"}}>
+								<td style={{ width: "100%" }}>
 									{this.state.inlinePickerShowing &&
 										<div className="ms-slideDownIn20">
 											<ColorPicker
@@ -48,7 +48,7 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 									}
 									{!this.state.inlinePickerShowing &&
 										<div className="ms-slideUpIn20 ms-borderColor-neutralDark"
-											style={{backgroundColor:this.props.selectedColor, border:"1px solid"}}>&nbsp;</div>
+											style={{ backgroundColor: this.props.selectedColor, border: "1px solid" }}>&nbsp;</div>
 									}
 								</td>
 								<td className={styles.cpInlineRow}>
@@ -64,8 +64,8 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 				}
 				{this.props.style === PropertyFieldColorPickerStyle.Full && !this.props.disabled &&
 					<div>
-						<div style={{width:0,height:0,overflow:'hidden'}}>
-							<input/>
+						<div style={{ width: 0, height: 0, overflow: 'hidden' }}>
+							<input />
 						</div>
 						<ColorPicker
 							color={this.props.selectedColor}

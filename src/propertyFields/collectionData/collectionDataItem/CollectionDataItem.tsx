@@ -5,7 +5,8 @@ import { TextField } from 'office-ui-fabric-react/lib/components/TextField';
 import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 import * as strings from 'PropertyControlStrings';
-import { ICustomCollectionField, CustomCollectionFieldType, FieldValidator } from '..';
+import { ICustomCollectionField, CustomCollectionFieldType } from '../ICustomCollectionField';
+import { FieldValidator } from '../FieldValidator';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/components/Callout';
 import { CollectionIconField } from '../collectionIconField';
@@ -17,7 +18,6 @@ import { CollectionDropdownField } from '../collectionDropdownField/CollectionDr
 import { CollectionCheckboxField } from '../collectionCheckboxField/CollectionCheckboxField';
 
 export class CollectionDataItem extends React.Component<ICollectionDataItemProps, ICollectionDataItemState> {
-  private emptyItem: any = null;
   private validation: FieldValidator = {};
   private calloutCellRef: HTMLElement;
 
@@ -25,7 +25,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
     super(props);
 
     // Create an empty item with all properties
-    let emptyItem = this.generateEmptyItem();
+    const emptyItem = this.generateEmptyItem();
 
     this.state = {
       crntItem: clone(this.props.item) || {...emptyItem},
@@ -51,7 +51,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   /**
    * Update the item value on the field change
    */
-  private onValueChanged = (fieldId: string, value: any): Promise<void> => {
+  private onValueChanged = (fieldId: string, value: any): Promise<void> => { // eslint-disable-line @typescript-eslint/no-explicit-any
     return new Promise((resolve) => this.setState((prevState: ICollectionDataItemState) => {
       const { crntItem } = prevState;
       // Update the changed field
@@ -65,7 +65,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   /**
    * Perform all required field checks at once
    */
-  private async doAllFieldChecks() {
+  private async doAllFieldChecks(): Promise<void> {
     const { crntItem } = this.state;
 
     let disableAdd : boolean = null;
@@ -92,7 +92,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   /**
    * Check if all values of the required fields are provided
    */
-  private checkAllRequiredFieldsValid(item: any): boolean {
+  private checkAllRequiredFieldsValid(item: any): boolean { // eslint-disable-line @typescript-eslint/no-explicit-any
     // Get all the required fields
     const requiredFields = this.props.fields.filter(f => f.required);
     // Check all the required field values
@@ -108,7 +108,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * Check if any of the fields contain a value
    * @param item
    */
-  private checkAnyFieldContainsValue(item: any): boolean {
+  private checkAnyFieldContainsValue(item: any): boolean { // eslint-disable-line @typescript-eslint/no-explicit-any
     const { fields } = this.props;
     for (const field of fields) {
       if (typeof item[field.id] !== "undefined" && item[field.id] !== null && item[field.id] !== "") {
@@ -122,11 +122,11 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * Check onGetCustomErrorMessage
    * @param item
    */
-  private async checkAnyFieldCustomErrorMessage(item: any): Promise<boolean> {
+  private async checkAnyFieldCustomErrorMessage(item: any): Promise<boolean> { // eslint-disable-line @typescript-eslint/no-explicit-any
     const { fields, index } = this.props;
     
-    var validations = await Promise.all(fields.filter(f => f.onGetErrorMessage).map(async f => {
-      var validation = await f.onGetErrorMessage(item[f.id], index, item);
+    const validations = await Promise.all(fields.filter(f => f.onGetErrorMessage).map(async f => {
+      const validation = await f.onGetErrorMessage(item[f.id], index, item);
       return this.storeFieldValidation(f.id, validation);
     }));
 
@@ -136,7 +136,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   /**
    * Check if row is ready for save
    */
-  private async checkRowIsValidForSave(item: any): Promise<boolean> {
+  private async checkRowIsValidForSave(item: any): Promise<boolean> { // eslint-disable-line @typescript-eslint/no-explicit-any
     return this.checkAllRequiredFieldsValid(item) && 
       this.checkAnyFieldContainsValue(item) &&
       await this.checkAnyFieldCustomErrorMessage(item) && 
@@ -161,14 +161,14 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   /**
    * Add the current row to the collection
    */
-  private addRow = async () => {
+  private addRow = async (): Promise<void> => {
     if (this.props.fAddItem) {
       const { crntItem } = this.state;
       // Check if all the fields are correctly provided
       if (this.checkRowIsValidForSave(crntItem)) {
         this.props.fAddItem(crntItem);
         // Clear all field values
-        let emptyItem = this.generateEmptyItem();
+        const emptyItem = this.generateEmptyItem();
         this.setState({
           crntItem: {...emptyItem}
         });
@@ -179,7 +179,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   /**
    * Add the current row to the collection
    */
-  private updateItem = async () => {
+  private updateItem = async (): Promise<void> => {
     const { crntItem } = this.state;
     const isValid = await this.checkRowIsValidForSave(crntItem);
 
@@ -199,7 +199,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   /**
    * Delete the item from the collection
    */
-  private deleteRow = () => {
+  private deleteRow = (): void => {
     if (this.props.fDeleteItem) {
       this.props.fDeleteItem(this.props.index);
     }
@@ -211,7 +211,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * @param field
    * @param value
    */
-  private fieldValidation = async (field: ICustomCollectionField, value: any): Promise<string> => {
+  private fieldValidation = async (field: ICustomCollectionField, value: any): Promise<string> => { // eslint-disable-line @typescript-eslint/no-explicit-any
     let validation = "";
     // Do the custom validation check
     if (field.onGetErrorMessage) {
@@ -227,7 +227,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   /**
    * Updates callout and validation state
    */
-  private async storeFieldValidation(fieldId: string, validation: string, doAllFieldChecks: boolean = false) {
+  private async storeFieldValidation(fieldId: string, validation: string, doAllFieldChecks: boolean = false): Promise<string> {
     // Store the field validation
     this.validation[fieldId] = validation === "";
     // Add message for the error callout
@@ -241,7 +241,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   /**
    * Custom field validation
    */
-  private onCustomFieldValidation = async (fieldId: string, errorMsg: string) => {
+  private onCustomFieldValidation = async (fieldId: string, errorMsg: string): Promise<void> => {
     console.log(fieldId, errorMsg);
     if (fieldId) {
       await this.storeFieldValidation(fieldId, errorMsg, true);
@@ -255,7 +255,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * @param value
    * @param item
    */
-  private urlFieldValidation = async (field: ICustomCollectionField, value: any, item: any): Promise<string> => {
+  private urlFieldValidation = async (field: ICustomCollectionField, value: any, item: any): Promise<string> => { // eslint-disable-line @typescript-eslint/no-explicit-any
     let isValid = true;
     let validation = "";
 
@@ -266,7 +266,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
       isValid = validation === "";
     } else {
       // Check if entered value is a valid URL
-      const regEx: RegExp = /(http|https)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
+      const regEx: RegExp = /(http|https)?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
       isValid = (value === null || value.length === 0 || regEx.test(value));
       validation = isValid ? "" : strings.InvalidUrlError;
     }
@@ -280,9 +280,10 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * @param field
    * @param message
    */
-  private errorCalloutHandler(fieldId: string, message: string) {
+  private errorCalloutHandler(fieldId: string, message: string): void {
     this.setState((prevState: ICollectionDataItemState) => {
-      let { crntItem, errorMsgs } = prevState;
+      let { errorMsgs } = prevState;
+      const { crntItem } = this.state;
 
       // Get the current field
       const fieldIdx = findIndex(this.props.fields, f => f.id === fieldId);
@@ -342,13 +343,13 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
   /**
    * Toggle the error callout
    */
-  private toggleErrorCallout = () => {
+  private toggleErrorCallout = (): void => {
     this.setState((prevState: ICollectionDataItemState) => ({
       showCallout: !prevState.showCallout
     }));
   }
 
-  private hideErrorCallout = () => {
+  private hideErrorCallout = (): void => {
     this.setState({
       showCallout: false
     });
@@ -360,7 +361,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * @param field
    * @param item
    */
-  private renderField(field: ICustomCollectionField, item: any) {
+  private renderField(field: ICustomCollectionField, item: any): JSX.Element { // eslint-disable-line @typescript-eslint/no-explicit-any
     const disableFieldOnEdit: boolean = (field.disableEdit && !!this.props.fUpdateItem) || (field.disable && field.disable(item));
 
     switch(field.type) {
@@ -388,8 +389,8 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
           if (field.onCustomRender) {
             return field.onCustomRender(field, item[field.id], (fieldId, value) => {
               this.onValueChanged(fieldId, value).then(() => {
-                this.fieldValidation(field, value);
-              });
+                this.fieldValidation(field, value).then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
+              }).catch(() => { /* no-op; */ });
             }, item, item.uniqueId, this.onCustomFieldValidation);
           }
           return null;
@@ -411,7 +412,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * Retrieve all dropdown options
    */
   private getSortingOptions(): IDropdownOption[] {
-    let opts: IDropdownOption[] = [];
+    const opts: IDropdownOption[] = [];
     const { totalItems } = this.props;
     for (let i = 1; i <= totalItems; i++) {
       opts.push({
@@ -425,9 +426,9 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    /**
    * Creates an empty item with a unique id
    */
-  private generateEmptyItem(): any {
+  private generateEmptyItem(): any { // eslint-disable-line @typescript-eslint/no-explicit-any
     // Create an empty item with all properties
-    let emptyItem:any = {};
+    const emptyItem: any = {}; // eslint-disable-line @typescript-eslint/no-explicit-any
     emptyItem.uniqueId = Guid.newGuid().toString();
 
     for (const field of this.props.fields) {
@@ -455,7 +456,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
         }
         {
           (this.props.sortingEnabled && this.props.totalItems === null) && (
-            <span className={`${styles.tableCell}`}></span>
+            <span className={`${styles.tableCell}`} />
           )
         }
         {
@@ -465,7 +466,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
         }
 
         <span className={styles.tableCell}>
-          <span ref={ref => this.calloutCellRef = ref}>
+          <span ref={ref => { this.calloutCellRef = ref; }}>
             <Link title={strings.CollectionDataItemShowErrorsLabel}
                   className={styles.errorCalloutLink}
                   disabled={!this.state.errorMsgs || this.state.errorMsgs.length === 0}

@@ -1,6 +1,6 @@
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import * as React from 'react';
-import { ICustomCollectionField, ICustomDropdownOption } from '..';
+import { ICustomDropdownOption } from '../ICustomCollectionField';
 import { IBaseCollectionFieldProps } from '../IBaseCollectionFIeldsProps';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
 
@@ -58,7 +58,7 @@ export const CollectionDropdownField: React.FunctionComponent<ICollectionDropdow
 
   React.useEffect(() => {
     if (item && field) {
-      onValueChange(item[field.id]);
+      onValueChange(item[field.id]).then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
     }
   }, []);
 
@@ -71,7 +71,7 @@ export const CollectionDropdownField: React.FunctionComponent<ICollectionDropdow
     selectedKey={item[field.id]}
     required={field.required}
     disabled={disableEdit}
-    onChange={(e, i) => { onValueChange(i.key); }}
+    onChange={(e, i) => { onValueChange(i.key).then(() => { /* no-op; */ }).catch(() => { /* no-op; */ }); }}
     onRenderOption={field.onRenderOption}
     className={`PropertyFieldCollectionData__panel__dropdown-field ${errorMessage ? styles.invalidField : ''}`} />;
 };

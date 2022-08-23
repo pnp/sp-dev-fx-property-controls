@@ -73,7 +73,7 @@ export interface IPropertyFieldColumnPickerProps {
     /**
      * Parent Web Part properties
      */
-    properties: any;
+    properties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
     /**
      * Initial selected Column of the control
@@ -126,7 +126,7 @@ export interface IPropertyFieldColumnPickerProps {
      * Normally this function must be always defined with the 'this.onPropertyChange'
      * method of the web part object.
      */
-    onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
+    onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void; // eslint-disable-line @typescript-eslint/no-explicit-any
     /**
       * Callback that is called before the dropdown is populated
       */
@@ -148,7 +148,7 @@ export interface IPropertyFieldColumnPickerPropsInternal extends IPropertyFieldC
     label: string;
     listId?: string;
     orderBy?: PropertyFieldColumnPickerOrderBy;
-    properties: any;
+    properties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
     selectedColumn?: string;
     selectedColumns?: string[];
     targetProperty: string;
@@ -159,6 +159,6 @@ export interface IPropertyFieldColumnPickerPropsInternal extends IPropertyFieldC
     multiSelect?: boolean;
     webAbsoluteUrl?: string;
     onGetErrorMessage?: (value: string | string[]) => string | Promise<string>;
-    onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
+    onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void; // eslint-disable-line @typescript-eslint/no-explicit-any
     onColumnsRetrieved?: (columns: ISPColumn[]) => PromiseLike<ISPColumn[]> | ISPColumn[];
 }

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
-import { ICollectionColorFieldProps } from '.';
+import { ICollectionColorFieldProps } from './ICollectionColorFieldProps';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { Callout, DirectionalHint, Target } from 'office-ui-fabric-react/lib/Callout';
+import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
-import { ICustomCollectionField } from '..';
+import { ICustomCollectionField } from '../ICustomCollectionField';
 
 interface ICollectionColorFieldState {
   isCalloutVisible: boolean;
@@ -35,16 +35,16 @@ export class CollectionColorField extends React.Component<ICollectionColorFieldP
    * UNSAFE_componentWillMount lifecycle hook
    */
   public UNSAFE_componentWillMount(): void {
-    this.valueChange(this.props.field, this.props.item[this.props.field.id]);
+    this.valueChange(this.props.field, this.props.item[this.props.field.id]).then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
   }
 
-  private _onCalloutDismiss = () => {
+  private _onCalloutDismiss = (): void => {
     this.setState({
       isCalloutVisible: false
     });
   }
 
-  private _onCalloutToggle = () => {
+  private _onCalloutToggle = (): void => {
     this.setState({
       isCalloutVisible: !this.state.isCalloutVisible
     });
@@ -56,7 +56,7 @@ export class CollectionColorField extends React.Component<ICollectionColorFieldP
    * @param field
    * @param value
    */
-  private valueChange = async (field: ICustomCollectionField, value: string) => {
+  private valueChange = async (field: ICustomCollectionField, value: string): Promise<void> => {
     this.setState({
       color: value
     });
@@ -67,7 +67,7 @@ export class CollectionColorField extends React.Component<ICollectionColorFieldP
   /**
    * Delayed field validation
    */
-  private valueValidation = async (field: ICustomCollectionField, value: string) => {
+  private valueValidation = async (field: ICustomCollectionField, value: string): Promise<void> => {
     const validation = await this.props.fValidation(field, value);
     // Update the error message
     this.setState({
@@ -76,16 +76,13 @@ export class CollectionColorField extends React.Component<ICollectionColorFieldP
   }
 
   public render(): React.ReactElement<ICollectionColorFieldProps> {
-    const { field } = this.props;
-
     return (
       <div className={`PropertyFieldCollectionData__panel__color-field ${styles.colorField} ${this.state.errorMessage ? styles.invalidField : ""}`}>
 
         <div className={styles.colorIndicator}
           style={{ backgroundColor: this.state.color, cursor: this.props.disableEdit ? 'default' : 'hand' }}
           ref={this._colorElement}
-          onClick={() => { if (!this.props.disableEdit) this._onCalloutToggle(); }}>
-        </div>
+          onClick={() => { if (!this.props.disableEdit) this._onCalloutToggle(); }} />
 
         <Callout
           gapSpace={0}

@@ -15,7 +15,7 @@ class PropertyFieldCollectionDataBuilder implements IPropertyPaneField<IProperty
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public properties: IPropertyFieldCollectionDataPropsInternal;
 
-  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
+  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   public constructor(_targetProperty: string, _properties: IPropertyFieldCollectionDataPropsInternal) {
     this.targetProperty = _targetProperty;
@@ -25,7 +25,7 @@ class PropertyFieldCollectionDataBuilder implements IPropertyPaneField<IProperty
     this.properties.onDispose = this.dispose.bind(this);
   }
 
-  private render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any[]) => void): void {
+  private render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any[]) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
     const props: IPropertyFieldCollectionDataProps = <IPropertyFieldCollectionDataProps>this.properties;
 
     const element = React.createElement(PropertyFieldCollectionDataHost, {
@@ -43,7 +43,7 @@ class PropertyFieldCollectionDataBuilder implements IPropertyPaneField<IProperty
   /**
    * Dispose the property field
    */
-  private dispose(elem: HTMLElement) {
+  private dispose(elem: HTMLElement): void {
     ReactDOM.unmountComponentAtNode(elem);
   }
 
@@ -51,7 +51,7 @@ class PropertyFieldCollectionDataBuilder implements IPropertyPaneField<IProperty
    * On field change event handler
    * @param value
    */
-  private onChanged(value: any[]): void {
+  private onChanged(value: any[]): void { // eslint-disable-line @typescript-eslint/no-explicit-any
     if (this._onChangeCallback) {
       this._onChangeCallback(this.targetProperty, value);
     }

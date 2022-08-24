@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { IPropertyFieldDateTimePickerPropsInternal, TimeConvention, DateConvention, IDateTimeFieldValue } from './IPropertyFieldDateTimePicker';
+import { TimeConvention, DateConvention, IDateTimeFieldValue } from './IPropertyFieldDateTimePicker';
 import { DatePicker, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import * as strings from 'PropertyControlStrings';
-import { IPropertyFieldDateTimePickerHostProps, IPropertyFieldDateTimePickerHostState, ITimeComponentProps, IHoursComponentProps } from './IPropertyFieldDateTimePickerHost';
+import { IPropertyFieldDateTimePickerHostProps, IPropertyFieldDateTimePickerHostState } from './IPropertyFieldDateTimePickerHost';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import styles from './PropertyFieldDateTimePickerHost.module.scss';
 import HoursComponent from './HoursComponent';
@@ -135,7 +135,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   /**
    * Function to retrieve the initial date
    */
-  private _getDateValue() {
+  private _getDateValue(): Date {
     if (typeof this.props.initialDate !== 'undefined' && this.props.initialDate !== null) {
       if (typeof this.props.initialDate.value !== 'undefined' && this.props.initialDate.value !== null) {
         return new Date(this.props.initialDate.value.toString());
@@ -233,7 +233,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
     }
     this._latestValidateValue = dateVal.displayValue;
 
-    const result: string | PromiseLike<string> = this.props.onGetErrorMessage(dateVal.displayValue || '');
+    const result: string | Promise<string> = this.props.onGetErrorMessage(dateVal.displayValue || '');
     if (typeof result !== 'undefined') {
       if (typeof result === 'string') {
         if (result === '') {
@@ -252,7 +252,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
           this.setState({
             errorMessage: errorMessage
           });
-        });
+        }).catch(() => { /* no-op; */ });
       }
     }
     else {
@@ -263,7 +263,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   /**
    * Notifies the parent Web Part of a property value change
    */
-  private notifyAfterValidate(oldValue: IDateTimeFieldValue, newValue: IDateTimeFieldValue) {
+  private notifyAfterValidate(oldValue: IDateTimeFieldValue, newValue: IDateTimeFieldValue): void {
     if (this.props.onPropertyChange && newValue !== null) {
       setPropertyValue(this.props.properties, this.props.targetProperty, newValue);
       this.props.onPropertyChange(this.props.targetProperty, oldValue, newValue);
@@ -277,7 +277,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
   /**
    * Called when the component will unmount
    */
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this.async.dispose();
   }
 
@@ -361,7 +361,7 @@ export default class PropertyFieldDateTimePickerHost extends React.Component<IPr
             </tr>
             {!!timeElm &&
               <tr>
-                <td className={styles.spacerRow} colSpan={showLabels ? 2 : 1}></td>
+                <td className={styles.spacerRow} colSpan={showLabels ? 2 : 1} />
               </tr>}
             {timeElm}
           </tbody>

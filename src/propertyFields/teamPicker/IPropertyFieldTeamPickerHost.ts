@@ -4,7 +4,7 @@ import { IPropertyFieldTeamPickerPropsInternal, IPropertyFieldTeam} from './IPro
  * PropertyFieldTeamPickerHost properties interface
  */
 export interface IPropertyFieldTeamPickerHostProps extends IPropertyFieldTeamPickerPropsInternal {
-  onChange: (targetProperty?: string, newValue?: any) => void;
+  onChange: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export interface ITeamPickerState {

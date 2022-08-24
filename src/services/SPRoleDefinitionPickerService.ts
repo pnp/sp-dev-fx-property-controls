@@ -1,5 +1,4 @@
 import { SPHttpClient } from '@microsoft/sp-http';
-import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { IRoleDefinitionInformation, IPropertyFieldRoleDefinitionPickerHostProps } from '../propertyFields/roleDefinitionPicker';
 import { ISPRoleDefinitionPickerService } from './ISPRoleDefinitionPickerService';
@@ -28,21 +27,21 @@ export class SPRoleDefinitionPickerService implements ISPRoleDefinitionPickerSer
     const webAbsoluteUrl = this.props.webAbsoluteUrl ? this.props.webAbsoluteUrl : this.context.pageContext.web.absoluteUrl;
 
     // If the running environment is SharePoint, request the lists REST service
-    let queryUrl: string = `${webAbsoluteUrl}/_api/web/RoleDefinitions`;
+    const queryUrl: string = `${webAbsoluteUrl}/_api/web/RoleDefinitions`;
 
-    let response = await this.context.spHttpClient.get(queryUrl, SPHttpClient.configurations.v1, {
+    const response = await this.context.spHttpClient.get(queryUrl, SPHttpClient.configurations.v1, {
       headers: [
         ['accept', 'application/json;odata=nometadata'],
         ['odata-version', '']
       ]
     });
 
-    let roleDefinitions = (await response.json()) as IRoleDefinitionInformationCollection;
+    const roleDefinitions = (await response.json()) as IRoleDefinitionInformationCollection;
 
     // Check if onViewsRetrieved callback is defined
     if (this.props.onRoleDefinitionsRetrieved) {
       //Call onViewsRetrieved
-      let lr = this.props.onRoleDefinitionsRetrieved(roleDefinitions.value);
+      const lr = this.props.onRoleDefinitionsRetrieved(roleDefinitions.value);
       let output: IRoleDefinitionInformation[];
 
       //Conditional checking to see of PromiseLike object or array

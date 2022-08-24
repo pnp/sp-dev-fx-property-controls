@@ -13,15 +13,15 @@ import { EventGroup } from 'office-ui-fabric-react/lib/Utilities'; //'@uifabric/
 
 export default class PropertyFieldOrderHost extends React.Component<IPropertyFieldOrderHostProps, IPropertyFieldOrderHostState> {
 
-	private _draggedItem: any;
+	private _draggedItem: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 	private _selection: Selection;
 	private _ddHelper: DragDropHelper;
 	private _refs: Array<HTMLElement>;
-	private _ddSubs: Array<any>;
+	private _ddSubs: Array<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 	private _lastBox: HTMLElement;
 
 	constructor(props: IPropertyFieldOrderHostProps, state: IPropertyFieldOrderHostState) {
-    super(props);
+		super(props);
 
 		telemetry.track('PropertyFieldOrder', {
 			disabled: props.disabled
@@ -34,50 +34,50 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 		});
 
 		this._refs = new Array<HTMLElement>();
-		this._ddSubs = new Array<any>();
+		this._ddSubs = new Array<any>(); // eslint-disable-line @typescript-eslint/no-explicit-any
 
 		this._draggedItem = null;
 
 		this.state = {
 			items: []
 		};
-  }
+	}
 
 	public render(): JSX.Element {
-    const {
-      items
-    } = this.state;
+		const {
+			items
+		} = this.state;
 		return (
 			<div className={styles.propertyFieldOrder}>
 				{this.props.label && <Label>{this.props.label}</Label>}
-				<ul style={{maxHeight: this.props.maxHeight ? this.props.maxHeight + 'px' : '100%'}} className={!this.props.disabled ? styles.enabled : styles.disabled}>
-          {
-            (items && items.length > 0) && (
-              items.map((value:any, index:number) => {
-                return (
-                  <li
-                    ref={this.registerRef}
-                    key={index}
-                    draggable={!this.props.disableDragAndDrop && !this.props.disabled}
-                    style={{cursor: !this.props.disableDragAndDrop && !this.props.disabled ? 'pointer' : 'default'}}
-                  >{this.renderItem(value,index)}</li>
-                );
-              })
-            )
-          }
+				<ul style={{ maxHeight: this.props.maxHeight ? this.props.maxHeight + 'px' : '100%' }} className={!this.props.disabled ? styles.enabled : styles.disabled}>
 					{
-            (items && items.length > 0) && <div className={styles.lastBox} ref={(ref:HTMLElement) => {this._lastBox = ref;}}/>
+						(items && items.length > 0) && (
+							items.map((value: any, index: number) => { // eslint-disable-line @typescript-eslint/no-explicit-any
+								return (
+									<li
+										ref={this.registerRef}
+										key={index}
+										draggable={!this.props.disableDragAndDrop && !this.props.disabled}
+										style={{ cursor: !this.props.disableDragAndDrop && !this.props.disabled ? 'pointer' : 'default' }}
+									>{this.renderItem(value, index)}</li>
+								);
+							})
+						)
+					}
+					{
+						(items && items.length > 0) && <div className={styles.lastBox} ref={(ref: HTMLElement) => { this._lastBox = ref; }} />
 					}
 				</ul>
 			</div>
 		);
 	}
 
-	private renderItem(item:any, index:number): JSX.Element {
+	private renderItem(item: any, index: number): JSX.Element { // eslint-disable-line @typescript-eslint/no-explicit-any
 		return (
 			<div>
 				<div className={styles.itemBox}>
-					{this.renderDisplayValue(item,index)}
+					{this.renderDisplayValue(item, index)}
 				</div>
 				{!this.props.removeArrows &&
 					<div>{this.renderArrows(index)}</div>
@@ -86,8 +86,8 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 		);
 	}
 
-	private renderDisplayValue(item:any, index:number): JSX.Element {
-		if(typeof this.props.onRenderItem === "function") {
+	private renderDisplayValue(item: any, index: number): JSX.Element { // eslint-disable-line @typescript-eslint/no-explicit-any
+		if (typeof this.props.onRenderItem === "function") {
 			return this.props.onRenderItem(item, index);
 		} else {
 			return (
@@ -96,8 +96,8 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 		}
 	}
 
-	private renderArrows(index:number): JSX.Element {
-		let arrowButtonStyles: Partial<IButtonStyles> = {
+	private renderArrows(index: number): JSX.Element {
+		const arrowButtonStyles: Partial<IButtonStyles> = {
 			root: {
 				width: '14px',
 				height: '100%',
@@ -115,68 +115,68 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 			<div>
 				<IconButton
 					disabled={this.props.disabled || index === 0}
-					iconProps={{iconName: this.props.moveUpIconName}}
-					onClick={() => {this.onMoveUpClick(index);}}
+					iconProps={{ iconName: this.props.moveUpIconName }}
+					onClick={() => { this.onMoveUpClick(index); }}
 					styles={arrowButtonStyles}
 				/>
 				<IconButton
 					disabled={this.props.disabled || index === this.props.items.length - 1}
-					iconProps={{iconName: this.props.moveDownIconName}}
-					onClick={() => {this.onMoveDownClick(index);}}
+					iconProps={{ iconName: this.props.moveDownIconName }}
+					onClick={() => { this.onMoveDownClick(index); }}
 					styles={arrowButtonStyles}
 				/>
 			</div>
 		);
-  }
+	}
 
-  public componentWillMount(): void {
-    this.setState({
-      items: this.props.items || []
-    });
-  }
+	public UNSAFE_componentWillMount(): void {
+		this.setState({
+			items: this.props.items || []
+		});
+	}
 
 	public componentDidMount(): void {
 		this.setupSubscriptions();
 	}
 
-  public componentWillUpdate(nextProps: IPropertyFieldOrderHostProps): void {
-    // Check if the provided items are still the same
-    if (!isEqual(nextProps.items, this.state.items)) {
-      this.setState({
-        items: this.props.items || []
-      });
-    }
-  }
+	public UNSAFE_componentWillUpdate(nextProps: IPropertyFieldOrderHostProps): void {
+		// Check if the provided items are still the same
+		if (!isEqual(nextProps.items, this.state.items)) {
+			this.setState({
+				items: this.props.items || []
+			});
+		}
+	}
 
 	public componentDidUpdate(): void {
 		this.cleanupSubscriptions();
 		this.setupSubscriptions();
-  }
+	}
 
 	public componentWillUnmount(): void {
 		this.cleanupSubscriptions();
 	}
 
-	private registerRef = (ref:HTMLElement): void => {
+	private registerRef = (ref: HTMLElement): void => {
 		this._refs.push(ref);
 	}
 
 	private setupSubscriptions = (): void => {
-		if(!this.props.disableDragAndDrop && !this.props.disabled) {
-			this._refs.forEach((value:HTMLElement, index:number) => {
+		if (!this.props.disableDragAndDrop && !this.props.disabled) {
+			this._refs.forEach((value: HTMLElement, index: number) => {
 				this._ddSubs.push(this._ddHelper.subscribe(value, new EventGroup(value), {
 					eventMap: [
 						{
-							callback: (context:IDragDropContext, event?:any) => {
+							callback: (context: IDragDropContext) => {
 								this._draggedItem = context.data;
 							},
 							eventName: 'dragstart'
 						}
 					],
 					selectionIndex: index,
-					context: {data: this.state.items[index], index: index},
+					context: { data: this.state.items[index], index: index },
 					updateDropState: (isDropping: boolean, event: DragEvent) => {
-						if(isDropping) {
+						if (isDropping) {
 							value.classList.add(styles.dragEnter);
 						} else {
 							value.classList.remove(styles.dragEnter);
@@ -185,43 +185,39 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 					canDrop: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => {
 						return true;
 					},
-					canDrag: (item?: any) => {
+					canDrag: (item?: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
 						return true;
 					},
-					onDrop: (item?: any, event?: DragEvent) => {
+					onDrop: (item?: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
 						if (this._draggedItem) {
 							this.insertBeforeItem(item);
 						}
 					},
-					/*onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => {
-						//Never called for some reason, so using eventMap above
-						this._draggedItem = item;
-					},*/
-					onDragEnd: (item?: any, event?: DragEvent) => {
+					onDragEnd: () => {
 						this._draggedItem = null;
 					}
 				}));
 			});
 
 			//Create dropable area below list to allow items to be dragged to the bottom
-			if(this._refs.length && typeof this._lastBox !== "undefined") {
+			if (this._refs.length && typeof this._lastBox !== "undefined") {
 				this._ddSubs.push(this._ddHelper.subscribe(this._lastBox, new EventGroup(this._lastBox), {
 					selectionIndex: this._refs.length,
-					context: {data: {}, index: this._refs.length},
+					context: { data: {}, index: this._refs.length },
 					updateDropState: (isDropping: boolean, event: DragEvent) => {
-						if(isDropping) {
-							this._refs[this._refs.length-1].classList.add(styles.dragLast);
+						if (isDropping) {
+							this._refs[this._refs.length - 1].classList.add(styles.dragLast);
 						} else {
-							this._refs[this._refs.length-1].classList.remove(styles.dragLast);
+							this._refs[this._refs.length - 1].classList.remove(styles.dragLast);
 						}
 					},
 					canDrop: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => {
 						return true;
 					},
-					onDrop: (item?: any, event?: DragEvent) => {
+					onDrop: (item?: any, event?: DragEvent) => { // eslint-disable-line @typescript-eslint/no-explicit-any
 						if (this._draggedItem) {
-							let itemIndex:number = this.state.items.indexOf(this._draggedItem);
-							this.moveItemAtIndexToTargetIndex(itemIndex,this.state.items.length-1);
+							const itemIndex: number = this.state.items.indexOf(this._draggedItem);
+							this.moveItemAtIndexToTargetIndex(itemIndex, this.state.items.length - 1);
 						}
 					}
 				}));
@@ -230,37 +226,37 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 	}
 
 	private cleanupSubscriptions = (): void => {
-		while(this._ddSubs.length){
-			let sub:any = this._ddSubs.pop();
+		while (this._ddSubs.length) {
+			const sub: any = this._ddSubs.pop(); // eslint-disable-line @typescript-eslint/no-explicit-any
 			sub.dispose();
 		}
 	}
 
-	private insertBeforeItem = (item: any) => {
-		let itemIndex:number = this.state.items.indexOf(this._draggedItem);
-		let targetIndex:number = this.state.items.indexOf(item);
-		if(itemIndex < targetIndex) {
+	private insertBeforeItem = (item: any): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
+		const itemIndex: number = this.state.items.indexOf(this._draggedItem);
+		let targetIndex: number = this.state.items.indexOf(item);
+		if (itemIndex < targetIndex) {
 			targetIndex -= 1;
 		}
-		this.moveItemAtIndexToTargetIndex(itemIndex,targetIndex);
+		this.moveItemAtIndexToTargetIndex(itemIndex, targetIndex);
 	}
 
 
-	private onMoveUpClick = (itemIndex:number): void => {
-		if(itemIndex > 0) {
-			this.moveItemAtIndexToTargetIndex(itemIndex, itemIndex-1);
+	private onMoveUpClick = (itemIndex: number): void => {
+		if (itemIndex > 0) {
+			this.moveItemAtIndexToTargetIndex(itemIndex, itemIndex - 1);
 		}
 	}
 
-	private onMoveDownClick = (itemIndex:number): void => {
-		if(itemIndex < this.state.items.length-1) {
-			this.moveItemAtIndexToTargetIndex(itemIndex, itemIndex+1);
+	private onMoveDownClick = (itemIndex: number): void => {
+		if (itemIndex < this.state.items.length - 1) {
+			this.moveItemAtIndexToTargetIndex(itemIndex, itemIndex + 1);
 		}
 	}
 
-	private moveItemAtIndexToTargetIndex = (itemIndex:number, targetIndex:number): void => {
-		if(itemIndex !== targetIndex && itemIndex > -1 && targetIndex > -1 && itemIndex < this.state.items.length && targetIndex < this.state.items.length) {
-			let items: Array<any> = this.state.items;
+	private moveItemAtIndexToTargetIndex = (itemIndex: number, targetIndex: number): void => {
+		if (itemIndex !== targetIndex && itemIndex > -1 && targetIndex > -1 && itemIndex < this.state.items.length && targetIndex < this.state.items.length) {
+			const items: Array<any> = this.state.items; // eslint-disable-line @typescript-eslint/no-explicit-any
 			items.splice(targetIndex, 0, ...items.splice(itemIndex, 1));
 
 			this.setState({

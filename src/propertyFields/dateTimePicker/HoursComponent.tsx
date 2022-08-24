@@ -9,7 +9,7 @@ import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/components
 export default class HoursComponent extends React.Component<IHoursComponentProps, {}> {
   public render(): JSX.Element {
     // Constructs a Date type object from the initalDate string property
-    let hours: IDropdownOption[] = [];
+    const hours: IDropdownOption[] = [];
     for (let i = 0; i < 24; i++) {
       let digit: string;
       if (this.props.timeConvention === TimeConvention.Hours24) {

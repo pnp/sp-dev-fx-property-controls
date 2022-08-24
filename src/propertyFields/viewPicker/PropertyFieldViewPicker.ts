@@ -28,7 +28,7 @@ class PropertyFieldViewPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private selectedView: string;
   private viewsToExclude: string[];
 
-  private customProperties: any;
+  private customProperties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   private deferredValidationTime: number = 200;
   private disabled: boolean = false;
   private disableReactivePropertyChanges: boolean = false;
@@ -37,7 +37,7 @@ class PropertyFieldViewPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private webAbsoluteUrl?: string;
   private onGetErrorMessage: (value: string) => string | Promise<string>;
   private onViewsRetrieved?: (views: ISPView[]) => PromiseLike<ISPView[]> | ISPView[];
-  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { }
+  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { /* no-op; */ } // eslint-disable-line @typescript-eslint/no-explicit-any
   private renderWebPart: () => void;
 
   /**
@@ -74,8 +74,8 @@ class PropertyFieldViewPickerBuilder implements IPropertyPaneField<IPropertyFiel
   /**
    * Renders the SPViewPicker field content
    */
-  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
-    const componentProps = {
+  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
+    const componentProps: IPropertyFieldViewPickerHostProps = {
       label: this.label,
       targetProperty: this.targetProperty,
       context: this.context,
@@ -97,7 +97,7 @@ class PropertyFieldViewPickerBuilder implements IPropertyPaneField<IPropertyFiel
     };
 
       // Single selector
-      componentProps['selectedView'] = this.selectedView;
+      componentProps.selectedView = this.selectedView;
       const element: React.ReactElement<IPropertyFieldViewPickerHostProps> = React.createElement(PropertyFieldViewPickerHost, componentProps);
       // Calls the REACT content generator
       ReactDom.render(element, elem);
@@ -107,7 +107,7 @@ class PropertyFieldViewPickerBuilder implements IPropertyPaneField<IPropertyFiel
    * Disposes the current object
    */
   private dispose(_elem: HTMLElement): void {
-
+    // no-op;
   }
 
 }

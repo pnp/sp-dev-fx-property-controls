@@ -41,8 +41,8 @@ export default class PropertyFieldEditableComboBoxHost extends React.Component<I
    */
   public optionChanged(event: React.FormEvent<IComboBox>, option?: IComboBoxOption | undefined, index?: number | undefined, value?: string | undefined) : void {
     //Determine if the option was selected or if a new value was added
-    var txt: string | undefined;
-    var wasAdded: boolean = false;
+    let txt: string | undefined;
+    let wasAdded: boolean = false;
     if (option !== undefined) {
       //An option was selected
       txt = option.text;
@@ -79,7 +79,7 @@ export default class PropertyFieldEditableComboBoxHost extends React.Component<I
   protected onKeyDown(event: React.KeyboardEvent<IComboBox>): void {
     if (this.props.maxFillInLength !== undefined) {
       if (event.key.toLowerCase() !== 'backspace') {
-        let text = (event.target as HTMLInputElement).value;
+        const text = (event.target as HTMLInputElement).value;
         if (text !== undefined && text !== null) {
           if (text.length >= this.props.maxFillInLength) {
             this.log(`Max character length hit!!! [${this.props.maxFillInLength.toString()}] : Stopping new characters.`);
@@ -95,7 +95,7 @@ export default class PropertyFieldEditableComboBoxHost extends React.Component<I
    * @param val the string to write out to the console
    * @description lightweight logging to the console, with just a little custom styling
    */
-  private log(val: string) {
+  private log(val: string): void {
     console.log(`%c>> ${val}`, this.logStyle);
   }
 
@@ -113,7 +113,7 @@ export default class PropertyFieldEditableComboBoxHost extends React.Component<I
             content={this.props.tooltipText}
             className={styles.tooltip}
           >
-            <FontIcon iconName="Info" className={styles.fontIcon}></FontIcon>
+            <FontIcon iconName="Info" className={styles.fontIcon} />
           </TooltipHost>
             : null)}
         </div>
@@ -125,7 +125,7 @@ export default class PropertyFieldEditableComboBoxHost extends React.Component<I
           autoComplete="on"
           onKeyDown={(event) => this.onKeyDown(event)}
           options={this.state.options}
-          disabled={this.props.disabled}></ComboBox>
+          disabled={this.props.disabled} />
       </>
     );
   }

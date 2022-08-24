@@ -1,6 +1,4 @@
-import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
-import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import SPPeoplePickerMockHttpClient from './SPPeopleSearchMockService';
+import { SPHttpClient } from '@microsoft/sp-http';
 import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { ISPSiteSearchService } from './ISPSiteSearchService';
 import { IPropertyFieldSite } from '../propertyFields/sitePicker/IPropertyFieldSitePicker';
@@ -25,9 +23,9 @@ export default class SPSiteSearchService implements ISPSiteSearchService {
     }
 
     let startRow = 0;
-    let rowLimit = 500;
+    const rowLimit = 500;
     let totalRows = 0;
-    const values: any[] = [];
+    const values: any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
 
     const searchRequest = {
       QueryTemplate: queryText,
@@ -45,7 +43,7 @@ export default class SPSiteSearchService implements ISPSiteSearchService {
     do {
       searchRequest.StartRow = startRow;
 
-      let searchResponse = await ctx.spHttpClient.post(requestUrl, SPHttpClient.configurations.v1, {
+      const searchResponse = await ctx.spHttpClient.post(requestUrl, SPHttpClient.configurations.v1, {
         body: JSON.stringify({ request: searchRequest }),
         headers: {
           'Accept': 'application/json;odata=nometadata',
@@ -53,8 +51,8 @@ export default class SPSiteSearchService implements ISPSiteSearchService {
           'odata-version': '3.0'
         }
       });
-      let sitesResponse = await searchResponse.json();
-      let relevantResults = sitesResponse.PrimaryQueryResult.RelevantResults;
+      const sitesResponse = await searchResponse.json();
+      const relevantResults = sitesResponse.PrimaryQueryResult.RelevantResults;
 
       values.push(...relevantResults.Table.Rows);
       totalRows = relevantResults.TotalRows;
@@ -98,17 +96,5 @@ export default class SPSiteSearchService implements ISPSiteSearchService {
       return site;
     });
     return res;
-  }
-
-  /**
-   * Returns fake sites results for the Mock mode
-   */
-  private searchSitesFromMock(ctx: BaseComponentContext, query: string): Promise<Array<IPropertyFieldSite>> {
-    return SPPeoplePickerMockHttpClient.searchPeople(ctx.pageContext.web.absoluteUrl).then(() => {
-      const results: IPropertyFieldSite[] = [
-        { title: 'Contoso Site', id: '611453e1-5b5d-45ec-94aa-a180a02df897', url: ctx.pageContext.web.absoluteUrl }
-      ];
-      return results;
-    }) as Promise<Array<IPropertyFieldSite>>;
   }
 }

@@ -7,7 +7,7 @@ import { IPropertyFieldHeaderCalloutProps } from '../../common/propertyFieldHead
 
 export interface IPropertyFieldTextWithCalloutPropsInternal
     extends IPropertyPaneCustomFieldProps, IPropertyPaneTextFieldProps, IPropertyFieldHeaderCalloutProps {
-        onChanged?: (newValue: any) => void;
+        onChanged?: (newValue: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
     }
 
 /**
@@ -15,5 +15,5 @@ export interface IPropertyFieldTextWithCalloutPropsInternal
  */
 export interface IPropertyFieldTextWithCalloutProps extends IPropertyPaneTextFieldProps, IPropertyFieldHeaderCalloutProps {
     key: string;
-    onChanged?: (newValue: any) => void;
+    onChanged?: (newValue: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 }

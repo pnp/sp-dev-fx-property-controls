@@ -38,8 +38,9 @@ export class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPrope
   private disabledTermIds: string[];
   private termService: ISPTermStorePickerService;
 
-  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { }
-  private customProperties: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { /* no-op; */ }
+  private customProperties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   private key: string;
   private disabled: boolean = false;
   private onGetErrorMessage: (value: IPickerTerms) => string | Promise<string>;
@@ -92,7 +93,7 @@ export class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPrope
   /**
    * Renders the SPListPicker field content
    */
-  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
     // Construct the JSX properties
     const element: React.ReactElement<IPropertyFieldTermPickerHostProps> = React.createElement(PropertyFieldTermPickerHost, {
       label: this.label,
@@ -129,7 +130,7 @@ export class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPrope
    * Disposes the current object
    */
   private dispose(elem: HTMLElement): void {
-
+    // no-op;
   }
 
 }

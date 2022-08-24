@@ -65,7 +65,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
       const result = this.searchService.searchPeople(this.props.context, searchText, this.props.principalType, this.props.targetSiteUrl).then((response: IPropertyFieldGroupOrPerson[]) => {
         this.resultsPeople = [];
         this.resultsPersonas = [];
-        // If allowDuplicate == false, so remove duplicates from results
+        // If allowDuplicate === false, so remove duplicates from results
         if (this.props.allowDuplicate === false) {
           response = this.removeDuplicates(response);
         }
@@ -160,7 +160,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
       return;
     }
 
-    const errResult: string | PromiseLike<string> = this.props.onGetErrorMessage(value || []);
+    const errResult: string | Promise<string> = this.props.onGetErrorMessage(value || []);
     if (errResult) {
       if (typeof errResult === 'string') {
         if (errResult === '') {
@@ -177,7 +177,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
           this.setState({
             errorMessage: errorMessage
           });
-        });
+        }).catch(() => { /* no-op; */ });
       }
     } else {
       this.notifyAfterValidate(this.props.initialData, value);
@@ -190,7 +190,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   /**
    * Notifies the parent Web Part of a property value change
    */
-  private notifyAfterValidate(oldValue: IPropertyFieldGroupOrPerson[], newValue: IPropertyFieldGroupOrPerson[]) {
+  private notifyAfterValidate(oldValue: IPropertyFieldGroupOrPerson[], newValue: IPropertyFieldGroupOrPerson[]): void {
     if (this.props.onPropertyChange && newValue) {
       setPropertyValue(this.props.properties, this.props.targetProperty, newValue);
       this.props.onPropertyChange(this.props.targetProperty, oldValue, newValue);
@@ -204,7 +204,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
   /**
    * Called when the component will unmount
    */
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this.async.dispose();
   }
 
@@ -289,8 +289,8 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
     };
     // Check which text have to be shown
     if (this.props.principalType && this.props.principalType.length > 0) {
-      let userType = this.props.principalType.indexOf(PrincipalType.Users) !== -1;
-      let groupType = this.props.principalType.indexOf(PrincipalType.SharePoint) !== -1 || this.props.principalType.indexOf(PrincipalType.Security) !== -1;
+      const userType = this.props.principalType.indexOf(PrincipalType.Users) !== -1;
+      const groupType = this.props.principalType.indexOf(PrincipalType.SharePoint) !== -1 || this.props.principalType.indexOf(PrincipalType.Security) !== -1;
 
       // Check if both user and group are present
       if (userType && groupType) {

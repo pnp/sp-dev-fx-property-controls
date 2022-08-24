@@ -21,7 +21,7 @@ class PropertyFieldSwatchColorPickerBuilder implements IPropertyPaneField<IPrope
 	private elem: HTMLElement;
 	private color: string;
 	private valueAsObject;
-	private changeCB?: (targetProperty?: string, newValue?: any) => void;
+	private changeCB?: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	public constructor(_targetProperty: string, _properties: IPropertyFieldSwatchColorPickerProps) {
 		this.targetProperty = _targetProperty;
@@ -61,7 +61,7 @@ class PropertyFieldSwatchColorPickerBuilder implements IPropertyPaneField<IPrope
 		this.onRender(this.elem);
 	}
 
-	private onRender(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+	private onRender(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 		if (!this.elem) {
 			this.elem = elem;
 		}
@@ -83,8 +83,8 @@ class PropertyFieldSwatchColorPickerBuilder implements IPropertyPaneField<IPrope
 
 	private onColorChanged(id: string, newColor: string): void {
 		if (this.properties.onPropertyChange && newColor !== null) {
-			let newValue: string | IColor = (this.valueAsObject ? getColorFromString(newColor) : newColor);
-			let oldValue: string | IColor = (this.valueAsObject ? getColorFromString(this.color) : this.color);
+			const newValue: string | IColor = (this.valueAsObject ? getColorFromString(newColor) : newColor);
+			const oldValue: string | IColor = (this.valueAsObject ? getColorFromString(this.color) : this.color);
 			this.color = newColor;
 			this.properties.onPropertyChange(this.targetProperty, oldValue, newValue);
       setPropertyValue(this.properties.properties, this.targetProperty, newValue);

@@ -35,6 +35,7 @@ class PropertyPaneWebPartInformationBuilder implements IPropertyPaneField<IPrope
 		this.onRender(this.elem);
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	private onRender(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
 		if (!this.elem) {
 			this.elem = elem;

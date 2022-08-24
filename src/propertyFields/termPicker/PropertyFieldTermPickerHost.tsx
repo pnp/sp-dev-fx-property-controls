@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton, DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import TermPicker from './TermPicker';
 
@@ -89,7 +89,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
           loaded: true
         });
       }
-    });
+    }).catch(() => { /* no-op; */ });
   }
 
   /**
@@ -101,7 +101,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
       return;
     }
 
-    const result: string | PromiseLike<string> = this.props.onGetErrorMessage(value || []);
+    const result: string | Promise<string> = this.props.onGetErrorMessage(value || []);
     if (typeof result !== 'undefined') {
       if (typeof result === 'string') {
         if (result === '') {
@@ -118,7 +118,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
           this.setState({
             errorMessage: errorMessage
           });
-        });
+        }).catch(() => { /* no-op; */ });
       }
     } else {
       this.notifyAfterValidate(this.props.initialValues, value);
@@ -128,7 +128,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
   /**
    * Notifies the parent Web Part of a property value change
    */
-  private notifyAfterValidate(oldValue: IPickerTerms, newValue: IPickerTerms) {
+  private notifyAfterValidate(oldValue: IPickerTerms, newValue: IPickerTerms): void {
     if (this.props.onPropertyChange && newValue !== null) {
       setPropertyValue(this.props.properties, this.props.targetProperty, newValue);
       this.props.onPropertyChange(this.props.targetProperty, oldValue, newValue);
@@ -238,7 +238,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
  * Fires When Items Changed in TermPicker
  * @param node
  */
-  private termsFromPickerChanged(terms: IPickerTerms) {
+  private termsFromPickerChanged(terms: IPickerTerms): void {
     this.delayedValidate(terms);
 
     this.setState({
@@ -246,24 +246,10 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
     });
   }
 
-
-  /**
-   * Gets the given node position in the active nodes collection
-   * @param node
-   */
-  private getSelectedNodePosition(node: IPickerTerm): number {
-    for (let i = 0; i < this.state.activeNodes.length; i++) {
-      if (node.key === this.state.activeNodes[i].key) {
-        return i;
-      }
-    }
-    return -1;
-  }
-
   /**
    * Called when the component will unmount
    */
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (typeof this.async !== 'undefined') {
       this.async.dispose();
     }
@@ -323,7 +309,7 @@ export default class PropertyFieldTermPickerHost extends React.Component<IProper
 
           {
             /* Show spinner in the panel while retrieving terms */
-            this.state.loaded === false ? <Spinner type={SpinnerType.normal} /> : ''
+            this.state.loaded === false ? <Spinner size={SpinnerSize.medium} /> : ''
           }
 
           {

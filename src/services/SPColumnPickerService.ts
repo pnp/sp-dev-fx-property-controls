@@ -1,4 +1,3 @@
-import { SPHttpClientResponse } from '@microsoft/sp-http';
 import { SPHttpClient } from '@microsoft/sp-http';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { BaseComponentContext } from '@microsoft/sp-component-base';
@@ -59,14 +58,14 @@ export class SPColumnPickerService implements ISPColumnPickerService {
                     if (!displayHiddenColumns) queryUrl += `&$filter=Hidden eq false`;
                 }
 
-                let response = await this.context.spHttpClient.get(queryUrl, SPHttpClient.configurations.v1);
+                const response = await this.context.spHttpClient.get(queryUrl, SPHttpClient.configurations.v1);
 
-                let columns = (await response.json()) as ISPColumns;
+                const columns = (await response.json()) as ISPColumns;
 
                 // Check if onColumnsRetrieved callback is defined
                 if (this.props.onColumnsRetrieved) {
                     //Call onColumnsRetrieved
-                    let lr = this.props.onColumnsRetrieved(columns.value);
+                    const lr = this.props.onColumnsRetrieved(columns.value);
                     let output: ISPColumn[];
 
                     //Conditional checking to see of PromiseLike object or array

@@ -30,7 +30,7 @@ export default class PropertyFieldFolderPickerHost extends React.Component<IProp
     };
   }
 
-  public componentWillReceiveProps(nextProps: IPropertyFieldFolderPickerHostProps) {
+  public UNSAFE_componentWillReceiveProps(nextProps: IPropertyFieldFolderPickerHostProps): void {
     const currentValue = getPropertyValue(this.props.properties, this.props.targetProperty);
     const nextValue = getPropertyValue(nextProps.properties, nextProps.targetProperty);
 
@@ -101,15 +101,15 @@ export default class PropertyFieldFolderPickerHost extends React.Component<IProp
     );
   }
 
-  private _showPanel = () => {
+  private _showPanel = (): void => {
     this.setState({ showPanel: true });
   }
 
-  private _hidePanel = () => {
+  private _hidePanel = (): void => {
     this.setState({ showPanel: false });
   }
 
-  private _onRenderFooterContent = () => {
+  private _onRenderFooterContent = (): JSX.Element => {
     return (
       <div className={styles.actions}>
         <PrimaryButton iconProps={{ iconName: 'Save' }} onClick={this._onFolderSave}>

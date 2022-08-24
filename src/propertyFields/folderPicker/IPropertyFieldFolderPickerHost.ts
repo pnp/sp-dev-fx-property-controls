@@ -3,5 +3,5 @@ import { IPropertyFieldFolderPickerPropsInternal } from "./IPropertyFieldFolderP
  * PropertyFieldFolderPickerHost properties interface
  */
 export interface IPropertyFieldFolderPickerHostProps extends IPropertyFieldFolderPickerPropsInternal {
-	onChange: (targetProperty?: string, newValue?: any) => void;
+	onChange: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 }

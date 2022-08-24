@@ -15,12 +15,12 @@ export interface IPropertyFieldOrderProps {
 	 * Normally this function must be defined with the 'this.onPropertyChange'
 	 * method of the web part object.
 	 */
-	onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
+	onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	/**
 	 * An array of values to reorder
 	 */
-	items: Array<any>;
+	items: Array<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	/**
 	 * The property to use for display, when undefined, the toString() method of the object is used (ignored when the onRenderItem function is specified)
@@ -40,9 +40,9 @@ export interface IPropertyFieldOrderProps {
 	/**
 	 * The maximun height for the items in px (when not set, the control expands as necessary)
 	 */
-	maxHeight?:number;
+	maxHeight?: number;
 
-	 /**
+	/**
 	 * Whether the property pane field is enabled or not.
 	 */
 	disabled?: boolean;
@@ -50,7 +50,7 @@ export interface IPropertyFieldOrderProps {
 	/**
 	 * Optional callback to provide custom rendering of the item (default is simple text based on either item or the property identified in the textProperty)
 	 */
-	onRenderItem?: (item:any, index:number) => JSX.Element;
+	onRenderItem?: (item: any, index: number) => JSX.Element; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	/**
 	 * An UNIQUE key indicates the identity of this control
@@ -60,7 +60,7 @@ export interface IPropertyFieldOrderProps {
 	/**
 	 * Parent Web Part properties
 	 */
-	properties: any;
+	properties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	/**
 	 * The name of the UI Fabric Font Icon to use for the move up button (defaults to ChevronUpSmall)

@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { IPropertyPanePropertyEditorHostProps, IPropertyPanePropertyEditorHostState } from './IPropertyPanePropertyEditorHost';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { PrimaryButton, DefaultButton, IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import AceEditor from 'react-ace';
-import { set } from '@microsoft/sp-lodash-subset';
 import * as telemetry from '../../common/telemetry';
 import styles from './PropertyPanePropertyEditorHost.module.scss';
 import * as strings from 'PropertyControlStrings';
@@ -28,7 +27,7 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
     };
   }
 
-  private setFileRef = (element: HTMLInputElement) => {
+  private setFileRef = (element: HTMLInputElement): void => {
     this.fileRef = element;
   }
 
@@ -43,13 +42,16 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
    */
   private onSave = (): void => {
     const newProperties = JSON.parse(this.state.propertiesJson);
-    for (let propName in newProperties) {
+    for (const propName in newProperties) {
+      if (!Object.hasOwnProperty.call(newProperties, propName)) {
+        continue;
+      }
       // Do not update dynamic data properties
       const currentValue = getPropertyValue(this.props.webpart.properties, propName);
 
 
         if (currentValue?.__type === "DynamicProperty") {
-          const currVal: DynamicProperty<any> = currentValue as DynamicProperty<any>;
+          const currVal: DynamicProperty<any> = currentValue as DynamicProperty<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
           const newVal = newProperties[propName];
           if (GeneralHelper.isDefined(newVal.value)) {
@@ -76,7 +78,7 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
   /**
    * Called when the properties editor changes
    */
-  private onChange = (newValue: string, event?: any): void => {
+  private onChange = (newValue: string, event?: any): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
     this.setState((current) => ({ ...current, propertiesJson: newValue }));
   }
 
@@ -136,11 +138,11 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
    */
   private onUpload = (): void => {
     if (this.fileRef.files.length > 0 && this.fileRef.files[0].type === "application/json") {
-      let fileReader: FileReader = new FileReader();
+      const fileReader: FileReader = new FileReader();
       fileReader.readAsText(this.fileRef.files[0]);
       fileReader.onload = () => {
         let jsonString = fileReader.result as string;
-        let json = JSON.parse(jsonString); // normalize as an object
+        const json = JSON.parse(jsonString); // normalize as an object
         jsonString = JSON.stringify(json, null, '\t'); // and format as an indented string again
         this.setState((current) => ({ ...current, propertiesJson: jsonString }));
       };

@@ -1,6 +1,6 @@
 import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { SPHttpClient } from "@microsoft/sp-http";
-import { ISearchResult, BingQuerySearchParams, IRecentFile } from "./FilesSearchService.types";
+import { ISearchResult, BingQuerySearchParams, IRecentFile, IBingSearchResult } from "./FilesSearchService.types";
 import { find } from "office-ui-fabric-react/lib/Utilities";
 import { GeneralHelper } from "../helpers/GeneralHelper";
 
@@ -48,7 +48,7 @@ export class FilesSearchService {
   /**
    * Executes Recent files search.
    */
-  public executeRecentSearch = async (accepts?: string[]) => {
+  public executeRecentSearch = async (accepts?: string[]): Promise<IRecentFile[]> => {
     try {
       const webId = this.context.pageContext.web.id.toString();
       const siteId = this.context.pageContext.site.id.toString();
@@ -147,6 +147,8 @@ export class FilesSearchService {
       const headers = new Headers({
         'Ocp-Apim-Subscription-Key': this.bingAPIKey
       });
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const searchDataResponse: any = await this.context.httpClient.get(apiUrl, SPHttpClient.configurations.v1, {
         headers: headers,
         method: 'GET',
@@ -217,7 +219,7 @@ export class FilesSearchService {
   /**
    * Parses Recent Search results.
    */
-  private parseRecentSearchResult = (cells: Array<any>) => {
+  private parseRecentSearchResult = (cells: Array<any>): IRecentFile => { // eslint-disable-line @typescript-eslint/no-explicit-any
     const titleCell = find(cells, x => x.Key === "Title");
     const keyCell = find(cells, x => x.Key === "UniqueID");
     const fileUrlCell = find(cells, x => x.Key === "DefaultEncodingURL");
@@ -237,8 +239,8 @@ export class FilesSearchService {
    */
   private parseBingSearchResult = (bingResult: IBingSearchResult): ISearchResult => {
     // Get dimensions
-    const width: number = bingResult!.thumbnail!.width ? bingResult!.thumbnail!.width : bingResult!.width;
-    const height: number = bingResult!.thumbnail!.height ? bingResult!.thumbnail!.height : bingResult!.height;
+    const width: number = bingResult.thumbnail.width ? bingResult.thumbnail.width : bingResult.width;
+    const height: number = bingResult.thumbnail.height ? bingResult.thumbnail.height : bingResult.height;
 
     // Create a search result
     const searchResult: ISearchResult = {
@@ -255,7 +257,7 @@ export class FilesSearchService {
   /**
    * Builds a file filter using the accepted file extensions
    */
-  private _getFileFilter(accepts?: string[]) {
+  private _getFileFilter(accepts?: string[]): string {
     let fileFilter: string = undefined;
     if (accepts) {
       fileFilter = " AND (";

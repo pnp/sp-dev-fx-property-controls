@@ -7,7 +7,7 @@ import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/components
  */
 export default class MinutesComponent extends React.Component<ITimeComponentProps, {}> {
   public render(): JSX.Element {
-    let minutes: IDropdownOption[] = [];
+    const minutes: IDropdownOption[] = [];
     for (let j = 0; j < 60; j++) {
       let digitMin: string;
       if (j < 10) {

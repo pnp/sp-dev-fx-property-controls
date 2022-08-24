@@ -5,7 +5,7 @@ import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldH
 
 import { IPropertyFieldChoiceGroupWithCalloutHostProps } from './IPropertyFieldChoiceGroupWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
-import { ChoiceGroup, IChoiceGroupProps } from 'office-ui-fabric-react/lib/components/ChoiceGroup';
+import { ChoiceGroup } from 'office-ui-fabric-react/lib/components/ChoiceGroup';
 
 export default class PropertyFieldToggleWithCalloutHost extends React.Component<IPropertyFieldChoiceGroupWithCalloutHostProps, null> {
     constructor(props: IPropertyFieldChoiceGroupWithCalloutHostProps) {

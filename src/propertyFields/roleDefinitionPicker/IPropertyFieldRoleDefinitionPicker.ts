@@ -38,7 +38,7 @@ export interface IPropertyFieldRoleDefinitionPickerProps {
   /**
    * Parent Web Part properties
    */
-  properties: any;
+  properties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
    * Initial selected role definition of the control
    */
@@ -73,7 +73,7 @@ export interface IPropertyFieldRoleDefinitionPickerProps {
    * Normally this function must be always defined with the 'this.onPropertyChange'
    * method of the web part object.
    */
-  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
+  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
     * Callback that is called before the dropdown is populated
     */
@@ -91,7 +91,7 @@ export interface IPropertyFieldRoleDefinitionPickerPropsInternal extends IProper
   disabled?: boolean;
   key: string;
   label: string;
-  properties: any;
+  properties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   targetProperty: string;
   selectedRoleDefinition?: string[];
   roleDefinitionsToExclude?: string[];
@@ -99,6 +99,6 @@ export interface IPropertyFieldRoleDefinitionPickerPropsInternal extends IProper
   multiSelect?: boolean;
   roleDefinitions: IRoleDefinitionInformation[];
   onGetErrorMessage?: (value: IRoleDefinitionInformation[]) => string | Promise<string>;
-  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
+  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void; // eslint-disable-line @typescript-eslint/no-explicit-any
   onRoleDefinitionsRetrieved?: (roleDefinitions: IRoleDefinitionInformation[]) => PromiseLike<IRoleDefinitionInformation[]> | IRoleDefinitionInformation[];
 }

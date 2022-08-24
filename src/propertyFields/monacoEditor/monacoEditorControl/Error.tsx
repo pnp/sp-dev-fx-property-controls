@@ -9,7 +9,7 @@ export interface IErrorProps {
 }
 
 export const Error: React.FunctionComponent<IErrorProps> = (props: React.PropsWithChildren<IErrorProps>) => {
-  const { error, show } = props;
+  const { error } = props;
   return (
     <>
       (show && error) ?

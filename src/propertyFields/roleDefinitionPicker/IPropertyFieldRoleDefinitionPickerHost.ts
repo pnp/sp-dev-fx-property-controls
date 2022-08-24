@@ -6,7 +6,7 @@ import { IRoleDefinitionInformation } from './IRoleDefinitionInformation';
  * PropertyFieldRoleDefinitionPickerHost properties interface
  */
 export interface IPropertyFieldRoleDefinitionPickerHostProps extends IPropertyFieldRoleDefinitionPickerPropsInternal {
-  onChange: (targetProperty?: string, newValue?: any) => void;
+  onChange: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 /**

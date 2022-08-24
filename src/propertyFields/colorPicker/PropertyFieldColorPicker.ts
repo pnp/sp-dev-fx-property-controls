@@ -22,8 +22,8 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 	private elem: HTMLElement;
 	private color: string;
 	private valueAsObject: boolean;
-	private changeCB?: (targetProperty?: string, newValue?: any) => void;
-	private _debounce: (fnc: any, timeout:number) => void = debounce();
+	private changeCB?: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
+	private _debounce: (fnc: any, timeout: number) => void = debounce(); // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	public constructor(_targetProperty: string, _properties: IPropertyFieldColorPickerProps) {
 		this.targetProperty = _targetProperty;
@@ -43,10 +43,10 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 			onRender: this.onRender.bind(this)
 		};
 
-		if(typeof _properties.selectedColor === 'undefined') {
+		if (typeof _properties.selectedColor === 'undefined') {
 			this.color = '#ffffff';
 		} else {
-			if(typeof _properties.selectedColor === 'string') {
+			if (typeof _properties.selectedColor === 'string') {
 				this.color = _properties.selectedColor;
 			} else {
 				this.color = _properties.selectedColor.str;
@@ -64,7 +64,7 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 		this.onRender(this.elem);
 	}
 
-	private onRender(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+	private onRender(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 		if (!this.elem) {
 			this.elem = elem;
 		}
@@ -87,17 +87,19 @@ class PropertyFieldColorPickerBuilder implements IPropertyPaneField<IPropertyFie
 
 	private onColorChanged(newColor: string): void {
 		if (this.properties.onPropertyChange && newColor !== null) {
-			let newValue: string | IColor = (this.valueAsObject ? getColorFromString(newColor) : newColor);
-			let oldValue: string | IColor = (this.valueAsObject ? getColorFromString(this.color) : this.color);
+			const newValue: string | IColor = (this.valueAsObject ? getColorFromString(newColor) : newColor);
+			const oldValue: string | IColor = (this.valueAsObject ? getColorFromString(this.color) : this.color);
 			this.color = newColor;
-			this.properties.debounce ? 
+			if (this.properties.debounce) {
 				this._debounce(() => {
 					this.onColorChangedInternal(oldValue, newValue);
-				}, this.properties.debounce) : 
+				}, this.properties.debounce)
+			} else {
 				this.onColorChangedInternal(oldValue, newValue);
+			}
 		}
 	}
-	private onColorChangedInternal(oldValue: string | IColor , newValue: string | IColor ) {
+	private onColorChangedInternal(oldValue: string | IColor, newValue: string | IColor): void {
 		this.properties.onPropertyChange(this.targetProperty, oldValue, newValue);
 		setPropertyValue(this.properties.properties, this.targetProperty, newValue);
 		if (typeof this.changeCB !== 'undefined' && this.changeCB !== null) {

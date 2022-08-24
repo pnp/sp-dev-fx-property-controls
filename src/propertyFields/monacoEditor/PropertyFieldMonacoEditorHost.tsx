@@ -87,7 +87,7 @@ export default class PropertyFieldMonacoEditorHost extends React.Component<
     const _panelWidth = panelWidth ? `${panelWidth}px` : DEFAULT_PANEL_WIDTH;
     return (
       <>
-        <TextField value={this.props.value} readOnly className={this.controlClasses.textFieldStyles}></TextField>
+        <TextField value={this.props.value} readOnly className={this.controlClasses.textFieldStyles} />
         <PrimaryButton
           text={strings.MonacoEditorOpenButtonLabel}
           onClick={(ev) => {

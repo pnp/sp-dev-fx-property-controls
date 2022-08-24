@@ -4,7 +4,7 @@ import { IPropertyFieldSitePickerPropsInternal, IPropertyFieldSite } from './IPr
  * PropertyFieldSitePickerHost properties interface
  */
 export interface IPropertyFieldSitePickerHostProps extends IPropertyFieldSitePickerPropsInternal {
-  onChange: (targetProperty?: string, newValue?: any) => void;
+  onChange: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export interface ISitePickerState {

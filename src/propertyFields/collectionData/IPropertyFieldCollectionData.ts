@@ -41,7 +41,7 @@ export interface IPropertyFieldCollectionDataProps {
   /**
    * The collection data value.
    */
-  value: any[];
+  value: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
    * Specify if you want to enable sorting
    */

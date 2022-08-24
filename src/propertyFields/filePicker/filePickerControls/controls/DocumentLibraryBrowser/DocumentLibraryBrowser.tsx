@@ -3,7 +3,8 @@ import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { IDocumentLibraryBrowserProps, IDocumentLibraryBrowserState } from '.';
+import { IDocumentLibraryBrowserProps } from './IDocumentLibraryBrowserProps';
+import { IDocumentLibraryBrowserState } from './IDocumentLibraryBrowserState';
 import { ILibrary } from '../../../../../services/FileBrowserService.types';
 
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
@@ -39,8 +40,8 @@ export class DocumentLibraryBrowser extends React.Component<IDocumentLibraryBrow
     };
   }
 
-  public async componentDidMount() {
-    let includePageLibraries = this.props.includePageLibraries ? this.props.includePageLibraries : false;
+  public async componentDidMount(): Promise<void> {
+    const includePageLibraries = this.props.includePageLibraries ? this.props.includePageLibraries : false;
     const lists = await this.props.fileBrowserService.getSiteMediaLibraries(includePageLibraries);
     this.setState({
       lists: lists,
@@ -119,7 +120,7 @@ export class DocumentLibraryBrowser extends React.Component<IDocumentLibraryBrow
   /**
    * Calls parent when library is opened
    */
-  private _handleOpenLibrary = (library: ILibrary) => {
+  private _handleOpenLibrary = (library: ILibrary): void => {
     this.props.onOpenLibrary(library);
   }
 }

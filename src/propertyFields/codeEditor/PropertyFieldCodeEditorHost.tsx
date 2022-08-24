@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { PrimaryButton, DefaultButton, IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { IPropertyFieldCodeEditorPropsInternal, PropertyFieldCodeEditorLanguages } from './IPropertyFieldCodeEditor';
+import { PropertyFieldCodeEditorLanguages } from './IPropertyFieldCodeEditor';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { IPropertyFieldCodeEditorHostProps, IPropertyFieldCodeEditorHostState } from './IPropertyFieldCodeEditorHost';
@@ -11,7 +11,6 @@ import styles from './PropertyFieldCodeEditorHost.module.scss';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as telemetry from '../../common/telemetry';
 import * as strings from 'PropertyControlStrings';
-import * as brace from 'brace';
 import AceEditor from 'react-ace';
 import 'brace/mode/json';
 import 'brace/mode/javascript';
@@ -58,12 +57,12 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
   }
 
   /**
-   * componentWillUpdate lifecycle hook
+   * UNSAFE_componentWillUpdate lifecycle hook
    *
    * @param nextProps
    * @param nextState
    */
-  public componentWillUpdate(nextProps: IPropertyFieldCodeEditorHostProps, nextState: IPropertyFieldCodeEditorHostState): void {
+  public UNSAFE_componentWillUpdate(nextProps: IPropertyFieldCodeEditorHostProps, nextState: IPropertyFieldCodeEditorHostState): void {
     if (nextProps.initialValue !== this.props.initialValue) {
       this.setState({
         code: typeof nextProps.initialValue !== 'undefined' ? nextProps.initialValue : ''
@@ -112,8 +111,8 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
    * Format the code
    */
   private onFormatCode(): void {
-    let formattedCode: any;
-    let codeFormatter: CodeFormatter = new CodeFormatter();
+    let formattedCode: string | undefined;
+    const codeFormatter: CodeFormatter = new CodeFormatter();
 
     switch (this.props.language) {
       case PropertyFieldCodeEditorLanguages.JSON: {
@@ -147,7 +146,7 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
   /**
    * Called when the component will unmount
    */
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (typeof this.async !== 'undefined') {
       this.async.dispose();
     }
@@ -170,7 +169,7 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
   /**
    * Called when the code gets changed
    */
-  public onChange(newValue: string, event?: any): void {
+  public onChange(newValue: string): void {
     this.setState((current) => ({ ...current, code: newValue }));
   }
 

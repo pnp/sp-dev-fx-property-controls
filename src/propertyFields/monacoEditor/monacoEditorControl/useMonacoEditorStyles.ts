@@ -2,7 +2,7 @@ import React from 'react';
 
 import { mergeStyleSets } from 'office-ui-fabric-react';
 
-export const useMonacoEditorStyles = () => {
+export const useMonacoEditorStyles = () => { // eslint-disable-line @typescript-eslint/explicit-function-return-type
   const controlClasses =  React.useMemo(() =>{
       return mergeStyleSets({
         containerStyles:{

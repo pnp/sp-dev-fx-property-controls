@@ -29,7 +29,7 @@ export interface IPropertyFieldSwatchColorPickerProps {
 	 * Normally this function must be defined with the 'this.onPropertyChange'
 	 * method of the web part object.
 	 */
-	onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
+	onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	/**
 	 * The CSS-compatible string to describe the initial color
@@ -51,7 +51,7 @@ export interface IPropertyFieldSwatchColorPickerProps {
 	 */
 	columnCount?: number;
 
-	 /**
+	/**
 	 * Whether the property pane field is enabled or not.
 	 */
 	disabled?: boolean;
@@ -64,7 +64,7 @@ export interface IPropertyFieldSwatchColorPickerProps {
 	/**
 	 * Parent Web Part properties
 	 */
-	properties: any;
+	properties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	/**
 	 * Determines how the control is displayed (defaults to inline)

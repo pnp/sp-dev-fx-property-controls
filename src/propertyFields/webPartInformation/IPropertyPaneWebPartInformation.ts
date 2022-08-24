@@ -47,5 +47,5 @@ export interface IVideoEmbedProperties {
 	/**
 	 * Any additional properties to add to the iframe link, for instance {allowFullScreen: true} for Youtube videos
 	 */
-	properties?: any;
+	properties?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }

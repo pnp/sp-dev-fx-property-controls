@@ -77,7 +77,7 @@ export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTa
   /**
    * Handles breadcrump item click
    */
-  private onBreadcrumpItemClick = (node: FilePickerBreadcrumbItem) => {
+  private onBreadcrumpItemClick = (node: FilePickerBreadcrumbItem): void => {
     let { breadcrumbItems } = this.state;
     let breadcrumbClickedItemIndx = 0;
     // Site node clicked
@@ -114,7 +114,7 @@ export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTa
   /**
    * Is called when user selects a different file
    */
-  private _handleSelectionChange = (filePickerResult: IFilePickerResult) => {
+  private _handleSelectionChange = (filePickerResult: IFilePickerResult): void => {
     if (filePickerResult) {
       filePickerResult.downloadFileContent = () => { return this.props.fileBrowserService.downloadSPFileContent(filePickerResult.fileAbsoluteUrl, filePickerResult.fileName); };
     }
@@ -127,25 +127,25 @@ export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTa
   /**
    * Called when user saves
    */
-  private _handleSave = () => {
+  private _handleSave = (): void => {
     this.props.onSave(this.state.filePickerResult);
   }
 
   /**
    * Called when user closes tab
    */
-  private _handleClose = () => {
+  private _handleClose = (): void => {
     this.props.onClose();
   }
 
   /**
    * Triggered when user opens a file folder
    */
-  private _handleOpenFolder = (folder: IFile, addBreadcrumbNode: boolean) => {
+  private _handleOpenFolder = (folder: IFile, addBreadcrumbNode: boolean): void => {
     const { breadcrumbItems } = this.state;
 
     if (addBreadcrumbNode) {
-      breadcrumbItems.map(item => item.isCurrentItem = false);
+      breadcrumbItems.map(item => { item.isCurrentItem = false; });
       const breadcrumbNode: FilePickerBreadcrumbItem = {
         folderData: folder,
         isCurrentItem: true,
@@ -168,10 +168,10 @@ export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTa
   /**
    * Triggered when user opens a top-level document library
    */
-  private _handleOpenLibrary = (library: ILibrary, addBreadcrumbNode: boolean) => {
+  private _handleOpenLibrary = (library: ILibrary, addBreadcrumbNode: boolean): void => {
     const { breadcrumbItems } = this.state;
     if (addBreadcrumbNode) {
-      breadcrumbItems.map(item => item.isCurrentItem = false);
+      breadcrumbItems.map(item => { item.isCurrentItem = false; });
       const breadcrumbNode: FilePickerBreadcrumbItem = {
         libraryData: library,
         isCurrentItem: true,

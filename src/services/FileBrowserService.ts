@@ -77,7 +77,7 @@ export class FileBrowserService {
   /**
    * Gets document and media libraries from the site
    */
-  public getSiteMediaLibraries = async (includePageLibraries: boolean = false) => {
+  public getSiteMediaLibraries = async (includePageLibraries: boolean = false): Promise<ILibrary[]> => {
     try {
       const absoluteUrl = this.context.pageContext.web.absoluteUrl;
       const restApi = `${absoluteUrl}/_api/SP.Web.GetDocumentAndMediaLibraries?webFullUrl='${encodeURIComponent(absoluteUrl)}'&includePageLibraries='${includePageLibraries}'`;
@@ -137,8 +137,9 @@ export class FileBrowserService {
         }
       };
       if (folderPath) {
-          body.parameters["FolderServerRelativeUrl"] = folderPath;
+          body.parameters["FolderServerRelativeUrl"] = folderPath; // eslint-disable-line dot-notation
       }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const data: any = await this.context.spHttpClient.fetch(restApi, SPHttpClient.configurations.v1, {
         method: "POST",
         body: JSON.stringify(body)
@@ -171,7 +172,7 @@ export class FileBrowserService {
    * Generates CamlQuery files filter.
    * @param accepts
    */
-  protected getFileTypeFilter(accepts: string[]) {
+  protected getFileTypeFilter(accepts: string[]): string {
     let fileFilter: string = "";
 
     if (accepts && accepts.length > 0) {
@@ -191,9 +192,9 @@ export class FileBrowserService {
   /**
    * Generates Files CamlQuery ViewXml
    */
-  protected getFilesCamlQueryViewXml = (accepts: string[]) => {
+  protected getFilesCamlQueryViewXml = (accepts: string[]): string => {
     const fileFilter: string = this.getFileTypeFilter(accepts);
-    let queryCondition = fileFilter && fileFilter !== "" ?
+    const queryCondition = fileFilter && fileFilter !== "" ?
       `<Query>
         <Where>
           <Or>
@@ -242,11 +243,11 @@ export class FileBrowserService {
   /**
    * Converts REST call results to IFile
    */
-  protected parseFileItem = (fileItem: any): IFile => {
+  protected parseFileItem = (fileItem: any): IFile => { // eslint-disable-line @typescript-eslint/no-explicit-any
     const modifiedFriendly: string = fileItem["Modified.FriendlyDisplay"];
 
     // Get the modified date
-    const modifiedParts: string[] = modifiedFriendly!.split('|');
+    const modifiedParts: string[] = modifiedFriendly.split('|');
     let modified: string = fileItem.Modified;
 
     // If there is a friendly modified date, use that
@@ -261,7 +262,7 @@ export class FileBrowserService {
       modified: modified,
       fileSize: fileItem.File_x0020_Size,
       fileType: fileItem.File_x0020_Type,
-      modifiedBy: fileItem.Editor![0]!.title,
+      modifiedBy: fileItem.Editor[0].title,
       isFolder: fileItem.FSObjType === "1",
       absoluteUrl: this.buildAbsoluteUrl(fileItem.FileRef),
 
@@ -272,7 +273,7 @@ export class FileBrowserService {
     return file;
   }
 
-  protected parseLibItem = (libItem: any): ILibrary => {
+  protected parseLibItem = (libItem: any): ILibrary => { // eslint-disable-line @typescript-eslint/no-explicit-any
     const library: ILibrary = {
       title: libItem.Title,
       id: libItem.Id,
@@ -286,12 +287,12 @@ export class FileBrowserService {
   /**
    * Creates an absolute URL
    */
-  protected buildAbsoluteUrl = (relativeUrl: string) => {
+  protected buildAbsoluteUrl = (relativeUrl: string): string => {
     const siteUrl: string = GeneralHelper.getAbsoluteDomainUrl(this.context.pageContext.web.absoluteUrl);
-    return siteUrl + relativeUrl;
+    return `${siteUrl}${relativeUrl}`;
   }
 
-  protected processResponse = (fileResponse: any): void => {
+  protected processResponse = (fileResponse: any): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
     // Extract media base URL
     this.mediaBaseUrl = fileResponse.ListSchema[".mediaBaseUrl"];
     this.callerStack = fileResponse.ListSchema[".callerStack"];

@@ -34,7 +34,7 @@ class PropertyPaneMarkdownContentBuilder implements IPropertyPaneField<IProperty
 		this.onRender(this.elem);
 	}
 
-	private onRender(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+	private onRender(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 		if (!this.elem) {
 			this.elem = elem;
 		}

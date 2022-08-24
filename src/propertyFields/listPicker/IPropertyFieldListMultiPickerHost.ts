@@ -7,7 +7,7 @@ import { ISPLists } from './IPropertyFieldListPickerHost';
  */
 export interface IPropertyFieldListMultiPickerHostProps extends IPropertyFieldListPickerPropsInternal {
 
-  onChange: (targetProperty?: string, newValue?: any) => void;
+  onChange: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 /**

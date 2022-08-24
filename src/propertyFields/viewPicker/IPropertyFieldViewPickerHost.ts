@@ -5,7 +5,7 @@ import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
  * PropertyFieldViewPickerHost properties interface
  */
 export interface IPropertyFieldViewPickerHostProps extends IPropertyFieldViewPickerPropsInternal {
-  onChange: (targetProperty?: string, newValue?: any) => void;
+  onChange: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 /**

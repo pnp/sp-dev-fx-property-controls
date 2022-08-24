@@ -36,7 +36,7 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
   /**
    * Constructor method
    */
-  constructor(props: any) {
+  constructor(props: ITermPickerProps) {
     super(props);
     this.onRenderItem = this.onRenderItem.bind(this);
     this.onRenderSuggestionsItem = this.onRenderSuggestionsItem.bind(this);
@@ -50,12 +50,12 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
   }
 
   /**
-   * componentWillReceiveProps method
+   * UNSAFE_componentWillReceiveProps method
    */
-  public componentWillReceiveProps(nextProps: ITermPickerProps) {
+  public UNSAFE_componentWillReceiveProps(nextProps: ITermPickerProps): void {
     // check to see if props is different to avoid re-rendering
-    let newKeys = nextProps.value.map(a => a.key);
-    let currentKeys = this.state.terms.map(a => a.key);
+    const newKeys = nextProps.value.map(a => a.key);
+    const currentKeys = this.state.terms.map(a => a.key);
     newKeys.sort();
     currentKeys.sort();
     if (newKeys.join(',') !== currentKeys.join(',')) {
@@ -66,7 +66,7 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
   /**
    * Renders the item in the picker
    */
-  protected onRenderItem(term: IPickerItemProps<IPickerTerm>) {
+  protected onRenderItem(term: IPickerItemProps<IPickerTerm>): JSX.Element {
     return (
       <div className={styles.pickedTermRoot}
            key={term.index}
@@ -76,7 +76,7 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
         {!term.disabled &&
           <span className={styles.pickedTermCloseIcon}
             onClick={term.onRemoveItem}>
-            <i className="ms-Icon ms-Icon--Cancel" aria-hidden="true"></i>
+            <i className="ms-Icon ms-Icon--Cancel" aria-hidden="true" />
           </span>
         }
       </div>
@@ -86,11 +86,11 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
   /**
    * Renders the suggestions in the picker
    */
-  protected onRenderSuggestionsItem(term: IPickerTerm, props) {
+  protected onRenderSuggestionsItem(term: IPickerTerm, props): JSX.Element {
     let termParent = term.termSetName;
     let termTitle = `${term.name} [${term.termSetName}]`;
     if (term.path.indexOf(";") !== -1) {
-      let splitPath = term.path.split(";");
+      const splitPath = term.path.split(";");
       termParent = splitPath[splitPath.length - 2];
       splitPath.pop();
       termTitle = `${term.name} [${term.termSetName}:${splitPath.join(':')}]`;
@@ -112,11 +112,11 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
    * When Filter Changes a new search for suggestions
    */
   private async onFilterChanged(filterText: string, tagList: IPickerTerm[]): Promise<IPickerTerm[]> {
-    const { context, termPickerHostProps, allowMultipleSelections, isTermSetSelectable, disabledTermIds } = this.props;
+    const { allowMultipleSelections, isTermSetSelectable, disabledTermIds } = this.props;
     // Only allow to select other tags if multi-selection is enabled
     if (filterText !== "" && (allowMultipleSelections || tagList.length === 0)) {
-      let { termsService } = this.props;
-      let terms = await termsService.searchTermsByName(filterText);
+      const { termsService } = this.props;
+      const terms = await termsService.searchTermsByName(filterText);
       // Check if the termset can be selected
       if (isTermSetSelectable) {
         // Retrieve the current termset
@@ -165,7 +165,7 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
   /**
    * gets the text from an item
    */
-  private onGetTextFromItem(item: any): any {
+  private onGetTextFromItem(item: IPickerTerm): string {
     return item.name;
   }
 

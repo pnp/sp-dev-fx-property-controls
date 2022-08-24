@@ -15,7 +15,7 @@ export const CollectionCheckboxField: React.FunctionComponent<ICollectionCheckbo
 
   const [errorMessage, setErrorMessage] = React.useState<string>();
 
-  const onValueChange = React.useCallback(async (value: any) => {
+  const onValueChange = React.useCallback(async (value: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
 
     if (!field) {
       return;
@@ -34,7 +34,7 @@ export const CollectionCheckboxField: React.FunctionComponent<ICollectionCheckbo
 
   React.useEffect(() => {
     if (item && field) {
-      onValueChange(item[field.id]);
+      onValueChange(item[field.id]).then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
     }
   }, []);
 

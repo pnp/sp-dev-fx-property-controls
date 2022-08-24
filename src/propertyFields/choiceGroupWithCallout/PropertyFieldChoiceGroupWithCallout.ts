@@ -16,7 +16,7 @@ class PropertyFieldChoiceGroupWithCalloutBuilder implements IPropertyPaneField<I
     public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
     public properties: IPropertyFieldChoiceGroupWithCalloutPropsInternal;
 
-    private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
+    private _onChangeCallback: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
     public constructor(_targetProperty: string, _properties: IPropertyFieldChoiceGroupWithCalloutPropsInternal) {
         this.targetProperty = _targetProperty;
@@ -26,7 +26,7 @@ class PropertyFieldChoiceGroupWithCalloutBuilder implements IPropertyPaneField<I
         this.properties.onDispose = this._dispose.bind(this);
     }
 
-    private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+    private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
         // IPropertyPaneChoiceGroupOption should be manually converted to IChoiceGroupOption
         const options: IChoiceGroupOption[] = this.properties.options.map<IChoiceGroupOption>(o => {
             return {
@@ -52,7 +52,7 @@ class PropertyFieldChoiceGroupWithCalloutBuilder implements IPropertyPaneField<I
         }
     }
 
-    private _dispose(elem: HTMLElement) {
+    private _dispose(elem: HTMLElement): void {
         ReactDOM.unmountComponentAtNode(elem);
     }
 

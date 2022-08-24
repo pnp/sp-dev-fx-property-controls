@@ -1,8 +1,9 @@
 import * as React from 'react';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { ICollectionNumberFieldProps, ICollectionNumberFieldState } from '.';
-import { ICustomCollectionField } from '..';
+import { ICollectionNumberFieldProps } from './ICollectionNumberFieldProps';
+import { ICollectionNumberFieldState } from './ICollectionNumberFieldState';
+import { ICustomCollectionField } from '../ICustomCollectionField';
 import { isEqual } from '@microsoft/sp-lodash-subset';
 
 export class CollectionNumberField extends React.Component<ICollectionNumberFieldProps, ICollectionNumberFieldState> {
@@ -22,22 +23,22 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
   }
 
   /**
-   * componentWillMount lifecycle hook
+   * UNSAFE_componentWillMount lifecycle hook
    */
-  public componentWillMount(): void {
+  public UNSAFE_componentWillMount(): void {
     this.setState({
       value: this.props.item[this.props.field.id]
     });
-    this.valueChange(this.props.field, this.props.item[this.props.field.id]);
+    this.valueChange(this.props.field, this.props.item[this.props.field.id]).then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
   }
 
   /**
-   * componentWillUpdate lifecycle hook
+   * UNSAFE_componentWillUpdate lifecycle hook
    *
    * @param nextProps
    * @param nextState
    */
-  public componentWillUpdate(nextProps: ICollectionNumberFieldProps, nextState: ICollectionNumberFieldState): void {
+  public UNSAFE_componentWillUpdate(nextProps: ICollectionNumberFieldProps, nextState: ICollectionNumberFieldState): void {
     if (!isEqual(nextProps.item, this.props.item)) {
       this.setState({
         value: nextProps.item[nextProps.field.id]
@@ -51,7 +52,7 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
    * @param field
    * @param value
    */
-  private valueChange = async (field: ICustomCollectionField, value: string | number) => {
+  private valueChange = async (field: ICustomCollectionField, value: string | number): Promise<void> => {
     const inputVal = typeof value === "string" ? parseInt(value) : value;
     this.setState({
       value: inputVal
@@ -63,7 +64,7 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
   /**
    * Delayed field validation
    */
-  private valueValidation = async (field: ICustomCollectionField, value: number) => {
+  private valueValidation = async (field: ICustomCollectionField, value: number): Promise<void> => {
     // debugger;
     const validation = await this.props.fValidation(field, value);
     // Update the error message
@@ -83,15 +84,15 @@ export class CollectionNumberField extends React.Component<ICollectionNumberFiel
     return (
       <div className={`PropertyFieldCollectionData__panel__number-field ${styles.numberField} ${errorMessage ? styles.invalidField : ""}`}>
         <input type="number"
-               role="spinbutton"
-               placeholder={this.props.field.placeholder || this.props.field.title}
-               aria-valuemax={99999}
-               aria-valuemin={-999999}
-               aria-valuenow={this.props.item[this.props.field.id] || ''}
-               aria-invalid={!!errorMessage}
-               value={(!value && value !== 0) ? '' : value}
-               onChange={async (ev) => await this.valueChange(this.props.field, ev.target.value)}
-               disabled={this.props.disableEdit} />
+          role="spinbutton"
+          placeholder={this.props.field.placeholder || this.props.field.title}
+          aria-valuemax={99999}
+          aria-valuemin={-999999}
+          aria-valuenow={this.props.item[this.props.field.id] || ''}
+          aria-invalid={!!errorMessage}
+          value={(!value && value !== 0) ? '' : value}
+          onChange={async (ev) => await this.valueChange(this.props.field, ev.target.value)}
+          disabled={this.props.disableEdit} />
       </div>
     );
   }

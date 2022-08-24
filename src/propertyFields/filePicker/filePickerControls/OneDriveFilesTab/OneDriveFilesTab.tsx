@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { IOneDriveFilesTabProps, IOneDriveFilesTabState } from '.';
+import { IOneDriveFilesTabProps } from './IOneDriveFilesTabProps';
+import { IOneDriveFilesTabState } from './IOneDriveFilesTabState';
 import { IFile } from '../../../../services/FileBrowserService.types';
 import { OneDriveFilesBreadcrumbItem } from './OneDriveFilesTab.types';
 import { findIndex } from '@microsoft/sp-lodash-subset';
-import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
+import { Breadcrumb } from 'office-ui-fabric-react/lib/Breadcrumb';
 import { FileBrowser } from '../controls';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Link } from 'office-ui-fabric-react/lib/Link';
 import { IFilePickerResult } from '../FilePicker.types';
 
 import styles from './OneDriveFilesTab.module.scss';
@@ -27,7 +27,7 @@ export class OneDriveFilesTab extends React.Component<IOneDriveFilesTabProps, IO
     };
   }
 
-  public async componentDidMount() {
+  public async componentDidMount(): Promise<void> {
     const {
       oneDriveService,
     } = this.props;
@@ -114,16 +114,10 @@ export class OneDriveFilesTab extends React.Component<IOneDriveFilesTabProps, IO
     );
   }
 
-  private renderBreadcrumbItem = (item: IBreadcrumbItem): JSX.Element => {
-    return (
-      <Link href={item.href} onClick={item.onClick} key={item.key} className={`ms-Link ms-Breadcrumb-itemLink ${styles.breadcrumbNavItem}`}>{item.text}</Link>
-    );
-  }
-
   /**
    * Handles breadcrump item click
    */
-  private onBreadcrumpItemClick = (node: OneDriveFilesBreadcrumbItem) => {
+  private onBreadcrumpItemClick = (node: OneDriveFilesBreadcrumbItem): void => {
     let { breadcrumbItems } = this.state;
     let breadcrumbClickedItemIndx = 0;
     // Site node clicked
@@ -155,7 +149,7 @@ export class OneDriveFilesTab extends React.Component<IOneDriveFilesTabProps, IO
   /**
    * Is called when user selects a different file
    */
-  private _handleSelectionChange = (filePickerResult: IFilePickerResult) => {
+  private _handleSelectionChange = (filePickerResult: IFilePickerResult): void => {
     if (filePickerResult) {
       filePickerResult.downloadFileContent = () => { return this.props.oneDriveService.downloadSPFileContent(filePickerResult.spItemUrl, filePickerResult.fileName); };
     }
@@ -167,25 +161,25 @@ export class OneDriveFilesTab extends React.Component<IOneDriveFilesTabProps, IO
   /**
    * Called when user saves
    */
-  private _handleSave = () => {
+  private _handleSave = (): void => {
     this.props.onSave(this.state.filePickerResult);
   }
 
   /**
    * Called when user closes tab
    */
-  private _handleClose = () => {
+  private _handleClose = (): void => {
     this.props.onClose();
   }
 
   /**
    * Triggered when user opens a file folder
    */
-  private _handleOpenFolder = (folder: IFile, addBreadcrumbNode: boolean) => {
+  private _handleOpenFolder = (folder: IFile, addBreadcrumbNode: boolean): void => {
     const { breadcrumbItems } = this.state;
 
     if (addBreadcrumbNode) {
-      breadcrumbItems.map(item => item.isCurrentItem = false);
+      breadcrumbItems.map(item => { item.isCurrentItem = false; });
       const breadcrumbNode: OneDriveFilesBreadcrumbItem = {
         folderData: folder,
         isCurrentItem: true,

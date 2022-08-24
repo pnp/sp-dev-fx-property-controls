@@ -62,7 +62,7 @@ export interface IPropertyFieldEditableComboBoxProps {
 	 * Normally this function must be defined with the 'this.onPropertyChange'
 	 * method of the web part object.
 	 */
-	onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
+	onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   /**
    * @property onOptionAdded
@@ -83,7 +83,7 @@ export interface IPropertyFieldEditableComboBoxProps {
    * @type any
 	 * @description Parent Web Part properties
 	 */
-	properties: any;
+	properties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export interface IPropertyFieldEditableComboBoxPropsInternal extends IPropertyFieldEditableComboBoxProps, IPropertyPaneCustomFieldProps {

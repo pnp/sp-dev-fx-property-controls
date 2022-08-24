@@ -2,7 +2,7 @@ import { ServiceKey, ServiceScope } from "@microsoft/sp-core-library";
 import { PageContext } from "@microsoft/sp-page-context";
 import { IFolderExplorerService } from "./IFolderExplorerService";
 import { IFolder } from "./IFolderExplorerService";
-import { sp, Web, List, FolderAddResult } from "@pnp/sp";
+import { sp, Web, FolderAddResult } from "@pnp/sp";
 
 export class FolderExplorerService implements IFolderExplorerService {
 
@@ -25,7 +25,7 @@ export class FolderExplorerService implements IFolderExplorerService {
    * Get libraries within a given site
    * @param webAbsoluteUrl - the url of the target site
    */
-  public GetDocumentLibraries = async (webAbsoluteUrl: string): Promise<IFolder[]> => {
+  public getDocumentLibraries = async (webAbsoluteUrl: string): Promise<IFolder[]> => {
     return this._getDocumentLibraries(webAbsoluteUrl);
   }
 
@@ -37,6 +37,7 @@ export class FolderExplorerService implements IFolderExplorerService {
     let results: IFolder[] = [];
     try {
       const web = new Web(webAbsoluteUrl);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const libraries: any[] = await web.lists.filter('BaseTemplate eq 101 and Hidden eq false').expand('RootFolder').select('Title', 'RootFolder/ServerRelativeUrl').orderBy('Title').get();
 
       results = libraries.map((library): IFolder => {
@@ -54,7 +55,7 @@ export class FolderExplorerService implements IFolderExplorerService {
  * @param webAbsoluteUrl - the url of the target site
  * @param folderRelativeUrl - the relative url of the folder
  */
-  public GetFolders = async (webAbsoluteUrl: string, folderRelativeUrl: string): Promise<IFolder[]> => {
+  public getFolders = async (webAbsoluteUrl: string, folderRelativeUrl: string): Promise<IFolder[]> => {
     return this._getFolders(webAbsoluteUrl, folderRelativeUrl);
   }
 
@@ -67,8 +68,8 @@ export class FolderExplorerService implements IFolderExplorerService {
     let results: IFolder[] = [];
     try {
       const web = new Web(webAbsoluteUrl);
-      folderRelativeUrl = folderRelativeUrl.replace(/\'/ig, "''");
-      let foldersResult: IFolder[] = await web.getFolderByServerRelativePath(encodeURIComponent(folderRelativeUrl)).folders.select('Name', 'ServerRelativeUrl').orderBy('Name').get();
+      folderRelativeUrl = folderRelativeUrl.replace(/'/ig, "''");
+      const foldersResult: IFolder[] = await web.getFolderByServerRelativePath(encodeURIComponent(folderRelativeUrl)).folders.select('Name', 'ServerRelativeUrl').orderBy('Name').get();
       results = foldersResult.filter(f => f.Name !== "Forms");
     } catch (error) {
       console.error('Error loading folders', error);
@@ -82,7 +83,7 @@ export class FolderExplorerService implements IFolderExplorerService {
    * @param folderRelativeUrl - the relative url of the base folder
    * @param name - the name of the folder to be created
    */
-  public AddFolder = async (webAbsoluteUrl: string, folderRelativeUrl: string, name: string): Promise<IFolder> => {
+  public addFolder = async (webAbsoluteUrl: string, folderRelativeUrl: string, name: string): Promise<IFolder> => {
     return this._addFolder(webAbsoluteUrl, folderRelativeUrl, name);
   }
 
@@ -96,8 +97,8 @@ export class FolderExplorerService implements IFolderExplorerService {
     let folder: IFolder = null;
     try {
       const web = new Web(webAbsoluteUrl);
-      folderRelativeUrl = folderRelativeUrl.replace(/\'/ig, "''");
-      let folderAddResult: FolderAddResult = await web.getFolderByServerRelativePath(encodeURIComponent(folderRelativeUrl)).folders.addUsingPath(encodeURIComponent(name));
+      folderRelativeUrl = folderRelativeUrl.replace(/'/ig, "''");
+      const folderAddResult: FolderAddResult = await web.getFolderByServerRelativePath(encodeURIComponent(folderRelativeUrl)).folders.addUsingPath(encodeURIComponent(name));
       if (folderAddResult && folderAddResult.data) {
         folder = {
           Name: folderAddResult.data.Name,

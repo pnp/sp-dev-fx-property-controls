@@ -1,3 +1,4 @@
+/* eslint-disable no-extend-native */
 export { };
 
 import { ICultureInfo, ICultureNumberFormat } from './SPEntities';
@@ -11,7 +12,7 @@ declare global {
     }
 }
 
-declare var window: any;
+declare const window: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 /**
  * Parses number in invariant culture
@@ -60,7 +61,7 @@ String.prototype._parseNumber = function (culture: ICultureInfo): number {
     }
     let intPart: string;
     let fractionalPart: string;
-    let decimalSeparatorIdx: number = base.indexOf(numberFormat.NumberDecimalSeparator);
+    const decimalSeparatorIdx: number = base.indexOf(numberFormat.NumberDecimalSeparator);
     if (decimalSeparatorIdx < 0) {
         intPart = base;
         fractionalPart = null;
@@ -70,7 +71,7 @@ String.prototype._parseNumber = function (culture: ICultureInfo): number {
         fractionalPart = base.substr(decimalSeparatorIdx + numberFormat.NumberDecimalSeparator.length);
     }
     intPart = intPart.split(numberFormat.NumberGroupSeparator).join('');
-    let n = numberFormat.NumberGroupSeparator.replace(/\u00A0/g, ' ');
+    const n = numberFormat.NumberGroupSeparator.replace(/\u00A0/g, ' ');
     if (numberFormat.NumberGroupSeparator !== n) {
         intPart = intPart.split(n).join('');
     }
@@ -128,3 +129,5 @@ String.prototype._parseNumberNegativePattern = function (numberFormat: ICultureN
     }
     return ['', this];
 };
+
+/* eslint-enable no-extend-native */

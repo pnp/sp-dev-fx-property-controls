@@ -90,7 +90,7 @@ export default class PropertyFieldViewPickerHost extends React.Component<IProper
         results: this.options,
         selectedKey: this.selectedKey
       });
-    });
+    }).catch(() => { /* no-op; */ });
   }
 
   /**
@@ -116,7 +116,7 @@ export default class PropertyFieldViewPickerHost extends React.Component<IProper
 
     this.latestValidateValue = value;
 
-    const errResult: string | PromiseLike<string> = this.props.onGetErrorMessage(value || '');
+    const errResult: string | Promise<string> = this.props.onGetErrorMessage(value || '');
     if (typeof errResult !== 'undefined') {
       if (typeof errResult === 'string') {
         if (errResult === '') {
@@ -133,7 +133,7 @@ export default class PropertyFieldViewPickerHost extends React.Component<IProper
           this.setState({
             errorMessage: errorMessage
           });
-        });
+        }).catch(() => { /* no-op; */ });
       }
     } else {
       this.notifyAfterValidate(this.props.selectedView, value);
@@ -143,7 +143,7 @@ export default class PropertyFieldViewPickerHost extends React.Component<IProper
   /**
    * Notifies the parent Web Part of a property value change
    */
-  private notifyAfterValidate(oldValue: string, newValue: string) {
+  private notifyAfterValidate(oldValue: string, newValue: string): void {
     // Check if the user wanted to unselect the view
     const propValue = newValue === EMPTY_VIEW_KEY ? '' : newValue;
 
@@ -179,7 +179,7 @@ export default class PropertyFieldViewPickerHost extends React.Component<IProper
   /**
    * Called when the component will unmount
    */
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (typeof this.async !== 'undefined') {
       this.async.dispose();
     }

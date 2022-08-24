@@ -27,8 +27,8 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
   private allowDuplicate: boolean = true;
   private multiSelect: boolean = true;
   private principalType: PrincipalType[] = [];
-  private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
-  private customProperties: any;
+  private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
+  private customProperties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   private targetSiteUrl: string;
   private key: string;
   private onGetErrorMessage: (value: IPropertyFieldGroupOrPerson[]) => string | Promise<string>;
@@ -70,7 +70,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
   /**
    * Renders the PeoplePicker field content
    */
-  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
     // Construct the JSX properties
     const element: React.ReactElement<IPropertyFieldPeoplePickerHostProps> = React.createElement(PropertyFieldPeoplePickerHost, {
       label: this.label,
@@ -99,7 +99,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
   /**
    * Disposes the current object
    */
-  private dispose(elem: HTMLElement): void { }
+  private dispose(elem: HTMLElement): void { /* no-op; */ }
 }
 
 /**

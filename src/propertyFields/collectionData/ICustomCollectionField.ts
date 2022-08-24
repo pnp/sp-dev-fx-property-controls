@@ -25,7 +25,7 @@ export interface ICustomCollectionField {
   /**
   * Conditionally disable a field
   */
-  disable?: (item: any) => boolean;
+  disable?: (item: any) => boolean; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
    * Allows you to specify if a field is disabled for editing
    */
@@ -38,7 +38,7 @@ export interface ICustomCollectionField {
    * Dropdown options. Only nescessary when dropdown type is used.
    * Options can be either a static array or a function that will calculate the values dynamically and can react to the current item.
    */
-  options?: ICustomDropdownOption[] | ((fieldId: string, item: any) => ICustomDropdownOption[]);
+  options?: ICustomDropdownOption[] | ((fieldId: string, item: any) => ICustomDropdownOption[]); // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
    * Dropdown custom options render method.
    */
@@ -50,7 +50,7 @@ export interface ICustomCollectionField {
   /**
    * Default value for the field
    */
-  defaultValue?: any;
+  defaultValue?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
    * Field will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default: 200ms.
    */
@@ -62,16 +62,16 @@ export interface ICustomCollectionField {
    * - If valid, it returns empty string.
    * - If invalid, the field will show a red border
    */
-  onGetErrorMessage?: (value: any, index: number, currentItem: any) => string | Promise<string>;
+  onGetErrorMessage?: (value: any, index: number, currentItem: any) => string | Promise<string>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   /**
    * Custom field rendering support
    */
-  onCustomRender?: (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void, item: any, rowUniqueId: string, onCustomFieldValidation: (fieldId: string, errorMessage: string) => void) => JSX.Element;
+  onCustomRender?: (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void, item: any, rowUniqueId: string, onCustomFieldValidation: (fieldId: string, errorMessage: string) => void) => JSX.Element; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
    * Custom field visibility support
    */
-  isVisible?: (field: ICustomCollectionField, items: any[]) => boolean;
+  isVisible?: (field: ICustomCollectionField, items: any[]) => boolean; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   /**
    * Icon field render mode

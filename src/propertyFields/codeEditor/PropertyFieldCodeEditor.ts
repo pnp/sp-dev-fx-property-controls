@@ -27,8 +27,8 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
   private language:PropertyFieldCodeEditorLanguages;
   private panelTitle: string;
 
-  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { }
-  private customProperties: any;
+  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { /* no-op; */ } // eslint-disable-line @typescript-eslint/no-explicit-any
+  private customProperties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   private key: string;
   private disabled: boolean = false;
   private deferredValidationTime: number = 200;
@@ -71,7 +71,7 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
   /**
    * Renders the SPListPicker field content
    */
-  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
     // Construct the JSX properties
     const element: React.ReactElement<IPropertyFieldCodeEditorHostProps> = React.createElement(PropertyFieldCodeEditorHost, {
       label: this.label,
@@ -99,7 +99,7 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
    * Disposes the current object
    */
   private dispose(elem: HTMLElement): void {
-
+    ReactDom.unmountComponentAtNode(elem);
   }
 
 }

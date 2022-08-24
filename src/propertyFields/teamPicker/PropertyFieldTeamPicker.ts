@@ -26,8 +26,8 @@ class PropertyFieldTeamPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private context: BaseComponentContext;
   private initialTeams: IPropertyFieldTeam[];
   private multiSelect: boolean = false;
-  private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
-  private customProperties: any;
+  private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
+  private customProperties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   private key: string;
   private onGetErrorMessage: (value: IPropertyFieldTeam[]) => string | Promise<string>;
   private deferredValidationTime: number = 200;
@@ -65,7 +65,7 @@ class PropertyFieldTeamPickerBuilder implements IPropertyPaneField<IPropertyFiel
   /**
    * Renders the PeoplePicker field content
    */
-  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+  private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
     // Construct the JSX properties
     const element: React.ReactElement<IPropertyFieldTeamPickerHostProps> = React.createElement(PropertyFieldTeamPickerHost, {
       label: this.label,
@@ -91,7 +91,7 @@ class PropertyFieldTeamPickerBuilder implements IPropertyPaneField<IPropertyFiel
   /**
   * Disposes the current object
   */
-  private dispose(elem: HTMLElement): void { }
+  private dispose(elem: HTMLElement): void { /* no-op; */ }
 }
 
 /**

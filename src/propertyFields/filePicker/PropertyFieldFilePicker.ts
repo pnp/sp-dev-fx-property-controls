@@ -38,7 +38,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
   private checkIfFileExists: boolean;
   private includePageLibraries: boolean;
 
-  private customProperties: any;
+  private customProperties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   private key: string;
   private disabled: boolean = false;
   private required: boolean = false;
@@ -56,8 +56,6 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
   private accepts?: string[];
   private filePickerResult: IFilePickerResult;
   private bingAPIKey: string;
-
-  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
 
   public constructor(_targetProperty: string, _properties: IPropertyFieldFilePickerPropsInternal) {
 
@@ -110,7 +108,7 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
 
   }
 
-  private render = (elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void => {
+  private render = (elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
 
     const element: React.ReactElement<IPropertyFieldFilePickerHostProps> = React.createElement(PropertyPaneFilePickerHost, {
 
@@ -161,9 +159,11 @@ class PropertyFieldFilePickerBuilder implements IPropertyPaneField<IPropertyFiel
   }
 
   private dispose(elem: HTMLElement): void {
+    ReactDom.unmountComponentAtNode(elem);
   }
 
-  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void {
+  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { // eslint-disable-line @typescript-eslint/no-explicit-any
+    // no-op;
   }
 
 }

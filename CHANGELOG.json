@@ -1,6 +1,17 @@
 {
   "versions": [
     {
+      "version": "3.9.0",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "SharePoint Framework v1.15.2 support"
+        ],
+        "fixes": []
+      },
+      "contributions": []
+    },
+    {
       "version": "3.8.0",
       "changes": {
         "new": [

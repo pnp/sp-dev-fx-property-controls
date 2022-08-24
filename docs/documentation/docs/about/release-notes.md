@@ -2,6 +2,10 @@
 
 ## 3.9.0
 
+### Enhancements
+
+- SharePoint Framework v1.15.2 support
+
 ## 3.8.0
 
 ### New control(s)

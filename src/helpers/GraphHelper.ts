@@ -1,4 +1,4 @@
-import { MSGraphClientV3 } from '@microsoft/sp-http';
+import type { MSGraphClientV3 } from '@microsoft/sp-http';
 import { BaseComponentContext } from '@microsoft/sp-component-base';
 
 export interface IGraphBatchRequestItem {
@@ -12,7 +12,7 @@ export interface IGraphBatchRequestItem {
 export interface IGraphBatchResponseItem {
   id: string;
   status: number;
-  body: any;
+  body: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 const RequestsPerBatch = 10;
@@ -27,7 +27,7 @@ export async function batch(batchRequestItems: IGraphBatchRequestItem[], version
   const client = await getGraphClient(context);
 
   while (batchIndex < batchesCount) {
-    let start = batchIndex * RequestsPerBatch;
+    const start = batchIndex * RequestsPerBatch;
     let end = start + RequestsPerBatch;
     if (end > requestsCount) {
       end = requestsCount;

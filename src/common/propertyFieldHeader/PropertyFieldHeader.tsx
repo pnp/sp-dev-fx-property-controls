@@ -45,7 +45,7 @@ export default class PropertyFieldHeader extends React.Component<IPropertyFieldH
             <i className={getIconClassName('Info')} ref={(infoIcon) => { this._infoIcon = infoIcon; }}
               onMouseOver={!disabled && calloutTrigger === CalloutTriggers.Hover ? this._onInfoIconMouseOver.bind(this) : null}
               onMouseOut={!disabled && calloutTrigger === CalloutTriggers.Hover ? this._onInfoIconMouseOut.bind(this) : null}
-              onClick={!disabled && calloutTrigger === CalloutTriggers.Click ? this._onInfoIconClick.bind(this) : null}></i>
+              onClick={!disabled && calloutTrigger === CalloutTriggers.Click ? this._onInfoIconClick.bind(this) : null} />
           )}
         </div>
         {this.state.isCalloutVisible && (
@@ -66,7 +66,7 @@ export default class PropertyFieldHeader extends React.Component<IPropertyFieldH
   }
 
 
-  private _onCalloutDismiss() {
+  private _onCalloutDismiss(): void {
     if (this.state.isCalloutVisible) {
       this.setState({
         isCalloutVisible: false
@@ -93,7 +93,7 @@ export default class PropertyFieldHeader extends React.Component<IPropertyFieldH
 
     if (e.relatedTarget) {
 
-      let relatedTarget: HTMLElement = (e.relatedTarget as HTMLElement);
+      const relatedTarget: HTMLElement = (e.relatedTarget as HTMLElement);
       if (relatedTarget && relatedTarget.closest('.ms-Callout-container')) {
         return;
       }

@@ -44,7 +44,7 @@ export class PropertyPaneHelpers {
         const element: React.ReactElement<ISpinnerProps> = React.createElement(PropertyPaneSpinner, props && props.spinnerProps);
         ReactDom.render(element, this.spinnerElm);
       }
-    });
+    }).catch(() => { /* no-op; */ });
   }
 
   /**

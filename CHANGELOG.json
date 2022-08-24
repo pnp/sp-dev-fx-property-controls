@@ -4,7 +4,9 @@
       "version": "3.9.0",
       "changes": {
         "new": [],
-        "enhancements": [],
+        "enhancements": [
+          "SharePoint Framework v1.15.2 support"
+        ],
         "fixes": []
       },
       "contributions": []

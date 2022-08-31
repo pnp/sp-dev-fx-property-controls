@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "Dodavanje i čuvanje",
   "CollectionDataItemShowErrorsLabel": "Prikaži greške u redovima",
   "CollectionDataItemFieldRequiredLabel": "Polje je obavezno.",
+  "CollectionDataItemFieldIssuesLabel": "Problemi na polje:",
   "InvalidUrlError": "Navedena URL adresa nije važeća",
   "DescriptionLabel": "Opis",
   "MoreInfoLabel": "Više informacija",

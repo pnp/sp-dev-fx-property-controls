@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "Pridėti ir įrašyti",
   "CollectionDataItemShowErrorsLabel": "Rodyti eilutės klaidas",
   "CollectionDataItemFieldRequiredLabel": "Laukas yra būtinas.",
+  "CollectionDataItemFieldIssuesLabel": "Lauko problemos:",
   "InvalidUrlError": "Pateiktas URL neleistinas",
   "DescriptionLabel": "Aprašymas / kontrolė",
   "MoreInfoLabel": "Daugiau informacijos",

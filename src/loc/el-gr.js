@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "Προσθήκη και αποθήκευση",
   "CollectionDataItemShowErrorsLabel": "Εμφάνιση σφαλμάτων γραμμής",
   "CollectionDataItemFieldRequiredLabel": "Απαιτείται πεδίο.",
+  "CollectionDataItemFieldIssuesLabel": "Θέματα πεδίου:",
   "InvalidUrlError": "Η παρεχόμενη διεύθυνση URL δεν είναι έγκυρη",
   "DescriptionLabel": "Περιγραφή",
   "MoreInfoLabel": "Περισσότερες πληροφορίες",

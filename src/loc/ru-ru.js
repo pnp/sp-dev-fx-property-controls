@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "Добавить и сохранить",
   "CollectionDataItemShowErrorsLabel": "Отобразить ошибки для строки",
   "CollectionDataItemFieldRequiredLabel": "Это поле не может быть пустым.",
+  "CollectionDataItemFieldIssuesLabel": "Полевые проблемы:",
   "InvalidUrlError": "Заданное значение не является корректной ссылкой",
   "DescriptionLabel": "Описание",
   "MoreInfoLabel": "Подробнее",

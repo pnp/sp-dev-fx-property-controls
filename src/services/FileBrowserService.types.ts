@@ -5,7 +5,8 @@ export interface IFile {
   absoluteUrl: string;
   serverRelativeUrl: string;
   isFolder: boolean;
-  modified: string;
+  modified: Date;
+  modifiedFriendly: string;
   modifiedBy?: string;
 
 

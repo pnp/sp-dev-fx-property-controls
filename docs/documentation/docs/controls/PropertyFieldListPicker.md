@@ -80,6 +80,7 @@ The `PropertyFieldListPicker` control can be configured with the following prope
 Interface `IPropertyFieldList`
 
 | Property | Type | Required | Description |
+| ---- | ---- | ---- | ---- |
 | id | string | yes | The ID of the list |
 | title | string | no | List's title |
 | url | string | no | List's server relative url |

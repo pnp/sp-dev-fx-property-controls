@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "追加と保存",
   "CollectionDataItemShowErrorsLabel": "行エラーの表示",
   "CollectionDataItemFieldRequiredLabel": "フィールドは必須です。",
+  "CollectionDataItemFieldIssuesLabel": "フィールドの問題",
   "InvalidUrlError": "指定された URL は無効です",
   "DescriptionLabel": "説明",
   "MoreInfoLabel": "詳細",

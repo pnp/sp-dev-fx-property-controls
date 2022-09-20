@@ -70,6 +70,7 @@ CollectionDeleteRowButtonLabel;Delete the current row;Verwijder de huidige rij;S
 CollectionSaveAndAddButtonLabel;Add and save;Voeg toe en sla op;Ajouter et sauvegarder;Добавить и сохранить;x
 CollectionDataItemShowErrorsLabel;Show row errors;Problemen tonen;Afficher les erreurs de ligne;Отобразить ошибки для строки;x
 CollectionDataItemFieldRequiredLabel;Field is required.;Veld is verplicht.;Champ obligatoire;Это поле не может быть пустым.;x
+CollectionDataItemFieldIssuesLabel;Field issues:;Veld problemen:;Problèmes de champ:;Полевые проблемы:;x
 InvalidUrlError;The provided URL is not valid;De huidige URL is niet geldig;L'URL fournie n'est pas valide;Заданное значение не является корректной ссылкой;x
 DescriptionLabel;Description;Beschrijving;La description;Описание;x
 MoreInfoLabel;More info;Meer info;Plus d'informations;Подробнее;x

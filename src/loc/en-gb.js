@@ -76,6 +76,7 @@ define([], function ()
     CollectionSaveAndAddButtonLabel: "Add and save",
     CollectionDataItemShowErrorsLabel: "Show row errors",
     CollectionDataItemFieldRequiredLabel: "Field is required.",
+    CollectionDataItemFieldIssuesLabel: "Field issues:",
     InvalidUrlError: "The provided URL is not valid",
     DescriptionLabel: "Description",
     MoreInfoLabel: "More info",

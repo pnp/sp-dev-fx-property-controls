@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "Добавяне и записване",
   "CollectionDataItemShowErrorsLabel": "Показване на грешките в реда",
   "CollectionDataItemFieldRequiredLabel": "Полето е задължително.",
+  "CollectionDataItemFieldIssuesLabel": "Проблеми на полето:",
   "InvalidUrlError": "Предоставеният URL адрес не е валиден",
   "DescriptionLabel": "Описание",
   "MoreInfoLabel": "Повече информация",

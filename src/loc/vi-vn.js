@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "Thêm và lưu",
   "CollectionDataItemShowErrorsLabel": "Hiện lỗi hàng",
   "CollectionDataItemFieldRequiredLabel": "Trường là bắt buộc.",
+  "CollectionDataItemFieldIssuesLabel": "Các vấn đề hiện trường:",
   "InvalidUrlError": "URL được cung cấp không hợp lệ",
   "DescriptionLabel": "Mô tả",
   "MoreInfoLabel": "Xem thêm thông tin",

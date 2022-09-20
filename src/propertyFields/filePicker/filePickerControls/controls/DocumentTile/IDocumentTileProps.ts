@@ -3,7 +3,7 @@ import { IFile } from "../../../../../services/FileBrowserService.types";
 import { FileBrowserService } from "../../../../../services/FileBrowserService";
 
 export interface IDocumentTileProps {
-  fileBroserService: FileBrowserService;
+  fileBrowserService: FileBrowserService;
   item: IFile;
   index: number;
   isSelected: boolean;

@@ -38,7 +38,7 @@ export class DocumentTile extends React.Component<IDocumentTileProps> {
     }
 
     // Check extension and get preview
-    const thumbnail: string = this.props.fileBroserService.getFileThumbnailUrl(this.props.item, thumbnailWidth, thumbnailHeight);
+    const thumbnail: string = this.props.fileBrowserService.getFileThumbnailUrl(this.props.item, thumbnailWidth, thumbnailHeight);
     const ariaLabel: string = strings.ImageAriaLabelTemplate.replace('{0}', item.fileIcon);
     const itemLabel: string = strings.DocumentLabelTemplate
       .replace('{0}', item.name)

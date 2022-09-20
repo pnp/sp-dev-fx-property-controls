@@ -1,5 +1,15 @@
 # Releases
 
+## 3.10.0
+
+### Fixes
+
+- `FilePicker`: Fixed an internal typo in the codebase [#474](https://github.com/pnp/sp-dev-fx-property-controls/pull/474)
+
+### Contributors
+
+Special thanks to our contributor: [Hilton Giesenow](https://github.com/HiltonGiesenow).
+
 ## 3.9.0
 
 ### Enhancements

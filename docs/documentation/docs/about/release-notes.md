@@ -6,10 +6,11 @@
 
 - `FilePicker`: Fixed an internal typo in the codebase [#474](https://github.com/pnp/sp-dev-fx-property-controls/pull/474)
 - `ListPicker`: documentation updates [#490](https://github.com/pnp/sp-dev-fx-property-controls/pull/490)
+- `PropertyFieldCollectionData`: Adding new translation for Field Issues label [#486](https://github.com/pnp/sp-dev-fx-property-controls/pull/486)
 
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [Hilton Giesenow](https://github.com/HiltonGiesenow), [Paul Schaeflein](https://github.com/pschaeflein).
+Special thanks to our contributors (in alphabetical order): [Hilton Giesenow](https://github.com/HiltonGiesenow), [nviolero](https://github.com/nviolero), [Paul Schaeflein](https://github.com/pschaeflein).
 
 ## 3.9.0
 

@@ -1004,10 +1004,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   //limitByGroupNameOrID: 'Test',
-                  limitByTermsetNameOrID: '7276c08b-58c1-4fcd-812e-f21299a06b85',
+                  limitByTermsetNameOrID: 'Categories',
                   isTermSetSelectable: true,
                   key: 'termSetsPickerFieldId',
-                  hideTermStoreName: true
+                  hideTermStoreName: true,
+                  anchorId: "2dccbef4-5a49-4f7d-9fba-4c3417150e33"
                 }),
                 PropertyFieldEnterpriseTermPicker('enterpriseTerms', {
                   label: 'Select enterprise terms',

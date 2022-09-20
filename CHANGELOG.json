@@ -6,11 +6,13 @@
         "new": [],
         "enhancements": [],
         "fixes": [
-          "`FilePicker`: Fixed an internal typo in the codebase [#474](https://github.com/pnp/sp-dev-fx-property-controls/pull/474)"
+          "`FilePicker`: Fixed an internal typo in the codebase [#474](https://github.com/pnp/sp-dev-fx-property-controls/pull/474)",
+          "`ListPicker`: documentation updates [#490](https://github.com/pnp/sp-dev-fx-property-controls/pull/490)"
         ]
       },
       "contributions": [
-        "[Hilton Giesenow](https://github.com/HiltonGiesenow)"
+        "[Hilton Giesenow](https://github.com/HiltonGiesenow)",
+        "[Paul Schaeflein](https://github.com/pschaeflein)"
       ]
     },
     {

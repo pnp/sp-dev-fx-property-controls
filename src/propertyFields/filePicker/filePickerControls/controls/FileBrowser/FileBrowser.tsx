@@ -44,12 +44,16 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
           const folderIcon: string = strings.FolderIconUrl;
           // TODO: Improve file icon URL
           const isPhoto = GeneralHelper.isImage(item.name);
-          const iconUrl = isPhoto ? strings.PhotoIconUrl : `https://spoprod-a.akamaihd.net/files/odsp-next-prod_2019-01-11_20190116.001/odsp-media/images/itemtypes/20_2x/${item.fileType}.png`;
+          const iconUrl = isPhoto
+		                          ? strings.PhotoIconUrl
+		                          : item.fileType.toLowerCase() === "aspx"
+		                            ? 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/spo.svg'
+		                            : `https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/${item.fileType}.svg`;
 
           const altText: string = item.isFolder ? strings.FolderAltText : strings.ImageAltText.replace('{0}', item.fileType);
           return <div className={styles.fileTypeIcon}>
-            <img src={item.isFolder ? folderIcon : iconUrl} className={styles.fileTypeIconIcon} alt={altText} title={altText} />
-          </div>;
+                   <img src={item.isFolder ? folderIcon : iconUrl} className={styles.fileTypeIconIcon} alt={altText} title={altText} />
+                 </div>;
         }
       },
       {

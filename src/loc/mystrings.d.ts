@@ -87,6 +87,7 @@ declare interface IPropertyControlStrings {
   CollectionSaveAndAddButtonLabel: string;
   CollectionDataItemShowErrorsLabel: string;
   CollectionDataItemFieldRequiredLabel: string;
+  CollectionDataItemFieldIssuesLabel: string;
   InvalidUrlError: string;
 
   // Tree Collection data

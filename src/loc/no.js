@@ -73,6 +73,7 @@ define([], function() {
     CollectionSaveAndAddButtonLabel: "Legg til og lagre",
     CollectionDataItemShowErrorsLabel: "Vis radfeil",
     CollectionDataItemFieldRequiredLabel: "Feltet er påkrevet.",
+    CollectionDataItemFieldIssuesLabel: "Feltproblemer:",
     InvalidUrlError: "Den angitte nettadressen er ikke gyldig",
     DescriptionLabel: "Beskrivelse",
     MoreInfoLabel: "Mer informasjon",

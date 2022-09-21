@@ -93,7 +93,7 @@ export const IconSelector: React.FunctionComponent<IIconSelectorProps> = ({
         data-automation-id={`icon-picker-search`}
         onSearch={debounce(onSearchChange, 300)}
         onChange={debounce((e, value) => onSearchChange(value), 300)} />
-      <div className={styles.closeBtnContainer}>{defaultRender!(props)}</div>
+      <div className={styles.closeBtnContainer}>{defaultRender(props)}</div>
     </div>;
   };
 

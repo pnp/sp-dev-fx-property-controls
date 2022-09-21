@@ -91,7 +91,7 @@ export class OneDriveService extends FileBrowserService {
     try {
       // replace url OneDrive site URL with current web url
       const urlTokens = absoluteFileUrl.split("/_api/");
-      let fileUrl = `${this.context.pageContext.web.absoluteUrl}/_api/${urlTokens[1]}?`;
+      const fileUrl = `${this.context.pageContext.web.absoluteUrl}/_api/${urlTokens[1]}?`;
 
       const fileInfoResult = await this.context.spHttpClient.get(fileUrl, SPHttpClient.configurations.v1);
       const fileInfo = await fileInfoResult.json();
@@ -183,7 +183,7 @@ export class OneDriveService extends FileBrowserService {
    * Gets OneDrive personal library Id
    * @returns OneDrive library Id
    */
-  public getOneDrivePersonalLibraryId = async () => {
+  public getOneDrivePersonalLibraryId = async (): Promise<string> => {
     if (!this.oneDrivePersonalLibraryId) {
       await this.getOneDriveRootFolderFullUrl();
     }
@@ -245,8 +245,7 @@ export class OneDriveService extends FileBrowserService {
   /**
    * Creates an absolute URL
    */
-  protected buildAbsoluteUrl = (relativeUrl: string) => {
-    const oneDriveHost = `https://${this.oneDrivePersonalUrl.split("//")[1].split("/")[0]}`;
-    return oneDriveHost + relativeUrl;
+  protected buildAbsoluteUrl = (relativeUrl: string): string => {
+    return `https://${this.oneDrivePersonalUrl.split("//")[1].split("/")[0]}${relativeUrl}`;
   }
 }

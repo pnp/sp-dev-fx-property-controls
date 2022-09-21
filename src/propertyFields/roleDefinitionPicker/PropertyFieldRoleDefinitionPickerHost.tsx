@@ -16,7 +16,7 @@ import { setPropertyValue } from '../../helpers/GeneralHelper';
 export default class PropertyFieldRoleDefinitionPickerHost extends React.Component<IPropertyFieldRoleDefinitionPickerHostProps, IPropertyFieldRoleDefinitionPickerHostState> {
 
   private options: IDropdownOption[] = [];
-  private selectedOptions: any[] = [];
+  private selectedOptions: IDropdownOption[] = [];
   private async: Async;
   private resultsRoleDefinition: Array<IRoleDefinitionInformation> = new Array<IRoleDefinitionInformation>();
 
@@ -63,7 +63,7 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
 
     const roleDefinitionService: SPRoleDefinitionPickerService = new SPRoleDefinitionPickerService(this.props, this.props.context);
     const roleDefinitionsToExclude: string[] = this.props.roleDefinitionsToExclude ? this.props.roleDefinitionsToExclude : [];
-    let selectedRoleDefinitions: string[] = this.props.selectedRoleDefinition ? this.props.selectedRoleDefinition : [];
+    const selectedRoleDefinitions: string[] = this.props.selectedRoleDefinition ? this.props.selectedRoleDefinition : [];
 
     if (this.props.roleDefinitions && this.props.roleDefinitions.length > 0) {
       this.props.roleDefinitions.forEach(i => {
@@ -89,7 +89,7 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
       });
 
       this.selectedOptions = this.options.filter(o => o.selected === true);
-      let selectedRoleDefinitionInformation: IRoleDefinitionInformation[] = [];
+      const selectedRoleDefinitionInformation: IRoleDefinitionInformation[] = [];
       this.resultsRoleDefinition.forEach(value => {
         this.selectedOptions.forEach(i => {
           if (value.Id === i.key) {
@@ -176,7 +176,7 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
   /**
    * Called when the component will unmount
    */
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (typeof this.async !== 'undefined') {
       this.async.dispose();
     }
@@ -198,7 +198,7 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
           <Dropdown options={this.state.results}
             onChanged={this.onChanged}
             multiSelect={true}
-            selectedKeys={this.selectedOptions.map(item => item.key) || []}
+            selectedKeys={this.selectedOptions.map(item => item.key as number) || []}
             key={this.props.key}
             disabled={this.props.disabled || false} />
         }
@@ -206,7 +206,7 @@ export default class PropertyFieldRoleDefinitionPickerHost extends React.Compone
           <Dropdown options={this.state.results}
             onChanged={this.onChanged}
             multiSelect={false}
-            selectedKey={this.selectedOptions.map(item => item.key) || []}
+            selectedKey={this.selectedOptions.map(item => item.key as number) || []}
             key={this.props.key}
             disabled={this.props.disabled || false} />
         }

@@ -27,7 +27,7 @@ class PropertyFieldLinkWithCalloutBuilder implements IPropertyPaneField<IPropert
         this.properties.onDispose = this._dispose.bind(this);
     }
 
-    private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+    private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 
         const props: IPropertyFieldLinkWithCalloutProps = <IPropertyFieldLinkWithCalloutProps>omit(this.properties);
 
@@ -38,7 +38,7 @@ class PropertyFieldLinkWithCalloutBuilder implements IPropertyPaneField<IPropert
         ReactDOM.render(element, elem);
     }
 
-    private _dispose(elem: HTMLElement) {
+    private _dispose(elem: HTMLElement): void {
         ReactDOM.unmountComponentAtNode(elem);
     }
 }

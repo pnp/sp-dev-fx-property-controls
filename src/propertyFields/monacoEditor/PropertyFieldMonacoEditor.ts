@@ -18,7 +18,7 @@ class PropertyFieldMonacoEditorBuilder implements IPropertyPaneField<IPropertyFi
   public properties: IPropertyFieldMonacoEditorPropsInternal;
 
 
-  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
+  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   public constructor(_targetProperty: string, _properties: IPropertyFieldMonacoEditorPropsInternal) {
     this.targetProperty = _targetProperty;
@@ -27,7 +27,7 @@ class PropertyFieldMonacoEditorBuilder implements IPropertyPaneField<IPropertyFi
     this.properties.onDispose = this._dispose.bind(this);
   }
 
-  private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+  private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 
     const props: IPropertyFieldMonacoEditorProps = <IPropertyFieldMonacoEditorProps>this.properties;
     const element = React.createElement(PropertyFieldMonacoEditorHost, {
@@ -42,7 +42,7 @@ class PropertyFieldMonacoEditorBuilder implements IPropertyPaneField<IPropertyFi
     }
   }
 
-  private _dispose(elem: HTMLElement) {
+  private _dispose(elem: HTMLElement): void {
     ReactDOM.unmountComponentAtNode(elem);
   }
 

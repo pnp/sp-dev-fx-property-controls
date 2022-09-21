@@ -2,7 +2,7 @@
  * PropertyFieldColorPickerHost properties interface
  */
 export interface IPropertyPanePropertyEditorHostProps {
-	webpart: any;
+	webpart: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 /**

@@ -4,11 +4,11 @@
  * @param fnc Function to execute
  * @param time Time to wait until the function gets executed
  */
-export const debounce = () => {
+export const debounce = (): (fnc: typeof Function, time: number) => void => {
   let timeout;
 
-  return (fnc: any, time: number) => {
-    const functionCall = (...args) => fnc.apply(this, args);
+  return (fnc: typeof Function, time: number) => {
+    const functionCall = (...args): any => fnc.apply(this, args); // eslint-disable-line @typescript-eslint/no-explicit-any
     clearTimeout(timeout);
     timeout = setTimeout(functionCall, time);
   };

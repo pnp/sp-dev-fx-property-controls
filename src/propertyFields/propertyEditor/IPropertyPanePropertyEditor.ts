@@ -8,7 +8,7 @@ export interface IPropertyPanePropertyEditorProps {
 	/**
 	 * This current webpart. Usually 'this'.
 	 */
-	webpart: any;
+	webpart: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	/**
 	 * An UNIQUE key indicates the identity of this control

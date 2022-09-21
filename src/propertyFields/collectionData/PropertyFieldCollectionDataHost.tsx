@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as telemetry from '../../common/telemetry';
-import { IPropertyFieldCollectionDataHostProps, IPropertyFieldCollectionDataHostState } from '.';
+import { IPropertyFieldCollectionDataHostProps, IPropertyFieldCollectionDataHostState } from './IPropertyFieldCollectionDataHost';
 import { DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/components/Panel';
 import { Label } from 'office-ui-fabric-react/lib/components/Label';
@@ -22,7 +22,7 @@ export class PropertyFieldCollectionDataHost extends React.Component<IPropertyFi
   /**
    * Open the panel
    */
-  private openPanel = () => {
+  private openPanel = (): void => {
     this.setState({
       panelOpen: true
     });
@@ -31,7 +31,7 @@ export class PropertyFieldCollectionDataHost extends React.Component<IPropertyFi
   /**
    * Closes the panel
    */
-  private closePanel = () => {
+  private closePanel = (): void => {
     this.setState({
       panelOpen: false
     });
@@ -40,7 +40,7 @@ export class PropertyFieldCollectionDataHost extends React.Component<IPropertyFi
   /**
    * On save action
    */
-  private onSave = (items: any[]) => {
+  private onSave = (items: any[]): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
     this.props.onChanged(items);
     this.setState({
       panelOpen: false
@@ -64,7 +64,7 @@ export class PropertyFieldCollectionDataHost extends React.Component<IPropertyFi
                onDismiss={this.closePanel}
                type={PanelType.large}
                headerText={this.props.panelHeader}
-               onOuterClick={()=>{}}
+               onOuterClick={()=>{ /* no-op; */ }}
                className={`PropertyFieldCollectionData__panel ${this.props.panelClassName || ""}`}>
           {
             this.props.panelDescription && (

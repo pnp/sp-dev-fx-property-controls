@@ -477,7 +477,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       type: CustomCollectionFieldType.fabricIcon,
                       placeholder: "Enter the name of the icon",
                       defaultValue: "website",
-                      onGetErrorMessage: this.minLengthValidation
+                      onGetErrorMessage: this.minLengthValidation,
+                      disable: (item) => !item.Sign
                     },
                     {
                       id: "URL",
@@ -1161,7 +1162,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       title: "Lastname",
                       type: CustomCollectionFieldType.string,
                       onGetErrorMessage: (value, index, currentItem) => {
-                        return value == 'Smith' && currentItem.City == 'antwerp' ? 'You cannot write Smith when City is Antwerp' : "";
+                        return value === 'Smith' && currentItem.City === 'antwerp' ? 'You cannot write Smith when City is Antwerp' : "";
                       }
                     },
                     {
@@ -1216,7 +1217,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       type: CustomCollectionFieldType.boolean,
                       defaultValue: true,
                       onGetErrorMessage: (value, index, currentItem) => {
-                        return value && currentItem.City == 'antwerp' ? 'You cannot check sign when City is Antwerp' : "";
+                        return value && currentItem.City === 'antwerp' ? 'You cannot check sign when City is Antwerp' : "";
                       }
                     },
                     {
@@ -1242,7 +1243,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       type: CustomCollectionFieldType.color,
                       defaultValue: "#ff0000",
                       onGetErrorMessage: (value, index, currentItem) => {
-                        return value == '#ff0000' && currentItem.City == 'antwerp' ? 'You cannot set default color when City is Antwerp' : "";
+                        return value === '#ff0000' && currentItem.City === 'antwerp' ? 'You cannot set default color when City is Antwerp' : "";
                       }
                     },
                     {
@@ -1266,7 +1267,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                         );
                       },
                       onGetErrorMessage: (value, index, currentItem) => {
-                        return value == 'hello' && currentItem.City == 'antwerp' ? 'You cannot write hello when City is Antwerp' : "";
+                        return value === 'hello' && currentItem.City === 'antwerp' ? 'You cannot write hello when City is Antwerp' : "";
                       }
                     },
                     {
@@ -1275,7 +1276,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       type: CustomCollectionFieldType.boolean,
                       defaultValue: true,
                       isVisible: (field, items) => {
-                        return items.filter(i => i.City == 'antwerp').length > 0;
+                        return items.filter(i => i.City === 'antwerp').length > 0;
                       }
                     }
                   ],

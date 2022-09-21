@@ -1,14 +1,44 @@
 # Releases
 
+## 3.10.0
+
+### Fixes
+
+- `FilePicker`: Fixed an internal typo in the codebase [#474](https://github.com/pnp/sp-dev-fx-property-controls/pull/474)
+- `ListPicker`: documentation updates [#490](https://github.com/pnp/sp-dev-fx-property-controls/pull/490)
+- `PropertyFieldCollectionData`: Adding new translation for Field Issues label [#486](https://github.com/pnp/sp-dev-fx-property-controls/pull/486)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Hilton Giesenow](https://github.com/HiltonGiesenow), [nviolero](https://github.com/nviolero), [Paul Schaeflein](https://github.com/pschaeflein).
+
+## 3.9.0
+
+### Enhancements
+
+- SharePoint Framework v1.15.2 support
+
 ## 3.8.0
+
+### New control(s)
+
+- Localizations for en-gb [#454](https://github.com/pnp/sp-dev-fx-property-controls/pull/454)
 
 ### Enhancements
 
 - `PropertyFieldSitePicker`: Site Picker search for any input string [#386](https://github.com/pnp/sp-dev-fx-property-controls/pull/386)
+- `fast-serve`: bump support to 1.14.0 [#386](https://github.com/pnp/sp-dev-fx-property-controls/pull/386)
+- `PropertyFieldCollectionData`: allow to conditionally disable specific field in the item [#464](https://github.com/pnp/sp-dev-fx-property-controls/issues/464)
+
+### Fixes
+
+- `PropertyFieldListPicker`: Remove debugger [#455](https://github.com/pnp/sp-dev-fx-property-controls/pull/455)
+- `PropertyFieldCollectionData`: Add button is invisible on a root site [#462](https://github.com/pnp/sp-dev-fx-property-controls/pull/462)
+- `PropertyFieldCollectionData`: `fieldValidation` for custom fields did not get called if no `onGetErrorMessage` had been defined [#446](https://github.com/pnp/sp-dev-fx-property-controls/issues/446)
 
 ### Contributors
 
-Special thanks to our contributor: [Milan Holemans](https://github.com/milanholemans).
+Special thanks to our contributors (in alphabetical order): [Gautam Sheth](https://github.com/gautamdsheth), [Jasey Waegebaert](https://github.com/Jwaegebaert), [IRRDC](https://github.com/IRRDC), [Markus Langer](https://github.com/MarkusLanger), [Milan Holemans](https://github.com/milanholemans), [Peter Cox](https://github.com/PeterWCox).
 
 ## 3.7.0
 

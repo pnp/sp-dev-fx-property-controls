@@ -7,8 +7,8 @@ import {
 import { BaseComponentContext } from '@microsoft/sp-component-base';
 import PropertyFieldColumnPickerHost from './PropertyFieldColumnPickerHost';
 import { IPropertyFieldColumnPickerHostProps } from './IPropertyFieldColumnPickerHost';
-import { PropertyFieldColumnPickerOrderBy, IPropertyFieldColumnPickerProps, IPropertyFieldColumnPickerPropsInternal, IPropertyFieldRenderOption } from './IPropertyFieldColumnPicker';
-import { IColumnReturnProperty, ISPColumn } from '.';
+import { PropertyFieldColumnPickerOrderBy, IPropertyFieldColumnPickerProps, IPropertyFieldColumnPickerPropsInternal, IPropertyFieldRenderOption, IColumnReturnProperty } from './IPropertyFieldColumnPicker';
+import { ISPColumn } from './ISPColumn';
 import { IPropertyFieldColumnMultiPickerHostProps } from './IPropertyFieldColumnMultiPickerHost';
 import PropertyFieldColumnMultiPickerHost from './PropertyFieldColumnMultiPickerHost';
 import { IPropertyFieldColumnMultiPickerDropdownHostProps } from './IPropertyFieldColumnMultiPickerDropdownHost';
@@ -37,16 +37,15 @@ class PropertyFieldColumnPickerBuilder implements IPropertyPaneField<IPropertyFi
     private multiSelect: boolean = false;
     private renderFieldAs: IPropertyFieldRenderOption = IPropertyFieldRenderOption["Choice Group"];
 
-    private customProperties: any;
+    private customProperties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
     private deferredValidationTime: number = 200;
     private disabled: boolean = false;
-    private disableReactivePropertyChanges: boolean = false;
     private filter: string;
     private key: string;
     private webAbsoluteUrl?: string;
     private onGetErrorMessage: (value: string) => string | Promise<string>;
     private onColumnsRetrieved?: (columns: ISPColumn[]) => PromiseLike<ISPColumn[]> | ISPColumn[];
-    public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { }
+    public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { /* no-op; */ } // eslint-disable-line @typescript-eslint/no-explicit-any
     private renderWebPart: () => void;
 
     /**
@@ -88,8 +87,8 @@ class PropertyFieldColumnPickerBuilder implements IPropertyPaneField<IPropertyFi
     /**
      * Renders the SPColumnPicker field content
      */
-    private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
-        const componentProps = {
+    private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
+        const componentProps: IPropertyFieldColumnPickerHostProps = {
             label: this.label,
             targetProperty: this.targetProperty,
             context: this.context,
@@ -116,7 +115,7 @@ class PropertyFieldColumnPickerBuilder implements IPropertyPaneField<IPropertyFi
         // Check if the multi or single select component has to get loaded
         if (this.multiSelect) {
             // Multiple selector
-            componentProps['selectedColumns'] = this.selectedColumns;
+            componentProps.selectedColumns = this.selectedColumns;
             if (this.renderFieldAs === IPropertyFieldRenderOption["Choice Group"]) {
                 const element: React.ReactElement<IPropertyFieldColumnMultiPickerHostProps> = React.createElement(PropertyFieldColumnMultiPickerHost, componentProps);
                 // Calls the REACT content generator
@@ -128,7 +127,7 @@ class PropertyFieldColumnPickerBuilder implements IPropertyPaneField<IPropertyFi
             }
         } else {
             // Single selector
-            componentProps['selectedColumn'] = this.selectedColumn;
+            componentProps.selectedColumn = this.selectedColumn;
             const element: React.ReactElement<IPropertyFieldColumnPickerHostProps> = React.createElement(PropertyFieldColumnPickerHost, componentProps);
             // Calls the REACT content generator
             ReactDom.render(element, elem);
@@ -139,7 +138,7 @@ class PropertyFieldColumnPickerBuilder implements IPropertyPaneField<IPropertyFi
      * Disposes the current object
      */
     private dispose(_elem: HTMLElement): void {
-
+        ReactDom.unmountComponentAtNode(_elem);
     }
 
 }

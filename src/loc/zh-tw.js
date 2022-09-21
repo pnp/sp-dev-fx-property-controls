@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "添加和保存。",
   "CollectionDataItemShowErrorsLabel": "顯示行錯誤。",
   "CollectionDataItemFieldRequiredLabel": "欄位是必需的。",
+  "CollectionDataItemFieldIssuesLabel": "現場問題:",
   "InvalidUrlError": "提供的 URL 無效。",
   "DescriptionLabel": "描述。",
   "MoreInfoLabel": "更多資訊。",

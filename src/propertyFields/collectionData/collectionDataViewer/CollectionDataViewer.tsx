@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
-import { ICollectionDataViewerProps, ICollectionDataViewerState } from '.';
+import { ICollectionDataViewerProps } from './ICollectionDataViewerProps';
+import { ICollectionDataViewerState } from './ICollectionDataViewerState';
 import { CollectionDataItem } from '../collectionDataItem';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
 import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
@@ -42,7 +43,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
   /**
    * Add a new item to the collection
    */
-  private addItem = (item: any) => {
+  private addItem = (item: any): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
     this.setState((prevState: ICollectionDataViewerState): ICollectionDataViewerState => {
       let crntItems = [...prevState.crntItems, item];
       crntItems = this.updateSortProperty(crntItems);
@@ -57,7 +58,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
   /**
    * Remove an item from the collection
    */
-  private updateItem = (idx: number, item: any) => {
+  private updateItem = (idx: number, item: any): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
     this.setState((prevState: ICollectionDataViewerState): ICollectionDataViewerState => {
       const { crntItems } = prevState;
       // Update the item in the array
@@ -69,9 +70,10 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
   /**
    * Remove an item from the collection
    */
-  private deleteItem = (idx: number) => {
+  private deleteItem = (idx: number): void => {
     this.setState((prevState: ICollectionDataViewerState): ICollectionDataViewerState => {
-      let { crntItems, validation } = prevState;
+      let { crntItems } = prevState;
+      const { validation } = prevState;
       crntItems.splice(idx, 1);
       delete validation[idx];
 
@@ -88,7 +90,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
   /**
    * Validate every item
    */
-  private validateItem = (idx: number, isValid: boolean) => {
+  private validateItem = (idx: number, isValid: boolean): void => {
     this.setState((prevState: ICollectionDataViewerState) => {
       const { validation } = prevState;
       validation[idx] = isValid;
@@ -101,7 +103,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
   /**
    * Check if all items are valid
    */
-  private allItemsValid() {
+  private allItemsValid(): boolean {
     const { validation } = this.state;
     if (validation) {
       const keys = Object.keys(validation);
@@ -117,7 +119,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
   /**
    * Currently in creation
    */
-  private addInCreation = (item: any, isValid: boolean) => {
+  private addInCreation = (item: any, isValid: boolean): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
     this.setState({
       inCreationItem: item,
       inCreationItemValid: isValid
@@ -127,7 +129,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
   /**
    * Add the item and save the form
    */
-  private addAndSave = () => {
+  private addAndSave = (): void => {
     // Check if the item is not empty
     if (this.state.inCreationItem) {
       let crntItems = [...this.state.crntItems, this.state.inCreationItem];
@@ -145,7 +147,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
    * @param oldIdx
    * @param newIdx
    */
-  private moveItemTo(crntItems: any[], oldIdx: number, newIdx: number): any[] {
+  private moveItemTo(crntItems: any[], oldIdx: number, newIdx: number): any[] { // eslint-disable-line @typescript-eslint/no-explicit-any
     if (newIdx > -1 && newIdx < crntItems.length) {
       const removedElement = crntItems.splice(oldIdx, 1)[0];
       if (removedElement) {
@@ -160,7 +162,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
    *
    * @param crntItems
    */
-  private updateSortProperty(crntItems: any[]): any[] {
+  private updateSortProperty(crntItems: any[]): any[] { // eslint-disable-line @typescript-eslint/no-explicit-any
     // Update the sort order
     return crntItems.map((item, itemIdx) => {
       item[this.SORT_IDX] = itemIdx + 1;
@@ -171,7 +173,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
   /**
    * Update the sort order
    */
-  private updateSortOrder = (oldIdx: number, newIdx: number) => {
+  private updateSortOrder = (oldIdx: number, newIdx: number): void => {
     this.setState((prevState: ICollectionDataViewerState) => {
       const { crntItems } = prevState;
       let newOrderedItems = cloneDeep(crntItems);
@@ -188,14 +190,14 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
   /**
    * Save the collection data
    */
-  private onSave = () => {
+  private onSave = (): void => {
     this.props.fOnSave(this.state.crntItems);
   }
 
   /**
    * Cancel
    */
-  private onCancel = () => {
+  private onCancel = (): void => {
     this.props.fOnClose();
   }
 
@@ -211,7 +213,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
           <div className={`PropertyFieldCollectionData__panel__table-head ${styles.tableRow} ${styles.tableHead}`}>
             {
               this.props.enableSorting && (
-                <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}></span>
+                <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`} />
               )
             }
             {
@@ -219,8 +221,8 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
                 <span key={`dataviewer-${f.id}`} className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}>{f.title} { f.required && <Icon className={styles.required} iconName="Asterisk" /> }</span>
               ))
             }
-            <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}></span>
-            <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}></span>
+            <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`} />
+            <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`} />
           </div>
           {
             (this.state.crntItems && this.state.crntItems.length > 0) && (

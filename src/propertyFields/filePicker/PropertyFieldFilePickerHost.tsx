@@ -37,8 +37,8 @@ export default class PropertyFieldFilePickerHost extends React.Component<IProper
           bingAPIKey={this.props.bingAPIKey}
           accepts={this.props.accepts ? this.props.accepts : []}
           buttonIcon={this.props.buttonIcon ? this.props.buttonIcon : "FileImage"}
-          onSave={(filePickerResult: IFilePickerResult) => { this.handleFileSave(filePickerResult); }}
-          onChanged={(filePickerResult: IFilePickerResult) => { this.handleFileChange(filePickerResult); }}
+          onSave={(filePickerResult: IFilePickerResult) => { this.handleFileSave(filePickerResult).then(() => { /* no-op; */ }).catch(() => { /* no-op; */ }); }}
+          onChanged={(filePickerResult: IFilePickerResult) => { this.handleFileChange(filePickerResult).then(() => { /* no-op; */ }).catch(() => { /* no-op; */ }); }}
           onCancel={this.handleCancel}
           context={this.props.context}
           filePickerResult={this.props.filePickerResult}

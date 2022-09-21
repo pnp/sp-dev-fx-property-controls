@@ -18,7 +18,7 @@ class PropertyFieldCheckboxWithCalloutBuilder implements IPropertyPaneField<IPro
     public properties: IPropertyFieldCheckboxWithCalloutPropsInternal;
 
 
-    private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
+    private _onChangeCallback: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
     public constructor(_targetProperty: string, _properties: IPropertyFieldCheckboxWithCalloutPropsInternal) {
         this.targetProperty = _targetProperty;
@@ -28,7 +28,7 @@ class PropertyFieldCheckboxWithCalloutBuilder implements IPropertyPaneField<IPro
         this.properties.onDispose = this._dispose.bind(this);
     }
 
-    private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+    private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 
         const props: IPropertyFieldCheckboxWithCalloutProps = <IPropertyFieldCheckboxWithCalloutProps>this.properties;
 
@@ -44,7 +44,7 @@ class PropertyFieldCheckboxWithCalloutBuilder implements IPropertyPaneField<IPro
         }
     }
 
-    private _dispose(elem: HTMLElement) {
+    private _dispose(elem: HTMLElement): void {
         ReactDOM.unmountComponentAtNode(elem);
     }
 

@@ -64,13 +64,13 @@ export default class UploadFilePickerTab extends React.Component<IUploadFilePick
   /**
    * Gets called when a file is uploaded
    */
-  private _handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  private _handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (!event.target.files || event.target.files.length < 1) {
       return;
     }
 
     // Get the files that were uploaded
-    let files = event.target.files;
+    const files = event.target.files;
 
     // Grab the first file -- there should always only be one
     const file: File = files[0];
@@ -102,14 +102,14 @@ export default class UploadFilePickerTab extends React.Component<IUploadFilePick
   /**
    * Saves base64 encoded image back to property pane file picker
    */
-  private _handleSave = () => {
+  private _handleSave = (): void => {
     this.props.onSave(this.state.filePickerResult);
   }
 
   /**
    * Closes tab without saving
    */
-  private _handleClose = () => {
+  private _handleClose = (): void => {
     this.props.onClose();
   }
 }

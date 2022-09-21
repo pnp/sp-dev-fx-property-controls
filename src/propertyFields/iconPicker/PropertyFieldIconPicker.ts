@@ -7,13 +7,14 @@ import {
 
 import { IPropertyFieldIconPickerProps, IPropertyFieldIconPickerPropsInternal } from './IPropertyFieldIconPicker';
 import PropertyFieldIconPickerHost from './PropertyFieldIconPickerHost';
+import { IconSelectorRenderOption } from '../../common/Types';
 
 class PropertyFieldIconPickerBuilder implements IPropertyPaneField<IPropertyFieldIconPickerPropsInternal> {
   public targetProperty: string;
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public properties: IPropertyFieldIconPickerPropsInternal;
   private key: string;
-  private customProperties: any;
+  private customProperties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   private onSave: (icon: string) => void;
   private onChanged?: (icon: string) => void;
   private buttonLabel: string;
@@ -21,10 +22,8 @@ class PropertyFieldIconPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private buttonClassName: string;
   private panelClassName: string;
   private currentIcon: string;
-  private renderOption: any;
+  private renderOption: IconSelectorRenderOption;
   private label: string;
-
-  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
 
   public constructor(_targetProperty: string, _properties: IPropertyFieldIconPickerPropsInternal) {
     this.targetProperty = _targetProperty;
@@ -49,7 +48,7 @@ class PropertyFieldIconPickerBuilder implements IPropertyPaneField<IPropertyFiel
     }
   }
 
-  private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+  private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 
     const element = React.createElement(PropertyFieldIconPickerHost, {
       key: this.key,
@@ -73,11 +72,11 @@ class PropertyFieldIconPickerBuilder implements IPropertyPaneField<IPropertyFiel
     ReactDOM.render(element, elem);
   }
 
-  private _dispose(elem: HTMLElement) {
+  private _dispose(elem: HTMLElement): void {
     ReactDOM.unmountComponentAtNode(elem);
   }
 
-  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void {    
+  public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { // eslint-disable-line @typescript-eslint/no-explicit-any
   }
 
 }

@@ -18,7 +18,7 @@ class PropertyFieldMultiSelectBuilder implements IPropertyPaneField<IPropertyFie
   public properties: IPropertyFieldMultiSelectPropsInternal;
 
 
-  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
+  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   public constructor(_targetProperty: string, _properties: IPropertyFieldMultiSelectPropsInternal) {
     this.targetProperty = _targetProperty;
@@ -28,7 +28,7 @@ class PropertyFieldMultiSelectBuilder implements IPropertyPaneField<IPropertyFie
     this.properties.onDispose = this._dispose.bind(this);
   }
 
-  private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+  private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 
     const props: IPropertyFieldMultiSelectProps = <IPropertyFieldMultiSelectProps>this.properties;
 
@@ -45,14 +45,14 @@ class PropertyFieldMultiSelectBuilder implements IPropertyPaneField<IPropertyFie
     }
   }
 
-  private _dispose(elem: HTMLElement) {
+  private _dispose(elem: HTMLElement): void {
     ReactDOM.unmountComponentAtNode(elem);
   }
 
   private _onChanged(item: IDropdownOption): void {
     if (this._onChangeCallback) {
       // Get all the selected keys
-      const updateSelectedKeys: any[] = this.properties.selectedKeys ? cloneDeep(this.properties.selectedKeys) : [];
+      const updateSelectedKeys: (string | number)[] = this.properties.selectedKeys ? cloneDeep(this.properties.selectedKeys) : [];
 
       // Check if item got selected
       if (item.selected) {

@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "Afegir i desar",
   "CollectionDataItemShowErrorsLabel": "Mostra els errors de fila",
   "CollectionDataItemFieldRequiredLabel": "El camp és obligatori.",
+  "CollectionDataItemFieldIssuesLabel": "Problemes de camp:",
   "InvalidUrlError": "L'adreça URL proporcionada no és vàlida",
   "DescriptionLabel": "Descripció",
   "MoreInfoLabel": "Més informació",

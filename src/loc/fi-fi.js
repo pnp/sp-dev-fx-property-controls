@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "Lisää ja tallenna",
   "CollectionDataItemShowErrorsLabel": "Näytä rivivirheet",
   "CollectionDataItemFieldRequiredLabel": "Kenttä on pakollinen.",
+  "CollectionDataItemFieldIssuesLabel": "Kenttäongelmia:",
   "InvalidUrlError": "Annettu URL-osoite ei kelpaa",
   "DescriptionLabel": "Kuvaus",
   "MoreInfoLabel": "Lisää infoa",

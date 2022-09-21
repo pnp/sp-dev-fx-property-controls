@@ -1,10 +1,8 @@
-import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
   IPropertyPaneField,
-  PropertyPaneFieldType,
-  IPropertyPaneDropdownOption
+  PropertyPaneFieldType
 } from '@microsoft/sp-property-pane';
 
 import PropertyFieldNumberHost from './PropertyFieldNumberHost';
@@ -17,7 +15,7 @@ class PropertyFieldNumberBuilder implements IPropertyPaneField<IPropertyFieldNum
   public properties: IPropertyFieldNumberPropsInternal;
 
 
-  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
+  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   public constructor(_targetProperty: string, _properties: IPropertyFieldNumberPropsInternal) {
     this.targetProperty = _targetProperty;
@@ -27,7 +25,7 @@ class PropertyFieldNumberBuilder implements IPropertyPaneField<IPropertyFieldNum
     this.properties.onDispose = this._dispose.bind(this);
   }
 
-  private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+  private _render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 
     const props: IPropertyFieldNumberProps = <IPropertyFieldNumberProps>this.properties;
 
@@ -43,7 +41,7 @@ class PropertyFieldNumberBuilder implements IPropertyPaneField<IPropertyFieldNum
     }
   }
 
-  private _dispose(elem: HTMLElement) {
+  private _dispose(elem: HTMLElement): void {
     ReactDOM.unmountComponentAtNode(elem);
   }
 

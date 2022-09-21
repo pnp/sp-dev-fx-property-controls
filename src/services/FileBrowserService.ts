@@ -69,7 +69,9 @@ export class FileBrowserService {
    * Provides the URL for file preview.
    */
   public getFileThumbnailUrl = (file: IFile, thumbnailWidth: number, thumbnailHeight: number): string => {
-    const thumbnailUrl = `${this.mediaBaseUrl}/transform/thumbnail?provider=spo&inputFormat=${file.fileType}&cs=${this.callerStack}&docid=${file.spItemUrl}&${this.driveAccessToken}&width=${thumbnailWidth}&height=${thumbnailHeight}`;
+    const thumbnailUrl = (file.spItemUrl && file.fileType === "aspx") // it's a SharePoint item, specifically a page
+                          ? `${this.context.pageContext.web.absoluteUrl}/_layouts/15/getpreview.ashx?path=${encodeURIComponent(file.absoluteUrl)}&resolution=0`
+                          : `${this.mediaBaseUrl}/transform/thumbnail?provider=spo&inputFormat=${file.fileType}&cs=${this.callerStack}&docid=${file.spItemUrl}&${this.driveAccessToken}&width=${thumbnailWidth}&height=${thumbnailHeight}`;
     return thumbnailUrl;
   }
 

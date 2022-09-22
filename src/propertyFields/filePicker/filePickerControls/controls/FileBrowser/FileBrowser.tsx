@@ -382,7 +382,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
       if (typeof firstValue === 'string')
       {
         firstValue = firstValue.toLocaleLowerCase();
-		secondValue = secondValue.toLocaleLowerCase();
+        secondValue = secondValue.toLocaleLowerCase();
       }
 
       const sortFactor = isSortedDescending ? -1 : 1;

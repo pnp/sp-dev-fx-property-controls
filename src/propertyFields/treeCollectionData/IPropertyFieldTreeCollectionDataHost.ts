@@ -1,10 +1,10 @@
-import {  IPropertyFieldTreeCollectionDataProps } from '.';
+import { IPropertyFieldTreeCollectionDataProps } from '.';
 
 /**
  * PropertyFieldTreeCollectionDataHost properties interface
  */
 export interface IPropertyFieldTreeCollectionDataHostProps extends IPropertyFieldTreeCollectionDataProps {
-  onChanged: (value: any[]) => void;
+  onChanged: (value: object[]) => void;
 }
 
 export interface IPropertyFieldTreeCollectionDataHostState {

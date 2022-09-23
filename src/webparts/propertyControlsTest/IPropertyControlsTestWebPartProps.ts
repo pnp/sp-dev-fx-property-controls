@@ -10,7 +10,7 @@ import {
 import { IPropertyFieldList } from '../../propertyFields/listPicker';
 import { IRuleTreeData } from '../../propertyFields/ruleTree/IRuleTreeData';
 import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
-import { ICustomTreeItem } from '../../propertyFields/treeCollectionData/ICustomTreeItem';
+import { ICustomTreeItem, BaseCustomTreeItem } from '../../propertyFields/treeCollectionData/ICustomTreeItem';
 import { IPropertyFieldTeam } from '../../PropertyFieldTeamPicker';
 import { IPickerTerms } from '../../PropertyFieldTermPicker';
 
@@ -42,8 +42,8 @@ export interface IPropertyControlsTestWebPartProps {
   checkboxWithCalloutValue: boolean;
   htmlCode: string;
   collectionData: any[];
-  treeCollectionData:ICustomTreeItem<any>[];
-  ruleTreeData:ICustomTreeItem<IRuleTreeData>[];
+  treeCollectionData: BaseCustomTreeItem<object>[];
+  ruleTreeData: BaseCustomTreeItem<IRuleTreeData>[];
   orderedItems: any[];
   swatchColor: string;
   enterpriseTerms: IPickerTerms;
@@ -58,5 +58,5 @@ export interface IPropertyControlsTestWebPartProps {
   teams: IPropertyFieldTeam[];
   iconPicker: string;
   editableComboBox: string;
-  monacoEditor:string;
+  monacoEditor: string;
 }

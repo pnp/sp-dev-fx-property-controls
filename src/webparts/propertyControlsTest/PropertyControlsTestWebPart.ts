@@ -127,7 +127,7 @@ import {
 } from '../../PropertyFieldViewPicker';
 import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
 import { PropertyFieldRuleTree } from '../../PropertyFieldRuleTree';
-import {  PropertyFieldTreeCollectionData } from '../../PropertyFieldTreeCollectionData';
+import { PropertyFieldTreeCollectionData } from '../../PropertyFieldTreeCollectionData';
 import {
   IPropertyControlsTestProps,
 } from './components/IPropertyControlsTestProps';
@@ -144,8 +144,8 @@ import { ITreeItem } from '@pnp/spfx-controls-react/lib/controls/treeView/ITreeI
 export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<IPropertyControlsTestWebPartProps> {
   private multiSelectProps = [];
 
- protected monacoChange = (newValue: string, validationErrors: string[]) => {
-   console.log('teste',newValue);
+  protected monacoChange = (newValue: string, validationErrors: string[]) => {
+    console.log('teste', newValue);
 
   }
 
@@ -194,7 +194,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         guid: this.properties.guid,
         iconPicker: this.properties.iconPicker,
         editableComboBox: this.properties.editableComboBox,
-        monacoEditor:  this.properties.monacoEditor,
+        monacoEditor: this.properties.monacoEditor,
       }
     );
 
@@ -525,9 +525,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
                         return (
                           React.createElement("div", null,
-                            React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+                            React.createElement("input", {
+                              key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
                                 onError(field.id, "Value shouldn't be equal to error");
-                            }}), " 🎉"
+                              }
+                            }), " 🎉"
                           )
                         );
                       }
@@ -599,7 +601,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'editableComboBox',
                   label: 'Editable ComboBox',
                   maxFillInLength: 50,
-                  options: [ {key: 'Apples', text: 'Apples'}, {key: 'Oranges', text: 'Oranges'}],
+                  options: [{ key: 'Apples', text: 'Apples' }, { key: 'Oranges', text: 'Oranges' }],
                   properties: this.properties,
                   selectedText: 'Oranges',
                   showTooltip: false,
@@ -631,7 +633,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: (value: string) => {
                     return value;
                   },
-                  contentTypeId:"0x0100",
+                  contentTypeId: "0x0100",
                   deferredValidationTime: 0,
                   key: 'listPickerFieldId',
                   webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
@@ -651,7 +653,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   // onGetErrorMessage: (value: string) => {
                   //   return value;
                   // },
-                  contentTypeId:"0x0120",
+                  contentTypeId: "0x0120",
                   deferredValidationTime: 0,
                   key: 'listPickerFieldId',
                   webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
@@ -676,39 +678,39 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'viewPickerFieldId'
                 }),
                 PropertyFieldColumnPicker('column', {
-                    label: 'Select a column',
-                    context: this.context,
-                    selectedColumn: this.properties.column,
-                    listId: this.properties.singleListFiltered,
-                    disabled: false,
-                    orderBy: PropertyFieldColumnPickerOrderBy.Title,
-                    onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
-                    properties: this.properties,
-                    onGetErrorMessage: null,
-                    deferredValidationTime: 0,
-                    key: 'columnPickerFieldId',
-                    displayHiddenColumns: false,
-                    columnReturnProperty: IColumnReturnProperty["Internal Name"],
-                    columnsToExclude: ['Compliance Asset Id'],
-                  }),
-                  PropertyFieldColumnPicker('multiColumn', {
-                    label: 'Select columns',
-                    context: this.context,
-                    selectedColumn: this.properties.multiColumn,
-                    listId: this.properties.singleListFiltered,
-                    disabled: false,
-                    orderBy: PropertyFieldColumnPickerOrderBy.Title,
-                    onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
-                    properties: this.properties,
-                    onGetErrorMessage: null,
-                    deferredValidationTime: 0,
-                    key: 'multiColumnPickerFieldId',
-                    displayHiddenColumns: false,
-                    columnReturnProperty: IColumnReturnProperty["Internal Name"],
-                    columnsToExclude: ['Compliance Asset Id'],
-                    multiSelect: true,
-                    renderFieldAs: IPropertyFieldRenderOption["Multiselect Dropdown"]
-                  }),
+                  label: 'Select a column',
+                  context: this.context,
+                  selectedColumn: this.properties.column,
+                  listId: this.properties.singleListFiltered,
+                  disabled: false,
+                  orderBy: PropertyFieldColumnPickerOrderBy.Title,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  onGetErrorMessage: null,
+                  deferredValidationTime: 0,
+                  key: 'columnPickerFieldId',
+                  displayHiddenColumns: false,
+                  columnReturnProperty: IColumnReturnProperty["Internal Name"],
+                  columnsToExclude: ['Compliance Asset Id'],
+                }),
+                PropertyFieldColumnPicker('multiColumn', {
+                  label: 'Select columns',
+                  context: this.context,
+                  selectedColumn: this.properties.multiColumn,
+                  listId: this.properties.singleListFiltered,
+                  disabled: false,
+                  orderBy: PropertyFieldColumnPickerOrderBy.Title,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  onGetErrorMessage: null,
+                  deferredValidationTime: 0,
+                  key: 'multiColumnPickerFieldId',
+                  displayHiddenColumns: false,
+                  columnReturnProperty: IColumnReturnProperty["Internal Name"],
+                  columnsToExclude: ['Compliance Asset Id'],
+                  multiSelect: true,
+                  renderFieldAs: IPropertyFieldRenderOption["Multiselect Dropdown"]
+                }),
 
                 PropertyFieldListPicker('multiList', {
                   label: 'Select multiple lists',
@@ -1093,11 +1095,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'monacoEditor',
                   value: this.properties.monacoEditor,
                   showMiniMap: true,
-                  onChange: (newValue: string ) => {
-                    console.log('teste',newValue);
-                  } ,
-                  language:"json",
-                  showLineNumbers:true,
+                  onChange: (newValue: string) => {
+                    console.log('teste', newValue);
+                  },
+                  language: "json",
+                  showLineNumbers: true,
                 }),
                 PropertyFieldOrder("orderedItems", {
                   key: "orderedItems",
@@ -1292,9 +1294,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   panelDescription: "This is the description which appears in the panel.",
                   value: this.properties.ruleTreeData,
                   serviceInterfaceObject: {
-                    "test":{},
-                    "master":{
-                        "desaster":{}
+                    "test": {},
+                    "master": {
+                      "desaster": {}
                     }
                   },
                   enableSorting: true,
@@ -1302,9 +1304,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   disableItemCreation: false,
                   enableMultiRoots: true,
                   panelClassName: "MyAwesomePanelClassName",
-                  tableClassName: "MyAwesomeTableClassName",                  
+                  tableClassName: "MyAwesomeTableClassName",
                   disabled: false
-                }),                
+                }),
                 PropertyFieldTreeCollectionData("treeCollectionData", {
                   key: "treeCollection",
                   label: "Tree Collection",
@@ -1313,46 +1315,26 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   saveBtnLabel: "Save button",
                   cancelBtnLabel: "Cancel button",
                   panelDescription: "This is the description which appears in the panel.",
-                  value: this.properties.treeCollectionData, 
+                  value: this.properties.treeCollectionData,
                   enableSorting: true,
-                  enableMultiRoots:true,
+                  enableMultiRoots: true,
                   disableItemDeletion: false,
                   disableItemCreation: false,
                   panelClassName: "MyAwesomePanelClassName",
-                  tableClassName: "MyAwesomeTableClassName",                  
+                  tableClassName: "MyAwesomeTableClassName",
                   disabled: false,
-              
-                  fields: (item:ITreeItem)=> {
 
-                    if(item.data.level === 0)
-                    {
-                        return [ {
-                          id: "MyRootNode",
-                          title: "RootNodeValue",
-                          type: CustomCollectionFieldType.string,
-                          required: true,
-                          placeholder: "Enter the rootnode",                                        
-                          disableEdit: false
-                        }];
-                    }
-
-                    return     [       {
-                      id: "Title",
-                      title: "Firstname",
+                  fields: (item: ITreeItem) => {
+                    return [{
+                      id: "MyRootNode",
+                      title: "RootNodeValue",
                       type: CustomCollectionFieldType.string,
                       required: true,
-                      placeholder: "Enter the firstname",                                        
+                      placeholder: "Enter the rootnode",
                       disableEdit: false
-                    },
-                    {
-                      id: "Lastname",
-                      title: "Lastname",
-                      type: CustomCollectionFieldType.string,
-                      onGetErrorMessage: (value, index, currentItem) => {
-                        return value === 'Smith'  ? 'You cannot write Smith ' : "";
-                      }
-                    },]
-                  }                                  
+                    }];
+
+                  }
                 }),
               ]
             },
@@ -1392,7 +1374,8 @@ Also supports GitHub-flavored Markdown checklists:
                       },
                       FieldErrorMessage: FieldErrorMessage
                     }
-                  }}),
+                  }
+                }),
               ]
             }
           ]

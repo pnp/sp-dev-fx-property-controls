@@ -7,6 +7,7 @@ import { Label } from 'office-ui-fabric-react/lib/components/Label';
 import { TreeCollectionDataViewer } from './treeCollectionDataViewer';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
 import * as strings from 'PropertyControlStrings';
+import { BaseCustomTreeItem } from './ICustomTreeItem';
 
 export class PropertyFieldTreeCollectionDataHost extends React.Component<IPropertyFieldTreeCollectionDataHostProps, IPropertyFieldTreeCollectionDataHostState> {
   constructor(props: IPropertyFieldTreeCollectionDataHostProps) {
@@ -22,7 +23,7 @@ export class PropertyFieldTreeCollectionDataHost extends React.Component<IProper
   /**
    * Open the panel
    */
-  private openPanel = () => {
+  private openPanel = (): void => {
     this.setState({
       panelOpen: true
     });
@@ -31,7 +32,7 @@ export class PropertyFieldTreeCollectionDataHost extends React.Component<IProper
   /**
    * Closes the panel
    */
-  private closePanel = () => {
+  private closePanel = (): void => {
     this.setState({
       panelOpen: false
     });
@@ -40,14 +41,15 @@ export class PropertyFieldTreeCollectionDataHost extends React.Component<IProper
   /**
    * On save action
    */
-  private onSave = (items: any[]) => {
+  private onSave = (items: BaseCustomTreeItem<object>[]): void => {
     this.props.onChanged(items);
     this.setState({
       panelOpen: false
     });
   }
 
-  private itemsUpdated = (items: any) => {
+
+  private itemsUpdated = (items: BaseCustomTreeItem<object>[]): void => {
     // TODO: Do we want to update the state /props even without the user clicking save?
     //this.setState({ items });
     //this.props.onChanged(items);
@@ -59,19 +61,19 @@ export class PropertyFieldTreeCollectionDataHost extends React.Component<IProper
         <Label>{this.props.label}</Label>
 
         <DefaultButton text={this.props.manageBtnLabel}
-                       onClick={this.openPanel}
-                       disabled={this.props.fields.length === 0 || this.props.disabled} />
+          onClick={this.openPanel}
+          disabled={this.props.fields.length === 0 || this.props.disabled} />
 
         {
           this.props.fields.length === 0 && <FieldErrorMessage errorMessage={strings.TreeCollectionDataEmptyFields} />
         }
 
         <Panel isOpen={this.state.panelOpen}
-               onDismiss={this.closePanel}
-               type={PanelType.large}
-               headerText={this.props.panelHeader}
-               onOuterClick={()=>{}}
-               className={`PropertyFieldTreeCollectionData__panel ${this.props.panelClassName || ""}`}>
+          onDismiss={this.closePanel}
+          type={PanelType.large}
+          headerText={this.props.panelHeader}
+          onOuterClick={() => { /* no-op; */ }}
+          className={`PropertyFieldTreeCollectionData__panel ${this.props.panelClassName || ""}`}>
           {
             this.props.panelDescription && (
               <p className="PropertyFieldTreeCollectionData__panel__description">{this.props.panelDescription}</p>

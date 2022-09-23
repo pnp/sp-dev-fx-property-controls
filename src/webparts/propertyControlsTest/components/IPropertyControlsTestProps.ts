@@ -13,10 +13,10 @@ import {
 } from '../../../PropertyFieldRoleDefinitionPicker';
 import { IPropertyFieldSite } from '../../../propertyFields/sitePicker';
 import { IPickerTerms } from '../../../PropertyFieldTermPicker';
-import { ICustomTreeItem } from '../../../propertyFields/treeCollectionData/ICustomTreeItem';
+import { ICustomTreeItem, BaseCustomTreeItem } from '../../../propertyFields/treeCollectionData/ICustomTreeItem';
 
 export interface IPropertyControlsTestProps {
-  password:string;
+  password: string;
   context: BaseComponentContext;
   numberValue: number;
   multiSelect: string[];
@@ -42,19 +42,19 @@ export interface IPropertyControlsTestProps {
   checkboxWithCalloutValue: boolean;
   htmlCode: string;
   collectionData: any[];
-  treeCollectionData: ICustomTreeItem<any>[];
-  ruleTreeData: any[];  
+  treeCollectionData: BaseCustomTreeItem<object>[];
+  ruleTreeData: any[];
   orderedItems: any[];
   swatchColor: string;
   enterpriseTerms: IPickerTerms;
   sites: IPropertyFieldSite[];
   searchLibrary: string;
-  message:string;
+  message: string;
   filePickerResult: IFilePickerResult;
   roleDefinitions: IRoleDefinitionInformation[];
   folderPicker: IFolder;
   guid: string;
   iconPicker: string;
   editableComboBox: string;
-  monacoEditor:string;
+  monacoEditor: string;
 }

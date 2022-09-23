@@ -1,6 +1,6 @@
 import { IPropertyFieldTreeCollectionDataHostProps } from "..";
 
 export interface ITreeCollectionDataViewerProps extends IPropertyFieldTreeCollectionDataHostProps {
-  fOnSave: (items: any[]) => void;
-  fOnClose: () => void;  
+  fOnSave: (items: object[]) => void;
+  fOnClose: () => void;
 }

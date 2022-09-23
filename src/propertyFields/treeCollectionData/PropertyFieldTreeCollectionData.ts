@@ -6,6 +6,7 @@ import {
 } from '@microsoft/sp-property-pane';
 
 import { PropertyFieldTreeCollectionDataHost, IPropertyFieldTreeCollectionDataPropsInternal, IPropertyFieldTreeCollectionDataProps } from '.';
+import { BaseCustomTreeItem } from './ICustomTreeItem';
 
 /**
  * Property Field Collection Data Builder Class
@@ -15,7 +16,8 @@ class PropertyFieldTreeCollectionDataBuilder implements IPropertyPaneField<IProp
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public properties: IPropertyFieldTreeCollectionDataPropsInternal;
 
-  private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
+
+  private _onChangeCallback: (targetProperty?: string, newValue?: BaseCustomTreeItem<object>[]) => void;
 
   public constructor(_targetProperty: string, _properties: IPropertyFieldTreeCollectionDataPropsInternal) {
     this.targetProperty = _targetProperty;
@@ -25,7 +27,7 @@ class PropertyFieldTreeCollectionDataBuilder implements IPropertyPaneField<IProp
     this.properties.onDispose = this.dispose.bind(this);
   }
 
-  private render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any[]) => void): void {
+  private render(elem: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: BaseCustomTreeItem<object>[]) => void): void {
     const props: IPropertyFieldTreeCollectionDataProps = <IPropertyFieldTreeCollectionDataProps>this.properties;
 
     const element = React.createElement(PropertyFieldTreeCollectionDataHost, {
@@ -43,7 +45,7 @@ class PropertyFieldTreeCollectionDataBuilder implements IPropertyPaneField<IProp
   /**
    * Dispose the property field
    */
-  private dispose(elem: HTMLElement) {
+  private dispose(elem: HTMLElement): void {
     ReactDOM.unmountComponentAtNode(elem);
   }
 
@@ -51,7 +53,7 @@ class PropertyFieldTreeCollectionDataBuilder implements IPropertyPaneField<IProp
    * On field change event handler
    * @param value
    */
-  private onChanged(value: any[]): void {
+  private onChanged(value: BaseCustomTreeItem<object>[]): void {
     if (this._onChangeCallback) {
       this._onChangeCallback(this.targetProperty, value);
     }

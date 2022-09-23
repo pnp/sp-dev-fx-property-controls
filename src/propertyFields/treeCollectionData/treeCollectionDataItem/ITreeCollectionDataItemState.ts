@@ -1,8 +1,9 @@
 import { ErrorMsg } from ".";
 
 export interface ITreeCollectionDataItemState {
-  crntItem: any;
+
+  crntItem: object;
   errorMsgs?: ErrorMsg[];
-  showCallout?: boolean;  
-  isLoading:boolean;  
+  showCallout?: boolean;
+  isLoading: boolean;
 }

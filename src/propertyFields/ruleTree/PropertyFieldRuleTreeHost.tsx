@@ -4,12 +4,12 @@ import { IPropertyFieldRuleTreeHostProps, IPropertyFieldRuleTreeHostState } from
 import { DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/components/Panel';
 import { Label } from 'office-ui-fabric-react/lib/components/Label';
-import {Text } from 'office-ui-fabric-react/lib/components/Text';
-import * as strings from 'PropertyControlStrings';
+import { Text } from 'office-ui-fabric-react/lib/components/Text';
+//import * as strings from 'PropertyControlStrings';
 import { TreeCollectionDataViewer } from '../treeCollectionData/treeCollectionDataViewer/TreeCollectionDataViewer';
 import { CustomCollectionFieldType, ICustomCollectionField } from '../collectionData/ICustomCollectionField';
-import { RuleTreeBaseOperator } from './RuleTreeBaseOperator';
-import {  ICustomTreeItem } from '../treeCollectionData/ICustomTreeItem';
+
+import { BaseCustomTreeItem, ICustomTreeItem } from '../treeCollectionData/ICustomTreeItem';
 import { IRuleTreeData } from './IRuleTreeData';
 import { ITreeItem } from '@pnp/spfx-controls-react/lib/TreeView';
 
@@ -28,7 +28,7 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
   /**
    * Open the panel
    */
-  private openPanel = () => {
+  private openPanel = (): void => {
     this.setState({
       panelOpen: true
     });
@@ -37,7 +37,7 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
   /**
    * Closes the panel
    */
-  private closePanel = () => {
+  private closePanel = (): void => {
     this.setState({
       panelOpen: false
     });
@@ -46,7 +46,8 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
   /**
    * On save action
    */
-  private onSave = (items: any[]) => {
+
+  private onSave = (items: BaseCustomTreeItem<IRuleTreeData>[]): void => {
     this.props.onChanged(items);
     this.setState({
       panelOpen: false
@@ -64,11 +65,11 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
     id: 'operator',
     title: "Operator", //commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Id,
     type: CustomCollectionFieldType.dropdown,
-    defaultValue:"EQ",
+    defaultValue: "EQ",
     options: [{
       key: "EQ",
       text: "EQ",
-      selected:true
+      selected: true
     },
     {
       key: "NE",
@@ -90,40 +91,39 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
     id: 'rightHand',
     title: "Right Hand", //commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Name,
     type: CustomCollectionFieldType.string
-  },  
+  },
   ];
 
-  private getFields = (item: ITreeItem, items: ITreeItem[], parentItem: ITreeItem):ICustomCollectionField[] => {
+  private getFields = (item: ITreeItem, items: ITreeItem[], parentItem: ITreeItem): ICustomCollectionField[] => {
 
-  /*  if( (item.children?.length ?? 0 > 0) || (item.data.sortIdx < (parentItem?.children?.length ?? 0) ) || ( !parentItem && item.data.sortIdx < items.length))
-    {
-      return this.standardFields.concat({
+    /*  if( (item.children?.length ?? 0 > 0) || (item.data.sortIdx < (parentItem?.children?.length ?? 0) ) || ( !parentItem && item.data.sortIdx < items.length))
+      {
+        return this.standardFields.concat({
+          id: 'conjunction',
+          title: "Conjunction", //commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Id,
+          type: CustomCollectionFieldType.dropdown,
+          options: [{
+            key: "AND",
+            text: "AND",
+            selected: true
+          },
+          {
+            key: "OR",
+            text: "OR"
+          }
+          ],
+          required: true
+        },)
+      }*/
+
+    if (parentItem
+      || item.data.sortIdx > 1
+    ) {
+      return [{
         id: 'conjunction',
         title: "Conjunction", //commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Id,
         type: CustomCollectionFieldType.dropdown,
-        options: [{
-          key: "AND",
-          text: "AND",
-          selected: true
-        },
-        {
-          key: "OR",
-          text: "OR"
-        }
-        ],
-        required: true
-      },)
-    }*/
-    
-    if( parentItem
-         || item.data.sortIdx > 1
-        )
-    {
-      return  [{
-        id: 'conjunction',
-        title: "Conjunction", //commonStrings.PropertyPane.InformationPage.Extensibility.Columns.Id,
-        type: CustomCollectionFieldType.dropdown,
-        defaultValue:'AND',
+        defaultValue: 'AND',
         options: [{
           key: "AND",
           text: "AND",
@@ -140,65 +140,68 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
     return this.standardFields;
   }
 
-  private evaluateRules = () => {
-    /*
-        for (const rule of this.properties.targetAudienceRules) {                
-          const leftHand = await this.tokenService.resolveTokens(rule.leftHand);
-          const rightHand = await this.tokenService.resolveTokens(rule.rightHand);                    
-         console.log("X:",`'${leftHand}' ${rule.operator} '${rightHand}'`);
-          switch((<any>RuleTreeBaseOperator)[rule.operator])
-          {
-              case RuleTreeBaseOperator.Eq:
-                  this._showWebpartFromAudienceSetting = isEqual(leftHand,rightHand);
-              break;
-    
-              case TagetAudianceRuleOperator.Neq:
-                  this._showWebpartFromAudienceSetting = !isEqual(leftHand,rightHand);
-              break;
-    
-              case TagetAudianceRuleOperator.In:
-                  this._showWebpartFromAudienceSetting = rightHand?.split(',').includes(leftHand);
-              break;
-    
-              case TagetAudianceRuleOperator.NotIn:
-                  this._showWebpartFromAudienceSetting = !rightHand?.split(',').includes(leftHand);
-              break;
-              default:
-                  console.error("Unknown op", rule.operator);
+  /*
+    private evaluateRules = (): void => {
+      
+          for (const rule of this.properties.targetAudienceRules) {                
+            const leftHand = await this.tokenService.resolveTokens(rule.leftHand);
+            const rightHand = await this.tokenService.resolveTokens(rule.rightHand);                    
+           console.log("X:",`'${leftHand}' ${rule.operator} '${rightHand}'`);
+            switch((<any>RuleTreeBaseOperator)[rule.operator])
+            {
+                case RuleTreeBaseOperator.Eq:
+                    this._showWebpartFromAudienceSetting = isEqual(leftHand,rightHand);
+                break;
+      
+                case TagetAudianceRuleOperator.Neq:
+                    this._showWebpartFromAudienceSetting = !isEqual(leftHand,rightHand);
+                break;
+      
+                case TagetAudianceRuleOperator.In:
+                    this._showWebpartFromAudienceSetting = rightHand?.split(',').includes(leftHand);
+                break;
+      
+                case TagetAudianceRuleOperator.NotIn:
+                    this._showWebpartFromAudienceSetting = !rightHand?.split(',').includes(leftHand);
+                break;
+                default:
+                    console.error("Unknown op", rule.operator);
+            }
+            
+            if(this._showWebpartFromAudienceSetting) {
+                console.log("this._showWebpartFromAudienceSetting",this._showWebpartFromAudienceSetting);
+                break;
+                
+            }else{
+                this._failedAudienceRule.push(`'${leftHand}' ${rule.operator} '${rightHand}'`);                        
+            }
           }
-          
-          if(this._showWebpartFromAudienceSetting) {
-              console.log("this._showWebpartFromAudienceSetting",this._showWebpartFromAudienceSetting);
-              break;
-              
-          }else{
-              this._failedAudienceRule.push(`'${leftHand}' ${rule.operator} '${rightHand}'`);                        
-          }
-        }
+    }
     */
+
+
+  private itemsToText = (items: ICustomTreeItem<IRuleTreeData>[]): string => {
+
+    //const res = items?.map(item => `${(item.data.value.conjunction && item.data.sortIdx > 1) ? item.data.value.conjunction : ''} ${item.data.value.leftHand} ${item.data.value.operator} ${item.data.value.rightHand} ${(item.children?.length ?? 0) > 0 ? `${item.children[0].data.value.conjunction} (${this.itemsToText(item.children)})` : ''}`).join(' ');
+    //return res;
+    return "todo";
   }
 
-
-  private itemsToText = (items: ICustomTreeItem<IRuleTreeData>[]) => {
-  
-    const res = items?.map(item =>`${(item.data.value.conjunction && item.data.sortIdx > 1) ? item.data.value.conjunction: ''  } ${item.data.value.leftHand} ${item.data.value.operator} ${item.data.value.rightHand} ${ item.children?.length ?? 0 > 0 ? `${item.children[0].data.value.conjunction}` + '(' + this.itemsToText(item.children) + ')' : '' }`).join(' ');
-    return res;
-  }
-
-  private itemsUpdated = (items: any) => {
+  private itemsUpdated = (items: ICustomTreeItem<IRuleTreeData>[]): void => {
     this.setState({ items });
   }
 
-  private getTokens = (tokenObject:any)=>{
+  //TODO: CHECK type  
+  private getTokens = (tokenObject: object): JSX.Element => {
     const names = [];
-    let w;
 
-    for (const objName in tokenObject) {       
+    for (const objName in tokenObject) {
+      if ({}.hasOwnProperty.call(tokenObject, objName)) {
         names.push(<li>{objName} {this.getTokens(tokenObject[objName])}</li>);
+      }
     }
 
-    if(names)
-    {
+    if (names && names.length > 0) {
       return <ul>{names}</ul>
     }
     return <></>;
@@ -222,7 +225,7 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
           onDismiss={this.closePanel}
           type={PanelType.large}
           headerText={this.props.panelHeader}
-          onOuterClick={() => { }}
+          onOuterClick={() => { /* no-op; */ }}
           className={`PropertyFieldTreeCollectionData__panel ${this.props.panelClassName || ""}`}>
           {
             this.props.panelDescription && (
@@ -238,8 +241,8 @@ export class PropertyFieldRuleTreeHost extends React.Component<IPropertyFieldRul
           </div>
           <div>
             <Label>Known Tokens</Label>
-            {tokens}              
-            
+            {tokens}
+
           </div>
 
         </Panel>}

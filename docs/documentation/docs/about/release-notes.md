@@ -9,10 +9,11 @@
 - `PropertyFieldCollectionData`: Adding new translation for Field Issues label [#486](https://github.com/pnp/sp-dev-fx-property-controls/pull/486)
 - `FilePicker`: Page Type icons not appearing in the Site Pages library view [#475](https://github.com/pnp/sp-dev-fx-property-controls/issues/475)
 - `FilePicker`: Tiles are Missing for Site Pages [#478](https://github.com/pnp/sp-dev-fx-property-controls/issues/478)
+- Arabic locale is missing [#461](https://github.com/pnp/sp-dev-fx-property-controls/issues/461)
 
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [Hilton Giesenow](https://github.com/HiltonGiesenow), [nviolero](https://github.com/nviolero), [Paul Schaeflein](https://github.com/pschaeflein).
+Special thanks to our contributors (in alphabetical order): [JeanNetryValere](https://github.com/JeanNetryValere), [Hilton Giesenow](https://github.com/HiltonGiesenow), [nviolero](https://github.com/nviolero), [Paul Schaeflein](https://github.com/pschaeflein).
 
 ## 3.9.0
 

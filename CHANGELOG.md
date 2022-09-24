@@ -2,6 +2,10 @@
 
 ## 3.10.0
 
+### Enhancements
+
+- Arabic locale is missing [#461](https://github.com/pnp/sp-dev-fx-property-controls/issues/461)
+
 ### Fixes
 
 - `FilePicker`: Fixed an internal typo in the codebase [#474](https://github.com/pnp/sp-dev-fx-property-controls/pull/474)
@@ -9,7 +13,7 @@
 - `PropertyFieldCollectionData`: Adding new translation for Field Issues label [#486](https://github.com/pnp/sp-dev-fx-property-controls/pull/486)
 - `FilePicker`: Page Type icons not appearing in the Site Pages library view [#475](https://github.com/pnp/sp-dev-fx-property-controls/issues/475)
 - `FilePicker`: Tiles are Missing for Site Pages [#478](https://github.com/pnp/sp-dev-fx-property-controls/issues/478)
-- Arabic locale is missing [#461](https://github.com/pnp/sp-dev-fx-property-controls/issues/461)
+- `FilePicker`: Sorting Does Not Work [#487](https://github.com/pnp/sp-dev-fx-property-controls/issues/487)
 
 ### Contributors
 

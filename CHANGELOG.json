@@ -5,7 +5,8 @@
       "changes": {
         "new": [],
         "enhancements": [
-          "Arabic locale is missing [#461](https://github.com/pnp/sp-dev-fx-property-controls/issues/461)"
+          "Arabic locale is missing [#461](https://github.com/pnp/sp-dev-fx-property-controls/issues/461)",
+          "`PropertyFieldTermPicker`:  anchorId support [#491](https://github.com/pnp/sp-dev-fx-property-controls/issues/491)"
         ],
         "fixes": [
           "`FilePicker`: Fixed an internal typo in the codebase [#474](https://github.com/pnp/sp-dev-fx-property-controls/pull/474)",
@@ -17,6 +18,7 @@
         ]
       },
       "contributions": [
+        "[Chad Eiserloh](https://github.com/c-eiser13)",
         "[JeanNetryValere](https://github.com/JeanNetryValere)",
         "[Hilton Giesenow](https://github.com/HiltonGiesenow)",
         "[nviolero](https://github.com/nviolero)",

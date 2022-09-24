@@ -5,6 +5,7 @@
 ### Enhancements
 
 - Arabic locale is missing [#461](https://github.com/pnp/sp-dev-fx-property-controls/issues/461)
+- `PropertyFieldTermPicker`:  anchorId support [#491](https://github.com/pnp/sp-dev-fx-property-controls/issues/491)
 
 ### Fixes
 
@@ -17,7 +18,7 @@
 
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [JeanNetryValere](https://github.com/JeanNetryValere), [Hilton Giesenow](https://github.com/HiltonGiesenow), [nviolero](https://github.com/nviolero), [Paul Schaeflein](https://github.com/pschaeflein).
+Special thanks to our contributors (in alphabetical order): [Chad Eiserloh](https://github.com/c-eiser13), [JeanNetryValere](https://github.com/JeanNetryValere), [Hilton Giesenow](https://github.com/HiltonGiesenow), [nviolero](https://github.com/nviolero), [Paul Schaeflein](https://github.com/pschaeflein).
 
 ## 3.9.0
 

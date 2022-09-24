@@ -37,6 +37,7 @@ export class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPrope
   private areTermsHidden: boolean;
   private disabledTermIds: string[];
   private termService: ISPTermStorePickerService;
+  private anchorId: string;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { /* no-op; */ }
@@ -69,6 +70,7 @@ export class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPrope
     this.areTermsHidden = _properties.areTermsHidden;
     this.disabledTermIds = _properties.disabledTermIds;
     this.termService = _properties.termService;
+    this.anchorId = _properties.anchorId
 
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
@@ -119,7 +121,8 @@ export class PropertyFieldTermPickerBuilder implements IPropertyPaneField<IPrope
       disabled: this.disabled,
       onGetErrorMessage: this.onGetErrorMessage,
       deferredValidationTime: this.deferredValidationTime,
-      termService: this.termService
+      termService: this.termService,
+      anchorId: this.anchorId
     });
 
     // Calls the REACT content generator

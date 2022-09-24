@@ -34,6 +34,7 @@ export interface ITermGroupProps extends ITermChanges {
   areTermsSelectable?: boolean;
   areTermsHidden?: boolean;
   disabledTermIds?: string[];
+  anchorId?: string;  
 }
 
 export interface ITermGroupState {
@@ -52,6 +53,7 @@ export interface ITermSetProps extends ITermChanges {
   areTermsSelectable?: boolean;
   areTermsHidden?: boolean;
   disabledTermIds?: string[];
+  anchorId?: string;
 }
 
 export interface ITermSetState {

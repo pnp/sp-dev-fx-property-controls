@@ -13,7 +13,7 @@ export class FolderTile extends React.Component<IFolderTileProps> {
     //{item.name}, Folder, Modified {item.modified}, edited by {item.modifiedBy}, {item.totalFileCount} items, Private
     const itemLabel: string = strings.FolderLabelTemplate
       .replace('{0}', item.name)
-      .replace('{1}', item.modified)
+      .replace('{1}', item.modifiedFriendly)
       .replace('{2}', item.modifiedBy)
       .replace('{3}', `${item.totalFileCount}`);
     return (

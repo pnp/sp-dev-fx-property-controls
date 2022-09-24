@@ -1042,6 +1042,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: "filePickerId",
                   buttonLabel: "File Picker",
                   label: "File Picker",
+				  includePageLibraries: true
                 }),
                 PropertyFieldIconPicker('iconPicker', {
                   currentIcon: this.properties.iconPicker,

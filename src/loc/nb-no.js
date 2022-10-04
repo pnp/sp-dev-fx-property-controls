@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "Legge til og lagre",
   "CollectionDataItemShowErrorsLabel": "Vis radfeil",
   "CollectionDataItemFieldRequiredLabel": "Feltet er obligatorisk.",
+  "CollectionDataItemFieldIssuesLabel": "Feltproblemer:",
   "InvalidUrlError": "Den angitte URL-adressen er ikke gyldig",
   "DescriptionLabel": "Beskrivelse",
   "MoreInfoLabel": "Mer info",

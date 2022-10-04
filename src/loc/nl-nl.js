@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "Voeg toe en sla op",
   "CollectionDataItemShowErrorsLabel": "Problemen tonen",
   "CollectionDataItemFieldRequiredLabel": "Veld is verplicht.",
+  "CollectionDataItemFieldIssuesLabel": "Veld problemen:",
   "InvalidUrlError": "De huidige URL is niet geldig",
   "DescriptionLabel": "Beschrijving",
   "MoreInfoLabel": "Meer info",

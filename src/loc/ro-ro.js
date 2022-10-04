@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "Adăugare și salvare",
   "CollectionDataItemShowErrorsLabel": "Afișare erori rând",
   "CollectionDataItemFieldRequiredLabel": "Câmpul este necesar.",
+  "CollectionDataItemFieldIssuesLabel": "Probleme de câmpul:",
   "InvalidUrlError": "URL-ul furnizat nu este valid",
   "DescriptionLabel": "Descrierea /",
   "MoreInfoLabel": "Mai multe informații",

@@ -164,6 +164,11 @@ export interface IPropertyFieldTermPickerProps {
    * Default is 500
    */
   resolveDelay?: number;
+
+  /**
+   * Id of a child term in the termset where to be able to selected and search the terms from
+   */
+  anchorId?: string
 }
 
 export interface IPropertyFieldEnterpriseTermPickerProps extends IPropertyFieldTermPickerProps {

@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "Pridanie a uloženie",
   "CollectionDataItemShowErrorsLabel": "Zobraziť chyby riadkov",
   "CollectionDataItemFieldRequiredLabel": "Pole je povinné.",
+  "CollectionDataItemFieldIssuesLabel": "Problémy v pole:",
   "InvalidUrlError": "Za predpokladu, že adresa URL nie je platná",
   "DescriptionLabel": "Popis / kontrol",
   "MoreInfoLabel": "Ďalšie informácie",

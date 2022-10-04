@@ -486,7 +486,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
                 {
                   (this.state.errorMsgs && this.state.errorMsgs.length > 0) && (
                     <div className={styles.errorMsgs}>
-                      <p>Field issues:</p>
+                      <p>{strings.CollectionDataItemFieldIssuesLabel}</p>
                       <ul>
                         {
                           this.state.errorMsgs.map((msg, idx) => (

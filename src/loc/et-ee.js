@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "Lisamine ja salvestamine",
   "CollectionDataItemShowErrorsLabel": "Reatõrgete näitamine",
   "CollectionDataItemFieldRequiredLabel": "Väli on nõutav.",
+  "CollectionDataItemFieldIssuesLabel": "Põllu probleemid:",
   "InvalidUrlError": "Esitatud URL ei sobi",
   "DescriptionLabel": "Kirjeldus",
   "MoreInfoLabel": "Rohkem infot",

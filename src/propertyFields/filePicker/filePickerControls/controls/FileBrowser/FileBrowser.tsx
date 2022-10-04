@@ -44,18 +44,22 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
           const folderIcon: string = strings.FolderIconUrl;
           // TODO: Improve file icon URL
           const isPhoto = GeneralHelper.isImage(item.name);
-          const iconUrl = isPhoto ? strings.PhotoIconUrl : `https://spoprod-a.akamaihd.net/files/odsp-next-prod_2019-01-11_20190116.001/odsp-media/images/itemtypes/20_2x/${item.fileType}.png`;
+          const iconUrl = isPhoto
+		                          ? strings.PhotoIconUrl
+		                          : item.fileType.toLowerCase() === "aspx"
+		                            ? 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/spo.svg'
+		                            : `https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/${item.fileType}.svg`;
 
           const altText: string = item.isFolder ? strings.FolderAltText : strings.ImageAltText.replace('{0}', item.fileType);
           return <div className={styles.fileTypeIcon}>
-            <img src={item.isFolder ? folderIcon : iconUrl} className={styles.fileTypeIconIcon} alt={altText} title={altText} />
-          </div>;
+                   <img src={item.isFolder ? folderIcon : iconUrl} className={styles.fileTypeIconIcon} alt={altText} title={altText} />
+                 </div>;
         }
       },
       {
         key: 'column2',
         name: strings.NameField,
-        fieldName: 'fileLeafRef',
+        fieldName: 'name',
         minWidth: 210,
         isRowHeader: true,
         isResizable: true,
@@ -77,14 +81,14 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
       {
         key: 'column3',
         name: strings.ModifiedField,
-        fieldName: 'dateModifiedValue',
+        fieldName: 'modified',
         minWidth: 120,
         isResizable: true,
         onColumnClick: this._onColumnClick,
         data: 'number',
         onRender: (item: IFile) => {
           //const dateModified = moment(item.modified).format(strings.DateFormat);
-          return <span>{item.modified}</span>;
+          return <span>{item.modifiedFriendly}</span>;
         },
         isPadded: true
       },
@@ -104,7 +108,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
       {
         key: 'column5',
         name: strings.FileSizeField,
-        fieldName: 'fileSizeRaw',
+        fieldName: 'fileSize',
         minWidth: 70,
         maxWidth: 90,
         isResizable: true,
@@ -376,15 +380,35 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
 
     // Sort the items.
     items = items.concat([]).sort((a, b) => {
-      const firstValue = a[column.fieldName || ''];
-      const secondValue = b[column.fieldName || ''];
+      let firstValue = a[column.fieldName || ''];
+      let secondValue = b[column.fieldName || ''];
 
-      if (isSortedDescending) {
-        return firstValue > secondValue ? -1 : 1;
-      } else {
-        return firstValue > secondValue ? 1 : -1;
+      if (typeof firstValue === 'string')
+      {
+        firstValue = firstValue.toLocaleLowerCase();
+        secondValue = secondValue.toLocaleLowerCase();
       }
+
+      const sortFactor = isSortedDescending ? -1 : 1;
+
+      if (firstValue > secondValue)
+        return 1 * sortFactor;
+      else if (firstValue < secondValue)
+        return -1 * sortFactor;
+      else
+        return 0;
     });
+
+    // If the column being sorted is the 'name' column, then keep all the folders together
+    if (column.fieldName === "name")
+    {
+        const folders =	items.filter(item => item.isFolder);
+        const files =	items.filter(item => !item.isFolder);
+        items = [
+            ...(isSortedDescending ? files : folders),
+            ...(isSortedDescending ? folders : files),
+        ];
+    }
 
     // Reset the items and columns to match the state.
     this.setState({

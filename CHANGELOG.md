@@ -1,5 +1,25 @@
 # Releases
 
+## 3.10.0
+
+### Enhancements
+
+- Arabic locale is missing [#461](https://github.com/pnp/sp-dev-fx-property-controls/issues/461)
+- `PropertyFieldTermPicker`:  anchorId support [#491](https://github.com/pnp/sp-dev-fx-property-controls/issues/491)
+
+### Fixes
+
+- `FilePicker`: Fixed an internal typo in the codebase [#474](https://github.com/pnp/sp-dev-fx-property-controls/pull/474)
+- `ListPicker`: documentation updates [#490](https://github.com/pnp/sp-dev-fx-property-controls/pull/490)
+- `PropertyFieldCollectionData`: Adding new translation for Field Issues label [#486](https://github.com/pnp/sp-dev-fx-property-controls/pull/486)
+- `FilePicker`: Page Type icons not appearing in the Site Pages library view [#475](https://github.com/pnp/sp-dev-fx-property-controls/issues/475)
+- `FilePicker`: Tiles are Missing for Site Pages [#478](https://github.com/pnp/sp-dev-fx-property-controls/issues/478)
+- `FilePicker`: Sorting Does Not Work [#487](https://github.com/pnp/sp-dev-fx-property-controls/issues/487)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Chad Eiserloh](https://github.com/c-eiser13), [JeanNetryValere](https://github.com/JeanNetryValere), [Hilton Giesenow](https://github.com/HiltonGiesenow), [nviolero](https://github.com/nviolero), [Paul Schaeflein](https://github.com/pschaeflein).
+
 ## 3.9.0
 
 ### Enhancements

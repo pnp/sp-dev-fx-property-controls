@@ -74,6 +74,7 @@ define([], () => {
   "CollectionSaveAndAddButtonLabel": "Ekle ve kaydet",
   "CollectionDataItemShowErrorsLabel": "Satır hatalarını göster",
   "CollectionDataItemFieldRequiredLabel": "Alan gereklidir.",
+  "CollectionDataItemFieldIssuesLabel": "Alan sorunları:",
   "InvalidUrlError": "Sağlanan URL geçerli değil",
   "DescriptionLabel": "Açıklama",
   "MoreInfoLabel": "Daha fazla bilgi",

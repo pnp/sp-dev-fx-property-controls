@@ -45,10 +45,10 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
           // TODO: Improve file icon URL
           const isPhoto = GeneralHelper.isImage(item.name);
           const iconUrl = isPhoto
-		                          ? strings.PhotoIconUrl
-		                          : item.fileType.toLowerCase() === "aspx"
-		                            ? 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/spo.svg'
-		                            : `https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/${item.fileType}.svg`;
+                              ? strings.PhotoIconUrl
+                              : item.fileType.toLowerCase() === "aspx"
+                                ? 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/spo.svg'
+                                : `https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/${item.fileType}.svg`;
 
           const altText: string = item.isFolder ? strings.FolderAltText : strings.ImageAltText.replace('{0}', item.fileType);
           return <div className={styles.fileTypeIcon}>
@@ -378,6 +378,13 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
       isSortedDescending = !isSortedDescending;
     }
 
+    const hasNullPlaceholder = items[items.length - 1] === null;
+
+    if (hasNullPlaceholder) {
+        // Remove the null marker
+        items.splice(items.length - 1, 1);
+    }
+
     // Sort the items.
     items = items.concat([]).sort((a, b) => {
       let firstValue = a[column.fieldName || ''];
@@ -402,13 +409,18 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
     // If the column being sorted is the 'name' column, then keep all the folders together
     if (column.fieldName === "name")
     {
-        const folders =	items.filter(item => item.isFolder);
-        const files =	items.filter(item => !item.isFolder);
+        const folders = items.filter(item => item.isFolder);
+        const files = items.filter(item => !item.isFolder);
         items = [
             ...(isSortedDescending ? files : folders),
             ...(isSortedDescending ? folders : files),
         ];
     }
+
+    if (hasNullPlaceholder) {
+    // Re-add the null placeholder if it was there before
+    items.push(null);
+  }
 
     // Reset the items and columns to match the state.
     this.setState({
@@ -510,7 +522,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
 
 
       // Remove the null mark from the end of the items array
-      if (concatenateResults && items && items.length > 0 && items.length[items.length - 1] === null) {
+      if (concatenateResults && items && items.length > 0 && items[items.length - 1] === null) {
         // Remove the null mark
         items.splice(items.length - 1, 1);
       }

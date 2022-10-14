@@ -13,6 +13,7 @@ This control generates a Message Bar that will show messages  .
 
 ```TypeScript
 import { PropertyFieldMessage} from '@pnp/spfx-property-controls/lib/PropertyFieldMessage';
+import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 ```
 
 - Add the custom property control to the `groupFields` of the web part property pane configuration:
@@ -21,9 +22,9 @@ import { PropertyFieldMessage} from '@pnp/spfx-property-controls/lib/PropertyFie
  PropertyFieldMessage("", {
       key: "MessageKey",
       text: "Something went wrong... try later.",
-      messageType:  MessageBarType.error
-      isVisible:  true ,
-  }),
+      messageType: MessageBarType.error,
+      isVisible: true
+  })
 ```
 
 

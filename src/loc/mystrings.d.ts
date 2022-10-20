@@ -90,6 +90,16 @@ declare interface IPropertyControlStrings {
   CollectionDataItemFieldIssuesLabel: string;
   InvalidUrlError: string;
 
+  // Tree Collection data
+  TreeCollectionDataEmptyFields: string;
+  TreeCollectionDataEmptyValue: string;
+  TreeCollectionAddNodeButtonLabel: string;
+  TreeCollectionAddRootButtonLabel: string;
+  TreeCollectionDeleteNodeButtonLabel: string;
+  TreeCollectionSaveAndAddButtonLabel: string;
+  TreeCollectionDataItemShowErrorsLabel: string;
+  TreeCollectionDataItemFieldRequiredLabel: string;  
+
   // Property Editor
   ApplyButtonLabel: string;
   ImportButtonLabel: string;

@@ -12,6 +12,7 @@
   "externals": {},
   "localizedResources": {
     "PropertyControlsTestWebPartStrings": "lib/webparts/propertyControlsTest/loc/{locale}.js",
-    "PropertyControlStrings": "lib/loc/{locale}.js"
+    "PropertyControlStrings": "lib/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   }
 }

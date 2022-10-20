@@ -126,6 +126,8 @@ import {
   PropertyFieldViewPickerOrderBy,
 } from '../../PropertyFieldViewPicker';
 import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
+import { PropertyFieldRuleTree } from '../../PropertyFieldRuleTree';
+import { PropertyFieldTreeCollectionData } from '../../PropertyFieldTreeCollectionData';
 import {
   IPropertyControlsTestProps,
 } from './components/IPropertyControlsTestProps';
@@ -133,6 +135,8 @@ import PropertyControlsTest from './components/PropertyControlsTest';
 import {
   IPropertyControlsTestWebPartProps,
 } from './IPropertyControlsTestWebPartProps';
+import { ITreeItem } from '@pnp/spfx-controls-react/lib/controls/treeView/ITreeItem';
+
 
 /**
  * Web part that can be used to test out the various property controls
@@ -140,8 +144,8 @@ import {
 export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<IPropertyControlsTestWebPartProps> {
   private multiSelectProps = [];
 
- protected monacoChange = (newValue: string, validationErrors: string[]) => {
-   console.log('teste',newValue);
+  protected monacoChange = (newValue: string, validationErrors: string[]) => {
+    console.log('teste', newValue);
 
   }
 
@@ -175,6 +179,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         checkboxWithCalloutValue: this.properties.checkboxWithCalloutValue,
         htmlCode: this.properties.htmlCode,
         collectionData: this.properties.collectionData,
+        treeCollectionData: this.properties.treeCollectionData,
+        ruleTreeData: this.properties.ruleTreeData,
         orderedItems: this.properties.orderedItems,
         swatchColor: this.properties.swatchColor,
         enterpriseTerms: this.properties.enterpriseTerms || [],
@@ -188,7 +194,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         guid: this.properties.guid,
         iconPicker: this.properties.iconPicker,
         editableComboBox: this.properties.editableComboBox,
-        monacoEditor:  this.properties.monacoEditor,
+        monacoEditor: this.properties.monacoEditor,
       }
     );
 
@@ -519,9 +525,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                       onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
                         return (
                           React.createElement("div", null,
-                            React.createElement("input", { key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
+                            React.createElement("input", {
+                              key: itemId, value: value, onChange: (event: React.FormEvent<HTMLInputElement>) => {
                                 onError(field.id, "Value shouldn't be equal to error");
-                            }}), " 🎉"
+                              }
+                            }), " 🎉"
                           )
                         );
                       }
@@ -593,7 +601,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'editableComboBox',
                   label: 'Editable ComboBox',
                   maxFillInLength: 50,
-                  options: [ {key: 'Apples', text: 'Apples'}, {key: 'Oranges', text: 'Oranges'}],
+                  options: [{ key: 'Apples', text: 'Apples' }, { key: 'Oranges', text: 'Oranges' }],
                   properties: this.properties,
                   selectedText: 'Oranges',
                   showTooltip: false,
@@ -625,7 +633,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onGetErrorMessage: (value: string) => {
                     return value;
                   },
-                  contentTypeId:"0x0100",
+                  contentTypeId: "0x0100",
                   deferredValidationTime: 0,
                   key: 'listPickerFieldId',
                   webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
@@ -645,7 +653,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   // onGetErrorMessage: (value: string) => {
                   //   return value;
                   // },
-                  contentTypeId:"0x0120",
+                  contentTypeId: "0x0120",
                   deferredValidationTime: 0,
                   key: 'listPickerFieldId',
                   webAbsoluteUrl: this.properties.siteUrl || this.context.pageContext.web.absoluteUrl,
@@ -670,39 +678,39 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'viewPickerFieldId'
                 }),
                 PropertyFieldColumnPicker('column', {
-                    label: 'Select a column',
-                    context: this.context,
-                    selectedColumn: this.properties.column,
-                    listId: this.properties.singleListFiltered,
-                    disabled: false,
-                    orderBy: PropertyFieldColumnPickerOrderBy.Title,
-                    onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
-                    properties: this.properties,
-                    onGetErrorMessage: null,
-                    deferredValidationTime: 0,
-                    key: 'columnPickerFieldId',
-                    displayHiddenColumns: false,
-                    columnReturnProperty: IColumnReturnProperty["Internal Name"],
-                    columnsToExclude: ['Compliance Asset Id'],
-                  }),
-                  PropertyFieldColumnPicker('multiColumn', {
-                    label: 'Select columns',
-                    context: this.context,
-                    selectedColumn: this.properties.multiColumn,
-                    listId: this.properties.singleListFiltered,
-                    disabled: false,
-                    orderBy: PropertyFieldColumnPickerOrderBy.Title,
-                    onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
-                    properties: this.properties,
-                    onGetErrorMessage: null,
-                    deferredValidationTime: 0,
-                    key: 'multiColumnPickerFieldId',
-                    displayHiddenColumns: false,
-                    columnReturnProperty: IColumnReturnProperty["Internal Name"],
-                    columnsToExclude: ['Compliance Asset Id'],
-                    multiSelect: true,
-                    renderFieldAs: IPropertyFieldRenderOption["Multiselect Dropdown"]
-                  }),
+                  label: 'Select a column',
+                  context: this.context,
+                  selectedColumn: this.properties.column,
+                  listId: this.properties.singleListFiltered,
+                  disabled: false,
+                  orderBy: PropertyFieldColumnPickerOrderBy.Title,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  onGetErrorMessage: null,
+                  deferredValidationTime: 0,
+                  key: 'columnPickerFieldId',
+                  displayHiddenColumns: false,
+                  columnReturnProperty: IColumnReturnProperty["Internal Name"],
+                  columnsToExclude: ['Compliance Asset Id'],
+                }),
+                PropertyFieldColumnPicker('multiColumn', {
+                  label: 'Select columns',
+                  context: this.context,
+                  selectedColumn: this.properties.multiColumn,
+                  listId: this.properties.singleListFiltered,
+                  disabled: false,
+                  orderBy: PropertyFieldColumnPickerOrderBy.Title,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  onGetErrorMessage: null,
+                  deferredValidationTime: 0,
+                  key: 'multiColumnPickerFieldId',
+                  displayHiddenColumns: false,
+                  columnReturnProperty: IColumnReturnProperty["Internal Name"],
+                  columnsToExclude: ['Compliance Asset Id'],
+                  multiSelect: true,
+                  renderFieldAs: IPropertyFieldRenderOption["Multiselect Dropdown"]
+                }),
 
                 PropertyFieldListPicker('multiList', {
                   label: 'Select multiple lists',
@@ -1089,11 +1097,11 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'monacoEditor',
                   value: this.properties.monacoEditor,
                   showMiniMap: true,
-                  onChange: (newValue: string ) => {
-                    console.log('teste',newValue);
-                  } ,
-                  language:"json",
-                  showLineNumbers:true,
+                  onChange: (newValue: string) => {
+                    console.log('teste', newValue);
+                  },
+                  language: "json",
+                  showLineNumbers: true,
                 }),
                 PropertyFieldOrder("orderedItems", {
                   key: "orderedItems",
@@ -1278,6 +1286,58 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   ],
                   disabled: false
                 }),
+                PropertyFieldRuleTree("ruleTreeData", {
+                  key: "ruleTree",
+                  label: "Rule Tree",
+                  panelHeader: "Rule Tree panel header",
+                  manageBtnLabel: "Manage rule tree",
+                  saveBtnLabel: "Save button",
+                  cancelBtnLabel: "Cancel button",
+                  panelDescription: "This is the description which appears in the panel.",
+                  value: this.properties.ruleTreeData,
+                  serviceInterfaceObject: {
+                    "test": {},
+                    "master": {
+                      "desaster": {}
+                    }
+                  },
+                  enableSorting: true,
+                  disableItemDeletion: false,
+                  disableItemCreation: false,
+                  enableMultiRoots: true,
+                  panelClassName: "MyAwesomePanelClassName",
+                  tableClassName: "MyAwesomeTableClassName",
+                  disabled: false
+                }),
+                PropertyFieldTreeCollectionData("treeCollectionData", {
+                  key: "treeCollection",
+                  label: "Tree Collection",
+                  panelHeader: "Tree collection panel header",
+                  manageBtnLabel: "Manage tree collection",
+                  saveBtnLabel: "Save button",
+                  cancelBtnLabel: "Cancel button",
+                  panelDescription: "This is the description which appears in the panel.",
+                  value: this.properties.treeCollectionData,
+                  enableSorting: true,
+                  enableMultiRoots: true,
+                  disableItemDeletion: false,
+                  disableItemCreation: false,
+                  panelClassName: "MyAwesomePanelClassName",
+                  tableClassName: "MyAwesomeTableClassName",
+                  disabled: false,
+
+                  fields: (item: ITreeItem) => {
+                    return [{
+                      id: "MyRootNode",
+                      title: "RootNodeValue",
+                      type: CustomCollectionFieldType.string,
+                      required: true,
+                      placeholder: "Enter the rootnode",
+                      disableEdit: false
+                    }];
+
+                  }
+                }),
               ]
             },
             {
@@ -1316,7 +1376,8 @@ Also supports GitHub-flavored Markdown checklists:
                       },
                       FieldErrorMessage: FieldErrorMessage
                     }
-                  }}),
+                  }
+                }),
               ]
             }
           ]

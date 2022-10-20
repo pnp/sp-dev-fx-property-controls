@@ -69,7 +69,9 @@ export class FileBrowserService {
    * Provides the URL for file preview.
    */
   public getFileThumbnailUrl = (file: IFile, thumbnailWidth: number, thumbnailHeight: number): string => {
-    const thumbnailUrl = `${this.mediaBaseUrl}/transform/thumbnail?provider=spo&inputFormat=${file.fileType}&cs=${this.callerStack}&docid=${file.spItemUrl}&${this.driveAccessToken}&width=${thumbnailWidth}&height=${thumbnailHeight}`;
+    const thumbnailUrl = (file.spItemUrl && file.fileType === "aspx") // it's a SharePoint item, specifically a page
+                          ? `${this.context.pageContext.web.absoluteUrl}/_layouts/15/getpreview.ashx?path=${encodeURIComponent(file.absoluteUrl)}&resolution=0`
+                          : `${this.mediaBaseUrl}/transform/thumbnail?provider=spo&inputFormat=${file.fileType}&cs=${this.callerStack}&docid=${file.spItemUrl}&${this.driveAccessToken}&width=${thumbnailWidth}&height=${thumbnailHeight}`;
     return thumbnailUrl;
   }
 
@@ -244,22 +246,18 @@ export class FileBrowserService {
    * Converts REST call results to IFile
    */
   protected parseFileItem = (fileItem: any): IFile => { // eslint-disable-line @typescript-eslint/no-explicit-any
-    const modifiedFriendly: string = fileItem["Modified.FriendlyDisplay"];
+    const modifiedFriendlyRaw: string = fileItem["Modified.FriendlyDisplay"];
 
     // Get the modified date
-    const modifiedParts: string[] = modifiedFriendly.split('|');
-    let modified: string = fileItem.Modified;
-
-    // If there is a friendly modified date, use that
-    if (modifiedParts.length === 2) {
-      modified = modifiedParts[1];
-    }
+    const modifiedParts: string[] = modifiedFriendlyRaw.split('|');
+    const modifiedFriendly: string = modifiedParts.length === 2 ? modifiedParts[1] : fileItem.Modified; // If there is a friendly modified date, use that
 
     const file: IFile = {
       name: fileItem.FileLeafRef,
       fileIcon: fileItem.DocIcon,
       serverRelativeUrl: fileItem.FileRef,
-      modified: modified,
+      modified: new Date(fileItem["Modified."] ?? fileItem.Modified),
+      modifiedFriendly: modifiedFriendly,
       fileSize: fileItem.File_x0020_Size,
       fileType: fileItem.File_x0020_Type,
       modifiedBy: fileItem.Editor[0].title,

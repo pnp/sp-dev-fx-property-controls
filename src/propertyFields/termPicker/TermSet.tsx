@@ -3,15 +3,18 @@ import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ITermSetProps, ITermSetState } from './IPropertyFieldTermPickerHost';
 import { ITerm, TermStorePickerServiceHelper } from '../../services/ISPTermStorePickerService';
-import { EXPANDED_IMG, COLLAPSED_IMG, TERMSET_IMG } from './PropertyFieldTermPickerHost';
+import { EXPANDED_IMG, COLLAPSED_IMG, TERMSET_IMG, TERM_IMG } from './PropertyFieldTermPickerHost';
 import Term from './Term';
 import styles from './PropertyFieldTermPickerHost.module.scss';
 import * as strings from 'PropertyControlStrings';
+import { stringIsNullOrEmpty } from '@pnp/common';
 
 /**
  * Term set component
  */
 export default class TermSet extends React.Component<ITermSetProps, ITermSetState> {
+  private _anchorName: string;
+
   constructor(props: ITermSetProps) {
     super(props);
 
@@ -66,11 +69,38 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
         ? null
         : await this.props.termsService.getAllTerms(this.props.termset);
       if (terms !== null) {
-        this.setState({
-          terms: terms,
-          loaded: true,
-          expanded: typeof autoExpand !== 'undefined' ? autoExpand : this.state.expanded
-        });
+        if (this.props.anchorId) {
+          const anchorTerm = terms.filter(t => t.Id.toLocaleLowerCase() === this.props.anchorId.toLocaleLowerCase()).shift();
+          if (anchorTerm) {
+            const anchorTermPath = `${anchorTerm.PathOfTerm};`;
+            this._anchorName = anchorTerm.Name;
+            let anchorTerms: ITerm[] = terms.filter(t => t.PathOfTerm.substring(0, anchorTermPath.length) === anchorTermPath && t.Id !== anchorTerm.Id);
+            anchorTerms = anchorTerms.map(term => {
+              term.PathDepth = term.PathDepth - anchorTerm.PathDepth;
+              return term;
+            });
+            this.setState({
+              terms: anchorTerms,
+              loaded: true,
+              expanded: typeof autoExpand !== 'undefined' ? autoExpand : this.state.expanded
+            });
+          }
+          else {
+            //just set terms
+            this.setState({
+              terms: terms,
+              loaded: true,
+              expanded: typeof autoExpand !== 'undefined' ? autoExpand : this.state.expanded
+            });
+          }
+        }
+        else {
+          this.setState({
+            terms: terms,
+            loaded: true,
+            expanded: typeof autoExpand !== 'undefined' ? autoExpand : this.state.expanded
+          });
+        }
       } else {
         this.setState({
           terms: [],
@@ -143,18 +173,23 @@ export default class TermSet extends React.Component<ITermSetProps, ITermSetStat
 
     return (
       <div>
-        <div className={`${styles.listItem} ${styles.termset} ${this.props.isTermSetSelectable && !this.props.areTermsHidden ? styles.termSetSelectable : ""}`} onClick={this._handleClick}>
+        <div className={`${styles.listItem} ${styles.termset} ${this.props.isTermSetSelectable && !this.props.areTermsHidden && !this.props.anchorId ? styles.termSetSelectable : ""}`} onClick={this._handleClick}>
           <img className={`${this.props.areTermsHidden ? styles.termsHidden : ""}`} src={this.state.expanded ? EXPANDED_IMG : COLLAPSED_IMG} alt={strings.TermPickerExpandTitle} title={strings.TermPickerExpandTitle} />
 
           {
             // Show the termset selection box
-            this.props.isTermSetSelectable &&
+            (this.props.isTermSetSelectable && !this.props.anchorId) &&
             <Checkbox className={styles.termSetSelector}
               checked={this.props.activeNodes.filter(a => a.path === "" && a.termSet.indexOf(a.key) !== -1 && this.props.termset.Id.indexOf(a.key) !== -1).length >= 1}
               onChange={this.termSetSelectionChange} />
           }
 
-          <img src={TERMSET_IMG} alt={strings.TermPickerMenuTermSet} title={strings.TermPickerMenuTermSet} /> {this.props.termset.Name}
+          <img src={this.props.anchorId ? TERM_IMG : TERMSET_IMG} alt={strings.TermPickerMenuTermSet} title={strings.TermPickerMenuTermSet} />
+          {
+            this.props.anchorId ?
+              this._anchorName :
+              this.props.termset.Name
+          }
         </div>
         <div style={styleProps}>
           {termElm}

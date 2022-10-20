@@ -42,7 +42,7 @@ export class DocumentTile extends React.Component<IDocumentTileProps> {
     const ariaLabel: string = strings.ImageAriaLabelTemplate.replace('{0}', item.fileIcon);
     const itemLabel: string = strings.DocumentLabelTemplate
       .replace('{0}', item.name)
-      .replace('{1}', item.modified)
+      .replace('{1}', item.modifiedFriendly)
       .replace('{2}', item.modifiedBy);
 
     return (
@@ -112,7 +112,7 @@ export class DocumentTile extends React.Component<IDocumentTileProps> {
             </span>
             <span className={styles.activity} id={`Tile-activity${index}`}>
               <span className={css(styles.signalField, styles.compact)}>
-                <span className={styles.signalFieldValue}>{item.modified}</span>
+                <span className={styles.signalFieldValue}>{item.modifiedFriendly}</span>
               </span>
             </span>
           </span>

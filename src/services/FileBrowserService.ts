@@ -44,7 +44,7 @@ export class FileBrowserService {
     return filesQueryResult;
   }
 
-  public getListItemsByListId = async (listId: string, folderPath: string, acceptedFilesExtensions?: string[], nextPageQueryStringParams?: string): Promise<FilesQueryResult> => {
+  public getListItemsByListId = async (listId: string, folderPath: string, acceptedFilesExtensions?: string[], nextPageQueryStringParams?: string, currentSortColumnName?: string, isSortedDescending?: boolean): Promise<FilesQueryResult> => {
     let filesQueryResult: FilesQueryResult = { items: [], nextHref: null };
     try {
       let restApi = `${this.context.pageContext.web.absoluteUrl}/_api/web/lists(guid'${listId}')/RenderListDataAsStream`;
@@ -56,7 +56,7 @@ export class FileBrowserService {
         folderPath = null;
       }
 
-      filesQueryResult = await this._getListDataAsStream(restApi, folderPath, acceptedFilesExtensions);
+      filesQueryResult = await this._getListDataAsStream(restApi, folderPath, acceptedFilesExtensions, currentSortColumnName, isSortedDescending);
     } catch (error) {
       filesQueryResult.items = null;
       console.error(error.message);
@@ -127,7 +127,7 @@ export class FileBrowserService {
    * @param folderPath
    * @param acceptedFilesExtensions
    */
-  protected _getListDataAsStream = async (restApi: string, folderPath: string, acceptedFilesExtensions?: string[]): Promise<FilesQueryResult> => {
+  protected _getListDataAsStream = async (restApi: string, folderPath: string, acceptedFilesExtensions?: string[], currentSortColumnName?: string, isSortedDescending?: boolean): Promise<FilesQueryResult> => {
     let filesQueryResult: FilesQueryResult = { items: [], nextHref: null };
     try {
       const body = {
@@ -135,7 +135,7 @@ export class FileBrowserService {
           AllowMultipleValueFilterForTaxonomyFields: true,
           // ContextInfo (1), ListData (2), ListSchema (4), ViewMetadata (1024), EnableMediaTAUrls (4096), ParentInfo (8192)
           RenderOptions: 1 | 2 | 4 | 1024 | 4096 | 8192,
-          ViewXml: this.getFilesCamlQueryViewXml(acceptedFilesExtensions)
+          ViewXml: this.getFilesCamlQueryViewXml(acceptedFilesExtensions, currentSortColumnName, isSortedDescending)
         }
       };
       if (folderPath) {
@@ -194,8 +194,18 @@ export class FileBrowserService {
   /**
    * Generates Files CamlQuery ViewXml
    */
-  protected getFilesCamlQueryViewXml = (accepts: string[]): string => {
+  protected getFilesCamlQueryViewXml = (accepts: string[], currentSortColumnName?: string, isSortedDescending?: boolean): string => {
     const fileFilter: string = this.getFileTypeFilter(accepts);
+
+	let spSortColumnName = '';
+	switch (currentSortColumnName) {
+		case 'name': spSortColumnName = 'FileLeafRef'; break;
+		case 'modified': spSortColumnName = 'Modified'; break;
+		case 'fileSize': spSortColumnName = 'File_x0020_Size'; break;
+		case 'modifiedBy': spSortColumnName = 'Editor'; break;
+		default: break;
+	}
+
     const queryCondition = fileFilter && fileFilter !== "" ?
       `<Query>
         <Where>
@@ -216,7 +226,11 @@ export class FileBrowserService {
             </In>
           </Or>
         </Where>
-      </Query>` : "";
+        ${spSortColumnName ? `<OrderBy><FieldRef Name="${spSortColumnName}" Ascending="${isSortedDescending ? "FALSE" : "TRUE"}"/></OrderBy>` : ''}
+        </Query>`
+        : // no query is specified, but a sort might be...
+          spSortColumnName ? `<Query><OrderBy><FieldRef Name="${spSortColumnName}" Ascending="${isSortedDescending ? "FALSE" : "TRUE"}"/></OrderBy></Query>`
+        : ''; // no query or sort specified 
 
     // Add files types condiiton
     const viewXml = `<View>

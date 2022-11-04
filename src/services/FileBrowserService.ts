@@ -258,7 +258,7 @@ export class FileBrowserService {
       serverRelativeUrl: fileItem.FileRef,
       modified: new Date(fileItem["Modified."] ?? fileItem.Modified),
       modifiedFriendly: modifiedFriendly,
-      fileSize: fileItem.File_x0020_Size,
+      fileSize: parseInt(fileItem.File_x0020_Size),
       fileType: fileItem.File_x0020_Type,
       modifiedBy: fileItem.Editor[0].title,
       isFolder: fileItem.FSObjType === "1",

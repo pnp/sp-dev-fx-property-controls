@@ -6,11 +6,13 @@
         "new": [],
         "enhancements": [],
         "fixes": [
-          "`TermPicker`: missed documentation for `anchorId` property [#496](https://github.com/pnp/sp-dev-fx-property-controls/pull/496)"
+          "`TermPicker`: missed documentation for `anchorId` property [#496](https://github.com/pnp/sp-dev-fx-property-controls/pull/496)",
+          "`FilePicker`: Operations not working for 100+ Items [#497](https://github.com/pnp/sp-dev-fx-property-controls/issues/497)"
         ]
       },
       "contributions": [
-        "[Chad Eiserloh](https://github.com/c-eiser13)"
+        "[Chad Eiserloh](https://github.com/c-eiser13)",
+        "[Hilton Giesenow](https://github.com/HiltonGiesenow)"
       ]
     },
     {

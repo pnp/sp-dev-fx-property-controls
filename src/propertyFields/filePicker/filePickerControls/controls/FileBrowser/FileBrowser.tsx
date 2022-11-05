@@ -380,65 +380,65 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
       isSortedDescending = !isSortedDescending;
     }
 
-	const newColumns = columns.map(col => {
-        col.isSorted = col.key === column.key;
+	  const newColumns = columns.map(col => {
+      col.isSorted = col.key === column.key;
     
-        if (col.isSorted) {
+      if (col.isSorted) {
         col.isSortedDescending = isSortedDescending;
-        }
+      }
     
-        return col;
+      return col;
+    });
+
+    if (items[items.length - 1] !== null) // there are no more items to fetch from the server (there is no 'null' placeholder), we can sort client-side
+    {
+      // Sort the items.
+      items = items.concat([]).sort((a, b) => {
+        let firstValue = a[column.fieldName || ''];
+        let secondValue = b[column.fieldName || ''];
+
+        if (typeof firstValue === 'string')
+        {
+          firstValue = firstValue.toLocaleLowerCase();
+          secondValue = secondValue.toLocaleLowerCase();
+        }
+
+        const sortFactor = isSortedDescending ? -1 : 1;
+
+        if (firstValue > secondValue)
+          return 1 * sortFactor;
+        else if (firstValue < secondValue)
+          return -1 * sortFactor;
+        else
+          return 0;
       });
 
-  if (items[items.length - 1] !== null) // there are no more items to fetch from the server (there is no 'null' placeholder), we can sort client-side
-  {
-    // Sort the items.
-    items = items.concat([]).sort((a, b) => {
-      let firstValue = a[column.fieldName || ''];
-      let secondValue = b[column.fieldName || ''];
-
-      if (typeof firstValue === 'string')
+      // If the column being sorted is the 'name' column, then keep all the folders together
+      if (column.fieldName === "name")
       {
-      firstValue = firstValue.toLocaleLowerCase();
-      secondValue = secondValue.toLocaleLowerCase();
+        const folders =  items.filter(item => item.isFolder);
+        const files =  items.filter(item => !item.isFolder);
+        items = [
+          ...(isSortedDescending ? files : folders),
+          ...(isSortedDescending ? folders : files),
+        ];
       }
 
-      const sortFactor = isSortedDescending ? -1 : 1;
+      // Reset the items and columns to match the state.
+      this.setState({
+        items: items,
+        columns: newColumns,
+        currentSortColumnName: column.fieldName
+        });
 
-      if (firstValue > secondValue)
-      return 1 * sortFactor;
-      else if (firstValue < secondValue)
-      return -1 * sortFactor;
-      else
-      return 0;
-    });
-
-    // If the column being sorted is the 'name' column, then keep all the folders together
-    if (column.fieldName === "name")
-    {
-      const folders =  items.filter(item => item.isFolder);
-      const files =  items.filter(item => !item.isFolder);
-      items = [
-        ...(isSortedDescending ? files : folders),
-        ...(isSortedDescending ? folders : files),
-      ];
-    }
-
-    // Reset the items and columns to match the state.
-    this.setState({
-      items: items,
-      columns: newColumns,
-      currentSortColumnName: column.fieldName
+    } else { // we need to sort server-side
+      this.setState({
+        columns: newColumns,
+        currentSortColumnName: column.fieldName
+      }, () => {
+        this._getListItems().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
       });
-
-  } else { // we need to sort server-side
-    this.setState({
-      columns: newColumns,
-      currentSortColumnName: column.fieldName
-    }, () => {
-      this._getListItems().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
-    });
-  }    
+    }    
   }
 
   /**

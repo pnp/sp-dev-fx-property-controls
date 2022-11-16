@@ -93,6 +93,7 @@ The `PropertyFieldTermPicker` control can be configured with the following prope
 | onGetErrorMessage | function | no | The method is used to get the validation error message and determine whether the input value is valid or not. See [this documentation](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/validate-web-part-property-values) to learn how to use it. |
 | deferredValidationTime | number | no | Control will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default value is 200. |
 | resolveDelay | number | no | The delay time in ms before resolving suggestions, which is kicked off when input has been changed. e.g. if a second input change happens within the resolveDelay time, the timer will start over. Only until after the timer completes will onResolveSuggestions be called. Default is 500. |
+| anchorId | string | no | When using LimitByTermsetNameOrId, set the anchorid to a child term in the TermSet to be able to select terms from that level and below. |
 
 Interface `IPickerTerms`
 

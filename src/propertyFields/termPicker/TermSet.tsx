@@ -7,7 +7,6 @@ import { EXPANDED_IMG, COLLAPSED_IMG, TERMSET_IMG, TERM_IMG } from './PropertyFi
 import Term from './Term';
 import styles from './PropertyFieldTermPickerHost.module.scss';
 import * as strings from 'PropertyControlStrings';
-import { stringIsNullOrEmpty } from '@pnp/common';
 
 /**
  * Term set component

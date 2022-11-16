@@ -4,7 +4,7 @@ import { GeneralHelper } from '../../../../../helpers/GeneralHelper';
 import { LoadingState } from './IFileBrowserState';
 import { TilesList } from '../TilesList/TilesList';
 import { IFilePickerResult } from '../../FilePicker.types';
-import  { IFileBrowserProps } from './IFileBrowserProps';
+import { IFileBrowserProps } from './IFileBrowserProps';
 import { IFileBrowserState } from './IFileBrowserState';
 import { ViewType } from './FileBrowser.types';
 import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
@@ -45,15 +45,15 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
           // TODO: Improve file icon URL
           const isPhoto = GeneralHelper.isImage(item.name);
           const iconUrl = isPhoto
-		                          ? strings.PhotoIconUrl
-		                          : item.fileType.toLowerCase() === "aspx"
-		                            ? 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/spo.svg'
-		                            : `https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/${item.fileType}.svg`;
+            ? strings.PhotoIconUrl
+            : item.fileType.toLowerCase() === "aspx"
+              ? 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/spo.svg'
+              : `https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/${item.fileType}.svg`;
 
           const altText: string = item.isFolder ? strings.FolderAltText : strings.ImageAltText.replace('{0}', item.fileType);
           return <div className={styles.fileTypeIcon}>
-                   <img src={item.isFolder ? folderIcon : iconUrl} className={styles.fileTypeIconIcon} alt={altText} title={altText} />
-                 </div>;
+            <img src={item.isFolder ? folderIcon : iconUrl} className={styles.fileTypeIconIcon} alt={altText} title={altText} />
+          </div>;
         }
       },
       {
@@ -124,13 +124,16 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
       selectionMode: SelectionMode.single
     });
 
+    const currentSortColumn = columns.filter(c => c.isSorted === true); // TODO: switch to '.find' if/when this codebase upgrade to >= ES2015
+
     this.state = {
       columns: columns,
       items: [],
       nextPageQueryString: null,
       loadingState: LoadingState.loading,
       selectedView: lastLayout,
-      filePickerResult: null
+      filePickerResult: null,
+      currentSortColumnName: currentSortColumn.length ? currentSortColumn[0].fieldName : null,
     };
   }
 
@@ -140,7 +143,6 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
    * @param prevState
    */
   public componentDidUpdate(prevProps: IFileBrowserProps, prevState: IFileBrowserState): void {
-
     if (this.props.folderPath !== prevProps.folderPath) {
       this._selection.setAllSelected(false);
       this._getListItems().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
@@ -169,9 +171,9 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
             <div className={styles.scrollablePaneWrapper}>
               <ScrollablePane>
 
-                  {
-                    this.state.selectedView !== 'tiles' ?
-                      (
+                {
+                  this.state.selectedView !== 'tiles' ?
+                    (
                       <DetailsList
                         items={this.state.items}
                         compact={this.state.selectedView === 'compact'}
@@ -187,17 +189,17 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
                         onRenderRow={this._onRenderRow}
                         onRenderMissingItem={() => { this._loadNextDataRequest().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ }); return null; }}
                       />) :
-                      (<TilesList
-                        fileBrowserService={this.props.fileBrowserService}
-                        filePickerResult={this.state.filePickerResult}
-                        selection={this._selection}
-                        items={this.state.items}
+                    (<TilesList
+                      fileBrowserService={this.props.fileBrowserService}
+                      filePickerResult={this.state.filePickerResult}
+                      selection={this._selection}
+                      items={this.state.items}
 
-                        onFolderOpen={this._handleOpenFolder}
-                        onFileSelected={this._itemSelectionChanged}
-                        onNextPageDataRequest={this._loadNextDataRequest}
-                      />)
-                  }
+                      onFolderOpen={this._handleOpenFolder}
+                      onFileSelected={this._itemSelectionChanged}
+                      onNextPageDataRequest={this._loadNextDataRequest}
+                    />)
+                }
               </ScrollablePane>
             </div>
           </div>
@@ -378,51 +380,63 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
       isSortedDescending = !isSortedDescending;
     }
 
-    // Sort the items.
-    items = items.concat([]).sort((a, b) => {
-      let firstValue = a[column.fieldName || ''];
-      let secondValue = b[column.fieldName || ''];
+    const newColumns = columns.map(col => {
+      col.isSorted = col.key === column.key;
 
-      if (typeof firstValue === 'string')
-      {
-        firstValue = firstValue.toLocaleLowerCase();
-        secondValue = secondValue.toLocaleLowerCase();
+      if (col.isSorted) {
+        col.isSortedDescending = isSortedDescending;
       }
 
-      const sortFactor = isSortedDescending ? -1 : 1;
-
-      if (firstValue > secondValue)
-        return 1 * sortFactor;
-      else if (firstValue < secondValue)
-        return -1 * sortFactor;
-      else
-        return 0;
+      return col;
     });
 
-    // If the column being sorted is the 'name' column, then keep all the folders together
-    if (column.fieldName === "name")
+    if (items[items.length - 1] !== null) // there are no more items to fetch from the server (there is no 'null' placeholder), we can sort client-side
     {
-        const folders =	items.filter(item => item.isFolder);
-        const files =	items.filter(item => !item.isFolder);
-        items = [
-            ...(isSortedDescending ? files : folders),
-            ...(isSortedDescending ? folders : files),
-        ];
-    }
+      // Sort the items.
+      items = items.concat([]).sort((a, b) => {
+        let firstValue = a[column.fieldName || ''];
+        let secondValue = b[column.fieldName || ''];
 
-    // Reset the items and columns to match the state.
-    this.setState({
-      items: items,
-      columns: columns.map(col => {
-        col.isSorted = col.key === column.key;
-
-        if (col.isSorted) {
-          col.isSortedDescending = isSortedDescending;
+        if (typeof firstValue === 'string') {
+          firstValue = firstValue.toLocaleLowerCase();
+          secondValue = secondValue.toLocaleLowerCase();
         }
 
-        return col;
-      })
-    });
+        const sortFactor = isSortedDescending ? -1 : 1;
+
+        if (firstValue > secondValue)
+          return 1 * sortFactor;
+        else if (firstValue < secondValue)
+          return -1 * sortFactor;
+        else
+          return 0;
+      });
+
+      // If the column being sorted is the 'name' column, then keep all the folders together
+      if (column.fieldName === "name") {
+        const folders = items.filter(item => item.isFolder);
+        const files = items.filter(item => !item.isFolder);
+        items = [
+          ...(isSortedDescending ? files : folders),
+          ...(isSortedDescending ? folders : files),
+        ];
+      }
+
+      // Reset the items and columns to match the state.
+      this.setState({
+        items: items,
+        columns: newColumns,
+        currentSortColumnName: column.fieldName
+      });
+
+    } else { // we need to sort server-side
+      this.setState({
+        columns: newColumns,
+        currentSortColumnName: column.fieldName
+      }, () => {
+        this._getListItems().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
+      });
+    }
   }
 
   /**
@@ -474,14 +488,14 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
    * Handles item click.
    */
   private _handleItemInvoked = (item: IFile): void => {
-   // If a file is selected, open the library
-   if (item.isFolder) {
-     this._handleOpenFolder(item);
-   } else {
-     // Otherwise, remember it was selected
-     this._itemSelectionChanged(item);
-   }
- }
+    // If a file is selected, open the library
+    if (item.isFolder) {
+      this._handleOpenFolder(item);
+    } else {
+      // Otherwise, remember it was selected
+      this._itemSelectionChanged(item);
+    }
+  }
 
   /**
    * Gets all files in a library with a matchihg path
@@ -489,12 +503,15 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
   private async _getListItems(concatenateResults: boolean = false): Promise<void> {
     const { libraryId, folderPath, accepts } = this.props;
     let { nextPageQueryString } = this.state;
-    const { items } = this.state;
+    const { items, currentSortColumnName, columns } = this.state;
+    const currentSortColumn = columns.filter(c => c.fieldName === currentSortColumnName); // TODO: switch to '.find' if/when this codebase upgrade to >= ES2015
+    const isSortedDescending = currentSortColumn.length ? currentSortColumn[0].isSortedDescending : false;
 
     let filesQueryResult: FilesQueryResult = { items: [], nextHref: null };
     const loadingState = concatenateResults ? LoadingState.loadingNextPage : LoadingState.loading;
     // If concatenate results is set to false -> it's needed to load new data without nextPageUrl
     nextPageQueryString = concatenateResults ? nextPageQueryString : null;
+
 
     try {
       this.setState({
@@ -502,15 +519,14 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
         nextPageQueryString
       });
       // Load files in the folder
-      filesQueryResult = await this.props.fileBrowserService.getListItemsByListId(libraryId, folderPath, accepts, nextPageQueryString);
+      filesQueryResult = await this.props.fileBrowserService.getListItemsByListId(libraryId, folderPath, accepts, nextPageQueryString, currentSortColumnName, isSortedDescending);
     } catch (error) {
       filesQueryResult.items = null;
       console.error(error.message);
     } finally {
 
-
       // Remove the null mark from the end of the items array
-      if (concatenateResults && items && items.length > 0 && items.length[items.length - 1] === null) {
+      if (concatenateResults && items && items.length > 0 && items[items.length - 1] === null) {
         // Remove the null mark
         items.splice(items.length - 1, 1);
       }

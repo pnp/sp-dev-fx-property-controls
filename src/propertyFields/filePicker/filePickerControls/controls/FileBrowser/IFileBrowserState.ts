@@ -19,4 +19,5 @@ export interface IFileBrowserState {
   filePickerResult: IFilePickerResult;
   columns: IColumn[];
   selectedView: ViewType;
+  currentSortColumnName: string;
 }

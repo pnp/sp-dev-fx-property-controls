@@ -2,6 +2,10 @@
 
 ## 3.11.0
 
+### Enhancements
+
+- SharePoint Framework v1.16.0 support
+
 ### Fixes
 
 - `TermPicker`: missed documentation for `anchorId` property [#496](https://github.com/pnp/sp-dev-fx-property-controls/pull/496)

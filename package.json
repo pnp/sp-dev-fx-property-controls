@@ -46,7 +46,7 @@
     "@microsoft/eslint-config-spfx": "1.16.0",
     "@microsoft/sp-build-web": "1.16.0",
     "@microsoft/sp-module-interfaces": "1.16.0",
-    "@types/chai": "4.2.15",
+    "@types/chai": "4.3.4",
     "@types/lodash": "4.14.149",
     "@types/mocha": "8.2.2",
     "@types/react": "17.0.45",

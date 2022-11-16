@@ -1,5 +1,19 @@
 # Releases
 
+## 3.11.0
+
+### Fixes
+
+- `TermPicker`: missed documentation for `anchorId` property [#496](https://github.com/pnp/sp-dev-fx-property-controls/pull/496)
+- `FilePicker`: Operations not working for 100+ Items [#497](https://github.com/pnp/sp-dev-fx-property-controls/issues/497)
+- `FilePicker`: File Sorting not working on file size properly [#501](https://github.com/pnp/sp-dev-fx-property-controls/issues/501)
+- `PropertyFieldMessage`: documentation typos fix [#504](https://github.com/pnp/sp-dev-fx-property-controls/pull/504)
+- `FilePicker`: Sorting on Large Libraries / Folders Must do Server-Side Sorting [#503](https://github.com/pnp/sp-dev-fx-property-controls/issues/503)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Chad Eiserloh](https://github.com/c-eiser13), [Chandani Prajapati](https://github.com/chandaniprajapati), [Hilton Giesenow](https://github.com/HiltonGiesenow).
+
 ## 3.10.0
 
 ### Enhancements

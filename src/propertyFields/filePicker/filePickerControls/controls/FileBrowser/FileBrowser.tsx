@@ -4,7 +4,7 @@ import { GeneralHelper } from '../../../../../helpers/GeneralHelper';
 import { LoadingState } from './IFileBrowserState';
 import { TilesList } from '../TilesList/TilesList';
 import { IFilePickerResult } from '../../FilePicker.types';
-import  { IFileBrowserProps } from './IFileBrowserProps';
+import { IFileBrowserProps } from './IFileBrowserProps';
 import { IFileBrowserState } from './IFileBrowserState';
 import { ViewType } from './FileBrowser.types';
 import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
@@ -45,15 +45,15 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
           // TODO: Improve file icon URL
           const isPhoto = GeneralHelper.isImage(item.name);
           const iconUrl = isPhoto
-                              ? strings.PhotoIconUrl
-                              : item.fileType.toLowerCase() === "aspx"
-                                ? 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/spo.svg'
-                                : `https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/${item.fileType}.svg`;
+            ? strings.PhotoIconUrl
+            : item.fileType.toLowerCase() === "aspx"
+              ? 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/spo.svg'
+              : `https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/${item.fileType}.svg`;
 
           const altText: string = item.isFolder ? strings.FolderAltText : strings.ImageAltText.replace('{0}', item.fileType);
           return <div className={styles.fileTypeIcon}>
-                   <img src={item.isFolder ? folderIcon : iconUrl} className={styles.fileTypeIconIcon} alt={altText} title={altText} />
-                 </div>;
+            <img src={item.isFolder ? folderIcon : iconUrl} className={styles.fileTypeIconIcon} alt={altText} title={altText} />
+          </div>;
         }
       },
       {
@@ -124,7 +124,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
       selectionMode: SelectionMode.single
     });
 
-	const currentSortColumn = columns.filter(c => c.isSorted === true); // TODO: switch to '.find' if/when this codebase upgrade to >= ES2015
+    const currentSortColumn = columns.filter(c => c.isSorted === true); // TODO: switch to '.find' if/when this codebase upgrade to >= ES2015
 
     this.state = {
       columns: columns,
@@ -171,9 +171,9 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
             <div className={styles.scrollablePaneWrapper}>
               <ScrollablePane>
 
-                  {
-                    this.state.selectedView !== 'tiles' ?
-                      (
+                {
+                  this.state.selectedView !== 'tiles' ?
+                    (
                       <DetailsList
                         items={this.state.items}
                         compact={this.state.selectedView === 'compact'}
@@ -189,17 +189,17 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
                         onRenderRow={this._onRenderRow}
                         onRenderMissingItem={() => { this._loadNextDataRequest().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ }); return null; }}
                       />) :
-                      (<TilesList
-                        fileBrowserService={this.props.fileBrowserService}
-                        filePickerResult={this.state.filePickerResult}
-                        selection={this._selection}
-                        items={this.state.items}
+                    (<TilesList
+                      fileBrowserService={this.props.fileBrowserService}
+                      filePickerResult={this.state.filePickerResult}
+                      selection={this._selection}
+                      items={this.state.items}
 
-                        onFolderOpen={this._handleOpenFolder}
-                        onFileSelected={this._itemSelectionChanged}
-                        onNextPageDataRequest={this._loadNextDataRequest}
-                      />)
-                  }
+                      onFolderOpen={this._handleOpenFolder}
+                      onFileSelected={this._itemSelectionChanged}
+                      onNextPageDataRequest={this._loadNextDataRequest}
+                    />)
+                }
               </ScrollablePane>
             </div>
           </div>
@@ -380,13 +380,13 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
       isSortedDescending = !isSortedDescending;
     }
 
-	  const newColumns = columns.map(col => {
+    const newColumns = columns.map(col => {
       col.isSorted = col.key === column.key;
-    
+
       if (col.isSorted) {
         col.isSortedDescending = isSortedDescending;
       }
-    
+
       return col;
     });
 
@@ -397,8 +397,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
         let firstValue = a[column.fieldName || ''];
         let secondValue = b[column.fieldName || ''];
 
-        if (typeof firstValue === 'string')
-        {
+        if (typeof firstValue === 'string') {
           firstValue = firstValue.toLocaleLowerCase();
           secondValue = secondValue.toLocaleLowerCase();
         }
@@ -414,10 +413,9 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
       });
 
       // If the column being sorted is the 'name' column, then keep all the folders together
-      if (column.fieldName === "name")
-      {
-        const folders =  items.filter(item => item.isFolder);
-        const files =  items.filter(item => !item.isFolder);
+      if (column.fieldName === "name") {
+        const folders = items.filter(item => item.isFolder);
+        const files = items.filter(item => !item.isFolder);
         items = [
           ...(isSortedDescending ? files : folders),
           ...(isSortedDescending ? folders : files),
@@ -429,7 +427,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
         items: items,
         columns: newColumns,
         currentSortColumnName: column.fieldName
-        });
+      });
 
     } else { // we need to sort server-side
       this.setState({
@@ -438,7 +436,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
       }, () => {
         this._getListItems().then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
       });
-    }    
+    }
   }
 
   /**
@@ -490,14 +488,14 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
    * Handles item click.
    */
   private _handleItemInvoked = (item: IFile): void => {
-   // If a file is selected, open the library
-   if (item.isFolder) {
-     this._handleOpenFolder(item);
-   } else {
-     // Otherwise, remember it was selected
-     this._itemSelectionChanged(item);
-   }
- }
+    // If a file is selected, open the library
+    if (item.isFolder) {
+      this._handleOpenFolder(item);
+    } else {
+      // Otherwise, remember it was selected
+      this._itemSelectionChanged(item);
+    }
+  }
 
   /**
    * Gets all files in a library with a matchihg path
@@ -514,7 +512,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
     // If concatenate results is set to false -> it's needed to load new data without nextPageUrl
     nextPageQueryString = concatenateResults ? nextPageQueryString : null;
 
-  
+
     try {
       this.setState({
         loadingState,

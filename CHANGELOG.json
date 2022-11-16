@@ -4,7 +4,9 @@
       "version": "3.11.0",
       "changes": {
         "new": [],
-        "enhancements": [],
+        "enhancements": [
+          "SharePoint Framework v1.16.0 support"
+        ],
         "fixes": [
           "`TermPicker`: missed documentation for `anchorId` property [#496](https://github.com/pnp/sp-dev-fx-property-controls/pull/496)",
           "`FilePicker`: Operations not working for 100+ Items [#497](https://github.com/pnp/sp-dev-fx-property-controls/issues/497)",

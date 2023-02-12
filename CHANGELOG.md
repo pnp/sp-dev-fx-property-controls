@@ -1,5 +1,17 @@
 # Releases
 
+## 3.12.0
+
+### Enhancements
+
+- `PropertyFieldFilePicker`: Site Tab - Adding scrolling for many libraries [#525](https://github.com/pnp/sp-dev-fx-property-controls/issues/525)
+- `SPListPickerService`: add ContentTypes/Name to the query [#521](https://github.com/pnp/sp-dev-fx-property-controls/pull/521)
+- Czech localization added [#527](https://github.com/pnp/sp-dev-fx-property-controls/issues/527)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Brian Krainer Jacobsen](https://github.com/krainer), [Chad Eiserloh](https://github.com/c-eiser13), [Martin Zamazal](https://github.com/MartinZamazal).
+
 ## 3.11.0
 
 ### Enhancements

@@ -62,6 +62,7 @@ The following controls are currently available:
 - [PropertyFieldCodeEditor](./controls/PropertyFieldCodeEditor) (Property pane code editor)
 - [PropertyFieldCollectionData](./controls/PropertyFieldCollectionData) (Property pane collection data editor)
 - [PropertyFieldColorPicker](./controls/PropertyFieldColorPicker) (Property pane color picker)
+- [PropertyFieldColumnPicker](./controls/PropertyFieldColumnPicker) (Property pane list column picker)
 - [PropertyFieldDateTimePicker](./controls/PropertyFieldDateTimePicker) (Property pane date and time selector)
 - [PropertyFieldFilePicker](./controls/PropertyFieldFilePicker) (Property pane file picker)
 - [PropertyFieldFolderPicker](./controls/PropertyFieldFolderPicker) (Property pane folder picker)

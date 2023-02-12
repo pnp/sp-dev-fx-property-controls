@@ -37,7 +37,7 @@ export default class SPListPickerService {
     // If the running environment is SharePoint, request the lists REST service
     let queryUrl: string;
     if (this.props.contentTypeId) {
-      queryUrl = `${webAbsoluteUrl}/_api/lists?$select=Title,id,BaseTemplate,RootFolder/ServerRelativeUrl,ContentTypes/StringId&$expand=RootFolder&$expand=ContentTypes`;
+      queryUrl = `${webAbsoluteUrl}/_api/lists?$select=Title,id,BaseTemplate,RootFolder/ServerRelativeUrl,ContentTypes/StringId,ContentTypes/Name&$expand=RootFolder&$expand=ContentTypes`;
     } else {
       queryUrl = `${webAbsoluteUrl}/_api/lists?$select=Title,id,BaseTemplate,RootFolder/ServerRelativeUrl&$expand=RootFolder`;
     }

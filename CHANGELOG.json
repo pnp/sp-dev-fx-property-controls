@@ -5,13 +5,17 @@
       "changes": {
         "new": [],
         "enhancements": [          
-          "`PropertyFieldFilePicker`: Site Tab - Adding scrolling for many libraries [#525](https://github.com/pnp/sp-dev-fx-property-controls/issues/525)"
+          "`PropertyFieldFilePicker`: Site Tab - Adding scrolling for many libraries [#525](https://github.com/pnp/sp-dev-fx-property-controls/issues/525)",
+          "`SPListPickerService`: add ContentTypes/Name to the query [#521](https://github.com/pnp/sp-dev-fx-property-controls/pull/521)",
+          "Czech localization added [#527](https://github.com/pnp/sp-dev-fx-property-controls/issues/527)"
         ],
         "fixes": [
         ]
       },
       "contributions": [
-        "[Brian Krainer Jacobsen](https://github.com/krainer)"
+        "[Brian Krainer Jacobsen](https://github.com/krainer)",
+        "[Chad Eiserloh](https://github.com/c-eiser13)",
+        "[Martin Zamazal](https://github.com/MartinZamazal)"
       ]
     },
     {

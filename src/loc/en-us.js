@@ -243,5 +243,26 @@ define([], function () {
     "MonacoEditorCancelButtonLabel": "Cancel",
     "MonacoEditorSaveButtonLabel": "Save",
     "MonacoEditorPanelTitle": "Edit Template",
+    ColorPickerStrings: {
+      rootAriaLabelFormat: 'Color picker, {0} selected.',
+      hex: 'Hex',
+      red: 'Red',
+      green: 'Green',
+      blue: 'Blue',
+      alpha: 'Alpha',
+      transparency: 'Transparency',
+      alphaAriaLabel: 'Alpha',
+      transparencyAriaLabel: 'Transparency',
+      hueAriaLabel: 'Hue',
+      svAriaLabel: 'Saturation and brightness',
+      svAriaValueFormat: 'Saturation {0} brightness {1}',
+      svAriaDescription: 'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.',
+      hexError: 'Hex values must be between 3 and 6 characters long',
+      alphaError: 'Alpha must be between 0 and 100',
+      transparencyError: 'Transparency must be between 0 and 100',
+      redError: 'Red must be between 0 and 255',
+      greenError: 'Green must be between 0 and 255',
+      blueError: 'Blue must be between 0 and 255'
+    }
   }
 });

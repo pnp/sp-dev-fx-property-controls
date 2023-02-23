@@ -230,10 +230,13 @@ declare interface IPropertyControlStrings {
   SelectedLabel: string;
   SelectIcon: string;
   CloseButton: string;
-  MonacoEditorOpenButtonLabel: string,
-  MonacoEditorCancelButtonLabel: string,
-  MonacoEditorSaveButtonLabel: string,
-    MonacoEditorPanelTitle: string,
+  MonacoEditorOpenButtonLabel: string;
+  MonacoEditorCancelButtonLabel: string;
+  MonacoEditorSaveButtonLabel: string;
+  MonacoEditorPanelTitle: string;
+
+  // Fluent UI color picker strings
+  ColorPickerStrings: { [key: string]: string };
 }
 
 declare interface IDateTimeStrings {

@@ -185,8 +185,8 @@ define([], () => {
       "GB",
       "TB",
       "PB",
-      "DOG",
-      "EG",
+      "EB",
+      "ZB",
       "YB"
     ],
     "SorryWebSearch": "Sorry, this function isn't implemented in this sample, because it would require a Bing API key.",

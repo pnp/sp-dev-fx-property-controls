@@ -233,10 +233,10 @@ define([], () => {
     "IncorrectGuidValidationMessage": "Пожалуйста, введите действительный GUID",
     "SelectedLabel": "Выбранный",
     "SelectIcon": "Выберите значок",
-    "CloseButton": "Закрывать",
+    "CloseButton": "Закрыть",
     "MonacoEditorOpenButtonLabel": "Открыть редактор",
     "MonacoEditorCancelButtonLabel": "Отмена",
-    "MonacoEditorSaveButtonLabel": "Спасать",
+    "MonacoEditorSaveButtonLabel": "Сохранить",
     "MonacoEditorPanelTitle": "Редактировать шаблон",
     "ColorPickerStrings": {
       "rootAriaLabelFormat": "{0} отделы.",

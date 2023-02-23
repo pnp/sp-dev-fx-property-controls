@@ -183,10 +183,10 @@ define([], () => {
       "KB",
       "MB",
       "GB",
-      "TUBERKULÓZA",
+      "TB",
       "PB",
-      "PES",
-      "NAPŘ",
+      "EB",
+      "ZB",
       "YB"
     ],
     "SorryWebSearch": "Je nám líto, ale tato funkce není v této ukázce implementována, protože by vyžadovala klíč API služby Bing.",

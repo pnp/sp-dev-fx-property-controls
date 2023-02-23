@@ -11,6 +11,7 @@
 ### Fixes
 
 - Documentations fix for `PropertyPaneHelpers` [#536](https://github.com/pnp/sp-dev-fx-property-controls/pull/536)
+- `ColorPicker`: localization for Fluent UI `ColorPicker` [#535](https://github.com/pnp/sp-dev-fx-property-controls/issues/535)
 
 ### Contributors
 

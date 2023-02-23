@@ -8,9 +8,13 @@
 - `SPListPickerService`: add ContentTypes/Name to the query [#521](https://github.com/pnp/sp-dev-fx-property-controls/pull/521)
 - Czech localization added [#527](https://github.com/pnp/sp-dev-fx-property-controls/issues/527)
 
+### Fixes
+
+- Documentations fix for `PropertyPaneHelpers` [#536](https://github.com/pnp/sp-dev-fx-property-controls/pull/536)
+
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [Brian Krainer Jacobsen](https://github.com/krainer), [Chad Eiserloh](https://github.com/c-eiser13), [Martin Zamazal](https://github.com/MartinZamazal).
+Special thanks to our contributors (in alphabetical order): [Brian Krainer Jacobsen](https://github.com/krainer), [Chad Eiserloh](https://github.com/c-eiser13), [krishna-vijas](https://github.com/krishna-vijas), [Martin Zamazal](https://github.com/MartinZamazal).
 
 ## 3.11.0
 

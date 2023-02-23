@@ -21,7 +21,7 @@ protected async loadPropertyPaneResources(): Promise<void> {
   PropertyPaneHelpers.setSpinner({
     bgColor: "white",
     spinnerProps: {
-      getStyles: () => {
+      styles: () => {
         return {
           circle: {
             height: 80,

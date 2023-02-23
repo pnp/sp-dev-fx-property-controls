@@ -10,11 +10,13 @@
           "Czech localization added [#527](https://github.com/pnp/sp-dev-fx-property-controls/issues/527)"
         ],
         "fixes": [
+          "Documentations fix for `PropertyPaneHelpers` [#536](https://github.com/pnp/sp-dev-fx-property-controls/pull/536)"
         ]
       },
       "contributions": [
         "[Brian Krainer Jacobsen](https://github.com/krainer)",
         "[Chad Eiserloh](https://github.com/c-eiser13)",
+        "[krishna-vijas](https://github.com/krishna-vijas)",
         "[Martin Zamazal](https://github.com/MartinZamazal)"
       ]
     },

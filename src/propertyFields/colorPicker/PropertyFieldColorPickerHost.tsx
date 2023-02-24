@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
+import { ColorPicker, IColorPickerStrings } from 'office-ui-fabric-react/lib/ColorPicker';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import {
 	IPropertyFieldColorPickerHostProps,
@@ -43,7 +43,9 @@ export default class PropertyFieldColorPickerHost extends React.Component<IPrope
 												color={this.props.selectedColor}
 												onChange={(e, color) => this.props.onColorChanged(color.str)}
 												alphaSliderHidden={this.props.alphaSliderHidden}
-												showPreview={this.props.showPreview} />
+												showPreview={this.props.showPreview}
+												strings={strings.ColorPickerStrings as IColorPickerStrings}
+											/>
 										</div>
 									}
 									{!this.state.inlinePickerShowing &&

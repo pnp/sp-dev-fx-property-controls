@@ -4,6 +4,7 @@ import { ISiteFilePickerTabProps, ISiteFilePickerTabState } from '.';
 import { DocumentLibraryBrowser, FileBrowser } from '../controls';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
 import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
+import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { IFile, ILibrary } from '../../../../services/FileBrowserService.types';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { IFilePickerResult, FilePickerBreadcrumbItem } from '../FilePicker.types';
@@ -16,7 +17,7 @@ export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTa
     super(props);
 
     // Add current site to the breadcrumb or the provided node
-    const breadcrumbSiteNode: FilePickerBreadcrumbItem = this.props.breadcrumbFirstNode ? this.props. breadcrumbFirstNode : {
+    const breadcrumbSiteNode: FilePickerBreadcrumbItem = this.props.breadcrumbFirstNode ? this.props.breadcrumbFirstNode : {
       isCurrentItem: true,
       text: props.context.pageContext.web.title,
       key: props.context.pageContext.web.id.toString()
@@ -38,14 +39,18 @@ export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTa
     return (
       <div className={styles.tabContainer}>
         <div className={styles.tabHeaderContainer}>
-          <Breadcrumb items={this.state.breadcrumbItems} /*onRenderItem={this.renderBreadcrumbItem}*/ className={styles.breadcrumbNav}/>
+          <Breadcrumb items={this.state.breadcrumbItems} /*onRenderItem={this.renderBreadcrumbItem}*/ className={styles.breadcrumbNav} />
         </div>
         <div className={styles.tabFiles}>
           {this.state.libraryAbsolutePath === undefined &&
-            <DocumentLibraryBrowser
-              fileBrowserService={this.props.fileBrowserService}
-              onOpenLibrary={(selectedLibrary: ILibrary) => this._handleOpenLibrary(selectedLibrary, true)} 
-              includePageLibraries={this.props.includePageLibraries}/>}
+            <div className={styles.scrollablePaneWrapper}>
+              <ScrollablePane>
+                <DocumentLibraryBrowser
+                  fileBrowserService={this.props.fileBrowserService}
+                  onOpenLibrary={(selectedLibrary: ILibrary) => this._handleOpenLibrary(selectedLibrary, true)}
+                  includePageLibraries={this.props.includePageLibraries} />
+              </ScrollablePane>
+            </div>}
           {this.state.libraryAbsolutePath !== undefined &&
             <FileBrowser
               onChange={(filePickerResult: IFilePickerResult) => this._handleSelectionChange(filePickerResult)}

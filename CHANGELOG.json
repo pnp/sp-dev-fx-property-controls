@@ -1,6 +1,27 @@
 {
   "versions": [
     {
+      "version": "3.12.0",
+      "changes": {
+        "new": [],
+        "enhancements": [          
+          "`PropertyFieldFilePicker`: Site Tab - Adding scrolling for many libraries [#525](https://github.com/pnp/sp-dev-fx-property-controls/issues/525)",
+          "`SPListPickerService`: add ContentTypes/Name to the query [#521](https://github.com/pnp/sp-dev-fx-property-controls/pull/521)",
+          "Czech localization added [#527](https://github.com/pnp/sp-dev-fx-property-controls/issues/527)"
+        ],
+        "fixes": [
+          "Documentations fix for `PropertyPaneHelpers` [#536](https://github.com/pnp/sp-dev-fx-property-controls/pull/536)",
+          "`ColorPicker`: localization for Fluent UI `ColorPicker` [#535](https://github.com/pnp/sp-dev-fx-property-controls/issues/535)"
+        ]
+      },
+      "contributions": [
+        "[Brian Krainer Jacobsen](https://github.com/krainer)",
+        "[Chad Eiserloh](https://github.com/c-eiser13)",
+        "[krishna-vijas](https://github.com/krishna-vijas)",
+        "[Martin Zamazal](https://github.com/MartinZamazal)"
+      ]
+    },
+    {
       "version": "3.11.0",
       "changes": {
         "new": [],

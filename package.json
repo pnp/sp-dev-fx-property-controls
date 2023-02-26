@@ -55,7 +55,7 @@
     "@types/react-addons-test-utils": "15.6.0",
     "@types/react-addons-update": "0.14.14",
     "@types/webpack-env": "~1.15.2",
-    "ajv": "~5.2.2",
+    "ajv": "~8.12.0",
     "amd-loader": "0.0.8",
     "gulp": "4.0.2",
     "husky": "^6.0.0",

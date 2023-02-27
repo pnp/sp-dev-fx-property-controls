@@ -48,7 +48,7 @@
     "@microsoft/sp-module-interfaces": "1.16.0",
     "@types/chai": "4.3.4",
     "@types/lodash": "4.14.191",
-    "@types/mocha": "8.2.2",
+    "@types/mocha": "10.0.1",
     "@types/react": "17.0.45",
     "@types/react-dom": "17.0.17",
     "@types/react-addons-shallow-compare": "0.14.22",

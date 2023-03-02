@@ -1,5 +1,7 @@
 import { IPropertyPaneCustomFieldProps } from "@microsoft/sp-property-pane";
 import { ICustomCollectionField } from ".";
+import { IPanelProps } from "office-ui-fabric-react";
+
 
 export interface IPropertyFieldCollectionDataProps {
   /**
@@ -66,6 +68,10 @@ export interface IPropertyFieldCollectionDataProps {
    * Allows you to specify a custom CSS class name for the collection data table inside the panel
    */
   tableClassName?: string;
+  /**
+   * Allow overriding panel props such as size, type, layerProps, etc.
+   */
+  panelProps?: IPanelProps;
 }
 
 export interface IPropertyFieldCollectionDataPropsInternal extends IPropertyPaneCustomFieldProps, IPropertyFieldCollectionDataProps {}

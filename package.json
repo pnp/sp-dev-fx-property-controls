@@ -35,7 +35,7 @@
     "markdown-to-jsx": "^6.11.4",
     "monaco-editor": "^0.32.1",
     "office-ui-fabric-react": "^7.199.1",
-    "react-ace": "5.8.0",
+    "react-ace": "10.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },

@@ -4,10 +4,14 @@
       "version": "3.13.0",
       "changes": {
         "new": [],
-        "enhancements": [],
+        "enhancements": [
+          "`PropertyFieldCollectionData`: add `panelProps` property to collection data [#546](https://github.com/pnp/sp-dev-fx-property-controls/pull/546)"
+        ],
         "fixes": []
       },
-      "contributions": []
+      "contributions": [
+        "[Chad Eiserloh](https://github.com/c-eiser13)"
+      ]
     },
     {
       "version": "3.12.0",

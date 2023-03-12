@@ -1,5 +1,15 @@
 # Releases
 
+## 3.13.0
+
+### Enhancements
+
+- `PropertyFieldCollectionData`: add `panelProps` property to collection data [#546](https://github.com/pnp/sp-dev-fx-property-controls/pull/546)
+
+### Contributors
+
+Special thanks to our contributor: [Chad Eiserloh](https://github.com/c-eiser13).
+
 ## 3.12.0
 
 ### Enhancements

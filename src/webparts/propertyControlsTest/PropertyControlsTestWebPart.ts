@@ -133,6 +133,7 @@ import PropertyControlsTest from './components/PropertyControlsTest';
 import {
   IPropertyControlsTestWebPartProps,
 } from './IPropertyControlsTestWebPartProps';
+import { PanelType } from 'office-ui-fabric-react';
 
 /**
  * Web part that can be used to test out the various property controls
@@ -380,6 +381,10 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   disableItemCreation: false,
                   panelClassName: "MyAwesomePanelClassName",
                   tableClassName: "MyAwesomeTableClassName",
+                  panelProps: {
+                    type: PanelType.extraLarge,
+                    layerProps: {eventBubblingEnabled: true}                                        
+                  },
                   fields: [
                     {
                       id: "Title",

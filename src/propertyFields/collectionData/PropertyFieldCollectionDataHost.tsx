@@ -19,10 +19,10 @@ export class PropertyFieldCollectionDataHost extends React.Component<
     super(props);
 
     this.state = {
-      panelOpen: false,
+      panelOpen: false
     };
 
-    telemetry.track("PropertyFieldCollectionData", {});
+    telemetry.track('PropertyFieldCollectionData', {});
   }
 
   /**
@@ -30,7 +30,7 @@ export class PropertyFieldCollectionDataHost extends React.Component<
    */
   private openPanel = (): void => {
     this.setState({
-      panelOpen: true,
+      panelOpen: true
     });
   };
 
@@ -39,18 +39,17 @@ export class PropertyFieldCollectionDataHost extends React.Component<
    */
   private closePanel = (): void => {
     this.setState({
-      panelOpen: false,
+      panelOpen: false
     });
   };
 
   /**
    * On save action
    */
-  private onSave = (items: any[]): void => {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
+  private onSave = (items: any[]): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
     this.props.onChanged(items);
     this.setState({
-      panelOpen: false,
+      panelOpen: false
     });
   };
 

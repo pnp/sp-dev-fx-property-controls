@@ -7,10 +7,13 @@
         "enhancements": [
           "`PropertyFieldCollectionData`: add `panelProps` property to collection data [#546](https://github.com/pnp/sp-dev-fx-property-controls/pull/546)"
         ],
-        "fixes": []
+        "fixes": [
+          "Italian localization updated [#549](https://github.com/pnp/sp-dev-fx-property-controls/pull/549)"
+        ]
       },
       "contributions": [
-        "[Chad Eiserloh](https://github.com/c-eiser13)"
+        "[Chad Eiserloh](https://github.com/c-eiser13)",
+        "[Luca3082](https://github.com/Luca3082)"
       ]
     },
     {

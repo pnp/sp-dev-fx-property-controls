@@ -109,7 +109,7 @@ Interface `IPickerTerms`
 
 `PropertyFieldEnterpriseTermPicker` is implemented to be used for "enterprise" Term Stores with large amount of groups, terms sets, and terms. It loads term sets and terms on demand - only at the moment when specified group or term set has been expanded in the Term Store Tree.
 To implement on-demand loading `PropertyFieldEnterpriseTermPicker` uses `@pnp/sp-taxonomy` module from `@pnp/pnpjs` library. It increases the size of a bundle when the control is used.
-Additionaly, `PropertyFieldEnterpriseTermPicker` allows to request labels for the terms in the picker.
+Additionally, `PropertyFieldEnterpriseTermPicker` allows to request labels for the terms in the picker.
 
 `PropertyFieldTermPicker` loads all the groups and term sets from the term service during the initial request. This approach fits most of the scenarios with small and medium number of objects in a term store. Besides that, `PropertyFieldTermPicker` does not use any additional libraries or modules to retrieve data from the taxonomy service which makes it much more lightweight option in comparison with `PropertyFieldEnterpriseTermPicker`. See [PropertyFieldTermPicker](./PropertyFieldTermPicker) for implementation details.
 

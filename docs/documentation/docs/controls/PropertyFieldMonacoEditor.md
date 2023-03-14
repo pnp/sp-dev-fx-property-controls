@@ -49,7 +49,7 @@ The `PropertyFieldMonacoEditor` control can be configured with the following pro
 | theme                     | string                                         | no       | 'vs-dark'                                                                                                        |
 | readOnly                  | boolean                                        | no       | editor is read only                                                                                              |
 | showLineNumbers           | boolean                                        | no       | Show line number - default no                                                                                    |
-| showMiniMap               | boolean                                        | no       | Show Mini Map -  deafault yes                                                                                    |
+| showMiniMap               | boolean                                        | no       | Show Mini Map -  default yes                                                                                    |
 | onChange                  | (newValue:string) => void;                     | no       | If set, this method is used to get the the input value when it changed                                           |
 | language                  | string                                         | yes      | language, please see https://microsoft.github.io/monaco-editor/index.html for all supported languages            |
 | jsonDiagnosticsOptions    | monaco.languages.json.DiagnosticsOptions       | no       | see https://microsoft.github.io/monaco-editor/api/interfaces/monaco.languages.json.DiagnosticsOptions.html       |

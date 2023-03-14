@@ -100,7 +100,7 @@ PropertyFieldOrder("orderedItems", {
   onPropertyChange: this.onPropertyPaneFieldChanged
 })
 ```
-![Customized item display using the onRenerItem callback property](../assets/order-onRenderItem.png)
+![Customized item display using the onRenderItem callback property](../assets/order-onRenderItem.png)
 
 ## Implementation
 
@@ -111,7 +111,7 @@ The `PropertyFieldOrder` control can be configured with the following properties
 | label | string | yes | Property field label displayed on top. |
 | items | Array<any> | yes | An array of values to reorder. |
 | textProperty | string | no | The property to use for display, when undefined, the toString() method of the object is used (ignored when the onRenderItem function is specified) |
-| maxHeight | number | no | The maximun height for the items in px (when not set, the control expands as necessary) |
+| maxHeight | number | no | The maximum height for the items in px (when not set, the control expands as necessary) |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
 | disableDragAndDrop | boolean | no | When true, drag and drop reordering is disabled (defaults to false) |
 | removeArrows | boolean | no | When true, arrow buttons are not displayed (defaults to false) |

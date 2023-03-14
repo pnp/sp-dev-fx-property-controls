@@ -58,7 +58,7 @@ The `PropertyFieldListPicker` control can be configured with the following prope
 | disabled | boolean | no | Specify if the control needs to be disabled. |
 | context | BaseComponentContext | yes | Context of the current web part. |
 | selectedList | string \| string[] \| IPropertyFieldList \| IPropertyFieldList[] | no | Initial selected list set of the control. |
-| baseTemplate | number | no | BaseTemplate ID of the lists or libaries you want to return. |
+| baseTemplate | number | no | BaseTemplate ID of the lists or libraries you want to return. |
 | includeHidden | boolean | no | Specify if you want to include hidden lists in the list picker. By default this is set to `true`. |
 | orderBy | PropertyFieldListPickerOrderBy | no | Specify the property on which you want to order the retrieve set of lists. |
 | multiSelect | boolean | no | Specify if you want to have a single or multi-list picker. By default this is set to `false` (single list picker). |

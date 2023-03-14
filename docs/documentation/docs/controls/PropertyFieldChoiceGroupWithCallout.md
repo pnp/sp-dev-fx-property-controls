@@ -33,7 +33,7 @@ export interface IPropertyControlsTestWebPartProps {
 
 ```TypeScript
 PropertyFieldChoiceGroupWithCallout('choiceGroupWithCalloutValue', {
-  calloutContent: React.createElement('div', {}, 'Select preferrable mobile platform'),
+  calloutContent: React.createElement('div', {}, 'Select preferable mobile platform'),
   calloutTrigger: CalloutTriggers.Hover,
   key: 'choiceGroupWithCalloutFieldId',
   label: 'Preferred mobile platform',

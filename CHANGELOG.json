@@ -8,12 +8,14 @@
           "`PropertyFieldCollectionData`: add `panelProps` property to collection data [#546](https://github.com/pnp/sp-dev-fx-property-controls/pull/546)"
         ],
         "fixes": [
-          "Italian localization updated [#549](https://github.com/pnp/sp-dev-fx-property-controls/pull/549)"
+          "Italian localization updated [#549](https://github.com/pnp/sp-dev-fx-property-controls/pull/549)",
+          "Fixed multiple typos [#550](https://github.com/pnp/sp-dev-fx-property-controls/pull/550)"
         ]
       },
       "contributions": [
         "[Chad Eiserloh](https://github.com/c-eiser13)",
-        "[Luca3082](https://github.com/Luca3082)"
+        "[Luca3082](https://github.com/Luca3082)",
+        "[Valeras Narbutas](https://github.com/ValerasNarbutas)"
       ]
     },
     {

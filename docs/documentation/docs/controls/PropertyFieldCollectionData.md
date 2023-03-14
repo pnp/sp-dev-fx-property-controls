@@ -153,7 +153,7 @@ Interface `ICustomCollectionField`
 | required | boolean | no | Specify if the field is required. |
 | options | [IDropdownOption[]](https://developer.microsoft.com/en-us/fabric#/components/dropdown) \| (fieldId: string, item: any) => IDropdownOption[] | no | Dropdown options. Only necessary when dropdown type is used. Options can be either a static array or a function that will calculate the values dynamically and can react to the current item. |
 | onRenderOption | IRenderFunction<ISelectableOption> | no | Dropdown custom options render method. Only for the **dropdown** field type. |
-| placeholder | string | no | Placehoder text which will be used for the input field. If not provided the input title will be used. |
+| placeholder | string | no | Placeholder text which will be used for the input field. If not provided the input title will be used. |
 | defaultValue | any | no | Specify a default value for the input field. |
 | deferredValidationTime | number | no | Field will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default: 200ms. |
 | onGetErrorMessage | (value: any, index: number, crntItem: any): string \| Promise<string> | no | The method is used to get the validation error message and determine whether the input value is valid or not. It provides you the current row index and the item you are currently editing. |

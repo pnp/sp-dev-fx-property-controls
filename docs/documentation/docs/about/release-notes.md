@@ -6,9 +6,14 @@
 
 - `PropertyFieldCollectionData`: add `panelProps` property to collection data [#546](https://github.com/pnp/sp-dev-fx-property-controls/pull/546)
 
+### Fixes
+
+- Italian localization updated [#549](https://github.com/pnp/sp-dev-fx-property-controls/pull/549)
+- Fixed multiple typos [#550](https://github.com/pnp/sp-dev-fx-property-controls/pull/550)
+
 ### Contributors
 
-Special thanks to our contributor: [Chad Eiserloh](https://github.com/c-eiser13).
+Special thanks to our contributors (in alphabetical order): [Chad Eiserloh](https://github.com/c-eiser13), [Luca3082](https://github.com/Luca3082), [Valeras Narbutas](https://github.com/ValerasNarbutas).
 
 ## 3.12.0
 

@@ -165,7 +165,7 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
    * Renders a grid list containing results
    */
   private _renderGridList = (): JSX.Element => {
-    return <span className={styles.recentGridList} role="grid">
+    return <div className={styles.recentGridList} role="grid">
       <FocusZone>
         <SelectionZone selection={this._selection}
           onItemInvoked={(item: IRecentFile) => this._handleItemInvoked(item)}>
@@ -179,7 +179,7 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
           />
         </SelectionZone>
       </FocusZone>
-    </span>;
+    </div>;
   }
 
   /**

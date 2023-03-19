@@ -271,7 +271,9 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
     // We need to rerender the list if that happens
     //
     if (needToUpdate) {
-      this._listElem.forceUpdate();
+      setTimeout(() => {
+        this._listElem.forceUpdate();
+      }, 0);
     }
   }
 }

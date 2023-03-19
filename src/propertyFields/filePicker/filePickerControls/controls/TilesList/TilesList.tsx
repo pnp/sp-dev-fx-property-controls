@@ -71,7 +71,9 @@ export class TilesList extends React.Component<ITilesListProps> {
               // We need to rerender the list if that happens
               //
               if (needToUpdate) {
-                this._listElem.forceUpdate();
+                setTimeout(() => {
+                  this._listElem.forceUpdate();
+                }, 0);
               }
             }}
             className={styles.folderList}

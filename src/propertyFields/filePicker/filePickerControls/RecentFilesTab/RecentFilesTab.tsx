@@ -165,7 +165,7 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
    * Renders a grid list containing results
    */
   private _renderGridList = (): JSX.Element => {
-    return <div className={styles.recentGridList} role="grid">
+    return <span className={styles.recentGridList} role="grid">
       <FocusZone>
         <SelectionZone selection={this._selection}
           onItemInvoked={(item: IRecentFile) => this._handleItemInvoked(item)}>
@@ -179,7 +179,7 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
           />
         </SelectionZone>
       </FocusZone>
-    </div>;
+    </span>;
   }
 
   /**
@@ -263,6 +263,15 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
    * Creates a ref to the list
    */
   private _linkElement = (e: List): void => {
+    const needToUpdate = this._listElem === null && e !== null && !this._columnWidth;
     this._listElem = e;
+
+    //
+    // sometimes getItemCountForPage is called when surfaceRect is still has 0 width
+    // We need to rerender the list if that happens
+    //
+    if (needToUpdate) {
+      this._listElem.forceUpdate();
+    }
   }
 }

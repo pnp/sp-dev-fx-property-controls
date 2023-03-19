@@ -129,7 +129,7 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
      * Calculates how many items there should be in the page
      */
   private _getItemCountForPage = (itemIndex: number, surfaceRect: IRectangle): number => {
-    if (itemIndex === 0) {
+    if (itemIndex === 0 && surfaceRect.width > 0) {
       this._columnCount = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
       this._columnWidth = Math.floor(surfaceRect.width / this._columnCount);
       this._rowHeight = this._columnWidth;
@@ -263,7 +263,7 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
    * Creates a ref to the list
    */
   private _linkElement = (e: List): void => {
-    const needToUpdate = this._listElem === null && e !== null && !this._columnWidth;
+    const needToUpdate = !this._listElem && !!e && !this._columnWidth;
     this._listElem = e;
 
     //

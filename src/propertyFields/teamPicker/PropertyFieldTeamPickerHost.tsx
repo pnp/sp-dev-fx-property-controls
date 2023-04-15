@@ -9,7 +9,7 @@ import {
 import * as strings from "PropertyControlStrings";
 
 import { initializeIcons } from "@uifabric/icons";
-import { Async } from "@uifabric/utilities/lib";
+import { Async } from "office-ui-fabric-react/lib/Utilities";
 
 import * as telemetry from "../../common/telemetry";
 import TeamsSearchService from "../../services/TeamsSearchService";

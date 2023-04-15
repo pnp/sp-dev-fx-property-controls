@@ -8,7 +8,7 @@ import { BaseComponentContext } from '@microsoft/sp-component-base';
 import PropertyFieldCodeEditorHost from './PropertyFieldCodeEditorHost';
 import { IPropertyFieldCodeEditorHostProps } from './IPropertyFieldCodeEditorHost';
 import { IPropertyFieldCodeEditorPropsInternal, IPropertyFieldCodeEditorProps, PropertyFieldCodeEditorLanguages } from './IPropertyFieldCodeEditor';
-import { AceOptions } from 'react-ace';
+import { IAceOptions } from 'react-ace';
 
 /**
  * Represents a PropertyFieldCodeEditor object
@@ -32,7 +32,7 @@ class PropertyFieldCodeEditorBuilder implements IPropertyPaneField<IPropertyFiel
   private key: string;
   private disabled: boolean = false;
   private deferredValidationTime: number = 200;
-  private options: AceOptions;
+  private options: IAceOptions;
   private panelWidth: string | undefined;
 
   /**

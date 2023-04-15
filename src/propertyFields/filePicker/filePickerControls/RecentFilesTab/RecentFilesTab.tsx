@@ -5,7 +5,7 @@ import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
-import { css } from '@uifabric/utilities/lib/css';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Check } from 'office-ui-fabric-react/lib/Check';

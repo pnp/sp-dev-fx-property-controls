@@ -6,7 +6,7 @@ import { PrimaryButton, ActionButton } from 'office-ui-fabric-react/lib/componen
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/components/Panel';
 import { Label } from 'office-ui-fabric-react/lib/components/Label';
 import { Nav, INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
-import { css } from "@uifabric/utilities/lib/css";
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 
 // Localization
 import * as strings from 'PropertyControlStrings';

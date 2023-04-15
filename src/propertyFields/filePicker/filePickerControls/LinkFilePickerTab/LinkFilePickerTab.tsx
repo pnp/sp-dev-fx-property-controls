@@ -5,7 +5,7 @@ import { GeneralHelper } from '../../../../helpers/GeneralHelper';
 import { IFilePickerResult } from '../FilePicker.types';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { css } from '@uifabric/utilities/lib/css';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 
 import * as strings from 'PropertyControlStrings';
 import styles from './LinkFilePickerTab.module.scss';

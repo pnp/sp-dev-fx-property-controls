@@ -5,6 +5,7 @@
 ### Enhancements
 
 - `PropertyFieldCollectionData`: add `panelProps` property to collection data [#546](https://github.com/pnp/sp-dev-fx-property-controls/pull/546)
+- SharePoint Framework v1.17.1 support
 
 ### Fixes
 

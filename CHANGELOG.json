@@ -5,7 +5,8 @@
       "changes": {
         "new": [],
         "enhancements": [
-          "`PropertyFieldCollectionData`: add `panelProps` property to collection data [#546](https://github.com/pnp/sp-dev-fx-property-controls/pull/546)"
+          "`PropertyFieldCollectionData`: add `panelProps` property to collection data [#546](https://github.com/pnp/sp-dev-fx-property-controls/pull/546)",
+          "SharePoint Framework v1.17.1 support"
         ],
         "fixes": [
           "Italian localization updated [#549](https://github.com/pnp/sp-dev-fx-property-controls/pull/549)",

@@ -54,7 +54,7 @@ export class FilesSearchService {
       const siteId = this.context.pageContext.site.id.toString();
       const fileFilter = this._getFileFilter(accepts);
 
-      const queryTemplate: string = `((SiteID:${siteId} OR SiteID: {${siteId}}) AND (WebId: ${webId} OR WebId: {${webId}})) AND LastModifiedTime < {Today} AND -Title:OneNote_DeletedPages AND -Title:OneNote_RecycleBin${fileFilter}`;
+      const queryTemplate: string = `((SiteID:${siteId} OR SiteID:{${siteId}}) AND (WebId:${webId} OR WebId:{${webId}})) AND LastModifiedTime < {Today} AND -Title:OneNote_DeletedPages AND -Title:OneNote_RecycleBin${fileFilter}`;
       const queryData = {
         __metadata: { "type": "Microsoft.Office.Server.Search.REST.SearchRequest" },
         QueryTemplate: queryTemplate,
@@ -259,7 +259,7 @@ export class FilesSearchService {
    */
   private _getFileFilter(accepts?: string[]): string {
     let fileFilter: string = undefined;
-    if (accepts) {
+    if (accepts && accepts.length) {
       fileFilter = " AND (";
       accepts.forEach((fileType: string, index: number) => {
         fileType = fileType.replace(".", "");

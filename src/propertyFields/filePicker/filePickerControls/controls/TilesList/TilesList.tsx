@@ -62,7 +62,20 @@ export class TilesList extends React.Component<ITilesListProps> {
       <SelectionZone selection={this.props.selection} onItemInvoked={(item: IFile) => { this._handleItemInvoked(item); }}>
         <FocusZone>
           <List
-            ref={(e: List) => { this._listElem = e; }}
+            ref={(e: List) => {
+              const needToUpdate = !this._listElem && !!e && !this._columnWidth;
+              this._listElem = e;
+
+              //
+              // sometimes getItemCountForPage is called when surfaceRect is still has 0 width
+              // We need to rerender the list if that happens
+              //
+              if (needToUpdate) {
+                setTimeout(() => {
+                  this._listElem.forceUpdate();
+                }, 0);
+              }
+            }}
             className={styles.folderList}
             items={this.props.items}
 
@@ -92,7 +105,7 @@ export class TilesList extends React.Component<ITilesListProps> {
     * Calculates how many items there should be in the page
     */
   private _getItemCountForPage = (itemIndex: number, surfaceRect: IRectangle): number => {
-    if (itemIndex === 0) {
+    if (itemIndex === 0 && surfaceRect.width > 0) {
       this._columnCount = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
       this._columnWidth = Math.floor(surfaceRect.width / this._columnCount);
       this._rowHeight = this._columnWidth;

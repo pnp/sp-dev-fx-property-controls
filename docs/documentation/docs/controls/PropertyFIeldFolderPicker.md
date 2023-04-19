@@ -1,6 +1,6 @@
 # PropertyFieldFolderPicker control
 
-This control allows you to explore and select a folder from the propery pane.
+This control allows you to explore and select a folder from the property pane.
 It also allows the user to create a new folder at the current level being explored.
 
 Here is an example of the control:

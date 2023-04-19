@@ -11,7 +11,7 @@ import { IPropertyFieldSite } from './IPropertyFieldSitePicker';
 import { PropertyFieldSitePickerListItem } from './PropertyFieldSitePickerListItem/PropertyFieldSitePickerListItem';
 import styles from './PropertyFieldSitePickerHost.module.scss';
 import { initializeIcons } from '@uifabric/icons';
-import { Async } from '@uifabric/utilities/lib';
+import { Async } from 'office-ui-fabric-react/lib/Utilities';
 
 export default class PropertyFieldSitePickerHost extends React.Component<IPropertyFieldSitePickerHostProps, ISitePickerState> {
   private searchService: SPSiteSearchService;

@@ -1,6 +1,6 @@
 import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { IRenderFunction } from '@uifabric/utilities/lib/IRenderFunction';
 import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
+import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { CollectionIconFieldRenderMode } from './collectionIconField';
 
 

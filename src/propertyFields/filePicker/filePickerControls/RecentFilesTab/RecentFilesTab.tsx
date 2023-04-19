@@ -5,7 +5,7 @@ import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
-import { css } from '@uifabric/utilities/lib/css';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Check } from 'office-ui-fabric-react/lib/Check';
@@ -129,7 +129,7 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
      * Calculates how many items there should be in the page
      */
   private _getItemCountForPage = (itemIndex: number, surfaceRect: IRectangle): number => {
-    if (itemIndex === 0) {
+    if (itemIndex === 0 && surfaceRect.width > 0) {
       this._columnCount = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
       this._columnWidth = Math.floor(surfaceRect.width / this._columnCount);
       this._rowHeight = this._columnWidth;
@@ -263,6 +263,17 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
    * Creates a ref to the list
    */
   private _linkElement = (e: List): void => {
+    const needToUpdate = !this._listElem && !!e && !this._columnWidth;
     this._listElem = e;
+
+    //
+    // sometimes getItemCountForPage is called when surfaceRect is still has 0 width
+    // We need to rerender the list if that happens
+    //
+    if (needToUpdate) {
+      setTimeout(() => {
+        this._listElem.forceUpdate();
+      }, 0);
+    }
   }
 }

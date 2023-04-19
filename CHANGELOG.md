@@ -1,5 +1,23 @@
 # Releases
 
+## 3.13.0
+
+### Enhancements
+
+- `PropertyFieldCollectionData`: add `panelProps` property to collection data [#546](https://github.com/pnp/sp-dev-fx-property-controls/pull/546)
+- SharePoint Framework v1.17.1 support
+
+### Fixes
+
+- Italian localization updated [#549](https://github.com/pnp/sp-dev-fx-property-controls/pull/549)
+- Fixed multiple typos [#550](https://github.com/pnp/sp-dev-fx-property-controls/pull/550)
+- Swedish localization updated [#553](https://github.com/pnp/sp-dev-fx-property-controls/pull/553)
+- `PropertyPanePropertyEditor`: crash when property undefined/null [#552](https://github.com/pnp/sp-dev-fx-property-controls/pull/552)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Chad Eiserloh](https://github.com/c-eiser13), [Gitwey](https://github.com/Gitwey), [Jake Stanger](https://github.com/JakeStanger), [Luca3082](https://github.com/Luca3082), [Valeras Narbutas](https://github.com/ValerasNarbutas).
+
 ## 3.12.0
 
 ### Enhancements

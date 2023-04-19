@@ -15,7 +15,7 @@ import { List } from 'office-ui-fabric-react/lib/List';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
-import { css } from '@uifabric/utilities/lib/css';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { IFilePickerResult } from '../FilePicker.types';
 import { GeneralHelper } from '../../../../helpers/GeneralHelper';
 import { ISearchResult, BingQuerySearchParams } from '../../../../services/FilesSearchService.types';

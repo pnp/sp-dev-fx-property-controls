@@ -1,4 +1,4 @@
-import { AceOptions } from 'react-ace';
+import { IAceOptions } from 'react-ace';
 
 
 export enum PropertyFieldCodeEditorLanguages {
@@ -63,7 +63,7 @@ export interface IPropertyFieldCodeEditorProps {
   /**
    * Additional properties available to the Ace editor
    */
-  options?: AceOptions;
+  options?: IAceOptions;
   /**
    * Specifies the width of the panel.
    */

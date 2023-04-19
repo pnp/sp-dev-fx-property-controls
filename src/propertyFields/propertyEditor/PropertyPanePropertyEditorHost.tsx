@@ -49,26 +49,25 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
       // Do not update dynamic data properties
       const currentValue = getPropertyValue(this.props.webpart.properties, propName);
 
+      if (currentValue?.__type === "DynamicProperty") {
+        const currVal = currentValue as DynamicProperty<unknown>;
 
-        if (currentValue?.__type === "DynamicProperty") {
-          const currVal: DynamicProperty<any> = currentValue as DynamicProperty<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
-
-          const newVal = newProperties[propName];
-          if (GeneralHelper.isDefined(newVal.value)) {
-            currVal.setValue(newVal.value);
-          }
-          if (GeneralHelper.isDefined(newVal.reference)) {
-            currVal.setReference(newVal.reference._reference);
-          }
+        const newVal = newProperties[propName];
+        if (GeneralHelper.isDefined(newVal.value)) {
+          currVal.setValue(newVal.value);
         }
-        else {
-          setPropertyValue(this.props.webpart.properties, propName, newProperties[propName]);
-        }
-
-        if (typeof this.props.webpart.properties[propName].onChange !== 'undefined' && this.props.webpart.properties[propName].onChange !== null) {
-          this.props.webpart.properties[propName].onChange(propName, newProperties[propName]);
+        if (GeneralHelper.isDefined(newVal.reference)) {
+          currVal.setReference(newVal.reference._reference);
         }
       }
+      else {
+        setPropertyValue(this.props.webpart.properties, propName, newProperties[propName]);
+      }
+
+      if (typeof this.props.webpart.properties[propName]?.onChange !== 'undefined' && this.props.webpart.properties[propName]?.onChange !== null) {
+        this.props.webpart.properties[propName].onChange(propName, newProperties[propName]);
+      }
+    }
 
     this.props.webpart.render();
     this.props.webpart.context.propertyPane.refresh();

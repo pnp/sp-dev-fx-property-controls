@@ -50,9 +50,9 @@ export interface IPropertyFieldListPickerProps {
    */
   selectedList?: string | string[] | IPropertyFieldList | IPropertyFieldList[];
   /**
-   * BaseTemplate ID of the lists or libaries you want to return.
+   * BaseTemplate IDs of the lists or libaries you want to return.
    */
-  baseTemplate?: number;
+  baseTemplate?: number[];
   /**
    * Specify if you want to include or exclude hidden lists. By default this is true.
    */
@@ -152,7 +152,7 @@ export interface IPropertyFieldListPickerPropsInternal extends IPropertyFieldLis
   webAbsoluteUrl?: string;
   selectedList?: string | IPropertyFieldList;
   selectedLists?: string[] | IPropertyFieldList[];
-  baseTemplate?: number;
+  baseTemplate?: number[];
   orderBy?: PropertyFieldListPickerOrderBy;
   includeHidden?: boolean;
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void; // eslint-disable-line @typescript-eslint/no-explicit-any

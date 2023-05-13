@@ -59,9 +59,11 @@ export default class SPListPickerService {
       queryUrl += `&$filter=${encodeURIComponent(this.props.filter)}`;
     }
     // Check if the list have get filtered based on the list base template type
-    else if (this.props.baseTemplate !== null && this.props.baseTemplate) {
-      queryUrl += '&$filter=BaseTemplate%20eq%20';
-      queryUrl += this.props.baseTemplate;
+    else if (this.props.baseTemplate.length) {
+      queryUrl += '&$filter=(';
+      queryUrl += this.props.baseTemplate.map(temp =>`(BaseTemplate%20eq%20${temp})`).join('%20or%20');
+      queryUrl += ')';
+      
       // Check if you also want to exclude hidden list in the list
       if (this.props.includeHidden === false) {
         queryUrl += '%20and%20Hidden%20eq%20false';

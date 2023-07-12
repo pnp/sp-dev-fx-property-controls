@@ -22,6 +22,7 @@ export interface IPropertyControlsTestProps {
   people: IPropertyFieldGroupOrPerson[];
   list: string | string[];
   listFiltered: string;
+  singleListMultipleBaseTemplate: string;
   multiList: string[];
   multiListFiltered: string[];
   view: string;

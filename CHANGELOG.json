@@ -4,10 +4,15 @@
       "version": "3.14.0",
       "changes": {
         "new": [],
-        "enhancements": [],
+        "enhancements": [
+          "`PropertyFieldListPicker`: Implemented functionality to select multiple base templates [#568](https://github.com/pnp/sp-dev-fx-property-controls/pull/568)"
+
+        ],
         "fixes": []
       },
-      "contributions": []
+      "contributions": [
+        "[Chandani Prajapati](https://github.com/chandaniprajapati)"
+      ]
     },
     {
       "version": "3.13.0",

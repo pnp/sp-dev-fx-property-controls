@@ -27,7 +27,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private webAbsoluteUrl?: string;
   private selectedList: string | IPropertyFieldList;
   private selectedLists: string[] | IPropertyFieldList[];
-  private baseTemplate: number;
+  private baseTemplate: number | number[];
   private orderBy: PropertyFieldListPickerOrderBy;
   private multiSelect: boolean;
   private showSelectAll: boolean;

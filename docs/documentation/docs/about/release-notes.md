@@ -2,6 +2,15 @@
 
 ## 3.14.0
 
+### Enhancements
+
+- `PropertyFieldListPicker`: Implemented functionality to select multiple base templates [#568](https://github.com/pnp/sp-dev-fx-property-controls/pull/568)
+- `fast-serve`: Fast-serve updated to the latest version and serve warnings fixed. [#579](https://github.com/pnp/sp-dev-fx-property-controls/pull/579)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Chandani Prajapati](https://github.com/chandaniprajapati), [Sergei Sergeev](https://github.com/s-KaiNet).
+
 ## 3.13.0
 
 ### Enhancements

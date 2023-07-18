@@ -4,8 +4,8 @@ nav:
   - Controls:
     - PropertyFieldCodeEditor: 'controls/PropertyFieldCodeEditor.md'
     - PropertyFieldCollectionData: 'controls/PropertyFieldCollectionData.md'
-    - PropertyFieldColorPicker: 'controls/PropertyFieldColorPicker.md',
-    - PropertyFieldColumnPicker: 'controls/PropertyFieldColumnPicker.md',
+    - PropertyFieldColorPicker: 'controls/PropertyFieldColorPicker.md'
+    - PropertyFieldColumnPicker: 'controls/PropertyFieldColumnPicker.md'
     - PropertyFieldDateTimePicker: 'controls/PropertyFieldDateTimePicker.md'
     - PropertyFieldEnterpriseTermPicker: 'controls/PropertyFieldEnterpriseTermPicker.md'
     - PropertyFieldFilePicker: 'controls/PropertyFieldFilePicker.md'

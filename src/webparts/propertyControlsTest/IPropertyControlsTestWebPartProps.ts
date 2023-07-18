@@ -20,6 +20,7 @@ export interface IPropertyControlsTestWebPartProps {
   singleList: string | string[] | IPropertyFieldList | IPropertyFieldList[];
   multiList: string | string[] | IPropertyFieldList | IPropertyFieldList[];
   singleListFiltered: string;
+  singleListMultipleBaseTemplate: string;
   multiListFiltered: string[];
   view: string;
   column: string;

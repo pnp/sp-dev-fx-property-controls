@@ -4,4 +4,4 @@ export * from './PropertyFieldCollectionData';
 export * from './IPropertyFieldCollectionDataHost';
 export * from './PropertyFieldCollectionDataHost';
 export * from './FieldValidator';
-export { CollectionIconFieldRenderMode } from './collectionIconField';
+export type { CollectionIconFieldRenderMode } from './collectionIconField';

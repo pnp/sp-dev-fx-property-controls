@@ -1,5 +1,15 @@
 # Releases
 
+## 3.15.0
+
+### Fixes
+
+- `Localization`: Errors in en-gb loc file [#582](https://github.com/pnp/sp-dev-fx-property-controls/pull/582)
+
+### Contributors
+
+Special thanks to our contributor: [andrew-lott](https://github.com/andrew-lott).
+
 ## 3.14.0
 
 ### Enhancements

@@ -59,7 +59,9 @@ export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTa
               libraryName={this.state.libraryTitle}
               libraryId={this.state.libraryId}
               folderPath={this.state.libraryPath}
-              accepts={this.props.accepts} />}
+              accepts={this.props.accepts}
+              context={this.props.context}
+            />}
         </div>
         <div className={styles.actionButtonsContainer}>
           <div className={styles.actionButtons}>

@@ -118,7 +118,7 @@ export class TilesList extends React.Component<ITilesListProps> {
 
     // Group items by folders and files
     let pageLength: number = 0;
-    for (let index = itemIndex; index < items.length; index++) {
+    for (let index = itemIndex;index < items.length;index++) {
       const element = items[index];
       if (element && element.isFolder === isFolder) {
         pageLength++;
@@ -214,6 +214,7 @@ export class TilesList extends React.Component<ITilesListProps> {
                     height: this._rowHeight - TILE_HORZ_PADDING
                   }}
                   onItemInvoked={(itemInvoked: IFile) => this._handleItemInvoked(itemInvoked)}
+                  context={this.props.context} // used to get page locale
                 />
                 :
                 <DocumentTile

@@ -3,7 +3,7 @@ import styles from './FolderTile.module.scss';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Icon, IconType } from 'office-ui-fabric-react/lib/Icon';
 import * as strings from 'PropertyControlStrings';
-import { ScreenWidthMinLarge  } from 'office-ui-fabric-react/lib/Styling';
+import { ScreenWidthMinLarge } from 'office-ui-fabric-react/lib/Styling';
 import { IFolderTileProps } from './IFolderTileProps';
 
 export class FolderTile extends React.Component<IFolderTileProps> {
@@ -16,6 +16,12 @@ export class FolderTile extends React.Component<IFolderTileProps> {
       .replace('{1}', item.modifiedFriendly)
       .replace('{2}', item.modifiedBy)
       .replace('{3}', `${item.totalFileCount}`);
+
+    // Get the user's locale
+    const userLocale = this.props.context.pageContext
+      ? this.props.context.pageContext.cultureInfo.currentCultureName || this.props.context.pageContext.cultureInfo.currentUICultureName // gets the language / locale of the user
+      : "en-US"; // defaults to American English
+
     return (
       <div
         aria-selected={isSelected}
@@ -28,7 +34,7 @@ export class FolderTile extends React.Component<IFolderTileProps> {
         data-is-sub-focuszone={true}
         data-disable-click-on-enter={true}
         data-selection-index={index}
-        onClick={(_event)=>this.props.onItemInvoked(item)}
+        onClick={(_event) => this.props.onItemInvoked(item)}
       >
         <div
           className={styles.link}
@@ -78,7 +84,7 @@ export class FolderTile extends React.Component<IFolderTileProps> {
             </span>
             <span className={styles.activity} id={`Tile-activity${index}`}>
               <span className={css(styles.signalField, styles.compact)}>
-                <span className={styles.signalFieldValue}>{item.modified}</span>
+                <span className={styles.signalFieldValue}>{item.modified.toLocaleDateString(userLocale)}</span>
               </span>
             </span>
           </span>

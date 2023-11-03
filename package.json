@@ -38,7 +38,7 @@
     "@uifabric/icons": "7.5.17",
     "brace": "0.11.1",
     "lodash.omit": "4.5.0",
-    "markdown-to-jsx": "^6.11.4",
+    "markdown-to-jsx": "^7.2.0",
     "monaco-editor": "^0.32.1",
     "office-ui-fabric-react": "^7.199.1",
     "react": "17.0.1",

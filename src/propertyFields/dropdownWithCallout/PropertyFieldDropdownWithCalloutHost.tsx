@@ -1,11 +1,12 @@
 import * as React from 'react';
 import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
+import type { IPropertyFieldHeaderProps } from '../../common/propertyFieldHeader/IPropertyFieldHeader';
 
 import { IPropertyFieldDropdownWithCalloutHostProps } from './IPropertyFieldDropdownWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
-import { Dropdown, IDropdownProps, IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { Dropdown, IDropdownProps, IDropdownOption } from '@fluentui/react/lib/components/Dropdown';
 import { IPropertyPaneDropdownOption } from '@microsoft/sp-property-pane';
-import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
+import { SelectableOptionMenuItemType } from '@fluentui/react/lib/utilities/selectableOption/SelectableOption.types';
 import omit from 'lodash/omit';
 
 export default class PropertyFieldDropdownHost extends React.Component<IPropertyFieldDropdownWithCalloutHostProps, null> {
@@ -22,7 +23,7 @@ export default class PropertyFieldDropdownHost extends React.Component<IProperty
       dropdownProps.options = this._convertPropPaneOptionsToDropdownOptions(dropdownProps.options);
         return (
             <div>
-                <PropertyFieldHeader {...this.props} />
+                <PropertyFieldHeader {...(this.props as IPropertyFieldHeaderProps)} />
                 <Dropdown {...dropdownProps} />
             </div>
         );

@@ -9,7 +9,7 @@ import omit from 'lodash/omit';
 import PropertyFieldToggleWithCalloutHost from './PropertyFieldChoiceGroupWithCalloutHost';
 
 import {IPropertyFieldChoiceGroupWithCalloutPropsInternal, IPropertyFieldChoiceGroupWithCalloutProps} from './IPropertyFieldChoiceGroupWithCallout';
-import { IChoiceGroupOption } from 'office-ui-fabric-react/lib/components/ChoiceGroup';
+import { IChoiceGroupOption } from '@fluentui/react/lib/components/ChoiceGroup';
 
 class PropertyFieldChoiceGroupWithCalloutBuilder implements IPropertyPaneField<IPropertyFieldChoiceGroupWithCalloutPropsInternal> {
     public targetProperty: string;
@@ -42,7 +42,7 @@ class PropertyFieldChoiceGroupWithCalloutBuilder implements IPropertyPaneField<I
         const element = React.createElement(PropertyFieldToggleWithCalloutHost, {
             ...omit(props, ['options']),
             options: options,
-            onChanged: this._onChanged.bind(this)
+            onChange: this._onChanged.bind(this)
         });
 
         ReactDOM.render(element, elem);

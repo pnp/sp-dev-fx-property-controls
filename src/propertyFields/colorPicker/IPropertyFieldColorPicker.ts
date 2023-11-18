@@ -1,5 +1,5 @@
 import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-property-pane';
-import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
+import { IColor } from '@fluentui/react/lib/utilities/color';
 
 /**
  * Enum for specifying how the control should be shown

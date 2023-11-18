@@ -1,15 +1,15 @@
-import { IButtonStyles, IconButton } from 'office-ui-fabric-react/lib/Button';
-import { Selection } from 'office-ui-fabric-react/lib/DetailsList';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { DragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop';
-import { IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
+import { IButtonStyles, IconButton } from '@fluentui/react/lib/Button';
+import { Selection } from '@fluentui/react/lib/DetailsList';
+import { Label } from '@fluentui/react/lib/Label';
+import { DragDropHelper } from '@fluentui/react/lib/utilities/dragdrop';
+import { IDragDropContext } from '@fluentui/react/lib/utilities/dragdrop/interfaces';
 import * as React from 'react';
 
 import * as telemetry from '../../common/telemetry';
 import { IPropertyFieldOrderHostProps, IPropertyFieldOrderHostState } from './IPropertyFieldOrderHost';
 import styles from './PropertyFieldOrderHost.module.scss';
 import { isEqual } from '@microsoft/sp-lodash-subset';
-import { EventGroup } from 'office-ui-fabric-react/lib/Utilities'; //'@uifabric/utilities/lib/EventGroup';
+import { EventGroup } from '@fluentui/react/lib/Utilities'; //'@uifabric/utilities/lib/EventGroup';
 
 export default class PropertyFieldOrderHost extends React.Component<IPropertyFieldOrderHostProps, IPropertyFieldOrderHostState> {
 

@@ -2,11 +2,11 @@ import * as React from 'react';
 import { IFilePickerProps } from './IFilePickerProps';
 import { IFilePickerState } from './IFilePickerState';
 
-import { PrimaryButton, ActionButton } from 'office-ui-fabric-react/lib/components/Button';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/components/Panel';
-import { Label } from 'office-ui-fabric-react/lib/components/Label';
-import { Nav, INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { PrimaryButton, ActionButton } from '@fluentui/react/lib/components/Button';
+import { Panel, PanelType } from '@fluentui/react/lib/components/Panel';
+import { Label } from '@fluentui/react/lib/components/Label';
+import { Nav, INavLink, INavLinkGroup } from '@fluentui/react/lib/Nav';
+import { css } from '@fluentui/react/lib/Utilities';
 
 // Localization
 import * as strings from 'PropertyControlStrings';

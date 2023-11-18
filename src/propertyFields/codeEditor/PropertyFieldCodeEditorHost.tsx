@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { PrimaryButton, DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import { Async } from '@fluentui/react/lib/Utilities';
+import { PrimaryButton, DefaultButton, IconButton } from '@fluentui/react/lib/Button';
+import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { PropertyFieldCodeEditorLanguages } from './IPropertyFieldCodeEditor';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Label } from '@fluentui/react/lib/Label';
+import { TextField } from '@fluentui/react/lib/TextField';
 import { IPropertyFieldCodeEditorHostProps, IPropertyFieldCodeEditorHostState } from './IPropertyFieldCodeEditorHost';
 import { CodeFormatter } from './CodeFormatter';
 import styles from './PropertyFieldCodeEditorHost.module.scss';

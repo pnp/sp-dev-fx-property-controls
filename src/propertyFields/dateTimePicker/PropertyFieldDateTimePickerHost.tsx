@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { TimeConvention, DateConvention, IDateTimeFieldValue } from './IPropertyFieldDateTimePicker';
-import { DatePicker, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
+import { DatePicker, IDatePickerStrings } from '@fluentui/react/lib/DatePicker';
+import { Label } from '@fluentui/react/lib/Label';
+import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
+import { Async } from '@fluentui/react/lib/Utilities';
 import * as strings from 'PropertyControlStrings';
 import { IPropertyFieldDateTimePickerHostProps, IPropertyFieldDateTimePickerHostState } from './IPropertyFieldDateTimePickerHost';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';

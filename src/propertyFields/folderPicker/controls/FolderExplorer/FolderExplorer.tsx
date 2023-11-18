@@ -1,13 +1,13 @@
 import * as React from 'react';
 import styles from './FolderExplorer.module.scss';
 import * as strings from 'PropertyControlStrings';
-import { Icon } from "office-ui-fabric-react/lib/Icon";
+import { Icon } from "@fluentui/react/lib/Icon";
 import { IFolderExplorerProps, IFolderExplorerState } from '.';
 import { FolderExplorerService } from '../../../../services/FolderExplorerService';
 import { IFolder, IFolderExplorerService } from '../../../../services/IFolderExplorerService';
 import { NewFolder } from "../NewFolder";
-import { Breadcrumb, IBreadcrumbItem } from "office-ui-fabric-react/lib/Breadcrumb";
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { Breadcrumb, IBreadcrumbItem } from "@fluentui/react/lib/Breadcrumb";
+import { SearchBox } from '@fluentui/react/lib/SearchBox';
 
 
 export class FolderExplorer extends React.Component<IFolderExplorerProps, IFolderExplorerState> {

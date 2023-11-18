@@ -2,11 +2,11 @@ import * as React from 'react';
 import { findIndex } from '@microsoft/sp-lodash-subset';
 import { ISiteFilePickerTabProps, ISiteFilePickerTabState } from '.';
 import { DocumentLibraryBrowser, FileBrowser } from '../controls';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
-import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
-import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
+import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/components/Button';
+import { Breadcrumb, IBreadcrumbItem } from '@fluentui/react/lib/Breadcrumb';
+import { ScrollablePane } from '@fluentui/react/lib/ScrollablePane';
 import { IFile, ILibrary } from '../../../../services/FileBrowserService.types';
-import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Link } from '@fluentui/react/lib/Link';
 import { IFilePickerResult, FilePickerBreadcrumbItem } from '../FilePicker.types';
 
 import styles from './SiteFilePickerTab.module.scss';

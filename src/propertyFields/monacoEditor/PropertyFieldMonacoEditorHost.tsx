@@ -9,7 +9,7 @@ import {
   PrimaryButton,
   Stack,
   TextField,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import strings from 'PropertyControlStrings';
 
 import * as telemetry from '../../common/telemetry';

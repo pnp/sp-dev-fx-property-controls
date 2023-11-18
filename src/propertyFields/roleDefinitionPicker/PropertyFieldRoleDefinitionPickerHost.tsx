@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Dropdown, IDropdownOption } from "@fluentui/react/lib/Dropdown";
+import { Async } from '@fluentui/react/lib/Utilities';
+import { Label } from '@fluentui/react/lib/Label';
 import { IPropertyFieldRoleDefinitionPickerHostProps, IPropertyFieldRoleDefinitionPickerHostState } from './IPropertyFieldRoleDefinitionPickerHost';
 import { SPRoleDefinitionPickerService } from '../../services/SPRoleDefinitionPickerService';
 import FieldErrorMessage from '../errorMessage/FieldErrorMessage';

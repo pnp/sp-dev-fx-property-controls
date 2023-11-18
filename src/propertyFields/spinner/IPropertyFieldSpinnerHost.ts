@@ -1,4 +1,4 @@
-import { ISpinnerStyles, SpinnerSize } from 'office-ui-fabric-react';
+import { ISpinnerStyles, SpinnerSize } from '@fluentui/react';
 
 export interface IPropertyFieldSpinnerHostProps {
   key: string;

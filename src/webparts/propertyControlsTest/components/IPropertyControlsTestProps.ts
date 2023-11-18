@@ -1,4 +1,4 @@
-import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
+import { IColor } from '@fluentui/react/lib/utilities/color';
 
 import { BaseComponentContext } from '@microsoft/sp-component-base';
 

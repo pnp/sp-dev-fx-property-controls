@@ -1,4 +1,4 @@
-import { DayOfWeek } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import type { DayOfWeek } from '@fluentui/react/lib/DateTimeUtilities';
 
 /**
  * Date field value interface

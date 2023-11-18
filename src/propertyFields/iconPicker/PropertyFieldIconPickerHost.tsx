@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { IIconProps } from '@fluentui/react/lib/Icon';
 import {
   IPropertyFieldIconPickerHostProps,
   IPropertyFieldIconPickerHostState
 } from './IPropertyFieldIconPickerHost';
 import * as telemetry from '../../common/telemetry';
-import { DialogType } from 'office-ui-fabric-react/lib/Dialog';
-import { PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { DialogType } from '@fluentui/react/lib/Dialog';
+import { PanelType } from '@fluentui/react/lib/Panel';
+import { Label } from '@fluentui/react/lib/Label';
 import { setPropertyValue } from '../../helpers/GeneralHelper';
 import { IconSelector } from '../../common/iconSelector/IconSelector';
 

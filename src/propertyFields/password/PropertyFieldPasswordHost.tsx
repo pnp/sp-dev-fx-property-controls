@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TextField } from "office-ui-fabric-react/lib/TextField";
+import { TextField } from "@fluentui/react/lib/TextField";
 import * as telemetry from '../../common/telemetry';
 //import styles from './Component.module.scss';
 

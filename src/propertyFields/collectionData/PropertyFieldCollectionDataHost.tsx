@@ -4,9 +4,9 @@ import {
   IPropertyFieldCollectionDataHostProps,
   IPropertyFieldCollectionDataHostState,
 } from "./IPropertyFieldCollectionDataHost";
-import { DefaultButton } from "office-ui-fabric-react/lib/components/Button";
-import { Panel, PanelType } from "office-ui-fabric-react/lib/components/Panel";
-import { Label } from "office-ui-fabric-react/lib/components/Label";
+import { DefaultButton } from "@fluentui/react/lib/components/Button";
+import { Panel, PanelType } from "@fluentui/react/lib/components/Panel";
+import { Label } from "@fluentui/react/lib/components/Label";
 import { CollectionDataViewer } from "./collectionDataViewer";
 import FieldErrorMessage from "../errorMessage/FieldErrorMessage";
 import * as strings from "PropertyControlStrings";

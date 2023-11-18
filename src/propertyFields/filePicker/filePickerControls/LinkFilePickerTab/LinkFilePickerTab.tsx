@@ -3,9 +3,9 @@ import * as React from 'react';
 import { ILinkFilePickerTabProps, ILinkFilePickerTabState } from '.';
 import { GeneralHelper } from '../../../../helpers/GeneralHelper';
 import { IFilePickerResult } from '../FilePicker.types';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/components/Button';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { css } from '@fluentui/react/lib/Utilities';
 
 import * as strings from 'PropertyControlStrings';
 import styles from './LinkFilePickerTab.module.scss';

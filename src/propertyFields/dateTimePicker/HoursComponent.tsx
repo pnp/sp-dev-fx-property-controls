@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IHoursComponentProps } from './IPropertyFieldDateTimePickerHost';
 import { TimeConvention } from './IPropertyFieldDateTimePicker';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/components/Dropdown';
 
 /**
  * Hours component, this renders the hours dropdown

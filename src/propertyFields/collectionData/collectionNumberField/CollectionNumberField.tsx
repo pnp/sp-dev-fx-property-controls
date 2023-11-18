@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
+import { Async } from '@fluentui/react/lib/Utilities';
 import { ICollectionNumberFieldProps } from './ICollectionNumberFieldProps';
 import { ICollectionNumberFieldState } from './ICollectionNumberFieldState';
 import { ICustomCollectionField } from '../ICustomCollectionField';

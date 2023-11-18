@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/components/Callout';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/components/Callout';
 import { IPropertyFieldHeaderProps, IPropertyFieldHeaderState, CalloutTriggers } from './IPropertyFieldHeader';
-import { getIconClassName } from 'office-ui-fabric-react/lib/Styling';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { getIconClassName } from '@fluentui/react/lib/Styling';
+import { css } from '@fluentui/react/lib/Utilities';
 
 import styles from './PropertyFieldHeader.module.scss';
 

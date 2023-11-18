@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { Icon } from '@fluentui/react/lib/Icon';
+import { getId } from '@fluentui/react/lib/Utilities';
 import styles from './IconsList.module.scss';
 
 const radioIdBase: string = getId('radio');

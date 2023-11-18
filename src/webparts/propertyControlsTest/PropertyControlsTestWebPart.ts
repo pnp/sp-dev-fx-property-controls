@@ -1,11 +1,10 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
-import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
-import {
-  DayOfWeek,
-} from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import { MessageBarType } from '@fluentui/react/lib/MessageBar';
+import { SpinnerSize } from '@fluentui/react/lib/Spinner';
+import { PanelType } from '@fluentui/react';
+import { DayOfWeek } from '@fluentui/react/lib/DateTimeUtilities';
 import * as strings from 'PropertyControlsTestWebPartStrings';
 
 import { Version } from '@microsoft/sp-core-library';
@@ -133,7 +132,6 @@ import PropertyControlsTest from './components/PropertyControlsTest';
 import {
   IPropertyControlsTestWebPartProps,
 } from './IPropertyControlsTestWebPartProps';
-import { PanelType } from 'office-ui-fabric-react';
 
 /**
  * Web part that can be used to test out the various property controls

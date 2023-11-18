@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import PlaceholderWithCallout from '../../common/placeholderWithCallout/PlaceholderWithCallout';
+import type { IPlaceholderWithCalloutProps } from '../../common/placeholderWithCallout/IPlaceholderWithCallout';
 
 import { IPropertyFieldCheckboxWithCalloutHostProps } from './IPropertyFieldCheckboxWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
-import { Checkbox } from 'office-ui-fabric-react/lib/components/Checkbox';
+import { Checkbox } from '@fluentui/react/lib/components/Checkbox';
 
 /**
  * Renders the control for PropertyFieldCheckboxWithCallout component
@@ -21,7 +22,7 @@ export default class PropertyFieldCheckboxHost extends React.Component<IProperty
     public render(): JSX.Element {
         return (
             <div>
-                <PlaceholderWithCallout {...this.props}>
+                <PlaceholderWithCallout {...(this.props as IPlaceholderWithCalloutProps)}>
                     <Checkbox {...this.props} label={this.props.text} />
                 </PlaceholderWithCallout>
             </div>

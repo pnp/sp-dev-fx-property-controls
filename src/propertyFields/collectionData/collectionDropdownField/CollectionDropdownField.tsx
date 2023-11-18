@@ -1,4 +1,4 @@
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import * as React from 'react';
 import { ICustomDropdownOption } from '../ICustomCollectionField';
 import { IBaseCollectionFieldProps } from '../IBaseCollectionFIeldsProps';

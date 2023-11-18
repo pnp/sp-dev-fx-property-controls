@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IPropertyPanePropertyEditorHostProps, IPropertyPanePropertyEditorHostState } from './IPropertyPanePropertyEditorHost';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { Panel, PanelType } from '@fluentui/react/lib/Panel';
+import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
 import AceEditor from 'react-ace';
 import * as telemetry from '../../common/telemetry';
 import styles from './PropertyPanePropertyEditorHost.module.scss';

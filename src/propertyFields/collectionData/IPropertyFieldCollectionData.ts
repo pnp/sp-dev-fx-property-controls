@@ -1,6 +1,6 @@
 import { IPropertyPaneCustomFieldProps } from "@microsoft/sp-property-pane";
 import { ICustomCollectionField } from "./ICustomCollectionField";
-import { IPanelProps } from "office-ui-fabric-react/lib/Panel";
+import { IPanelProps } from "@fluentui/react/lib/Panel";
 
 
 export interface IPropertyFieldCollectionDataProps {

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/components/Callout';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/components/Callout';
 import { IPlaceholderWithCalloutProps, IPlaceholderWithCalloutState } from './IPlaceholderWithCallout';
 import { CalloutTriggers } from '../callout/Callout';
-import { getIconClassName } from 'office-ui-fabric-react/lib/Styling';
+import { getIconClassName } from '@fluentui/react/lib/Styling';
 
 import styles from './PlaceholderWithCallout.module.scss';
 

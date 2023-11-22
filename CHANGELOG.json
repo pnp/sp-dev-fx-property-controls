@@ -8,11 +8,13 @@
         ],
         "fixes": [
           "`Localization`: Errors in en-gb loc file [#582](https://github.com/pnp/sp-dev-fx-property-controls/pull/582)",
-          "`Localization`: Errors in german language [#589](https://github.com/pnp/sp-dev-fx-property-controls/pull/589)"
+          "`Localization`: Errors in german language [#589](https://github.com/pnp/sp-dev-fx-property-controls/pull/589)",
+          "`PropertyFieldFilePicker`: fix Tiles view [#562](https://github.com/pnp/sp-dev-fx-property-controls/issues/562)"
         ]
       },
       "contributions": [
         "[andrew-lott](https://github.com/andrew-lott)",
+        "[Clem S-K](https://github.com/ClemSK)",
         "[Tom F.](https://github.com/tpf89)"
       ]
     },

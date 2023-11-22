@@ -90,7 +90,7 @@ export class OneDriveFilesTab extends React.Component<IOneDriveFilesTabProps, IO
     return (
       <div className={styles.tabContainer}>
         <div className={styles.tabHeaderContainer}>
-          <Breadcrumb items={breadcrumbItems} /*onRenderItem={this.renderBreadcrumbItem}*/ className={styles.breadcrumbNav}/>
+          <Breadcrumb items={breadcrumbItems} /*onRenderItem={this.renderBreadcrumbItem}*/ className={styles.breadcrumbNav} />
         </div>
         <div className={styles.tabFiles}>
           {libraryAbsolutePath !== undefined &&
@@ -101,7 +101,9 @@ export class OneDriveFilesTab extends React.Component<IOneDriveFilesTabProps, IO
               libraryName={libraryTitle}
               libraryId={libraryId}
               folderPath={folderPath}
-              accepts={accepts} />}
+              accepts={accepts}
+              context={this.props.context}
+            />}
         </div>
         <div className={styles.actionButtonsContainer}>
           <div className={styles.actionButtons}>

@@ -214,6 +214,7 @@ export class TilesList extends React.Component<ITilesListProps> {
                     height: this._rowHeight - TILE_HORZ_PADDING
                   }}
                   onItemInvoked={(itemInvoked: IFile) => this._handleItemInvoked(itemInvoked)}
+                  context={this.props.context} // used to get page locale
                 />
                 :
                 <DocumentTile

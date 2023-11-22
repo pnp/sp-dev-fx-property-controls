@@ -198,6 +198,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
                       onFolderOpen={this._handleOpenFolder}
                       onFileSelected={this._itemSelectionChanged}
                       onNextPageDataRequest={this._loadNextDataRequest}
+                      context={this.props.context}
                     />)
                 }
               </ScrollablePane>

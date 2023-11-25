@@ -5,6 +5,7 @@
       "changes": {
         "new": [],
         "enhancements": [
+          "SharePoint Framework v1.18.2 support"
         ],
         "fixes": [
           "`Localization`: Errors in en-gb loc file [#582](https://github.com/pnp/sp-dev-fx-property-controls/pull/582)",

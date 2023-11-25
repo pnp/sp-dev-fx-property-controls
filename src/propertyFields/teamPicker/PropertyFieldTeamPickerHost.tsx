@@ -1,15 +1,15 @@
 import * as React from "react";
 
-import { Label } from "office-ui-fabric-react/lib/Label";
-import { SearchBox } from "office-ui-fabric-react/lib/SearchBox";
+import { Label } from "@fluentui/react/lib/Label";
+import { SearchBox } from "@fluentui/react/lib/SearchBox";
 import {
   Spinner,
   SpinnerSize
-} from "office-ui-fabric-react/lib/Spinner";
+} from "@fluentui/react/lib/Spinner";
 import * as strings from "PropertyControlStrings";
 
 import { initializeIcons } from "@uifabric/icons";
-import { Async } from "office-ui-fabric-react/lib/Utilities";
+import { Async } from "@fluentui/react/lib/Utilities";
 
 import * as telemetry from "../../common/telemetry";
 import TeamsSearchService from "../../services/TeamsSearchService";

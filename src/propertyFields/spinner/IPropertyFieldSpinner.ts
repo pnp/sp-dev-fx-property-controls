@@ -1,7 +1,7 @@
 import {
   IPropertyPaneCustomFieldProps,
 } from '@microsoft/sp-property-pane';
-import { SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
+import { SpinnerSize } from '@fluentui/react/lib/components/Spinner';
 
 
 

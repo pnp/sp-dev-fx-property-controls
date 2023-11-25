@@ -1,5 +1,16 @@
 # Releases
 
+## 3.15.0
+
+### Fixes
+
+- `Localization`: Errors in en-gb loc file [#582](https://github.com/pnp/sp-dev-fx-property-controls/pull/582)
+- `Localization`: Errors in german language [#589](https://github.com/pnp/sp-dev-fx-property-controls/pull/589)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [andrew-lott](https://github.com/andrew-lott), [Tom F.](https://github.com/tpf89).
+
 ## 3.14.0
 
 ### Enhancements

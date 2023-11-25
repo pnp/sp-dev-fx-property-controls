@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { ColorPicker, IColorPickerStrings } from 'office-ui-fabric-react/lib/ColorPicker';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { Label } from '@fluentui/react/lib/Label';
+import { ColorPicker, IColorPickerStrings } from '@fluentui/react/lib/ColorPicker';
+import { IconButton } from '@fluentui/react/lib/Button';
 import {
 	IPropertyFieldColorPickerHostProps,
 	IPropertyFieldColorPickerHostState

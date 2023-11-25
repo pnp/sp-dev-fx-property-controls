@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/components/Button';
+import { Button } from '@fluentui/react/lib/components/Button';
 
 import PlaceholderWithCallout from '../../common/placeholderWithCallout/PlaceholderWithCallout';
 

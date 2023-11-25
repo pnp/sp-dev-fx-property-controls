@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BasePicker, IBasePickerProps, IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
+import { BasePicker, IBasePickerProps, IPickerItemProps } from '@fluentui/react/lib/Pickers';
 import { IPickerTerm, IPickerTerms } from './IPropertyFieldTermPicker';
 import styles from './PropertyFieldTermPickerHost.module.scss';
 import { IPropertyFieldTermPickerHostProps } from './IPropertyFieldTermPickerHost';

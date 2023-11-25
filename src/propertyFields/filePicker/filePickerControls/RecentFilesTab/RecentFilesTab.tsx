@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
-import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { List } from 'office-ui-fabric-react/lib/List';
-import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
-import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { Check } from 'office-ui-fabric-react/lib/Check';
+import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/components/Button';
+import { Spinner } from '@fluentui/react/lib/Spinner';
+import { FocusZone } from '@fluentui/react/lib/FocusZone';
+import { List } from '@fluentui/react/lib/List';
+import { IRectangle } from '@fluentui/react/lib/Utilities';
+import { css } from '@fluentui/react/lib/Utilities';
+import { Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';
+import { Image, ImageFit } from '@fluentui/react/lib/Image';
+import { Check } from '@fluentui/react/lib/Check';
 import { Placeholder } from '../../placeHolderControl';
 import { IRecentFile } from '../../../../services/FilesSearchService.types';
 import { IFilePickerResult } from '../FilePicker.types';

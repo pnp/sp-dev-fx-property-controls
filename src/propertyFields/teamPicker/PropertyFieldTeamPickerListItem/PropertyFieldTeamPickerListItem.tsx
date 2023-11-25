@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IPropertyFieldTeamPickerListItemProps } from './IPropertyFieldTeamPickerListItem';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import styles from './PropertyFieldTeamPickerListItem.module.scss';
 
 export const PropertyFieldTeamPickerListItem = (props: IPropertyFieldTeamPickerListItemProps): JSX.Element => {

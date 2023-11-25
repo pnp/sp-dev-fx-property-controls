@@ -4,8 +4,8 @@ import { isEmpty } from 'lodash';
 import {
   Spinner,
   SpinnerSize,
-} from 'office-ui-fabric-react/lib/Spinner';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+} from '@fluentui/react/lib/Spinner';
+import { Stack } from '@fluentui/react/lib/Stack';
 
 import { Elanguages } from './';
 import { Error } from './Error';

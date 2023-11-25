@@ -1,5 +1,5 @@
 import { IPropertyFieldDateTimePickerPropsInternal, TimeConvention } from './IPropertyFieldDateTimePicker';
-import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { IDropdownOption } from '@fluentui/react/lib/components/Dropdown';
 
 /**
  * PropertyFieldDateTimePickerHost properties interface

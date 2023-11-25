@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { IPropertyFieldGroupOrPerson, PrincipalType } from './IPropertyFieldPeoplePicker';
-import { NormalPeoplePicker, IBasePickerSuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { IPersonaProps, PersonaPresence, PersonaInitialsColor } from 'office-ui-fabric-react/lib/Persona';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
+import { NormalPeoplePicker, IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
+import { Label } from '@fluentui/react/lib/Label';
+import { IPersonaProps, PersonaPresence, PersonaInitialsColor } from '@fluentui/react/lib/Persona';
+import { Async } from '@fluentui/react/lib/Utilities';
 import * as strings from 'PropertyControlStrings';
 import { IPropertyFieldPeoplePickerHostProps, IPeoplePickerState } from './IPropertyFieldPeoplePickerHost';
 import SPPeopleSearchService from '../../services/SPPeopleSearchService';

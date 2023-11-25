@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IPropertyFieldSitePickerListItemProps } from './IPropertyFieldSitePickerListItem';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import styles from './PropertyFieldSitePickerListItem.module.scss';
 import { toRelativeUrl } from '../../../helpers/GeneralHelper';
 

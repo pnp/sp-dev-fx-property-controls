@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from '@fluentui/react/lib/TextField';
 import { IPropertyFieldNumberHostProps, IPropertyFieldNumberHostState } from './IPropertyFieldNumberHost';
 import * as telemetry from '../../common/telemetry';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
+import { Async } from '@fluentui/react/lib/Utilities';
 import * as strings from 'PropertyControlStrings';
 import { GeneralHelper } from '../../helpers/GeneralHelper';
 

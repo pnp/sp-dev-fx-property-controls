@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { mergeStyleSets } from 'office-ui-fabric-react';
+import { mergeStyleSets } from '@fluentui/react';
 
 export const useMonacoEditorStyles = () => { // eslint-disable-line @typescript-eslint/explicit-function-return-type
   const controlClasses =  React.useMemo(() =>{

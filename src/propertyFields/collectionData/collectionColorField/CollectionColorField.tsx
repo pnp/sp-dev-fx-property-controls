@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
 import { ICollectionColorFieldProps } from './ICollectionColorFieldProps';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
+import { Async } from '@fluentui/react/lib/Utilities';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
+import { ColorPicker } from '@fluentui/react/lib/ColorPicker';
 import { ICustomCollectionField } from '../ICustomCollectionField';
 
 interface ICollectionColorFieldState {

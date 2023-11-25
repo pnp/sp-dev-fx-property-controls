@@ -1,5 +1,5 @@
 import { IPropertyFieldRoleDefinitionPickerPropsInternal } from './IPropertyFieldRoleDefinitionPicker';
-import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { IRoleDefinitionInformation } from './IRoleDefinitionInformation';
 
 /**

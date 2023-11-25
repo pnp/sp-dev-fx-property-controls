@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITimeComponentProps } from './IPropertyFieldDateTimePickerHost';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/components/Dropdown';
 
 /**
  * Seconds component, renders the seconds dropdown

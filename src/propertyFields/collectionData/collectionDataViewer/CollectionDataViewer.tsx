@@ -3,8 +3,8 @@ import styles from '../PropertyFieldCollectionDataHost.module.scss';
 import { ICollectionDataViewerProps } from './ICollectionDataViewerProps';
 import { ICollectionDataViewerState } from './ICollectionDataViewerState';
 import { CollectionDataItem } from '../collectionDataItem';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
-import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
+import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/components/Button';
+import { Icon } from '@fluentui/react/lib/components/Icon';
 import * as strings from 'PropertyControlStrings';
 import { cloneDeep, sortBy } from '@microsoft/sp-lodash-subset';
 

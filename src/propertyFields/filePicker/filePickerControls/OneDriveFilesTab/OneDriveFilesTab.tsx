@@ -4,9 +4,9 @@ import { IOneDriveFilesTabState } from './IOneDriveFilesTabState';
 import { IFile } from '../../../../services/FileBrowserService.types';
 import { OneDriveFilesBreadcrumbItem } from './OneDriveFilesTab.types';
 import { findIndex } from '@microsoft/sp-lodash-subset';
-import { Breadcrumb } from 'office-ui-fabric-react/lib/Breadcrumb';
+import { Breadcrumb } from '@fluentui/react/lib/Breadcrumb';
 import { FileBrowser } from '../controls';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
 import { IFilePickerResult } from '../FilePicker.types';
 
 import styles from './OneDriveFilesTab.module.scss';
@@ -90,7 +90,7 @@ export class OneDriveFilesTab extends React.Component<IOneDriveFilesTabProps, IO
     return (
       <div className={styles.tabContainer}>
         <div className={styles.tabHeaderContainer}>
-          <Breadcrumb items={breadcrumbItems} /*onRenderItem={this.renderBreadcrumbItem}*/ className={styles.breadcrumbNav}/>
+          <Breadcrumb items={breadcrumbItems} /*onRenderItem={this.renderBreadcrumbItem}*/ className={styles.breadcrumbNav} />
         </div>
         <div className={styles.tabFiles}>
           {libraryAbsolutePath !== undefined &&
@@ -101,7 +101,9 @@ export class OneDriveFilesTab extends React.Component<IOneDriveFilesTabProps, IO
               libraryName={libraryTitle}
               libraryId={libraryId}
               folderPath={folderPath}
-              accepts={accepts} />}
+              accepts={accepts}
+              context={this.props.context}
+            />}
         </div>
         <div className={styles.actionButtonsContainer}>
           <div className={styles.actionButtons}>

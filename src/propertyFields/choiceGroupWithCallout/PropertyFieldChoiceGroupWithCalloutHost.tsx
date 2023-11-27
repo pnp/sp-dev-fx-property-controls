@@ -18,10 +18,11 @@ export default class PropertyFieldToggleWithCalloutHost extends React.Component<
     }
 
     public render(): JSX.Element {
+        const defaultSelectedKey: any[] = this.props.options.filter((value: any) => { return value.checked; })
         return (
             <div>
                 <PropertyFieldHeader {...(this.props as IPlaceholderWithCalloutProps)} />
-                <ChoiceGroup {...omit(this.props, ['label'])} />
+                <ChoiceGroup {...omit(this.props, ['label'])} defaultSelectedKey={defaultSelectedKey.length > 0 ? defaultSelectedKey[0].key : ''} />
             </div>
         );
     }

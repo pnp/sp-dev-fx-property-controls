@@ -56,7 +56,7 @@ class PropertyFieldChoiceGroupWithCalloutBuilder implements IPropertyPaneField<I
         ReactDOM.unmountComponentAtNode(elem);
     }
 
-    private _onChanged(option: IChoiceGroupOption): void {
+    private _onChanged(ev?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption): void {
         if (this._onChangeCallback) {
             this._onChangeCallback(this.targetProperty, option.key);
         }

@@ -2,6 +2,12 @@
 
 ## 3.16.0
 
+## 3.15.1
+
+### Fixes
+
+- `PropertyFieldChoiceGroupWithCallout` deletes properties [#592](https://github.com/pnp/sp-dev-fx-property-controls/issues/592)
+
 ## 3.15.0
 
 ### Enhancements

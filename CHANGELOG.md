@@ -1,15 +1,28 @@
 # Releases
 
+## 3.16.0
+
+## 3.15.1
+
+### Fixes
+
+- `PropertyFieldChoiceGroupWithCallout` deletes properties [#592](https://github.com/pnp/sp-dev-fx-property-controls/issues/592)
+
 ## 3.15.0
+
+### Enhancements
+
+- SharePoint Framework v1.18.2 support
 
 ### Fixes
 
 - `Localization`: Errors in en-gb loc file [#582](https://github.com/pnp/sp-dev-fx-property-controls/pull/582)
 - `Localization`: Errors in german language [#589](https://github.com/pnp/sp-dev-fx-property-controls/pull/589)
+- `PropertyFieldFilePicker`: fix Tiles view [#562](https://github.com/pnp/sp-dev-fx-property-controls/issues/562)
 
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [andrew-lott](https://github.com/andrew-lott), [Tom F.](https://github.com/tpf89).
+Special thanks to our contributors (in alphabetical order): [andrew-lott](https://github.com/andrew-lott), [Clem S-K](https://github.com/ClemSK), [Tom F.](https://github.com/tpf89).
 
 ## 3.14.0
 

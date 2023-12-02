@@ -1,10 +1,31 @@
 {
   "versions": [
     {
+      "version": "3.16.0",
+      "changes": {
+        "new": [],
+        "enhancements": [],
+        "fixes": []
+      },
+      "contributions": []
+    },
+    {
+      "version": "3.15.1",
+      "changes": {
+        "new": [],
+        "enhancements": [],
+        "fixes": [
+          "`PropertyFieldChoiceGroupWithCallout` deletes properties [#592](https://github.com/pnp/sp-dev-fx-property-controls/issues/592)"
+        ]
+      },
+      "contributions": []
+    },
+    {
       "version": "3.15.0",
       "changes": {
         "new": [],
         "enhancements": [
+          "SharePoint Framework v1.18.2 support"
         ],
         "fixes": [
           "`Localization`: Errors in en-gb loc file [#582](https://github.com/pnp/sp-dev-fx-property-controls/pull/582)",

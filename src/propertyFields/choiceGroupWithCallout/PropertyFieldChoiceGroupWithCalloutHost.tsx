@@ -1,12 +1,12 @@
-import * as React from "react";
-import omit from "lodash/omit";
+import * as React from 'react';
+import omit from 'lodash/omit';
 
-import PropertyFieldHeader from "../../common/propertyFieldHeader/PropertyFieldHeader";
-import type { IPlaceholderWithCalloutProps } from "../../common/placeholderWithCallout/IPlaceholderWithCallout";
+import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldHeader';
+import type { IPlaceholderWithCalloutProps } from '../../common/placeholderWithCallout/IPlaceholderWithCallout';
 
-import { IPropertyFieldChoiceGroupWithCalloutHostProps } from "./IPropertyFieldChoiceGroupWithCalloutHost";
-import * as telemetry from "../../common/telemetry";
-import { ChoiceGroup } from "@fluentui/react/lib/components/ChoiceGroup";
+import { IPropertyFieldChoiceGroupWithCalloutHostProps } from './IPropertyFieldChoiceGroupWithCalloutHost';
+import * as telemetry from '../../common/telemetry';
+import { ChoiceGroup } from '@fluentui/react/lib/components/ChoiceGroup';
 
 export default class PropertyFieldToggleWithCalloutHost extends React.Component<
   IPropertyFieldChoiceGroupWithCalloutHostProps,
@@ -15,7 +15,7 @@ export default class PropertyFieldToggleWithCalloutHost extends React.Component<
   constructor(props: IPropertyFieldChoiceGroupWithCalloutHostProps) {
     super(props);
 
-    telemetry.track("PropertyFieldToggleWithCallout", {
+    telemetry.track('PropertyFieldToggleWithCallout', {
       disabled: props.disabled,
     });
   }
@@ -26,7 +26,7 @@ export default class PropertyFieldToggleWithCalloutHost extends React.Component<
         <PropertyFieldHeader
           {...(this.props as IPlaceholderWithCalloutProps)}
         />
-        <ChoiceGroup {...omit(this.props, ["label"])} />
+        <ChoiceGroup {...omit(this.props, ['label'])} />
       </div>
     );
   }

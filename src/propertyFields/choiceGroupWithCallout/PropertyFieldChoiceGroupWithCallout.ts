@@ -1,18 +1,18 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {
   IPropertyPaneField,
   PropertyPaneFieldType,
-} from "@microsoft/sp-property-pane";
-import omit from "lodash/omit";
+} from '@microsoft/sp-property-pane';
+import omit from 'lodash/omit';
 
-import PropertyFieldToggleWithCalloutHost from "./PropertyFieldChoiceGroupWithCalloutHost";
+import PropertyFieldToggleWithCalloutHost from './PropertyFieldChoiceGroupWithCalloutHost';
 
 import {
   IPropertyFieldChoiceGroupWithCalloutPropsInternal,
   IPropertyFieldChoiceGroupWithCalloutProps,
-} from "./IPropertyFieldChoiceGroupWithCallout";
-import { IChoiceGroupOption } from "@fluentui/react/lib/components/ChoiceGroup";
+} from './IPropertyFieldChoiceGroupWithCallout';
+import { IChoiceGroupOption } from '@fluentui/react/lib/components/ChoiceGroup';
 
 class PropertyFieldChoiceGroupWithCalloutBuilder
   implements
@@ -48,7 +48,7 @@ class PropertyFieldChoiceGroupWithCalloutBuilder
 
     this.properties.options.forEach((o) => {
       options.push({
-        ...omit(o, ["key", "iconProps"]),
+        ...omit(o, ['key', 'iconProps']),
         iconProps: o.iconProps && {
           iconName: o.iconProps.officeFabricIconFontName,
         },
@@ -62,10 +62,10 @@ class PropertyFieldChoiceGroupWithCalloutBuilder
     const props = this.properties as IPropertyFieldChoiceGroupWithCalloutProps;
 
     const element = React.createElement(PropertyFieldToggleWithCalloutHost, {
-      ...omit(props, ["options"]),
+      ...omit(props, ['options']),
       options: options,
       onChange: this._onChanged.bind(this),
-      selectedKey: selectedKey
+      selectedKey: selectedKey,
     });
 
     ReactDOM.render(element, elem);

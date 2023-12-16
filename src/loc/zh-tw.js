@@ -99,6 +99,7 @@ define([], () => {
   "CopyrightWarning": "您有責任尊重他人的權利,包括版權。",
   "CreativeCommonsMessage": "這些結果使用知識共用許可證進行標記。查看許可證以確保符合要求。",
   "DateFormat": "毫米/DD/YYYY hh:mm A。",
+  "DeleteSelectedButtonTitle": "刪除所選擇的文件",  
   "DocumentLabelTemplate": "{0}, 文檔, 修改{1}, 編輯, {2}, 私人。",
   "DocumentLibraries": "文檔庫。",
   "EditedByNamePlate": "編輯者。",

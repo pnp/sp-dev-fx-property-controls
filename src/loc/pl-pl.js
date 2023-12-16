@@ -99,6 +99,7 @@ define([], () => {
     "CopyrightWarning": "Użytkownik jest odpowiedzialny za poszanowanie praw innych osób, w tym praw autorskich.",
     "CreativeCommonsMessage": "Wyniki te są oznaczone licencjami Creative Commons. Przejrzyj licencje, aby upewnić się, że są zgodne.",
     "DateFormat": "MM/DD/RRRR gg:mm A",
+    "DeleteSelectedButtonTitle": "Usuń wybrany plik",    
     "DocumentLabelTemplate": "{0}, Dokument, Zmodyfikowana {1}, edytowana przez {2},",
     "DocumentLibraries": "Biblioteki dokumentów",
     "EditedByNamePlate": "edytowane przez ",

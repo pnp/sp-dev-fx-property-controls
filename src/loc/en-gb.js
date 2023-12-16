@@ -99,6 +99,7 @@ define([], () => {
     "CopyrightWarning": "You are responsible for respecting others' rights, including copyright.",
     "CreativeCommonsMessage": "These results are tagged with Creative Commons licenses. Review the licenses to ensure you comply.",
     "DateFormat": "DD/MM/YYYY hh:mm A",
+    "DeleteSelectedButtonTitle": "Delete selected file",
     "DocumentLabelTemplate": "{0}, Document, Modified {1}, edited by {2}, Private",
     "DocumentLibraries": "Document libraries",
     "EditedByNamePlate": "edited by ",

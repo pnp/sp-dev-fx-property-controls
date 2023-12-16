@@ -99,6 +99,7 @@ define([], () => {
     "CopyrightWarning": "您有责任尊重他人的权利，包括版权。",
     "CreativeCommonsMessage": "这些结果使用知识共享许可证进行标记。查看许可证以确保符合要求。",
     "DateFormat": "毫米/DD/YYYY hh：mm A",
+    "DeleteSelectedButtonTitle": "删除所选文件",    
     "DocumentLabelTemplate": "{0}， 文档， 修改{1}， 编辑， {2}， 私人",
     "DocumentLibraries": "文档库",
     "EditedByNamePlate": "编辑者",

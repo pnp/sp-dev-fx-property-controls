@@ -99,6 +99,7 @@ define([], () => {
     "CopyrightWarning": "Ste zodpovední za rešpektovanie práv iných vrátane autorských práv.",
     "CreativeCommonsMessage": "Tieto výsledky sú označené licenciami Creative Commons. Skontrolujte licencie, aby ste sa uistili, že spĺňate požiadavky.",
     "DateFormat": "MM/DD/RRRR hh:mm A",
+    "DeleteSelectedButtonTitle": "Zmazať vybraný súbor",    
     "DocumentLabelTemplate": "{0}, Dokument, {1}, editoval {2}, Súkromné",
     "DocumentLibraries": "Knižnice dokumentov",
     "EditedByNamePlate": "editoval ",

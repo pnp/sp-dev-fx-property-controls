@@ -99,6 +99,7 @@ define([], () => {
     "CopyrightWarning": "Du er ansvarlig for å respektere andres rettigheter, inkludert opphavsrett.",
     "CreativeCommonsMessage": "Disse resultatene er merket med Creative Commons-lisenser. Se gjennom lisensene for å sikre at du overholder dem.",
     "DateFormat": "MM/DD/ÅÅÅÅ hh:mm A",
+    "DeleteSelectedButtonTitle": "Slett valgt fil",
     "DocumentLabelTemplate": "{0}, Dokument, Endret {1}, redigert av {2}, Privat",
     "DocumentLibraries": "Dokumentbiblioteker",
     "EditedByNamePlate": "redigert av ",

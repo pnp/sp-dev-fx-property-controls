@@ -109,7 +109,6 @@ declare interface IPropertyControlStrings {
   TeamPickerNoResults: string;
   TeamPickerSitesChosen: string;
 
-  //FilePicker
   // File picker
   AddFileButtonLabel: string;
   AddImageButtonLabel: string;
@@ -124,6 +123,7 @@ declare interface IPropertyControlStrings {
   CopyrightWarning: string;
   CreativeCommonsMessage: string;
   DateFormat: string;
+  DeleteSelectedButtonTitle: string;
   DocumentLabelTemplate: string;
   DocumentLibraries: string;
   EditedByNamePlate: string;

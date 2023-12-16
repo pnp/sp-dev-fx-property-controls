@@ -99,6 +99,7 @@ define([], () => {
     "CopyrightWarning": "著作権を含め、他人の権利を尊重する責任があります。",
     "CreativeCommonsMessage": "これらの結果にはクリエイティブ・コモンズのライセンスがタグ付けされます。ライセンスを確認して、準拠していることを確認します。",
     "DateFormat": "MM/DD/YYYY hh:mm A",
+    "DeleteSelectedButtonTitle": "選択したファイルを削除",
     "DocumentLabelTemplate": "{0}, ドキュメント, 修正{1}, 編集: {2}, プライベート",
     "DocumentLibraries": "ドキュメント ライブラリ",
     "EditedByNamePlate": "編集日時:",

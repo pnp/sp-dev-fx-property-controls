@@ -103,7 +103,9 @@ export default class PropertyFieldMonacoEditorHost extends React.Component<
           }}
           headerText={strings.MonacoEditorPanelTitle}
           onRenderFooterContent={this.onRenderFooterContent}
-          isFooterAtBottom={true}>
+          isFooterAtBottom={true}
+          layerProps={{ eventBubblingEnabled: true }}
+        >
           <div className={this.controlClasses.headerTitle}>
             <MonacoEditor {...this.props} onValueChange={ this._onValueChange}/>
           </div>

@@ -5,9 +5,13 @@
       "changes": {
         "new": [],
         "enhancements": [],
-        "fixes": []
+        "fixes": [
+          "`PropertyFieldMonacoEditor` and `PropertyFieldCodeEditor`: fix text selection in code editor [#590](https://github.com/pnp/sp-dev-fx-property-controls/issues/590)"
+        ]
       },
-      "contributions": []
+      "contributions": [
+        "[Luna Heyman](https://github.com/toodeluna)"
+      ]
     },
     {
       "version": "3.15.1",

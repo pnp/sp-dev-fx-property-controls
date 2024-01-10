@@ -90,6 +90,7 @@ export default class PropertyFieldSitePickerHost extends React.Component<IProper
       <div>
         {this.props.label && <Label>{this.props.label}</Label>}
         <SearchBox
+          disabled={this.props.disabled}
           placeholder={strings.SitePickerSearchBoxPlaceholder}
           onChanged={this.async.debounce(this.onSearchFieldChange, this.props.deferredValidationTime)}
         />

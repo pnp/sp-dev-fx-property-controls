@@ -775,7 +775,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
                   key: 'sitesFieldId',
-                  trimDuplicates: true
+                  trimDuplicates: true,
+                  disabled: false
                 }),
                 PropertyFieldTeamPicker('teams', {
                   key: 'teamsPicker',

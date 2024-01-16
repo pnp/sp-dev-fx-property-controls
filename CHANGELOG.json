@@ -4,13 +4,16 @@
       "version": "3.16.0",
       "changes": {
         "new": [],
-        "enhancements": [],
+        "enhancements": [
+          "`PropertyFieldSitePicker`: disabled property not implemented in UI [#577](https://github.com/pnp/sp-dev-fx-property-controls/issues/577)"
+        ],
         "fixes": [
           "`PropertyFieldMonacoEditor` and `PropertyFieldCodeEditor`: fix text selection in code editor [#590](https://github.com/pnp/sp-dev-fx-property-controls/issues/590)"
         ]
       },
       "contributions": [
-        "[Luna Heyman](https://github.com/toodeluna)"
+        "[Luna Heyman](https://github.com/toodeluna)",
+        "[srpmtt](https://github.com/srpmtt)"
       ]
     },
     {

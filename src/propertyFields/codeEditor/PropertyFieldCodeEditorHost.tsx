@@ -216,6 +216,7 @@ export default class PropertyFieldCodeEditorHost extends React.Component<IProper
               boxSizing: 'border-box'
             }
           }}
+          layerProps={{ eventBubblingEnabled: true }}
           onRenderFooterContent={() => (
             <div className={styles.actions}>
               <div className="ms-Grid" dir="ltr">

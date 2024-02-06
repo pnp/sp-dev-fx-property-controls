@@ -2,6 +2,14 @@
 
 ## 3.16.0
 
+### Fixes
+
+- `PropertyFieldMonacoEditor` and `PropertyFieldCodeEditor`: fix text selection in code editor [#590](https://github.com/pnp/sp-dev-fx-property-controls/issues/590)
+
+### Contributors
+
+Special thanks to our contributor: [Luna Heyman](https://github.com/toodeluna).
+
 ## 3.15.1
 
 ### Fixes

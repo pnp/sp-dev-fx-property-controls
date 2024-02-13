@@ -64,7 +64,7 @@ The `PropertyFieldFolderPicker` control can be configured with the following pro
 | disabled | boolean | no | Is the control disabled. |
 | canCreateFolders | boolean | no | Allow current user to create folders on the target location. If enabled, you need to ensure that the user has the required permissions. |
 | onSelect | (folder: IFolder): void | no | Callback function called after a folder is selected. |
-
+| siteAbsoluteUrl |  string | no | The absolute url of the site you want to pick a folder from (if differenct than the site te wbpart ins installed on) |
 
 interface `IFolder`
 

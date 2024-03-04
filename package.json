@@ -80,6 +80,8 @@
   "license": "MIT",
   "keywords": [
     "sharepoint",
+    "microsoft365",
+    "m365",
     "office365",
     "tools",
     "spfx",
@@ -90,17 +92,6 @@
   },
   "homepage": "https://pnp.github.io/sp-dev-fx-property-controls/",
   "main": "lib/index.js",
-  "maintainers": [
-    {
-      "name": "estruyf",
-      "email": "elio@struyfconsulting.be"
-    }
-  ],
-  "contributors": [
-    "Gove, Russell <russellgove@gmail.com>",
-    "Kent, Chris <>",
-    "Opdendries, David <>",
-    "Struyf, Elio <elio@struyfconsulting.be>",
-    "Terentiev, Alex <>"
-  ]
+  "maintainers": [],
+  "contributors": []
 }

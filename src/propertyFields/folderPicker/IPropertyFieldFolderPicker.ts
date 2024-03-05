@@ -2,9 +2,13 @@ import { BaseComponentContext } from '@microsoft/sp-component-base';
 import { IFolder } from '../../services/IFolderExplorerService';
 
 export interface IPropertyFieldFolderPickerProps {
-    /**
-   * Current context
-   */
+  /**
+* Current context
+*/
+  siteAbsoluteUrl?: string;
+  /**
+ * Current context
+ */
   context: BaseComponentContext;
 
   /**
@@ -63,10 +67,10 @@ export interface IPropertyFieldFolderPickerProps {
    */
   key: string;
 
-  }
+}
 
-  export interface IPropertyFieldFolderPickerPropsInternal extends IPropertyFieldFolderPickerProps {
-    targetProperty: string;
-    onRender(elem: HTMLElement): void;
-    onDispose(elem: HTMLElement): void;
-  }
+export interface IPropertyFieldFolderPickerPropsInternal extends IPropertyFieldFolderPickerProps {
+  targetProperty: string;
+  onRender(elem: HTMLElement): void;
+  onDispose(elem: HTMLElement): void;
+}

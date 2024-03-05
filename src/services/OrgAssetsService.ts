@@ -48,15 +48,20 @@ export class OrgAssetsService extends FileBrowserService {
   public getListItemsByListId = async (listId: string, folderPath: string, acceptedFilesExtensions?: string[], nextPageQueryStringParams?: string): Promise<FilesQueryResult> => {
     let filesQueryResult: FilesQueryResult = { items: [], nextHref: null };
     try {
+      let orgAssetLibraryServerRelativeUrlWithoutTrailingSlash = this._orgAssetsLibraryServerRelativeSiteUrl;
+      if (orgAssetLibraryServerRelativeUrlWithoutTrailingSlash.charAt(orgAssetLibraryServerRelativeUrlWithoutTrailingSlash.length - 1) === '/') {
+        orgAssetLibraryServerRelativeUrlWithoutTrailingSlash = orgAssetLibraryServerRelativeUrlWithoutTrailingSlash.slice(0, -1);
+      }
+
       // Retrieve Lib path from folder path
       if (folderPath.charAt(0) !== "/") {
         folderPath = `/${folderPath}`;
       }
       // Remove all the rest of the folder path
-      let libName = folderPath.replace(`${this._orgAssetsLibraryServerRelativeSiteUrl}/`, "");
-      libName = libName.split("/")[0];
-      // Buil absolute library URL
-      const libFullUrl = this.buildAbsoluteUrl(`${this._orgAssetsLibraryServerRelativeSiteUrl}/${libName}`);
+      let libName = folderPath.replace(`${orgAssetLibraryServerRelativeUrlWithoutTrailingSlash}/`, "");
+      libName = libName.split("/")[0]; // Get only library name, if navigated to sub folder in the picker
+      // Build absolute library URL
+      const libFullUrl = this.buildAbsoluteUrl(`${orgAssetLibraryServerRelativeUrlWithoutTrailingSlash}/${libName}`);
 
       let queryStringParams: string = "";
       // Do not pass FolderServerRelativeUrl as query parameter
@@ -104,7 +109,7 @@ export class OrgAssetsService extends FileBrowserService {
 
   private _parseOrgAssetsLibraryItem = (libItem: any): ILibrary => { // eslint-disable-line @typescript-eslint/no-explicit-any
     const orgAssetsLibrary: ILibrary = {
-      absoluteUrl: this.buildAbsoluteUrl(libItem.LibraryUrl.DecodedUrl),
+      absoluteUrl: this.buildAbsoluteUrl(`/${libItem.LibraryUrl.DecodedUrl}`),
       title: libItem.DisplayName,
       id: libItem.ListId,
       serverRelativeUrl: libItem.LibraryUrl.DecodedUrl,

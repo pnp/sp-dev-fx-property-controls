@@ -1,4 +1,8 @@
 import * as React from 'react';
+
+import { IconButton } from "@fluentui/react/lib/components/Button";
+import * as strings from 'PropertyControlStrings';
+
 import { FilePicker, IFilePickerResult } from './filePickerControls';
 import styles from './PropertyFieldFilePickerHost.module.scss';
 import { IPropertyFieldFilePickerHostProps } from './IPropertyFieldFilePickerHost';
@@ -25,7 +29,13 @@ export default class PropertyFieldFilePickerHost extends React.Component<IProper
             {GeneralHelper.isImage(this.props.filePickerResult.fileName) &&
               <img className={styles.filePreviewImage} src={this.props.filePickerResult.fileAbsoluteUrl} alt={this.props.filePickerResult.fileName} />
             }
-            <div>
+            <div className={styles.filePreviewDelete}>
+              <IconButton 
+                iconProps={{ iconName: "Delete" }} 
+                title={strings.DeleteSelectedFileButtonLabel}
+                ariaLabel={strings.DeleteSelectedFileButtonLabel}
+                onClick={() => { this.handleFileSave(null).then(() => { /* no-op; */ }).catch(() => { /* no-op; */ }); }}
+                disabled={this.props.disabled} />
               {this.props.filePickerResult.fileName}
             </div>
           </div>

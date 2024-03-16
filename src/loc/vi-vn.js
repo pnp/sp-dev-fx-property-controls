@@ -99,6 +99,7 @@ define([], () => {
     "CopyrightWarning": "Bạn có trách nhiệm tôn trọng quyền của người khác, bao gồm cả bản quyền.",
     "CreativeCommonsMessage": "Những kết quả này được gắn thẻ với giấy phép Creative Commons. Xem lại giấy phép để đảm bảo bạn tuân thủ.",
     "DateFormat": "MM / DD / YYYY hh: mm A",
+    "DeleteSelectedFileButtonLabel": "Xóa tệp đã chọn",    
     "DocumentLabelTemplate": "{0}, Tài liệu, Sửa đổi {1}, chỉnh sửa bởi {2}, Riêng tư",
     "DocumentLibraries": "Thư viện tài liệu",
     "EditedByNamePlate": "chỉnh sửa bởi ",

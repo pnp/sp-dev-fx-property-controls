@@ -99,6 +99,7 @@ define([], () => {
     "CopyrightWarning": "Jūs esate atsakingi už pagarbą kitų teisėms, įskaitant autorių teises.",
     "CreativeCommonsMessage": "Šie rezultatai pažymėti Creative Commons licencijomis. Peržiūrėkite licencijas, kad įsitikintumėte, jog laikotės reikalavimų.",
     "DateFormat": "MM/DD/MMMM:mm A",
+    "DeleteSelectedFileButtonLabel": "Ištrinti pasirinktą failą",
     "DocumentLabelTemplate": "{0}, dokumentas, modifikuotas {1}, redaguotas {2}, Privatus",
     "DocumentLibraries": "Dokumentų bibliotekos",
     "EditedByNamePlate": "redagavo ",

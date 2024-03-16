@@ -100,6 +100,7 @@ define([], function () {
     CopyrightWarning: "You are responsible for respecting others' rights, including copyright.",
     CreativeCommonsMessage: "These results are tagged with Creative Commons licenses. Review the licenses to ensure you comply.",
     DateFormat: "MM/DD/YYYY hh:mm A",
+    DeleteSelectedFileButtonLabel: "Delete selected file",
     DocumentLabelTemplate: "{0}, Document, Modified {1}, edited by {2}, Private",
     DocumentLibraries: "Document libraries",
     EditedByNamePlate: "edited by ",

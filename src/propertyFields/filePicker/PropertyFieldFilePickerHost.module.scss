@@ -1,11 +1,16 @@
 .filePreview {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+  .filePreviewDelete {
+    display: flex;
+    align-items: center;
+    padding-top: 4px;
   }
-  
+
   .filePreviewImage {
     display: block;
     max-width: 100%;
     max-height: 220px;
     image-orientation: from-image;
   }
-  

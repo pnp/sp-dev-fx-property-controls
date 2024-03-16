@@ -99,6 +99,7 @@ define([], () => {
     "CopyrightWarning": "أنت مسؤول عن احترام حقوق الآخرين ، بما في ذلك حقوق النشر.",
     "CreativeCommonsMessage": "يتم تمييز هذه النتائج بتراخيص المشاع الإبداعي. راجع التراخيص للتأكد من التزامك بها.",
     "DateFormat": "مم / يوم / سنة حه: مم أ",
+    "DeleteSelectedFileButtonLabel": "حذف الملف المحدد",
     "DocumentLabelTemplate": "{0},مستند,معدل {1},تم التعديل بواسطة {2},خاص",
     "DocumentLibraries": "مكتبات المستندات",
     "EditedByNamePlate": "حررت بواسطة ",

@@ -99,6 +99,7 @@ define([], () => {
     "CopyrightWarning": "Vostè és responsable de respectar els drets dels altres, inclosos els drets d'autor.",
     "CreativeCommonsMessage": "Aquests resultats estan etiquetats amb llicències Creative Commons. Reviseu les llicències per assegurar-vos que compliu.",
     "DateFormat": "MM / DD / YYYY hh: mm A",
+    "DeleteSelectedFileButtonLabel": "Suprimeix el fitxer seleccionat",
     "DocumentLabelTemplate": "{0}, Document, Modificat {1}, editat per {2}, Privat",
     "DocumentLibraries": "Biblioteques de documents",
     "EditedByNamePlate": "editat per ",

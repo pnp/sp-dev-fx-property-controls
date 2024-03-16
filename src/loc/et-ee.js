@@ -99,6 +99,7 @@ define([], () => {
     "CopyrightWarning": "Teie vastutate teiste õiguste, sealhulgas autoriõiguse austamise eest.",
     "CreativeCommonsMessage": "Need tulemused on sildistatud Creative Commons i litsentsidega. Vaadake litsentsid üle, et tagada nende järgimine.",
     "DateFormat": "KK/PP/AAAA hh:mm A",
+    "DeleteSelectedFileButtonLabel": "Kustuta valitud fail",
     "DocumentLabelTemplate": "{0}, Dokument, Muudetud {1}, redigeeritud {2}, Private",
     "DocumentLibraries": "Dokumenditeegid",
     "EditedByNamePlate": "toimetanud: ",

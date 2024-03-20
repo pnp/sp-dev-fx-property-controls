@@ -1,7 +1,7 @@
 {
   "name": "@pnp/spfx-property-controls",
   "description": "Reusable property pane controls for SharePoint Framework solutions",
-  "version": "3.16.0",
+  "version": "3.17.0",
   "engines": {
     "node": ">=16.13.0 <17.0.0 || >=18.17.1 <19.0.0"
   },
@@ -9,7 +9,7 @@
     "build": "gulp build",
     "clean": "gulp clean",
     "test": "gulp test",
-    "serve": "gulp bundle --custom-serve --max_old_space_size=4096 && fast-serve",
+    "serve": "fast-serve",
     "versionUpdater": "gulp versionUpdater",
     "prepublishOnly": "gulp",
     "changelog": "node scripts/create-changelog.js && node scripts/sync-changelogs.js && gulp versionUpdater",
@@ -69,7 +69,7 @@
     "husky": "^6.0.0",
     "request-promise": "4.2.6",
     "sonarqube-scanner": "2.8.2",
-    "spfx-fast-serve-helpers": "~1.17.3",
+    "spfx-fast-serve-helpers": "1.18.11",
     "typescript": "4.7.4",
     "uuid": "^9.0.1"
   },
@@ -80,6 +80,8 @@
   "license": "MIT",
   "keywords": [
     "sharepoint",
+    "microsoft365",
+    "m365",
     "office365",
     "tools",
     "spfx",
@@ -90,17 +92,6 @@
   },
   "homepage": "https://pnp.github.io/sp-dev-fx-property-controls/",
   "main": "lib/index.js",
-  "maintainers": [
-    {
-      "name": "estruyf",
-      "email": "elio@struyfconsulting.be"
-    }
-  ],
-  "contributors": [
-    "Gove, Russell <russellgove@gmail.com>",
-    "Kent, Chris <>",
-    "Opdendries, David <>",
-    "Struyf, Elio <elio@struyfconsulting.be>",
-    "Terentiev, Alex <>"
-  ]
+  "maintainers": [],
+  "contributors": []
 }

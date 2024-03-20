@@ -2,13 +2,17 @@
 
 ## 3.16.0
 
+### Enhancements
+
+- `PropertyFieldSitePicker`: disabled property not implemented in UI [#577](https://github.com/pnp/sp-dev-fx-property-controls/issues/577)
+
 ### Fixes
 
 - `PropertyFieldMonacoEditor` and `PropertyFieldCodeEditor`: fix text selection in code editor [#590](https://github.com/pnp/sp-dev-fx-property-controls/issues/590)
 
 ### Contributors
 
-Special thanks to our contributor: [Luna Heyman](https://github.com/toodeluna).
+Special thanks to our contributors (in alphabetical order): [Luna Heyman](https://github.com/toodeluna), [srpmtt](https://github.com/srpmtt).
 
 ## 3.15.1
 

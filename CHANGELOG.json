@@ -1,6 +1,19 @@
 {
   "versions": [
     {
+      "version": "3.17.0",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "`fast-serve`: ast-serve update to match the most recent changes. [#606](https://github.com/pnp/sp-dev-fx-property-controls/pull/606)"
+        ],
+        "fixes": []
+      },
+      "contributions": [
+        "[Sergei Sergeev](https://github.com/s-KaiNet)"
+      ]
+    },
+    {
       "version": "3.16.0",
       "changes": {
         "new": [],

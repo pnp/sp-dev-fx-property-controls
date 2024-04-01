@@ -141,4 +141,4 @@ Enum `PropertyFieldContentTypePickerOrderBy`
 | Id | Sort by contentType ID |
 | Title | Sort by contentType title |
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldViewPicker)
+![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldContentTypePicker)

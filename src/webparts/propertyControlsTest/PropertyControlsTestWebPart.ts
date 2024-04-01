@@ -124,6 +124,10 @@ import {
   PropertyFieldViewPicker,
   PropertyFieldViewPickerOrderBy,
 } from '../../PropertyFieldViewPicker';
+import {
+  PropertyFieldContentTypePicker,
+  PropertyFieldContentTypeOrderBy
+} from '../../PropertyFieldContentTypePicker';
 import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
 import {
   IPropertyControlsTestProps,
@@ -157,6 +161,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         listFiltered: this.properties.singleListFiltered || "",
         singleListMultipleBaseTemplate: this.properties.singleListMultipleBaseTemplate || "",
         view: this.properties.view,
+        contentType : this.properties.contentType,
         column: this.properties.column,
         multiColumn: this.properties.multiColumn,
         multiList: this.properties.multiList as string[] || [],
@@ -672,6 +677,20 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                     console.log("Lists", lists);
                     return lists;
                   }
+                }),
+                PropertyFieldContentTypePicker('contentType', {
+                  label: 'Select a Content Type',
+                  context: this.context,
+                  selectedContentType: this.properties.contentType,
+                  //listId: "0da3b4b7-8ebd-4f15-87ee-afae5cacadad",//this.properties.singleListFiltered,//"03B3B5BC-8F37-4E9F-B9CF-0B13C5B5E8B8",
+                  disabled: false,
+                  //webAbsoluteUrl:"https://pm3q.sharepoint.com/sites/PnPDemo",
+                  orderBy: PropertyFieldContentTypeOrderBy.Name,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  onGetErrorMessage: null,
+                  deferredValidationTime: 0,
+                  key: 'contentTypePickerFieldId'
                 }),
                 PropertyFieldViewPicker('view', {
                   label: 'Select a view',

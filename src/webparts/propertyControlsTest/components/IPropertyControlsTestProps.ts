@@ -26,6 +26,7 @@ export interface IPropertyControlsTestProps {
   multiList: string[];
   multiListFiltered: string[];
   view: string;
+  contentType: string;
   column: string;
   multiColumn: string[];
   terms: IPickerTerms;

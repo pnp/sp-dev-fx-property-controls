@@ -23,6 +23,7 @@ export interface IPropertyControlsTestWebPartProps {
   singleListMultipleBaseTemplate: string;
   multiListFiltered: string[];
   view: string;
+  contentType:string;
   column: string;
   multiColumn: string[];
   terms: IPickerTerms;

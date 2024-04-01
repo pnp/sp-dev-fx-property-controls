@@ -68,9 +68,8 @@ PropertyFieldContentTypePicker('contentType', {
   deferredValidationTime: 0,
   key: 'contentTypePickerFieldId'
 })
-
-![ContentType picker for site ](../assets/contentTypes-for-Site.gif)
 ```
+![ContentType picker for site ](../assets/contentTypes-for-Site.gif)
 
 6. To fetch the contentTypes of selected list, change the property pane configuration as follows:
 
@@ -89,9 +88,9 @@ PropertyFieldContentTypePicker('contentType', {
   key: 'contentTypePickerFieldId'
 })
 
-![ContentType picker for selected list ](../assets/contentTypePicker1.png)
-
 ```
+
+![ContentType picker for selected list ](../assets/contentTypePicker1.png)
 
 7. If ListID specified in the propertiesc is not available in the selected site, the control will error out as follows
 ```TypeScript
@@ -109,9 +108,8 @@ PropertyFieldContentTypePicker('contentType', {
   key: 'contentTypePickerFieldId'
 })
 
-![ContentType picker Error ](../assets/contentTypePicker-Error.png)
-
 ```
+![ContentType picker Error ](../assets/contentTypePicker-Error.png)
 
 ## Implementation
 
@@ -140,7 +138,7 @@ Enum `PropertyFieldContentTypePickerOrderBy`
 
 | Name | Description |
 | ---- | ---- |
-| Id | Sort by view ID |
-| Title | Sort by view title |
+| Id | Sort by contentType ID |
+| Title | Sort by contentType title |
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldViewPicker)

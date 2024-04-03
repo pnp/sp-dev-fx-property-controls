@@ -24,12 +24,14 @@ export interface IPropertyControlsTestWebPartProps {
 
 3. Create a new property for your web part, as indicated between the `BEGIN:` and `END:` comments below:
 
+
 ```TypeScript
 export interface IPropertyControlsTestWebPartProps {
   list: string; // Stores the list ID
 
   // BEGIN: Added
   view: string; // Stores the view ID
+  contentType : string // stores the contenttype ID
   // END: Added
 }
 ```

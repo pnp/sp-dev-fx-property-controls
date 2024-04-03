@@ -55,4 +55,5 @@ export interface IPropertyControlsTestProps {
   iconPicker: string;
   editableComboBox: string;
   monacoEditor:string;
+  contentType: string;
 }

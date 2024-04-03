@@ -35,6 +35,7 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
               <p className="ms-font-m ms-fontColor-neutralDark">List Filtered: {this.props.listFiltered}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">List (Multi baseTemplate): {this.props.singleListMultipleBaseTemplate}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">View: {this.props.view}</p>
+              <p className="ms-font-m ms-fontColor-neutralDark">ContentType: {this.props.contentType}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Column: {this.props.column}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Multi Column: {this.props.multiColumn? this.props.multiColumn.join(', '):''}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Multi List: {this.props.multiList.join(', ')}</p>

@@ -1,5 +1,15 @@
 # Releases
 
+## 3.17.0
+
+### Enhancements
+
+- `fast-serve`: ast-serve update to match the most recent changes. [#606](https://github.com/pnp/sp-dev-fx-property-controls/pull/606)
+
+### Contributors
+
+Special thanks to our contributor: [Sergei Sergeev](https://github.com/s-KaiNet).
+
 ## 3.16.0
 
 ### Enhancements

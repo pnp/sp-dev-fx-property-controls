@@ -1,12 +1,12 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
-import { MessageBarType } from '@fluentui/react/lib/MessageBar';
-import { SpinnerSize } from '@fluentui/react/lib/Spinner';
-import { PanelType } from '@fluentui/react';
-import { DayOfWeek } from '@fluentui/react/lib/DateTimeUtilities';
 import * as strings from 'PropertyControlsTestWebPartStrings';
 
+import { PanelType } from '@fluentui/react';
+import { DayOfWeek } from '@fluentui/react/lib/DateTimeUtilities';
+import { MessageBarType } from '@fluentui/react/lib/MessageBar';
+import { SpinnerSize } from '@fluentui/react/lib/Spinner';
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
@@ -17,6 +17,7 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import { PropertyPaneHelpers } from '../../helpers';
 import { PropertyFieldMonacoEditor } from '../../PropertyFiedMonacoEditor';
+import { PropertyFieldButton } from '../../PropertyFieldButton';
 import {
   PropertyFieldButtonWithCallout,
 } from '../../PropertyFieldButtonWithCallout';
@@ -138,6 +139,7 @@ import {
  */
 export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<IPropertyControlsTestWebPartProps> {
   private multiSelectProps = [];
+ private showMessageButton = false;
 
  protected monacoChange = (newValue: string, validationErrors: string[]) => {
    console.log('teste',newValue);
@@ -850,8 +852,10 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   //iconName: 'FangBody',
                   key: 'swatchColorFieldId'
                 }),
+               
               ]
             },
+             
             {
               groupName: "Controls with callout",
               isCollapsed: true,
@@ -1062,6 +1066,21 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   label: "File Picker",
                   includePageLibraries: true
                 }),
+                PropertyFieldButton('fakeProperty', {
+                  key: 'buttonFieldId',
+                  text: 'Button' ,
+                  onClick: () => { this.showMessageButton = !this.showMessageButton; this.context.propertyPane.refresh(); },
+                  isVisible: true,
+                  isPrimary: true,
+                  disabled: true
+                }),
+                 PropertyFieldMessage("message", {
+                  key: "0",
+                  text: "Button clickd Completed!",
+                  messageType:
+                    MessageBarType.success,
+                  isVisible: this.showMessageButton 
+                 }), 
                 PropertyFieldIconPicker('iconPicker', {
                   currentIcon: this.properties.iconPicker,
                   key: "iconPickerId",

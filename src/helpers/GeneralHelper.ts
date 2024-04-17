@@ -356,5 +356,5 @@ export const toRelativeUrl = (absoluteUrl: string): string => {
     return '';
   }
 
-  return absoluteUrl.replace(/^(?:\/\/|[^/]+)*\//, '/');
+  return new URL(absoluteUrl).pathname;
 };

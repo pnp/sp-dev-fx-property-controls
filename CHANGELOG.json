@@ -9,11 +9,14 @@
           "`PropertyFieldContentTypePicker`:  PropertyFieldContentTypePicker control [#611](https://github.com/pnp/sp-dev-fx-property-controls/pull/611)"
 
         ],
-        "fixes": []
+        "fixes": [
+          "`General Helper`: toRelativeUrl returns proper relative url in case of root site  (https://github.com/pnp/sp-dev-fx-property-controls/pull/609)"
+        ]
       },
       "contributions": [
         "[Sergei Sergeev](https://github.com/s-KaiNet)",
-        "[Nishkalank Bezawada](https://github.com/NishkalankBezawada)"
+        "[Nishkalank Bezawada](https://github.com/NishkalankBezawada)",
+        "[ramonitor](https://github.com/ramonitor)"
       ]
     },
     {

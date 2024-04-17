@@ -24,6 +24,8 @@ class PropertyFieldFolderPickerBuilder implements IPropertyPaneField<IPropertyFi
   private context: BaseComponentContext;
   private label: string;
 
+  private siteAbsoluteUrl?: string;
+
   private customProperties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   private disabled: boolean = false;
   private key: string;
@@ -61,17 +63,18 @@ class PropertyFieldFolderPickerBuilder implements IPropertyPaneField<IPropertyFi
 
     this.onPropertyChange = _properties.onPropertyChange;
     this.customProperties = _properties.properties;
+    this.siteAbsoluteUrl = this.properties.siteAbsoluteUrl;
 
-    if(_properties.required === true){
-        this.required = _properties.required;
+    if (_properties.required === true) {
+      this.required = _properties.required;
     }
 
     if (_properties.disabled === true) {
       this.disabled = _properties.disabled;
     }
 
-    if(_properties.canCreateFolders === true){
-        this.canCreateFolders = _properties.canCreateFolders;
+    if (_properties.canCreateFolders === true) {
+      this.canCreateFolders = _properties.canCreateFolders;
     }
   }
 
@@ -81,26 +84,27 @@ class PropertyFieldFolderPickerBuilder implements IPropertyPaneField<IPropertyFi
   private render(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void { // eslint-disable-line @typescript-eslint/no-explicit-any
 
     const element: React.ReactElement<IPropertyFieldFolderPickerHostProps> = React.createElement(PropertyFieldFolderPickerHost, {
-        label: this.label,
-        targetProperty: this.targetProperty,
-        context: this.context,
-        rootFolder: this.rootFolder,
-        defaultFolder: this.defaultFolder,
-        onSelect: this.onSelect,
-        required: this.required,
-        canCreateFolders: this.canCreateFolders,
-        onDispose: this.dispose,
-        onRender: this.render,
-        onChange: changeCallback,
-        onPropertyChange: this.onPropertyChange,
-        properties: this.customProperties,
-        key: this.key,
-        disabled: this.disabled,
-        selectedFolder: this.selectedFolder
+      label: this.label,
+      targetProperty: this.targetProperty,
+      context: this.context,
+      rootFolder: this.rootFolder,
+      defaultFolder: this.defaultFolder,
+      onSelect: this.onSelect,
+      required: this.required,
+      canCreateFolders: this.canCreateFolders,
+      onDispose: this.dispose,
+      onRender: this.render,
+      onChange: changeCallback,
+      onPropertyChange: this.onPropertyChange,
+      properties: this.customProperties,
+      key: this.key,
+      disabled: this.disabled,
+      selectedFolder: this.selectedFolder,
+      siteAbsoluteUrl: this.siteAbsoluteUrl
     });
 
-      // Calls the REACT content generator
-      ReactDom.render(element, elem);
+    // Calls the REACT content generator
+    ReactDom.render(element, elem);
   }
 
   /**
@@ -135,7 +139,8 @@ export function PropertyFieldFolderPicker(targetProperty: string, properties: IP
     canCreateFolders: properties.canCreateFolders,
     defaultFolder: properties.defaultFolder,
     required: properties.required,
-    selectedFolder: properties.selectedFolder
+    selectedFolder: properties.selectedFolder,
+    siteAbsoluteUrl: properties.siteAbsoluteUrl
   };
   //Calls the PropertyFieldFolderPickerPicker builder object
   //This object will simulate a PropertyFieldCustom to manage his rendering process

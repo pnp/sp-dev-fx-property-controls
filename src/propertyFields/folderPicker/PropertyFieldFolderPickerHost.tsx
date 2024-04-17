@@ -34,7 +34,7 @@ export default class PropertyFieldFolderPickerHost extends React.Component<IProp
     const currentValue = getPropertyValue(this.props.properties, this.props.targetProperty);
     const nextValue = getPropertyValue(nextProps.properties, nextProps.targetProperty);
 
-    if(currentValue !== nextValue){
+    if (currentValue !== nextValue) {
       this.setState({
         selectedFolder: nextValue
       });
@@ -93,6 +93,7 @@ export default class PropertyFieldFolderPickerHost extends React.Component<IProp
               defaultFolder={this.state.selectedFolder}
               onSelect={this._onFolderSelect}
               canCreateFolders={this.props.canCreateFolders}
+              siteAbsoluteUrl={this.props.siteAbsoluteUrl}
             />
           </div>
         </Panel>

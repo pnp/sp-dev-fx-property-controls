@@ -9,7 +9,7 @@
     "build": "gulp build",
     "clean": "gulp clean",
     "test": "gulp test",
-    "serve": "fast-serve",
+    "serve": "gulp bundle --custom-serve --max_old_space_size=4096 && fast-serve",
     "versionUpdater": "gulp versionUpdater",
     "prepublishOnly": "gulp",
     "changelog": "node scripts/create-changelog.js && node scripts/sync-changelogs.js && gulp versionUpdater",
@@ -69,7 +69,7 @@
     "husky": "^6.0.0",
     "request-promise": "4.2.6",
     "sonarqube-scanner": "2.8.2",
-    "spfx-fast-serve-helpers": "1.18.11",
+    "spfx-fast-serve-helpers": "~1.18.0",
     "typescript": "4.7.4",
     "uuid": "^9.0.1"
   },

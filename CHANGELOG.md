@@ -7,9 +7,13 @@
 - `fast-serve`: ast-serve update to match the most recent changes. [#606](https://github.com/pnp/sp-dev-fx-property-controls/pull/606)
 - `PropertyFieldContentTypePicker`:  PropertyFieldContentTypePicker control [#611](https://github.com/pnp/sp-dev-fx-property-controls/pull/611)
 
+### Fixes
+
+- `General Helper`: toRelativeUrl returns proper relative url in case of root site  (https://github.com/pnp/sp-dev-fx-property-controls/pull/609)
+
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [Sergei Sergeev](https://github.com/s-KaiNet), [Nishkalank Bezawada](https://github.com/NishkalankBezawada).
+Special thanks to our contributors (in alphabetical order): [Sergei Sergeev](https://github.com/s-KaiNet), [Nishkalank Bezawada](https://github.com/NishkalankBezawada), [ramonitor](https://github.com/ramonitor).
 
 ## 3.16.0
 

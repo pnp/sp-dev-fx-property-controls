@@ -99,6 +99,7 @@ define([], () => {
     "CopyrightWarning": "Telif hakkı da dahil olmak üzere başkalarının haklarına saygı göstermeksizin sorumlusunuz.",
     "CreativeCommonsMessage": "Bu sonuçlar Creative Commons lisansları ile etiketlenir. Uymanızı sağlamak için lisansları gözden geçirin.",
     "DateFormat": "AA/GG/YYYY ss:mm A",
+    "DeleteSelectedFileButtonLabel": "Seçilen dosyayı sil",    
     "DocumentLabelTemplate": "{0}, Belge, Değiştirilmiş {1}, {2}, Özel",
     "DocumentLibraries": "Belge kitaplıkları",
     "EditedByNamePlate": "tarafından düzenlendi ",

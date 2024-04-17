@@ -5,10 +5,11 @@
 ### Enhancements
 
 - `fast-serve`: ast-serve update to match the most recent changes. [#606](https://github.com/pnp/sp-dev-fx-property-controls/pull/606)
+- `PropertyFieldContentTypePicker`:  PropertyFieldContentTypePicker control [#611](https://github.com/pnp/sp-dev-fx-property-controls/pull/611)
 
 ### Contributors
 
-Special thanks to our contributor: [Sergei Sergeev](https://github.com/s-KaiNet).
+Special thanks to our contributors (in alphabetical order): [Sergei Sergeev](https://github.com/s-KaiNet), [Nishkalank Bezawada](https://github.com/NishkalankBezawada).
 
 ## 3.16.0
 

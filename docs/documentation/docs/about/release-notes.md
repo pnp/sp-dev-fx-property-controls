@@ -7,6 +7,7 @@
 - `fast-serve`: ast-serve update to match the most recent changes. [#606](https://github.com/pnp/sp-dev-fx-property-controls/pull/606)
 - `PropertyFieldContentTypePicker`:  PropertyFieldContentTypePicker control [#611](https://github.com/pnp/sp-dev-fx-property-controls/pull/611)
 - `PropertyFieldFilePicker` : add a delete button to the selected file [#579](https://github.com/pnp/sp-dev-fx-property-controls/pull/#607)
+- `PropertyFieldFilePicker`: Fix root site org asset library showing no items in file picker (https://github.com/pnp/sp-dev-fx-property-controls/pull/603)
 
 ### Fixes
 
@@ -14,7 +15,7 @@
 
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [Sergei Sergeev](https://github.com/s-KaiNet), [Nishkalank Bezawada](https://github.com/NishkalankBezawada), [ramonitor](https://github.com/ramonitor), [Jake](https://github.com/jjkim11).
+Special thanks to our contributors (in alphabetical order): [Sergei Sergeev](https://github.com/s-KaiNet), [Nishkalank Bezawada](https://github.com/NishkalankBezawada), [ramonitor](https://github.com/ramonitor), [Jake](https://github.com/jjkim11), [Daniel Lindén](https://github.com/daniellinden22).
 
 ## 3.16.0
 

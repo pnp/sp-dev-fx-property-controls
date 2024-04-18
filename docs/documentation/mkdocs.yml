@@ -2,6 +2,7 @@ site_name: '@pnp/spfx-property-controls'
 nav:
   - Home: 'index.md'
   - Controls:
+    - PropertyFieldButton: 'controls/PropertyFieldButton.md'
     - PropertyFieldCodeEditor: 'controls/PropertyFieldCodeEditor.md'
     - PropertyFieldCollectionData: 'controls/PropertyFieldCollectionData.md'
     - PropertyFieldColorPicker: 'controls/PropertyFieldColorPicker.md'

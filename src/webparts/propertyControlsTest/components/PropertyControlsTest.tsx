@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styles from './PropertyControlsTest.module.scss';
+
 import { IPropertyControlsTestProps } from './IPropertyControlsTestProps';
-import { escape } from '@microsoft/sp-lodash-subset';
+import styles from './PropertyControlsTest.module.scss';
 
 /**
  * Property control test component that renders the property control values
@@ -17,6 +17,8 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
           <div className={`ms-Grid-row ms-bgColor-neutralLight ms-fontColor-neutralDark ${styles.row}`}>
             <div className="ms-Grid-col ms-lg10 ms-xl8 ms-xlPush2 ms-lgPush1">
               <h2 className="ms-font-xxl ms-fontColor-neutralDark">Property pane control values</h2>
+              <h3 className="ms-font-xl ms-fontColor-neutralDark">Grid</h3>
+              <p className="ms-font-m ms-fontColor-neutralDark">Grid: {this.props.gridItems.map(i => i.title).join(', ')}</p>
               <h3 className="ms-font-xl ms-fontColor-neutralDark">Message</h3>
               <p className="ms-font-m ms-fontColor-neutralDark">Message: {this.props.message}</p>
 

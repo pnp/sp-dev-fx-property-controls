@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@fluentui/react": "8.106.4",
+    "@fluentui/react-components": "^9.48.0",
     "@microsoft/sp-adaptive-card-extension-base": "1.18.2",
     "@microsoft/sp-core-library": "1.18.2",
     "@microsoft/sp-lodash-subset": "1.18.2",

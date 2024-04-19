@@ -1,18 +1,21 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+
+import omit from 'lodash/omit';
+
+import { IChoiceGroupOption } from '@fluentui/react/lib/components/ChoiceGroup';
 import {
   IPropertyPaneField,
   PropertyPaneFieldType,
 } from '@microsoft/sp-property-pane';
-import omit from 'lodash/omit';
-
-import PropertyFieldToggleWithCalloutHost from './PropertyFieldChoiceGroupWithCalloutHost';
 
 import {
-  IPropertyFieldChoiceGroupWithCalloutPropsInternal,
   IPropertyFieldChoiceGroupWithCalloutProps,
+  IPropertyFieldChoiceGroupWithCalloutPropsInternal,
 } from './IPropertyFieldChoiceGroupWithCallout';
-import { IChoiceGroupOption } from '@fluentui/react/lib/components/ChoiceGroup';
+import PropertyFieldToggleWithCalloutHost
+  from './PropertyFieldChoiceGroupWithCalloutHost';
 
 class PropertyFieldChoiceGroupWithCalloutBuilder
   implements

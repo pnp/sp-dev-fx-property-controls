@@ -1139,9 +1139,9 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                  }), 
                  PropertyFieldGrid('gridItems', {
                   multiSelect: true,
-                   items: this.gridItems,
-                   label: 'Grid Items',
-                   key: 'gridFieldId',
+                  items: this.gridItems,
+                  label: 'Grid Items',
+                  key: 'gridFieldId',
                   defaultSelectedItems: this.properties.gridItems,
                   maxHeight: 500,
                   onSelected: (item: IItem[]) => {

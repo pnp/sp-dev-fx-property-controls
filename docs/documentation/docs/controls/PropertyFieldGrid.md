@@ -4,7 +4,7 @@ This control generates a Grid Control .
 
 **PropertyFieldGrid example usage**
 
-![PropertyFieldButton example](../assets/propertyFieldGrid.png)
+![PropertyFieldGrid example](../assets/propertyFieldGrid.png)
 
 ## How to use this control in your solutions
 

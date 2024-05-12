@@ -19,7 +19,7 @@ class PropertyFieldGridBuilder implements IPropertyPaneField<IPropertyFieldGridP
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public properties: IPropertyFieldGridPropsInternal;
   private _onChangeCallback: (targetProperty?: string, newValue?: any) => void;
-  // eslint-disable-line @typescript-eslint/no-explicit-any
+
 
   public constructor(targetProperty: string, properties: IPropertyFieldGridPropsInternal) {
     this.targetProperty = targetProperty;

@@ -1,6 +1,3 @@
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { IItem } from './grid/IItem';
 
 export interface IPropertyFieldGridControlProps {
@@ -14,9 +11,9 @@ export interface IPropertyFieldGridControlProps {
   onSelected? : (items:IItem[])=>void;
   maxHeight?: number;
   multiSelect?: boolean;
-  
+  column1Label?: string;
+  column2Label?: string;
 }
-
 export interface IPropertyFieldGridControlState  {
  defaultSelectedItems?: IItem[];
   items: IItem[];

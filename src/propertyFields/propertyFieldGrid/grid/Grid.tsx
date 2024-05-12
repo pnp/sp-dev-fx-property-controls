@@ -2,6 +2,8 @@
 /* eslint-disable no-unused-expressions */
 import * as React from 'react';
 
+import strings from 'PropertyControlStrings';
+
 import { FontIcon } from '@fluentui/react';
 import {
   Body1Strong,
@@ -25,6 +27,8 @@ export interface IGridProps {
   onSelected: (items: IItem[]) => void;
   defaultSelectedItems?: IItem[];
   multiSelect?: boolean;
+  column1Label?: string;
+  column2Label?: string;
 }
 
 const columnSizingOptions = {
@@ -40,7 +44,7 @@ const columnSizingOptions = {
 };
 
 export const Grid: React.FunctionComponent<IGridProps> = (props: React.PropsWithChildren<IGridProps>) => {
-  const { items, onSelected, defaultSelectedItems, multiSelect } = props;
+  const { items, onSelected, defaultSelectedItems, multiSelect, column1Label, column2Label } = props;
 
 const selectionMode = React.useMemo(() => multiSelect ? "multiselect" : "single" ?? "single", [multiSelect]);
 
@@ -68,7 +72,7 @@ const selectionMode = React.useMemo(() => multiSelect ? "multiselect" : "single"
         return 0;
       },
       renderHeaderCell: () => {
-        return <Body1Strong>Title</Body1Strong>;
+        return <Body1Strong>{column1Label ?? strings.gridControlColumn1Label}</Body1Strong>;
       },
       renderCell: (item) => {
         return (
@@ -89,7 +93,7 @@ const selectionMode = React.useMemo(() => multiSelect ? "multiselect" : "single"
         return 0;
       },
       renderHeaderCell: () => {
-        return <Body1Strong>Description</Body1Strong>;
+        return <Body1Strong>{column2Label ?? strings.gridControlColumn2Label} </Body1Strong>;
       },
       renderCell: (item) => {
         return (

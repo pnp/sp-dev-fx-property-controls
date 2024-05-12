@@ -234,6 +234,8 @@ define([], () => {
     "FolderFilterBoxPlaceholder": "Pastas de filtro pelo nome",
     "FolderExplorerLoading": "Pastas de carregamento...",
     "FolderExplorerNoItems": "Esta pasta não tem sub-dobradores.",
-    "IncorrectGuidValidationMessage": "Introduza um GUID válido"
+    "IncorrectGuidValidationMessage": "Introduza um GUID válido",
+    "gridControlColumn1Label": "Título",
+    "gridControlColumn2Label": "Descrição",
   };
 });

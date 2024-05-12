@@ -15,9 +15,10 @@ export interface IPropertyFieldGridProps {
   onSelected?: (items:IItem[])=>void;
   defaultSelectedItems?: IItem[];
   selectedItems?: IItem[];
-  
   maxHeight?: number;
   multiSelect?: boolean;
+  column1Label?: string;
+  column2Label?: string;
  
 }
 

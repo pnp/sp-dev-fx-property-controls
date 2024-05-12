@@ -1144,6 +1144,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'gridFieldId',
                   defaultSelectedItems: this.properties.gridItems,
                   maxHeight: 500,
+                  column1Label: 'File',
+                  column2Label: 'Location',
                   onSelected: (item: IItem[]) => {
                     console.log(item);
                  },

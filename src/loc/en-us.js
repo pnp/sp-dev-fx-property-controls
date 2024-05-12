@@ -264,6 +264,8 @@ define([], function () {
       redError: 'Red must be between 0 and 255',
       greenError: 'Green must be between 0 and 255',
       blueError: 'Blue must be between 0 and 255'
-    }
+    },
+    gridControlColumn1Label: "Title",
+    gridControlColumn2Label: "Description",
   }
 });

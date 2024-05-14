@@ -59,6 +59,8 @@ const gridItems:IItem[] = [
           styles:  {padding: 10},
           isVisible: true,
           maxHeight: 500,
+          column1Label: 'File',
+          column2Label: 'Location',
           onSelected: (item: IItem[]) => {
             console.log(item);
           }
@@ -81,5 +83,7 @@ The `PropertyFieldGrid` control can be configured with the following properties:
 | onSelected  | item[]        | no       | selected Items when are selected                                            |
 | items   | IItem[] | yes      | Items to show                                         |
 | multiSelect   | boolean        | no      | Enable multiSelect , default single                                          |
+| column1Label   | string        | no      | Label for header of first grid column                                           |
+| column2Label   | string        | no      | Label for header of second grid column                                          |
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldGrid)

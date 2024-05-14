@@ -11,6 +11,7 @@ nav:
     - PropertyFieldEnterpriseTermPicker: 'controls/PropertyFieldEnterpriseTermPicker.md'
     - PropertyFieldFilePicker: 'controls/PropertyFieldFilePicker.md'
     - PropertyFieldFolderPicker: 'controls/PropertyFieldFolderPicker.md'
+    - PropertyFieldGrid: 'controls/PropertyFieldGrid.md'
     - PropertyFieldGuidPicker: 'controls/PropertyFieldGuid.md'
     - PropertyFieldIconPicker: 'controls/PropertyFieldIconPicker.md'
     - PropertyFieldListPicker: 'controls/PropertyFieldListPicker.md'

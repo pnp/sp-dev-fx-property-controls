@@ -2,6 +2,10 @@
 
 ## 3.17.0
 
+### New control(s)
+
+- `PropertyFieldButton`:  New Control PropertyFieldButton [#613](https://github.com/pnp/sp-dev-fx-property-controls/pull/613)
+
 ### Enhancements
 
 - `fast-serve`: ast-serve update to match the most recent changes. [#606](https://github.com/pnp/sp-dev-fx-property-controls/pull/606)
@@ -16,7 +20,7 @@
 
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [Sergei Sergeev](https://github.com/s-KaiNet), [Nishkalank Bezawada](https://github.com/NishkalankBezawada), [ramonitor](https://github.com/ramonitor), [Jake](https://github.com/jjkim11), [Daniel Lindén](https://github.com/daniellinden22), [Russell gove](https://github.com/russgove).
+Special thanks to our contributors (in alphabetical order): [Daniel Lindén](https://github.com/daniellinden22), [Jake](https://github.com/jjkim11), [João Mendes](https://github.com/joaojmendes), [Nishkalank Bezawada](https://github.com/NishkalankBezawada), [ramonitor](https://github.com/ramonitor), [Russell gove](https://github.com/russgove), [Sergei Sergeev](https://github.com/s-KaiNet).
 
 ## 3.16.0
 

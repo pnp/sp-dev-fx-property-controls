@@ -1,13 +1,22 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import {
   IPropertyPaneField,
-  PropertyPaneFieldType
+  PropertyPaneFieldType,
 } from '@microsoft/sp-property-pane';
+
+import {
+  IPropertyFieldGroupOrPerson,
+  IPropertyFieldPeoplePickerProps,
+  IPropertyFieldPeoplePickerPropsInternal,
+  PrincipalType,
+} from './IPropertyFieldPeoplePicker';
+import {
+  IPropertyFieldPeoplePickerHostProps,
+} from './IPropertyFieldPeoplePickerHost';
 import PropertyFieldPeoplePickerHost from './PropertyFieldPeoplePickerHost';
-import { IPropertyFieldPeoplePickerHostProps } from './IPropertyFieldPeoplePickerHost';
-import { BaseComponentContext } from '@microsoft/sp-component-base';
-import { IPropertyFieldGroupOrPerson, IPropertyFieldPeoplePickerProps, IPropertyFieldPeoplePickerPropsInternal, PrincipalType } from './IPropertyFieldPeoplePicker';
 
 /**
  * Represents a PropertyFieldPeoplePicker object

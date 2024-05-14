@@ -1,5 +1,7 @@
 declare interface IPropertyControlStrings {
-
+  MonacoEditorOpenButtonLabel: string;
+  gridControlColumn1Label: string;
+  gridControlColumn2Label: string;
   DescriptionLabel: string;
   MoreInfoLabel: string;
 
@@ -264,6 +266,7 @@ declare interface IDateTimeStrings {
   L_RelativeDateTime_XDaysFutureIntervals: string;
   L_RelativeDateTime_XDaysIntervals: string;
   L_RelativeDateTime_Today: string;
+  
 
 }
 

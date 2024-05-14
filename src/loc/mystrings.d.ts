@@ -236,6 +236,10 @@ declare interface IPropertyControlStrings {
 
   // Fluent UI color picker strings
   ColorPickerStrings: { [key: string]: string };
+
+  // PropertyFieldGrid
+  gridControlColumn1Label: string;
+  gridControlColumn2Label: string;
 }
 
 declare interface IDateTimeStrings {
@@ -264,8 +268,6 @@ declare interface IDateTimeStrings {
   L_RelativeDateTime_XDaysIntervals: string;
   L_RelativeDateTime_Today: string;
   
-  gridControlColumn1Label: string;
-  gridControlColumn2Label: string;
 }
 
 declare module 'PropertyControlStrings' {

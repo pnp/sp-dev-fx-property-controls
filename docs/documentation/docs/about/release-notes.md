@@ -5,6 +5,7 @@
 ### New control(s)
 
 - `PropertyFieldButton`:  New Control PropertyFieldButton [#613](https://github.com/pnp/sp-dev-fx-property-controls/pull/613)
+- `PropertyFieldGrid`:  New Control PropertyFieldGrid [#614](https://github.com/pnp/sp-dev-fx-property-controls/pull/614)
 
 ### Enhancements
 

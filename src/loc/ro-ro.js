@@ -99,6 +99,7 @@ define([], () => {
     "CopyrightWarning": "Sunteți responsabil pentru respectarea drepturilor altora, inclusiv a drepturilor de autor.",
     "CreativeCommonsMessage": "Aceste rezultate sunt etichetate cu licențe Creative Commons. Examinați licențele pentru a vă asigura că le respectați.",
     "DateFormat": "MM/ZZ/AAAAA HH:mm A",
+    "DeleteSelectedFileButtonLabel": "Ștergeți fișierul selectat",    
     "DocumentLabelTemplate": "{0}, Document, {1} modificat, editat de {2}, Privat",
     "DocumentLibraries": "Biblioteci de documente",
     "EditedByNamePlate": "editat de ",

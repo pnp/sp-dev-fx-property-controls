@@ -99,6 +99,7 @@ define([], () => {
     "CopyrightWarning": "Jūs esat atbildīgs par citu tiesību, tostarp autortiesību, ievērošanu.",
     "CreativeCommonsMessage": "Šie rezultāti ir atzīmēti ar Creative Commons licencēm. Pārskatiet licences, lai nodrošinātu atbilstību.",
     "DateFormat": "MM/DD/GGGG hh:mm A",
+    "DeleteSelectedFileButtonLabel": "Izdzēst atlasīto failu",
     "DocumentLabelTemplate": "{0}, dokuments, modificēts {1}, rediģējis {2}, Privāts",
     "DocumentLibraries": "Dokumentu bibliotēkas",
     "EditedByNamePlate": "rediģējis ",

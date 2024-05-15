@@ -1,6 +1,32 @@
 # Releases
 
+## 3.17.0
+
+### New control(s)
+
+- `PropertyFieldButton`:  New Control PropertyFieldButton [#613](https://github.com/pnp/sp-dev-fx-property-controls/pull/613)
+
+### Enhancements
+
+- `fast-serve`: ast-serve update to match the most recent changes. [#606](https://github.com/pnp/sp-dev-fx-property-controls/pull/606)
+- `PropertyFieldContentTypePicker`:  PropertyFieldContentTypePicker control [#611](https://github.com/pnp/sp-dev-fx-property-controls/pull/611)
+- `PropertyFieldFilePicker` : add a delete button to the selected file [#579](https://github.com/pnp/sp-dev-fx-property-controls/pull/#607)
+- `PropertyFieldFilePicker`: Fix root site org asset library showing no items in file picker (https://github.com/pnp/sp-dev-fx-property-controls/pull/603)
+- `PropertyFieldFolderPicker`: added siteAbsoluteUrl to FOlderPicker  (https://github.com/pnp/sp-dev-fx-property-controls/pull/602)
+
+### Fixes
+
+- `General Helper`: toRelativeUrl returns proper relative url in case of root site  (https://github.com/pnp/sp-dev-fx-property-controls/pull/609)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Daniel Lindén](https://github.com/daniellinden22), [Jake](https://github.com/jjkim11), [João Mendes](https://github.com/joaojmendes), [Nishkalank Bezawada](https://github.com/NishkalankBezawada), [ramonitor](https://github.com/ramonitor), [Russell gove](https://github.com/russgove), [Sergei Sergeev](https://github.com/s-KaiNet).
+
 ## 3.16.0
+
+### Enhancements
+
+- `PropertyFieldSitePicker`: disabled property not implemented in UI [#577](https://github.com/pnp/sp-dev-fx-property-controls/issues/577)
 
 ### Fixes
 
@@ -8,7 +34,7 @@
 
 ### Contributors
 
-Special thanks to our contributor: [Luna Heyman](https://github.com/toodeluna).
+Special thanks to our contributors (in alphabetical order): [Luna Heyman](https://github.com/toodeluna), [srpmtt](https://github.com/srpmtt).
 
 ## 3.15.1
 

@@ -8,6 +8,7 @@ import {
   IRoleDefinitionInformation,
 } from '../../PropertyFieldRoleDefinitionPicker';
 import { IPropertyFieldList } from '../../propertyFields/listPicker';
+import { IItem } from '../../propertyFields/propertyFieldGrid/grid/IItem';
 import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
 import { IPropertyFieldTeam } from '../../PropertyFieldTeamPicker';
 import { IPickerTerms } from '../../PropertyFieldTermPicker';
@@ -56,4 +57,6 @@ export interface IPropertyControlsTestWebPartProps {
   iconPicker: string;
   editableComboBox: string;
   monacoEditor:string;
+  contentType:string;
+  gridItems: IItem[];
 }

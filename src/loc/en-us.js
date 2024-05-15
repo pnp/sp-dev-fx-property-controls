@@ -100,6 +100,7 @@ define([], function () {
     CopyrightWarning: "You are responsible for respecting others' rights, including copyright.",
     CreativeCommonsMessage: "These results are tagged with Creative Commons licenses. Review the licenses to ensure you comply.",
     DateFormat: "MM/DD/YYYY hh:mm A",
+    DeleteSelectedFileButtonLabel: "Delete selected file",
     DocumentLabelTemplate: "{0}, Document, Modified {1}, edited by {2}, Private",
     DocumentLibraries: "Document libraries",
     EditedByNamePlate: "edited by ",
@@ -263,6 +264,8 @@ define([], function () {
       redError: 'Red must be between 0 and 255',
       greenError: 'Green must be between 0 and 255',
       blueError: 'Blue must be between 0 and 255'
-    }
+    },
+    gridControlColumn1Label: "Title",
+    gridControlColumn2Label: "Description",
   }
 });

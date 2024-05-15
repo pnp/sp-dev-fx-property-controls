@@ -98,6 +98,7 @@ define([], () => {
     "CopyrightWarning": "É responsável pelo respeito pelos direitos dos outros, incluindo direitos de autor.",
     "CreativeCommonsMessage": "Estes resultados estão marcados com licenças Creative Commons. Reveja as licenças para garantir que cumpre.",
     "DateFormat": "MM/DD/YYYY hh:mm A",
+    "DeleteSelectedFileButtonLabel": "Eliminar ficheiro selecionado",    
     "DocumentLabelTemplate": "{0}, Documento, {1} Modificado, editado por {2}, Private",
     "DocumentLibraries": "Bibliotecas documentais",
     "EditedByNamePlate": "editado por ",
@@ -233,6 +234,8 @@ define([], () => {
     "FolderFilterBoxPlaceholder": "Pastas de filtro pelo nome",
     "FolderExplorerLoading": "Pastas de carregamento...",
     "FolderExplorerNoItems": "Esta pasta não tem sub-dobradores.",
-    "IncorrectGuidValidationMessage": "Introduza um GUID válido"
+    "IncorrectGuidValidationMessage": "Introduza um GUID válido",
+    "gridControlColumn1Label": "Título",
+    "gridControlColumn2Label": "Descrição",
   };
 });

@@ -1,5 +1,4 @@
 import { IColor } from '@fluentui/react/lib/utilities/color';
-
 import { BaseComponentContext } from '@microsoft/sp-component-base';
 
 import { IDateTimeFieldValue } from '../../../PropertyFieldDateTimePicker';
@@ -15,6 +14,7 @@ import { IPropertyFieldSite } from '../../../propertyFields/sitePicker';
 import { IPickerTerms } from '../../../PropertyFieldTermPicker';
 
 export interface IPropertyControlsTestProps {
+  gridItems: any[];
   password:string;
   context: BaseComponentContext;
   numberValue: number;
@@ -55,4 +55,5 @@ export interface IPropertyControlsTestProps {
   iconPicker: string;
   editableComboBox: string;
   monacoEditor:string;
+  contentType: string;
 }

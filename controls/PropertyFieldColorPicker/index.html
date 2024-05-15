@@ -1,0 +1,1402 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-3.1.0">
+    
+    
+      
+        <title>PropertyFieldColorPicker - @pnp/spfx-property-controls</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.11e41852.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#propertyfieldcolorpicker-control" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="@pnp/spfx-property-controls" class="md-header-nav__button md-logo">
+          
+            <img src="../../assets/pnp-spfx-controls.svg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                @pnp/spfx-property-controls
+              </span>
+              <span class="md-header-nav__topic">
+                PropertyFieldColorPicker
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/pnp/sp-dev-fx-property-controls" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../PropertyFieldButton/" title="Controls" class="md-tabs__link md-tabs__link--active">
+          Controls
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../PropertyFieldButtonWithCallout/" title="Controls with callout" class="md-tabs__link">
+          Controls with callout
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../helpers/PropertyPaneHelpers/" title="Helpers" class="md-tabs__link">
+          Helpers
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../about/release-notes/" title="About" class="md-tabs__link">
+          About
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="@pnp/spfx-property-controls" class="md-nav__button md-logo">
+      
+        <img src="../../assets/pnp-spfx-controls.svg" width="48" height="48">
+      
+    </a>
+    @pnp/spfx-property-controls
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/pnp/sp-dev-fx-property-controls" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Controls
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Controls
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldButton/" title="PropertyFieldButton" class="md-nav__link">
+      PropertyFieldButton
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldCodeEditor/" title="PropertyFieldCodeEditor" class="md-nav__link">
+      PropertyFieldCodeEditor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldCollectionData/" title="PropertyFieldCollectionData" class="md-nav__link">
+      PropertyFieldCollectionData
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        PropertyFieldColorPicker
+      </label>
+    
+    <a href="./" title="PropertyFieldColorPicker" class="md-nav__link md-nav__link--active">
+      PropertyFieldColorPicker
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-control-in-your-solutions" title="How to use this control in your solutions" class="md-nav__link">
+    How to use this control in your solutions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" title="Implementation" class="md-nav__link">
+    Implementation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#value" title="Value" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldColumnPicker/" title="PropertyFieldColumnPicker" class="md-nav__link">
+      PropertyFieldColumnPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldDateTimePicker/" title="PropertyFieldDateTimePicker" class="md-nav__link">
+      PropertyFieldDateTimePicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldEnterpriseTermPicker/" title="PropertyFieldEnterpriseTermPicker" class="md-nav__link">
+      PropertyFieldEnterpriseTermPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldFilePicker/" title="PropertyFieldFilePicker" class="md-nav__link">
+      PropertyFieldFilePicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldFolderPicker.md" title="PropertyFieldFolderPicker" class="md-nav__link">
+      PropertyFieldFolderPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldGrid/" title="PropertyFieldGrid" class="md-nav__link">
+      PropertyFieldGrid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldGuid/" title="PropertyFieldGuidPicker" class="md-nav__link">
+      PropertyFieldGuidPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldIconPicker/" title="PropertyFieldIconPicker" class="md-nav__link">
+      PropertyFieldIconPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldListPicker/" title="PropertyFieldListPicker" class="md-nav__link">
+      PropertyFieldListPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldMessage/" title="PropertyFieldMessage" class="md-nav__link">
+      PropertyFieldMessage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldMonacoEditor/" title="PropertyFieldMonacoEditor" class="md-nav__link">
+      PropertyFieldMonacoEditor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldMultiSelect/" title="PropertyFieldMultiSelect" class="md-nav__link">
+      PropertyFieldMultiSelect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldNumber/" title="PropertyFieldNumber" class="md-nav__link">
+      PropertyFieldNumber
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldOrder/" title="PropertyFieldOrder" class="md-nav__link">
+      PropertyFieldOrder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldPassword/" title="PropertyFieldPassword" class="md-nav__link">
+      PropertyFieldPassword
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldPeoplePicker/" title="PropertyFieldPeoplePicker" class="md-nav__link">
+      PropertyFieldPeoplePicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldRoleDefinitionPicker/" title="PropertyFieldRoleDefinitionPicker" class="md-nav__link">
+      PropertyFieldRoleDefinitionPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldSearch/" title="PropertyFieldSearch" class="md-nav__link">
+      PropertyFieldSearch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldSitePicker/" title="PropertyFieldSitePicker" class="md-nav__link">
+      PropertyFieldSitePicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldSpinButton/" title="PropertyFieldSpinButton" class="md-nav__link">
+      PropertyFieldSpinButton
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldSpinner/" title="PropertyFieldSpinner" class="md-nav__link">
+      PropertyFieldSpinner
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldSwatchColorPicker/" title="PropertyFieldSwatchColorPicker" class="md-nav__link">
+      PropertyFieldSwatchColorPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldTeamPicker/" title="PropertyFieldTeamPicker" class="md-nav__link">
+      PropertyFieldTeamPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldTermPicker/" title="PropertyFieldTermPicker" class="md-nav__link">
+      PropertyFieldTermPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldViewPicker/" title="PropertyFieldViewPicker" class="md-nav__link">
+      PropertyFieldViewPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldColumnPicker/" title="PropertyFieldColumnPicker" class="md-nav__link">
+      PropertyFieldColumnPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyPaneMarkdownContent/" title="PropertyPaneMarkdownContent" class="md-nav__link">
+      PropertyPaneMarkdownContent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyPanePropertyEditor/" title="PropertyPanePropertyEditor" class="md-nav__link">
+      PropertyPanePropertyEditor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyPaneWebPartInformation/" title="PropertyPaneWebPartInformation" class="md-nav__link">
+      PropertyPaneWebPartInformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Controls with callout
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Controls with callout
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldButtonWithCallout/" title="PropertyFieldButtonWithCallout" class="md-nav__link">
+      PropertyFieldButtonWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldCheckboxWithCallout/" title="PropertyFieldCheckboxWithCallout" class="md-nav__link">
+      PropertyFieldCheckboxWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldChoiceGroupWithCallout/" title="PropertyFieldChoiceGroupWithCallout" class="md-nav__link">
+      PropertyFieldChoiceGroupWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldDropdownWithCallout/" title="PropertyFieldDropdownWithCallout" class="md-nav__link">
+      PropertyFieldDropdownWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldLabelWithCallout/" title="PropertyFieldLabelWithCallout" class="md-nav__link">
+      PropertyFieldLabelWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldLinkWithCallout/" title="PropertyFieldLinkWithCallout" class="md-nav__link">
+      PropertyFieldLinkWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldSliderWithCallout/" title="PropertyFieldSliderWithCallout" class="md-nav__link">
+      PropertyFieldSliderWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldTextWithCallout/" title="PropertyFieldTextWithCallout" class="md-nav__link">
+      PropertyFieldTextWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PropertyFieldToggleWithCallout/" title="PropertyFieldToggleWithCallout" class="md-nav__link">
+      PropertyFieldToggleWithCallout
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Helpers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Helpers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../helpers/PropertyPaneHelpers/" title="PropertyPaneHelpers" class="md-nav__link">
+      PropertyPaneHelpers
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../beta/" title="Beta testing" class="md-nav__link">
+      Beta testing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      About
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        About
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../about/release-notes/" title="Release notes" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../about/license/" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../guides" title="Project Guides" class="md-nav__link">
+      Project Guides
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-control-in-your-solutions" title="How to use this control in your solutions" class="md-nav__link">
+    How to use this control in your solutions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" title="Implementation" class="md-nav__link">
+    Implementation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#value" title="Value" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/pnp/sp-dev-fx-property-controls/blob/master/docs/documentation/docs/controls/PropertyFieldColorPicker.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="propertyfieldcolorpicker-control">PropertyFieldColorPicker control<a class="headerlink" href="#propertyfieldcolorpicker-control" title="Permanent link">&para;</a></h1>
+<p>This control generates a color picker that you can use inside the property pane.</p>
+<p><strong>PropertyFieldColorPicker</strong></p>
+<p><img alt="Color picker initial" src="../../assets/colorpicker-initial.png" /></p>
+<p><strong>PropertyFieldColorPicker color selector</strong></p>
+<p><img alt="Color picker select color" src="../../assets/colorpicker-selector.png" /></p>
+<h2 id="how-to-use-this-control-in-your-solutions">How to use this control in your solutions<a class="headerlink" href="#how-to-use-this-control-in-your-solutions" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Check that you installed the <code>@pnp/spfx-property-controls</code> dependency. Check out The <a href="../../#getting-started">getting started</a> page for more information about installing the dependency.</li>
+<li>Import the following modules to your component:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PropertyFieldColorPicker</span><span class="p">,</span><span class="w"> </span><span class="nx">PropertyFieldColorPickerStyle</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@pnp/spfx-property-controls/lib/PropertyFieldColorPicker&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<ol>
+<li>Create a new property for your web part, for example:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">IPropertyControlsTestWebPartProps</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ol>
+<li>Add the custom property control to the <code>groupFields</code> of the web part property pane configuration:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="nx">PropertyFieldColorPicker</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Color&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">selectedColor</span><span class="o">:</span><span class="w"> </span><span class="kt">this.properties.color</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">onPropertyChange</span><span class="o">:</span><span class="w"> </span><span class="kt">this.onPropertyPaneFieldChanged</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="kt">this.properties</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">disabled</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">debounce</span><span class="o">:</span><span class="w"> </span><span class="kt">1000</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">isHidden</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">alphaSliderHidden</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="kt">PropertyFieldColorPickerStyle.Full</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">iconName</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Precipitation&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;colorFieldId&#39;</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<p>The <code>PropertyFieldColorPicker</code> control can be configured with the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td>yes</td>
+<td>Property field label displayed on top.</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>boolean</td>
+<td>no</td>
+<td>Specify if the control needs to be disabled.</td>
+</tr>
+<tr>
+<td>debounce</td>
+<td>number</td>
+<td>no</td>
+<td>Specify delay after which control value will be set.</td>
+</tr>
+<tr>
+<td>isHidden</td>
+<td>boolean</td>
+<td>no</td>
+<td>Specify if the control needs to be hidden.</td>
+</tr>
+<tr>
+<td>selectedColor</td>
+<td>string or IColor</td>
+<td>no</td>
+<td>The CSS-compatible string or an IColor object to describe the initial color</td>
+</tr>
+<tr>
+<td>alphaSliderHidden</td>
+<td>boolean</td>
+<td>no</td>
+<td>When true, the alpha slider control is hidden</td>
+</tr>
+<tr>
+<td>showPreview</td>
+<td>boolean</td>
+<td>no</td>
+<td>Whether to show color preview box.</td>
+</tr>
+<tr>
+<td>style</td>
+<td>PropertyFieldColorPickerStyle</td>
+<td>no</td>
+<td>Determines how the control is displayed (defaults to inline)</td>
+</tr>
+<tr>
+<td>iconName</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the UI Fabric Font Icon to use for Inline display (defaults to Color)</td>
+</tr>
+<tr>
+<td>valueAsObject</td>
+<td>boolean</td>
+<td>no</td>
+<td>When true, the property is returned as an IColor object. When false (default), the property is returned as a CSS-compatible string</td>
+</tr>
+<tr>
+<td>properties</td>
+<td>any</td>
+<td>yes</td>
+<td>Parent web part properties, this object is use to update the property value.</td>
+</tr>
+<tr>
+<td>onPropertyChange</td>
+<td>function</td>
+<td>yes</td>
+<td>Defines a onPropertyChange function to raise when the date gets changed.</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>yes</td>
+<td>An unique key that indicates the identity of this control.</td>
+</tr>
+</tbody>
+</table>
+<p>Enum <code>PropertyFieldColorPickerStyle</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full</td>
+<td>Display the full control in the property pane</td>
+</tr>
+<tr>
+<td>Inline</td>
+<td>Display the color picker inline</td>
+</tr>
+</tbody>
+</table>
+<h2 id="value">Value<a class="headerlink" href="#value" title="Permanent link">&para;</a></h2>
+<p>By default, the Color Picker returns the value as a CSS-compatible string. This allows you the flexibility of simply assigning the value to an inline style as is and this is usually sufficient. However, this also limits the information directly available to you since the format could be a Hex code, an RGBA value, or even a named color and may not be suitable for advanced scenarios.</p>
+<p>By setting the <code>valueAsObject</code> property to true, you will always receive a consistent IColor object that provides you detailed information about the chosen color. Here are the properties available in the IColor object:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td>string</td>
+<td>CSS-compatible string (this is the same value that would normally be returned when <code>valueAsObject</code> is false)</td>
+</tr>
+<tr>
+<td>hex</td>
+<td>string</td>
+<td>Hex value (does not reflect alpha)</td>
+</tr>
+<tr>
+<td>r</td>
+<td>number</td>
+<td>Red</td>
+</tr>
+<tr>
+<td>g</td>
+<td>number</td>
+<td>Green</td>
+</tr>
+<tr>
+<td>b</td>
+<td>number</td>
+<td>Blue</td>
+</tr>
+<tr>
+<td>h</td>
+<td>number</td>
+<td>Hue</td>
+</tr>
+<tr>
+<td>s</td>
+<td>number</td>
+<td>Saturation</td>
+</tr>
+<tr>
+<td>v</td>
+<td>number</td>
+<td>Value</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="" src="https://telemetry.sharepointpnp.com/sp-dev-fx-property-controls/wiki/PropertyFieldColorPicker" /></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../PropertyFieldCollectionData/" title="PropertyFieldCollectionData" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                PropertyFieldCollectionData
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../PropertyFieldColumnPicker/" title="PropertyFieldColumnPicker" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                PropertyFieldColumnPicker
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/m365pnp" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="http://aka.ms/sppnp-videos" class="md-footer-social__link fa fa-youtube"></a>
+    
+      <a href="https://aka.ms/sppnp" class="md-footer-social__link fa fa-link"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.9e1f3b71.js"></script>
+      
+      <script>app.initialize({version:"1.6.0",url:{base:"../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

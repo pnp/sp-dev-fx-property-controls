@@ -1,6 +1,6 @@
 import { IPlaceholderWithCalloutProps } from '../../common/placeholderWithCallout/IPlaceholderWithCallout';
 import { IPopupWindowProps } from '@microsoft/sp-property-pane';
-import { ILinkProps } from '@fluentui/react/lib/components/Link';
+import { ILinkProps } from '@fluentui/react/lib/Link';
 
 /**
  * PropertyFieldLinkWithCalloutHost properties interface

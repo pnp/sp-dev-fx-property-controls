@@ -4,7 +4,7 @@ import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldH
 
 import { IPropertyFieldSliderWithCalloutHostProps } from './IPropertyFieldSliderWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
-import { Slider } from '@fluentui/react/lib/components/Slider';
+import { Slider } from '@fluentui/react/lib/Slider';
 
 import omit from 'lodash/omit';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Callout, DirectionalHint } from '@fluentui/react/lib/components/Callout';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IPlaceholderWithCalloutProps, IPlaceholderWithCalloutState } from './IPlaceholderWithCallout';
 import { CalloutTriggers } from '../callout/Callout';
 import { getIconClassName } from '@fluentui/react/lib/Styling';

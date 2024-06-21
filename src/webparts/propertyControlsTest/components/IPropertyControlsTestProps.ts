@@ -1,4 +1,4 @@
-import { IColor } from '@fluentui/react/lib/utilities/color';
+import { IColor } from '@fluentui/react/lib/Color';
 import { BaseComponentContext } from '@microsoft/sp-component-base';
 
 import { IDateTimeFieldValue } from '../../../PropertyFieldDateTimePicker';

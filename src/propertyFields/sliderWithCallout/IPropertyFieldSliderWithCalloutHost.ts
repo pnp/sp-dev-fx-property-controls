@@ -1,5 +1,5 @@
 import { IPropertyFieldHeaderCalloutProps } from '../../common/propertyFieldHeader/IPropertyFieldHeader';
-import { ISliderProps } from '@fluentui/react/lib/components/Slider';
+import { ISliderProps } from '@fluentui/react/lib/Slider';
 
 /**
  * PropertyFieldSliderWithCalloutHost properties interface

@@ -1,5 +1,5 @@
 import { IPlaceholderWithCalloutProps } from '../../common/placeholderWithCallout/IPlaceholderWithCallout';
-import { IButtonProps } from '@fluentui/react/lib/components/Button';
+import { IButtonProps } from '@fluentui/react/lib/Button';
 
 /**
  * PropertyFieldButtonWithCalloutHost properties interface

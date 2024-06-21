@@ -1,8 +1,8 @@
 import { IButtonStyles, IconButton } from '@fluentui/react/lib/Button';
 import { Selection } from '@fluentui/react/lib/DetailsList';
 import { Label } from '@fluentui/react/lib/Label';
-import { DragDropHelper } from '@fluentui/react/lib/utilities/dragdrop';
-import { IDragDropContext } from '@fluentui/react/lib/utilities/dragdrop/interfaces';
+import { DragDropHelper } from '@fluentui/react/lib/DragDrop';
+import { IDragDropContext } from '@fluentui/react/lib/DragDrop';
 import * as React from 'react';
 
 import * as telemetry from '../../common/telemetry';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SpinButton } from '@fluentui/react/lib/SpinButton';
-import { Position } from '@fluentui/react/lib/utilities/positioning';
+import { Position } from '@fluentui/react/lib/Positioning';
 import {
 	IPropertyFieldSpinButtonHostProps,
 	IPropertyFieldSpinButtonHostState

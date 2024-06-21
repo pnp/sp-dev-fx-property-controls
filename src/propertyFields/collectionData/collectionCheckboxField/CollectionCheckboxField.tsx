@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
-import { Checkbox } from '@fluentui/react/lib/components/Checkbox';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { IBaseCollectionFieldProps } from '../IBaseCollectionFIeldsProps';
 
 export interface ICollectionCheckboxFieldProps extends IBaseCollectionFieldProps { }

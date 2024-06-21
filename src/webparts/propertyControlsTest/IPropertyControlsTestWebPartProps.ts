@@ -1,4 +1,4 @@
-import { IColor } from '@fluentui/react/lib/utilities/color';
+import { IColor } from '@fluentui/react/lib/Color';
 
 import { IDateTimeFieldValue } from '../../PropertyFieldDateTimePicker';
 import { IFilePickerResult } from '../../PropertyFieldFilePicker';

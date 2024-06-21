@@ -4,7 +4,7 @@ import type { IPropertyFieldHeaderProps } from '../../common/propertyFieldHeader
 
 import { IPropertyFieldDropdownWithCalloutHostProps } from './IPropertyFieldDropdownWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
-import { Dropdown, IDropdownProps, IDropdownOption } from '@fluentui/react/lib/components/Dropdown';
+import { Dropdown, IDropdownProps, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { IPropertyPaneDropdownOption } from '@microsoft/sp-property-pane';
 import { SelectableOptionMenuItemType } from '@fluentui/react/lib/utilities/selectableOption/SelectableOption.types';
 import omit from 'lodash/omit';

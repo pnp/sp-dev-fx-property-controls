@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IconButton } from "@fluentui/react/lib/components/Button";
+import { IconButton } from "@fluentui/react/lib/Button";
 import * as strings from 'PropertyControlStrings';
 
 import { FilePicker, IFilePickerResult } from './filePickerControls';

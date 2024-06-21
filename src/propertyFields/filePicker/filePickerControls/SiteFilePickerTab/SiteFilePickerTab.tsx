@@ -2,7 +2,7 @@ import * as React from 'react';
 import { findIndex } from '@microsoft/sp-lodash-subset';
 import { ISiteFilePickerTabProps, ISiteFilePickerTabState } from '.';
 import { DocumentLibraryBrowser, FileBrowser } from '../controls';
-import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/components/Button';
+import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
 import { Breadcrumb, IBreadcrumbItem } from '@fluentui/react/lib/Breadcrumb';
 import { ScrollablePane } from '@fluentui/react/lib/ScrollablePane';
 import { IFile, ILibrary } from '../../../../services/FileBrowserService.types';

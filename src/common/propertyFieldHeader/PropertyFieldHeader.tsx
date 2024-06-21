@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Callout, DirectionalHint } from '@fluentui/react/lib/components/Callout';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IPropertyFieldHeaderProps, IPropertyFieldHeaderState, CalloutTriggers } from './IPropertyFieldHeader';
 import { getIconClassName } from '@fluentui/react/lib/Styling';
 import { css } from '@fluentui/react/lib/Utilities';

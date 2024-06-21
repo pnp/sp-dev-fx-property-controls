@@ -1,5 +1,5 @@
 import { IPropertyPaneField, PropertyPaneFieldType } from '@microsoft/sp-property-pane';
-import { getColorFromString, IColor } from '@fluentui/react/lib/utilities/color';
+import { getColorFromString, IColor } from '@fluentui/react/lib/Color';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { setPropertyValue } from '../../helpers/GeneralHelper';

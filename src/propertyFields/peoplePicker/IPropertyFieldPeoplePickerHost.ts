@@ -1,5 +1,5 @@
 import { IPropertyFieldGroupOrPerson, IPropertyFieldPeoplePickerPropsInternal } from './IPropertyFieldPeoplePicker';
-import { IPersonaProps } from '@fluentui/react/lib/components/Persona';
+import { IPersonaProps } from '@fluentui/react/lib/Persona';
 
 /**
  * PropertyFieldPeoplePickerHost properties interface

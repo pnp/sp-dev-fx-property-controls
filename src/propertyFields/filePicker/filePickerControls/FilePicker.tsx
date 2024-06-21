@@ -2,9 +2,9 @@ import * as React from 'react';
 import { IFilePickerProps } from './IFilePickerProps';
 import { IFilePickerState } from './IFilePickerState';
 
-import { PrimaryButton, ActionButton } from '@fluentui/react/lib/components/Button';
-import { Panel, PanelType } from '@fluentui/react/lib/components/Panel';
-import { Label } from '@fluentui/react/lib/components/Label';
+import { PrimaryButton, ActionButton } from '@fluentui/react/lib/Button';
+import { Panel, PanelType } from '@fluentui/react/lib/Panel';
+import { Label } from '@fluentui/react/lib/Label';
 import { Nav, INavLink, INavLinkGroup } from '@fluentui/react/lib/Nav';
 import { css } from '@fluentui/react/lib/Utilities';
 

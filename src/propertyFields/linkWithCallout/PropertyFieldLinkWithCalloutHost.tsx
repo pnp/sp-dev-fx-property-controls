@@ -5,7 +5,7 @@ import type { IPlaceholderWithCalloutProps } from '../../common/placeholderWithC
 
 import { IPropertyFieldLinkWithCalloutHostProps } from './IPropertyFieldLinkWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
-import { Link } from '@fluentui/react/lib/components/Link';
+import { Link } from '@fluentui/react/lib/Link';
 
 /**
 * Renders the control for PropertyFieldLinkWithCallout component

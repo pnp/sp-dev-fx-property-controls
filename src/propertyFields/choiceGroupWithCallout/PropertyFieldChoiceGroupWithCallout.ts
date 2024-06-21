@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 
 import omit from 'lodash/omit';
 
-import { IChoiceGroupOption } from '@fluentui/react/lib/components/ChoiceGroup';
+import { IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import {
   IPropertyPaneField,
   PropertyPaneFieldType,

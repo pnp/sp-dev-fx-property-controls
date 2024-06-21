@@ -5,7 +5,7 @@ import type { IPropertyFieldHeaderProps } from '../../common/propertyFieldHeader
 
 import { IPropertyFieldToggleWithCalloutHostProps } from './IPropertyFieldToggleWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
-import { Toggle } from '@fluentui/react/lib/components/Toggle';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 import omit from 'lodash/omit';
 

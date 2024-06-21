@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Spinner } from "@fluentui/react/lib/components/Spinner";
+import { Spinner } from "@fluentui/react/lib/Spinner";
 //import styles from './Component.module.scss';
 
 import {

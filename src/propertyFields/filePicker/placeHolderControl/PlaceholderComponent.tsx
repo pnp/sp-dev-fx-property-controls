@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IPlaceholderProps, IPlaceholderState } from './IPlaceholderComponent';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 import styles from './PlaceholderComponent.module.scss';
-import { Icon } from '@fluentui/react/lib/components/Icon';
+import { Icon } from '@fluentui/react/lib/Icon';
 
 /**
  * Placeholder component

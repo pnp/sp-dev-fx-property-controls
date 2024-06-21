@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITimeComponentProps } from './IPropertyFieldDateTimePickerHost';
-import { Dropdown, IDropdownOption } from '@fluentui/react/lib/components/Dropdown';
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 
 /**
  * Minutes component, renders the minutes dropdown

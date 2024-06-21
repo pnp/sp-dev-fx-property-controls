@@ -1,7 +1,7 @@
 import {
   IPropertyPaneCustomFieldProps,
 } from '@microsoft/sp-property-pane';
-import { ISearchBoxStyles } from '@fluentui/react/lib/components/SearchBox';
+import { ISearchBoxStyles } from '@fluentui/react/lib/SearchBox';
 
 export interface IPropertyFieldSearchProps {
   key: string;

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ILinkFilePickerTabProps, ILinkFilePickerTabState } from '.';
 import { GeneralHelper } from '../../../../helpers/GeneralHelper';
 import { IFilePickerResult } from '../FilePicker.types';
-import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/components/Button';
+import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { css } from '@fluentui/react/lib/Utilities';
 

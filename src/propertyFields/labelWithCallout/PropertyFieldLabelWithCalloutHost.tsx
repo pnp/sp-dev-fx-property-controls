@@ -4,7 +4,7 @@ import PlaceholderWithCallout from '../../common/placeholderWithCallout/Placehol
 
 import { IPropertyFieldLabelWithCalloutHostProps } from './IPropertyFieldLabelWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
-import { Label } from '@fluentui/react/lib/components/Label';
+import { Label } from '@fluentui/react/lib/Label';
 
 /**
 * Renders the control for PropertyFieldLabelWithCallout component

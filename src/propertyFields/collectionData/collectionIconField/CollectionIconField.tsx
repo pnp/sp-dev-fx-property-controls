@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
 import { ICollectionIconFieldProps } from '.';
-import { TextField } from '@fluentui/react/lib/components/TextField';
-import { Icon } from '@fluentui/react/lib/components/Icon';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { Icon } from '@fluentui/react/lib/Icon';
 import { ActionButton } from '@fluentui/react/lib/Button';
 import { IconSelector } from '../../../common/iconSelector/IconSelector';
 

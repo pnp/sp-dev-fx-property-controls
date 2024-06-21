@@ -1,5 +1,5 @@
 import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-property-pane';
-import { IColor } from '@fluentui/react/lib/utilities/color/colors';
+import { IColor } from '@fluentui/react/lib/Color';
 
 /**
  * Enum for specifying how the control should be shown

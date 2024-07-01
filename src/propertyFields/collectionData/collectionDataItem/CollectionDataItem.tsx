@@ -1,14 +1,14 @@
 import * as React from 'react';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
 import { ICollectionDataItemProps, ICollectionDataItemState } from '.';
-import { TextField } from '@fluentui/react/lib/components/TextField';
-import { Icon } from '@fluentui/react/lib/components/Icon';
-import { Link } from '@fluentui/react/lib/components/Link';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { Icon } from '@fluentui/react/lib/Icon';
+import { Link } from '@fluentui/react/lib/Link';
 import * as strings from 'PropertyControlStrings';
 import { ICustomCollectionField, CustomCollectionFieldType } from '../ICustomCollectionField';
 import { FieldValidator } from '../FieldValidator';
-import { Dropdown, IDropdownOption } from '@fluentui/react/lib/components/Dropdown';
-import { Callout, DirectionalHint } from '@fluentui/react/lib/components/Callout';
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { CollectionIconField } from '../collectionIconField';
 import { clone, findIndex, sortBy } from '@microsoft/sp-lodash-subset';
 import { CollectionNumberField } from '../collectionNumberField';
@@ -124,7 +124,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    */
   private async checkAnyFieldCustomErrorMessage(item: any): Promise<boolean> { // eslint-disable-line @typescript-eslint/no-explicit-any
     const { fields, index } = this.props;
-    
+
     const validations = await Promise.all(fields.filter(f => f.onGetErrorMessage).map(async f => {
       const validation = await f.onGetErrorMessage(item[f.id], index, item);
       return this.storeFieldValidation(f.id, validation);
@@ -137,9 +137,9 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
    * Check if row is ready for save
    */
   private async checkRowIsValidForSave(item: any): Promise<boolean> { // eslint-disable-line @typescript-eslint/no-explicit-any
-    return this.checkAllRequiredFieldsValid(item) && 
+    return this.checkAllRequiredFieldsValid(item) &&
       this.checkAnyFieldContainsValue(item) &&
-      await this.checkAnyFieldCustomErrorMessage(item) && 
+      await this.checkAnyFieldCustomErrorMessage(item) &&
       this.checkAllFieldsAreValid();
   }
 
@@ -373,7 +373,7 @@ export class CollectionDataItem extends React.Component<ICollectionDataItemProps
         return <CollectionNumberField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
       case CustomCollectionFieldType.fabricIcon:
         return <CollectionIconField renderMode={field.iconFieldRenderMode} field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
-      case CustomCollectionFieldType.color:    
+      case CustomCollectionFieldType.color:
         return <CollectionColorField field={field} item={item} disableEdit={disableFieldOnEdit} fOnValueChange={this.onValueChanged} fValidation={this.fieldValidation} />;
       case CustomCollectionFieldType.url:
         return <TextField placeholder={field.placeholder || field.title}

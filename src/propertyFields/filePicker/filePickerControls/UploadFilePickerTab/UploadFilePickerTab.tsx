@@ -3,7 +3,7 @@ import * as React from 'react';
 import { IUploadFilePickerTabProps, IUploadFilePickerTabState } from '.';
 import { IFilePickerResult } from '../FilePicker.types';
 import { GeneralHelper } from '../../../../helpers/GeneralHelper';
-import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/components/Button';
+import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
 import { css } from '@fluentui/react/lib/Utilities';
 import * as strings from 'PropertyControlStrings';
 import styles from './UploadFilePickerTab.module.scss';

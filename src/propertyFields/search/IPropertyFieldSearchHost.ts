@@ -1,4 +1,4 @@
-import { ISearchBoxStyles } from "@fluentui/react/lib/components/SearchBox";
+import { ISearchBoxStyles } from "@fluentui/react/lib/SearchBox";
 
 export interface IPropertyFieldSearchHostProps {
   key: string;

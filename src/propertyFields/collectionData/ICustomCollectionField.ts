@@ -1,5 +1,5 @@
 import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
-import { ISelectableOption } from '@fluentui/react/lib/utilities/selectableOption/SelectableOption.types';
+import { ISelectableOption } from '@fluentui/react/lib/SelectableOption';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { CollectionIconFieldRenderMode } from './collectionIconField';
 

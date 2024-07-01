@@ -4,7 +4,7 @@ import PropertyFieldHeader from '../../common/propertyFieldHeader/PropertyFieldH
 
 import { IPropertyFieldTextWithCalloutHostProps } from './IPropertyFieldTextWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
-import { TextField } from '@fluentui/react/lib/components/TextField';
+import { TextField } from '@fluentui/react/lib/TextField';
 import omit from 'lodash/omit';
 
 export default class PropertyFieldTextWithCalloutHost extends React.Component<IPropertyFieldTextWithCalloutHostProps, null> {

@@ -9,7 +9,7 @@ import {
 import PropertyFieldDropdownHost from './PropertyFieldDropdownWithCalloutHost';
 import omit from 'lodash/omit';
 import { IPropertyFieldDropdownWithCalloutPropsInternal, IPropertyFieldDropdownWithCalloutProps } from './IPropertyFieldDropdownWithCallout';
-import { IDropdownOption } from '@fluentui/react/lib/components/Dropdown';
+import { IDropdownOption } from '@fluentui/react';
 
 class PropertyFieldDropdownWithCalloutBuilder implements IPropertyPaneField<IPropertyFieldDropdownWithCalloutPropsInternal> {
   public targetProperty: string;

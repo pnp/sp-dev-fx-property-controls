@@ -1,11 +1,11 @@
-import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
-import { ISelectableOption } from '@fluentui/react/lib/utilities/selectableOption/SelectableOption.types';
-import { IRenderFunction } from '@fluentui/react/lib/Utilities';
+import {
+  IDropdownOption,
+  IRenderFunction,
+  ISelectableOption,
+} from '@fluentui/react';
 import { CollectionIconFieldRenderMode } from './collectionIconField';
 
-
-export interface ICustomDropdownOption extends Omit<IDropdownOption, 'key'>
-{
+export interface ICustomDropdownOption extends Omit<IDropdownOption, 'key'> {
   key: string | number | boolean;
 }
 
@@ -23,8 +23,8 @@ export interface ICustomCollectionField {
    */
   type: CustomCollectionFieldType;
   /**
-  * Conditionally disable a field
-  */
+   * Conditionally disable a field
+   */
   disable?: (item: any) => boolean; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
    * Allows you to specify if a field is disabled for editing
@@ -38,7 +38,9 @@ export interface ICustomCollectionField {
    * Dropdown options. Only nescessary when dropdown type is used.
    * Options can be either a static array or a function that will calculate the values dynamically and can react to the current item.
    */
-  options?: ICustomDropdownOption[] | ((fieldId: string, item: any) => ICustomDropdownOption[]); // eslint-disable-line @typescript-eslint/no-explicit-any
+  options?:
+    | ICustomDropdownOption[]
+    | ((fieldId: string, item: any) => ICustomDropdownOption[]); // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
    * Dropdown custom options render method.
    */
@@ -62,12 +64,23 @@ export interface ICustomCollectionField {
    * - If valid, it returns empty string.
    * - If invalid, the field will show a red border
    */
-  onGetErrorMessage?: (value: any, index: number, currentItem: any) => string | Promise<string>; // eslint-disable-line @typescript-eslint/no-explicit-any
+  onGetErrorMessage?: (
+    value: any,
+    index: number,
+    currentItem: any
+  ) => string | Promise<string>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   /**
    * Custom field rendering support
    */
-  onCustomRender?: (field: ICustomCollectionField, value: any, onUpdate: (fieldId: string, value: any) => void, item: any, rowUniqueId: string, onCustomFieldValidation: (fieldId: string, errorMessage: string) => void) => JSX.Element; // eslint-disable-line @typescript-eslint/no-explicit-any
+  onCustomRender?: (
+    field: ICustomCollectionField,
+    value: any,
+    onUpdate: (fieldId: string, value: any) => void,
+    item: any,
+    rowUniqueId: string,
+    onCustomFieldValidation: (fieldId: string, errorMessage: string) => void
+  ) => JSX.Element; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
    * Custom field visibility support
    */
@@ -87,5 +100,5 @@ export enum CustomCollectionFieldType {
   fabricIcon,
   url,
   custom,
-  color
+  color,
 }

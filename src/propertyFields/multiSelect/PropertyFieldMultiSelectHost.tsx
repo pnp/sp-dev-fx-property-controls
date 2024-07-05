@@ -1,6 +1,6 @@
 import * as strings from 'PropertyControlStrings';
 import * as React from 'react';
-import { Dropdown } from '@fluentui/react/lib/components/Dropdown';
+import { Dropdown } from '@fluentui/react';
 import { IPropertyFieldMultiSelectHostProps } from './IPropertyFieldMultiSelectHost';
 import * as telemetry from '../../common/telemetry';
 

@@ -1,5 +1,5 @@
 import { IPlaceholderWithCalloutProps } from '../../common/placeholderWithCallout/IPlaceholderWithCallout';
-import { ILabelProps } from '@fluentui/react/lib/components/Label';
+import { ILabelProps } from '@fluentui/react';
 
 /**
  * PropertyFieldLabelWithCalloutHost properties interface

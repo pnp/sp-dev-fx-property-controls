@@ -1,5 +1,5 @@
 import { IPropertyFieldHeaderCalloutProps } from '../../common/propertyFieldHeader/IPropertyFieldHeader';
-import { IToggleProps } from '@fluentui/react/lib/components/Toggle';
+import { IToggleProps } from '@fluentui/react';
 
 /**
  * PropertyFieldToggleWithCalloutHost properties interface

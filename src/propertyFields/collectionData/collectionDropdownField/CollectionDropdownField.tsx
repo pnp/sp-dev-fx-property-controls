@@ -1,5 +1,5 @@
-import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import * as React from 'react';
+import { Dropdown, IDropdownOption } from '@fluentui/react';
 import { ICustomDropdownOption } from '../ICustomCollectionField';
 import { IBaseCollectionFieldProps } from '../IBaseCollectionFIeldsProps';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';

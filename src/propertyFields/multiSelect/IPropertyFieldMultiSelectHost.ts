@@ -1,4 +1,4 @@
-import { IDropdownProps } from '@fluentui/react/lib/components/Dropdown';
+import { IDropdownProps } from '@fluentui/react';
 
 /**
 * PropertyFieldMultiSelectHost properties interface

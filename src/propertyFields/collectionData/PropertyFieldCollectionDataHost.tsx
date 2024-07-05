@@ -1,15 +1,13 @@
-import * as React from "react";
-import * as telemetry from "../../common/telemetry";
+import * as React from 'react';
+import * as telemetry from '../../common/telemetry';
 import {
   IPropertyFieldCollectionDataHostProps,
   IPropertyFieldCollectionDataHostState,
-} from "./IPropertyFieldCollectionDataHost";
-import { DefaultButton } from "@fluentui/react/lib/components/Button";
-import { Panel, PanelType } from "@fluentui/react/lib/components/Panel";
-import { Label } from "@fluentui/react/lib/components/Label";
-import { CollectionDataViewer } from "./collectionDataViewer";
-import FieldErrorMessage from "../errorMessage/FieldErrorMessage";
-import * as strings from "PropertyControlStrings";
+} from './IPropertyFieldCollectionDataHost';
+import { DefaultButton, Panel, PanelType, Label } from '@fluentui/react';
+import { CollectionDataViewer } from './collectionDataViewer';
+import FieldErrorMessage from '../errorMessage/FieldErrorMessage';
+import * as strings from 'PropertyControlStrings';
 
 export class PropertyFieldCollectionDataHost extends React.Component<
   IPropertyFieldCollectionDataHostProps,
@@ -19,7 +17,7 @@ export class PropertyFieldCollectionDataHost extends React.Component<
     super(props);
 
     this.state = {
-      panelOpen: false
+      panelOpen: false,
     };
 
     telemetry.track('PropertyFieldCollectionData', {});
@@ -30,7 +28,7 @@ export class PropertyFieldCollectionDataHost extends React.Component<
    */
   private openPanel = (): void => {
     this.setState({
-      panelOpen: true
+      panelOpen: true,
     });
   };
 
@@ -39,17 +37,18 @@ export class PropertyFieldCollectionDataHost extends React.Component<
    */
   private closePanel = (): void => {
     this.setState({
-      panelOpen: false
+      panelOpen: false,
     });
   };
 
   /**
    * On save action
    */
-  private onSave = (items: any[]): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
+  private onSave = (items: any[]): void => {
+    // eslint-disable-line @typescript-eslint/no-explicit-any
     this.props.onChanged(items);
     this.setState({
-      panelOpen: false
+      panelOpen: false,
     });
   };
 
@@ -64,7 +63,9 @@ export class PropertyFieldCollectionDataHost extends React.Component<
           disabled={this.props.fields.length === 0 || this.props.disabled}
         />
 
-        {this.props.fields.length === 0 && <FieldErrorMessage errorMessage={strings.CollectionDataEmptyFields} />}
+        {this.props.fields.length === 0 && (
+          <FieldErrorMessage errorMessage={strings.CollectionDataEmptyFields} />
+        )}
 
         <Panel
           isOpen={this.state.panelOpen}
@@ -74,16 +75,22 @@ export class PropertyFieldCollectionDataHost extends React.Component<
           onOuterClick={() => {
             /* no-op; */
           }}
-          className={`PropertyFieldCollectionData__panel ${this.props.panelClassName || ""}`}
-          {
-            ...this.props.panelProps ?? {}
-          }
+          className={`PropertyFieldCollectionData__panel ${
+            this.props.panelClassName || ''
+          }`}
+          {...(this.props.panelProps ?? {})}
         >
           {this.props.panelDescription && (
-            <p className="PropertyFieldCollectionData__panel__description">{this.props.panelDescription}</p>
+            <p className='PropertyFieldCollectionData__panel__description'>
+              {this.props.panelDescription}
+            </p>
           )}
 
-          <CollectionDataViewer {...this.props} fOnSave={this.onSave} fOnClose={this.closePanel} />
+          <CollectionDataViewer
+            {...this.props}
+            fOnSave={this.onSave}
+            fOnClose={this.closePanel}
+          />
         </Panel>
       </div>
     );

@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { IUploadFilePickerTabProps, IUploadFilePickerTabState } from '.';
 import { IFilePickerResult } from '../FilePicker.types';
 import { GeneralHelper } from '../../../../helpers/GeneralHelper';
-import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/components/Button';
-import { css } from '@fluentui/react/lib/Utilities';
+import { PrimaryButton, DefaultButton, css } from '@fluentui/react';
 import * as strings from 'PropertyControlStrings';
 import styles from './UploadFilePickerTab.module.scss';
+import { IUploadFilePickerTabProps } from './IUploadFilePickerTabProps';
+import { IUploadFilePickerTabState } from './IUploadFilePickerTabState';
 
 export default class UploadFilePickerTab extends React.Component<IUploadFilePickerTabProps, IUploadFilePickerTabState> {
   constructor(props: IUploadFilePickerTabProps) {

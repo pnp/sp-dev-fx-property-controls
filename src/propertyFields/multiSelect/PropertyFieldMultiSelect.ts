@@ -1,4 +1,4 @@
-import { IDropdownOption } from '@fluentui/react/lib/components/Dropdown';
+import { IDropdownOption } from '@fluentui/react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {

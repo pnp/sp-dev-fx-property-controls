@@ -1,14 +1,20 @@
 import * as React from 'react';
 
-import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/components/Button';
-import { Spinner } from '@fluentui/react/lib/Spinner';
-import { FocusZone } from '@fluentui/react/lib/FocusZone';
-import { List } from '@fluentui/react/lib/List';
-import { IRectangle } from '@fluentui/react/lib/Utilities';
-import { css } from '@fluentui/react/lib/Utilities';
-import { Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';
-import { Image, ImageFit } from '@fluentui/react/lib/Image';
-import { Check } from '@fluentui/react/lib/Check';
+import {
+  PrimaryButton,
+  DefaultButton,
+  Spinner,
+  FocusZone,
+  List,
+  IRectangle,
+  css,
+  Selection,
+  SelectionMode,
+  SelectionZone,
+  Image,
+  ImageFit,
+  Check,
+} from '@fluentui/react';
 import { Placeholder } from '../../placeHolderControl';
 import { IRecentFile } from '../../../../services/FilesSearchService.types';
 import { IFilePickerResult } from '../FilePicker.types';
@@ -29,7 +35,10 @@ const ROWS_PER_PAGE = 3;
  */
 const MAX_ROW_HEIGHT = 175;
 
-export default class RecentFilesTab extends React.Component<IRecentFilesTabProps, IRecentFilesTabState> {
+export default class RecentFilesTab extends React.Component<
+  IRecentFilesTabProps,
+  IRecentFilesTabState
+> {
   private _columnCount: number;
   private _columnWidth: number;
   private _rowHeight: number;
@@ -41,14 +50,13 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
 
     this._selection = new Selection({
       selectionMode: SelectionMode.single,
-      onSelectionChanged: this._onSelectionChanged
+      onSelectionChanged: this._onSelectionChanged,
     });
-
 
     this.state = {
       isLoading: true,
       results: [],
-      filePickerResult: null
+      filePickerResult: null,
     };
   }
 
@@ -56,12 +64,15 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
    * Gets the most recently used files
    */
   public async componentDidMount(): Promise<void> {
-    const recentFilesResult = await this.props.fileSearchService.executeRecentSearch(this.props.accepts);
+    const recentFilesResult =
+      await this.props.fileSearchService.executeRecentSearch(
+        this.props.accepts
+      );
     this._selection.setItems(recentFilesResult, true);
 
     this.setState({
       isLoading: false,
-      results: recentFilesResult
+      results: recentFilesResult,
     });
   }
 
@@ -69,18 +80,18 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
    * Render the tab
    */
   public render(): React.ReactElement<IRecentFilesTabProps> {
-    const { results,
-      isLoading } = this.state;
+    const { results, isLoading } = this.state;
     return (
       <div className={styles.tabContainer}>
         <div className={styles.tabHeaderContainer}>
           <h2 className={styles.tabHeader}>{strings.RecentDocumentsHeader}</h2>
         </div>
         <div className={css(styles.tab, styles.tabOffset)}>
-          {isLoading ?
-            this._renderSpinner() :
-            results === undefined || results.length < 1 ? this._renderPlaceholder() : this._renderGridList()
-          }
+          {isLoading
+            ? this._renderSpinner()
+            : results === undefined || results.length < 1
+            ? this._renderPlaceholder()
+            : this._renderGridList()}
         </div>
         <div className={styles.actionButtonsContainer}>
           <div className={styles.actionButtons}>
@@ -88,8 +99,15 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
               disabled={!this.state.filePickerResult}
               onClick={() => this._handleSave()}
               className={styles.actionButton}
-            >{strings.OpenButtonLabel}</PrimaryButton>
-            <DefaultButton onClick={() => this._handleClose()} className={styles.actionButton}>{strings.CancelButtonLabel}</DefaultButton>
+            >
+              {strings.OpenButtonLabel}
+            </PrimaryButton>
+            <DefaultButton
+              onClick={() => this._handleClose()}
+              className={styles.actionButton}
+            >
+              {strings.CancelButtonLabel}
+            </DefaultButton>
           </div>
         </div>
       </div>
@@ -105,30 +123,40 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
       const filePickerResult: IFilePickerResult = {
         fileAbsoluteUrl: selectedKey.fileUrl,
         fileName: GeneralHelper.getFileNameFromUrl(selectedKey.fileUrl),
-        fileNameWithoutExtension: GeneralHelper.getFileNameWithoutExtension(selectedKey.fileUrl),
-        downloadFileContent: () => { return this.props.fileSearchService.downloadSPFileContent(selectedKey.fileUrl, GeneralHelper.getFileNameFromUrl(selectedKey.fileUrl)); }
+        fileNameWithoutExtension: GeneralHelper.getFileNameWithoutExtension(
+          selectedKey.fileUrl
+        ),
+        downloadFileContent: () => {
+          return this.props.fileSearchService.downloadSPFileContent(
+            selectedKey.fileUrl,
+            GeneralHelper.getFileNameFromUrl(selectedKey.fileUrl)
+          );
+        },
       };
 
       // Save the selected file
       this.setState({
-        filePickerResult
+        filePickerResult,
       });
     } else {
       // Remove any selected file
       this.setState({
-        filePickerResult: undefined
+        filePickerResult: undefined,
       });
     }
     if (this._listElem) {
       // Force the list to update to show the selection check
       this._listElem.forceUpdate();
     }
-  }
+  };
 
   /**
-     * Calculates how many items there should be in the page
-     */
-  private _getItemCountForPage = (itemIndex: number, surfaceRect: IRectangle): number => {
+   * Calculates how many items there should be in the page
+   */
+  private _getItemCountForPage = (
+    itemIndex: number,
+    surfaceRect: IRectangle
+  ): number => {
     if (itemIndex === 0 && surfaceRect.width > 0) {
       this._columnCount = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
       this._columnWidth = Math.floor(surfaceRect.width / this._columnCount);
@@ -136,56 +164,65 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
     }
 
     return this._columnCount * ROWS_PER_PAGE;
-  }
+  };
 
   /** Calculates the list "page" height (a.k.a. row) */
   private _getPageHeight = (): number => {
     return this._rowHeight * ROWS_PER_PAGE;
-  }
-
+  };
 
   /**
    * Renders a "please wait" spinner while we're loading
    */
   private _renderSpinner = (): JSX.Element => {
     return <Spinner label={strings.Loading} />;
-  }
+  };
 
   /**
    * Renders a message saying that there are no recent files
    */
   private _renderPlaceholder = (): JSX.Element => {
-    return <Placeholder iconName='OpenFolderHorizontal'
-      iconText={strings.NoRecentFiles}
-      description={strings.NoRecentFilesDescription}
-    />;
-  }
+    return (
+      <Placeholder
+        iconName='OpenFolderHorizontal'
+        iconText={strings.NoRecentFiles}
+        description={strings.NoRecentFilesDescription}
+      />
+    );
+  };
 
   /**
    * Renders a grid list containing results
    */
   private _renderGridList = (): JSX.Element => {
-    return <span className={styles.recentGridList} role="grid">
-      <FocusZone>
-        <SelectionZone selection={this._selection}
-          onItemInvoked={(item: IRecentFile) => this._handleItemInvoked(item)}>
-          <List
-            ref={this._linkElement}
-            items={this.state.results}
-            onRenderCell={this._onRenderCell}
-            getItemCountForPage={this._getItemCountForPage}
-            getPageHeight={this._getPageHeight}
-            renderedWindowsAhead={4}
-          />
-        </SelectionZone>
-      </FocusZone>
-    </span>;
-  }
+    return (
+      <span className={styles.recentGridList} role='grid'>
+        <FocusZone>
+          <SelectionZone
+            selection={this._selection}
+            onItemInvoked={(item: IRecentFile) => this._handleItemInvoked(item)}
+          >
+            <List
+              ref={this._linkElement}
+              items={this.state.results}
+              onRenderCell={this._onRenderCell}
+              getItemCountForPage={this._getItemCountForPage}
+              getPageHeight={this._getPageHeight}
+              renderedWindowsAhead={4}
+            />
+          </SelectionZone>
+        </FocusZone>
+      </span>
+    );
+  };
 
   /**
    * Renders each result in its own cell
    */
-  private _onRenderCell = (item: IRecentFile, index: number | undefined): JSX.Element => {
+  private _onRenderCell = (
+    item: IRecentFile,
+    index: number | undefined
+  ): JSX.Element => {
     let isSelected: boolean = false;
 
     if (this._selection && index !== undefined) {
@@ -193,21 +230,25 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
     }
 
     return (
-      <div
-        className={styles.gridListCell} role={"gridCell"}>
+      <div className={styles.gridListCell} role={'gridCell'}>
         <div
-          className={css(styles.itemTile, styles.isFile, styles.hasThumbnail, isSelected ? styles.isSelected : undefined)}
-          role="link"
+          className={css(
+            styles.itemTile,
+            styles.isFile,
+            styles.hasThumbnail,
+            isSelected ? styles.isSelected : undefined
+          )}
+          role='link'
           aria-selected={isSelected}
-          data-is-draggable="false"
-          data-is-focusable="true"
+          data-is-draggable='false'
+          data-is-focusable='true'
           data-selection-index={index}
-          data-selection-invoke="true"
+          data-selection-invoke='true'
           data-item-index={index}
-          data-automationid="ItemTile"
+          data-automationid='ItemTile'
           style={{
             width: this._columnWidth,
-            height: this._rowHeight
+            height: this._rowHeight,
           }}
         >
           <div className={styles.itemTileContent}>
@@ -215,19 +256,31 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
               <div className={styles.itemTileFileContainer}>
                 <div className={styles.itemTileThumbnail}>
                   {/* <div className={styles.image}> */}
-                  <Image src={item.fileUrl} width={this._columnWidth} height={this._rowHeight} imageFit={ImageFit.cover} />
+                  <Image
+                    src={item.fileUrl}
+                    width={this._columnWidth}
+                    height={this._rowHeight}
+                    imageFit={ImageFit.cover}
+                  />
                   {/* </div> */}
                 </div>
-                <div className={styles.itemTileCheckCircle}
+                <div
+                  className={styles.itemTileCheckCircle}
                   role='checkbox'
                   aria-checked={isSelected}
-                  data-item-index={index} data-selection-toggle={true} data-automationid='CheckCircle'>
+                  data-item-index={index}
+                  data-selection-toggle={true}
+                  data-automationid='CheckCircle'
+                >
                   <Check checked={isSelected} />
                 </div>
                 <div className={styles.itemTileNamePlate}>
                   <div className={styles.itemTileName}>{item.name}</div>
                   <div className={styles.itemTileSubText}>
-                    <span>{strings.EditedByNamePlate}{item.editedBy}</span>
+                    <span>
+                      {strings.EditedByNamePlate}
+                      {item.editedBy}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -236,28 +289,28 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
         </div>
       </div>
     );
-  }
+  };
 
   /**
    * Gets called what a file is selected.
    */
   private _handleItemInvoked = (item: IRecentFile): void => {
     this._selection.setKeySelected(item.key, true, true);
-  }
+  };
 
   /**
    * Gets called when it is time to save the currently selected item
    */
   private _handleSave = (): void => {
     this.props.onSave(this.state.filePickerResult);
-  }
+  };
 
   /**
    * Gets called when it is time to close (without saving)
    */
   private _handleClose = (): void => {
     this.props.onClose();
-  }
+  };
 
   /**
    * Creates a ref to the list
@@ -275,5 +328,5 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
         this._listElem.forceUpdate();
       }, 0);
     }
-  }
+  };
 }

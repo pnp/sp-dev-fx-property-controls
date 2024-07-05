@@ -1,6 +1,17 @@
 {
   "versions": [
     {
+      "version": "3.17.1",
+      "changes": {
+        "new": [],
+        "enhancements": [],
+        "fixes": [
+          "Fixes for Webpack 5: [#621](https://github.com/pnp/sp-dev-fx-property-controls/pull/621)"
+        ]
+      },
+      "contributions": []
+    },
+    {
       "version": "3.17.0",
       "changes": {
         "new": [

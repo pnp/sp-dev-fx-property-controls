@@ -1,7 +1,6 @@
-import { IPropertyPaneCustomFieldProps } from "@microsoft/sp-property-pane";
-import { ICustomCollectionField } from "./ICustomCollectionField";
-import { IPanelProps } from "@fluentui/react/lib/Panel";
-
+import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-property-pane';
+import { ICustomCollectionField } from './ICustomCollectionField';
+import { IPanelProps } from '@fluentui/react';
 
 export interface IPropertyFieldCollectionDataProps {
   /**
@@ -74,4 +73,6 @@ export interface IPropertyFieldCollectionDataProps {
   panelProps?: IPanelProps;
 }
 
-export interface IPropertyFieldCollectionDataPropsInternal extends IPropertyPaneCustomFieldProps, IPropertyFieldCollectionDataProps {}
+export interface IPropertyFieldCollectionDataPropsInternal
+  extends IPropertyPaneCustomFieldProps,
+    IPropertyFieldCollectionDataProps {}

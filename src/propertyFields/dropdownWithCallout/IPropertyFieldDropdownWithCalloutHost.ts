@@ -1,5 +1,5 @@
 import { IPropertyFieldHeaderCalloutProps } from '../../common/propertyFieldHeader/IPropertyFieldHeader';
-import { IDropdownProps } from '@fluentui/react/lib/components/Dropdown';
+import { IDropdownProps } from '@fluentui/react';
 
 /**
  * PropertyFieldDropdownWithCalloutHost properties interface

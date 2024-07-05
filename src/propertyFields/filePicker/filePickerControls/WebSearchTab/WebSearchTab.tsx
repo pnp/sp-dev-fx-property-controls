@@ -2,23 +2,42 @@ import * as React from 'react';
 
 import { IWebSearchTabProps } from './IWebSearchTabProps';
 import { IWebSearchTabState } from './IWebSearchTabState';
-import { ISearchSuggestion, ImageSize, ImageAspect, ImageLicense, DEFAULT_SUGGESTIONS, MAX_ROW_HEIGHT, ROWS_PER_PAGE } from './WebSearchTab.types';
-import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/components/Button';
-import { Label } from '@fluentui/react/lib/Label';
-import { SearchBox } from '@fluentui/react/lib/SearchBox';
-import { Check } from '@fluentui/react/lib/Check';
-import { Dropdown, IDropdownProps, IDropdownOption } from '@fluentui/react/lib/Dropdown';
-import { Image, ImageFit } from '@fluentui/react/lib/Image';
-import { Link } from '@fluentui/react/lib/Link';
-import { FocusZone } from '@fluentui/react/lib/FocusZone';
-import { List } from '@fluentui/react/lib/List';
-import { IRectangle } from '@fluentui/react/lib/Utilities';
-import { Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';
-import { MessageBar } from '@fluentui/react/lib/MessageBar';
-import { css } from '@fluentui/react/lib/Utilities';
+import {
+  ISearchSuggestion,
+  ImageSize,
+  ImageAspect,
+  ImageLicense,
+  DEFAULT_SUGGESTIONS,
+  MAX_ROW_HEIGHT,
+  ROWS_PER_PAGE,
+} from './WebSearchTab.types';
+import {
+  PrimaryButton,
+  DefaultButton,
+  Label,
+  SearchBox,
+  Check,
+  Dropdown,
+  IDropdownProps,
+  IDropdownOption,
+  Image,
+  ImageFit,
+  Link,
+  FocusZone,
+  List,
+  IRectangle,
+  Selection,
+  SelectionMode,
+  SelectionZone,
+  MessageBar,
+  css,
+} from '@fluentui/react';
 import { IFilePickerResult } from '../FilePicker.types';
 import { GeneralHelper } from '../../../../helpers/GeneralHelper';
-import { ISearchResult, BingQuerySearchParams } from '../../../../services/FilesSearchService.types';
+import {
+  ISearchResult,
+  BingQuerySearchParams,
+} from '../../../../services/FilesSearchService.types';
 
 import styles from './WebSearchTab.module.scss';
 import * as strings from 'PropertyControlStrings';
@@ -26,7 +45,10 @@ import * as strings from 'PropertyControlStrings';
 /**
  * Renders search suggestions and performs seach queries
  */
-export default class WebSearchTab extends React.Component<IWebSearchTabProps, IWebSearchTabState> {
+export default class WebSearchTab extends React.Component<
+  IWebSearchTabProps,
+  IWebSearchTabState
+> {
   private _columnCount: number;
   private _columnWidth: number;
   private _rowHeight: number;
@@ -38,13 +60,13 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
 
     this._selection = new Selection({
       selectionMode: SelectionMode.single,
-      onSelectionChanged: this._onSelectionChanged
+      onSelectionChanged: this._onSelectionChanged,
     });
 
     this.state = {
       isLoading: false,
       results: undefined,
-      filePickerResult: null
+      filePickerResult: null,
     };
   }
 
@@ -65,14 +87,14 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
           {query && results && this._renderSearchResults()}
         </div>
         <div className={styles.actionButtonsContainer}>
-          {
-            this.state.results && this.state.license === 'Any' &&
-            <MessageBar>
-              {strings.CreativeCommonsMessage}
-            </MessageBar>}
+          {this.state.results && this.state.license === 'Any' && (
+            <MessageBar>{strings.CreativeCommonsMessage}</MessageBar>
+          )}
           <Label className={styles.copyrightLabel}>
             {strings.CopyrightWarning}&nbsp;&nbsp;
-            <Link target='_blank' href={strings.CopyrightUrl}>{strings.LearnMoreLink}</Link>
+            <Link target='_blank' href={strings.CopyrightUrl}>
+              {strings.LearnMoreLink}
+            </Link>
           </Label>
 
           <div className={styles.actionButtons}>
@@ -80,8 +102,15 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
               disabled={!this.state.filePickerResult}
               className={styles.actionButton}
               onClick={() => this._handleSave()}
-            >{strings.OpenButtonLabel}</PrimaryButton>
-            <DefaultButton onClick={() => this._handleClose()} className={styles.actionButton}>{strings.CancelButtonLabel}</DefaultButton>
+            >
+              {strings.OpenButtonLabel}
+            </PrimaryButton>
+            <DefaultButton
+              onClick={() => this._handleClose()}
+              className={styles.actionButton}
+            >
+              {strings.CancelButtonLabel}
+            </DefaultButton>
           </div>
         </div>
       </div>
@@ -100,30 +129,43 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
 
       //Brute force approach to making sure all URLs are loading over HTTPS
       // even if it breaks the page.
-      const selectedUrl: string = selectedItem.contentUrl.replace('http://', 'https://');
+      const selectedUrl: string = selectedItem.contentUrl.replace(
+        'http://',
+        'https://'
+      );
       selectedFileResult = {
         fileAbsoluteUrl: selectedUrl,
         fileName: GeneralHelper.getFileNameFromUrl(selectedUrl),
-        fileNameWithoutExtension: GeneralHelper.getFileNameWithoutExtension(selectedUrl),
-        downloadFileContent: () => { return this.props.bingSearchService.downloadBingContent(selectedUrl, GeneralHelper.getFileNameFromUrl(selectedUrl)); }
+        fileNameWithoutExtension:
+          GeneralHelper.getFileNameWithoutExtension(selectedUrl),
+        downloadFileContent: () => {
+          return this.props.bingSearchService.downloadBingContent(
+            selectedUrl,
+            GeneralHelper.getFileNameFromUrl(selectedUrl)
+          );
+        },
       };
     }
 
     // If clicked on already selected file -> deselect it
-    if (filePickerResult && selectedFileResult && filePickerResult.fileAbsoluteUrl === selectedFileResult.fileAbsoluteUrl) {
+    if (
+      filePickerResult &&
+      selectedFileResult &&
+      filePickerResult.fileAbsoluteUrl === selectedFileResult.fileAbsoluteUrl
+    ) {
       this._selection.setAllSelected(false);
       selectedFileResult = null;
     }
 
     // Save the selected file
     this.setState({
-      filePickerResult: selectedFileResult
+      filePickerResult: selectedFileResult,
     });
     if (this._listElem) {
       // Force the list to update to show the selection check
       this._listElem.forceUpdate();
     }
-  }
+  };
 
   /**
    * Renders the returned search results
@@ -133,13 +175,20 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
 
     // If there are no results, tell 'em.
     if (results === undefined || results.length < 1) {
-      return <Label className={styles.noResultLabel}>{strings.NoResultsBadEnglish}</Label>;
+      return (
+        <Label className={styles.noResultLabel}>
+          {strings.NoResultsBadEnglish}
+        </Label>
+      );
     }
 
     return (
       <FocusZone>
-        <SelectionZone selection={this._selection}
-          onItemInvoked={(item: ISearchResult) => this._selection.setKeySelected(item.key, true, true)}
+        <SelectionZone
+          selection={this._selection}
+          onItemInvoked={(item: ISearchResult) =>
+            this._selection.setKeySelected(item.key, true, true)
+          }
         >
           <List
             ref={this._linkElement}
@@ -153,12 +202,15 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
         </SelectionZone>
       </FocusZone>
     );
-  }
+  };
 
   /**
    * Show an individual search result item
    */
-  private _onRenderSearchResultsCell = (item: ISearchResult, index: number | undefined): JSX.Element => {
+  private _onRenderSearchResultsCell = (
+    item: ISearchResult,
+    index: number | undefined
+  ): JSX.Element => {
     const { query } = this.state;
 
     let isSelected: boolean = false;
@@ -179,30 +231,47 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
     // Resize the picture with the same aspect ratio
     const thumbnailWidth: number = thumbnailHeight * ratio;
 
-    const searchResultAltText: string = strings.SearchResultAlt.replace('{0}', query);
+    const searchResultAltText: string = strings.SearchResultAlt.replace(
+      '{0}',
+      query
+    );
     return (
       <div
         className={styles.bingGridListCell}
         style={{
-          width: 100 / this._columnCount + '%'
+          width: 100 / this._columnCount + '%',
         }}
       >
         <div
           aria-label={searchResultAltText}
-          className={css(styles.bingTile, isSelected ? styles.isSelected : undefined)}
+          className={css(
+            styles.bingTile,
+            isSelected ? styles.isSelected : undefined
+          )}
           data-is-focusable={true}
           data-selection-index={index}
           style={{
             width: `${thumbnailWidth}px`,
-            height: `${thumbnailHeight}px`
-          }}>
+            height: `${thumbnailHeight}px`,
+          }}
+        >
           <div className={styles.bingTileContent} data-selection-invoke={true}>
-            <Image src={item.thumbnailUrl} className={styles.bingTileThumbnail} alt={searchResultAltText} width={thumbnailWidth} height={thumbnailHeight} />
+            <Image
+              src={item.thumbnailUrl}
+              className={styles.bingTileThumbnail}
+              alt={searchResultAltText}
+              width={thumbnailWidth}
+              height={thumbnailHeight}
+            />
             <div className={styles.bingTileFrame} />
-            <div className={styles.bingTileCheckCircle}
+            <div
+              className={styles.bingTileCheckCircle}
               role='checkbox'
               aria-checked={isSelected}
-              data-item-index={index} data-selection-toggle={true} data-automationid='CheckCircle'>
+              data-item-index={index}
+              data-selection-toggle={true}
+              data-automationid='CheckCircle'
+            >
               <Check checked={isSelected} />
             </div>
             <div className={styles.bingTileNamePlate}>
@@ -210,18 +279,24 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
                 href={item.contentUrl}
                 target='_blank'
                 aria-label={strings.SearchResultAriaLabel}
-              >{item.displayUrl}</Link>
+              >
+                {item.displayUrl}
+              </Link>
             </div>
           </div>
         </div>
-      </div>);
-  }
+      </div>
+    );
+  };
 
   /**
    * Renders suggestions when there aren't any queries
    */
   private _renderSearchSuggestions = (): JSX.Element => {
-    const suggestions: ISearchSuggestion[] = this.props.suggestions !== undefined ? this.props.suggestions : DEFAULT_SUGGESTIONS;
+    const suggestions: ISearchSuggestion[] =
+      this.props.suggestions !== undefined
+        ? this.props.suggestions
+        : DEFAULT_SUGGESTIONS;
 
     return (
       <FocusZone>
@@ -235,7 +310,7 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
         />
       </FocusZone>
     );
-  }
+  };
 
   /**
    * Gets search results from Bing
@@ -249,16 +324,18 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
     // Show a loading indicator + remove selection
     this.setState({
       filePickerResult: null,
-      isLoading: true
+      isLoading: true,
     });
 
     const searchParams: BingQuerySearchParams = {
       aspect: this.state.aspect,
       size: this.state.size,
       license: this.state.license,
-      query: this.state.query
+      query: this.state.query,
     };
-    const searchResults = await this.props.bingSearchService.executeBingSearch(searchParams);
+    const searchResults = await this.props.bingSearchService.executeBingSearch(
+      searchParams
+    );
 
     // If the results were obtained
     if (searchResults) {
@@ -269,14 +346,17 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
     // Save results and stop loading indicator
     this.setState({
       isLoading: false,
-      results: searchResults
+      results: searchResults,
     });
-  }
+  };
 
   /**
    * Calculates how many items there should be in the page
    */
-  private _getItemCountForPage = (itemIndex: number, surfaceRect: IRectangle): number => {
+  private _getItemCountForPage = (
+    itemIndex: number,
+    surfaceRect: IRectangle
+  ): number => {
     if (itemIndex === 0) {
       this._columnCount = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
       this._columnWidth = Math.floor(surfaceRect.width / this._columnCount);
@@ -284,36 +364,48 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
     }
 
     return this._columnCount * ROWS_PER_PAGE;
-  }
+  };
 
   /**
    * Gets the height of a list "page"
    */
   private _getPageHeight = (): number => {
     return this._rowHeight * ROWS_PER_PAGE;
-  }
+  };
 
   /**
    * Renders a cell for search suggestions
    */
-  private _onRenderSuggestionCell = (item: ISearchSuggestion, index: number | undefined): JSX.Element => {
+  private _onRenderSuggestionCell = (
+    item: ISearchSuggestion,
+    index: number | undefined
+  ): JSX.Element => {
     return (
       <div
         className={styles.filePickerFolderCardTile}
         data-is-focusable={true}
         style={{
-          width: 100 / this._columnCount + '%'
+          width: 100 / this._columnCount + '%',
         }}
       >
         <div className={styles.filePickerFolderCardSizer}>
           <div className={styles.filePickerFolderCardPadder}>
-            <Image src={item.backgroundUrl} className={styles.filePickerFolderCardImage} imageFit={ImageFit.cover} />
-            <DefaultButton className={styles.filePickerFolderCardLabel} onClick={(_event) => this._handleSearch(item.topic)}>{item.topic}</DefaultButton>
+            <Image
+              src={item.backgroundUrl}
+              className={styles.filePickerFolderCardImage}
+              imageFit={ImageFit.cover}
+            />
+            <DefaultButton
+              className={styles.filePickerFolderCardLabel}
+              onClick={(_event) => this._handleSearch(item.topic)}
+            >
+              {item.topic}
+            </DefaultButton>
           </div>
         </div>
       </div>
     );
-  }
+  };
 
   /**
    * Renders the search box
@@ -330,30 +422,35 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
             <SearchBox
               placeholder={strings.SearchBoxPlaceholder}
               value={query}
-              onSearch={newQuery => this._handleSearch(newQuery)}
+              onSearch={(newQuery) => this._handleSearch(newQuery)}
             />
           </div>
         </div>
         <Label>{strings.PoweredByBing}</Label>
-        {
-          hasQuery &&
+        {hasQuery && (
           <div className={styles.dropdownContainer}>
             <Dropdown
               className={styles.filterDropdown}
-              onRenderPlaceHolder={(props: IDropdownProps) => this._renderFilterPlaceholder(props)}
+              onRenderPlaceHolder={(props: IDropdownProps) =>
+                this._renderFilterPlaceholder(props)
+              }
               selectedKey={this.state.size}
               options={[
                 { key: 'All', text: strings.SizeOptionAll },
                 { key: 'Small', text: strings.SizeOptionSmall },
                 { key: 'Medium', text: strings.SizeOptionMedium },
                 { key: 'Large', text: strings.SizeOptionLarge },
-                { key: 'Wallpaper', text: strings.SizeOptionExtraLarge }
+                { key: 'Wallpaper', text: strings.SizeOptionExtraLarge },
               ]}
-              onChanged={(option: IDropdownOption, index?: number) => this._handleChangeSize(option)}
+              onChanged={(option: IDropdownOption, index?: number) =>
+                this._handleChangeSize(option)
+              }
             />
             <Dropdown
               className={styles.filterDropdown}
-              onRenderPlaceHolder={(props: IDropdownProps) => this._renderFilterPlaceholder(props)}
+              onRenderPlaceHolder={(props: IDropdownProps) =>
+                this._renderFilterPlaceholder(props)
+              }
               selectedKey={this.state.aspect}
               options={[
                 { key: 'All', text: strings.LayoutOptionAll },
@@ -361,52 +458,68 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
                 { key: 'Wide', text: strings.LayoutOptionWide },
                 { key: 'Tall', text: strings.LayoutOptionTall },
               ]}
-              onChanged={(option: IDropdownOption, index?: number) => this._handleChangeLayout(option)}
+              onChanged={(option: IDropdownOption, index?: number) =>
+                this._handleChangeLayout(option)
+              }
             />
             <Dropdown
               className={styles.filterDropdown}
-              onRenderPlaceHolder={(props: IDropdownProps) => this._renderFilterPlaceholder(props)}
+              onRenderPlaceHolder={(props: IDropdownProps) =>
+                this._renderFilterPlaceholder(props)
+              }
               selectedKey={license}
               options={[
                 { key: 'All', text: strings.LicenseOptionAll },
-                { key: 'Any', text: strings.LicenseOptionAny }
+                { key: 'Any', text: strings.LicenseOptionAny },
               ]}
-              onChanged={(option: IDropdownOption, index?: number) => this._handleChangeLicense(option)}
+              onChanged={(option: IDropdownOption, index?: number) =>
+                this._handleChangeLicense(option)
+              }
             />
           </div>
-        }
-      </div>);
-  }
+        )}
+      </div>
+    );
+  };
 
   /**
    * Handles when a user changes the size drop down.
    * Resubmits search query
    */
   private _handleChangeSize = (option: IDropdownOption): void => {
-    this.setState({
-      size: option.key as ImageSize
-    }, () => this._getSearchResults());
-  }
+    this.setState(
+      {
+        size: option.key as ImageSize,
+      },
+      () => this._getSearchResults()
+    );
+  };
 
   /**
    * Handles when user selects a new layout from the drop down.
    * Resubmits search query.
    */
   private _handleChangeLayout = (option: IDropdownOption): void => {
-    this.setState({
-      aspect: option.key as ImageAspect
-    }, () => this._getSearchResults());
-  }
+    this.setState(
+      {
+        aspect: option.key as ImageAspect,
+      },
+      () => this._getSearchResults()
+    );
+  };
 
   /**
    * Handles when a user changes the license from the drop down
    * Resubits search query
    */
   private _handleChangeLicense = (option: IDropdownOption): void => {
-    this.setState({
-      license: option.key as ImageLicense
-    }, () => this._getSearchResults());
-  }
+    this.setState(
+      {
+        license: option.key as ImageLicense,
+      },
+      () => this._getSearchResults()
+    );
+  };
 
   /**
    * Renders the drop down placeholders
@@ -414,23 +527,26 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
   private _renderFilterPlaceholder = (props: IDropdownProps): JSX.Element => {
     // return <span>{props.placeholder}</span>;
     return <span>Pick the value</span>;
-  }
+  };
 
   /**
    * Handles when user triggers search query
    */
   private _handleSearch = (newQuery?: string): void => {
-    this.setState({
-      query: newQuery
-    }, () => this._getSearchResults());
-  }
+    this.setState(
+      {
+        query: newQuery,
+      },
+      () => this._getSearchResults()
+    );
+  };
 
   /**
    * Handles when user closes search pane
    */
   private _handleClose = (): void => {
     this.props.onClose();
-  }
+  };
 
   /**
    * Handes when user saves selection
@@ -438,12 +554,12 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
    */
   private _handleSave = (): void => {
     this.props.onSave(this.state.filePickerResult);
-  }
+  };
 
   /**
    * Creates a reference to the list
    */
   private _linkElement = (e: List): void => {
     this._listElem = e;
-  }
+  };
 }

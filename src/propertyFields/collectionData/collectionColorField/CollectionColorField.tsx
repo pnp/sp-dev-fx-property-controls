@@ -1,9 +1,7 @@
 import * as React from 'react';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
 import { ICollectionColorFieldProps } from './ICollectionColorFieldProps';
-import { Async } from '@fluentui/react/lib/Utilities';
-import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import { ColorPicker } from '@fluentui/react/lib/ColorPicker';
+import { Callout, DirectionalHint, ColorPicker, Async } from '@fluentui/react';
 import { ICustomCollectionField } from '../ICustomCollectionField';
 
 interface ICollectionColorFieldState {

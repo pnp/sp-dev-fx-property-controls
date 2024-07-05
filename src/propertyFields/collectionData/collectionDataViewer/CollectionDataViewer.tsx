@@ -3,13 +3,19 @@ import styles from '../PropertyFieldCollectionDataHost.module.scss';
 import { ICollectionDataViewerProps } from './ICollectionDataViewerProps';
 import { ICollectionDataViewerState } from './ICollectionDataViewerState';
 import { CollectionDataItem } from '../collectionDataItem';
-import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/components/Button';
-import { Icon } from '@fluentui/react/lib/components/Icon';
+import {
+  PrimaryButton,
+  DefaultButton,
+  Icon
+} from '@fluentui/react';
 import * as strings from 'PropertyControlStrings';
 import { cloneDeep, sortBy } from '@microsoft/sp-lodash-subset';
 
-export class CollectionDataViewer extends React.Component<ICollectionDataViewerProps, ICollectionDataViewerState> {
-  private readonly SORT_IDX = "sortIdx";
+export class CollectionDataViewer extends React.Component<
+  ICollectionDataViewerProps,
+  ICollectionDataViewerState
+> {
+  private readonly SORT_IDX = 'sortIdx';
 
   constructor(props: ICollectionDataViewerProps) {
     super(props);
@@ -18,7 +24,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
       crntItems: [],
       inCreationItem: null,
       inCreationItemValid: null,
-      validation: {}
+      validation: {},
     };
   }
 
@@ -26,7 +32,9 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
    * componentDidMount lifecycle hook
    */
   public componentDidMount(): void {
-    let crntItems = this.props.value ? sortBy(cloneDeep(this.props.value), this.SORT_IDX) : [];
+    let crntItems = this.props.value
+      ? sortBy(cloneDeep(this.props.value), this.SORT_IDX)
+      : [];
     crntItems = crntItems.map((item, idx) => {
       if (!item[this.SORT_IDX]) {
         item[this.SORT_IDX] = idx + 1;
@@ -36,56 +44,64 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
     // Update the sort propety
     crntItems = this.updateSortProperty(crntItems);
     this.setState({
-      crntItems: sortBy(crntItems, this.SORT_IDX)
+      crntItems: sortBy(crntItems, this.SORT_IDX),
     });
   }
 
   /**
    * Add a new item to the collection
    */
-  private addItem = (item: any): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
-    this.setState((prevState: ICollectionDataViewerState): ICollectionDataViewerState => {
-      let crntItems = [...prevState.crntItems, item];
-      crntItems = this.updateSortProperty(crntItems);
-      return {
-        crntItems,
-        inCreationItem: null,
-        inCreationItemValid: null
-      };
-    });
-  }
+  private addItem = (item: any): void => {
+    // eslint-disable-line @typescript-eslint/no-explicit-any
+    this.setState(
+      (prevState: ICollectionDataViewerState): ICollectionDataViewerState => {
+        let crntItems = [...prevState.crntItems, item];
+        crntItems = this.updateSortProperty(crntItems);
+        return {
+          crntItems,
+          inCreationItem: null,
+          inCreationItemValid: null,
+        };
+      }
+    );
+  };
 
   /**
    * Remove an item from the collection
    */
-  private updateItem = (idx: number, item: any): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
-    this.setState((prevState: ICollectionDataViewerState): ICollectionDataViewerState => {
-      const { crntItems } = prevState;
-      // Update the item in the array
-      crntItems[idx] = item;
-      return { crntItems };
-    });
-  }
+  private updateItem = (idx: number, item: any): void => {
+    // eslint-disable-line @typescript-eslint/no-explicit-any
+    this.setState(
+      (prevState: ICollectionDataViewerState): ICollectionDataViewerState => {
+        const { crntItems } = prevState;
+        // Update the item in the array
+        crntItems[idx] = item;
+        return { crntItems };
+      }
+    );
+  };
 
   /**
    * Remove an item from the collection
    */
   private deleteItem = (idx: number): void => {
-    this.setState((prevState: ICollectionDataViewerState): ICollectionDataViewerState => {
-      let { crntItems } = prevState;
-      const { validation } = prevState;
-      crntItems.splice(idx, 1);
-      delete validation[idx];
+    this.setState(
+      (prevState: ICollectionDataViewerState): ICollectionDataViewerState => {
+        let { crntItems } = prevState;
+        const { validation } = prevState;
+        crntItems.splice(idx, 1);
+        delete validation[idx];
 
-      // Update the sort propety
-      crntItems = this.updateSortProperty(crntItems);
+        // Update the sort propety
+        crntItems = this.updateSortProperty(crntItems);
 
-      return {
-        crntItems: sortBy(crntItems, this.SORT_IDX),
-        validation: validation
-      };
-    });
-  }
+        return {
+          crntItems: sortBy(crntItems, this.SORT_IDX),
+          validation: validation,
+        };
+      }
+    );
+  };
 
   /**
    * Validate every item
@@ -95,10 +111,10 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
       const { validation } = prevState;
       validation[idx] = isValid;
       return {
-        validation: prevState.validation
+        validation: prevState.validation,
       };
     });
-  }
+  };
 
   /**
    * Check if all items are valid
@@ -119,12 +135,13 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
   /**
    * Currently in creation
    */
-  private addInCreation = (item: any, isValid: boolean): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
+  private addInCreation = (item: any, isValid: boolean): void => {
+    // eslint-disable-line @typescript-eslint/no-explicit-any
     this.setState({
       inCreationItem: item,
-      inCreationItemValid: isValid
+      inCreationItemValid: isValid,
     });
-  }
+  };
 
   /**
    * Add the item and save the form
@@ -138,7 +155,7 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
     } else {
       this.onSave();
     }
-  }
+  };
 
   /**
    * Move an item in the array
@@ -147,7 +164,8 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
    * @param oldIdx
    * @param newIdx
    */
-  private moveItemTo(crntItems: any[], oldIdx: number, newIdx: number): any[] { // eslint-disable-line @typescript-eslint/no-explicit-any
+  private moveItemTo(crntItems: any[], oldIdx: number, newIdx: number): any[] {
+    // eslint-disable-line @typescript-eslint/no-explicit-any
     if (newIdx > -1 && newIdx < crntItems.length) {
       const removedElement = crntItems.splice(oldIdx, 1)[0];
       if (removedElement) {
@@ -162,7 +180,8 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
    *
    * @param crntItems
    */
-  private updateSortProperty(crntItems: any[]): any[] { // eslint-disable-line @typescript-eslint/no-explicit-any
+  private updateSortProperty(crntItems: any[]): any[] {
+    // eslint-disable-line @typescript-eslint/no-explicit-any
     // Update the sort order
     return crntItems.map((item, itemIdx) => {
       item[this.SORT_IDX] = itemIdx + 1;
@@ -182,89 +201,135 @@ export class CollectionDataViewer extends React.Component<ICollectionDataViewerP
       newOrderedItems = sortBy(newOrderedItems, this.SORT_IDX);
 
       return {
-        crntItems: newOrderedItems
+        crntItems: newOrderedItems,
       };
     });
-  }
+  };
 
   /**
    * Save the collection data
    */
   private onSave = (): void => {
     this.props.fOnSave(this.state.crntItems);
-  }
+  };
 
   /**
    * Cancel
    */
   private onCancel = (): void => {
     this.props.fOnClose();
-  }
+  };
 
   /**
    * Default React render
    */
   public render(): React.ReactElement<ICollectionDataViewerProps> {
-    const crntItems = [...this.state.crntItems, this.state.inCreationItem].filter(i => i);
-    const visibleFields = this.props.fields.filter(f => !f.isVisible || f.isVisible(f, crntItems));
+    const crntItems = [
+      ...this.state.crntItems,
+      this.state.inCreationItem,
+    ].filter((i) => i);
+    const visibleFields = this.props.fields.filter(
+      (f) => !f.isVisible || f.isVisible(f, crntItems)
+    );
     return (
       <div>
-        <div className={`PropertyFieldCollectionData__panel__table ${styles.table} ${this.props.tableClassName || ""}`}>
-          <div className={`PropertyFieldCollectionData__panel__table-head ${styles.tableRow} ${styles.tableHead}`}>
-            {
-              this.props.enableSorting && (
-                <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`} />
-              )
-            }
-            {
-              visibleFields.map(f => (
-                <span key={`dataviewer-${f.id}`} className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}>{f.title} { f.required && <Icon className={styles.required} iconName="Asterisk" /> }</span>
-              ))
-            }
-            <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`} />
-            <span className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`} />
+        <div
+          className={`PropertyFieldCollectionData__panel__table ${
+            styles.table
+          } ${this.props.tableClassName || ''}`}
+        >
+          <div
+            className={`PropertyFieldCollectionData__panel__table-head ${styles.tableRow} ${styles.tableHead}`}
+          >
+            {this.props.enableSorting && (
+              <span
+                className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}
+              />
+            )}
+            {visibleFields.map((f) => (
+              <span
+                key={`dataviewer-${f.id}`}
+                className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}
+              >
+                {f.title}{' '}
+                {f.required && (
+                  <Icon className={styles.required} iconName='Asterisk' />
+                )}
+              </span>
+            ))}
+            <span
+              className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}
+            />
+            <span
+              className={`PropertyFieldCollectionData__panel__table-cell ${styles.tableCell}`}
+            />
           </div>
-          {
-            (this.state.crntItems && this.state.crntItems.length > 0) && (
-              this.state.crntItems.map((item, idx, allItems) => (
-                <CollectionDataItem key={item.uniqueId}
-                                    fields={visibleFields}
-                                    index={idx}
-                                    item={item}
-                                    totalItems={allItems.length}
-                                    sortingEnabled={this.props.enableSorting}
-                                    disableItemDeletion={this.props.disableItemDeletion}
-                                    fUpdateItem={this.updateItem}
-                                    fDeleteItem={this.deleteItem}
-                                    fValidation={this.validateItem}
-                                    fOnSorting={this.updateSortOrder} />
-              ))
-            )
-          }
+          {this.state.crntItems &&
+            this.state.crntItems.length > 0 &&
+            this.state.crntItems.map((item, idx, allItems) => (
+              <CollectionDataItem
+                key={item.uniqueId}
+                fields={visibleFields}
+                index={idx}
+                item={item}
+                totalItems={allItems.length}
+                sortingEnabled={this.props.enableSorting}
+                disableItemDeletion={this.props.disableItemDeletion}
+                fUpdateItem={this.updateItem}
+                fDeleteItem={this.deleteItem}
+                fValidation={this.validateItem}
+                fOnSorting={this.updateSortOrder}
+              />
+            ))}
 
-          {
-            !this.props.disableItemCreation && (
-              <CollectionDataItem fields={visibleFields}
-                                  index={null}
-                                  item={null}
-                                  sortingEnabled={this.props.enableSorting}
-                                  totalItems={null}
-                                  fAddItem={this.addItem}
-                                  fAddInCreation={this.addInCreation} />
-            )
-          }
+          {!this.props.disableItemCreation && (
+            <CollectionDataItem
+              fields={visibleFields}
+              index={null}
+              item={null}
+              sortingEnabled={this.props.enableSorting}
+              totalItems={null}
+              fAddItem={this.addItem}
+              fAddInCreation={this.addInCreation}
+            />
+          )}
         </div>
 
-        {
-          (!this.state.crntItems || this.state.crntItems.length === 0) && (
-            <p className={`PropertyFieldCollectionData__panel__no-collection-data ${styles.noCollectionData}`}>{strings.CollectionDataEmptyValue}</p>
-          )
-        }
+        {(!this.state.crntItems || this.state.crntItems.length === 0) && (
+          <p
+            className={`PropertyFieldCollectionData__panel__no-collection-data ${styles.noCollectionData}`}
+          >
+            {strings.CollectionDataEmptyValue}
+          </p>
+        )}
 
-        <div className={`PropertyFieldCollectionData__panel__actions ${styles.panelActions}`}>
-          { this.state.inCreationItem && this.state.inCreationItemValid && <PrimaryButton text={this.props.saveAndAddBtnLabel || strings.CollectionSaveAndAddButtonLabel} onClick={this.addAndSave} disabled={!this.allItemsValid()} className="PropertyFieldCollectionData__panel__action__add" /> }
-          { !(this.state.inCreationItem && this.state.inCreationItemValid) && <PrimaryButton text={this.props.saveBtnLabel || strings.SaveButtonLabel} onClick={this.onSave} disabled={!this.allItemsValid()} className="PropertyFieldCollectionData__panel__action__save" /> }
-          <DefaultButton text={this.props.cancelBtnLabel || strings.CancelButtonLabel} onClick={this.onCancel} className="PropertyFieldCollectionData__panel__action__cancel" />
+        <div
+          className={`PropertyFieldCollectionData__panel__actions ${styles.panelActions}`}
+        >
+          {this.state.inCreationItem && this.state.inCreationItemValid && (
+            <PrimaryButton
+              text={
+                this.props.saveAndAddBtnLabel ||
+                strings.CollectionSaveAndAddButtonLabel
+              }
+              onClick={this.addAndSave}
+              disabled={!this.allItemsValid()}
+              className='PropertyFieldCollectionData__panel__action__add'
+            />
+          )}
+          {!(this.state.inCreationItem && this.state.inCreationItemValid) && (
+            <PrimaryButton
+              text={this.props.saveBtnLabel || strings.SaveButtonLabel}
+              onClick={this.onSave}
+              disabled={!this.allItemsValid()}
+              className='PropertyFieldCollectionData__panel__action__save'
+            />
+          )}
+          <DefaultButton
+            text={this.props.cancelBtnLabel || strings.CancelButtonLabel}
+            onClick={this.onCancel}
+            className='PropertyFieldCollectionData__panel__action__cancel'
+          />
         </div>
       </div>
     );

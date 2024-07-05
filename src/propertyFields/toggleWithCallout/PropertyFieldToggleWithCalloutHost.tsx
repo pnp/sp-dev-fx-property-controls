@@ -5,16 +5,19 @@ import type { IPropertyFieldHeaderProps } from '../../common/propertyFieldHeader
 
 import { IPropertyFieldToggleWithCalloutHostProps } from './IPropertyFieldToggleWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
-import { Toggle } from '@fluentui/react/lib/components/Toggle';
+import { Toggle } from '@fluentui/react';
 
 import omit from 'lodash/omit';
 
-export default class PropertyFieldToggleWithCalloutHost extends React.Component<IPropertyFieldToggleWithCalloutHostProps, null> {
+export default class PropertyFieldToggleWithCalloutHost extends React.Component<
+  IPropertyFieldToggleWithCalloutHostProps,
+  null
+> {
   constructor(props: IPropertyFieldToggleWithCalloutHostProps) {
     super(props);
 
     telemetry.track('PropertyFieldToggleWithCallout', {
-      disabled: props.disabled
+      disabled: props.disabled,
     });
   }
 
@@ -23,7 +26,8 @@ export default class PropertyFieldToggleWithCalloutHost extends React.Component<
       <div>
         <PropertyFieldHeader
           {...(this.props as IPropertyFieldHeaderProps)}
-          label={this.props.label.toString()} />
+          label={this.props.label.toString()}
+        />
         <Toggle {...omit(this.props, ['label'])} />
       </div>
     );

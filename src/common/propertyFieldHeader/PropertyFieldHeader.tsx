@@ -1,8 +1,15 @@
 import * as React from 'react';
-import { Callout, DirectionalHint } from '@fluentui/react/lib/components/Callout';
-import { IPropertyFieldHeaderProps, IPropertyFieldHeaderState, CalloutTriggers } from './IPropertyFieldHeader';
-import { getIconClassName } from '@fluentui/react/lib/Styling';
-import { css } from '@fluentui/react/lib/Utilities';
+import {
+  Callout,
+  DirectionalHint,
+  css,
+  getIconClassName,
+} from '@fluentui/react';
+import {
+  IPropertyFieldHeaderProps,
+  IPropertyFieldHeaderState,
+  CalloutTriggers,
+} from './IPropertyFieldHeader';
 
 import styles from './PropertyFieldHeader.module.scss';
 
@@ -10,15 +17,20 @@ import styles from './PropertyFieldHeader.module.scss';
  * PropertyFieldHeader component.
  * Displays a label and a callout
  */
-export default class PropertyFieldHeader extends React.Component<IPropertyFieldHeaderProps, IPropertyFieldHeaderState> {
-
+export default class PropertyFieldHeader extends React.Component<
+  IPropertyFieldHeaderProps,
+  IPropertyFieldHeaderState
+> {
   private _infoIcon: HTMLElement;
 
-  public constructor(props: IPropertyFieldHeaderProps, state: IPropertyFieldHeaderState) {
+  public constructor(
+    props: IPropertyFieldHeaderProps,
+    state: IPropertyFieldHeaderState
+  ) {
     super(props, state);
     this._onCalloutDismiss = this._onCalloutDismiss.bind(this);
     this.state = {
-      isCalloutVisible: false
+      isCalloutVisible: false,
     };
   }
 
@@ -29,23 +41,40 @@ export default class PropertyFieldHeader extends React.Component<IPropertyFieldH
       calloutContent,
       calloutTrigger,
       calloutWidth,
-      gapSpace
+      gapSpace,
     } = this.props;
 
     return (
-      <div className={css({
-        [styles.headerBar]: true,
-        [styles.isDisabled]: !!disabled
-      })}>
-        <div className={styles.header}>
-          {label}
-        </div>
+      <div
+        className={css({
+          [styles.headerBar]: true,
+          [styles.isDisabled]: !!disabled,
+        })}
+      >
+        <div className={styles.header}>{label}</div>
         <div className={styles.info}>
           {calloutContent && (
-            <i className={getIconClassName('Info')} ref={(infoIcon) => { this._infoIcon = infoIcon; }}
-              onMouseOver={!disabled && calloutTrigger === CalloutTriggers.Hover ? this._onInfoIconMouseOver.bind(this) : null}
-              onMouseOut={!disabled && calloutTrigger === CalloutTriggers.Hover ? this._onInfoIconMouseOut.bind(this) : null}
-              onClick={!disabled && calloutTrigger === CalloutTriggers.Click ? this._onInfoIconClick.bind(this) : null} />
+            <i
+              className={getIconClassName('Info')}
+              ref={(infoIcon) => {
+                this._infoIcon = infoIcon;
+              }}
+              onMouseOver={
+                !disabled && calloutTrigger === CalloutTriggers.Hover
+                  ? this._onInfoIconMouseOver.bind(this)
+                  : null
+              }
+              onMouseOut={
+                !disabled && calloutTrigger === CalloutTriggers.Hover
+                  ? this._onInfoIconMouseOut.bind(this)
+                  : null
+              }
+              onClick={
+                !disabled && calloutTrigger === CalloutTriggers.Click
+                  ? this._onInfoIconClick.bind(this)
+                  : null
+              }
+            />
           )}
         </div>
         {this.state.isCalloutVisible && (
@@ -57,19 +86,19 @@ export default class PropertyFieldHeader extends React.Component<IPropertyFieldH
             directionalHintForRTL={DirectionalHint.rightCenter}
             onDismiss={this._onCalloutDismiss}
             gapSpace={gapSpace !== undefined ? gapSpace : 5}
-            calloutWidth={calloutWidth}>
+            calloutWidth={calloutWidth}
+          >
             {calloutContent}
           </Callout>
-        )
-        }
-      </div>);
+        )}
+      </div>
+    );
   }
-
 
   private _onCalloutDismiss(): void {
     if (this.state.isCalloutVisible) {
       this.setState({
-        isCalloutVisible: false
+        isCalloutVisible: false,
       });
     }
   }
@@ -81,7 +110,7 @@ export default class PropertyFieldHeader extends React.Component<IPropertyFieldH
 
     if (!this.state.isCalloutVisible) {
       this.setState({
-        isCalloutVisible: true
+        isCalloutVisible: true,
       });
     }
   }
@@ -92,17 +121,15 @@ export default class PropertyFieldHeader extends React.Component<IPropertyFieldH
     }
 
     if (e.relatedTarget) {
-
-      const relatedTarget: HTMLElement = (e.relatedTarget as HTMLElement);
+      const relatedTarget: HTMLElement = e.relatedTarget as HTMLElement;
       if (relatedTarget && relatedTarget.closest('.ms-Callout-container')) {
         return;
       }
     }
 
     this.setState({
-      isCalloutVisible: false
+      isCalloutVisible: false,
     });
-
   }
 
   private _onInfoIconClick(): void {
@@ -111,7 +138,7 @@ export default class PropertyFieldHeader extends React.Component<IPropertyFieldH
     }
 
     this.setState({
-      isCalloutVisible: !this.state.isCalloutVisible
+      isCalloutVisible: !this.state.isCalloutVisible,
     });
   }
 }

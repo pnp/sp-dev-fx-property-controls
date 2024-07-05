@@ -12,6 +12,7 @@ export * from './PropertyFieldGuid';
 export * from './PropertyFieldButtonWithCallout';
 export * from './PropertyFieldCheckboxWithCallout';
 export * from './PropertyFieldChoiceGroupWithCallout';
+export * from './PropertyFieldCollectionData';
 export * from './PropertyFieldDropdownWithCallout';
 export * from './PropertyFieldLabelWithCallout';
 export * from './PropertyFieldLinkWithCallout';

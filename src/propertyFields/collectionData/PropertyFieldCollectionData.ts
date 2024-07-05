@@ -4,8 +4,8 @@ import {
   IPropertyPaneField,
   PropertyPaneFieldType,
 } from '@microsoft/sp-property-pane';
-
-import { PropertyFieldCollectionDataHost, IPropertyFieldCollectionDataPropsInternal, IPropertyFieldCollectionDataProps } from '.';
+import { IPropertyFieldCollectionDataProps, IPropertyFieldCollectionDataPropsInternal } from './IPropertyFieldCollectionData';
+import { PropertyFieldCollectionDataHost } from './PropertyFieldCollectionDataHost';
 
 /**
  * Property Field Collection Data Builder Class

@@ -1,3 +1,4 @@
-import { IBaseCollectionFieldProps } from "../IBaseCollectionFIeldsProps";
+import { IBaseCollectionFieldProps } from '../IBaseCollectionFIeldsProps';
 
-export interface ICollectionNumberFieldProps extends IBaseCollectionFieldProps { }
+export interface ICollectionNumberFieldProps
+  extends IBaseCollectionFieldProps {}

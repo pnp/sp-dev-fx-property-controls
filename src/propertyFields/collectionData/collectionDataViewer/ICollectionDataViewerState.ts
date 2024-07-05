@@ -1,4 +1,4 @@
-import { FieldValidator } from "../FieldValidator";
+import { FieldValidator } from '../FieldValidator';
 
 export interface ICollectionDataViewerState {
   crntItems: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any

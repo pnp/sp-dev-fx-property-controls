@@ -5,7 +5,7 @@ import type { IPlaceholderWithCalloutProps } from '../../common/placeholderWithC
 
 import { IPropertyFieldCheckboxWithCalloutHostProps } from './IPropertyFieldCheckboxWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
-import { Checkbox } from '@fluentui/react/lib/components/Checkbox';
+import { Checkbox } from '@fluentui/react';
 
 /**
  * Renders the control for PropertyFieldCheckboxWithCallout component

@@ -1,12 +1,17 @@
 import * as React from 'react';
 import { IFilePickerProps } from './IFilePickerProps';
 import { IFilePickerState } from './IFilePickerState';
-
-import { PrimaryButton, ActionButton } from '@fluentui/react/lib/components/Button';
-import { Panel, PanelType } from '@fluentui/react/lib/components/Panel';
-import { Label } from '@fluentui/react/lib/components/Label';
-import { Nav, INavLink, INavLinkGroup } from '@fluentui/react/lib/Nav';
-import { css } from '@fluentui/react/lib/Utilities';
+import {
+  Label,
+  Nav,
+  INavLink,
+  INavLinkGroup,
+  Panel,
+  PanelType,
+  PrimaryButton,
+  ActionButton,
+  css,
+} from '@fluentui/react';
 
 // Localization
 import * as strings from 'PropertyControlStrings';
@@ -26,7 +31,10 @@ import { FilePickerTabType, IFilePickerResult } from './FilePicker.types';
 import { FilesSearchService } from '../../../services/FilesSearchService';
 import { StockImages } from './StockImagesTab';
 
-export class FilePicker extends React.Component<IFilePickerProps, IFilePickerState> {
+export class FilePicker extends React.Component<
+  IFilePickerProps,
+  IFilePickerState
+> {
   private fileBrowserService: FileBrowserService;
   private oneDriveService: OneDriveService;
   private orgAssetsService: OrgAssetsService;
@@ -36,16 +44,30 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
     super(props);
 
     // Initialize file browser services
-    this.fileBrowserService = new FileBrowserService(props.context, this.props.itemsCountQueryLimit);
-    this.oneDriveService = new OneDriveService(props.context, this.props.itemsCountQueryLimit);
-    this.orgAssetsService = new OrgAssetsService(props.context, this.props.itemsCountQueryLimit);
-    this.fileSearchService = new FilesSearchService(props.context, this.props.bingAPIKey);
+    this.fileBrowserService = new FileBrowserService(
+      props.context,
+      this.props.itemsCountQueryLimit
+    );
+    this.oneDriveService = new OneDriveService(
+      props.context,
+      this.props.itemsCountQueryLimit
+    );
+    this.orgAssetsService = new OrgAssetsService(
+      props.context,
+      this.props.itemsCountQueryLimit
+    );
+    this.fileSearchService = new FilesSearchService(
+      props.context,
+      this.props.bingAPIKey
+    );
 
     this.state = {
       panelOpen: false,
-      selectedTab: this.props.defaultSelectedTab ? this.props.defaultSelectedTab : FilePickerTabType.RecentTab,
+      selectedTab: this.props.defaultSelectedTab
+        ? this.props.defaultSelectedTab
+        : FilePickerTabType.RecentTab,
       organisationAssetsEnabled: false,
-      showFullNav: true
+      showFullNav: true,
     };
   }
 
@@ -53,134 +75,141 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
     // Load information about Organisation Assets Library
     let orgAssetsEnabled: boolean = false;
     if (!this.props.hideOrganisationalAssetTab) {
-      const orgAssetsLibraries = await this.orgAssetsService.getSiteMediaLibraries();
+      const orgAssetsLibraries =
+        await this.orgAssetsService.getSiteMediaLibraries();
       orgAssetsEnabled = orgAssetsLibraries ? true : false;
     }
 
     this.setState({
-      organisationAssetsEnabled: orgAssetsEnabled
+      organisationAssetsEnabled: orgAssetsEnabled,
     });
   }
 
   public render(): JSX.Element {
     // If no acceptable file type was passed, and we're expecting images, set the default image filter
     const accepts: string[] = this.props.accepts;
-    const buttonClassName: string = this.props.buttonClassName ? this.props.buttonClassName : '';
-    const panelClassName: string = this.props.panelClassName ? this.props.panelClassName : '';
+    const buttonClassName: string = this.props.buttonClassName
+      ? this.props.buttonClassName
+      : '';
+    const panelClassName: string = this.props.panelClassName
+      ? this.props.panelClassName
+      : '';
 
     const linkTabProps = {
       accepts: accepts,
       context: this.props.context,
       onClose: () => this._handleClosePanel(),
-      onSave: (value: IFilePickerResult) => { this._handleSave(value); }
+      onSave: (value: IFilePickerResult) => {
+        this._handleSave(value);
+      },
     };
     const buttonProps = {
       text: this.props.buttonLabel,
       disabled: this.props.disabled,
       onClick: this._handleOpenPanel,
-      className: `pnp__file-picker__button ${buttonClassName}`
+      className: `pnp__file-picker__button ${buttonClassName}`,
     };
 
     return (
       <div className={`pnp__file-picker`}>
-        {
-          this.props.label && <Label required={this.props.required}>{this.props.label}</Label>
-        }
-        {
-          this.props.buttonIcon ?
-            <ActionButton iconProps={{ iconName: this.props.buttonIcon }} {...buttonProps} /> :
-            <PrimaryButton {...buttonProps} />
-        }
+        {this.props.label && (
+          <Label required={this.props.required}>{this.props.label}</Label>
+        )}
+        {this.props.buttonIcon ? (
+          <ActionButton
+            iconProps={{ iconName: this.props.buttonIcon }}
+            {...buttonProps}
+          />
+        ) : (
+          <PrimaryButton {...buttonProps} />
+        )}
 
-        <Panel isOpen={this.state.panelOpen}
+        <Panel
+          isOpen={this.state.panelOpen}
           isBlocking={true}
           hasCloseButton={true}
           className={`pnp__file-picker__panel ${styles.filePicker} ${panelClassName}`}
           onDismiss={this._handleClosePanel}
           type={PanelType.extraLarge}
           isFooterAtBottom={true}
-          onRenderNavigation={() => { return undefined; }}
+          onRenderNavigation={() => {
+            return undefined;
+          }}
           headerText={strings.FilePickerHeader}
           isLightDismiss={true}
           onRenderHeader={() => this._renderHeader()}
         >
-
           <div className={styles.nav}>
             <Nav
               groups={this._getNavPanelOptions()}
               selectedKey={this.state.selectedTab}
-              onLinkClick={(ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => this._handleLinkClick(ev, item)}
+              onLinkClick={(
+                ev?: React.MouseEvent<HTMLElement>,
+                item?: INavLink
+              ) => this._handleLinkClick(ev, item)}
             />
           </div>
           <div className={styles.tabsContainer}>
-            {
-              this.state.selectedTab === FilePickerTabType.LinkUploadTab &&
+            {this.state.selectedTab === FilePickerTabType.LinkUploadTab && (
               <LinkFilePickerTab
                 fileSearchService={this.fileSearchService}
                 allowExternalLinks={this.props.allowExternalLinks}
                 checkIfFileExists={this.props.checkIfFileExists !== false}
                 {...linkTabProps}
               />
-            }
-            {
-              this.state.selectedTab === FilePickerTabType.StockImagesTab &&
+            )}
+            {this.state.selectedTab === FilePickerTabType.StockImagesTab && (
               <StockImages
-                language={this.props.context.pageContext.cultureInfo.currentCultureName}
+                language={
+                  this.props.context.pageContext.cultureInfo.currentCultureName
+                }
                 fileSearchService={this.fileSearchService}
                 {...linkTabProps}
               />
-            }
-            {
-              this.state.selectedTab === FilePickerTabType.LocalUploadTab &&
-              <UploadFilePickerTab
-                {...linkTabProps}
-              />
-            }
-            {
-              this.state.selectedTab === FilePickerTabType.SiteFilesTab &&
+            )}
+            {this.state.selectedTab === FilePickerTabType.LocalUploadTab && (
+              <UploadFilePickerTab {...linkTabProps} />
+            )}
+            {this.state.selectedTab === FilePickerTabType.SiteFilesTab && (
               <SiteFilePickerTab
                 fileBrowserService={this.fileBrowserService}
                 includePageLibraries={this.props.includePageLibraries}
                 {...linkTabProps}
               />
-            }
-            {
-              this.state.selectedTab === FilePickerTabType.OrganisationalAssetTab &&
+            )}
+            {this.state.selectedTab ===
+              FilePickerTabType.OrganisationalAssetTab && (
               <SiteFilePickerTab
                 breadcrumbFirstNode={{
                   isCurrentItem: true,
                   text: strings.OrgAssetsTabLabel,
-                  key: FilePickerTabType.OrganisationalAssetTab
+                  key: FilePickerTabType.OrganisationalAssetTab,
                 }}
                 fileBrowserService={this.orgAssetsService}
                 {...linkTabProps}
               />
-            }
-            {
-              this.state.selectedTab === FilePickerTabType.WebSearchTab &&
+            )}
+            {this.state.selectedTab === FilePickerTabType.WebSearchTab && (
               <WebSearchTab
                 bingSearchService={this.fileSearchService}
                 {...linkTabProps}
               />
-            }
-            {
-              this.state.selectedTab === FilePickerTabType.OneDriveTab &&
+            )}
+            {this.state.selectedTab === FilePickerTabType.OneDriveTab && (
               <OneDriveFilesTab
                 oneDriveService={this.oneDriveService}
                 {...linkTabProps}
               />
-            }
-            {
-              this.state.selectedTab === FilePickerTabType.RecentTab &&
+            )}
+            {this.state.selectedTab === FilePickerTabType.RecentTab && (
               <RecentFilesTab
                 fileSearchService={this.fileSearchService}
                 {...linkTabProps}
               />
-            }
-
+            )}
           </div>
         </Panel>
-      </div >
+      </div>
     );
   }
 
@@ -188,8 +217,14 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
    * Renders the panel header
    */
   private _renderHeader = (): JSX.Element => {
-    return <div className={"ms-Panel-header"}><p className={css("ms-Panel-headerText", styles.header)} role="heading">{strings.FilePickerHeader}</p></div>;
-  }
+    return (
+      <div className={'ms-Panel-header'}>
+        <p className={css('ms-Panel-headerText', styles.header)} role='heading'>
+          {strings.FilePickerHeader}
+        </p>
+      </div>
+    );
+  };
 
   /**
    * Open the panel
@@ -197,9 +232,11 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
   private _handleOpenPanel = (): void => {
     this.setState({
       panelOpen: true,
-      selectedTab: this.props.defaultSelectedTab ? this.props.defaultSelectedTab : FilePickerTabType.RecentTab
+      selectedTab: this.props.defaultSelectedTab
+        ? this.props.defaultSelectedTab
+        : FilePickerTabType.RecentTab,
     });
-  }
+  };
 
   /**
    * Closes the panel
@@ -207,9 +244,9 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
   private _handleClosePanel = (): void => {
     this.props.onCancel();
     this.setState({
-      panelOpen: false
+      panelOpen: false,
     });
-  }
+  };
 
   /**
    * On save action
@@ -217,16 +254,19 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
   private _handleSave = (filePickerResult: IFilePickerResult): void => {
     this.props.onSave(filePickerResult);
     this.setState({
-      panelOpen: false
+      panelOpen: false,
     });
-  }
+  };
 
   /**
    * Changes the selected tab when a link is selected
    */
-  private _handleLinkClick = (ev?: React.MouseEvent<HTMLElement>, item?: INavLink): void => {
+  private _handleLinkClick = (
+    ev?: React.MouseEvent<HTMLElement>,
+    item?: INavLink
+  ): void => {
     this.setState({ selectedTab: item.key });
-  }
+  };
 
   /**
    * Prepares navigation panel options
@@ -259,7 +299,10 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
         icon: 'Search',
       });
     }
-    if (!this.props.hideOrganisationalAssetTab && this.state.organisationAssetsEnabled) {
+    if (
+      !this.props.hideOrganisationalAssetTab &&
+      this.state.organisationAssetsEnabled
+    ) {
       links.push({
         name: 'Your organisation',
         url: addUrl ? '#orgAssets' : undefined,
@@ -269,7 +312,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
     }
     if (!this.props.hideOneDriveTab) {
       links.push({
-        name: "OneDrive",
+        name: 'OneDrive',
         url: addUrl ? '#onedrive' : undefined,
         key: FilePickerTabType.OneDriveTab,
         icon: 'OneDriveLogo',
@@ -288,7 +331,7 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
         name: strings.UploadLinkLabel,
         url: addUrl ? '#upload' : undefined,
         key: FilePickerTabType.LocalUploadTab,
-        icon: 'System'
+        icon: 'System',
       });
     }
     if (!this.props.hideLinkUploadTab) {
@@ -296,12 +339,11 @@ export class FilePicker extends React.Component<IFilePickerProps, IFilePickerSta
         name: strings.FromLinkLinkLabel,
         url: addUrl ? '#link' : undefined,
         key: FilePickerTabType.LinkUploadTab,
-        icon: 'Link'
+        icon: 'Link',
       });
     }
 
     const groups: INavLinkGroup[] = [{ links }];
     return groups;
-  }
-
+  };
 }

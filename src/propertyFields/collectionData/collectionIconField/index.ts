@@ -1,2 +1,2 @@
-export * from "./ICollectionIconFieldProps";
-export * from "./CollectionIconField";
+export * from './ICollectionIconFieldProps';
+export * from './CollectionIconField';

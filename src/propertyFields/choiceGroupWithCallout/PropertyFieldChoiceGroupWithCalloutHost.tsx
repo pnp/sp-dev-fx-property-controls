@@ -6,7 +6,7 @@ import type { IPlaceholderWithCalloutProps } from '../../common/placeholderWithC
 
 import { IPropertyFieldChoiceGroupWithCalloutHostProps } from './IPropertyFieldChoiceGroupWithCalloutHost';
 import * as telemetry from '../../common/telemetry';
-import { ChoiceGroup } from '@fluentui/react/lib/components/ChoiceGroup';
+import { ChoiceGroup } from '@fluentui/react';
 
 export default class PropertyFieldToggleWithCalloutHost extends React.Component<
   IPropertyFieldChoiceGroupWithCalloutHostProps,

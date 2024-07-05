@@ -1,5 +1,5 @@
 import { IPropertyFieldHeaderCalloutProps } from '../../common/propertyFieldHeader/IPropertyFieldHeader';
-import { IChoiceGroupProps } from '@fluentui/react/lib/components/ChoiceGroup';
+import { IChoiceGroupProps } from '@fluentui/react';
 
 /**
  * PropertyFieldChoiceGroupWithCalloutHost properties interface

@@ -1,6 +1,10 @@
 # Releases
 
-## 3.18.0
+## 3.17.1
+
+### Fixes
+
+- Fixes for Webpack 5: [#621](https://github.com/pnp/sp-dev-fx-property-controls/pull/621)
 
 ## 3.17.0
 

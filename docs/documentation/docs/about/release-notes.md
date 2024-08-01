@@ -2,6 +2,10 @@
 
 ## 3.17.1
 
+### Enhancements
+
+- SharePoint Framework v1.19.0 support
+
 ### Fixes
 
 - Fixes for Webpack 5: [#621](https://github.com/pnp/sp-dev-fx-property-controls/pull/621)

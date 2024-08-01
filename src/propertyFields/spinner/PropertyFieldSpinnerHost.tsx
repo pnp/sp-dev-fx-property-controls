@@ -1,14 +1,12 @@
-import * as React from "react";
-import { Spinner } from "@fluentui/react/lib/components/Spinner";
-//import styles from './Component.module.scss';
+import * as React from 'react';
+import { Spinner } from '@fluentui/react';
 
 import {
   IPropertyFieldSpinnerHostProps,
-  IPropertyFieldSpinnerHostState
-} from "./IPropertyFieldSpinnerHost";
+  IPropertyFieldSpinnerHostState,
+} from './IPropertyFieldSpinnerHost';
 
 import * as telemetry from '../../common/telemetry';
-
 
 export default class PropertyFieldSpinnerHost extends React.Component<
   IPropertyFieldSpinnerHostProps,
@@ -20,7 +18,7 @@ export default class PropertyFieldSpinnerHost extends React.Component<
     telemetry.track('PropertyFieldSpinner', {});
 
     this.state = {
-      isVisible: this.props.isVisible
+      isVisible: this.props.isVisible,
     };
   }
   ///
@@ -36,14 +34,13 @@ export default class PropertyFieldSpinnerHost extends React.Component<
   public render(): React.ReactElement<IPropertyFieldSpinnerHostProps> {
     return (
       <div>
-        {
-          this.props.isVisible &&
+        {this.props.isVisible && (
           <Spinner
             className={this.props.className}
             size={this.props.size}
             label={this.props.label}
           />
-        }
+        )}
       </div>
     );
   }

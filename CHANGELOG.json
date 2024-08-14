@@ -1,12 +1,21 @@
 {
   "versions": [
     {
-      "version": "3.17.1",
+      "version": "3.18.0",
       "changes": {
         "new": [],
         "enhancements": [
           "SharePoint Framework v1.19.0 support"
         ],
+        "fixes": []
+      },
+      "contributions": []
+    },
+    {
+      "version": "3.17.1",
+      "changes": {
+        "new": [],
+        "enhancements": [],
         "fixes": [
           "Fixes for Webpack 5: [#621](https://github.com/pnp/sp-dev-fx-property-controls/pull/621)"
         ]

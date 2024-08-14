@@ -1,5 +1,11 @@
 # Releases
 
+## 3.18.0
+
+### Enhancements
+
+- SharePoint Framework v1.19.0 support
+
 ## 3.17.1
 
 ### Fixes

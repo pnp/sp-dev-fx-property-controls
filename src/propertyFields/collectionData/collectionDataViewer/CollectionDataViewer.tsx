@@ -51,8 +51,8 @@ export class CollectionDataViewer extends React.Component<
   /**
    * Add a new item to the collection
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private addItem = (item: any): void => {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     this.setState(
       (prevState: ICollectionDataViewerState): ICollectionDataViewerState => {
         let crntItems = [...prevState.crntItems, item];
@@ -69,8 +69,8 @@ export class CollectionDataViewer extends React.Component<
   /**
    * Remove an item from the collection
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private updateItem = (idx: number, item: any): void => {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     this.setState(
       (prevState: ICollectionDataViewerState): ICollectionDataViewerState => {
         const { crntItems } = prevState;
@@ -135,8 +135,8 @@ export class CollectionDataViewer extends React.Component<
   /**
    * Currently in creation
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private addInCreation = (item: any, isValid: boolean): void => {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     this.setState({
       inCreationItem: item,
       inCreationItemValid: isValid,
@@ -164,8 +164,8 @@ export class CollectionDataViewer extends React.Component<
    * @param oldIdx
    * @param newIdx
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private moveItemTo(crntItems: any[], oldIdx: number, newIdx: number): any[] {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     if (newIdx > -1 && newIdx < crntItems.length) {
       const removedElement = crntItems.splice(oldIdx, 1)[0];
       if (removedElement) {
@@ -180,8 +180,8 @@ export class CollectionDataViewer extends React.Component<
    *
    * @param crntItems
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private updateSortProperty(crntItems: any[]): any[] {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     // Update the sort order
     return crntItems.map((item, itemIdx) => {
       item[this.SORT_IDX] = itemIdx + 1;

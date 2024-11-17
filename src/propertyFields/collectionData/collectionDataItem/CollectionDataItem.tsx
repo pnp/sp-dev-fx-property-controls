@@ -62,8 +62,8 @@ export class CollectionDataItem extends React.Component<
   /**
    * Update the item value on the field change
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private onValueChanged = (fieldId: string, value: any): Promise<void> => {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     return new Promise((resolve) =>
       this.setState(
         (prevState: ICollectionDataItemState) => {
@@ -109,8 +109,8 @@ export class CollectionDataItem extends React.Component<
   /**
    * Check if all values of the required fields are provided
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private checkAllRequiredFieldsValid(item: any): boolean {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     // Get all the required fields
     const requiredFields = this.props.fields.filter((f) => f.required);
     // Check all the required field values
@@ -130,8 +130,8 @@ export class CollectionDataItem extends React.Component<
    * Check if any of the fields contain a value
    * @param item
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private checkAnyFieldContainsValue(item: any): boolean {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     const { fields } = this.props;
     for (const field of fields) {
       if (
@@ -149,8 +149,8 @@ export class CollectionDataItem extends React.Component<
    * Check onGetCustomErrorMessage
    * @param item
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async checkAnyFieldCustomErrorMessage(item: any): Promise<boolean> {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     const { fields, index } = this.props;
 
     const validations = await Promise.all(
@@ -168,8 +168,8 @@ export class CollectionDataItem extends React.Component<
   /**
    * Check if row is ready for save
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async checkRowIsValidForSave(item: any): Promise<boolean> {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     return (
       this.checkAllRequiredFieldsValid(item) &&
       this.checkAnyFieldContainsValue(item) &&
@@ -248,9 +248,8 @@ export class CollectionDataItem extends React.Component<
    */
   private fieldValidation = async (
     field: ICustomCollectionField,
-    value: any
+    value: any // eslint-disable-line @typescript-eslint/no-explicit-any
   ): Promise<string> => {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     let validation = '';
     // Do the custom validation check
     if (field.onGetErrorMessage) {
@@ -307,10 +306,9 @@ export class CollectionDataItem extends React.Component<
    */
   private urlFieldValidation = async (
     field: ICustomCollectionField,
-    value: any,
-    item: any
+    value: any, // eslint-disable-line @typescript-eslint/no-explicit-any
+    item: any // eslint-disable-line @typescript-eslint/no-explicit-any
   ): Promise<string> => {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     let isValid = true;
     let validation = '';
 
@@ -424,8 +422,8 @@ export class CollectionDataItem extends React.Component<
    * @param field
    * @param item
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private renderField(field: ICustomCollectionField, item: any): JSX.Element {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     const disableFieldOnEdit: boolean =
       (field.disableEdit && !!this.props.fUpdateItem) ||
       (field.disable && field.disable(item));
@@ -570,8 +568,8 @@ export class CollectionDataItem extends React.Component<
   /**
    * Creates an empty item with a unique id
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private generateEmptyItem(): any {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     // Create an empty item with all properties
     const emptyItem: any = {}; // eslint-disable-line @typescript-eslint/no-explicit-any
     emptyItem.uniqueId = Guid.newGuid().toString();

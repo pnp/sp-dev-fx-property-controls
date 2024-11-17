@@ -44,8 +44,8 @@ export class PropertyFieldCollectionDataHost extends React.Component<
   /**
    * On save action
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private onSave = (items: any[]): void => {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     this.props.onChanged(items);
     this.setState({
       panelOpen: false,

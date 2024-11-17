@@ -65,22 +65,22 @@ export interface ICustomCollectionField {
    * - If invalid, the field will show a red border
    */
   onGetErrorMessage?: (
-    value: any,
+    value: any, // eslint-disable-line @typescript-eslint/no-explicit-any
     index: number,
-    currentItem: any
-  ) => string | Promise<string>; // eslint-disable-line @typescript-eslint/no-explicit-any
+    currentItem: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  ) => string | Promise<string>;
 
   /**
    * Custom field rendering support
    */
   onCustomRender?: (
     field: ICustomCollectionField,
-    value: any,
-    onUpdate: (fieldId: string, value: any) => void,
-    item: any,
+    value: any, // eslint-disable-line @typescript-eslint/no-explicit-any
+    onUpdate: (fieldId: string, value: any) => void, // eslint-disable-line @typescript-eslint/no-explicit-any
+    item: any, // eslint-disable-line @typescript-eslint/no-explicit-any
     rowUniqueId: string,
     onCustomFieldValidation: (fieldId: string, errorMessage: string) => void
-  ) => JSX.Element; // eslint-disable-line @typescript-eslint/no-explicit-any
+  ) => JSX.Element;
   /**
    * Custom field visibility support
    */

@@ -69,8 +69,8 @@ export default class PropertyFieldOrderHost extends React.Component<
         >
           {items &&
             items.length > 0 &&
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             items.map((value: any, index: number) => {
-              // eslint-disable-line @typescript-eslint/no-explicit-any
               return (
                 <li
                   ref={this.registerRef}
@@ -102,8 +102,8 @@ export default class PropertyFieldOrderHost extends React.Component<
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private renderItem(item: any, index: number): JSX.Element {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     return (
       <div>
         <div className={styles.itemBox}>
@@ -114,8 +114,8 @@ export default class PropertyFieldOrderHost extends React.Component<
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private renderDisplayValue(item: any, index: number): JSX.Element {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     if (typeof this.props.onRenderItem === 'function') {
       return this.props.onRenderItem(item, index);
     } else {
@@ -230,12 +230,12 @@ export default class PropertyFieldOrderHost extends React.Component<
             ) => {
               return true;
             },
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             canDrag: (item?: any) => {
-              // eslint-disable-line @typescript-eslint/no-explicit-any
               return true;
             },
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onDrop: (item?: any) => {
-              // eslint-disable-line @typescript-eslint/no-explicit-any
               if (this._draggedItem) {
                 this.insertBeforeItem(item);
               }
@@ -273,8 +273,8 @@ export default class PropertyFieldOrderHost extends React.Component<
               ) => {
                 return true;
               },
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               onDrop: (item?: any, event?: DragEvent) => {
-                // eslint-disable-line @typescript-eslint/no-explicit-any
                 if (this._draggedItem) {
                   const itemIndex: number = this.state.items.indexOf(
                     this._draggedItem
@@ -299,8 +299,8 @@ export default class PropertyFieldOrderHost extends React.Component<
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private insertBeforeItem = (item: any): void => {
-    // eslint-disable-line @typescript-eslint/no-explicit-any
     const itemIndex: number = this.state.items.indexOf(this._draggedItem);
     let targetIndex: number = this.state.items.indexOf(item);
     if (itemIndex < targetIndex) {

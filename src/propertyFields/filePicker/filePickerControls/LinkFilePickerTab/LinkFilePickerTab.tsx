@@ -163,7 +163,7 @@ export default class LinkFilePickerTab extends React.Component<
     try {
       const myURL = new URL(fileUrl.toLowerCase());
       return myURL.host !== undefined;
-    } catch (error) {
+    } catch {
       return false;
     }
   };

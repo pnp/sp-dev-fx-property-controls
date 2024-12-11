@@ -1,6 +1,19 @@
 {
   "versions": [
     {
+      "version": "3.20.0",
+      "changes": {
+        "new": [],
+        "enhancements": [],
+        "fixes": [
+          "`PropertyFieldDateTimePicker`: Fixed small typos and a sample in the documentation [#628](https://github.com/pnp/sp-dev-fx-property-controls/pull/628)"
+        ]
+      },
+      "contributions": [
+        "[Guido Zambarda](https://github.com/GuidoZam)"
+      ]
+    },
+    {
       "version": "3.19.0",
       "changes": {
         "new": [],

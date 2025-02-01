@@ -1,0 +1,5349 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-3.1.0">
+    
+    
+      
+        <title>Release notes - @pnp/spfx-property-controls</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.11e41852.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#releases" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="@pnp/spfx-property-controls" class="md-header-nav__button md-logo">
+          
+            <img src="../../assets/pnp-spfx-controls.svg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                @pnp/spfx-property-controls
+              </span>
+              <span class="md-header-nav__topic">
+                Release notes
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/pnp/sp-dev-fx-property-controls" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../controls/PropertyFieldButton/" title="Controls" class="md-tabs__link">
+          Controls
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../controls/PropertyFieldButtonWithCallout/" title="Controls with callout" class="md-tabs__link">
+          Controls with callout
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../helpers/PropertyPaneHelpers/" title="Helpers" class="md-tabs__link">
+          Helpers
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="./" title="About" class="md-tabs__link md-tabs__link--active">
+          About
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="@pnp/spfx-property-controls" class="md-nav__button md-logo">
+      
+        <img src="../../assets/pnp-spfx-controls.svg" width="48" height="48">
+      
+    </a>
+    @pnp/spfx-property-controls
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/pnp/sp-dev-fx-property-controls" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Controls
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Controls
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldButton/" title="PropertyFieldButton" class="md-nav__link">
+      PropertyFieldButton
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldCodeEditor/" title="PropertyFieldCodeEditor" class="md-nav__link">
+      PropertyFieldCodeEditor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldCollectionData/" title="PropertyFieldCollectionData" class="md-nav__link">
+      PropertyFieldCollectionData
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldColorPicker/" title="PropertyFieldColorPicker" class="md-nav__link">
+      PropertyFieldColorPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldColumnPicker/" title="PropertyFieldColumnPicker" class="md-nav__link">
+      PropertyFieldColumnPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldDateTimePicker/" title="PropertyFieldDateTimePicker" class="md-nav__link">
+      PropertyFieldDateTimePicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldEnterpriseTermPicker/" title="PropertyFieldEnterpriseTermPicker" class="md-nav__link">
+      PropertyFieldEnterpriseTermPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldFilePicker/" title="PropertyFieldFilePicker" class="md-nav__link">
+      PropertyFieldFilePicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldFolderPicker.md" title="PropertyFieldFolderPicker" class="md-nav__link">
+      PropertyFieldFolderPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldGrid/" title="PropertyFieldGrid" class="md-nav__link">
+      PropertyFieldGrid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldGuid/" title="PropertyFieldGuidPicker" class="md-nav__link">
+      PropertyFieldGuidPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldIconPicker/" title="PropertyFieldIconPicker" class="md-nav__link">
+      PropertyFieldIconPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldListPicker/" title="PropertyFieldListPicker" class="md-nav__link">
+      PropertyFieldListPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldMessage/" title="PropertyFieldMessage" class="md-nav__link">
+      PropertyFieldMessage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldMonacoEditor/" title="PropertyFieldMonacoEditor" class="md-nav__link">
+      PropertyFieldMonacoEditor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldMultiSelect/" title="PropertyFieldMultiSelect" class="md-nav__link">
+      PropertyFieldMultiSelect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldNumber/" title="PropertyFieldNumber" class="md-nav__link">
+      PropertyFieldNumber
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldOrder/" title="PropertyFieldOrder" class="md-nav__link">
+      PropertyFieldOrder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldPassword/" title="PropertyFieldPassword" class="md-nav__link">
+      PropertyFieldPassword
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldPeoplePicker/" title="PropertyFieldPeoplePicker" class="md-nav__link">
+      PropertyFieldPeoplePicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldRoleDefinitionPicker/" title="PropertyFieldRoleDefinitionPicker" class="md-nav__link">
+      PropertyFieldRoleDefinitionPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldSearch/" title="PropertyFieldSearch" class="md-nav__link">
+      PropertyFieldSearch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldSitePicker/" title="PropertyFieldSitePicker" class="md-nav__link">
+      PropertyFieldSitePicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldSpinButton/" title="PropertyFieldSpinButton" class="md-nav__link">
+      PropertyFieldSpinButton
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldSpinner/" title="PropertyFieldSpinner" class="md-nav__link">
+      PropertyFieldSpinner
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldSwatchColorPicker/" title="PropertyFieldSwatchColorPicker" class="md-nav__link">
+      PropertyFieldSwatchColorPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldTeamPicker/" title="PropertyFieldTeamPicker" class="md-nav__link">
+      PropertyFieldTeamPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldTermPicker/" title="PropertyFieldTermPicker" class="md-nav__link">
+      PropertyFieldTermPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldViewPicker/" title="PropertyFieldViewPicker" class="md-nav__link">
+      PropertyFieldViewPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldColumnPicker/" title="PropertyFieldColumnPicker" class="md-nav__link">
+      PropertyFieldColumnPicker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyPaneMarkdownContent/" title="PropertyPaneMarkdownContent" class="md-nav__link">
+      PropertyPaneMarkdownContent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyPanePropertyEditor/" title="PropertyPanePropertyEditor" class="md-nav__link">
+      PropertyPanePropertyEditor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyPaneWebPartInformation/" title="PropertyPaneWebPartInformation" class="md-nav__link">
+      PropertyPaneWebPartInformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Controls with callout
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Controls with callout
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldButtonWithCallout/" title="PropertyFieldButtonWithCallout" class="md-nav__link">
+      PropertyFieldButtonWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldCheckboxWithCallout/" title="PropertyFieldCheckboxWithCallout" class="md-nav__link">
+      PropertyFieldCheckboxWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldChoiceGroupWithCallout/" title="PropertyFieldChoiceGroupWithCallout" class="md-nav__link">
+      PropertyFieldChoiceGroupWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldDropdownWithCallout/" title="PropertyFieldDropdownWithCallout" class="md-nav__link">
+      PropertyFieldDropdownWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldLabelWithCallout/" title="PropertyFieldLabelWithCallout" class="md-nav__link">
+      PropertyFieldLabelWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldLinkWithCallout/" title="PropertyFieldLinkWithCallout" class="md-nav__link">
+      PropertyFieldLinkWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldSliderWithCallout/" title="PropertyFieldSliderWithCallout" class="md-nav__link">
+      PropertyFieldSliderWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldTextWithCallout/" title="PropertyFieldTextWithCallout" class="md-nav__link">
+      PropertyFieldTextWithCallout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../controls/PropertyFieldToggleWithCallout/" title="PropertyFieldToggleWithCallout" class="md-nav__link">
+      PropertyFieldToggleWithCallout
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Helpers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Helpers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../helpers/PropertyPaneHelpers/" title="PropertyPaneHelpers" class="md-nav__link">
+      PropertyPaneHelpers
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../beta/" title="Beta testing" class="md-nav__link">
+      Beta testing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      About
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        About
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Release notes
+      </label>
+    
+    <a href="./" title="Release notes" class="md-nav__link md-nav__link--active">
+      Release notes
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#3190" title="3.19.0" class="md-nav__link">
+    3.19.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3180" title="3.18.0" class="md-nav__link">
+    3.18.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3171" title="3.17.1" class="md-nav__link">
+    3.17.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3170" title="3.17.0" class="md-nav__link">
+    3.17.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_1" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_1" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3160" title="3.16.0" class="md-nav__link">
+    3.16.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_2" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_2" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_1" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3151" title="3.15.1" class="md-nav__link">
+    3.15.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_3" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3150" title="3.15.0" class="md-nav__link">
+    3.15.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_3" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_4" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_2" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3140" title="3.14.0" class="md-nav__link">
+    3.14.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_4" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_3" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3130" title="3.13.0" class="md-nav__link">
+    3.13.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_5" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_5" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_4" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3120" title="3.12.0" class="md-nav__link">
+    3.12.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_6" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_6" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_5" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3110" title="3.11.0" class="md-nav__link">
+    3.11.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_7" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_7" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_6" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3100" title="3.10.0" class="md-nav__link">
+    3.10.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_8" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_8" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_7" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#390" title="3.9.0" class="md-nav__link">
+    3.9.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_9" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#380" title="3.8.0" class="md-nav__link">
+    3.8.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_1" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_10" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_9" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_8" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#370" title="3.7.0" class="md-nav__link">
+    3.7.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_11" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_9" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#360" title="3.6.0" class="md-nav__link">
+    3.6.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_2" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_12" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_10" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_10" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#350" title="3.5.0" class="md-nav__link">
+    3.5.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_11" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#340" title="3.4.0" class="md-nav__link">
+    3.4.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_13" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_12" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_11" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#330" title="3.3.0" class="md-nav__link">
+    3.3.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_14" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_13" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_12" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#320" title="3.2.0" class="md-nav__link">
+    3.2.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_15" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_14" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_13" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#310" title="3.1.0" class="md-nav__link">
+    3.1.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_16" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_15" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_14" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#300" title="3.0.0" class="md-nav__link">
+    3.0.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_17" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#270" title="2.7.0" class="md-nav__link">
+    2.7.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_18" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_16" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_15" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#260" title="2.6.0" class="md-nav__link">
+    2.6.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_17" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#250" title="2.5.0" class="md-nav__link">
+    2.5.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_3" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_18" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_16" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#240" title="2.4.0" class="md-nav__link">
+    2.4.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_19" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_19" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_17" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#230" title="2.3.0" class="md-nav__link">
+    2.3.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_4" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_20" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_20" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_18" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#220" title="2.2.0" class="md-nav__link">
+    2.2.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_5" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_19" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#211" title="2.1.1" class="md-nav__link">
+    2.1.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_21" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#210" title="2.1.0" class="md-nav__link">
+    2.1.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_21" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_22" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_20" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#200" title="2.0.0" class="md-nav__link">
+    2.0.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_6" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1200" title="1.20.0" class="md-nav__link">
+    1.20.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_7" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_22" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_23" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_21" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1190" title="1.19.0" class="md-nav__link">
+    1.19.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_8" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_23" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_24" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_22" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1180" title="1.18.0" class="md-nav__link">
+    1.18.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_9" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_25" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_23" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1170" title="1.17.0" class="md-nav__link">
+    1.17.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_10" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_24" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_26" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_24" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1160" title="1.16.0" class="md-nav__link">
+    1.16.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_25" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_27" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_25" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1150" title="1.15.0" class="md-nav__link">
+    1.15.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_26" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_28" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_26" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1141" title="1.14.1" class="md-nav__link">
+    1.14.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_29" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1140" title="1.14.0" class="md-nav__link">
+    1.14.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_11" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_27" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_30" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_27" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1131" title="1.13.1" class="md-nav__link">
+    1.13.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_31" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1130" title="1.13.0" class="md-nav__link">
+    1.13.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_28" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_32" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_28" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1120" title="1.12.0" class="md-nav__link">
+    1.12.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_12" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_29" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_33" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_29" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1110" title="1.11.0" class="md-nav__link">
+    1.11.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_30" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_34" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1100" title="1.10.0" class="md-nav__link">
+    1.10.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_31" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_35" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#190" title="1.9.0" class="md-nav__link">
+    1.9.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_32" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_36" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#180" title="1.8.0" class="md-nav__link">
+    1.8.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_33" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_30" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#170" title="1.7.0" class="md-nav__link">
+    1.7.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_34" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_37" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#160" title="1.6.0" class="md-nav__link">
+    1.6.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_13" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_35" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_38" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#151" title="1.5.1" class="md-nav__link">
+    1.5.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_36" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_39" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#150" title="1.5.0" class="md-nav__link">
+    1.5.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_37" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142" title="1.4.2" class="md-nav__link">
+    1.4.2
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_38" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#141" title="1.4.1" class="md-nav__link">
+    1.4.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_39" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_40" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#140" title="1.4.0" class="md-nav__link">
+    1.4.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_14" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_40" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#130" title="1.3.0" class="md-nav__link">
+    1.3.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_15" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_41" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#120" title="1.2.0" class="md-nav__link">
+    1.2.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_42" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_41" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#111" title="1.1.1" class="md-nav__link">
+    1.1.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_43" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110" title="1.1.0" class="md-nav__link">
+    1.1.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_16" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_44" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100" title="1.0.0" class="md-nav__link">
+    1.0.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_17" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-beta3" title="1.0.0-beta.3" class="md-nav__link">
+    1.0.0-beta.3
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_45" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-beta2" title="1.0.0-beta.2" class="md-nav__link">
+    1.0.0-beta.2
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_18" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../license/" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../guides" title="Project Guides" class="md-nav__link">
+      Project Guides
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#3190" title="3.19.0" class="md-nav__link">
+    3.19.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3180" title="3.18.0" class="md-nav__link">
+    3.18.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3171" title="3.17.1" class="md-nav__link">
+    3.17.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3170" title="3.17.0" class="md-nav__link">
+    3.17.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_1" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_1" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3160" title="3.16.0" class="md-nav__link">
+    3.16.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_2" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_2" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_1" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3151" title="3.15.1" class="md-nav__link">
+    3.15.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_3" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3150" title="3.15.0" class="md-nav__link">
+    3.15.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_3" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_4" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_2" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3140" title="3.14.0" class="md-nav__link">
+    3.14.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_4" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_3" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3130" title="3.13.0" class="md-nav__link">
+    3.13.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_5" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_5" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_4" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3120" title="3.12.0" class="md-nav__link">
+    3.12.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_6" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_6" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_5" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3110" title="3.11.0" class="md-nav__link">
+    3.11.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_7" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_7" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_6" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3100" title="3.10.0" class="md-nav__link">
+    3.10.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_8" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_8" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_7" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#390" title="3.9.0" class="md-nav__link">
+    3.9.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_9" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#380" title="3.8.0" class="md-nav__link">
+    3.8.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_1" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_10" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_9" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_8" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#370" title="3.7.0" class="md-nav__link">
+    3.7.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_11" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_9" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#360" title="3.6.0" class="md-nav__link">
+    3.6.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_2" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_12" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_10" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_10" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#350" title="3.5.0" class="md-nav__link">
+    3.5.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_11" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#340" title="3.4.0" class="md-nav__link">
+    3.4.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_13" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_12" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_11" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#330" title="3.3.0" class="md-nav__link">
+    3.3.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_14" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_13" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_12" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#320" title="3.2.0" class="md-nav__link">
+    3.2.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_15" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_14" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_13" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#310" title="3.1.0" class="md-nav__link">
+    3.1.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_16" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_15" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_14" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#300" title="3.0.0" class="md-nav__link">
+    3.0.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_17" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#270" title="2.7.0" class="md-nav__link">
+    2.7.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_18" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_16" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_15" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#260" title="2.6.0" class="md-nav__link">
+    2.6.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_17" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#250" title="2.5.0" class="md-nav__link">
+    2.5.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_3" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_18" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_16" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#240" title="2.4.0" class="md-nav__link">
+    2.4.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_19" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_19" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_17" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#230" title="2.3.0" class="md-nav__link">
+    2.3.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_4" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_20" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_20" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_18" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#220" title="2.2.0" class="md-nav__link">
+    2.2.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_5" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_19" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#211" title="2.1.1" class="md-nav__link">
+    2.1.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_21" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#210" title="2.1.0" class="md-nav__link">
+    2.1.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_21" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_22" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_20" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#200" title="2.0.0" class="md-nav__link">
+    2.0.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_6" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1200" title="1.20.0" class="md-nav__link">
+    1.20.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_7" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_22" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_23" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_21" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1190" title="1.19.0" class="md-nav__link">
+    1.19.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_8" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_23" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_24" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_22" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1180" title="1.18.0" class="md-nav__link">
+    1.18.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_9" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_25" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_23" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1170" title="1.17.0" class="md-nav__link">
+    1.17.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_10" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_24" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_26" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_24" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1160" title="1.16.0" class="md-nav__link">
+    1.16.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_25" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_27" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_25" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1150" title="1.15.0" class="md-nav__link">
+    1.15.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_26" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_28" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_26" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1141" title="1.14.1" class="md-nav__link">
+    1.14.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_29" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1140" title="1.14.0" class="md-nav__link">
+    1.14.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_11" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_27" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_30" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_27" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1131" title="1.13.1" class="md-nav__link">
+    1.13.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_31" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1130" title="1.13.0" class="md-nav__link">
+    1.13.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_28" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_32" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_28" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1120" title="1.12.0" class="md-nav__link">
+    1.12.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_12" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_29" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_33" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_29" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1110" title="1.11.0" class="md-nav__link">
+    1.11.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_30" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_34" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1100" title="1.10.0" class="md-nav__link">
+    1.10.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_31" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_35" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#190" title="1.9.0" class="md-nav__link">
+    1.9.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_32" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_36" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#180" title="1.8.0" class="md-nav__link">
+    1.8.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_33" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors_30" title="Contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#170" title="1.7.0" class="md-nav__link">
+    1.7.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_34" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_37" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#160" title="1.6.0" class="md-nav__link">
+    1.6.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_13" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_35" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_38" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#151" title="1.5.1" class="md-nav__link">
+    1.5.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_36" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_39" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#150" title="1.5.0" class="md-nav__link">
+    1.5.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_37" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142" title="1.4.2" class="md-nav__link">
+    1.4.2
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_38" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#141" title="1.4.1" class="md-nav__link">
+    1.4.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_39" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_40" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#140" title="1.4.0" class="md-nav__link">
+    1.4.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_14" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_40" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#130" title="1.3.0" class="md-nav__link">
+    1.3.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_15" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_41" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#120" title="1.2.0" class="md-nav__link">
+    1.2.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_42" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixes_41" title="Fixes" class="md-nav__link">
+    Fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#111" title="1.1.1" class="md-nav__link">
+    1.1.1
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_43" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110" title="1.1.0" class="md-nav__link">
+    1.1.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_16" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_44" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100" title="1.0.0" class="md-nav__link">
+    1.0.0
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_17" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-beta3" title="1.0.0-beta.3" class="md-nav__link">
+    1.0.0-beta.3
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhancements_45" title="Enhancements" class="md-nav__link">
+    Enhancements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-beta2" title="1.0.0-beta.2" class="md-nav__link">
+    1.0.0-beta.2
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-controls_18" title="New control(s)" class="md-nav__link">
+    New control(s)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/pnp/sp-dev-fx-property-controls/blob/master/docs/documentation/docs/about/release-notes.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="releases">Releases<a class="headerlink" href="#releases" title="Permanent link">&para;</a></h1>
+<h2 id="3190">3.19.0<a class="headerlink" href="#3190" title="Permanent link">&para;</a></h2>
+<h2 id="3180">3.18.0<a class="headerlink" href="#3180" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements">Enhancements<a class="headerlink" href="#enhancements" title="Permanent link">&para;</a></h3>
+<ul>
+<li>SharePoint Framework v1.19.0 support</li>
+</ul>
+<h2 id="3171">3.17.1<a class="headerlink" href="#3171" title="Permanent link">&para;</a></h2>
+<h3 id="fixes">Fixes<a class="headerlink" href="#fixes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fixes for Webpack 5: <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/621">#621</a></li>
+</ul>
+<h2 id="3170">3.17.0<a class="headerlink" href="#3170" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls">New control(s)<a class="headerlink" href="#new-controls" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldButton</code>:  New Control PropertyFieldButton <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/613">#613</a></li>
+<li><code>PropertyFieldGrid</code>:  New Control PropertyFieldGrid <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/614">#614</a></li>
+</ul>
+<h3 id="enhancements_1">Enhancements<a class="headerlink" href="#enhancements_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>fast-serve</code>: ast-serve update to match the most recent changes. <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/606">#606</a></li>
+<li><code>PropertyFieldContentTypePicker</code>:  PropertyFieldContentTypePicker control <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/611">#611</a></li>
+<li><code>PropertyFieldFilePicker</code> : add a delete button to the selected file <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/#607">#579</a></li>
+<li><code>PropertyFieldFilePicker</code>: Fix root site org asset library showing no items in file picker (https://github.com/pnp/sp-dev-fx-property-controls/pull/603)</li>
+<li><code>PropertyFieldFolderPicker</code>: added siteAbsoluteUrl to FOlderPicker  (https://github.com/pnp/sp-dev-fx-property-controls/pull/602)</li>
+</ul>
+<h3 id="fixes_1">Fixes<a class="headerlink" href="#fixes_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>General Helper</code>: toRelativeUrl returns proper relative url in case of root site  (https://github.com/pnp/sp-dev-fx-property-controls/pull/609)</li>
+</ul>
+<h3 id="contributors">Contributors<a class="headerlink" href="#contributors" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/daniellinden22">Daniel Lindén</a>, <a href="https://github.com/jjkim11">Jake</a>, <a href="https://github.com/joaojmendes">João Mendes</a>, <a href="https://github.com/NishkalankBezawada">Nishkalank Bezawada</a>, <a href="https://github.com/ramonitor">ramonitor</a>, <a href="https://github.com/russgove">Russell gove</a>, <a href="https://github.com/s-KaiNet">Sergei Sergeev</a>.</p>
+<h2 id="3160">3.16.0<a class="headerlink" href="#3160" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_2">Enhancements<a class="headerlink" href="#enhancements_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldSitePicker</code>: disabled property not implemented in UI <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/577">#577</a></li>
+</ul>
+<h3 id="fixes_2">Fixes<a class="headerlink" href="#fixes_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldMonacoEditor</code> and <code>PropertyFieldCodeEditor</code>: fix text selection in code editor <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/590">#590</a></li>
+</ul>
+<h3 id="contributors_1">Contributors<a class="headerlink" href="#contributors_1" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/toodeluna">Luna Heyman</a>, <a href="https://github.com/srpmtt">srpmtt</a>.</p>
+<h2 id="3151">3.15.1<a class="headerlink" href="#3151" title="Permanent link">&para;</a></h2>
+<h3 id="fixes_3">Fixes<a class="headerlink" href="#fixes_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldChoiceGroupWithCallout</code> deletes properties <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/592">#592</a></li>
+</ul>
+<h2 id="3150">3.15.0<a class="headerlink" href="#3150" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_3">Enhancements<a class="headerlink" href="#enhancements_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>SharePoint Framework v1.18.2 support</li>
+</ul>
+<h3 id="fixes_4">Fixes<a class="headerlink" href="#fixes_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>Localization</code>: Errors in en-gb loc file <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/582">#582</a></li>
+<li><code>Localization</code>: Errors in german language <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/589">#589</a></li>
+<li><code>PropertyFieldFilePicker</code>: fix Tiles view <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/562">#562</a></li>
+</ul>
+<h3 id="contributors_2">Contributors<a class="headerlink" href="#contributors_2" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/andrew-lott">andrew-lott</a>, <a href="https://github.com/ClemSK">Clem S-K</a>, <a href="https://github.com/tpf89">Tom F.</a>.</p>
+<h2 id="3140">3.14.0<a class="headerlink" href="#3140" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_4">Enhancements<a class="headerlink" href="#enhancements_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldListPicker</code>: Implemented functionality to select multiple base templates <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/568">#568</a></li>
+<li><code>fast-serve</code>: Fast-serve updated to the latest version and serve warnings fixed. <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/579">#579</a></li>
+</ul>
+<h3 id="contributors_3">Contributors<a class="headerlink" href="#contributors_3" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/chandaniprajapati">Chandani Prajapati</a>, <a href="https://github.com/s-KaiNet">Sergei Sergeev</a>.</p>
+<h2 id="3130">3.13.0<a class="headerlink" href="#3130" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_5">Enhancements<a class="headerlink" href="#enhancements_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldCollectionData</code>: add <code>panelProps</code> property to collection data <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/546">#546</a></li>
+<li>SharePoint Framework v1.17.1 support</li>
+</ul>
+<h3 id="fixes_5">Fixes<a class="headerlink" href="#fixes_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Italian localization updated <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/549">#549</a></li>
+<li>Fixed multiple typos <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/550">#550</a></li>
+<li>Swedish localization updated <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/553">#553</a></li>
+<li><code>PropertyPanePropertyEditor</code>: crash when property undefined/null <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/552">#552</a></li>
+</ul>
+<h3 id="contributors_4">Contributors<a class="headerlink" href="#contributors_4" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/c-eiser13">Chad Eiserloh</a>, <a href="https://github.com/Gitwey">Gitwey</a>, <a href="https://github.com/JakeStanger">Jake Stanger</a>, <a href="https://github.com/Luca3082">Luca3082</a>, <a href="https://github.com/ValerasNarbutas">Valeras Narbutas</a>.</p>
+<h2 id="3120">3.12.0<a class="headerlink" href="#3120" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_6">Enhancements<a class="headerlink" href="#enhancements_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldFilePicker</code>: Site Tab - Adding scrolling for many libraries <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/525">#525</a></li>
+<li><code>SPListPickerService</code>: add ContentTypes/Name to the query <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/521">#521</a></li>
+<li>Czech localization added <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/527">#527</a></li>
+</ul>
+<h3 id="fixes_6">Fixes<a class="headerlink" href="#fixes_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Documentations fix for <code>PropertyPaneHelpers</code> <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/536">#536</a></li>
+<li><code>ColorPicker</code>: localization for Fluent UI <code>ColorPicker</code> <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/535">#535</a></li>
+</ul>
+<h3 id="contributors_5">Contributors<a class="headerlink" href="#contributors_5" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/krainer">Brian Krainer Jacobsen</a>, <a href="https://github.com/c-eiser13">Chad Eiserloh</a>, <a href="https://github.com/krishna-vijas">krishna-vijas</a>, <a href="https://github.com/MartinZamazal">Martin Zamazal</a>.</p>
+<h2 id="3110">3.11.0<a class="headerlink" href="#3110" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_7">Enhancements<a class="headerlink" href="#enhancements_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>SharePoint Framework v1.16.0 support</li>
+</ul>
+<h3 id="fixes_7">Fixes<a class="headerlink" href="#fixes_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>TermPicker</code>: missed documentation for <code>anchorId</code> property <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/496">#496</a></li>
+<li><code>FilePicker</code>: Operations not working for 100+ Items <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/497">#497</a></li>
+<li><code>FilePicker</code>: File Sorting not working on file size properly <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/501">#501</a></li>
+<li><code>PropertyFieldMessage</code>: documentation typos fix <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/504">#504</a></li>
+<li><code>FilePicker</code>: Sorting on Large Libraries / Folders Must do Server-Side Sorting <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/503">#503</a></li>
+</ul>
+<h3 id="contributors_6">Contributors<a class="headerlink" href="#contributors_6" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/c-eiser13">Chad Eiserloh</a>, <a href="https://github.com/chandaniprajapati">Chandani Prajapati</a>, <a href="https://github.com/HiltonGiesenow">Hilton Giesenow</a>.</p>
+<h2 id="3100">3.10.0<a class="headerlink" href="#3100" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_8">Enhancements<a class="headerlink" href="#enhancements_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Arabic locale is missing <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/461">#461</a></li>
+<li><code>PropertyFieldTermPicker</code>:  anchorId support <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/491">#491</a></li>
+</ul>
+<h3 id="fixes_8">Fixes<a class="headerlink" href="#fixes_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>FilePicker</code>: Fixed an internal typo in the codebase <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/474">#474</a></li>
+<li><code>ListPicker</code>: documentation updates <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/490">#490</a></li>
+<li><code>PropertyFieldCollectionData</code>: Adding new translation for Field Issues label <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/486">#486</a></li>
+<li><code>FilePicker</code>: Page Type icons not appearing in the Site Pages library view <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/475">#475</a></li>
+<li><code>FilePicker</code>: Tiles are Missing for Site Pages <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/478">#478</a></li>
+<li><code>FilePicker</code>: Sorting Does Not Work <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/487">#487</a></li>
+</ul>
+<h3 id="contributors_7">Contributors<a class="headerlink" href="#contributors_7" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/c-eiser13">Chad Eiserloh</a>, <a href="https://github.com/JeanNetryValere">JeanNetryValere</a>, <a href="https://github.com/HiltonGiesenow">Hilton Giesenow</a>, <a href="https://github.com/nviolero">nviolero</a>, <a href="https://github.com/pschaeflein">Paul Schaeflein</a>.</p>
+<h2 id="390">3.9.0<a class="headerlink" href="#390" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_9">Enhancements<a class="headerlink" href="#enhancements_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>SharePoint Framework v1.15.2 support</li>
+</ul>
+<h2 id="380">3.8.0<a class="headerlink" href="#380" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_1">New control(s)<a class="headerlink" href="#new-controls_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Localizations for en-gb <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/454">#454</a></li>
+</ul>
+<h3 id="enhancements_10">Enhancements<a class="headerlink" href="#enhancements_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldSitePicker</code>: Site Picker search for any input string <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/386">#386</a></li>
+<li><code>fast-serve</code>: bump support to 1.14.0 <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/386">#386</a></li>
+<li><code>PropertyFieldCollectionData</code>: allow to conditionally disable specific field in the item <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/464">#464</a></li>
+</ul>
+<h3 id="fixes_9">Fixes<a class="headerlink" href="#fixes_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldListPicker</code>: Remove debugger <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/455">#455</a></li>
+<li><code>PropertyFieldCollectionData</code>: Add button is invisible on a root site <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/462">#462</a></li>
+<li><code>PropertyFieldCollectionData</code>: <code>fieldValidation</code> for custom fields did not get called if no <code>onGetErrorMessage</code> had been defined <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/446">#446</a></li>
+</ul>
+<h3 id="contributors_8">Contributors<a class="headerlink" href="#contributors_8" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/gautamdsheth">Gautam Sheth</a>, <a href="https://github.com/Jwaegebaert">Jasey Waegebaert</a>, <a href="https://github.com/IRRDC">IRRDC</a>, <a href="https://github.com/MarkusLanger">Markus Langer</a>, <a href="https://github.com/milanholemans">Milan Holemans</a>, <a href="https://github.com/PeterWCox">Peter Cox</a>.</p>
+<h2 id="370">3.7.0<a class="headerlink" href="#370" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_11">Enhancements<a class="headerlink" href="#enhancements_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldListPicker</code>: ability to provide content type id <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/441">#441</a></li>
+<li><code>PropertyFieldColorPicker</code>: provide preview of the current selected color <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/447">#447</a></li>
+</ul>
+<h3 id="contributors_9">Contributors<a class="headerlink" href="#contributors_9" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/milanholemans">Milan Holemans</a>, <a href="https://github.com/russgove">Russell gove</a>.</p>
+<h2 id="360">3.6.0<a class="headerlink" href="#360" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_2">New control(s)<a class="headerlink" href="#new-controls_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldMonacoEditor</code>: new control - Monaco editor <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/439">#439</a></li>
+</ul>
+<h3 id="enhancements_12">Enhancements<a class="headerlink" href="#enhancements_12" title="Permanent link">&para;</a></h3>
+<ul>
+<li>SharePoint Framework v1.14.0 support</li>
+<li>Improved documentation</li>
+</ul>
+<h3 id="fixes_10">Fixes<a class="headerlink" href="#fixes_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldCollectionData</code>: Add button is disabled when it should not be <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/436">#436</a></li>
+</ul>
+<h3 id="contributors_10">Contributors<a class="headerlink" href="#contributors_10" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/c-eiser13">Chad Eiserloh</a>, <a href="https://github.com/GuidoZam">GuidoZam</a>, <a href="https://github.com/joaojmendes">João Mendes</a>.</p>
+<h2 id="350">3.5.0<a class="headerlink" href="#350" title="Permanent link">&para;</a></h2>
+<h3 id="fixes_11">Fixes<a class="headerlink" href="#fixes_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Multiple controls: Update imports to support controls in ACEs <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/431">#431</a></li>
+</ul>
+<h2 id="340">3.4.0<a class="headerlink" href="#340" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_13">Enhancements<a class="headerlink" href="#enhancements_13" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldFilePicker</code>: ability to set default tab <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/412">#412</a></li>
+<li><code>PropertyFieldCollectionData</code>: ability to use <code>IconPicker</code> for icon field <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/423">#423</a></li>
+<li><code>PropertyFieldFilePicker</code>: Added a feature to allow external links / Added a feature to show the Site Pages in the Site tab <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/421">#421</a></li>
+</ul>
+<h3 id="fixes_12">Fixes<a class="headerlink" href="#fixes_12" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldSearch</code>: documentation fix <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/417">#417</a></li>
+<li><code>FilePicker</code>: cannot find library by its name in multilingual sites <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/389">#389</a></li>
+<li><code>PropertyFieldDateTimePicker</code>: <code>formatDate</code> property doesn't apply to the textbox value in the property pane <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/388">#388</a></li>
+<li><code>PropertyFieldCollectionData</code>: number input shows placeholder instead of 0 <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/379">#379</a></li>
+<li><code>PropertyFieldChoiceGroupWithCallout</code>: iconProps not working <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/424">#424</a></li>
+</ul>
+<h3 id="contributors_11">Contributors<a class="headerlink" href="#contributors_11" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/19ahmed99">19ahmed99</a>, <a href="https://github.com/chrisfriz">Christian Frizell</a>, <a href="https://github.com/GuidoZam">GuidoZam</a>.</p>
+<h2 id="330">3.3.0<a class="headerlink" href="#330" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_14">Enhancements<a class="headerlink" href="#enhancements_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li>SharePoint Framework v1.13.* support</li>
+<li><code>PropertyPanePropertyEditor</code>: Add translations for property editor control button and header <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/399">#399</a></li>
+<li><code>PropertyFieldCollectionData</code>: Adds conditional column visibility <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/394">#394</a></li>
+<li>Include <code>mystrings.d.ts</code> in definition output <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/393">#393</a></li>
+<li><code>PropertyFieldCollectionData</code>: <code>onGetErrorMessage</code> support for boolean, custom and color fields. <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/395">#395</a></li>
+<li><code>PropertyFieldCodeEditor</code>: Added <code>panelWidth</code> property <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/404">#404</a></li>
+<li><code>PropertyFieldCollectionData</code>: Allow falsey keys as dropdown options <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/397">#397</a></li>
+<li><code>PropertyFieldFilePicker</code>: Add a handler to close a filepicker <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/401">#401</a></li>
+</ul>
+<h3 id="fixes_13">Fixes<a class="headerlink" href="#fixes_13" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyPanePropertyEditor</code>: Minor fix to allow PropertyEditor control to update properties when their current value is blank <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/384">#384</a></li>
+<li><code>PropertyFieldSitePicker</code>: Some sites do not show up in Property Field Site Picker control <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/402">#402</a></li>
+<li><code>PropertyFieldOrder</code>: Not working with array of objects <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/396">#396</a></li>
+</ul>
+<h3 id="contributors_12">Contributors<a class="headerlink" href="#contributors_12" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/ellinge">ellinge</a>, <a href="https://github.com/M365Bass">M365Bass</a>, <a href="https://github.com/patrikhellgren">Patrik Hellgren</a>.</p>
+<h2 id="320">3.2.0<a class="headerlink" href="#320" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_15">Enhancements<a class="headerlink" href="#enhancements_15" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldColorPicker</code>: Add debounce property to color picker control <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/352">#352</a></li>
+<li><code>fast-serve</code>: Add fast-serve support <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/370/files">#370</a></li>
+</ul>
+<h3 id="fixes_14">Fixes<a class="headerlink" href="#fixes_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldFilePicker</code>: Stock images url is getting a 404 server error <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/364">#364</a></li>
+<li><code>PropertyFieldColumnPicker</code>: Filter not working properly <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/356">#356</a></li>
+<li><code>PropertyFieldTextWithCallout</code>: Fix TextWithCallout read-only in SPFx 1.12.1 <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/372">#372</a></li>
+<li><code>PropertyFieldFilePicker</code>: React crash on large folders <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/371">#371</a></li>
+<li><code>PropertyFieldFilePicker</code>: documentation formatting fix <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/368">#368</a></li>
+<li><code>PropertyFieldCollectionData</code>: PropertyFieldCollectionData is not setting sortIdx on resulting collection when using Add and Save <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/369">#369</a></li>
+</ul>
+<h3 id="contributors_13">Contributors<a class="headerlink" href="#contributors_13" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/AriGunawan">Ari Gunawan</a>, <a href="https://github.com/Chrisrb05">Chrisrb05</a>, <a href="https://github.com/gautamdsheth">Gautam Sheth</a>, <a href="https://github.com/wilecoyotegenius">Konrad K.</a>, <a href="https://github.com/mbice">Mark Bice</a>, <a href="https://github.com/s-KaiNet">Sergei Sergeev</a>.</p>
+<h2 id="310">3.1.0<a class="headerlink" href="#310" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_16">Enhancements<a class="headerlink" href="#enhancements_16" title="Permanent link">&para;</a></h3>
+<ul>
+<li>SharePoint Framework v1.12.1 support</li>
+<li><code>PropertyFieldColumnPicker</code>: Multiselect dropdown option <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/354">#354</a></li>
+</ul>
+<h3 id="fixes_15">Fixes<a class="headerlink" href="#fixes_15" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldSitePicker</code>: Site Picker doesn't return sites with title starting from the typed string <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/355">#355</a></li>
+</ul>
+<h3 id="contributors_14">Contributors<a class="headerlink" href="#contributors_14" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributor: <a href="https://github.com/sudharsank">Sudharsan Kesavanarayanan</a>.</p>
+<h2 id="300">3.0.0<a class="headerlink" href="#300" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_17">Enhancements<a class="headerlink" href="#enhancements_17" title="Permanent link">&para;</a></h3>
+<ul>
+<li>SharePoint Framework v1.12 support (Breaking change)</li>
+<li>FLuent UI v7 support</li>
+</ul>
+<h2 id="270">2.7.0<a class="headerlink" href="#270" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_18">Enhancements<a class="headerlink" href="#enhancements_18" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldColorPicker</code>: Add debounce property to color picker control <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/352">#352</a></li>
+</ul>
+<h3 id="fixes_16">Fixes<a class="headerlink" href="#fixes_16" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldFilePicker</code>: Stock images url is getting a 404 server error <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/364">#364</a></li>
+<li><code>PropertyFieldColumnPicker</code>: Filter not working properly <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/356">#356</a></li>
+<li><code>PropertyFieldFilePicker</code>: React crash on large folders <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/371">#371</a></li>
+<li><code>PropertyFieldCollectionData</code>: PropertyFieldCollectionData is not setting sortIdx on resulting collection when using Add and Save <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/369">#369</a></li>
+</ul>
+<h3 id="contributors_15">Contributors<a class="headerlink" href="#contributors_15" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/Chrisrb05">Chrisrb05</a>, <a href="https://github.com/wilecoyotegenius">Konrad K.</a>, <a href="https://github.com/mbice">Mark Bice</a>.</p>
+<h2 id="260">2.6.0<a class="headerlink" href="#260" title="Permanent link">&para;</a></h2>
+<h3 id="fixes_17">Fixes<a class="headerlink" href="#fixes_17" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldSitePicker</code>: Site Picker doesn't return sites with title starting from the typed string <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/355">#355</a></li>
+</ul>
+<h2 id="250">2.5.0<a class="headerlink" href="#250" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_3">New control(s)<a class="headerlink" href="#new-controls_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldEditableComboBox</code>: new editable combobox control based on Fluent ComboBox. <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/339">#339</a></li>
+<li><code>PropertyFieldColumnPicker</code>: new column picker control <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/343">#343</a></li>
+</ul>
+<h3 id="fixes_18">Fixes<a class="headerlink" href="#fixes_18" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldNumber</code>: The property field number is loosing decimal value on futher edits of the properties. <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/344">#344</a></li>
+<li><code>PropertyFieldCollectionData</code>: validation error persists after item deletion <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/341">#341</a></li>
+<li><code>FolderPicker</code>: Correct FolderPicker link alignment</li>
+</ul>
+<h3 id="contributors_16">Contributors<a class="headerlink" href="#contributors_16" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/mhomol">Mike Homol</a>, <a href="https://github.com/sudharsank">Sudharsan Kesavanarayanan</a>, <a href="https://github.com/TheThor59">Victor Pollet</a>.</p>
+<h2 id="240">2.4.0<a class="headerlink" href="#240" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_19">Enhancements<a class="headerlink" href="#enhancements_19" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldCodeEditor</code>: Added an <code>options</code> property to the CodeEditor. Allows setting of any of the Ace Editor options outlined <a href="https://github.com/ajaxorg/ace/wiki/Configuring-Ace">here</a> <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/322">#322</a></li>
+<li><code>PropertyFieldCollectionData</code>: Support for a Color Picker control <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/326">#326</a></li>
+<li>Support for nested web part properties (example: <code>targetProperty</code>: 'a.b.c') in all controls</li>
+<li><code>PropertyFieldSitePicker</code>: display site URL <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/330">#330</a></li>
+<li><code>PropertyPanePropertyEditor</code>: Support of dynamic properties (<code>DynamicData</code>) <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/331">#331</a></li>
+</ul>
+<h3 id="fixes_19">Fixes<a class="headerlink" href="#fixes_19" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Documentation fix for <code>PropertyFIeldPassword</code>: <code>value</code> is of type <code>string</code>, not <code>number</code>. <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/324">#324</a></li>
+<li><code>PropertyFieldCollectionData</code>: Dropdown validation not working as expected <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/321">#321</a></li>
+<li><code>PropertyFieldPeoplePicker</code>: targetProperty is not updated properly when using nested/complex attributes <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/221">#221</a></li>
+<li><code>PropertyFieldSitePicker</code>: if a single subsite is selected all others are selected as well <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/329">#329</a></li>
+</ul>
+<h3 id="contributors_17">Contributors<a class="headerlink" href="#contributors_17" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/coreyroth">Corey Roth</a>, <a href="https://github.com/kflogdev">kflogdev</a>.</p>
+<h2 id="230">2.3.0<a class="headerlink" href="#230" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_4">New control(s)<a class="headerlink" href="#new-controls_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldIconPicker</code>: new icon picker control <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/319">#319</a></li>
+</ul>
+<h3 id="enhancements_20">Enhancements<a class="headerlink" href="#enhancements_20" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldTermPicker</code>: two properties: <code>areTermsSelectable</code> and <code>areTermsHidden</code> <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/313">#313</a></li>
+<li><code>PropertyFieldListPicker</code>: ability to return Title and relative URL of the list <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/281">#281</a></li>
+</ul>
+<h3 id="fixes_20">Fixes<a class="headerlink" href="#fixes_20" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Documentation fix: spelling fix on <code>index.md</code> <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/320">#320</a></li>
+</ul>
+<h3 id="contributors_18">Contributors<a class="headerlink" href="#contributors_18" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/coreyroth">Corey Roth</a>, <a href="https://github.com/gautamdsheth">Gautam Sheth</a>, <a href="https://github.com/johnnycardy">Jonathan Cardy</a>, <a href="https://github.com/wilecoyotegenius">Konrad K.</a>.</p>
+<h2 id="220">2.2.0<a class="headerlink" href="#220" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_5">New control(s)<a class="headerlink" href="#new-controls_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldTeamPicker</code>: new Teams picker control <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/303">#303</a></li>
+</ul>
+<h3 id="contributors_19">Contributors<a class="headerlink" href="#contributors_19" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributor: <a href="https://github.com/joaojmendes">João Mendes</a>.</p>
+<h2 id="211">2.1.1<a class="headerlink" href="#211" title="Permanent link">&para;</a></h2>
+<h3 id="fixes_21">Fixes<a class="headerlink" href="#fixes_21" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Localizations fix <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/311">#311</a></li>
+</ul>
+<h2 id="210">2.1.0<a class="headerlink" href="#210" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_21">Enhancements<a class="headerlink" href="#enhancements_21" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Auto-generated localizations</li>
+<li><code>PropertyFieldNumber</code>: ability to set float values <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/299">#299</a></li>
+<li><code>PropertyFieldGuid</code>: new GUID editor control <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/300">#300</a></li>
+<li><code>FolderExplorerService</code>: support special characters if folder name <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/305">#305</a></li>
+<li><code>FilePicker</code>: Stock Images support <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/306">#306</a></li>
+</ul>
+<h3 id="fixes_22">Fixes<a class="headerlink" href="#fixes_22" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Documentation: Fixed formatting of list of Controls <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/298">#298</a></li>
+<li><code>PropertyFieldNumber</code>: gives "Maximum update depth exceeded" error <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/282">#282</a></li>
+<li>Documentation fix: <code>PropertyFieldCollectionData</code> - required custom field should call <code>onUpdate</code> before <code>onError</code> to correctly display required error message <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/284">#284</a></li>
+<li><code>PropertyFieldNumber</code>: Improper handling of falsey minValue or maxValue <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/150">#150</a></li>
+<li><code>PropertyFieldFilePicker</code>: Org Assets library is not displayed <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/295">#295</a></li>
+</ul>
+<h3 id="contributors_20">Contributors<a class="headerlink" href="#contributors_20" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/anoopt">Anoop Tatti</a>, <a href="https://github.com/gautamdsheth">Gautam Sheth</a>, <a href="https://github.com/jimmywim">Jim Love</a>.</p>
+<h2 id="200">2.0.0<a class="headerlink" href="#200" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_6">New control(s)<a class="headerlink" href="#new-controls_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>Office UI Fabric</code> version 6 support</li>
+</ul>
+<h2 id="1200">1.20.0<a class="headerlink" href="#1200" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_7">New control(s)<a class="headerlink" href="#new-controls_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldRoleDefinitionPicker</code>: new Role Definition Picker control <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/268">#268</a></li>
+<li><code>PropertyFieldFolderPicker</code>: new Folder Picker control <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/272">#272</a></li>
+<li><code>PropertyPaneMarkdownContent</code>: new Markdown Content control <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/162">#162</a></li>
+</ul>
+<h3 id="enhancements_22">Enhancements<a class="headerlink" href="#enhancements_22" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldCollectionData</code>: Dynamic options <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/260">#260</a></li>
+</ul>
+<h3 id="fixes_23">Fixes<a class="headerlink" href="#fixes_23" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Documentation fix: Link to <code>PropertyFieldListPicker</code> control points to <code>PropertyFieldMessage</code> <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/269">#269</a></li>
+<li>Readme fix: fixed link to project guides <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/271">#271</a></li>
+<li><code>PropertyFieldViewPicker</code>: Unable to load Views from another site <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/263">#263</a></li>
+</ul>
+<h3 id="contributors_21">Contributors<a class="headerlink" href="#contributors_21" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/gautamdsheth">Gautam Sheth</a>, <a href="https://github.com/hugoabernier">Hugo Bernier</a>, <a href="https://github.com/lafe">Lars Fernhomberg</a>.</p>
+<h2 id="1190">1.19.0<a class="headerlink" href="#1190" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_8">New control(s)<a class="headerlink" href="#new-controls_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldMessage</code>: new Message control <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/248">#248</a></li>
+<li><code>PropertyFieldSearch</code>: new Search control <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/248">#248</a></li>
+<li><code>PropertyFieldSpinner</code>: new Spinner control <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/248">#248</a></li>
+<li><code>PropertyFieldFilePicker</code>: new File Picker control <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/265">#265</a></li>
+</ul>
+<h3 id="enhancements_23">Enhancements<a class="headerlink" href="#enhancements_23" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldDateTimePicker</code>: Add ability to hide Date and show only Time field <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/195">#195</a></li>
+<li><code>PropertyFieldCodeEditor</code>: Format code <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/165">#165</a></li>
+</ul>
+<h3 id="fixes_24">Fixes<a class="headerlink" href="#fixes_24" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Documentation fix for <code>PropertyFieldDateTimePicker</code>: The link for <code>OnGetErrorMessage</code> documentation is broken in this page</li>
+<li>Documentation: Added <code>PnPTelemetry</code> import example <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/259">#259</a></li>
+<li><code>PropertyPanePropertyEditor</code>:Fix for dynamic data properties <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/200">#200</a></li>
+<li><code>PropertyFieldPeoplePicker</code>: People Picker doesn't search for groups <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/239">#239</a></li>
+<li>Controls with callout: control's label should be disabled if the <code>disabled</code> prop is set to <code>true</code></li>
+</ul>
+<h3 id="contributors_22">Contributors<a class="headerlink" href="#contributors_22" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/lafe">Lars Fernhomberg</a>, <a href="https://github.com/joaojmendes">João Mendes</a>, <a href="https://github.com/nanddeepn">Nanddeep Nachan</a>, <a href="https://github.com/RamPrasadMeenavalli">Ram</a>, <a href="https://github.com/gautamdsheth">Gautam Sheth</a>.</p>
+<h2 id="1180">1.18.0<a class="headerlink" href="#1180" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_9">New control(s)<a class="headerlink" href="#new-controls_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldViewPicker</code>: View picker control <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/230">#230</a></li>
+<li><code>PropertyFieldPassword</code>: password editor control <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/237">#237</a></li>
+</ul>
+<h3 id="fixes_25">Fixes<a class="headerlink" href="#fixes_25" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldSitePicker</code> documentation title fix <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/229">#229</a></li>
+<li><code>PropertyFieldSitePicker</code>: doesn't work at root site <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/231">#231</a></li>
+</ul>
+<h3 id="contributors_23">Contributors<a class="headerlink" href="#contributors_23" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/AriGunawan">Ari Gunawan</a>, <a href="https://github.com/gautamdsheth">Gautam Sheth</a>, <a href="https://github.com/hugoabernier">Hugo Bernier</a>, <a href="https://github.com/joaojmendes">João Mendes</a>.</p>
+<h2 id="1170">1.17.0<a class="headerlink" href="#1170" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_10">New control(s)<a class="headerlink" href="#new-controls_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldSitePicker</code>: New control that allows the user to select one or multiple sites from the SharePoint Search API. Similar to the SitePicker in the official "News" Web Part <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/208">#208</a>, <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/215">#215</a></li>
+<li><code>Telemetry</code>: Provide a way to opt-out for PnP Telemetry <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/222">#222</a></li>
+<li><code>PropertyPaneHelpers</code>: Allows to show a spinner while loading resources</li>
+</ul>
+<h3 id="enhancements_24">Enhancements<a class="headerlink" href="#enhancements_24" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add norwegian language file <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/125">#125</a></li>
+<li><code>PropertyFieldSliderWithCallout</code>: debounce property added <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/209">#209</a></li>
+<li>Replace full lodash with only used functions. <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/213">#213</a></li>
+</ul>
+<h3 id="fixes_26">Fixes<a class="headerlink" href="#fixes_26" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Documentation update for <code>PropertyFieldCollectionData</code> <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/196">#196</a></li>
+<li><code>PropertyFieldOrder</code>: When items is an empty array, component renders the text '0' <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/152">#152</a></li>
+<li>Documentation update for <code>PropertyFieldCodeEditor</code> <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/194">#194</a></li>
+<li><code>PropertyFieldTermPicker</code>: Tags icon styling issue on IE11 <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/193">#193</a></li>
+<li><code>PropertyPanePropertyEditor</code>: Unable to download json export <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/210">#210</a></li>
+<li><code>PropertyFieldCollectionData</code>: Fix Data Grid Dragging Issues <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/217">#217</a></li>
+</ul>
+<h3 id="contributors_24">Contributors<a class="headerlink" href="#contributors_24" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/antoniomonserrate">Antonio Monserrate</a>, <a href="https://github.com/rocketboy1908">rocketboy1908</a>, <a href="https://github.com/siata13">Piotr Siatka</a>, <a href="https://github.com/benkenawell">Ben</a>, <a href="https://github.com/nsoeth">Niels Söth</a>, <a href="https://github.com/araver">araver</a>.</p>
+<h2 id="1160">1.16.0<a class="headerlink" href="#1160" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_25">Enhancements<a class="headerlink" href="#enhancements_25" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldCollectionData</code>: Add the ability for field validation to the custom fields <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/190">#187</a></li>
+<li><code>PropertyFieldCollectionData</code>: Ability to provide custom labels for the save and cancel buttons <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/187">#187</a></li>
+<li><code>PropertyFieldListPicker</code>: add ability to filter the control via OData <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/184">#184</a></li>
+</ul>
+<h3 id="fixes_27">Fixes<a class="headerlink" href="#fixes_27" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Documentation getting started links fixed <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/191">#191</a></li>
+<li>Fix for callout controls missing icon since SPFx <code>1.8.2</code> <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/182">#182</a></li>
+</ul>
+<h3 id="contributors_25">Contributors<a class="headerlink" href="#contributors_25" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/araver">araver</a>, <a href="https://github.com/c-eiser13">Chad Eiserloh</a>.</p>
+<h2 id="1150">1.15.0<a class="headerlink" href="#1150" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_26">Enhancements<a class="headerlink" href="#enhancements_26" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldCollectionData</code>: Add a property to be able to set a custom class on the collection data panel <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/180">#180</a></li>
+<li><code>PropertyFieldListPicker</code>: Added <code>listsToExclude</code> property to the control <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/176">#176</a></li>
+<li><code>PropertyFieldDateTimePicker</code>: Add ability to hide the date and time labels <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/77">#77</a></li>
+</ul>
+<h3 id="fixes_28">Fixes<a class="headerlink" href="#fixes_28" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Callout icons missing with SPFx <code>1.8.2</code> web part <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/178">#178</a></li>
+<li><code>PropertyFieldTextWithCallout</code>: still persists property value when error occurred <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/172">#172</a></li>
+<li><code>PropertyFieldNumber</code>: not handling changes correctly <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/170">#170</a></li>
+<li><code>PropertyFieldChoiceGroupWithCallout</code>: iconProps not working <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/154">#154</a></li>
+<li><code>PropertyFieldDropdownWithCallout</code>: Options of type <code>Divider</code> and <code>Header</code> are ignored <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/145">#145</a></li>
+</ul>
+<h3 id="contributors_26">Contributors<a class="headerlink" href="#contributors_26" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/AJIXuMuK">Alex Terentiev</a>, <a href="https://github.com/WardWilmsen">Ward Wilmsen</a>.</p>
+<h2 id="1141">1.14.1<a class="headerlink" href="#1141" title="Permanent link">&para;</a></h2>
+<h3 id="fixes_29">Fixes<a class="headerlink" href="#fixes_29" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>TaxonomyPicker</code>: Terms are sorted incorrectly under the wrong parent <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/153">#153</a></li>
+<li><code>EnterpriseTermPicker</code>: Terms are sorted incorrectly under the wrong parent <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/156">#156</a></li>
+</ul>
+<h2 id="1140">1.14.0<a class="headerlink" href="#1140" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_11">New control(s)<a class="headerlink" href="#new-controls_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldEnterpriseTermPicker</code>: New control to load term sets by using <code>@pnp/pnpjs</code> <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/70">#70</a> <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/120">#120</a></li>
+</ul>
+<h3 id="enhancements_27">Enhancements<a class="headerlink" href="#enhancements_27" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldCollectionData</code>: Setting to specify if item <code>creation</code> is enabled/disabled <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/130">#130</a></li>
+<li><code>PropertyFieldCollectionData</code>: Setting to specify if item <code>deletion</code> is enabled/disabled <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/131">#131</a></li>
+<li><code>PropertyFieldCollectionData</code>: Implemented a property to specify if field <code>editing</code> is enabled/disabled <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/132">#132</a></li>
+<li>Added <code>Chinese</code> localization <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/137">#137</a></li>
+<li><code>PropertyFieldColorPicker</code>: Added a <code>isHidden</code> property <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/138">#138</a></li>
+<li><code>PropertyFieldCollectionData</code>: return the item in the custom renderer <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/147">#147</a></li>
+<li>Added <code>Russian</code> localization <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/142">#142</a></li>
+</ul>
+<h3 id="fixes_30">Fixes<a class="headerlink" href="#fixes_30" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldTermPicker</code>: fix sort order with lowercased terms <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/133">#133</a></li>
+<li><code>PropertyFieldCollectionData</code>: Bug with onCustomRender() <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/135">#135</a></li>
+<li><code>PropertyFieldCollectionData</code>: Fixed bug with dropdown rendering in IE <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/136">#136</a></li>
+<li><code>PropertyFieldNumber</code>: Min/max number check fix + localization label fixes <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/141">#141</a></li>
+<li><code>PropertyFieldTermPicker</code>: Fix layout issues in IE11 <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/143">#143</a></li>
+</ul>
+<h3 id="contributors_27">Contributors<a class="headerlink" href="#contributors_27" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/spplante">Simon-Pierre Plante</a>, <a href="https://github.com/ypcode">Yannick Plenevaux</a>, <a href="https://github.com/AJIXuMuK">Alex Terentiev</a>, <a href="https://github.com/RogerZhang-CatapultSystems">Roger Zhang</a>.</p>
+<h2 id="1131">1.13.1<a class="headerlink" href="#1131" title="Permanent link">&para;</a></h2>
+<h3 id="fixes_31">Fixes<a class="headerlink" href="#fixes_31" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldCollectionData</code>: Fixed issue for loading the control in the local workbench <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/128">#128</a></li>
+</ul>
+<h2 id="1130">1.13.0<a class="headerlink" href="#1130" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_28">Enhancements<a class="headerlink" href="#enhancements_28" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Updated the <code>office-ui-fabric-react</code> to the same version as in SPFx 1.7.0 <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/105">#105</a></li>
+<li><code>PropertyFieldPeoplePicker</code>: Ability to select only from a specific site <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/9">#9</a></li>
+<li><code>PropertyFieldCollectionData</code>: Added support for custom field rendering <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/122">#122</a></li>
+<li><code>PropertyFieldCollectionData</code>: Added the functionality to sort the items in the collection <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/123">#123</a></li>
+</ul>
+<h3 id="fixes_32">Fixes<a class="headerlink" href="#fixes_32" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldDateTimePicker</code>: Fix for the hours dropdown not showing values <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/112">#112</a></li>
+<li><code>PropertyFieldCollectionData</code>: Issue with debounce validation overriding the inserted values <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/113">#113</a></li>
+<li><code>PropertyPaneWebPartInformation</code>: Remove redundant 'Description' label <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/119">#119</a></li>
+<li><code>PropertyFieldCodeEditor</code>: Handle initial value after updating properties <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/121">#121</a></li>
+</ul>
+<h3 id="contributors_28">Contributors<a class="headerlink" href="#contributors_28" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributor: <a href="https://github.com/erwinvanhunen">Erwin van Hunen</a>.</p>
+<h2 id="1120">1.12.0<a class="headerlink" href="#1120" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_12">New control(s)<a class="headerlink" href="#new-controls_12" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyPaneWebPartInformation</code>: New control to show more information about the current web part <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/108">#108</a></li>
+<li><code>PropertyPanePropertyEditor</code>: New control that allows you to export/import property pane settings <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/114">#114</a></li>
+</ul>
+<h3 id="enhancements_29">Enhancements<a class="headerlink" href="#enhancements_29" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Dutch localization added <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/82">#82</a></li>
+<li>French localization added <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/84">#84</a></li>
+<li><code>PropertyFieldCollectionData</code>: Allow the user to specify a deferred validation time for each field <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/98">#98</a></li>
+<li><code>PropertyFieldCollectionData</code>: added a onRenderOption option to allow custom option rendering <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/102">#102</a></li>
+<li><code>PropertyFieldNumber</code>: Introduced the aria label <a href="https://github.com/pnp/sp-dev-fx-property-controls/pull/104">#104</a></li>
+<li>Hide callout from the controls with callout if no message is provided <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/107">#107</a></li>
+<li><code>PropertyFieldListPicker</code>: Add the ability to refresh target site while pane is open <a href="https://github.com/pnp/sp-dev-fx-controls-react/pull/109">#109</a></li>
+</ul>
+<h3 id="fixes_33">Fixes<a class="headerlink" href="#fixes_33" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldCollectionData</code>: Fixed catastrophic backtracking regex issue for URL validation <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/99">#99</a></li>
+</ul>
+<h3 id="contributors_29">Contributors<a class="headerlink" href="#contributors_29" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributors (in alphabetical order): <a href="https://github.com/pkbullock">Paul Bullock</a>, <a href="https://github.com/lijunle">Junle Li</a>, <a href="https://github.com/PooLP">PooLP</a>, <a href="https://github.com/erwinvanhunen">Erwin van Hunen</a>.</p>
+<h2 id="1110">1.11.0<a class="headerlink" href="#1110" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_30">Enhancements<a class="headerlink" href="#enhancements_30" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldCollectionData</code>: Show error messages <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/96">#96</a></li>
+</ul>
+<h3 id="fixes_34">Fixes<a class="headerlink" href="#fixes_34" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fixes based on SonarCloud analysis</li>
+</ul>
+<h2 id="1100">1.10.0<a class="headerlink" href="#1100" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_31">Enhancements<a class="headerlink" href="#enhancements_31" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldPeoplePicker</code>: Security groups come back with EntityType of <code>FormsRole</code> rather then <code>SecGroup</code> <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/93">#93</a></li>
+<li><code>PropertyFieldCollectionData</code>: Add the current row's information in the <code>onGetErrorMessage</code> callback <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/92">#92</a></li>
+</ul>
+<h3 id="fixes_35">Fixes<a class="headerlink" href="#fixes_35" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldPeoplePicker</code>: No suggestions returned when using Security Groups, Multi-select and NO duplicates. <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/90">#90</a></li>
+<li><code>PropertyFieldTermPicker</code>:  Terms which are set as unavailable for tagging are still selectable <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/94">#94</a></li>
+</ul>
+<h2 id="190">1.9.0<a class="headerlink" href="#190" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_32">Enhancements<a class="headerlink" href="#enhancements_32" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldCollectionData</code>: Added custom validation for <code>string</code>, <code>number</code>, <code>icon</code>, and <code>URL</code> field types <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/74">#74</a></li>
+<li><code>PropertyFieldCollectionData</code>: Add an option to specify a default value <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/86">#86</a></li>
+<li><code>PropertyFieldCollectionData</code>: override placeholder for the inputs <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/87">#87</a></li>
+<li><code>PropertyFieldCollectionData</code>: Hide save button when "Add and save" is shown <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/88">#88</a></li>
+</ul>
+<h3 id="fixes_36">Fixes<a class="headerlink" href="#fixes_36" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldMultiSelect</code>: fixed an issue where the control didn't retain the preselected values when dropdown options were provided async <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/85">#85</a></li>
+<li><code>PropertyFieldOrder</code>: fixed an issue where items where provided async <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/81">#81</a></li>
+</ul>
+<h2 id="180">1.8.0<a class="headerlink" href="#180" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_33">Enhancements<a class="headerlink" href="#enhancements_33" title="Permanent link">&para;</a></h3>
+<ul>
+<li>New telemetry approach which allows you to use Application Insights instance <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/79">#79</a></li>
+<li><code>PropertyFieldListPicker</code>: add optional property for target site <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/21">#21</a></li>
+</ul>
+<h3 id="contributors_30">Contributors<a class="headerlink" href="#contributors_30" title="Permanent link">&para;</a></h3>
+<p>Special thanks to our contributor: <a href="https://github.com/joelfmrodrigues">Joel Rodrigues</a>.</p>
+<h2 id="170">1.7.0<a class="headerlink" href="#170" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_34">Enhancements<a class="headerlink" href="#enhancements_34" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add <code>npm postinstall</code> script to automatically add the localization config <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/64">#64</a></li>
+<li>Add a description to the <code>PropertyFieldCollectionData</code> panel <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/67">#67</a></li>
+<li>Added a font field type for the <code>PropertyFieldCollectionData</code> control <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/66">#66</a></li>
+<li>Added a URL field type for the <code>PropertyFieldCollectionData</code> control <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/72">#72</a></li>
+<li>Field validation implemented to enable/disable save buttons in <code>PropertyFieldCollectionData</code> control. Related to previous enhancement.</li>
+<li>Added properties to the <code>TaxonomyPicker</code> to specify which terms are disabled/not-selectable <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/69">#69</a></li>
+</ul>
+<h3 id="fixes_37">Fixes<a class="headerlink" href="#fixes_37" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldPeoplePicker</code> validation error does not clear as expected <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/68">#68</a></li>
+</ul>
+<h2 id="160">1.6.0<a class="headerlink" href="#160" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_13">New control(s)<a class="headerlink" href="#new-controls_13" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldCollectionData</code> was added <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/58">#58</a></li>
+<li><code>PropertyFieldOrder</code> was added <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/19">#19</a></li>
+<li><code>PropertyFieldSwatchColorPicker</code> was added <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/55">#55</a></li>
+</ul>
+<h3 id="enhancements_35">Enhancements<a class="headerlink" href="#enhancements_35" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Allow the term set to be selectable in the <code>PropertyFieldTermPicker</code> <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/60">#60</a></li>
+</ul>
+<h3 id="fixes_38">Fixes<a class="headerlink" href="#fixes_38" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fix for <code>PropertyFieldColorPicker</code> Palette Icon alignment issue in IE11 <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/56">#56</a></li>
+</ul>
+<h2 id="151">1.5.1<a class="headerlink" href="#151" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_36">Enhancements<a class="headerlink" href="#enhancements_36" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Color Pickers optionally return Color Objects <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/55">#55</a></li>
+</ul>
+<h3 id="fixes_39">Fixes<a class="headerlink" href="#fixes_39" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Undefined web part context fixed in the <code>PropertyFieldPeoplePicker</code> <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/47">#47</a></li>
+<li>Taxonomy service fix for working with term set GUID <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/48">#48</a></li>
+<li>Added focus intercepting input for Full style <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/52">#52</a></li>
+</ul>
+<h2 id="150">1.5.0<a class="headerlink" href="#150" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_37">Enhancements<a class="headerlink" href="#enhancements_37" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldListPicker</code> control extended with select all lists option <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/8">#8</a></li>
+<li><code>PropertyFieldTermPicker</code> control extended with the ability to search terms by typing in the textbox <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/11">#11</a> <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/42">#42</a> <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/44">#44</a> <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/45">#45</a></li>
+<li><code>SPTermStorePickerService</code> has a new interface which contains only the required properties</li>
+</ul>
+<h2 id="142">1.4.2<a class="headerlink" href="#142" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_38">Enhancements<a class="headerlink" href="#enhancements_38" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Introduced the <code>onGetErrorMessage</code> property for the <code>PropertyFieldNumber</code> field control (<a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/36">#36</a>)</li>
+</ul>
+<h2 id="141">1.4.1<a class="headerlink" href="#141" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_39">Enhancements<a class="headerlink" href="#enhancements_39" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Optimized telemetry so that it only pushes control data</li>
+</ul>
+<h3 id="fixes_40">Fixes<a class="headerlink" href="#fixes_40" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fixes for issue <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/30">#30</a></li>
+<li><code>PropertyFieldPeoplePicker</code> Validation does not work as expected <a href="https://github.com/pnp/sp-dev-fx-property-controls/issues/33">#33</a></li>
+</ul>
+<h2 id="140">1.4.0<a class="headerlink" href="#140" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_14">New control(s)<a class="headerlink" href="#new-controls_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldMultiSelect</code> got added</li>
+<li><code>PropertyFieldNumber</code> got added</li>
+</ul>
+<h3 id="enhancements_40">Enhancements<a class="headerlink" href="#enhancements_40" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldTermPicker</code> new introduced property to specify to show or hide the term store name: <code>hideTermStoreName</code>.</li>
+<li><code>PropertyFieldTermPicker</code> updated process when terms were unselected based on ID instead of path.</li>
+</ul>
+<h2 id="130">1.3.0<a class="headerlink" href="#130" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_15">New control(s)<a class="headerlink" href="#new-controls_15" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldCodeEditor</code> got added</li>
+</ul>
+<h3 id="enhancements_41">Enhancements<a class="headerlink" href="#enhancements_41" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PropertyFieldTermPicker</code> improved with save and cancel button</li>
+<li><code>PropertyFieldTermPicker</code> improved with <code>onClick</code> event on input field</li>
+</ul>
+<h2 id="120">1.2.0<a class="headerlink" href="#120" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_42">Enhancements<a class="headerlink" href="#enhancements_42" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Added the option to the people picker to allow you to specify single or multi-selection</li>
+</ul>
+<h3 id="fixes_41">Fixes<a class="headerlink" href="#fixes_41" title="Permanent link">&para;</a></h3>
+<ul>
+<li>People picker accidentally picked the wrong person</li>
+<li>Improved telemetry with some object checks</li>
+</ul>
+<h2 id="111">1.1.1<a class="headerlink" href="#111" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_43">Enhancements<a class="headerlink" href="#enhancements_43" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Removed operation name from telemetry</li>
+</ul>
+<h2 id="110">1.1.0<a class="headerlink" href="#110" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_16">New control(s)<a class="headerlink" href="#new-controls_16" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Added the <code>PropertyFieldButtonWithCallout</code> control</li>
+<li>Added the <code>PropertyFieldCheckboxWithCallout</code> control</li>
+<li>Added the <code>PropertyFieldChoiceGroupWithCallout</code> control</li>
+<li>Added the <code>PropertyFieldWithCallout</code> control</li>
+<li>Added the <code>PropertyLabelWithCallout</code> control</li>
+<li>Added the <code>PropertyLinkWithCallout</code> control</li>
+<li>Added the <code>PropertySliderWithCallout</code> control</li>
+</ul>
+<h3 id="enhancements_44">Enhancements<a class="headerlink" href="#enhancements_44" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Telemetry added</li>
+<li>Term picker control has now the option to scope on term set or group</li>
+</ul>
+<h2 id="100">1.0.0<a class="headerlink" href="#100" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_17">New control(s)<a class="headerlink" href="#new-controls_17" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Added the <code>PropertyFieldDropdownWithCallout</code> control</li>
+<li>Added the <code>PropertyFieldTextWithCallout</code> control</li>
+<li>Added the <code>PropertyFieldToggleWithCallout</code> control</li>
+</ul>
+<h2 id="100-beta3">1.0.0-beta.3<a class="headerlink" href="#100-beta3" title="Permanent link">&para;</a></h2>
+<h3 id="enhancements_45">Enhancements<a class="headerlink" href="#enhancements_45" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Added <code>firstDayOfWeek</code> option to the date picker control</li>
+</ul>
+<h2 id="100-beta2">1.0.0-beta.2<a class="headerlink" href="#100-beta2" title="Permanent link">&para;</a></h2>
+<h3 id="new-controls_18">New control(s)<a class="headerlink" href="#new-controls_18" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Initial release</li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../beta/" title="Beta testing" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Beta testing
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../license/" title="License" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                License
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/m365pnp" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="http://aka.ms/sppnp-videos" class="md-footer-social__link fa fa-youtube"></a>
+    
+      <a href="https://aka.ms/sppnp" class="md-footer-social__link fa fa-link"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.9e1f3b71.js"></script>
+      
+      <script>app.initialize({version:"1.6.1",url:{base:"../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

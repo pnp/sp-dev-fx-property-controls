@@ -83,6 +83,13 @@ export default class PropertyFieldSitePickerHost extends React.Component<IProper
     this.setState({ selectedSites });
   }
 
+  /**
+   * componentWillUnmount lifecycle hook
+   */
+  public componentWillUnmount(): void {
+    this.async.dispose();
+  }
+
   public render(): JSX.Element {
     const { isLoading, siteSearchResults, selectedSites } = this.state;
 

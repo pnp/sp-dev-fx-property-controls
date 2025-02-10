@@ -35,6 +35,13 @@ export class CollectionColorField extends React.Component<ICollectionColorFieldP
   public UNSAFE_componentWillMount(): void {
     this.valueChange(this.props.field, this.props.item[this.props.field.id]).then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
   }
+  
+  /**
+   * componentWillUnmount lifecycle hook
+   */
+  public componentWillUnmount(): void {
+    this.async.dispose();
+  }
 
   private _onCalloutDismiss = (): void => {
     this.setState({

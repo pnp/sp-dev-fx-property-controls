@@ -58,6 +58,13 @@ export default class PropertyFieldNumberHost extends React.Component<IPropertyFi
   }
 
   /**
+   * componentWillUnmount lifecycle hook
+   */
+  public componentWillUnmount(): void {
+    this._async.dispose();
+  }
+
+  /**
    * Validate if field value is a number
    * @param value
    */

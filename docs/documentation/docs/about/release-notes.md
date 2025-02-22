@@ -1,5 +1,15 @@
 # Releases
 
+## 3.20.0
+
+### Fixes
+
+- `PropertyFieldDateTimePicker`: Fixed small typos and a sample in the documentation [#628](https://github.com/pnp/sp-dev-fx-property-controls/pull/628)
+
+### Contributors
+
+Special thanks to our contributor: [Guido Zambarda](https://github.com/GuidoZam).
+
 ## 3.19.0
 
 ## 3.18.0

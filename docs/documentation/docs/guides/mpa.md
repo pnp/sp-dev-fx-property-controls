@@ -16,6 +16,15 @@ Before you start contributing to this project, you will need Node.js. This proje
   - `gulp serve` to serve your project (or `npm run serve` if you want to use [`spfx-fast-serve`](https://github.com/s-KaiNet/spfx-fast-serve))
 - Start making your changes
 
+### Run the project locally
+
+As this project embeds a SPFx solution, you have the ability to test all the property controls on your machine.
+
+You can also debug them in any supported language, by running one of the following commands (for example in _french_):
+
+- `gulp serve --locale=fr-fr`
+- `npx fast-serve --locale=fr-fr` (if using `spfx-fast-serve`)
+
 ### Documentation
 
 SharePoint Framework Property Controls uses [MkDocs](http://www.mkdocs.org) to publish documentation pages. See more information about installing MkDocs on your operating system at <http://www.mkdocs.org/#installation>.

@@ -9,7 +9,7 @@
     "build": "gulp build",
     "clean": "gulp clean",
     "test": "gulp test",
-    "serve": "gulp bundle --custom-serve --max_old_space_size=4096 && fast-serve",
+    "serve": "fast-serve",
     "versionUpdater": "gulp versionUpdater",
     "prepublishOnly": "gulp",
     "changelog": "node scripts/create-changelog.js && node scripts/sync-changelogs.js && gulp versionUpdater",

@@ -4,13 +4,16 @@
       "version": "3.20.0",
       "changes": {
         "new": [],
-        "enhancements": [],
+        "enhancements": [
+          "Dispose of Async instance to prevent memory leak [#636](https://github.com/pnp/sp-dev-fx-property-controls/pull/636)"
+        ],
         "fixes": [
           "`PropertyFieldDateTimePicker`: Fixed small typos and a sample in the documentation [#628](https://github.com/pnp/sp-dev-fx-property-controls/pull/628)"
         ]
       },
       "contributions": [
-        "[Guido Zambarda](https://github.com/GuidoZam)"
+        "[Guido Zambarda](https://github.com/GuidoZam)",
+        "[Kevin T. Coughlin](https://github.com/KevinTCoughlin)"
       ]
     },
     {

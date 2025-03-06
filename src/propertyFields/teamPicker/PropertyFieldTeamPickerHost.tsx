@@ -89,6 +89,13 @@ export default class PropertyFieldTeamPickerHost extends React.Component<IProper
     this.setState({ selectedTeams });
   }
 
+  /**
+   * componentWillUnmount lifecycle hook
+   */
+  public componentWillUnmount(): void {
+    this.async.dispose();
+  }
+
   public render(): JSX.Element {
     const { isLoading, teamSearchResults, selectedTeams } = this.state;
 

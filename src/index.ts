@@ -30,3 +30,4 @@ export * from './PropertyFieldColumnPicker';
 export * from './PropertyFieldMonacoEditor';
 export * from './PropertyFieldMessage';
 export * from './PropertyFieldButton';
+export * from './PropertyFieldGrid';

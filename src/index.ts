@@ -32,3 +32,4 @@ export * from './PropertyFieldMessage';
 export * from './PropertyFieldButton';
 
 export * from './PropertyFieldViewPicker';
+export * from './PropertyFieldGrid';

@@ -9,10 +9,14 @@
 ### Fixes
 
 - `PropertyFieldDateTimePicker`: Fixed small typos and a sample in the documentation [#628](https://github.com/pnp/sp-dev-fx-property-controls/pull/628)
+- `PropertyFieldGrid`: Export PropertyFieldGrid [#642](https://github.com/pnp/sp-dev-fx-property-controls/pull/642)
+- `PropertyFieldViewPicker`: Export PropertyFieldViewPicker [#643](https://github.com/pnp/sp-dev-fx-property-controls/pull/643)
+- `PropertyFieldFolderPicker`: Fix property control page link [#644](https://github.com/pnp/sp-dev-fx-property-controls/pull/644)
+- `PropertyFieldDateTimePicker` & `PropertyFieldColorPicker`: Fix inaccurate localization for Swedish [#645](https://github.com/pnp/sp-dev-fx-property-controls/pull/645)
 
 ### Contributors
 
-Special thanks to our contributors (in alphabetical order): [Guido Zambarda](https://github.com/GuidoZam), [Kevin T. Coughlin](https://github.com/KevinTCoughlin).
+Special thanks to our contributors (in alphabetical order): [Antanina Druzhkina](https://github.com/Ateina), [Guido Zambarda](https://github.com/GuidoZam), [Kevin T. Coughlin](https://github.com/KevinTCoughlin), [Peter Paul Kirschner](https://github.com/petkir).
 
 ## 3.19.0
 

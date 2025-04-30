@@ -1,8 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
-import * as strings from 'PropertyControlsTestWebPartStrings';
-
 import { PanelType } from '@fluentui/react';
 import { DocumentBulletListRegular } from '@fluentui/react-icons';
 import { DayOfWeek } from '@fluentui/react/lib/DateTimeUtilities';
@@ -336,7 +334,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
           displayGroupsAsAccordion: true,
           groups: [
             {
-              groupName: strings.AboutGroupName,
+              groupName: 'About',
               isCollapsed: false,
               groupFields: [
                 PropertyPaneWebPartInformation({

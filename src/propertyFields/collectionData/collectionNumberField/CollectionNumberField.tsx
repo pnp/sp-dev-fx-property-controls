@@ -68,6 +68,13 @@ export class CollectionNumberField extends React.Component<
   }
 
   /**
+   * componentWillUnmount lifecycle hook
+   */
+  public componentWillUnmount(): void {
+    this.async.dispose();
+  }
+
+  /**
    * Value change event handler
    *
    * @param field

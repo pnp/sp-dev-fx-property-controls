@@ -2,6 +2,10 @@
 
 ## 3.21.0
 
+### Enhancements
+
+- SharePoint Framework v1.21.1 support
+
 ## 3.20.0
 
 ### Enhancements

@@ -39,7 +39,7 @@
     "@uifabric/icons": "7.5.17",
     "brace": "0.11.1",
     "lodash.omit": "4.5.0",
-    "markdown-to-jsx": "^7.4.0",
+    "markdown-to-jsx": "^7.7.10",
     "monaco-editor": "^0.32.1",
     "react": "17.0.1",
     "react-ace": "10.1.0",

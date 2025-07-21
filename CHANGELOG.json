@@ -1,6 +1,21 @@
 {
   "versions": [
     {
+      "version": "3.21.0",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "SharePoint Framework v1.21.1 support"
+        ],
+        "fixes": [
+          
+        ]
+      },
+      "contributions": [
+        
+      ]
+    },
+    {
       "version": "3.20.0",
       "changes": {
         "new": [],

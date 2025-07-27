@@ -8,6 +8,7 @@ export * from './PropertyFieldEnterpriseTermPicker';
 export * from './PropertyFieldMultiSelect';
 export * from './PropertyFieldNumber';
 export * from './PropertyFieldGuid';
+export * from './PropertyFieldBrandFontPicker';
 
 export * from './PropertyFieldButtonWithCallout';
 export * from './PropertyFieldCheckboxWithCallout';

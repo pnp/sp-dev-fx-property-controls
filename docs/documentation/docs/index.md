@@ -60,6 +60,7 @@ telemetry.optOut();
 The following controls are currently available:
 
 - [PropertyFieldButton](./controls/PropertyFieldButton) (Property pane Button)
+- [PropertyFieldBrandFontPicker](./controls/PropertyFieldBrandFontPicker) (Property pane Brand Center font selector)
 - [PropertyFieldCodeEditor](./controls/PropertyFieldCodeEditor) (Property pane code editor)
 - [PropertyFieldCollectionData](./controls/PropertyFieldCollectionData) (Property pane collection data editor)
 - [PropertyFieldColorPicker](./controls/PropertyFieldColorPicker) (Property pane color picker)

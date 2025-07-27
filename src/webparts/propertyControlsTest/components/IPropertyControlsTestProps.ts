@@ -44,6 +44,7 @@ export interface IPropertyControlsTestProps {
   collectionData: any[];
   orderedItems: any[];
   swatchColor: string;
+  brandFont: string;
   enterpriseTerms: IPickerTerms;
   sites: IPropertyFieldSite[];
   searchLibrary: string;

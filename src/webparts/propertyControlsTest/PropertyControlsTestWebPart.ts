@@ -35,6 +35,7 @@ import {
   PropertyFieldCollectionData,
 } from '../../PropertyFieldCollectionData';
 import { PropertyFieldColorPicker } from '../../PropertyFieldColorPicker';
+import { PropertyFieldBrandFontPicker } from '../../PropertyFieldBrandFontPicker';
 import {
   PropertyFieldColumnPicker,
   PropertyFieldColumnPickerOrderBy,
@@ -216,6 +217,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         collectionData: this.properties.collectionData,
         orderedItems: this.properties.orderedItems,
         swatchColor: this.properties.swatchColor,
+        brandFont: this.properties.brandFont,
         enterpriseTerms: this.properties.enterpriseTerms || [],
         sites: this.properties.sites || [],
         password: this.properties.password,
@@ -907,6 +909,22 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   key: 'swatchColorFieldId'
                 }),
                
+              ]
+            },
+            {
+              groupName: 'Brand Center',
+              isCollapsed: true,
+              groupFields: [
+                PropertyFieldBrandFontPicker('brandFont', {
+                  label: 'Brand Font',
+                  initialValue: this.properties.brandFont,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  context: this.context,
+                  showPreview: true,
+                  previewText: 'Sample text preview',
+                  key: 'brandFontFieldId'
+                })
               ]
             },
              

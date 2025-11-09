@@ -1,5 +1,7 @@
 # Releases
 
+## 3.23.0
+
 ## 3.22.0
 
 ### New control(s)

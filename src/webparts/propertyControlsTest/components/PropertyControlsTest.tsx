@@ -49,6 +49,16 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
               <p className="ms-font-m ms-fontColor-neutralDark">Color Object: <span className={styles.colorBox} style={{ backgroundColor: this.props.colorObj ? this.props.colorObj.str : '' }}>&nbsp;</span>{this.props.colorObj ? `${this.props.colorObj.str}= R:${this.props.colorObj.r},G:${this.props.colorObj.g},B:${this.props.colorObj.b},A:${this.props.colorObj.a} H:${this.props.colorObj.h},S:${this.props.colorObj.s},V:${this.props.colorObj.v} HEX:${this.props.colorObj.hex}` : ''}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Swatch Color: <span className={styles.colorBox} style={{ backgroundColor: this.props.swatchColor }}>&nbsp;</span>{this.props.swatchColor}</p>
 
+              <h3 className="ms-font-xl ms-fontColor-neutralDark">Brand Center</h3>
+              <p className="ms-font-m ms-fontColor-neutralDark">Selected Brand Font: {this.props.brandFont || 'None selected'}</p>
+              <div style={{ fontFamily: this.props.brandFont || 'inherit', padding: '10px', border: '1px solid #ccc', marginTop: '10px' }}>
+                <h4>Sample text using selected brand font:</h4>
+                <p>The quick brown fox jumps over the lazy dog.</p>
+                <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+                <p>abcdefghijklmnopqrstuvwxyz</p>
+                <p>0123456789</p>
+              </div>
+
               <h3 className="ms-font-xl ms-fontColor-neutralDark">Controls with callout</h3>
               <p className="ms-font-m ms-fontColor-neutralDark">Dropdown With Callout Key: {this.props.dropdownWithCalloutKey}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Toggle Info Header Value: {this.props.toggleInfoHeaderValue ? 'Marvel' : 'DC Comics'}</p>

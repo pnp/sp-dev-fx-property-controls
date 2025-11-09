@@ -1,5 +1,15 @@
 # Releases
 
+## 3.22.0
+
+### New control(s)
+
+- `PropertyFieldBrandFontPicker`: new Brand Center font picker control [#651](https://github.com/pnp/sp-dev-fx-property-controls/pull/651)
+
+### Contributors
+
+Special thanks to our contributor: [Valeras Narbutas](https://github.com/ValerasNarbutas).
+
 ## 3.21.0
 
 ### Enhancements

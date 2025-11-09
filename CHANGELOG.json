@@ -3,11 +3,15 @@
     {
       "version": "3.22.0",
       "changes": {
-        "new": [],
+        "new": [
+          "`PropertyFieldBrandFontPicker`: new Brand Center font picker control [#651](https://github.com/pnp/sp-dev-fx-property-controls/pull/651)"
+        ],
         "enhancements": [],
         "fixes": []
       },
-      "contributions": []
+      "contributions": [
+        "[Valeras Narbutas](https://github.com/ValerasNarbutas)"
+      ]
     },
     {
       "version": "3.21.0",

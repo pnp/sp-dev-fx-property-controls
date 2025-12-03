@@ -1,7 +1,7 @@
 import {
   IPropertyPaneCustomFieldProps
 } from '@microsoft/sp-property-pane';
-import { IMarkdownProps } from 'markdown-to-jsx';
+import { MarkdownToJSX } from 'markdown-to-jsx';
 
 
 export interface IPropertyPaneMarkdownContentProps {
@@ -30,7 +30,7 @@ export interface IPropertyPaneMarkdownContentProps {
    * such as overriding CSS styles and elements for
    * markdown elements.
    */
-  options?: IMarkdownProps;
+  options?: MarkdownToJSX.Options;
 }
 
 export interface IPropertyPaneMarkdownContentPropsInternal extends IPropertyPaneMarkdownContentProps, IPropertyPaneCustomFieldProps {

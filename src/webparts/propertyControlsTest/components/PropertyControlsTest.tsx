@@ -59,6 +59,27 @@ export default class PropertyControlsTest extends React.Component<IPropertyContr
                 <p>0123456789</p>
               </div>
 
+              <h3 className="ms-font-xl ms-fontColor-neutralDark">Selected Palette</h3>
+              <p className="ms-font-m ms-fontColor-neutralDark">Palette Name: {this.props.selectedPalette || 'None selected'}</p>
+              <div style={{ display: 'flex', gap: '8px', marginTop: '10px', marginBottom: '10px' }}>
+                {this.props.selectedPaletteColors && this.props.selectedPaletteColors.length > 0 ? (
+                  this.props.selectedPaletteColors.map((color, index) => (
+                    <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                      <div style={{ 
+                        width: '40px', 
+                        height: '40px', 
+                        backgroundColor: color, 
+                        borderRadius: '4px',
+                        border: '1px solid #ccc'
+                      }} />
+                      <span style={{ fontSize: '10px', marginTop: '4px' }}>{color}</span>
+                    </div>
+                  ))
+                ) : (
+                  <span>No palette colors selected</span>
+                )}
+              </div>
+
               <h3 className="ms-font-xl ms-fontColor-neutralDark">Controls with callout</h3>
               <p className="ms-font-m ms-fontColor-neutralDark">Dropdown With Callout Key: {this.props.dropdownWithCalloutKey}</p>
               <p className="ms-font-m ms-fontColor-neutralDark">Toggle Info Header Value: {this.props.toggleInfoHeaderValue ? 'Marvel' : 'DC Comics'}</p>

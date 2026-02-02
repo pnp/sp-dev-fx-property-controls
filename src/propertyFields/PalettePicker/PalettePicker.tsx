@@ -11,8 +11,10 @@ export class PalettePicker extends React.Component<
 > {
   constructor(props: IPalettePickerProps) {
     super(props);
+    const availablePalettes = props.palettes || {};
+    const firstPaletteKey = Object.keys(availablePalettes)[0] || "";
     this.state = {
-      selectedPalette: props.selectedPalette || "Palette 3",
+      selectedPalette: props.selectedPalette || firstPaletteKey,
     };
   }
 

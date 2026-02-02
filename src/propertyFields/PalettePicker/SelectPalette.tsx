@@ -24,7 +24,7 @@ interface ISelectPaletteProps {
 export const SelectPalette: React.FunctionComponent<ISelectPaletteProps> = (
   props: React.PropsWithChildren<ISelectPaletteProps>,
 ) => {
-  const { selectedPalette, onPaletteChange, theme, palettes = [] } = props;
+  const { selectedPalette, onPaletteChange, theme, palettes = {} } = props;
   const [selected, setSelected] = React.useState<string>(selectedPalette);
   const { styles } = usePalettePickerStyles();
 

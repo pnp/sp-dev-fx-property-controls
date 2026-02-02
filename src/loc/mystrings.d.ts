@@ -1,4 +1,5 @@
 declare interface IPropertyControlStrings {
+    PropertyFieldPalettePickerTitle: string;  
   DescriptionLabel: string;
   MoreInfoLabel: string;
 
@@ -267,6 +268,7 @@ declare interface IDateTimeStrings {
   L_RelativeDateTime_XDaysFutureIntervals: string;
   L_RelativeDateTime_XDaysIntervals: string;
   L_RelativeDateTime_Today: string;
+
   
 }
 

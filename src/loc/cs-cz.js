@@ -1,5 +1,6 @@
 define([], () => {
   return {
+    PropertyFieldPalettePickerTitle: "Select a palette",
     "ApplyButtonLabel": "Použít",
     "ImportButtonLabel": "Dovoz",
     "ExportButtonLabel": "Vývoz",

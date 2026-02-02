@@ -4,7 +4,7 @@ import * as React from "react";
 import { IPalettePickerProps } from "./IPalettePickerProps";
 import { IPalettePickerState } from "./IPalettePickerState";
 import { SelectPalette } from "./SelectPalette";
-import { IPalette } from "./IPalette";
+ 
 
 export class PalettePicker extends React.Component<
   IPalettePickerProps, IPalettePickerState
@@ -16,9 +16,9 @@ export class PalettePicker extends React.Component<
     };
   }
 
-  private onPaletteChange = (palette: IPalette): void => {
-    this.setState({ selectedPalette: palette.name });
-    this.props.onPropertyChange(this.props.targetProperty, palette.name);
+  private onPaletteChange = (palette: Record<string, string[]>): void => {
+    this.setState({ selectedPalette: Object.keys(palette)[0] });
+    this.props.onPropertyChange(this.props.targetProperty, Object.keys(palette)[0]);
     if (this.props.onSelectedPalette) {
       this.props.onSelectedPalette(palette);
     }

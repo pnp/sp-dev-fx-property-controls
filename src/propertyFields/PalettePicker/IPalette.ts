@@ -1,4 +1,4 @@
 export interface IPalette {
   name: string;
-  colors: string[];
+  colors:  Record<string, string[]>;
 }

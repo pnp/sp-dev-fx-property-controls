@@ -10,13 +10,14 @@ import {
 } from "@fluentui/react-components";
 import { usePalettePickerStyles } from "./usePalettePickerStyles";
 import { IdPrefixProvider } from "@fluentui/react-components";
+import strings from "PropertyControlStrings";
 
-import { IPalette } from "./IPalette";
+ 
 
-export interface ISelectPaletteProps {
+interface ISelectPaletteProps {
   selectedPalette: string;
-  onPaletteChange: (palette: IPalette) => void;
-  palettes: IPalette[];
+  onPaletteChange: (palette: Record<string, string[]>) => void;
+  palettes: Record<string, string[]>;
   theme?: Theme;
 }
 
@@ -36,8 +37,8 @@ export const SelectPalette: React.FunctionComponent<ISelectPaletteProps> = (
         <div className={styles.palettePickerContainer}>
           <Dropdown
             style={{ width: "100%" }}
-            aria-label="Select a palette"
-            title="Select a palette"
+            aria-label={strings.PropertyFieldPalettePickerTitle}
+            title={strings.PropertyFieldPalettePickerTitle}
             value={selected}
             defaultSelectedOptions={
               selected ? [selected] : [Object.keys(palettes ?? {})?.[0]]
@@ -45,9 +46,9 @@ export const SelectPalette: React.FunctionComponent<ISelectPaletteProps> = (
             onOptionSelect={(e, data) => {
               if (data.optionValue) {
                 setSelected(data.optionValue);
-                const selectedPaletteItem: IPalette = {
-                  name: data.optionValue,
-                  colors: ((palettes ?? {}) as Record<string, string[]>)[data.optionValue] ?? []
+                const paletteColors = ((palettes ?? {}) as Record<string, string[]>)[data.optionValue] ?? [];
+                const selectedPaletteItem:  Record<string, string[]> = {
+                  [data.optionValue]: paletteColors
                 };
                 onPaletteChange(selectedPaletteItem);
               }

@@ -4,7 +4,8 @@ This control generates a palette picker that allows users to select a color pale
 
 **PropertyPanePalettePicker example usage**
 
-![PropertyPanePalettePicker example](../assets/PropertyPanePalettePicker.png)
+![PropertyPanePalettePicker example](../assets/PropertyPanelPalettePicker.png)
+![PropertyPanePalettePicker2](../assets/PropertyPanelPalettePicker2.png)
 
 ## How to use this control in your solutions
 
@@ -13,7 +14,7 @@ This control generates a palette picker that allows users to select a color pale
 2. Import the following modules to your component:
 
 ```TypeScript
-import { PropertyPanePalettePickerField, IPalette } from '@pnp/spfx-property-controls/lib/PropertyPanePalettePicker';
+import { PropertyPanePalettePickerField } from '@pnp/spfx-property-controls/lib/PropertyPanePalettePicker';
 ```
 
 3. Create new properties for your web part:
@@ -25,10 +26,10 @@ export interface IPropertyControlsTestWebPartProps {
 }
 ```
 
-4. Define the palettes to display:
+4. Define the palettes as a `Record<string, string[]>`:
 
 ```TypeScript
-const palettes = {
+const palettes: Record<string, string[]> = {
   "Palette 1": ["#FF5733", "#33FF57", "#3357FF", "#F3FF33"],
   "Palette 2": ["#8E44AD", "#3498DB", "#1ABC9C", "#F39C12"],
   "Palette 3": ["#E74C3C", "#9B59B6", "#2ECC71", "#F1C40F"],
@@ -43,16 +44,17 @@ PropertyPanePalettePickerField("selectedPalette", {
   key: "palettePicker",
   label: "Select a Palette",
   selectedPalette: this.properties.selectedPalette || "Palette 1",
-  palettes: palettes as unknown as IPalette[],
+  palettes: palettes,
   onPropertyChange: (propertyPath: string, newValue: string) => {
     this.properties.selectedPalette = newValue;
   },
-  onSelectedPalette: (palette: IPalette) => {
+  onSelectedPalette: (palette: Record<string, string[]>) => {
     console.log("Selected palette:", palette);
-    // palette.name contains the palette name
-    // palette.colors contains the array of color hex values
-    this.properties.selectedPalette = palette.name;
-    this.properties.selectedPaletteColors = palette.colors;
+    // palette is a Record<string, string[]> containing the palette name as key and colors array as value
+    const paletteName = Object.keys(palette)[0];
+    const paletteColors = palette[paletteName];
+    this.properties.selectedPalette = paletteName;
+    this.properties.selectedPaletteColors = paletteColors;
     this.render();
   }
 })
@@ -67,37 +69,43 @@ The `PropertyPanePalettePickerField` control can be configured with the followin
 | key | string | yes | An unique key that indicates the identity of this control. |
 | label | string | yes | Property field label displayed on top. |
 | selectedPalette | string | yes | The name of the currently selected palette. |
-| palettes | IPalette[] | yes | The collection of palettes to display. Each palette has a name and array of colors. |
+| palettes | Record<string, string[]> | yes | The collection of palettes to display. Keys are palette names, values are arrays of color hex strings. |
 | onPropertyChange | function | yes | Callback function triggered when a palette is selected. Receives the property path and the new palette name. |
-| onSelectedPalette | function | no | Callback function that returns the full IPalette object containing both the name and colors array. |
+| onSelectedPalette | function | no | Callback function that returns the selected palette as a `Record<string, string[]>` object. |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
 | theme | Theme | no | Fluent UI theme to apply to the control. |
 
-## IPalette Interface
+## Palette Data Structure
 
-When using the `onSelectedPalette` callback, you receive an `IPalette` object with the following properties:
+Palettes are defined using a `Record<string, string[]>` where:
+- **Key**: The palette name/identifier (e.g., "Palette 1", "Ocean Theme", "Brand Colors")
+- **Value**: An array of CSS-compatible color strings (hex values)
 
-| Property | Type | Description |
-| ---- | ---- | ---- |
-| name | string | The name/identifier of the palette |
-| colors | string[] | Array of CSS-compatible color strings (hex values) |
+```TypeScript
+const palettes: Record<string, string[]> = {
+  "Ocean": ["#006994", "#40E0D0", "#0077BE", "#00CED1"],
+  "Sunset": ["#FF6B6B", "#FFA07A", "#FFD700", "#FF4500"],
+  "Forest": ["#228B22", "#32CD32", "#90EE90", "#006400"]
+};
+```
 
 ## Example: Displaying Selected Palette Colors
 
 You can use the `onSelectedPalette` callback to get the full palette information and display the colors in your web part:
 
 ```TypeScript
-onSelectedPalette: (palette: IPalette) => {
-  // Access the palette name
-  console.log("Palette name:", palette.name);
+onSelectedPalette: (palette: Record<string, string[]>) => {
+  // Get the palette name (first key)
+  const paletteName = Object.keys(palette)[0];
   
-  // Access all colors in the palette
-  palette.colors.forEach((color, index) => {
-    console.log(`Color ${index + 1}:`, color);
-  });
+  // Get the colors array
+  const colors = palette[paletteName];
+  
+  console.log("Palette name:", paletteName);
+  console.log("Colors:", colors);
   
   // Store for rendering
-  this.properties.selectedPaletteColors = palette.colors;
+  this.properties.selectedPaletteColors = colors;
   this.render();
 }
 ```

@@ -1080,7 +1080,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   },
                   deferredValidationTime: 0,
                   key: 'peopleFieldId',
-                  targetSiteUrl: this.context.pageContext.site.absoluteUrl
+                  targetSiteUrl: this.context.pageContext.site.absoluteUrl,
+                  searchTextLimit: 3
                 }),
                 PropertyFieldTermPicker('terms', {
                   label: 'Select terms',

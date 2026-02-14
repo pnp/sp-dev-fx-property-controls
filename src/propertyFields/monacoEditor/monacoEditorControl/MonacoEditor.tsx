@@ -47,8 +47,8 @@ export const MonacoEditor: React.FunctionComponent<IMonacoEditorProps> = (
             if (language === Elanguages.json) {
               JSON.parse(currentValue);
             }
-          } catch (e) {
-            validationErrors.push(e.message);
+          } catch {
+            validationErrors.push(error instanceof Error ? error.message : String(error));
           }
 
           onValueChange(currentValue, validationErrors);

@@ -46,7 +46,7 @@ const columnSizingOptions = {
 export const Grid: React.FunctionComponent<IGridProps> = (props: React.PropsWithChildren<IGridProps>) => {
   const { items, onSelected, defaultSelectedItems, multiSelect, column1Label, column2Label } = props;
 
-const selectionMode = React.useMemo(() => multiSelect ? "multiselect" : "single" ?? "single", [multiSelect]);
+const selectionMode = React.useMemo(() => multiSelect ? "multiselect" : "single", [multiSelect]);
 
   const [selectedRows, setSelectedRows] = React.useState(() => {
     if (defaultSelectedItems) {
@@ -113,7 +113,7 @@ const selectionMode = React.useMemo(() => multiSelect ? "multiselect" : "single"
       const toArray = Array.from(entries);
       for (const item of toArray) {
         const rowId = item[0];
-        const itemSelected = items[rowId];
+        const itemSelected = items[rowId as number];
         // code to be executed for each itemSelected
         itemsSelected.push(itemSelected);
       }

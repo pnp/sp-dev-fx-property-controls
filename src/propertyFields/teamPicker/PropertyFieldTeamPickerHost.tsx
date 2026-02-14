@@ -55,7 +55,7 @@ export default class PropertyFieldTeamPickerHost extends React.Component<IProper
         const teams = await this.teamsService.searchTeams(this.props.context, newValue);
         this.setState({ teamSearchResults: teams });
       } catch (error) {
-        this.setState({ errorMessage: error.message });
+        this.setState({ errorMessage: error instanceof Error ? error.message : String(error) });
       } finally {
         this.setState({ isLoading: false });
       }

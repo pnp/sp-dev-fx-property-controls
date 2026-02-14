@@ -48,7 +48,7 @@ export default class PropertyFieldDropdownHost extends React.Component<
         index: propPaneOption.index,
         itemType:
           SelectableOptionMenuItemType[
-            SelectableOptionMenuItemType[propPaneOption.type]
+            SelectableOptionMenuItemType[propPaneOption.type] as keyof typeof SelectableOptionMenuItemType
           ],
       };
     });

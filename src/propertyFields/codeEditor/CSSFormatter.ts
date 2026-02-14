@@ -111,7 +111,7 @@ export class CSSFormatter {
     return this.pos !== start + 1;
   }
 
-  private eatComment(singleLine): string {
+  private eatComment(singleLine: boolean): string {
     const start = this.pos;
     this.next();
 
@@ -128,7 +128,7 @@ export class CSSFormatter {
     return this.source_text.substring(start, this.pos + 1);
   }
 
-  private lookBack(str): boolean {
+  private lookBack(str: string): boolean {
     return this.source_text.substring(this.pos - str.length, this.pos).toLowerCase() === str;
   }
 
@@ -156,7 +156,7 @@ export class CSSFormatter {
     return this.whiteRe.test(this.output[this.output.length - 1]);
   }
 
-  private newLine(keepWhitespace): void {
+  private newLine(keepWhitespace: boolean): void {
     if (!keepWhitespace) {
       while (this.lastCharWhitespace()) {
         this.output.pop();
@@ -195,13 +195,13 @@ export class CSSFormatter {
     this.indentString = sourceText.match(/^[\r\n]*[\t ]*/)[0];
     this.singleIndent = new Array(indentSize + 1).join(indentCharacter);
 
-    this.print["{"] = (chOpenBrace: string): void => {
+    (this.print as any)["{"] = (chOpenBrace: string): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
       this.singleSpace();
       this.output.push(chOpenBrace);
       this.newLine(false);
     };
 
-    this.print["}"] = (chCloseBrace: string): void => {
+    (this.print as any)["}"] = (chCloseBrace: string): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
       this.newLine(false);
       this.output.push(chCloseBrace);
       this.newLine(false);
@@ -258,7 +258,7 @@ export class CSSFormatter {
         }
         else {
           this.indent();
-          this.print["{"](this.ch);
+          (this.print as any)["{"](this.ch); // eslint-disable-line @typescript-eslint/no-explicit-any
 
           // when entering conditional groups, only rulesets are allowed
           if (enteringConditionalGroup) {
@@ -273,7 +273,7 @@ export class CSSFormatter {
       }
       else if (this.ch === '}') {
         this.outdent();
-        this.print["}"](this.ch);
+        (this.print as any)["}"](this.ch); // eslint-disable-line @typescript-eslint/no-explicit-any
         insideRule = false;
 
         if (this.nestedLevel) {

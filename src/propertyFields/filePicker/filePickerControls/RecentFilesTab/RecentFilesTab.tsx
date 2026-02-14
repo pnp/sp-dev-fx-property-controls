@@ -6,11 +6,12 @@ import {
   Spinner,
   FocusZone,
   List,
-  IRectangle,
+  type IRectangle,
   css,
   Selection,
   SelectionMode,
   SelectionZone,
+  type IObjectWithKey,
   Image,
   ImageFit,
   Check,
@@ -200,7 +201,7 @@ export default class RecentFilesTab extends React.Component<
         <FocusZone>
           <SelectionZone
             selection={this._selection}
-            onItemInvoked={(item: IRecentFile) => this._handleItemInvoked(item)}
+            onItemInvoked={(item?: IObjectWithKey) => { if (item) this._handleItemInvoked(item as IRecentFile); }}
           >
             <List
               ref={this._linkElement}

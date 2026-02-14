@@ -207,7 +207,7 @@ export class GeneralHelper {
    * Checks if value is defined (not null and not undefined)
    * @param value value
    */
-  public static isDefined(value): boolean {
+  public static isDefined(value: any): boolean { // eslint-disable-line @typescript-eslint/no-explicit-any
     return typeof value !== 'undefined' && value !== null;
   }
 
@@ -215,7 +215,7 @@ export class GeneralHelper {
    * Creates Document element based on Xml string
    * @param xmlString XML string to parse
    */
-  public static parseXml(xmlString): Document {
+  public static parseXml(xmlString: string): Document {
     const parser = new DOMParser();
     const xml = parser.parseFromString(xmlString, 'text/xml');
     return xml;
@@ -296,7 +296,7 @@ export class GeneralHelper {
   /**
    * Returns extension of the file
    */
-  public static getFileExtension(fileName): string {
+  public static getFileExtension(fileName: string): string {
 
     // Split the URL on the dots
     const splitFileName = fileName.toLowerCase().split('.');
@@ -314,7 +314,7 @@ export class GeneralHelper {
     return `.${extensionValue}`;
   }
 
-  private static _getEncodedChar(c): string {
+  private static _getEncodedChar(c: string): string {
     const o = {
       "<": "&lt;",
       ">": "&gt;",
@@ -323,7 +323,7 @@ export class GeneralHelper {
       "'": "&#39;",
       "\\": "&#92;"
     };
-    return o[c];
+    return o[c as keyof typeof o];
   }
 }
 

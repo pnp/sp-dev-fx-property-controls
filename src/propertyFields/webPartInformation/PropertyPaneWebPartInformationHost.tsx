@@ -30,7 +30,7 @@ export default class PropertyPaneWebPartInformationHost extends React.Component<
 
       for (const prop in videoProperties.properties) {
         if (Object.prototype.hasOwnProperty.call(videoProperties.properties, prop)) {
-          linkProperties[prop] = this.props.videoProperties[prop];
+          linkProperties[prop] = this.props.videoProperties.properties[prop];
         }
       }
 

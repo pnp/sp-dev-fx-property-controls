@@ -39,7 +39,7 @@ export class FileBrowserService {
       filesQueryResult = await this._getListDataAsStream(restApi, folderPath, acceptedFilesExtensions);
     } catch (error) {
       filesQueryResult.items = null;
-      console.error(error.message);
+      console.error(error instanceof Error ? error.message : String(error));
     }
     return filesQueryResult;
   }
@@ -59,7 +59,7 @@ export class FileBrowserService {
       filesQueryResult = await this._getListDataAsStream(restApi, folderPath, acceptedFilesExtensions, currentSortColumnName, isSortedDescending);
     } catch (error) {
       filesQueryResult.items = null;
-      console.error(error.message);
+      console.error(error instanceof Error ? error.message : String(error));
     }
     return filesQueryResult;
   }
@@ -70,8 +70,8 @@ export class FileBrowserService {
    */
   public getFileThumbnailUrl = (file: IFile, thumbnailWidth: number, thumbnailHeight: number): string => {
     const thumbnailUrl = (file.spItemUrl && file.fileType === "aspx") // it's a SharePoint item, specifically a page
-                          ? `${this.context.pageContext.web.absoluteUrl}/_layouts/15/getpreview.ashx?path=${encodeURIComponent(file.absoluteUrl)}&resolution=0`
-                          : `${this.mediaBaseUrl}/transform/thumbnail?provider=spo&inputFormat=${file.fileType}&cs=${this.callerStack}&docid=${file.spItemUrl}&${this.driveAccessToken}&width=${thumbnailWidth}&height=${thumbnailHeight}`;
+      ? `${this.context.pageContext.web.absoluteUrl}/_layouts/15/getpreview.ashx?path=${encodeURIComponent(file.absoluteUrl)}&resolution=0`
+      : `${this.mediaBaseUrl}/transform/thumbnail?provider=spo&inputFormat=${file.fileType}&cs=${this.callerStack}&docid=${file.spItemUrl}&${this.driveAccessToken}&width=${thumbnailWidth}&height=${thumbnailHeight}`;
     return thumbnailUrl;
   }
 
@@ -93,10 +93,11 @@ export class FileBrowserService {
         throw new Error(`Cannot read data from the results.`);
       }
 
-      const result: ILibrary[] = libResults.value.map((libItem) => { return this.parseLibItem(libItem); });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const result: ILibrary[] = libResults.value.map((libItem: any) => { return this.parseLibItem(libItem); });
       return result;
     } catch (error) {
-      console.error(`[FileBrowserService.getSiteMediaLibraries]: Err='${error.message}'`);
+      console.error(`[FileBrowserService.getSiteMediaLibraries]: Err='${error instanceof Error ? error.message : String(error)}'`);
       return null;
     }
   }
@@ -116,7 +117,7 @@ export class FileBrowserService {
       const blob: Blob = await fileDownloadResult.blob();
       return GeneralHelper.getFileFromBlob(blob, fileName);
     } catch (err) {
-      console.error(`[FileBrowserService.fetchFileContent] Err='${err.message}'`);
+      console.error(`[FileBrowserService.fetchFileContent] Err='${err instanceof Error ? err.message : String(err)}'`);
       return null;
     }
   }
@@ -130,7 +131,8 @@ export class FileBrowserService {
   protected _getListDataAsStream = async (restApi: string, folderPath: string, acceptedFilesExtensions?: string[], currentSortColumnName?: string, isSortedDescending?: boolean): Promise<FilesQueryResult> => {
     let filesQueryResult: FilesQueryResult = { items: [], nextHref: null };
     try {
-      const body = {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const body: any = {
         parameters: {
           AllowMultipleValueFilterForTaxonomyFields: true,
           // ContextInfo (1), ListData (2), ListSchema (4), ViewMetadata (1024), EnableMediaTAUrls (4096), ParentInfo (8192)
@@ -139,7 +141,7 @@ export class FileBrowserService {
         }
       };
       if (folderPath) {
-          body.parameters["FolderServerRelativeUrl"] = folderPath; // eslint-disable-line dot-notation
+        body.parameters["FolderServerRelativeUrl"] = folderPath; // eslint-disable-line dot-notation
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const data: any = await this.context.spHttpClient.fetch(restApi, SPHttpClient.configurations.v1, {
@@ -158,14 +160,15 @@ export class FileBrowserService {
       // Set additional information from the ListResponse
       this.processResponse(filesResult);
 
-      const items = filesResult.ListData.Row.map(fileItem => this.parseFileItem(fileItem));
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const items = filesResult.ListData.Row.map((fileItem: any) => this.parseFileItem(fileItem));
       filesQueryResult = {
         items: items,
         nextHref: filesResult.ListData.NextHref
       };
     } catch (error) {
       filesQueryResult.items = null;
-      console.error(error.message);
+      console.error(error instanceof Error ? error.message : String(error));
     }
     return filesQueryResult;
   }
@@ -197,14 +200,14 @@ export class FileBrowserService {
   protected getFilesCamlQueryViewXml = (accepts: string[], currentSortColumnName?: string, isSortedDescending?: boolean): string => {
     const fileFilter: string = this.getFileTypeFilter(accepts);
 
-	let spSortColumnName = '';
-	switch (currentSortColumnName) {
-		case 'name': spSortColumnName = 'FileLeafRef'; break;
-		case 'modified': spSortColumnName = 'Modified'; break;
-		case 'fileSize': spSortColumnName = 'File_x0020_Size'; break;
-		case 'modifiedBy': spSortColumnName = 'Editor'; break;
-		default: break;
-	}
+    let spSortColumnName = '';
+    switch (currentSortColumnName) {
+      case 'name': spSortColumnName = 'FileLeafRef'; break;
+      case 'modified': spSortColumnName = 'Modified'; break;
+      case 'fileSize': spSortColumnName = 'File_x0020_Size'; break;
+      case 'modifiedBy': spSortColumnName = 'Editor'; break;
+      default: break;
+    }
 
     const queryCondition = fileFilter && fileFilter !== "" ?
       `<Query>
@@ -228,8 +231,8 @@ export class FileBrowserService {
         </Where>
         ${spSortColumnName ? `<OrderBy><FieldRef Name="${spSortColumnName}" Ascending="${isSortedDescending ? "FALSE" : "TRUE"}"/></OrderBy>` : ''}
         </Query>`
-        : // no query is specified, but a sort might be...
-          spSortColumnName ? `<Query><OrderBy><FieldRef Name="${spSortColumnName}" Ascending="${isSortedDescending ? "FALSE" : "TRUE"}"/></OrderBy></Query>`
+      : // no query is specified, but a sort might be...
+      spSortColumnName ? `<Query><OrderBy><FieldRef Name="${spSortColumnName}" Ascending="${isSortedDescending ? "FALSE" : "TRUE"}"/></OrderBy></Query>`
         : ''; // no query or sort specified 
 
     // Add files types condiiton

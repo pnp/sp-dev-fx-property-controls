@@ -40,7 +40,7 @@ export class OrgAssetsService extends FileBrowserService {
       filesQueryResult = await this._getListDataAsStream(restApi, null, acceptedFilesExtensions);
     } catch (error) {
       filesQueryResult.items = null;
-      console.error(error.message);
+      console.error(error instanceof Error ? error.message : String(error));
     }
     return filesQueryResult;
   }
@@ -80,7 +80,7 @@ export class OrgAssetsService extends FileBrowserService {
       filesQueryResult = await this._getListDataAsStream(restApi, null, acceptedFilesExtensions);
     } catch (error) {
       filesQueryResult.items = null;
-      console.error(error.message);
+      console.error(error instanceof Error ? error.message : String(error));
     }
     return filesQueryResult;
   }
@@ -99,10 +99,11 @@ export class OrgAssetsService extends FileBrowserService {
       }
 
       this._orgAssetsLibraryServerRelativeSiteUrl = orgAssetsData ? orgAssetsData.OrgAssets.Url.DecodedUrl : null;
-      const libs: ILibrary[] = orgAssetsData && orgAssetsData.OrgAssets ? orgAssetsData.OrgAssets.OrgAssetsLibraries.Items.map((libItem) => { return this._parseOrgAssetsLibraryItem(libItem); }) : [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const libs: ILibrary[] = orgAssetsData && orgAssetsData.OrgAssets ? orgAssetsData.OrgAssets.OrgAssetsLibraries.Items.map((libItem: any) => { return this._parseOrgAssetsLibraryItem(libItem); }) : [];
       return libs;
     } catch (error) {
-      console.error(`[OrgAssetsService.getOrganisationAssetsLibraries]: Err='${error.message}'`);
+      console.error(`[OrgAssetsService.getOrganisationAssetsLibraries]: Err='${error instanceof Error ? error.message : String(error)}'`);
       return null;
     }
   }

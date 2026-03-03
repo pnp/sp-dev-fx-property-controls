@@ -36,7 +36,7 @@ export const SelectPalette: React.FunctionComponent<ISelectPaletteProps> = (
       <FluentProvider theme={theme} applyStylesToPortals={true}>
         <div className={styles.palettePickerContainer}>
           <Dropdown
-            style={{ width: "100%" }}
+           className={styles.dropDown}
             aria-label={strings.PropertyFieldPalettePickerTitle}
             title={strings.PropertyFieldPalettePickerTitle}
             value={selected}

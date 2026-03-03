@@ -6,6 +6,7 @@ export const usePalettePickerStyles = (): {
     color: string;
     palettePickerContainer: string;
     optionsContainer: string;
+    dropDown: string;
   };
 } => {
   const styles = {
@@ -24,6 +25,9 @@ export const usePalettePickerStyles = (): {
       display: "flex",
       marginTop: "0px",
       flexWrap: "wrap",
+    }),
+    dropDown: css({
+      width: "100%",
     }),
   };
   return {

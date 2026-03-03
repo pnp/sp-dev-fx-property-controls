@@ -132,6 +132,8 @@ import {
   PropertyFieldViewPickerOrderBy,
 } from '../../PropertyFieldViewPicker';
 import { PropertyPaneMarkdownContent } from '../../PropertyPaneMarkdownContent';
+import { PropertyPanePalettePickerField } from '../../propertyFields/PalettePicker/PalettePickerPropertyField';
+import { IPalette } from '../../propertyFields/PalettePicker/IPalette';
 import {
   IPropertyControlsTestProps,
 } from './components/IPropertyControlsTestProps';
@@ -232,6 +234,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
         monacoEditor:  this.properties.monacoEditor,
         contentType : this.properties.contentType,
         gridItems :this.properties.gridItems  || [],
+        selectedPalette: this.properties.selectedPalette,
+        selectedPaletteColors: this.properties.selectedPaletteColors || [],
       }
     );
 
@@ -361,6 +365,7 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onSearch: (newValue) => { console.log(newValue); },
                   styles: { root: { margin: 10 } }
                 }),
+               
                 PropertyFieldMessage("message", {
                   key: "0",
                   text: "Something went wrong, try later...",
@@ -851,6 +856,27 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
               isCollapsed: true,
               groupName: 'Colors',
               groupFields: [
+                 PropertyPanePalettePickerField("selectedPalette", {
+                  key: "palettePicker",
+                  label: "Select a Palette",
+                  selectedPalette: this.properties.selectedPalette || "Palette 1",
+                  palettes: {
+                    "Palette 1": ["#FF5733", "#33FF57", "#3357FF", "#F3FF33"],
+                    "Palette 2": ["#8E44AD", "#3498DB", "#1ABC9C", "#F39C12"],
+                    "Palette 3": ["#E74C3C", "#9B59B6", "#2ECC71", "#F1C40F"],
+                    "Palette 4": ["#1A1A2E", "#16213E", "#0F3460", "#E94560"]
+                  },
+                  onPropertyChange: (propertyPath: string, newValue: string) => {
+                    this.properties.selectedPalette = newValue;
+                  },
+                  onSelectedPalette: (palette: Record<string, string[]>) => {
+                    console.log("Selected palette:", palette);
+                    const paletteName = Object.keys(palette)[0];
+                    this.properties.selectedPalette = paletteName;
+                    this.properties.selectedPaletteColors = palette[paletteName];
+                    this.render();
+                  }
+                }),
                 PropertyPaneToggle("isColorFieldVisible", {
                   label: "Color Field Visible",
                   checked: true

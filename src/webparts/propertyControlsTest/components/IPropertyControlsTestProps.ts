@@ -57,4 +57,6 @@ export interface IPropertyControlsTestProps {
   editableComboBox: string;
   monacoEditor:string;
   contentType: string;
+  selectedPalette: string;
+  selectedPaletteColors: string[];
 }

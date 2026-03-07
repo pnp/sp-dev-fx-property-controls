@@ -11,7 +11,7 @@
     "start": "heft start --clean",
     "eject-webpack": "heft eject-webpack",
     "serve": "fast-serve",
-    "versionUpdater": "heft versionUpdater",
+    "versionUpdater": "heft version-updater",
     "changelog": "node scripts/create-changelog.js && node scripts/sync-changelogs.js && heft version-updater",
     "postinstall": "node postinstall/install.js",
     "sonarcloud:config": "node ./scripts/sonarcloud.js",

@@ -4,6 +4,7 @@
 
 ### Enhancements
 
+- SharePoint Framework v1.21.1 support
 - Remove PnPjs: [#657](https://github.com/pnp/sp-dev-fx-property-controls/pull/657)
 
 ### Fixes

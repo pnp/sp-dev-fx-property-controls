@@ -50,7 +50,7 @@ export class OneDriveService extends FileBrowserService {
       filesQueryResult = await this._getListDataAsStream(restApi, null, acceptedFilesExtensions);
     } catch (error) {
       filesQueryResult.items = null;
-      console.error(error.message);
+      console.error(error instanceof Error ? error.message : String(error));
     }
     return filesQueryResult;
   }
@@ -79,7 +79,7 @@ export class OneDriveService extends FileBrowserService {
       filesQueryResult = await this._getListDataAsStream(restApi, null, acceptedFilesExtensions);
     } catch (error) {
       filesQueryResult.items = null;
-      console.error(error.message);
+      console.error(error instanceof Error ? error.message : String(error));
     }
     return filesQueryResult;
   }
@@ -111,7 +111,7 @@ export class OneDriveService extends FileBrowserService {
       const blob: Blob = await fileDownloadResult.blob();
       return GeneralHelper.getFileFromBlob(blob, fileName);
     } catch (err) {
-      console.error(`[OneDriveService.fetchFileContent] Err='${err.message}'`);
+      console.error(`[OneDriveService.fetchFileContent] Err='${err instanceof Error ? err.message : String(err)}'`);
       return null;
     }
   }
@@ -153,7 +153,7 @@ export class OneDriveService extends FileBrowserService {
       this.oneDriveRootFolderRelativeUrl = `${myDocumentsLibrary.ParentWebUrl}/${myDocumentsLibrary.Title}`;
       this.oneDriveRootFolderAbsoluteUrl = `${this.oneDrivePersonalUrl}${myDocumentsLibrary.Title}`;
     } catch (error) {
-      console.error(`[FileBrowserService.getOneDrivePersonalUrl] Err='${error.message}'`);
+      console.error(`[FileBrowserService.getOneDrivePersonalUrl] Err='${error instanceof Error ? error.message : String(error)}'`);
       this.oneDriveRootFolderAbsoluteUrl = null;
     }
     return this.oneDriveRootFolderAbsoluteUrl;
@@ -236,7 +236,7 @@ export class OneDriveService extends FileBrowserService {
 
       this.oneDrivePersonalUrl = profileData.FollowPersonalSiteUrl;
     } catch (error) {
-      console.error(`[FileBrowserService.getOneDrivePersonalUrl] Err='${error.message}'`);
+      console.error(`[FileBrowserService.getOneDrivePersonalUrl] Err='${error instanceof Error ? error.message : String(error)}'`);
       this.oneDrivePersonalUrl = null;
     }
     return this.oneDrivePersonalUrl;

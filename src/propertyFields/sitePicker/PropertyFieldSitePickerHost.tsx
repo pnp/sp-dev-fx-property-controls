@@ -52,7 +52,7 @@ export default class PropertyFieldSitePickerHost extends React.Component<IProper
       const sites = await this.searchService.searchSites(this.props.context, newValue, !!trimDuplicates, additionalQuery);
       this.setState({ siteSearchResults: sites });
     } catch (error) {
-      this.setState({ errorMessage: error });
+      this.setState({ errorMessage: error instanceof Error ? error.message : String(error) });
     } finally {
       this.setState({ isLoading: false });
     }

@@ -1,5 +1,22 @@
 # Releases
 
+## 3.23.0
+
+### Enhancements
+
+- SharePoint Framework v1.22.2 support
+- Remove PnPjs: [#657](https://github.com/pnp/sp-dev-fx-property-controls/pull/657)
+
+### Fixes
+
+- `PropertyFieldPeoplePicker`: search only after 3 characters [#653](https://github.com/pnp/sp-dev-fx-property-controls/issues/653)
+- `FolderPicker`: Is there a way to reset the FolderPicker? [#640](https://github.com/pnp/sp-dev-fx-property-controls/issues/640)
+- `PropertyFieldTermPicker` delete icon doesn't show [#583](https://github.com/pnp/sp-dev-fx-property-controls/issues/583)
+
+### Contributors
+
+Special thanks to our contributor: [Beau Cameron](https://github.com/bcameron1231).
+
 ## 3.22.0
 
 ### New control(s)

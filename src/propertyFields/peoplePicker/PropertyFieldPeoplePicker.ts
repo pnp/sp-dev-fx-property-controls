@@ -42,6 +42,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
   private key: string;
   private onGetErrorMessage: (value: IPropertyFieldGroupOrPerson[]) => string | Promise<string>;
   private deferredValidationTime: number = 200;
+  private searchTextLimit: number = 3;
 
   /**
    * Constructor method
@@ -71,6 +72,10 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
       this.deferredValidationTime = _properties.deferredValidationTime;
     }
 
+    if (typeof _properties.searchTextLimit !== 'undefined') {
+      this.searchTextLimit = _properties.searchTextLimit;
+    }
+
     if (typeof _properties.multiSelect !== "undefined") {
       this.multiSelect = _properties.multiSelect;
     }
@@ -98,7 +103,8 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
       targetSiteUrl: this.targetSiteUrl,
       key: this.key,
       onGetErrorMessage: this.onGetErrorMessage,
-      deferredValidationTime: this.deferredValidationTime
+      deferredValidationTime: this.deferredValidationTime,
+      searchTextLimit: this.searchTextLimit
     });
 
     // Calls the REACT content generator

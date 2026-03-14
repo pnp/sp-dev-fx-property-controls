@@ -41,7 +41,7 @@ class PropertyFieldListPickerBuilder implements IPropertyPaneField<IPropertyFiel
   private customProperties: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   private key: string;
   private disabled: boolean = false;
-  private onGetErrorMessage: (value: string) => string | Promise<string>;
+  private onGetErrorMessage: (value: string | string[]) => string | Promise<string>;
   private deferredValidationTime: number = 200;
   private renderWebPart: () => void;
   private disableReactivePropertyChanges: boolean = false;

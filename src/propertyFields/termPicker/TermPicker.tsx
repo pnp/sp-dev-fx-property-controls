@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Icon } from '@fluentui/react/lib/Icon';
 import { BasePicker, IBasePickerProps, IPickerItemProps } from '@fluentui/react/lib/Pickers';
 import { IPickerTerm, IPickerTerms } from './IPropertyFieldTermPicker';
 import styles from './PropertyFieldTermPickerHost.module.scss';
@@ -76,7 +77,7 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
         {!term.disabled &&
           <span className={styles.pickedTermCloseIcon}
             onClick={term.onRemoveItem}>
-            <i className="ms-Icon ms-Icon--Cancel" aria-hidden="true" />
+            <Icon iconName="Cancel" aria-hidden="true" />
           </span>
         }
       </div>
@@ -86,7 +87,7 @@ export default class TermPicker extends React.Component<ITermPickerProps, ITermP
   /**
    * Renders the suggestions in the picker
    */
-  protected onRenderSuggestionsItem(term: IPickerTerm, props): JSX.Element {
+  protected onRenderSuggestionsItem(term: IPickerTerm): JSX.Element {
     let termParent = term.termSetName;
     let termTitle = `${term.name} [${term.termSetName}]`;
     if (term.path.indexOf(";") !== -1) {

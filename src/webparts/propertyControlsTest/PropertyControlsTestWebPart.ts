@@ -139,12 +139,13 @@ import PropertyControlsTest from './components/PropertyControlsTest';
 import {
   IPropertyControlsTestWebPartProps,
 } from './IPropertyControlsTestWebPartProps';
+import { ComponentOverride } from 'markdown-to-jsx';
 
 /**
  * Web part that can be used to test out the various property controls
  */
 export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<IPropertyControlsTestWebPartProps> {
-  private multiSelectProps = [];
+  private multiSelectProps: any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
  private showMessageButton = false;
  private gridItems:IItem[] = [
     {
@@ -669,8 +670,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
                   context: this.context,
-                  onGetErrorMessage: (value: string) => {
-                    return value;
+                  onGetErrorMessage: (value: string | string[]) => {
+                    return typeof value === 'string' ? value : value.join(',');
                   },
                   contentTypeId:"0x0100",
                   deferredValidationTime: 0,
@@ -1080,7 +1081,8 @@ export default class PropertyControlsTestWebPart extends BaseClientSideWebPart<I
                   },
                   deferredValidationTime: 0,
                   key: 'peopleFieldId',
-                  targetSiteUrl: this.context.pageContext.site.absoluteUrl
+                  targetSiteUrl: this.context.pageContext.site.absoluteUrl,
+                  searchTextLimit: 3
                 }),
                 PropertyFieldTermPicker('terms', {
                   label: 'Select terms',
@@ -1437,7 +1439,7 @@ Also supports GitHub-flavored Markdown checklists:
                         props: {
                           className: "ms-font-xl ms-fontColor-neutralDark",
                         },
-                      },
+                      } as ComponentOverride,
                       FieldErrorMessage: FieldErrorMessage
                     }
                   }}),

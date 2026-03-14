@@ -406,16 +406,16 @@ export class ScriptFormatter {
     }
   }
 
-  private set_mode(mode): void {
+  private set_mode(mode: string): void {
     if (this.flags) {
       this.flag_store.push(this.flags);
       this.previous_flags = this.flags;
     }
     else {
-      this.previous_flags = this.create_flags(null, mode);
+      this.previous_flags = this.create_flags(null, MODE[mode as keyof typeof MODE]);
     }
 
-    this.flags = this.create_flags(this.previous_flags, mode);
+    this.flags = this.create_flags(this.previous_flags, MODE[mode as keyof typeof MODE]);
   }
 
   private is_array(mode: string): boolean {

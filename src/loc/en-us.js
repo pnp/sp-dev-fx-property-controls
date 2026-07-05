@@ -267,5 +267,6 @@ define([], function () {
     },
     gridControlColumn1Label: "Title",
     gridControlColumn2Label: "Description",
+  PropertyFieldPalettePickerTitle: "Select a palette",
   }
 });

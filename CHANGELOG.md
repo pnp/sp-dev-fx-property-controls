@@ -2,6 +2,19 @@
 
 ## 3.24.0
 
+### New control(s)
+
+- `PalettePicker`: new color palette picker control [#659](https://github.com/pnp/sp-dev-fx-property-controls/pull/659)
+
+### Fixes
+
+- Fix/tr tr translation corrections [#667](https://github.com/pnp/sp-dev-fx-property-controls/pull/667)
+- fix: corrected some color picker italian translations [#666](https://github.com/pnp/sp-dev-fx-property-controls/pull/666)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [João Mendes](https://github.com/joaojmendes), [Onur ÇOBAN](https://github.com/saldoc), [mattia-belletti-gt](https://github.com/mattia-belletti-gt).
+
 ## 3.23.0
 
 ### Enhancements

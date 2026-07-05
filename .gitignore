@@ -46,3 +46,8 @@ tslint.json
 # Release
 release
 *.scss.d.ts
+
+lib-dts
+lib-commonjs
+lib-esm
+jest-output

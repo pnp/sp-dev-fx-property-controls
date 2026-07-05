@@ -43,10 +43,10 @@ export default class SPPeopleSearchService implements ISPPeopleSearchService {
         let values: any = JSON.parse(usersResponse.value); // eslint-disable-line @typescript-eslint/no-explicit-any
 
         // Filter out "UNVALIDATED_EMAIL_ADDRESS"
-        values = values.filter(v => !(v.EntityData && v.EntityData.PrincipalType && v.EntityData.PrincipalType === "UNVALIDATED_EMAIL_ADDRESS"));
+        values = values.filter((v: any) => !(v.EntityData && v.EntityData.PrincipalType && v.EntityData.PrincipalType === "UNVALIDATED_EMAIL_ADDRESS")); // eslint-disable-line @typescript-eslint/no-explicit-any
         // Filter out NULL keys
-        values = values.filter(v => v.Key !== null);
-        res = values.map(element => {
+        values = values.filter((v: any) => v.Key !== null); // eslint-disable-line @typescript-eslint/no-explicit-any
+        res = values.map((element: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
           let email: string | undefined;
           let groupOrPerson: IPropertyFieldGroupOrPerson | undefined;
           let group: IPropertyFieldGroupOrPerson | undefined;

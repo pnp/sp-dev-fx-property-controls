@@ -35,7 +35,7 @@ class PropertyFieldContentTypePickerBuilder implements IPropertyPaneField<IPrope
   private filter: string;
   private key: string;
   private webAbsoluteUrl?: string;
-  private onGetErrorMessage: (value: string) => string | Promise<string>;
+  private onGetErrorMessage: (value: string | string[]) => string | Promise<string>;
   private onContentTypesRetrieved?: (contentTypes: ISPContentType[]) => PromiseLike<ISPContentType[]> | ISPContentType[];
   public onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void { /* no-op; */ } // eslint-disable-line @typescript-eslint/no-explicit-any
   private renderWebPart: () => void;

@@ -394,9 +394,11 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
     if (items[items.length - 1] !== null) // there are no more items to fetch from the server (there is no 'null' placeholder), we can sort client-side
     {
       // Sort the items.
-      items = items.concat([]).sort((a, b) => {
-        let firstValue = a[column.fieldName || ''];
-        let secondValue = b[column.fieldName || ''];
+      items = items.concat([]).sort((a: IFile, b: IFile) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        let firstValue: any = a[(column.fieldName || '') as keyof IFile];
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        let secondValue: any = b[(column.fieldName || '') as keyof IFile];
 
         if (typeof firstValue === 'string') {
           firstValue = firstValue.toLocaleLowerCase();
@@ -523,7 +525,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
       filesQueryResult = await this.props.fileBrowserService.getListItemsByListId(libraryId, folderPath, accepts, nextPageQueryString, currentSortColumnName, isSortedDescending);
     } catch (error) {
       filesQueryResult.items = null;
-      console.error(error.message);
+      console.error(error instanceof Error ? error.message : String(error));
     } finally {
 
       // Remove the null mark from the end of the items array

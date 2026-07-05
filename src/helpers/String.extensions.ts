@@ -127,7 +127,7 @@ String.prototype._parseNumberNegativePattern = function (numberFormat: ICultureN
                 return ['-', this.substr(1, this.length - 2)];
             }
     }
-    return ['', this];
+    return ['', this.toString()];
 };
 
 /* eslint-enable no-extend-native */

@@ -129,6 +129,11 @@ export interface IPropertyFieldPeoplePickerProps {
    * Default value is 200.
    */
   deferredValidationTime?: number;
+
+   /**
+   * Min number of characters used before a search executes. Default is 3.
+   */
+  searchTextLimit: number;
 }
 
 /**

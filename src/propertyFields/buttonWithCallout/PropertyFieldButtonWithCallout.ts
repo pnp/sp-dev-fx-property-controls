@@ -37,7 +37,7 @@ class PropertyFieldButtonWithCalloutBuilder implements IPropertyPaneField<IPrope
         // PropertyPaneButtonType is not assignable to ButtonType
         //
         const buttonTypeString: string = ButtonType[this.properties.buttonType];
-        const buttonType: ButtonType = ButtonType[buttonTypeString];
+        const buttonType: ButtonType = ButtonType[buttonTypeString as keyof typeof ButtonType];
         const element = React.createElement(PropertyFieldButtonHost, {
             ...omit(props, ['icon', 'buttonType']),
             buttonType: buttonType

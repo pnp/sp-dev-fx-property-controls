@@ -58,7 +58,7 @@ export default class PropertyFieldPeoplePickerHost extends React.Component<IProp
    * A search field change occured
    */
   private onSearchFieldChanged(searchText: string, currentSelected: IPersonaProps[]): Promise<IPersonaProps[]> | IPersonaProps[] {
-    if (searchText.length > 2) {
+    if (searchText.length >= this.props.searchTextLimit) {
       // Clear the suggestions list
       this.setState({ resultsPeople: this.resultsPeople, resultsPersonas: this.resultsPersonas });
       // Request the search service

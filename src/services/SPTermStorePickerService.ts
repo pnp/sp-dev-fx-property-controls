@@ -41,7 +41,7 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
     return this.context.spHttpClient.post(this.clientServiceUrl, SPHttpClient.configurations.v1, httpPostOptions).then((serviceResponse: SPHttpClientResponse) => {
       return serviceResponse.json().then((serviceJSONResponse: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
         // Construct results
-        const termStoreResult: ITermStore[] = serviceJSONResponse.filter(r => r['_ObjectType_'] === 'SP.Taxonomy.TermStore');
+        const termStoreResult: ITermStore[] = serviceJSONResponse.filter((r: any) => r['_ObjectType_'] === 'SP.Taxonomy.TermStore'); // eslint-disable-line @typescript-eslint/no-explicit-any
         // Check if term store was retrieved
         if (termStoreResult.length > 0) {
           // Check if the termstore needs to be filtered or limited
@@ -148,7 +148,7 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
     return this.context.spHttpClient.post(this.clientServiceUrl, SPHttpClient.configurations.v1, httpPostOptions).then((serviceResponse: SPHttpClientResponse) => {
       return serviceResponse.json().then((serviceJSONResponse: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
         // Retrieve the term collection results
-        const termStoreResult: ITerms[] = serviceJSONResponse.filter(r => r['_ObjectType_'] === 'SP.Taxonomy.TermCollection');
+        const termStoreResult: ITerms[] = serviceJSONResponse.filter((r: any) => r['_ObjectType_'] === 'SP.Taxonomy.TermCollection'); // eslint-disable-line @typescript-eslint/no-explicit-any
         if (termStoreResult.length > 0) {
           // Retrieve all terms
           let terms = termStoreResult[0]._Child_Items_;
@@ -215,9 +215,9 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
 
 
         return this.context.spHttpClient.post(this.clientServiceUrl, SPHttpClient.configurations.v1, httpPostOptions).then((serviceResponse: SPHttpClientResponse) => {
-          return serviceResponse.json().then((serviceJSONResponse: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
+          return serviceResponse.json().then((serviceJSONResponse: any): Promise<IPickerTerm[]> => { // eslint-disable-line @typescript-eslint/no-explicit-any
             // Retrieve the term collection results
-            const termStoreResult: ITerms[] = serviceJSONResponse.filter(r => r['_ObjectType_'] === 'SP.Taxonomy.TermCollection');
+            const termStoreResult: ITerms[] = serviceJSONResponse.filter((r: any) => r['_ObjectType_'] === 'SP.Taxonomy.TermCollection'); // eslint-disable-line @typescript-eslint/no-explicit-any
             if (termStoreResult.length > 0) {
               // Retrieve all terms
               const terms = termStoreResult[0]._Child_Items_;
@@ -307,9 +307,9 @@ export default class SPTermStorePickerService implements ISPTermStorePickerServi
       };
 
       return this.context.spHttpClient.post(this.clientServiceUrl, SPHttpClient.configurations.v1, httpPostOptions).then((serviceResponse: SPHttpClientResponse) => {
-        return serviceResponse.json().then((serviceJSONResponse: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
+        return serviceResponse.json().then((serviceJSONResponse: any): IPickerTerm[] => { // eslint-disable-line @typescript-eslint/no-explicit-any
           // Retrieve the term collection results
-          const termStoreResult: ITerms[] = serviceJSONResponse.filter(r => r['_ObjectType_'] === 'SP.Taxonomy.TermCollection');
+          const termStoreResult: ITerms[] = serviceJSONResponse.filter((r: any) => r['_ObjectType_'] === 'SP.Taxonomy.TermCollection'); // eslint-disable-line @typescript-eslint/no-explicit-any
           if (termStoreResult.length > 0) {
             // Retrieve all terms
             const terms = termStoreResult[0]._Child_Items_;

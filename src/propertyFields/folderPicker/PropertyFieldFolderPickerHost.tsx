@@ -28,13 +28,16 @@ export default class PropertyFieldFolderPickerHost extends React.Component<IProp
       showPanel: false,
       selectedFolder: getPropertyValue<IFolder>(props.properties, props.targetProperty) || this.props.defaultFolder
     };
-  }
-
+  }  
+    
   public UNSAFE_componentWillReceiveProps(nextProps: IPropertyFieldFolderPickerHostProps): void {
-    const currentValue = getPropertyValue(this.props.properties, this.props.targetProperty);
-    const nextValue = getPropertyValue(nextProps.properties, nextProps.targetProperty);
+    const nextValue = getPropertyValue<IFolder>(nextProps.properties, nextProps.targetProperty);
 
-    if (currentValue !== nextValue) {
+    // Compare state's selectedFolder with incoming prop value
+    const stateUrl = this.state.selectedFolder?.ServerRelativeUrl?.toLowerCase() ?? null;
+    const nextUrl = nextValue?.ServerRelativeUrl?.toLowerCase() ?? null;
+
+    if (stateUrl !== nextUrl) {
       this.setState({
         selectedFolder: nextValue
       });

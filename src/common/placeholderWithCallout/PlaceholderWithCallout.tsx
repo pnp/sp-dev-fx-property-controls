@@ -96,7 +96,7 @@ export default class PlaceholderWithCallout extends React.Component<
     }
   }
 
-  private _onInfoIconMouseOut(e: MouseEvent): void {
+  private _onInfoIconMouseOut(e: React.MouseEvent<HTMLElement>): void {
     if (this.props.calloutTrigger !== CalloutTriggers.Hover) {
       return;
     }

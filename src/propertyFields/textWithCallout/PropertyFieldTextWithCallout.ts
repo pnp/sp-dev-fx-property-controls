@@ -33,8 +33,8 @@ class PropertyFieldTextWithCalloutBuilder implements IPropertyPaneField<IPropert
 
         const element = React.createElement(PropertyFieldTextWithCalloutHost, {
             ...omit(props, ['logName']),
-            onNotifyValidationResult: this._onValidated.bind(this),
-            onChanged: this._onChanged.bind(this)
+            onNotifyValidationResult: this._onValidated,
+            onChanged: this._onChanged
         });
 
         ReactDOM.render(element, elem);
@@ -48,17 +48,17 @@ class PropertyFieldTextWithCalloutBuilder implements IPropertyPaneField<IPropert
         ReactDOM.unmountComponentAtNode(elem);
     }
 
-    private _onValidated(errorMessage: string, value: string | undefined): void {
+    private _onValidated: (errorMessage: string | JSX.Element, value: string | undefined) => void = (errorMessage: string | JSX.Element, value: string | undefined): void => {
         if (!errorMessage && this._onChangeCallback) {
             this._onChangeCallback(this.targetProperty, value);
         }
     }
 
-    private _onChanged(value: string): void {
+    private _onChanged: (value: string) => void = (value: string): void => {
         if (this._onChangeCallback) {
-          this._onChangeCallback(this.targetProperty, value);
+            this._onChangeCallback(this.targetProperty, value);
         }
-      }
+    }
 }
 
 export function PropertyFieldTextWithCallout(targetProperty: string, properties: IPropertyFieldTextWithCalloutProps): IPropertyPaneField<IPropertyFieldTextWithCalloutPropsInternal> {

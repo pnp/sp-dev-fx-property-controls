@@ -65,7 +65,7 @@ export default class SPSiteSearchService implements ISPSiteSearchService {
     let res: IPropertyFieldSite[] = [];
     res = values.map(element => {
       const site: IPropertyFieldSite = {} as IPropertyFieldSite;
-      element.Cells.forEach(cell => {
+      element.Cells.forEach((cell: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
         switch (cell.Key) {
           case 'Title':
             site.title = cell.Value;

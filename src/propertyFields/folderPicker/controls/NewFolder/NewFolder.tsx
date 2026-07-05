@@ -18,7 +18,7 @@ export class NewFolder extends React.Component<INewFolderProps, INewFolderState>
   constructor(props: INewFolderProps) {
     super(props);
 
-    this._spService = new FolderExplorerService(this.props.context.serviceScope);
+    this._spService = new FolderExplorerService(this.props.context);
 
     this.state = {
       folderName: '',

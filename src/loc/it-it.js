@@ -241,24 +241,24 @@ define([], () => {
     "MonacoEditorPanelTitle": "Modifica modello",
     "ColorPickerStrings": {
       "rootAriaLabelFormat": "{0} selezione colori è selezionata.",
-      "hex": "Sesta edizione",
-      "red": "rosso",
-      "green": "verde",
-      "blue": "Per riempire",
+      "hex": "Hex",
+      "red": "Rosso",
+      "green": "Verde",
+      "blue": "Blu",
       "alpha": "Alfa",
       "transparency": "Trasparenza",
       "alphaAriaLabel": "Alfa",
       "transparencyAriaLabel": "Trasparenza",
-      "hueAriaLabel": "Liubov",
+      "hueAriaLabel": "Tonalità",
       "svAriaLabel": "Saturazione e luminosità",
-      "svAriaValueFormat": "{1} saturazione {0} luminosità",
+      "svAriaValueFormat": "Saturazione {0} luminosità {1}",
       "svAriaDescription": "Utilizzare le frecce sinistra e destra per regolare la saturazione. Utilizzare le frecce su e giù per regolare la luminosità.",
-      "hexError": "I valori esagonali devono essere compresi tra 3 e 6 caratteri",
+      "hexError": "I valori esadecimali devono essere compresi tra 3 e 6 caratteri",
       "alphaError": "Alfa deve essere compreso tra 0 e 100",
-      "transparencyError": "La diapositiva deve essere compresa tra 0 e 100",
-      "redError": "Il rosso deve essere compreso tra 0 e 255",
-      "greenError": "Il verde deve essere compreso tra 0 e 255",
-      "blueError": "Il blu deve essere compreso tra 0 e 255"
+      "transparencyError": "La trasparenza deve essere compresa tra 0 e 100",
+      "redError": "Il valore di rosso deve essere compreso tra 0 e 255",
+      "greenError": "Il valore di verde deve essere compreso tra 0 e 255",
+      "blueError": "Il valore di blu deve essere compreso tra 0 e 255"
     }
   };
 });

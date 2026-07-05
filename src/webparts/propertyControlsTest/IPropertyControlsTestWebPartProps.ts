@@ -60,4 +60,6 @@ export interface IPropertyControlsTestWebPartProps {
   brandFont: string;
   contentType:string;
   gridItems: IItem[];
+  selectedPalette: string;
+  selectedPaletteColors: string[];
 }

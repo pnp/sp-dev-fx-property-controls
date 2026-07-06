@@ -6,6 +6,10 @@
 
 - `PalettePicker`: new color palette picker control [#659](https://github.com/pnp/sp-dev-fx-property-controls/pull/659)
 
+### Enhancements
+
+- SharePoint Framework v1.23.0 support
+
 ### Fixes
 
 - Fix/tr tr translation corrections [#667](https://github.com/pnp/sp-dev-fx-property-controls/pull/667)

@@ -3,7 +3,7 @@
   "solution": {
     "name": "sp-dev-fx-property-controls-client-side-solution",
     "id": "0253ef52-be23-4282-b00f-e5a9350eb408",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "includeClientSideAssets": true,

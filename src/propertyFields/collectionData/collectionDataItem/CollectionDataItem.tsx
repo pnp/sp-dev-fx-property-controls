@@ -60,6 +60,47 @@ export class CollectionDataItem extends React.Component<
   }
 
   /**
+   * Avoid rerendering rows when only parent array references change. This is important for performance when working with large collections.
+  */
+  public shouldComponentUpdate(
+    nextProps: ICollectionDataItemProps,
+    nextState: ICollectionDataItemState
+  ): boolean {
+
+    if (nextState !== this.state) {
+      return true;
+    }
+
+    if (
+      nextProps.item !== this.props.item ||
+      nextProps.index !== this.props.index ||
+      nextProps.totalItems !== this.props.totalItems ||
+      nextProps.sortingEnabled !== this.props.sortingEnabled ||
+      nextProps.disableItemDeletion !== this.props.disableItemDeletion ||
+      nextProps.fAddItem !== this.props.fAddItem ||
+      nextProps.fAddInCreation !== this.props.fAddInCreation ||
+      nextProps.fUpdateItem !== this.props.fUpdateItem ||
+      nextProps.fDeleteItem !== this.props.fDeleteItem ||
+      nextProps.fValidation !== this.props.fValidation ||
+      nextProps.fOnSorting !== this.props.fOnSorting
+    ) {
+      return true;
+    }
+
+    if (nextProps.fields.length !== this.props.fields.length) {
+      return true;
+    }
+
+    for (let i = 0; i < nextProps.fields.length; i++) {
+      if (nextProps.fields[i] !== this.props.fields[i]) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  /**
    * Update the item value on the field change
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -291,7 +332,7 @@ export class CollectionDataItem extends React.Component<
     fieldId: string,
     errorMsg: string
   ): Promise<void> => {
-    console.log(fieldId, errorMsg);
+    // console.log(fieldId, errorMsg);
     if (fieldId) {
       await this.storeFieldValidation(fieldId, errorMsg, true);
     }

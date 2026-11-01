@@ -14,6 +14,13 @@ export interface IPropertyPanePropertyEditorProps {
 	 * An UNIQUE key indicates the identity of this control
 	 */
 	key: string;
+
+        /**
+         * Callback invoked after importing web part properties.
+         */
+        onPropertiesImported?: (
+                importedProperties: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any
+        ) => void | Promise<void>;
 }
 
 

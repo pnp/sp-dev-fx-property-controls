@@ -1,0 +1,19 @@
+name: V4 CI
+on:
+  pull_request:
+    branches:
+      - v4-dev
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Rush dependencies
+        run: node common/scripts/install-run-rush.js install
+      - name: Build library and test app
+        run: node common/scripts/install-run-rush.js rebuild
+      - name: Verify package boundaries and registry portability
+        run: node --test common/tests/*.test.cjs

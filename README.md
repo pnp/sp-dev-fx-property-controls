@@ -17,11 +17,34 @@ Please use following logic on submitting your questions or issues to right locat
 
 ## Contributing
 
+The v4 branch uses Rush to manage two packages:
+
+- `libraries/spfx-property-controls`: the publishable `@pnp/spfx-property-controls` npm library.
+- `apps/property-controls-tests`: a private SPFx test web part that consumes the library through a workspace dependency.
+
+Use Node.js 22 (22.14.0 or later). From the repository root, run:
+
+```bash
+node common/scripts/install-run-rush.js install
+node common/scripts/install-run-rush.js rebuild
+node --test common/tests/*.test.cjs
+```
+
+Both packages use SPFx 1.23.2 and React 17. The library declares SPFx, React,
+ReactDOM and React typings as peer dependencies; control-specific dependencies
+remain regular dependencies. Existing `@pnp/spfx-property-controls/lib/...`
+imports are unchanged. Only the test app builds an `.sppkg`.
+
+After building the library, run `npm run start` in `apps/property-controls-tests`
+to serve the test web part. Documentation lives in `common/docs/documentation`.
+See the [development guide](common/docs/documentation/docs/guides/mpa.md)
+for dependency updates and local documentation.
+
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.microsoft.com.
 
 When you submit a pull request, a CLA-bot will automatically determine whether you need to provide a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions provided by the bot. You will only need to do this once across all repos using our CLA.
 
-If you have ideas for new features or feedback, let us know by creating an issue in the [issues list](https://github.com/pnp/sp-dev-fx-property-controls/issues). Before you submit a PR with your improvements, please review our [project guides](./docs/documentation/docs/guides/index.md).
+If you have ideas for new features or feedback, let us know by creating an issue in the [issues list](https://github.com/pnp/sp-dev-fx-property-controls/issues). Before you submit a PR with your improvements, please review our [project guides](./common/docs/documentation/docs/guides/index.md).
 
 ## Code of Conduct
 

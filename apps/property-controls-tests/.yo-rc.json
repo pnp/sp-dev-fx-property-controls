@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.23.0",
+    "libraryName": "sp-dev-fx-property-controls",
+    "libraryId": "0253ef52-be23-4282-b00f-e5a9350eb408",
+    "environment": "spo",
+    "isDomainIsolated": false,
+    "isCreatingSolution": true,
+    "packageManager": "npm",
+    "componentType": "webpart",
+    "nodeVersion": "22.22.0",
+    "useGulp": false,
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    }
+  }
+}

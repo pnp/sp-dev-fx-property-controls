@@ -1,0 +1,85 @@
+site_name: '@pnp/spfx-property-controls'
+nav:
+  - Home: 'index.md'
+  - 'Beta testing': 'beta.md'
+  - Guides:
+    - Overview: 'guides/index.md'
+    - Contributing: 'guides/contributing.md'
+    - 'Minimal Path to Awesome': 'guides/mpa.md'
+    - 'Submitting a PR': 'guides/submitting-pr.md'
+    - 'Migrate v1 to v2': 'guides/migrate-from-v1.md'
+  - Controls:
+    - PropertyFieldBrandFontPicker: 'controls/PropertyFieldBrandFontPicker.md'
+    - PropertyFieldButton: 'controls/PropertyFieldButton.md'
+    - PropertyFieldCodeEditor: 'controls/PropertyFieldCodeEditor.md'
+    - PropertyFieldCollectionData: 'controls/PropertyFieldCollectionData.md'
+    - PropertyFieldColorPicker: 'controls/PropertyFieldColorPicker.md'
+    - PropertyFieldColumnPicker: 'controls/PropertyFieldColumnPicker.md'
+    - PropertyFieldDateTimePicker: 'controls/PropertyFieldDateTimePicker.md'
+    - PropertyFieldEnterpriseTermPicker: 'controls/PropertyFieldEnterpriseTermPicker.md'
+    - PropertyFieldFilePicker: 'controls/PropertyFieldFilePicker.md'
+    - PropertyFieldFolderPicker: 'controls/PropertyFieldFolderPicker.md'
+    - PropertyFieldGrid: 'controls/PropertyFieldGrid.md'
+    - PropertyFieldGuidPicker: 'controls/PropertyFieldGuid.md'
+    - PropertyFieldIconPicker: 'controls/PropertyFieldIconPicker.md'
+    - PropertyFieldListPicker: 'controls/PropertyFieldListPicker.md'
+    - PropertyFieldMessage: 'controls/PropertyFieldMessage.md'
+    - PropertyFieldMonacoEditor: 'controls/PropertyFieldMonacoEditor.md'
+    - PropertyFieldMultiSelect: 'controls/PropertyFieldMultiSelect.md'
+    - PropertyFieldNumber: 'controls/PropertyFieldNumber.md'
+    - PropertyFieldOrder: 'controls/PropertyFieldOrder.md'
+    - PropertyFieldPassword: 'controls/PropertyFieldPassword.md'
+    - PropertyFieldPeoplePicker: 'controls/PropertyFieldPeoplePicker.md'
+    - PropertyFieldRoleDefinitionPicker: 'controls/PropertyFieldRoleDefinitionPicker.md'
+    - PropertyFieldSearch: 'controls/PropertyFieldSearch.md'
+    - PropertyFieldSitePicker: 'controls/PropertyFieldSitePicker.md'
+    - PropertyFieldSpinButton: 'controls/PropertyFieldSpinButton.md'
+    - PropertyFieldSpinner: 'controls/PropertyFieldSpinner.md'
+    - PropertyFieldSwatchColorPicker: 'controls/PropertyFieldSwatchColorPicker.md'
+    - PropertyFieldTeamPicker: 'controls/PropertyFieldTeamPicker.md'
+    - PropertyFieldTermPicker: 'controls/PropertyFieldTermPicker.md'
+    - PropertyFieldViewPicker: 'controls/PropertyFieldViewPicker.md'
+    - PropertyFieldColumnPicker: 'controls/PropertyFieldColumnPicker.md'
+    - PropertyPaneMarkdownContent: 'controls/PropertyPaneMarkdownContent.md'
+    - PropertyPanePropertyEditor: 'controls/PropertyPanePropertyEditor.md'
+    - PropertyPaneWebPartInformation: 'controls/PropertyPaneWebPartInformation.md'    
+  - 'Controls with callout':
+    - PropertyFieldButtonWithCallout: 'controls/PropertyFieldButtonWithCallout.md'
+    - PropertyFieldCheckboxWithCallout: 'controls/PropertyFieldCheckboxWithCallout.md'
+    - PropertyFieldChoiceGroupWithCallout: 'controls/PropertyFieldChoiceGroupWithCallout.md'
+    - PropertyFieldDropdownWithCallout: 'controls/PropertyFieldDropdownWithCallout.md'
+    - PropertyFieldLabelWithCallout: 'controls/PropertyFieldLabelWithCallout.md'
+    - PropertyFieldLinkWithCallout: 'controls/PropertyFieldLinkWithCallout.md'
+    - PropertyFieldSliderWithCallout: 'controls/PropertyFieldSliderWithCallout.md'
+    - PropertyFieldTextWithCallout: 'controls/PropertyFieldTextWithCallout.md'
+    - PropertyFieldToggleWithCallout: 'controls/PropertyFieldToggleWithCallout.md'
+  - Helpers:
+    - PropertyPaneHelpers: 'helpers/PropertyPaneHelpers.md'
+  - About:
+    - 'Release notes': 'about/release-notes.md'
+    - License: 'about/license.md'
+theme:
+  name: 'material'
+  palette:
+    primary: 'teal'
+  logo: 'assets/pnp-spfx-controls.svg'
+  feature:
+    tabs: true
+extra_css:
+  - 'css/extra.css'
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+extra:
+  social:
+    - type: 'twitter'
+      link: 'https://twitter.com/m365pnp'
+    - type: 'youtube'
+      link: 'http://aka.ms/sppnp-videos'
+    - type: 'link'
+      link: 'https://aka.ms/sppnp'
+repo_url: https://github.com/pnp/sp-dev-fx-property-controls
+edit_uri: blob/v4-dev/common/docs/documentation/docs

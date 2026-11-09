@@ -1,0 +1,32 @@
+@import 'pkg:@fluentui/react/dist/sass/References.scss';
+$ms-disabled-text: "[theme:disabledText, default:#a19f9d]";
+
+.headerBar {
+    position: relative;
+    margin-bottom: 5px;
+
+    &.isDisabled {
+      color: $ms-disabled-text;
+
+      .info {
+        cursor: default;
+      }
+    }
+
+    .header {
+        margin-right: 24px;
+    }
+
+    .info {
+        position: absolute;
+        font-size: 14px;
+        background-color: transparent;
+        top: 3px;
+        right: 0px;
+        cursor: pointer;
+    }
+}
+
+.headerCallout {
+    padding: 10px;
+}

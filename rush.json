@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+  "rushVersion": "5.135.0",
+  "pnpmVersion": "8.15.8",
+  "nodeSupportedVersionRange": ">=22.14.0 <23.0.0",
+  "repository": {
+    "url": "https://github.com/pnp/sp-dev-fx-property-controls",
+    "defaultBranch": "v4-dev",
+    "defaultRemote": "origin"
+  },
+  "projects": [
+    {
+      "packageName": "@pnp/spfx-property-controls",
+      "projectFolder": "libraries/spfx-property-controls",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@pnp/sp-dev-fx-property-controls-tests",
+      "projectFolder": "apps/property-controls-tests",
+      "shouldPublish": false
+    }
+  ]
+}

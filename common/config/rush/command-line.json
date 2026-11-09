@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/command-line.schema.json",
+  "commands": [
+    {
+      "commandKind": "bulk",
+      "name": "build",
+      "summary": "Build and test the controls library and SPFx test app.",
+      "enableParallelism": true,
+      "incremental": true,
+      "allowWarningsInSuccessfulBuild": true
+    },
+    {
+      "commandKind": "bulk",
+      "name": "rebuild",
+      "summary": "Clean, build and test both packages.",
+      "shellCommand": "npm run build",
+      "enableParallelism": true,
+      "allowWarningsInSuccessfulBuild": true
+    }
+  ]
+}

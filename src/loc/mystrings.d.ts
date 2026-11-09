@@ -1,5 +1,5 @@
 declare interface IPropertyControlStrings {
-
+    PropertyFieldPalettePickerTitle: string;  
   DescriptionLabel: string;
   MoreInfoLabel: string;
 
@@ -109,7 +109,6 @@ declare interface IPropertyControlStrings {
   TeamPickerNoResults: string;
   TeamPickerSitesChosen: string;
 
-  //FilePicker
   // File picker
   AddFileButtonLabel: string;
   AddImageButtonLabel: string;
@@ -124,6 +123,7 @@ declare interface IPropertyControlStrings {
   CopyrightWarning: string;
   CreativeCommonsMessage: string;
   DateFormat: string;
+  DeleteSelectedFileButtonLabel: string;
   DocumentLabelTemplate: string;
   DocumentLibraries: string;
   EditedByNamePlate: string;
@@ -237,6 +237,10 @@ declare interface IPropertyControlStrings {
 
   // Fluent UI color picker strings
   ColorPickerStrings: { [key: string]: string };
+
+  // PropertyFieldGrid
+  gridControlColumn1Label: string;
+  gridControlColumn2Label: string;
 }
 
 declare interface IDateTimeStrings {
@@ -265,6 +269,7 @@ declare interface IDateTimeStrings {
   L_RelativeDateTime_XDaysIntervals: string;
   L_RelativeDateTime_Today: string;
 
+  
 }
 
 declare module 'PropertyControlStrings' {

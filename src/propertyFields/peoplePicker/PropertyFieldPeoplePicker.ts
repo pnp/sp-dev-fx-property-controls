@@ -1,13 +1,22 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+
+import { BaseComponentContext } from '@microsoft/sp-component-base';
 import {
   IPropertyPaneField,
-  PropertyPaneFieldType
+  PropertyPaneFieldType,
 } from '@microsoft/sp-property-pane';
+
+import {
+  IPropertyFieldGroupOrPerson,
+  IPropertyFieldPeoplePickerProps,
+  IPropertyFieldPeoplePickerPropsInternal,
+  PrincipalType,
+} from './IPropertyFieldPeoplePicker';
+import {
+  IPropertyFieldPeoplePickerHostProps,
+} from './IPropertyFieldPeoplePickerHost';
 import PropertyFieldPeoplePickerHost from './PropertyFieldPeoplePickerHost';
-import { IPropertyFieldPeoplePickerHostProps } from './IPropertyFieldPeoplePickerHost';
-import { BaseComponentContext } from '@microsoft/sp-component-base';
-import { IPropertyFieldGroupOrPerson, IPropertyFieldPeoplePickerProps, IPropertyFieldPeoplePickerPropsInternal, PrincipalType } from './IPropertyFieldPeoplePicker';
 
 /**
  * Represents a PropertyFieldPeoplePicker object
@@ -33,6 +42,7 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
   private key: string;
   private onGetErrorMessage: (value: IPropertyFieldGroupOrPerson[]) => string | Promise<string>;
   private deferredValidationTime: number = 200;
+  private searchTextLimit: number = 3;
 
   /**
    * Constructor method
@@ -62,6 +72,10 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
       this.deferredValidationTime = _properties.deferredValidationTime;
     }
 
+    if (typeof _properties.searchTextLimit !== 'undefined') {
+      this.searchTextLimit = _properties.searchTextLimit;
+    }
+
     if (typeof _properties.multiSelect !== "undefined") {
       this.multiSelect = _properties.multiSelect;
     }
@@ -89,7 +103,8 @@ class PropertyFieldPeoplePickerBuilder implements IPropertyPaneField<IPropertyFi
       targetSiteUrl: this.targetSiteUrl,
       key: this.key,
       onGetErrorMessage: this.onGetErrorMessage,
-      deferredValidationTime: this.deferredValidationTime
+      deferredValidationTime: this.deferredValidationTime,
+      searchTextLimit: this.searchTextLimit
     });
 
     // Calls the REACT content generator

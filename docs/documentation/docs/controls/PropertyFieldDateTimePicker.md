@@ -46,7 +46,7 @@ PropertyFieldDateTimePicker('datetime', {
   timeConvention: TimeConvention.Hours12,
   onPropertyChange: this.onPropertyPaneFieldChanged,
   properties: this.properties,
-  onGetErrorMessage: null,
+  onGetErrorMessage: undefined,
   deferredValidationTime: 0,
   key: 'dateTimeFieldId',
   showLabels: false
@@ -61,8 +61,8 @@ The `PropertyFieldDateTimePicker` control can be configured with the following p
 | ---- | ---- | ---- | ---- |
 | label | string | yes | Property field label displayed on top. |
 | disabled | boolean | no | Specify if the control needs to be disabled. |
-| initialData | IDateTimeFieldValue | yes | Initial date and time value of the control. |
-| formatData | function | no | Defines a formatDate function that can override the output value. |
+| initialDate | IDateTimeFieldValue | yes | Initial date and time value of the control. |
+| formatDate | function | no | Defines a formatDate function that can override the output value. |
 | dateConvention | DateConvention | no | Defines the date convention to use. By default this is set to date and time. |
 | timeConvention | TimeConvention | no | Defines the time convention to use. By default this is set to 24-hour clock convention. |
 | onPropertyChange | function | yes | Defines a onPropertyChange function to raise when the date gets changed. |

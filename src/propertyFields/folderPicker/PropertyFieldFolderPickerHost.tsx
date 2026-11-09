@@ -2,11 +2,11 @@ import * as React from 'react';
 import styles from './FolderPicker.module.scss';
 import { IPropertyFieldFolderPickerHostProps } from './IPropertyFieldFolderPickerHost';
 import { IFolder } from '../../services/IFolderExplorerService';
-import { IconButton, PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import { IconButton, PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
+import { Label } from '@fluentui/react/lib/Label';
+import { Link } from '@fluentui/react/lib/Link';
+import { getId } from '@fluentui/react/lib/Utilities';
+import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { FolderExplorer } from './controls/FolderExplorer';
 import { IPropertyFieldFolderPickerState } from './IPropertyFieldFolderPickerState';
 import * as telemetry from '../../common/telemetry';
@@ -28,13 +28,16 @@ export default class PropertyFieldFolderPickerHost extends React.Component<IProp
       showPanel: false,
       selectedFolder: getPropertyValue<IFolder>(props.properties, props.targetProperty) || this.props.defaultFolder
     };
-  }
-
+  }  
+    
   public UNSAFE_componentWillReceiveProps(nextProps: IPropertyFieldFolderPickerHostProps): void {
-    const currentValue = getPropertyValue(this.props.properties, this.props.targetProperty);
-    const nextValue = getPropertyValue(nextProps.properties, nextProps.targetProperty);
+    const nextValue = getPropertyValue<IFolder>(nextProps.properties, nextProps.targetProperty);
 
-    if(currentValue !== nextValue){
+    // Compare state's selectedFolder with incoming prop value
+    const stateUrl = this.state.selectedFolder?.ServerRelativeUrl?.toLowerCase() ?? null;
+    const nextUrl = nextValue?.ServerRelativeUrl?.toLowerCase() ?? null;
+
+    if (stateUrl !== nextUrl) {
       this.setState({
         selectedFolder: nextValue
       });
@@ -93,6 +96,7 @@ export default class PropertyFieldFolderPickerHost extends React.Component<IProp
               defaultFolder={this.state.selectedFolder}
               onSelect={this._onFolderSelect}
               canCreateFolders={this.props.canCreateFolders}
+              siteAbsoluteUrl={this.props.siteAbsoluteUrl}
             />
           </div>
         </Panel>

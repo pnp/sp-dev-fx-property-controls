@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Label } from '@fluentui/react/lib/Label';
+import { IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
+import { Async } from '@fluentui/react/lib/Utilities';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { IPropertyFieldColumnMultiPickerHostProps, IPropertyFieldColumnMultiPickerHostState } from './IPropertyFieldColumnMultiPickerHost';
 import { ISPColumn } from './ISPColumn';
 import { ISPColumns } from './ISPColumns';
@@ -78,7 +78,6 @@ export default class PropertyFieldColumnMultiPickerHost extends React.Component<
     columnService.getColumns(displayHiddenColumns).then((response: ISPColumns) => {
       // Start mapping the Columns that are selected
       response.value.forEach((column: ISPColumn) => {
-        let isSelected: boolean = false;
         let indexInExisting: number = -1;
         const colPropsToCheck = columnReturnProperty ? column[columnReturnProperty] : column.Id;
         // Defines if the current list must be selected by default
@@ -87,7 +86,6 @@ export default class PropertyFieldColumnMultiPickerHost extends React.Component<
         }
 
         if (indexInExisting > -1) {
-          isSelected = true;
           selectedKeys.push(colPropsToCheck);
         }
 
@@ -95,8 +93,7 @@ export default class PropertyFieldColumnMultiPickerHost extends React.Component<
         if (columnsToExclude.indexOf(column.Title) === -1 && columnsToExclude.indexOf(column.Id) === -1) {
           options.push({
             key: colPropsToCheck,
-            text: column.Title,
-            checked: isSelected
+            text: column.Title
           });
         }
       });

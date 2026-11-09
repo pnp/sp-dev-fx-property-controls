@@ -1,4 +1,4 @@
-import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { ISPColumns } from './ISPColumns';
 import { IPropertyFieldColumnPickerPropsInternal } from './IPropertyFieldColumnPicker';
 

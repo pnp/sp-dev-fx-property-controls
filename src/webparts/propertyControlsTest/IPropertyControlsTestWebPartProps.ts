@@ -1,4 +1,4 @@
-import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
+import { IColor } from '@fluentui/react';
 
 import { IDateTimeFieldValue } from '../../PropertyFieldDateTimePicker';
 import { IFilePickerResult } from '../../PropertyFieldFilePicker';
@@ -8,6 +8,7 @@ import {
   IRoleDefinitionInformation,
 } from '../../PropertyFieldRoleDefinitionPicker';
 import { IPropertyFieldList } from '../../propertyFields/listPicker';
+import { IItem } from '../../propertyFields/propertyFieldGrid/grid/IItem';
 import { IPropertyFieldSite } from '../../propertyFields/sitePicker';
 import { IPropertyFieldTeam } from '../../PropertyFieldTeamPicker';
 import { IPickerTerms } from '../../PropertyFieldTermPicker';
@@ -56,4 +57,9 @@ export interface IPropertyControlsTestWebPartProps {
   iconPicker: string;
   editableComboBox: string;
   monacoEditor:string;
+  brandFont: string;
+  contentType:string;
+  gridItems: IItem[];
+  selectedPalette: string;
+  selectedPaletteColors: string[];
 }

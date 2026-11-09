@@ -1,5 +1,6 @@
 define([], () => {
   return {
+    PropertyFieldPalettePickerTitle: "Select a palette",
     "ApplyButtonLabel": "Применить",
     "ImportButtonLabel": "Импорт",
     "ExportButtonLabel": "Экспорт",
@@ -99,6 +100,7 @@ define([], () => {
     "CopyrightWarning": "Вы несете ответственность за соблюдение прав других, включая авторское право.",
     "CreativeCommonsMessage": "Эти результаты помечены лицензиями Creative Commons. Просмотрите лицензии, чтобы убедиться, что вы соблюдаете.",
     "DateFormat": "ММ/ДД/YYYY hh:mm A",
+    "DeleteSelectedFileButtonLabel": "Удалить выбранный файл",    
     "DocumentLabelTemplate": "{0}, Документ, Измененные {1}, под редакцией {2}, Частные",
     "DocumentLibraries": "Библиотеки документов",
     "EditedByNamePlate": "под редакцией ",

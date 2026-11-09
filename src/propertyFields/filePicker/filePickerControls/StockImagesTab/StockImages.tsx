@@ -32,7 +32,7 @@ export class StockImages extends React.Component<IStockImagesProps> {
     );
   }
 
-  private _handleImageIframeEvent = (event): void => {
+  private _handleImageIframeEvent = (event: any): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
     if (!event || !event.origin || event.origin.indexOf("https://hubblecontent.osi.office.net") !== 0) {
       return;
     }
@@ -72,17 +72,17 @@ export class StockImages extends React.Component<IStockImagesProps> {
   }
 
   private getCurrentThemeConfiguration(): string {
-    /* eslint-disable dot-notation */
-    if (!window["__themeState__"] || !window["__themeState__"].theme) {
+    /* eslint-disable dot-notation, @typescript-eslint/no-explicit-any */
+    if (!(window as any)["__themeState__"] || !(window as any)["__themeState__"].theme) {
       return "";
     }
 
-    const primaryColor = window["__themeState__"].theme["themePrimary"];
-    const textColor = window["__themeState__"].theme["primaryText"];
-    const primaryBackground = window["__themeState__"].theme["bodyBackground"];
-    const neutralLighter = window["__themeState__"].theme["neutralLighter"];
+    const primaryColor = (window as any)["__themeState__"].theme["themePrimary"];
+    const textColor = (window as any)["__themeState__"].theme["primaryText"];
+    const primaryBackground = (window as any)["__themeState__"].theme["bodyBackground"];
+    const neutralLighter = (window as any)["__themeState__"].theme["neutralLighter"];
 
-    /* eslint-enable dot-notation */
+    /* eslint-enable dot-notation, @typescript-eslint/no-explicit-any */
 
     const theme = `{"primaryColor":"${primaryColor}","textColor":"${textColor}","backgroundColor":"${primaryBackground}","neutralLighterColor":"${neutralLighter}"}`;
     return theme;

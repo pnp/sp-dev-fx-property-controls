@@ -1,10 +1,10 @@
-import { DayOfWeek } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   IPropertyPaneField,
   PropertyPaneFieldType,
 } from '@microsoft/sp-property-pane';
+import { DayOfWeek } from '@fluentui/react/lib/DateTimeUtilities';
 import { IPropertyFieldDateTimePickerHostProps } from './IPropertyFieldDateTimePickerHost';
 import PropertyFieldDateTimePickerHost from './PropertyFieldDateTimePickerHost';
 import { IDateTimeFieldValue, IPropertyFieldDateTimePickerPropsInternal, TimeConvention, IPropertyFieldDateTimePickerProps, DateConvention } from './IPropertyFieldDateTimePicker';

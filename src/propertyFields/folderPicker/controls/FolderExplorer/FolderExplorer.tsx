@@ -1,13 +1,13 @@
 import * as React from 'react';
 import styles from './FolderExplorer.module.scss';
 import * as strings from 'PropertyControlStrings';
-import { Icon } from "office-ui-fabric-react/lib/Icon";
+import { Icon } from "@fluentui/react/lib/Icon";
 import { IFolderExplorerProps, IFolderExplorerState } from '.';
 import { FolderExplorerService } from '../../../../services/FolderExplorerService';
 import { IFolder, IFolderExplorerService } from '../../../../services/IFolderExplorerService';
 import { NewFolder } from "../NewFolder";
-import { Breadcrumb, IBreadcrumbItem } from "office-ui-fabric-react/lib/Breadcrumb";
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { Breadcrumb, IBreadcrumbItem } from "@fluentui/react/lib/Breadcrumb";
+import { SearchBox } from '@fluentui/react/lib/SearchBox';
 
 
 export class FolderExplorer extends React.Component<IFolderExplorerProps, IFolderExplorerState> {
@@ -19,7 +19,7 @@ export class FolderExplorer extends React.Component<IFolderExplorerProps, IFolde
   constructor(props: IFolderExplorerProps) {
     super(props);
 
-    this._spService = new FolderExplorerService(this.props.context.serviceScope);
+    this._spService = new FolderExplorerService(this.props.context);
 
     this.state = {
       foldersLoading: false,
@@ -98,14 +98,13 @@ export class FolderExplorer extends React.Component<IFolderExplorerProps, IFolde
 
     return breadCrumbDOM;
   }
-
   /**
  * Get breadcrumb items
  * @returns an array of IBreadcrumbItem objects
  */
   private _getCurrentBreadcrumbItems = (): IBreadcrumbItem[] => {
     let items: IBreadcrumbItem[] = [];
-
+    
     if (this.props.initialBreadcrumbItems) {
       items = [...this.props.initialBreadcrumbItems];
     }
@@ -113,15 +112,22 @@ export class FolderExplorer extends React.Component<IFolderExplorerProps, IFolde
     const rootItem: IBreadcrumbItem = { text: this.props.rootFolder.Name, key: 'Root-Item', onClick: this._getFolders.bind(this, this.props.rootFolder) };
     items.push(rootItem);
 
-    if (this.state.selectedFolder && this.state.selectedFolder.ServerRelativeUrl !== this.props.rootFolder.ServerRelativeUrl) {
-      const folderPathSplit = this.state.selectedFolder.ServerRelativeUrl.replace(this.props.rootFolder.ServerRelativeUrl, '').split('/');
+    if (this.state.selectedFolder && this.state.selectedFolder.ServerRelativeUrl.toLowerCase() !== this.props.rootFolder.ServerRelativeUrl.toLowerCase()) {
+      const rootUrlLower = this.props.rootFolder.ServerRelativeUrl.toLowerCase();
+      const selectedUrlLower = this.state.selectedFolder.ServerRelativeUrl.toLowerCase();
+      
+      const relativePath = selectedUrlLower.startsWith(rootUrlLower) 
+        ? this.state.selectedFolder.ServerRelativeUrl.substring(this.props.rootFolder.ServerRelativeUrl.length)
+        : this.state.selectedFolder.ServerRelativeUrl;
+
+      const folderPathSplit = relativePath.split('/');
       let folderPath = this.props.rootFolder.ServerRelativeUrl;
       folderPathSplit.forEach((folderName, index) => {
         if (folderName !== '') {
           folderPath += '/' + folderName;
           let itemText = folderName;
           // check if library and if so use the Title of the library that was retrieved in case it's not the same as the url part
-          const lib = this._allLibraries.filter(l => l.ServerRelativeUrl === folderPath);
+          const lib = this._allLibraries.filter(l => l.ServerRelativeUrl.toLowerCase() === folderPath.toLowerCase());
           if (lib.length === 1) {
             itemText = lib[0].Name;
           }

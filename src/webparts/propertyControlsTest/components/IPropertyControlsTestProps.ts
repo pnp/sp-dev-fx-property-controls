@@ -1,5 +1,4 @@
-import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
-
+import { IColor } from '@fluentui/react';
 import { BaseComponentContext } from '@microsoft/sp-component-base';
 
 import { IDateTimeFieldValue } from '../../../PropertyFieldDateTimePicker';
@@ -15,6 +14,7 @@ import { IPropertyFieldSite } from '../../../propertyFields/sitePicker';
 import { IPickerTerms } from '../../../PropertyFieldTermPicker';
 
 export interface IPropertyControlsTestProps {
+  gridItems: any[];
   password:string;
   context: BaseComponentContext;
   numberValue: number;
@@ -44,6 +44,7 @@ export interface IPropertyControlsTestProps {
   collectionData: any[];
   orderedItems: any[];
   swatchColor: string;
+  brandFont: string;
   enterpriseTerms: IPickerTerms;
   sites: IPropertyFieldSite[];
   searchLibrary: string;
@@ -55,4 +56,7 @@ export interface IPropertyControlsTestProps {
   iconPicker: string;
   editableComboBox: string;
   monacoEditor:string;
+  contentType: string;
+  selectedPalette: string;
+  selectedPaletteColors: string[];
 }

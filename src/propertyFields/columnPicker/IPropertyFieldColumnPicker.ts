@@ -120,7 +120,7 @@ export interface IPropertyFieldColumnPickerProps {
      *   - The rejected, the value is thrown away.
      *
      */
-    onGetErrorMessage?: (value: string) => string | Promise<string>;
+    onGetErrorMessage?: (value: string | string[]) => string | Promise<string>;
     /**
      * Defines a onPropertyChange function to raise when the selected value changed.
      * Normally this function must be always defined with the 'this.onPropertyChange'

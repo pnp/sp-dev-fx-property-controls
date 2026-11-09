@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { ITermSetProps, ITermSetState } from './IPropertyFieldTermPickerHost';
 import { ITerm, TermStorePickerServiceHelper } from '../../services/ISPTermStorePickerService';
 import { EXPANDED_IMG, COLLAPSED_IMG, TERMSET_IMG, TERM_IMG } from './PropertyFieldTermPickerHost';

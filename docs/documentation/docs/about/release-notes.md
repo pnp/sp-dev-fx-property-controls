@@ -1,6 +1,159 @@
 # Releases
 
+## 3.25.0
+
+### Enhancements
+
+- SharePoint Framework v1.23.2 support
+- feat(propertyEditor): add callback after importing properties [#677](https://github.com/pnp/sp-dev-fx-property-controls/issues/677)
+- Significant improvement to CollectionDataItem rendering performance [#676](https://github.com/pnp/sp-dev-fx-property-controls/pull/676)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [erkanch](https://github.com/erkanch), [Tony](https://github.com/a-villarruel), [Shirish Mawande](https://github.com/shirishmawande).
+
+## 3.24.0
+
+### New control(s)
+
+- `PalettePicker`: new color palette picker control [#659](https://github.com/pnp/sp-dev-fx-property-controls/pull/659)
+
+### Enhancements
+
+- SharePoint Framework v1.23.0 support
+
+### Fixes
+
+- Fix/tr tr translation corrections [#667](https://github.com/pnp/sp-dev-fx-property-controls/pull/667)
+- fix: corrected some color picker italian translations [#666](https://github.com/pnp/sp-dev-fx-property-controls/pull/666)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [João Mendes](https://github.com/joaojmendes), [Onur ÇOBAN](https://github.com/saldoc), [mattia-belletti-gt](https://github.com/mattia-belletti-gt).
+
+## 3.23.0
+
+### Enhancements
+
+- SharePoint Framework v1.22.2 support
+- Remove PnPjs: [#657](https://github.com/pnp/sp-dev-fx-property-controls/pull/657)
+
+### Fixes
+
+- `PropertyFieldPeoplePicker`: search only after 3 characters [#653](https://github.com/pnp/sp-dev-fx-property-controls/issues/653)
+- `FolderPicker`: Is there a way to reset the FolderPicker? [#640](https://github.com/pnp/sp-dev-fx-property-controls/issues/640)
+- `PropertyFieldTermPicker` delete icon doesn't show [#583](https://github.com/pnp/sp-dev-fx-property-controls/issues/583)
+
+### Contributors
+
+Special thanks to our contributor: [Beau Cameron](https://github.com/bcameron1231).
+
+## 3.22.0
+
+### New control(s)
+
+- `PropertyFieldBrandFontPicker`: new Brand Center font picker control [#651](https://github.com/pnp/sp-dev-fx-property-controls/pull/651)
+
+### Contributors
+
+Special thanks to our contributor: [Valeras Narbutas](https://github.com/ValerasNarbutas).
+
+## 3.21.0
+
+### Enhancements
+
+- SharePoint Framework v1.21.1 support
+
+## 3.20.0
+
+### Enhancements
+
+- Dispose of Async instance to prevent memory leak [#636](https://github.com/pnp/sp-dev-fx-property-controls/pull/636)
+
+### Fixes
+
+- `PropertyFieldDateTimePicker`: Fixed small typos and a sample in the documentation [#628](https://github.com/pnp/sp-dev-fx-property-controls/pull/628)
+- `PropertyFieldGrid`: Export PropertyFieldGrid [#642](https://github.com/pnp/sp-dev-fx-property-controls/pull/642)
+- `PropertyFieldViewPicker`: Export PropertyFieldViewPicker [#643](https://github.com/pnp/sp-dev-fx-property-controls/pull/643)
+- `PropertyFieldFolderPicker`: Fix property control page link [#644](https://github.com/pnp/sp-dev-fx-property-controls/pull/644)
+- `PropertyFieldDateTimePicker` & `PropertyFieldColorPicker`: Fix inaccurate localization for Swedish [#645](https://github.com/pnp/sp-dev-fx-property-controls/pull/645)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Antanina Druzhkina](https://github.com/Ateina), [Guido Zambarda](https://github.com/GuidoZam), [Kevin T. Coughlin](https://github.com/KevinTCoughlin), [Peter Paul Kirschner](https://github.com/petkir).
+
+## 3.19.0
+
+## 3.18.0
+
+### Enhancements
+
+- SharePoint Framework v1.19.0 support
+
+## 3.17.1
+
+### Fixes
+
+- Fixes for Webpack 5: [#621](https://github.com/pnp/sp-dev-fx-property-controls/pull/621)
+
+## 3.17.0
+
+### New control(s)
+
+- `PropertyFieldButton`:  New Control PropertyFieldButton [#613](https://github.com/pnp/sp-dev-fx-property-controls/pull/613)
+- `PropertyFieldGrid`:  New Control PropertyFieldGrid [#614](https://github.com/pnp/sp-dev-fx-property-controls/pull/614)
+
+### Enhancements
+
+- `fast-serve`: ast-serve update to match the most recent changes. [#606](https://github.com/pnp/sp-dev-fx-property-controls/pull/606)
+- `PropertyFieldContentTypePicker`:  PropertyFieldContentTypePicker control [#611](https://github.com/pnp/sp-dev-fx-property-controls/pull/611)
+- `PropertyFieldFilePicker` : add a delete button to the selected file [#579](https://github.com/pnp/sp-dev-fx-property-controls/pull/#607)
+- `PropertyFieldFilePicker`: Fix root site org asset library showing no items in file picker (https://github.com/pnp/sp-dev-fx-property-controls/pull/603)
+- `PropertyFieldFolderPicker`: added siteAbsoluteUrl to FOlderPicker  (https://github.com/pnp/sp-dev-fx-property-controls/pull/602)
+
+### Fixes
+
+- `General Helper`: toRelativeUrl returns proper relative url in case of root site  (https://github.com/pnp/sp-dev-fx-property-controls/pull/609)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Daniel Lindén](https://github.com/daniellinden22), [Jake](https://github.com/jjkim11), [João Mendes](https://github.com/joaojmendes), [Nishkalank Bezawada](https://github.com/NishkalankBezawada), [ramonitor](https://github.com/ramonitor), [Russell gove](https://github.com/russgove), [Sergei Sergeev](https://github.com/s-KaiNet).
+
+## 3.16.0
+
+### Enhancements
+
+- `PropertyFieldSitePicker`: disabled property not implemented in UI [#577](https://github.com/pnp/sp-dev-fx-property-controls/issues/577)
+
+### Fixes
+
+- `PropertyFieldMonacoEditor` and `PropertyFieldCodeEditor`: fix text selection in code editor [#590](https://github.com/pnp/sp-dev-fx-property-controls/issues/590)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [Luna Heyman](https://github.com/toodeluna), [srpmtt](https://github.com/srpmtt).
+
+## 3.15.1
+
+### Fixes
+
+- `PropertyFieldChoiceGroupWithCallout` deletes properties [#592](https://github.com/pnp/sp-dev-fx-property-controls/issues/592)
+
 ## 3.15.0
+
+### Enhancements
+
+- SharePoint Framework v1.18.2 support
+
+### Fixes
+
+- `Localization`: Errors in en-gb loc file [#582](https://github.com/pnp/sp-dev-fx-property-controls/pull/582)
+- `Localization`: Errors in german language [#589](https://github.com/pnp/sp-dev-fx-property-controls/pull/589)
+- `PropertyFieldFilePicker`: fix Tiles view [#562](https://github.com/pnp/sp-dev-fx-property-controls/issues/562)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [andrew-lott](https://github.com/andrew-lott), [Clem S-K](https://github.com/ClemSK), [Tom F.](https://github.com/tpf89).
 
 ## 3.14.0
 

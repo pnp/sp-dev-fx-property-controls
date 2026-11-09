@@ -1,4 +1,4 @@
-import { IComboBoxOption } from 'office-ui-fabric-react/lib/ComboBox';
+import { IComboBoxOption } from '@fluentui/react/lib/ComboBox';
 
 /**
  * @interface IPropertyFieldEditableComboBoxHostProps

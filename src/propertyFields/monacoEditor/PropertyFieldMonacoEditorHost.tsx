@@ -9,7 +9,7 @@ import {
   PrimaryButton,
   Stack,
   TextField,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import strings from 'PropertyControlStrings';
 
 import * as telemetry from '../../common/telemetry';
@@ -103,7 +103,9 @@ export default class PropertyFieldMonacoEditorHost extends React.Component<
           }}
           headerText={strings.MonacoEditorPanelTitle}
           onRenderFooterContent={this.onRenderFooterContent}
-          isFooterAtBottom={true}>
+          isFooterAtBottom={true}
+          layerProps={{ eventBubblingEnabled: true }}
+        >
           <div className={this.controlClasses.headerTitle}>
             <MonacoEditor {...this.props} onValueChange={ this._onValueChange}/>
           </div>

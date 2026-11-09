@@ -4,13 +4,13 @@ import { IAceOptions } from 'react-ace';
 export enum PropertyFieldCodeEditorLanguages {
   "JSON" = "json",
   "JavaScript" = "javascript",
-  "Sass" = "sass",
+  "Sass" = "sass", // eslint-disable-line @typescript-eslint/no-duplicate-enum-values 
   "TypeScript" = "typescript",
   "Plain Text" = "plain_text",
   "HTML" = "html",
   "Handlebars" = "handlebars",
   "XML" = "xml",
-  "css" = "sass"
+  "css" = "sass" // eslint-disable-line @typescript-eslint/no-duplicate-enum-values
 }
 
 

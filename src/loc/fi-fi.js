@@ -1,5 +1,6 @@
 define([], () => {
   return {
+    PropertyFieldPalettePickerTitle: "Select a palette",
     "ApplyButtonLabel": "Soveltaa",
     "ImportButtonLabel": "Tuoda",
     "ExportButtonLabel": "Vienti",
@@ -99,6 +100,7 @@ define([], () => {
     "CopyrightWarning": "Olet vastuussa muiden oikeuksien, myös tekijänoikeuksien, kunnioittamisesta.",
     "CreativeCommonsMessage": "Nämä tulokset on merkitty Creative Commons -lisensseillä. Tarkista käyttöoikeudet varmistaaksesi, että noudatat sääntöjä.",
     "DateFormat": "KK/PP/VVVV hh:mm A",
+    "DeleteSelectedFileButtonLabel": "Poista valittu tiedosto",
     "DocumentLabelTemplate": "{0}, Asiakirja, Muokattu {1}, muokannut {2}, Yksityinen",
     "DocumentLibraries": "Asiakirjakirjastojen",
     "EditedByNamePlate": "muokannut ",

@@ -1,5 +1,5 @@
 import { IPlaceholderWithCalloutProps } from '../../common/placeholderWithCallout/IPlaceholderWithCallout';
-import { ILabelProps } from 'office-ui-fabric-react/lib/components/Label';
+import { ILabelProps } from '@fluentui/react';
 
 /**
  * PropertyFieldLabelWithCalloutHost properties interface

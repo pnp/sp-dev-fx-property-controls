@@ -5,7 +5,7 @@ import TermSet from './TermSet';
 
 import styles from './PropertyFieldTermPickerHost.module.scss';
 import * as strings from 'PropertyControlStrings';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 
 /**
  * Term group component

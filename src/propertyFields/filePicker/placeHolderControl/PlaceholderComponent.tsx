@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { IPlaceholderProps, IPlaceholderState } from './IPlaceholderComponent';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import styles from './PlaceholderComponent.module.scss';
-import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
+import { Icon, PrimaryButton } from '@fluentui/react';
 
 /**
  * Placeholder component

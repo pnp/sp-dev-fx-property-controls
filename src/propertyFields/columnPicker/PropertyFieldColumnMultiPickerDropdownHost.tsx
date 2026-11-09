@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Label } from '@fluentui/react/lib/Label';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
+import { Async } from '@fluentui/react/lib/Utilities';
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { ISPColumn } from './ISPColumn';
 import { ISPColumns } from './ISPColumns';
 import { SPColumnPickerService } from '../../services/SPColumnPickerService';

@@ -8,10 +8,12 @@ export * from './PropertyFieldEnterpriseTermPicker';
 export * from './PropertyFieldMultiSelect';
 export * from './PropertyFieldNumber';
 export * from './PropertyFieldGuid';
+export * from './PropertyFieldBrandFontPicker';
 
 export * from './PropertyFieldButtonWithCallout';
 export * from './PropertyFieldCheckboxWithCallout';
 export * from './PropertyFieldChoiceGroupWithCallout';
+export * from './PropertyFieldCollectionData';
 export * from './PropertyFieldDropdownWithCallout';
 export * from './PropertyFieldLabelWithCallout';
 export * from './PropertyFieldLinkWithCallout';
@@ -28,3 +30,7 @@ export * from './PropertyFieldFolderPicker';
 export * from './PropertyFieldColumnPicker';
 export * from './PropertyFieldMonacoEditor';
 export * from './PropertyFieldMessage';
+export * from './PropertyFieldButton';
+
+export * from './PropertyFieldViewPicker';
+export * from './PropertyFieldGrid';

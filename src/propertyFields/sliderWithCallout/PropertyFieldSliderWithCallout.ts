@@ -16,7 +16,8 @@ class PropertyFieldSliderWithCalloutBuilder implements IPropertyPaneField<IPrope
   public properties: IPropertyFieldSliderWithCalloutPropsInternal;
 
   private _onChangeCallback: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
-  private _debounce: (fnc: (() => void), timeout: number) => void = debounce();
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+  private _debounce: (fnc: Function, time: number) => void = debounce();
 
   public constructor(_targetProperty: string, _properties: IPropertyFieldSliderWithCalloutPropsInternal) {
     this.targetProperty = _targetProperty;

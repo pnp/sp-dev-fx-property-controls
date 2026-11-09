@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { PropertyPaneSpinner } from '../common/propertyPaneSpinner';
-import { ISpinnerProps } from 'office-ui-fabric-react/lib/Spinner';
+import { ISpinnerProps } from '@fluentui/react/lib/Spinner';
 
 export interface IPropertyPaneSpinner {
   /**

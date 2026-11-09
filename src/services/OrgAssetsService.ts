@@ -40,7 +40,7 @@ export class OrgAssetsService extends FileBrowserService {
       filesQueryResult = await this._getListDataAsStream(restApi, null, acceptedFilesExtensions);
     } catch (error) {
       filesQueryResult.items = null;
-      console.error(error.message);
+      console.error(error instanceof Error ? error.message : String(error));
     }
     return filesQueryResult;
   }
@@ -48,15 +48,20 @@ export class OrgAssetsService extends FileBrowserService {
   public getListItemsByListId = async (listId: string, folderPath: string, acceptedFilesExtensions?: string[], nextPageQueryStringParams?: string): Promise<FilesQueryResult> => {
     let filesQueryResult: FilesQueryResult = { items: [], nextHref: null };
     try {
+      let orgAssetLibraryServerRelativeUrlWithoutTrailingSlash = this._orgAssetsLibraryServerRelativeSiteUrl;
+      if (orgAssetLibraryServerRelativeUrlWithoutTrailingSlash.charAt(orgAssetLibraryServerRelativeUrlWithoutTrailingSlash.length - 1) === '/') {
+        orgAssetLibraryServerRelativeUrlWithoutTrailingSlash = orgAssetLibraryServerRelativeUrlWithoutTrailingSlash.slice(0, -1);
+      }
+
       // Retrieve Lib path from folder path
       if (folderPath.charAt(0) !== "/") {
         folderPath = `/${folderPath}`;
       }
       // Remove all the rest of the folder path
-      let libName = folderPath.replace(`${this._orgAssetsLibraryServerRelativeSiteUrl}/`, "");
-      libName = libName.split("/")[0];
-      // Buil absolute library URL
-      const libFullUrl = this.buildAbsoluteUrl(`${this._orgAssetsLibraryServerRelativeSiteUrl}/${libName}`);
+      let libName = folderPath.replace(`${orgAssetLibraryServerRelativeUrlWithoutTrailingSlash}/`, "");
+      libName = libName.split("/")[0]; // Get only library name, if navigated to sub folder in the picker
+      // Build absolute library URL
+      const libFullUrl = this.buildAbsoluteUrl(`${orgAssetLibraryServerRelativeUrlWithoutTrailingSlash}/${libName}`);
 
       let queryStringParams: string = "";
       // Do not pass FolderServerRelativeUrl as query parameter
@@ -75,7 +80,7 @@ export class OrgAssetsService extends FileBrowserService {
       filesQueryResult = await this._getListDataAsStream(restApi, null, acceptedFilesExtensions);
     } catch (error) {
       filesQueryResult.items = null;
-      console.error(error.message);
+      console.error(error instanceof Error ? error.message : String(error));
     }
     return filesQueryResult;
   }
@@ -94,17 +99,18 @@ export class OrgAssetsService extends FileBrowserService {
       }
 
       this._orgAssetsLibraryServerRelativeSiteUrl = orgAssetsData ? orgAssetsData.OrgAssets.Url.DecodedUrl : null;
-      const libs: ILibrary[] = orgAssetsData && orgAssetsData.OrgAssets ? orgAssetsData.OrgAssets.OrgAssetsLibraries.Items.map((libItem) => { return this._parseOrgAssetsLibraryItem(libItem); }) : [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const libs: ILibrary[] = orgAssetsData && orgAssetsData.OrgAssets ? orgAssetsData.OrgAssets.OrgAssetsLibraries.Items.map((libItem: any) => { return this._parseOrgAssetsLibraryItem(libItem); }) : [];
       return libs;
     } catch (error) {
-      console.error(`[OrgAssetsService.getOrganisationAssetsLibraries]: Err='${error.message}'`);
+      console.error(`[OrgAssetsService.getOrganisationAssetsLibraries]: Err='${error instanceof Error ? error.message : String(error)}'`);
       return null;
     }
   }
 
   private _parseOrgAssetsLibraryItem = (libItem: any): ILibrary => { // eslint-disable-line @typescript-eslint/no-explicit-any
     const orgAssetsLibrary: ILibrary = {
-      absoluteUrl: this.buildAbsoluteUrl(libItem.LibraryUrl.DecodedUrl),
+      absoluteUrl: this.buildAbsoluteUrl(`/${libItem.LibraryUrl.DecodedUrl}`),
       title: libItem.DisplayName,
       id: libItem.ListId,
       serverRelativeUrl: libItem.LibraryUrl.DecodedUrl,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IPropertyPanePropertyEditorHostProps, IPropertyPanePropertyEditorHostState } from './IPropertyPanePropertyEditorHost';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { Panel, PanelType } from '@fluentui/react/lib/Panel';
+import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
 import AceEditor from 'react-ace';
 import * as telemetry from '../../common/telemetry';
 import styles from './PropertyPanePropertyEditorHost.module.scss';
@@ -40,7 +40,7 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
   /**
    * Called when the save button  gets clicked
    */
-  private onSave = (): void => {
+  private onSave = async (): Promise<void> => {
     const newProperties = JSON.parse(this.state.propertiesJson);
     for (const propName in newProperties) {
       if (!Object.hasOwnProperty.call(newProperties, propName)) {
@@ -68,6 +68,8 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
         this.props.webpart.properties[propName].onChange(propName, newProperties[propName]);
       }
     }
+
+    await this.props.onPropertiesImported?.(newProperties);
 
     this.props.webpart.render();
     this.props.webpart.context.propertyPane.refresh();

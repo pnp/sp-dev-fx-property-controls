@@ -46,7 +46,8 @@ PropertyFieldPeoplePicker('people', {
   properties: this.properties,
   onGetErrorMessage: null,
   deferredValidationTime: 0,
-  key: 'peopleFieldId'
+  key: 'peopleFieldId',
+  searchTextLimit: 3
 })
 ```
 
@@ -69,6 +70,7 @@ The `PropertyFieldPeoplePicker` control can be configured with the following pro
 | key | string | yes | An unique key that indicates the identity of this control. |
 | onGetErrorMessage | function | no | The method is used to get the validation error message and determine whether the input value is valid or not. See [this documentation](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/validate-web-part-property-values) to learn how to use it. |
 | deferredValidationTime | number | no | Control will start to validate after users stop typing for `deferredValidationTime` milliseconds. Default value is 200. |
+| searchTextLimit | number | no | Controls how many characters are typed before searching. Default 3.
 
 Interface `IPropertyFieldGroupOrPerson`
 

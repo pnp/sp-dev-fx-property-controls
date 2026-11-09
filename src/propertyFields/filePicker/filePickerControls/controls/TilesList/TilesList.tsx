@@ -1,10 +1,7 @@
 import * as React from 'react';
 import styles from './TilesList.module.scss';
-import { SelectionZone } from 'office-ui-fabric-react/lib/Selection';
+import { SelectionZone, type IObjectWithKey, List, type IPageProps, FocusZone, type IRenderFunction, type IRectangle, css } from '@fluentui/react';
 import { IFile } from '../../../../../services/FileBrowserService.types';
-import { List, IPageProps } from 'office-ui-fabric-react/lib/List';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { IRenderFunction, IRectangle, css } from 'office-ui-fabric-react/lib/Utilities';
 import { FolderTile } from '../FolderTile';
 import { DocumentTile } from '../DocumentTile';
 import { ITilesListProps } from './ITilesListProps';
@@ -59,7 +56,7 @@ export class TilesList extends React.Component<ITilesListProps> {
 
   public render(): React.ReactElement<ITilesListProps> {
     return (
-      <SelectionZone selection={this.props.selection} onItemInvoked={(item: IFile) => { this._handleItemInvoked(item); }}>
+      <SelectionZone selection={this.props.selection} onItemInvoked={(item?: IObjectWithKey) => { if (item) this._handleItemInvoked(item as IFile); }}>
         <FocusZone>
           <List
             ref={(e: List) => {
@@ -214,6 +211,7 @@ export class TilesList extends React.Component<ITilesListProps> {
                     height: this._rowHeight - TILE_HORZ_PADDING
                   }}
                   onItemInvoked={(itemInvoked: IFile) => this._handleItemInvoked(itemInvoked)}
+                  context={this.props.context} // used to get page locale
                 />
                 :
                 <DocumentTile

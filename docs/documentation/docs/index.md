@@ -59,6 +59,8 @@ telemetry.optOut();
 
 The following controls are currently available:
 
+- [PropertyFieldBrandFontPicker](./controls/PropertyFieldBrandFontPicker) (Property pane Brand Center font selector)
+- [PropertyFieldButton](./controls/PropertyFieldButton) (Property pane Button)
 - [PropertyFieldCodeEditor](./controls/PropertyFieldCodeEditor) (Property pane code editor)
 - [PropertyFieldCollectionData](./controls/PropertyFieldCollectionData) (Property pane collection data editor)
 - [PropertyFieldColorPicker](./controls/PropertyFieldColorPicker) (Property pane color picker)
@@ -66,6 +68,7 @@ The following controls are currently available:
 - [PropertyFieldDateTimePicker](./controls/PropertyFieldDateTimePicker) (Property pane date and time selector)
 - [PropertyFieldFilePicker](./controls/PropertyFieldFilePicker) (Property pane file picker)
 - [PropertyFieldFolderPicker](./controls/PropertyFieldFolderPicker) (Property pane folder picker)
+- [PropertyFieldGrid](./controls/PropertyFieldGrid) (Property pane Grid control)
 - [PropertyFieldGuid](./controls/PropertyFieldGuid) (Property pane GUID editor)
 - [PropertyFieldIconPicker](./controls/PropertyFieldIconPicker) (Property pane icon picker)
 - [PropertyFieldListPicker](./controls/PropertyFieldListPicker) (Property pane list selector)

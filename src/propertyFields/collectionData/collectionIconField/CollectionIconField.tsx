@@ -1,9 +1,7 @@
 import * as React from 'react';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
 import { ICollectionIconFieldProps } from '.';
-import { TextField } from 'office-ui-fabric-react/lib/components/TextField';
-import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
-import { ActionButton } from 'office-ui-fabric-react/lib/Button';
+import { TextField, Icon, ActionButton } from '@fluentui/react';
 import { IconSelector } from '../../../common/iconSelector/IconSelector';
 
 interface ICollectionIconFieldState {

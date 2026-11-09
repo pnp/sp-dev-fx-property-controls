@@ -1,5 +1,6 @@
 define([], () => {
   return {
+    PropertyFieldPalettePickerTitle: "Select a palette",
     "ApplyButtonLabel": "Εφαρμόσετε",
     "ImportButtonLabel": "Εισαγωγή",
     "ExportButtonLabel": "Εξαγωγή",
@@ -99,6 +100,7 @@ define([], () => {
     "CopyrightWarning": "Είστε υπεύθυνοι για το σεβασμό των δικαιωμάτων των άλλων, συμπεριλαμβανομένων των πνευματικών δικαιωμάτων.",
     "CreativeCommonsMessage": "Αυτά τα αποτελέσματα επισημαίνονται με άδειες Creative Commons. Ελέγξτε τις άδειες χρήσης για να βεβαιωθείτε ότι συμμορφώνεστε.",
     "DateFormat": "ΜΜ/ΗΗ/ΕΕΕΕ ωω",
+    "DeleteSelectedFileButtonLabel": "Διαγραφή επιλεγμένου αρχείου",
     "DocumentLabelTemplate": "{0}, Έγγραφο, Τροποποιημένο {1}, επεξεργασμένο από {2}, Ιδιωτικό",
     "DocumentLibraries": "Βιβλιοθήκες εγγράφων",
     "EditedByNamePlate": "επεξεργασία από ",

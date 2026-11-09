@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Label } from '@fluentui/react/lib/Label';
+import { IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
+import { Async } from '@fluentui/react/lib/Utilities';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { IPropertyFieldListMultiPickerHostProps, IPropertyFieldListMultiPickerHostState } from './IPropertyFieldListMultiPickerHost';
 import { ISPList } from './IPropertyFieldListPickerHost';
 import SPListPickerService from '../../services/SPListPickerService';
@@ -90,7 +90,6 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
     // Gets the libs
     const response = await listService.getLibs();
     response.value.forEach((list: ISPList) => {
-      let isSelected: boolean = false;
       let indexInExisting: number = -1;
       // Defines if the current list must be selected by default
       if (selectedListsKeys) {
@@ -98,7 +97,6 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
       }
 
       if (indexInExisting > -1) {
-        isSelected = true;
         selectedKeys.push(list.Id);
       }
 
@@ -106,8 +104,7 @@ export default class PropertyFieldListMultiPickerHost extends React.Component<IP
       if (listsToExclude.indexOf(list.Title) === -1 && listsToExclude.indexOf(list.Id) === -1) {
         options.push({
           key: list.Id,
-          text: list.Title,
-          checked: isSelected
+          text: list.Title
         });
       }
     });

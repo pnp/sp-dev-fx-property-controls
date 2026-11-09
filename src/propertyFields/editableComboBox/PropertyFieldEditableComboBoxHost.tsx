@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ComboBox, IComboBox, IComboBoxOption } from 'office-ui-fabric-react/lib/ComboBox';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
-import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
+import { ComboBox, IComboBox, IComboBoxOption } from '@fluentui/react/lib/ComboBox';
+import { Label } from '@fluentui/react/lib/Label';
+import { FontIcon } from '@fluentui/react/lib/Icon';
+import { TooltipHost } from '@fluentui/react/lib/Tooltip';
 
 import { IPropertyFieldEditableComboBoxHostProps, IPropertyFieldEditableComboBoxHostState } from './IPropertyFieldEditableComboBoxHost';
 import styles from './PropertyFieldEditableComboBoxHost.module.scss';

@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { IPanelProps, Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import { IPanelProps, Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { IconSelectorRenderOption } from '../Types';
 import { IconsList } from '../iconsList/IconsList';
 import * as strings from 'PropertyControlStrings';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { SearchBox } from '@fluentui/react/lib/SearchBox';
+import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import debounce from 'lodash/debounce';
 import styles from './IconSelector.module.scss';
 import { FluentIconsService } from '../../services/FluentIconsService';
-import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import Dialog, { DialogFooter, DialogType } from 'office-ui-fabric-react/lib/Dialog';
-import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import { Icon } from '@fluentui/react/lib/Icon';
+import Dialog, { DialogFooter, DialogType } from '@fluentui/react/lib/Dialog';
+import { initializeIcons } from '@fluentui/react/lib/Icons';
 
 initializeIcons();
 

@@ -1,4 +1,4 @@
-import { IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { ISPColumns } from './ISPColumns';
 import { IPropertyFieldColumnPickerPropsInternal } from './IPropertyFieldColumnPicker';
 

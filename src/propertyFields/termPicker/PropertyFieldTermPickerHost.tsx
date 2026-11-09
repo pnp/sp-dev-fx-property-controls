@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { PrimaryButton, DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Async } from '@fluentui/react/lib/Utilities';
+import { PrimaryButton, DefaultButton, IconButton } from '@fluentui/react/lib/Button';
+import { Panel, PanelType } from '@fluentui/react/lib/Panel';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
+import { Label } from '@fluentui/react/lib/Label';
 import TermPicker from './TermPicker';
 
 import { IPickerTerms, IPickerTerm } from './IPropertyFieldTermPicker';

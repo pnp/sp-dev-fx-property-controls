@@ -1,5 +1,5 @@
 import { IPropertyFieldListPickerPropsInternal } from './IPropertyFieldListPicker';
-import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
 
 /**
  * PropertyFieldListPickerHost properties interface

@@ -1,9 +1,7 @@
 import * as React from 'react';
 import styles from '../PropertyFieldCollectionDataHost.module.scss';
 import { ICollectionColorFieldProps } from './ICollectionColorFieldProps';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
+import { Callout, DirectionalHint, ColorPicker, Async } from '@fluentui/react';
 import { ICustomCollectionField } from '../ICustomCollectionField';
 
 interface ICollectionColorFieldState {
@@ -36,6 +34,13 @@ export class CollectionColorField extends React.Component<ICollectionColorFieldP
    */
   public UNSAFE_componentWillMount(): void {
     this.valueChange(this.props.field, this.props.item[this.props.field.id]).then(() => { /* no-op; */ }).catch(() => { /* no-op; */ });
+  }
+  
+  /**
+   * componentWillUnmount lifecycle hook
+   */
+  public componentWillUnmount(): void {
+    this.async.dispose();
   }
 
   private _onCalloutDismiss = (): void => {

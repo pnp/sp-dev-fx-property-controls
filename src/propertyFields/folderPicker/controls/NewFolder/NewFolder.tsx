@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Icon, IIconProps } from 'office-ui-fabric-react/lib/Icon';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Spinner, SpinnerSize } from "office-ui-fabric-react/lib/Spinner";
+import { Icon, IIconProps } from '@fluentui/react/lib/Icon';
+import { IconButton } from '@fluentui/react/lib/Button';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { Spinner, SpinnerSize } from "@fluentui/react/lib/Spinner";
 import styles from './NewFolder.module.scss';
 import * as strings from 'PropertyControlStrings';
 import { INewFolderProps, INewFolderState } from '.';
@@ -18,7 +18,7 @@ export class NewFolder extends React.Component<INewFolderProps, INewFolderState>
   constructor(props: INewFolderProps) {
     super(props);
 
-    this._spService = new FolderExplorerService(this.props.context.serviceScope);
+    this._spService = new FolderExplorerService(this.props.context);
 
     this.state = {
       folderName: '',

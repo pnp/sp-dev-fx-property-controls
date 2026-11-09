@@ -1,5 +1,6 @@
 define([], () => {
   return {
+    PropertyFieldPalettePickerTitle: "Select a palette",
     "ApplyButtonLabel": "Primenite",
     "ImportButtonLabel": "Uvoz",
     "ExportButtonLabel": "Izvoz",
@@ -99,6 +100,7 @@ define([], () => {
     "CopyrightWarning": "Vi ste odgovorni za poštovanje tuđih prava, uključujući autorska prava.",
     "CreativeCommonsMessage": "Ovi rezultati su označeni Creative Commons licencama. Pregledajte licence da biste se uverili da se pridržavate.",
     "DateFormat": "MM/DD/YYYY hh:mm A",
+    "DeleteSelectedFileButtonLabel": "Izbriši izabrani fajl",    
     "DocumentLabelTemplate": "{0}, Dokument, Izmenjeni {1}, koje je uredio {2}, Privatni",
     "DocumentLibraries": "Biblioteke dokumenata",
     "EditedByNamePlate": "uredio ",

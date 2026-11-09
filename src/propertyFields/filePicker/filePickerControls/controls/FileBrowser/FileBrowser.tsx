@@ -7,11 +7,11 @@ import { IFilePickerResult } from '../../FilePicker.types';
 import { IFileBrowserProps } from './IFileBrowserProps';
 import { IFileBrowserState } from './IFileBrowserState';
 import { ViewType } from './FileBrowser.types';
-import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
-import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn, IDetailsRowProps, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
-import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
+import { Spinner } from '@fluentui/react/lib/Spinner';
+import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn, IDetailsRowProps, DetailsRow } from '@fluentui/react/lib/DetailsList';
+import { CommandBar, ICommandBarItemProps } from '@fluentui/react/lib/CommandBar';
+import { IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
+import { ScrollablePane } from '@fluentui/react/lib/ScrollablePane';
 
 import styles from './FileBrowser.module.scss';
 import * as strings from 'PropertyControlStrings';
@@ -198,6 +198,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
                       onFolderOpen={this._handleOpenFolder}
                       onFileSelected={this._itemSelectionChanged}
                       onNextPageDataRequest={this._loadNextDataRequest}
+                      context={this.props.context}
                     />)
                 }
               </ScrollablePane>
@@ -393,9 +394,11 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
     if (items[items.length - 1] !== null) // there are no more items to fetch from the server (there is no 'null' placeholder), we can sort client-side
     {
       // Sort the items.
-      items = items.concat([]).sort((a, b) => {
-        let firstValue = a[column.fieldName || ''];
-        let secondValue = b[column.fieldName || ''];
+      items = items.concat([]).sort((a: IFile, b: IFile) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        let firstValue: any = a[(column.fieldName || '') as keyof IFile];
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        let secondValue: any = b[(column.fieldName || '') as keyof IFile];
 
         if (typeof firstValue === 'string') {
           firstValue = firstValue.toLocaleLowerCase();
@@ -522,7 +525,7 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
       filesQueryResult = await this.props.fileBrowserService.getListItemsByListId(libraryId, folderPath, accepts, nextPageQueryString, currentSortColumnName, isSortedDescending);
     } catch (error) {
       filesQueryResult.items = null;
-      console.error(error.message);
+      console.error(error instanceof Error ? error.message : String(error));
     } finally {
 
       // Remove the null mark from the end of the items array

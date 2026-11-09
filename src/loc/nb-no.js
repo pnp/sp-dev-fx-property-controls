@@ -1,5 +1,6 @@
 define([], () => {
   return {
+    PropertyFieldPalettePickerTitle: "Select a palette",
     "ApplyButtonLabel": "Bruke",
     "ImportButtonLabel": "Importere",
     "ExportButtonLabel": "Eksportere",
@@ -99,6 +100,7 @@ define([], () => {
     "CopyrightWarning": "Du er ansvarlig for å respektere andres rettigheter, inkludert opphavsrett.",
     "CreativeCommonsMessage": "Disse resultatene er merket med Creative Commons-lisenser. Se gjennom lisensene for å sikre at du overholder reglene.",
     "DateFormat": "MM/DD/ÅYYY hh:mm A",
+    "DeleteSelectedFileButtonLabel": "Slett valgt fil",
     "DocumentLabelTemplate": "{0}, Dokument, {1}, redigert av {2}, Privat",
     "DocumentLibraries": "Dokumentbiblioteker",
     "EditedByNamePlate": "redigert av ",

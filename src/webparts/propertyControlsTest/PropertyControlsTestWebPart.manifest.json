@@ -24,6 +24,7 @@
       "description": "PropertyControlsTest",
       "dropdownInfoHeaderKey": "gryffindor",
       "htmlCode":"<div>Hello</div>",
+      "choiceGroupWithCalloutValue": "iOS",
       "orderedItems": [
         {"text": "Cat", "iconName": "Cat"},
         {"text": "Pig", "iconName": "Savings"},

@@ -2,10 +2,9 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
 import { IPropertyPaneMarkdownContentProps, IPropertyPaneMarkdownContentPropsInternal } from "./IPropertyPaneMarkdownContent";
-import { IPropertyPaneMarkdownContentHostProps } from './IPropertyPaneMarkdownContentHost';
 import PropertyPaneMarkdownContentHost from './PropertyPaneMarkdownContentHost';
 import {
-  IPropertyPaneField, PropertyPaneFieldType
+	IPropertyPaneField, PropertyPaneFieldType
 } from '@microsoft/sp-property-pane';
 
 
@@ -20,10 +19,10 @@ class PropertyPaneMarkdownContentBuilder implements IPropertyPaneField<IProperty
 	public constructor(_properties: IPropertyPaneMarkdownContentProps) {
 		this.properties = {
 			key: _properties.key,
-      label: _properties.label,
-      markdown: _properties.markdown,
-      options: _properties.options,
-      onRender: this.onRender.bind(this),
+			label: _properties.label,
+			markdown: _properties.markdown,
+			options: _properties.options,
+			onRender: this.onRender.bind(this),
 		};
 	}
 
@@ -39,10 +38,10 @@ class PropertyPaneMarkdownContentBuilder implements IPropertyPaneField<IProperty
 			this.elem = elem;
 		}
 
-		const element: React.ReactElement<IPropertyPaneMarkdownContentHostProps> = React.createElement(PropertyPaneMarkdownContentHost, {
-      description: this.properties.label,
-      markdown: this.properties.markdown,
-      markdownProps: this.properties.options
+		const element = React.createElement(PropertyPaneMarkdownContentHost, {
+			description: this.properties.label,
+			markdown: this.properties.markdown,
+			markdownProps: this.properties.options!
 		});
 		ReactDom.render(element, elem);
 	}

@@ -1,5 +1,6 @@
 define([], () => {
   return {
+    PropertyFieldPalettePickerTitle: "Select a palette",
     "ApplyButtonLabel": "Bevestig",
     "ImportButtonLabel": "Importeer",
     "ExportButtonLabel": "Exporteer",
@@ -99,6 +100,7 @@ define([], () => {
     "CopyrightWarning": "U bent verantwoordelijk voor de eerbiediging van de rechten van anderen, inclusief het auteursrecht.",
     "CreativeCommonsMessage": "Deze resultaten zijn gelabeld met Creative Commons-licenties. Controleer de licenties om ervoor te zorgen dat u voldoet.",
     "DateFormat": "MM / DD / JJJJ hh: mm A",
+    "DeleteSelectedFileButtonLabel": "Geselecteerd bestand verwijderen",
     "DocumentLabelTemplate": "{0}, Document, Gewijzigd {1}, bewerkt door {2}, Privé",
     "DocumentLibraries": "Documentbibliotheken",
     "EditedByNamePlate": "bewerkt door ",

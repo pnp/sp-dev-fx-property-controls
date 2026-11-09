@@ -1,24 +1,13 @@
-import { ServiceKey, ServiceScope } from "@microsoft/sp-core-library";
-import { PageContext } from "@microsoft/sp-page-context";
-import { IFolderExplorerService } from "./IFolderExplorerService";
-import { IFolder } from "./IFolderExplorerService";
-import { sp, Web, FolderAddResult } from "@pnp/sp";
+import { BaseComponentContext } from '@microsoft/sp-component-base';
+import { SPHttpClient } from "@microsoft/sp-http";
+import { IFolderExplorerService, IFolder } from "./IFolderExplorerService";
 
 export class FolderExplorerService implements IFolderExplorerService {
 
-  public static readonly serviceKey: ServiceKey<IFolderExplorerService> = ServiceKey.create<IFolderExplorerService>('SPFx:SPService', FolderExplorerService);
+  private context: BaseComponentContext;
 
-  constructor(serviceScope: ServiceScope) {
-
-    serviceScope.whenFinished(() => {
-
-      const pageContext = serviceScope.consume(PageContext.serviceKey);
-      sp.setup({
-        sp: {
-          baseUrl: pageContext.web.absoluteUrl
-        }
-      });
-    });
+  constructor(context: BaseComponentContext) {
+    this.context = context;
   }
 
   /**
@@ -26,37 +15,26 @@ export class FolderExplorerService implements IFolderExplorerService {
    * @param webAbsoluteUrl - the url of the target site
    */
   public getDocumentLibraries = async (webAbsoluteUrl: string): Promise<IFolder[]> => {
-    return this._getDocumentLibraries(webAbsoluteUrl);
-  }
-
-  /**
-   * Get libraries within a given site
-   * @param webAbsoluteUrl - the url of the target site
-   */
-  private _getDocumentLibraries = async (webAbsoluteUrl: string): Promise<IFolder[]> => {
     let results: IFolder[] = [];
     try {
-      const web = new Web(webAbsoluteUrl);
+      const url = `${webAbsoluteUrl}/_api/web/lists?$filter=BaseTemplate eq 101 and Hidden eq false&$expand=RootFolder&$select=Title,RootFolder/ServerRelativeUrl&$orderby=Title`;
+      const response = await this.context.spHttpClient.get(url, SPHttpClient.configurations.v1);
+
+      if (!response.ok) {
+        throw new Error(`Something went wrong when retrieving libraries. Status='${response.status}'`);
+      }
+
+      const data = await response.json();
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const libraries: any[] = await web.lists.filter('BaseTemplate eq 101 and Hidden eq false').expand('RootFolder').select('Title', 'RootFolder/ServerRelativeUrl').orderBy('Title').get();
+      const libraries: any[] = data.value;
 
       results = libraries.map((library): IFolder => {
         return { Name: library.Title, ServerRelativeUrl: library.RootFolder.ServerRelativeUrl };
       });
     } catch (error) {
-      console.error('Error loading folders', error);
+      console.error('Error loading libraries', error);
     }
     return results;
-
-  }
-
-  /**
- * Get folders within a given library or sub folder
- * @param webAbsoluteUrl - the url of the target site
- * @param folderRelativeUrl - the relative url of the folder
- */
-  public getFolders = async (webAbsoluteUrl: string, folderRelativeUrl: string): Promise<IFolder[]> => {
-    return this._getFolders(webAbsoluteUrl, folderRelativeUrl);
   }
 
   /**
@@ -64,12 +42,19 @@ export class FolderExplorerService implements IFolderExplorerService {
    * @param webAbsoluteUrl - the url of the target site
    * @param folderRelativeUrl - the relative url of the folder
    */
-  private _getFolders = async (webAbsoluteUrl: string, folderRelativeUrl: string): Promise<IFolder[]> => {
+  public getFolders = async (webAbsoluteUrl: string, folderRelativeUrl: string): Promise<IFolder[]> => {
     let results: IFolder[] = [];
     try {
-      const web = new Web(webAbsoluteUrl);
-      folderRelativeUrl = folderRelativeUrl.replace(/'/ig, "''");
-      const foldersResult: IFolder[] = await web.getFolderByServerRelativePath(encodeURIComponent(folderRelativeUrl)).folders.select('Name', 'ServerRelativeUrl').orderBy('Name').get();
+      const escapedPath = folderRelativeUrl.replace(/'/g, "''");
+      const url = `${webAbsoluteUrl}/_api/web/GetFolderByServerRelativePath(decodedUrl='${escapedPath}')/Folders?$select=Name,ServerRelativeUrl&$orderby=Name`;
+      const response = await this.context.spHttpClient.get(url, SPHttpClient.configurations.v1);
+
+      if (!response.ok) {
+        throw new Error(`Something went wrong when retrieving folders. Status='${response.status}'`);
+      }
+
+      const data = await response.json();
+      const foldersResult: IFolder[] = data.value;
       results = foldersResult.filter(f => f.Name !== "Forms");
     } catch (error) {
       console.error('Error loading folders', error);
@@ -84,31 +69,28 @@ export class FolderExplorerService implements IFolderExplorerService {
    * @param name - the name of the folder to be created
    */
   public addFolder = async (webAbsoluteUrl: string, folderRelativeUrl: string, name: string): Promise<IFolder> => {
-    return this._addFolder(webAbsoluteUrl, folderRelativeUrl, name);
-  }
-
-  /**
- * Create a new folder
- * @param webAbsoluteUrl - the url of the target site
- * @param folderRelativeUrl - the relative url of the base folder
- * @param name - the name of the folder to be created
- */
-  private _addFolder = async (webAbsoluteUrl: string, folderRelativeUrl: string, name: string): Promise<IFolder> => {
     let folder: IFolder = null;
     try {
-      const web = new Web(webAbsoluteUrl);
-      folderRelativeUrl = folderRelativeUrl.replace(/'/ig, "''");
-      const folderAddResult: FolderAddResult = await web.getFolderByServerRelativePath(encodeURIComponent(folderRelativeUrl)).folders.addUsingPath(encodeURIComponent(name));
-      if (folderAddResult && folderAddResult.data) {
-        folder = {
-          Name: folderAddResult.data.Name,
-          ServerRelativeUrl: folderAddResult.data.ServerRelativeUrl
-        };
+      // Escape single quotes for the path parameter, but don't encode the slashes
+      const escapedPath = folderRelativeUrl.replace(/'/g, "''");
+      // For the folder name, escape single quotes
+      const escapedName = name.replace(/'/g, "''");
+      const url = `${webAbsoluteUrl}/_api/web/GetFolderByServerRelativePath(decodedUrl='${escapedPath}')/AddSubFolderUsingPath(decodedUrl='${escapedName}')`;
+      const response = await this.context.spHttpClient.post(url, SPHttpClient.configurations.v1, {});
+
+      if (!response.ok) {
+        throw new Error(`Something went wrong when adding folder. Status='${response.status}'`);
       }
+
+      // AddSubFolderUsingPath returns 204 No Content on success (we could requery to get exact values if needed)
+      folder = {
+        Name: name,
+        ServerRelativeUrl: `${folderRelativeUrl}/${name}`
+      };
+
     } catch (error) {
       console.error('Error adding folder', error);
     }
     return folder;
   }
-
 }

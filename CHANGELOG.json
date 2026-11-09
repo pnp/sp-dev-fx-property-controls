@@ -1,6 +1,23 @@
 {
   "versions": [
-        {
+    {
+      "version": "3.25.0",
+      "changes": {
+        "new": [],
+        "enhancements": [
+          "SharePoint Framework v1.23.2 support",
+          "feat(propertyEditor): add callback after importing properties [#677](https://github.com/pnp/sp-dev-fx-property-controls/issues/677)",
+          "Significant improvement to CollectionDataItem rendering performance [#676](https://github.com/pnp/sp-dev-fx-property-controls/pull/676)"
+        ],
+        "fixes": []
+      },
+      "contributions": [
+        "[erkanch](https://github.com/erkanch)",
+        "[Tony](https://github.com/a-villarruel)",
+        "[Shirish Mawande](https://github.com/shirishmawande)"
+      ]
+    },
+    {
       "version": "3.24.0",
       "changes": {
         "new": [
@@ -58,13 +75,9 @@
         "enhancements": [
           "SharePoint Framework v1.21.1 support"
         ],
-        "fixes": [
-          
-        ]
+        "fixes": []
       },
-      "contributions": [
-        
-      ]
+      "contributions": []
     },
     {
       "version": "3.20.0",
@@ -132,7 +145,6 @@
           "`PropertyFieldFilePicker` : add a delete button to the selected file [#579](https://github.com/pnp/sp-dev-fx-property-controls/pull/#607)",
           "`PropertyFieldFilePicker`: Fix root site org asset library showing no items in file picker (https://github.com/pnp/sp-dev-fx-property-controls/pull/603)",
           "`PropertyFieldFolderPicker`: added siteAbsoluteUrl to FOlderPicker  (https://github.com/pnp/sp-dev-fx-property-controls/pull/602)"
-
         ],
         "fixes": [
           "`General Helper`: toRelativeUrl returns proper relative url in case of root site  (https://github.com/pnp/sp-dev-fx-property-controls/pull/609)"
@@ -201,14 +213,12 @@
         "enhancements": [
           "`PropertyFieldListPicker`: Implemented functionality to select multiple base templates [#568](https://github.com/pnp/sp-dev-fx-property-controls/pull/568)",
           "`fast-serve`: Fast-serve updated to the latest version and serve warnings fixed. [#579](https://github.com/pnp/sp-dev-fx-property-controls/pull/579)"
-         
         ],
         "fixes": []
       },
       "contributions": [
         "[Chandani Prajapati](https://github.com/chandaniprajapati)",
         "[Sergei Sergeev](https://github.com/s-KaiNet)"
-
       ]
     },
     {
@@ -238,7 +248,7 @@
       "version": "3.12.0",
       "changes": {
         "new": [],
-        "enhancements": [          
+        "enhancements": [
           "`PropertyFieldFilePicker`: Site Tab - Adding scrolling for many libraries [#525](https://github.com/pnp/sp-dev-fx-property-controls/issues/525)",
           "`SPListPickerService`: add ContentTypes/Name to the query [#521](https://github.com/pnp/sp-dev-fx-property-controls/pull/521)",
           "Czech localization added [#527](https://github.com/pnp/sp-dev-fx-property-controls/issues/527)"

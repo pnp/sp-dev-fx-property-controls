@@ -1,5 +1,17 @@
 # Releases
 
+## 3.25.0
+
+### Enhancements
+
+- SharePoint Framework v1.23.2 support
+- feat(propertyEditor): add callback after importing properties [#677](https://github.com/pnp/sp-dev-fx-property-controls/issues/677)
+- Significant improvement to CollectionDataItem rendering performance [#676](https://github.com/pnp/sp-dev-fx-property-controls/pull/676)
+
+### Contributors
+
+Special thanks to our contributors (in alphabetical order): [erkanch](https://github.com/erkanch), [Tony](https://github.com/a-villarruel), [Shirish Mawande](https://github.com/shirishmawande).
+
 ## 3.24.0
 
 ### New control(s)

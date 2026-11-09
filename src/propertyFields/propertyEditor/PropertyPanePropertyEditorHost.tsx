@@ -40,7 +40,7 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
   /**
    * Called when the save button  gets clicked
    */
-  private onSave = (): void => {
+  private onSave = async (): Promise<void> => {
     const newProperties = JSON.parse(this.state.propertiesJson);
     for (const propName in newProperties) {
       if (!Object.hasOwnProperty.call(newProperties, propName)) {
@@ -68,6 +68,8 @@ export default class PropertyPanePropertyEditorHost extends React.Component<IPro
         this.props.webpart.properties[propName].onChange(propName, newProperties[propName]);
       }
     }
+
+    await this.props.onPropertiesImported?.(newProperties);
 
     this.props.webpart.render();
     this.props.webpart.context.propertyPane.refresh();

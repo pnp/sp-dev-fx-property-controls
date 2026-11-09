@@ -38,7 +38,7 @@ obj
 .vscode
 
 # Documentation
-docs/documentation/site
+common/docs/documentation/site
 
 # other files
 tslint.json
@@ -51,3 +51,5 @@ lib-dts
 lib-commonjs
 lib-esm
 jest-output
+.heft
+.rush

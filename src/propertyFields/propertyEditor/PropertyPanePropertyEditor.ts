@@ -24,6 +24,7 @@ class PropertyPanePropertyEditorBuilder implements IPropertyPaneField<IPropertyP
 		this.properties = {
 			key: _properties.key,
 			webpart: _properties.webpart,
+                        onPropertiesImported: _properties.onPropertiesImported,
 			onRender: this.onRender.bind(this)
 		};
 	}
@@ -42,7 +43,8 @@ class PropertyPanePropertyEditorBuilder implements IPropertyPaneField<IPropertyP
 		}
 
 		const element: React.ReactElement<IPropertyPanePropertyEditorHostProps> = React.createElement(PropertyPanePropertyEditorHost, {
-			webpart: this.properties.webpart
+			webpart: this.properties.webpart,
+                        onPropertiesImported: this.properties.onPropertiesImported
 		});
 		ReactDom.render(element, elem);
 	}

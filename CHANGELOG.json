@@ -4,10 +4,18 @@
       "version": "3.25.0",
       "changes": {
         "new": [],
-        "enhancements": [],
+        "enhancements": [
+          "SharePoint Framework v1.23.2 support",
+          "feat(propertyEditor): add callback after importing properties [#677](https://github.com/pnp/sp-dev-fx-property-controls/issues/677)",
+          "Significant improvement to CollectionDataItem rendering performance [#676](https://github.com/pnp/sp-dev-fx-property-controls/pull/676)"
+        ],
         "fixes": []
       },
-      "contributions": []
+      "contributions": [
+        "[erkanch](https://github.com/erkanch)",
+        "[Tony](https://github.com/a-villarruel)",
+        "[Shirish Mawande](https://github.com/shirishmawande)"
+      ]
     },
     {
       "version": "3.24.0",

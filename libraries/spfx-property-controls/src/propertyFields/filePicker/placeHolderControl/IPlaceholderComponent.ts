@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 /**
  * Used to display a placeholder in case of no or temporary content. Button is optional.
  *
@@ -35,6 +37,10 @@ export interface IPlaceholderProps {
    * Optional: As the button is optional.
    */
   onConfigure?: () => void;
+  /**
+   * Content to render inside the placeholder
+   */
+  children?: React.ReactNode;
 }
 
 export interface IPlaceholderState {

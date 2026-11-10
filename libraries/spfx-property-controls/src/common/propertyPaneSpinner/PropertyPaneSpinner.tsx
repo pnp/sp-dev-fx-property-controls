@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ISpinnerProps, Spinner } from "@fluentui/react/lib/Spinner";
 
-export const PropertyPaneSpinner: React.SFC<ISpinnerProps> = (props) => {
+export const PropertyPaneSpinner: React.FC<ISpinnerProps> = (props) => {
   return (
     <Spinner style={{
               top: "50%",

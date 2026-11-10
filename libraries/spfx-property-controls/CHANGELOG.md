@@ -7,6 +7,7 @@
 - Merge the latest v3 development changes into v4, retaining SPFx 1.23.2 and React 17.
 - Split the controls npm library and private SPFx test app into separate Rush packages.
 - Declare SPFx, React, ReactDOM and React typings as library peer dependencies.
+- SharePoint Framework v1.24.1 and React 18 support
 
 ## 3.25.0
 

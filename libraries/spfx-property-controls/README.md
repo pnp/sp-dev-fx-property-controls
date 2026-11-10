@@ -8,7 +8,7 @@ Property controls for the SharePoint Framework solutions.
 
 More information to get started can be found documentation of this repository: [documentation](https://pnp.github.io/sp-dev-fx-property-controls/).
 
-Version 4 requires SPFx 1.23.2 or later and React 17. SPFx, React, ReactDOM and
+Version 4 requires SPFx 1.24.1 or later and React 18. SPFx, React, ReactDOM and
 React typings are peer dependencies supplied by the consuming project. Existing
 `@pnp/spfx-property-controls/lib/...` imports remain supported.
 

@@ -30,7 +30,7 @@ node common/scripts/install-run-rush.js rebuild
 node --test common/tests/*.test.cjs
 ```
 
-Both packages use SPFx 1.23.2 and React 17. The library declares SPFx, React,
+Both packages use SPFx 1.24.1 and React 18. The library declares SPFx, React,
 ReactDOM and React typings as peer dependencies; control-specific dependencies
 remain regular dependencies. Existing `@pnp/spfx-property-controls/lib/...`
 imports are unchanged. Only the test app builds an `.sppkg`.

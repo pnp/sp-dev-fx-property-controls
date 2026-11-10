@@ -11,7 +11,7 @@ Reference the table to see what version to use in your project.
 
 | Version | SPFx minimal dependency | Fluent UI (Office UI Fabric React) version | SharePoint Version | Comments |
 | ------- | ----------------------- | ------------------------------------------ | ------------------ | -------- |
-| `v4` (beta) | `1.23.2` | `8.106.4` | Online | Requires React 17. SPFx, React, ReactDOM and React typings are peer dependencies supplied by the consuming project. |
+| `v4` (beta) | `1.24.1` | `8.106.4` | Online | Requires React 18. SPFx, React, ReactDOM and React typings are peer dependencies supplied by the consuming project. |
 | `v3` | `1.13.*` | `7.174.1` | Online | The most current, actively maintained version of the library. |
 | `v2` | `1.11.0` | `6.214.0` | Online | The version deprecated and not actively maintained.<br>We strongly recommend to update to SPFx `1.13.*` and `v3` of Controls. |
 | `v1` | `1.3.0` | `5.131.0` | On-Prem | The version is maintained for SharePoint On-Prem 2016 and 2019 implementations. Be aware that the controls might not work in solutions you're building for on-premises. As for on-premises solutions version `1.1.0` will get used. |

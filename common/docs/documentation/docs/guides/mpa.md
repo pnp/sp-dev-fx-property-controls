@@ -6,7 +6,7 @@ The shortest way to prepare your local copy of the project for development and t
 
 Use Node.js 22 (22.14.0 or later) and the version of npm that comes with it.
 The v4 branch uses Rush with PNPM to manage the controls library and private
-SPFx test app. Both packages use SPFx 1.23.2 and React 17. You can use
+SPFx test app. Both packages use SPFx 1.24.1 and React 18. You can use
 [Node Version Manager](https://github.com/nvm-sh/nvm) or
 [Node Version Switcher](https://github.com/jasongin/nvs) to switch Node.js versions.
 

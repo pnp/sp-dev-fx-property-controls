@@ -17,6 +17,19 @@ import styles from './FileBrowser.module.scss';
 import * as strings from 'PropertyControlStrings';
 
 const LAYOUT_STORAGE_KEY: string = 'comparerSiteFilesLayout';
+const ITEM_TYPES_ICON_BASE_URL: string = 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20';
+const GENERIC_FILE_ICON_URL: string = `${ITEM_TYPES_ICON_BASE_URL}/genericfile.svg`;
+
+/**
+ * The CDN has no icon for some file types (e.g. json, mp4, js), so fall back to the generic file icon
+ * instead of showing a broken image.
+ */
+const onFileIconError = (event: React.SyntheticEvent<HTMLImageElement>): void => {
+  const img = event.currentTarget;
+  if (img.src !== GENERIC_FILE_ICON_URL) {
+    img.src = GENERIC_FILE_ICON_URL;
+  }
+};
 
 export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowserState> {
   private _selection: Selection;
@@ -42,17 +55,19 @@ export class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowser
         onColumnClick: this._onColumnClick,
         onRender: (item: IFile) => {
           const folderIcon: string = strings.FolderIconUrl;
-          // TODO: Improve file icon URL
           const isPhoto = GeneralHelper.isImage(item.name);
+          const fileType: string = (item.fileType || '').toLowerCase();
           const iconUrl = isPhoto
             ? strings.PhotoIconUrl
-            : item.fileType.toLowerCase() === "aspx"
-              ? 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/spo.svg'
-              : `https://res-1.cdn.office.net/files/fabric-cdn-prod_20220127.003/assets/item-types/20/${item.fileType}.svg`;
+            : fileType === "aspx"
+              ? `${ITEM_TYPES_ICON_BASE_URL}/spo.svg`
+              : fileType
+                ? `${ITEM_TYPES_ICON_BASE_URL}/${fileType}.svg`
+                : GENERIC_FILE_ICON_URL;
 
           const altText: string = item.isFolder ? strings.FolderAltText : strings.ImageAltText.replace('{0}', item.fileType);
           return <div className={styles.fileTypeIcon}>
-            <img src={item.isFolder ? folderIcon : iconUrl} className={styles.fileTypeIconIcon} alt={altText} title={altText} />
+            <img src={item.isFolder ? folderIcon : iconUrl} className={styles.fileTypeIconIcon} alt={altText} title={altText} onError={item.isFolder ? undefined : onFileIconError} />
           </div>;
         }
       },
